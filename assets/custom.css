@@ -1,0 +1,46 @@
+/*
+@media (max-width: 767px){
+.product__block--title,
+.product__block:has(#shopify-block-ATDhua2ZIK0kwdWJrU__judge_me_reviews_preview_badge_f9Nc6i)
+{
+display: none;
+}
+}
+
+
+@media (min-width: 768px){
+#shopify-section-template--26544461709576__rich_text_pTBMLx,
+#shopify-section-template--26544461709576__17614968881680f860{
+display: none;
+}
+}
+*/
+
+@media (max-width: 767px) {
+  .product__info-container .product__block.product__block--title,
+  .product__info-container .jdgm-widget.jdgm-preview-badge.jdgm-preview-badge--with-link.jdgm--done-setup,
+  .desktop-only-iq {
+    display: none !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .mobile-only-iq {
+    display: none !important;
+  }
+}
+[data-form-root],
+[data-form-root] shopify-forms-embed,
+shopify-forms-embed {
+  --form-field-border-radius: 22px !important;
+  --button-border-radius: 22px !important;
+  --container-border-radius: 40px !important;
+    --forms-heading-font-size: 32px !important;
+  --forms-heading-font: italic 800 32px Montserrat, sans-serif !important;
+    --inline-container-max-width: 800px !important;
+  --inline-container-width: 100% !important;
+   --button-background-color: #6a804d !important;
+  --button-text-color: #ffffff !important;
+  --button-hover-background-color: #000000 !important;
+  --button-hover-text-color: #ffffff !important;
+}
