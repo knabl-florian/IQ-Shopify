@@ -1,0 +1,160 @@
+{%- comment -%}
+==================================================================
+SECTION: sections/iq-new-drops.liquid  (v4.1 – Mobile-Kacheln randlos)
+IQ DOGSPORT – NEW DROPS · Funktions-T-Shirt (Lead), Snacks, Softball
+==================================================================
+{%- endcomment -%}
+
+{%- assign en = false -%}
+{%- if request.locale.iso_code == 'en' -%}{%- assign en = true -%}{%- endif -%}
+
+{%- style -%}
+  #shopify-section-{{ section.id }}{ background:#F3F3F1; }
+  #shopify-section-{{ section.id }} .iq-drop{ width:100%; box-sizing:border-box; background:#F3F3F1; color:#171717; }
+  #shopify-section-{{ section.id }} .iq-drop__inner{ max-width:1360px; margin-inline:auto; padding:52px 0 60px; box-sizing:border-box; }
+
+  #shopify-section-{{ section.id }} .iq-drop__head{ display:flex; align-items:flex-end; justify-content:space-between; gap:18px; flex-wrap:wrap; padding-inline:20px; margin-bottom:20px; }
+  #shopify-section-{{ section.id }} .iq-drop__eyebrow{ margin:0 0 8px; font-family:var(--font-body-family, Archivo, Arial, sans-serif); font-size:11px; line-height:1.2; font-weight:700; text-transform:uppercase; letter-spacing:2.8px; color:#A51D1B; }
+  #shopify-section-{{ section.id }} .iq-drop__heading{ margin:0; font-family:var(--font-heading-family, Montserrat, Arial, sans-serif); font-style:italic; font-weight:800; text-transform:uppercase; font-size:clamp(34px, 9vw, 44px); line-height:.98; letter-spacing:-.6px; color:#171717; }
+  #shopify-section-{{ section.id }} .iq-drop__all{ flex:0 0 auto; font-family:var(--font-body-family, Archivo, Arial, sans-serif); font-size:13px; font-weight:700; letter-spacing:.4px; text-transform:uppercase; color:#171717; text-decoration:none; border-bottom:2px solid transparent; padding-bottom:2px; transition:color .2s ease, border-color .2s ease; }
+  #shopify-section-{{ section.id }} .iq-drop__all:hover, #shopify-section-{{ section.id }} .iq-drop__all:focus-visible{ color:#A51D1B; border-color:#A51D1B; }
+
+  #shopify-section-{{ section.id }} .iq-drop__item{ position:relative; display:block; text-decoration:none; color:#fff; }
+  #shopify-section-{{ section.id }} .iq-drop__media{ position:relative; overflow:hidden; background:#111; height:100%; }
+  #shopify-section-{{ section.id }} .iq-drop__media img{ display:block; width:100%; height:100%; object-fit:cover; }
+  #shopify-section-{{ section.id }} .iq-drop__scrim{ position:absolute; inset:0; pointer-events:none; background:linear-gradient(to top, rgba(0,0,0,.74) 0%, rgba(0,0,0,.32) 40%, rgba(0,0,0,0) 68%); }
+  #shopify-section-{{ section.id }} .iq-drop__body{ position:absolute; left:20px; right:20px; bottom:18px; display:flex; flex-direction:column; align-items:flex-start; gap:7px; }
+  #shopify-section-{{ section.id }} .iq-drop__kicker{ display:inline-block; background:#A51D1B; color:#fff; padding:3px 8px; font-family:var(--font-body-family, Archivo, Arial, sans-serif); font-size:10px; line-height:1.2; font-weight:700; letter-spacing:1.6px; text-transform:uppercase; }
+  #shopify-section-{{ section.id }} .iq-drop__title{ margin:0; font-family:var(--font-heading-family, Montserrat, Arial, sans-serif); font-style:italic; font-weight:800; text-transform:uppercase; font-size:22px; line-height:1.03; letter-spacing:-.3px; color:#fff; }
+  #shopify-section-{{ section.id }} .iq-drop__copy{ margin:0; font-family:var(--font-body-family, Archivo, Arial, sans-serif); font-size:14px; line-height:1.45; color:rgba(255,255,255,.9); max-width:36ch; }
+  #shopify-section-{{ section.id }} .iq-drop__cta{ margin-top:2px; display:inline-flex; align-items:center; gap:6px; font-family:var(--font-body-family, Archivo, Arial, sans-serif); font-size:12.5px; line-height:1.2; font-weight:700; letter-spacing:.5px; text-transform:uppercase; color:#fff; }
+  #shopify-section-{{ section.id }} .iq-drop__arrow{ display:inline-block; transition:transform .2s ease; }
+  #shopify-section-{{ section.id }} .iq-drop__item:hover .iq-drop__arrow{ transform:translateX(3px); }
+
+  /* Mobile */
+  #shopify-section-{{ section.id }} .iq-drop__grid{ display:block; }
+  #shopify-section-{{ section.id }} .iq-drop__lead .iq-drop__media{ aspect-ratio:4/5; }
+  #shopify-section-{{ section.id }} .iq-drop__pair{ display:grid; grid-template-columns:1fr 1fr; gap:12px; padding-inline:0; margin-top:12px; }
+  #shopify-section-{{ section.id }} .iq-drop__pair .iq-drop__media{ aspect-ratio:4/5; }
+  #shopify-section-{{ section.id }} .iq-drop__pair .iq-drop__title{ font-size:16px; }
+  #shopify-section-{{ section.id }} .iq-drop__pair .iq-drop__copy{ display:none; }
+  #shopify-section-{{ section.id }} .iq-drop__pair .iq-drop__body{ left:14px; right:14px; bottom:13px; gap:5px; }
+
+  /* Desktop: großes Bild über 2 Zeilen, Kanten bündig */
+  @media (min-width:990px){
+    #shopify-section-{{ section.id }} .iq-drop__inner{ padding:84px 32px 92px; }
+    #shopify-section-{{ section.id }} .iq-drop__head{ padding-inline:0; margin-bottom:26px; }
+    #shopify-section-{{ section.id }} .iq-drop__heading{ font-size:clamp(48px, 4.2vw, 64px); }
+
+    #shopify-section-{{ section.id }} .iq-drop__grid{ display:grid; grid-template-columns:minmax(0,1.45fr) minmax(0,.85fr); column-gap:24px; row-gap:24px; }
+    #shopify-section-{{ section.id }} .iq-drop__pair{ display:contents; }
+    #shopify-section-{{ section.id }} .iq-drop__lead{ grid-column:1; grid-row:1 / span 2; }
+    #shopify-section-{{ section.id }} .iq-drop__lead .iq-drop__media{ aspect-ratio:auto; height:100%; }
+    #shopify-section-{{ section.id }} .iq-drop__snack{ grid-column:2; grid-row:1; }
+    #shopify-section-{{ section.id }} .iq-drop__ball{ grid-column:2; grid-row:2; }
+    #shopify-section-{{ section.id }} .iq-drop__snack .iq-drop__media, #shopify-section-{{ section.id }} .iq-drop__ball .iq-drop__media{ aspect-ratio:4/5; }
+    #shopify-section-{{ section.id }} .iq-drop__pair .iq-drop__copy{ display:block; }
+    #shopify-section-{{ section.id }} .iq-drop__pair .iq-drop__title{ font-size:22px; }
+    #shopify-section-{{ section.id }} .iq-drop__lead .iq-drop__title{ font-size:30px; }
+    #shopify-section-{{ section.id }} .iq-drop__body{ left:24px; right:24px; bottom:22px; gap:8px; }
+    #shopify-section-{{ section.id }} .iq-drop__pair .iq-drop__body{ left:20px; right:20px; bottom:18px; }
+    #shopify-section-{{ section.id }} .iq-drop__media img{ transition:transform .3s ease; }
+    #shopify-section-{{ section.id }} .iq-drop__item:hover .iq-drop__media img{ transform:scale(1.02); }
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    #shopify-section-{{ section.id }} .iq-drop__media img, #shopify-section-{{ section.id }} .iq-drop__arrow{ transition:none !important; }
+    #shopify-section-{{ section.id }} .iq-drop__item:hover .iq-drop__media img{ transform:none !important; }
+  }
+{%- endstyle -%}
+
+<section class="iq-drop">
+  <div class="iq-drop__inner">
+
+    <header class="iq-drop__head">
+      <div>
+        <p class="iq-drop__eyebrow">{% if en %}New at IQ{% else %}Neu bei IQ{% endif %}</p>
+        <h2 class="iq-drop__heading">New Drops</h2>
+      </div>
+      {%- if section.settings.all_link != blank -%}
+        <a class="iq-drop__all" href="{{ section.settings.all_link }}">{% if en %}All new{% else %}Alle Neuheiten{% endif %} &rarr;</a>
+      {%- endif -%}
+    </header>
+
+    <div class="iq-drop__grid">
+
+      <a class="iq-drop__item iq-drop__lead" href="{{ section.settings.shirt_link }}">
+        <div class="iq-drop__media">
+          {%- if section.settings.shirt_image != blank -%}
+            {{ section.settings.shirt_image | image_url: width: 1800 | image_tag: loading: 'lazy', widths: '500, 750, 1000, 1400, 1800', sizes: '(min-width: 990px) 58vw, 100vw', alt: section.settings.shirt_image.alt }}
+          {%- else -%}{{ 'image' | placeholder_svg_tag }}{%- endif -%}
+          <span class="iq-drop__scrim" aria-hidden="true"></span>
+          <span class="iq-drop__body">
+            <span class="iq-drop__kicker">{% if en %}New{% else %}Neu{% endif %}</span>
+            <span class="iq-drop__title">{% if en %}Training Shirt{% else %}Funktions-T-Shirt{% endif %}</span>
+            <span class="iq-drop__copy">{% if en %}Double-face functional fabric meets a large rear pocket.{% else %}Double-Face-Funktionsgewebe trifft große Rückentasche.{% endif %}</span>
+            <span class="iq-drop__cta">{% if en %}Discover{% else %}Entdecken{% endif %} <span class="iq-drop__arrow" aria-hidden="true">&rarr;</span></span>
+          </span>
+        </div>
+      </a>
+
+      <div class="iq-drop__pair">
+
+        <a class="iq-drop__item iq-drop__snack" href="{{ section.settings.snack_link }}">
+          <div class="iq-drop__media">
+            {%- if section.settings.snack_image != blank -%}
+              {{ section.settings.snack_image | image_url: width: 1200 | image_tag: loading: 'lazy', widths: '400, 600, 800, 1200', sizes: '(min-width: 990px) 35vw, 45vw', alt: section.settings.snack_image.alt }}
+            {%- else -%}{{ 'image' | placeholder_svg_tag }}{%- endif -%}
+            <span class="iq-drop__scrim" aria-hidden="true"></span>
+            <span class="iq-drop__body">
+              <span class="iq-drop__kicker">{% if en %}New{% else %}Neu{% endif %}</span>
+              <span class="iq-drop__title">Snacks</span>
+              <span class="iq-drop__copy">{% if en %}Natural reward. Top quality.{% else %}Natürliche Belohnung. Höchste Qualität.{% endif %}</span>
+              <span class="iq-drop__cta">{% if en %}Discover{% else %}Entdecken{% endif %} <span class="iq-drop__arrow" aria-hidden="true">&rarr;</span></span>
+            </span>
+          </div>
+        </a>
+
+        <a class="iq-drop__item iq-drop__ball" href="{{ section.settings.ball_link }}">
+          <div class="iq-drop__media">
+            {%- if section.settings.ball_image != blank -%}
+              {{ section.settings.ball_image | image_url: width: 1200 | image_tag: loading: 'lazy', widths: '400, 600, 800, 1200', sizes: '(min-width: 990px) 35vw, 45vw', alt: section.settings.ball_image.alt }}
+            {%- else -%}{{ 'image' | placeholder_svg_tag }}{%- endif -%}
+            <span class="iq-drop__scrim" aria-hidden="true"></span>
+            <span class="iq-drop__body">
+              <span class="iq-drop__kicker">{% if en %}New{% else %}Neu{% endif %}</span>
+              <span class="iq-drop__title">Softball</span>
+              <span class="iq-drop__copy">{% if en %}Soft reward for retrieving and gathering. Available in three sizes.{% else %}Weiche Bestätigung fürs Apportieren und Sammeln. In drei Größen.{% endif %}</span>
+              <span class="iq-drop__cta">{% if en %}Discover{% else %}Entdecken{% endif %} <span class="iq-drop__arrow" aria-hidden="true">&rarr;</span></span>
+            </span>
+          </div>
+        </a>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "IQ New Drops",
+  "tag": "section",
+  "class": "iq-new-drops",
+  "settings": [
+    { "type": "url", "id": "all_link", "label": "Link Alle Neuheiten (oben rechts, optional)", "info": "z. B. /collections/neuheiten – leer lassen blendet den Link aus" },
+    { "type": "header", "content": "1 – Funktions-T-Shirt (groß)" },
+    { "type": "image_picker", "id": "shirt_image", "label": "Bild – Rückentasche" },
+    { "type": "url", "id": "shirt_link", "label": "Link Funktions-T-Shirt", "info": "z. B. /products/iq-trainingsshirt-unisex" },
+    { "type": "header", "content": "2 – Snacks" },
+    { "type": "image_picker", "id": "snack_image", "label": "Bild – Hund mit Snacktüte" },
+    { "type": "url", "id": "snack_link", "label": "Link Snacks", "info": "z. B. /collections/trainingsfutter-supplemente" },
+    { "type": "header", "content": "3 – Softball" },
+    { "type": "image_picker", "id": "ball_image", "label": "Bild – Hund mit rotem Softball" },
+    { "type": "url", "id": "ball_link", "label": "Link Softball", "info": "z. B. /products/softball-neopren-apport" }
+  ],
+  "presets": [
+    { "name": "IQ New Drops" }
+  ]
+}
+{% endschema %}

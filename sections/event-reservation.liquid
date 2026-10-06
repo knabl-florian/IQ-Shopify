@@ -1,0 +1,927 @@
+{% comment %}
+  IQ Dogsport event reservation section
+  - Product grid with images and variants
+  - Client-side Load more (no page navigation)
+  - Sticky reservation bar + drawer, so customers never need to scroll to the bottom
+  - German / English storefront text based on active Shopify locale
+  - Sends JSON to Google Apps Script; does not create Shopify orders or change stock
+{% endcomment %}
+
+{%- liquid
+  assign google_endpoint = section.settings.google_script_url | default: 'https://script.google.com/macros/s/AKfycbx7rYZwPYI4x-g2TVdFv6kr8-RRYt9p565QvDaOWsWUt2Fu5FqKlu1YvoERO37q-ZD6/exec'
+
+  assign reservation_collection = section.settings.product_collection
+  if section.settings.show_all_products
+    assign reservation_collection = collections['all']
+  endif
+
+  assign locale_code = request.locale.iso_code | downcase
+  assign is_english = false
+  if locale_code contains 'en'
+    assign is_english = true
+  endif
+
+  if is_english
+    assign tx_eyebrow = 'VDH DM PETERSAURACH'
+    assign tx_heading = section.settings.heading_en | default: 'Reserve now. Collect on Sunday.'
+    assign tx_intro = section.settings.intro_en | default: 'Reserve your preferred IQ Dogsport products by Saturday at 8:00 PM. We will bring them to Petersaurach for collection on Sunday — with no shipping costs.'
+    assign tx_deadline_label = 'Reserve by:'
+    assign tx_pickup_label = 'Collection:'
+    assign tx_shipping_label = 'Shipping:'
+    assign tx_free = 'Free'
+    assign tx_catalog = 'Choose products'
+    assign tx_catalog_intro = 'Choose the exact product, variant or size, and quantity.'
+    assign tx_search = 'Search products...'
+    assign tx_no_results = 'No matching products found.'
+    assign tx_no_image = 'No image'
+    assign tx_from = 'from'
+    assign tx_variant = 'Variant / Size'
+    assign tx_choose_variant = 'Choose variant'
+    assign tx_quantity = 'Quantity'
+    assign tx_add = 'Add to reservation'
+    assign tx_added = 'Added'
+    assign tx_unavailable = 'on request'
+    assign tx_load_more = 'Load more products'
+    assign tx_showing = 'Showing'
+    assign tx_of = 'of'
+    assign tx_products = 'products'
+    assign tx_view_reservation = 'View reservation'
+    assign tx_complete = 'Complete reservation'
+    assign tx_your_selection = 'Your reservation'
+    assign tx_selection_intro = 'Review your products and enter your contact details.'
+    assign tx_empty = 'You have not selected any products yet.'
+    assign tx_remove = 'Remove'
+    assign tx_contact = 'Contact details'
+    assign tx_first_name = 'First name'
+    assign tx_last_name = 'Last name'
+    assign tx_email = 'Email'
+    assign tx_phone = 'Phone number'
+    assign tx_note = 'Note (optional)'
+    assign tx_note_placeholder = 'For example: Please call me if a selected variant is unavailable.'
+    assign tx_consent = 'I understand that this is a non-binding reservation request. Payment is made when collecting the products at the stand.'
+    assign tx_submit = 'Reserve products for Sunday'
+    assign tx_privacy = 'Your details are used only to process this reservation.'
+    assign tx_close = 'Close'
+    assign tx_item = 'item'
+    assign tx_items = 'items'
+    assign tx_select_variant_error = 'Please choose a variant or size.'
+    assign tx_max_error = 'You can reserve a maximum of 10 different variants.'
+    assign tx_required_error = 'Please complete all required fields.'
+    assign tx_empty_error = 'Please add at least one product.'
+    assign tx_endpoint_error = 'The Google Sheets connection has not been configured yet.'
+    assign tx_deadline_error = 'The reservation deadline has passed.'
+    assign tx_sending = 'Sending reservation...'
+    assign tx_success = 'Thank you! Your reservation was submitted successfully.'
+    assign tx_send_error = 'The reservation could not be sent. Please try again.'
+    assign tx_collection_missing = 'Please select a product collection in the theme editor.'
+  else
+    assign tx_eyebrow = 'VDH DM PETERSAURACH'
+    assign tx_heading = section.settings.heading_de | default: 'Jetzt reservieren. Am Sonntag abholen.'
+    assign tx_intro = section.settings.intro_de | default: 'Reserviere deine gewünschten IQ Dogsport Produkte bis Samstag, 20:00 Uhr. Wir bringen sie am Sonntag zur VDH DM nach Petersaurach — ohne Versandkosten.'
+    assign tx_deadline_label = 'Reservieren bis:'
+    assign tx_pickup_label = 'Abholung:'
+    assign tx_shipping_label = 'Versandkosten:'
+    assign tx_free = 'Kostenlos'
+    assign tx_catalog = 'Produkte auswählen'
+    assign tx_catalog_intro = 'Wähle den exakten Artikel, die Variante bzw. Größe und die Menge.'
+    assign tx_search = 'Produkte suchen...'
+    assign tx_no_results = 'Kein passendes Produkt gefunden.'
+    assign tx_no_image = 'Kein Bild'
+    assign tx_from = 'ab'
+    assign tx_variant = 'Variante / Größe'
+    assign tx_choose_variant = 'Variante auswählen'
+    assign tx_quantity = 'Menge'
+    assign tx_add = 'Zur Reservierung hinzufügen'
+    assign tx_added = 'Hinzugefügt'
+    assign tx_unavailable = 'auf Anfrage'
+    assign tx_load_more = 'Mehr Produkte anzeigen'
+    assign tx_showing = 'Angezeigt'
+    assign tx_of = 'von'
+    assign tx_products = 'Produkten'
+    assign tx_view_reservation = 'Reservierung ansehen'
+    assign tx_complete = 'Reservierung abschließen'
+    assign tx_your_selection = 'Deine Reservierung'
+    assign tx_selection_intro = 'Prüfe deine Produkte und gib anschließend deine Kontaktdaten ein.'
+    assign tx_empty = 'Du hast noch keine Produkte ausgewählt.'
+    assign tx_remove = 'Entfernen'
+    assign tx_contact = 'Kontaktdaten'
+    assign tx_first_name = 'Vorname'
+    assign tx_last_name = 'Nachname'
+    assign tx_email = 'E-Mail'
+    assign tx_phone = 'Telefonnummer'
+    assign tx_note = 'Anmerkung (optional)'
+    assign tx_note_placeholder = 'Zum Beispiel: Bitte telefonisch melden, falls eine Variante nicht verfügbar ist.'
+    assign tx_consent = 'Ich bestätige, dass dies eine unverbindliche Reservierungsanfrage ist. Die Bezahlung erfolgt bei Abholung am Stand.'
+    assign tx_submit = 'Produkte für Sonntag reservieren'
+    assign tx_privacy = 'Deine Angaben werden ausschließlich zur Bearbeitung der Reservierung verwendet.'
+    assign tx_close = 'Schließen'
+    assign tx_item = 'Artikel'
+    assign tx_items = 'Artikel'
+    assign tx_select_variant_error = 'Bitte zuerst eine Variante oder Größe auswählen.'
+    assign tx_max_error = 'Du kannst maximal 10 verschiedene Varianten reservieren.'
+    assign tx_required_error = 'Bitte alle Pflichtfelder ausfüllen.'
+    assign tx_empty_error = 'Bitte mindestens ein Produkt hinzufügen.'
+    assign tx_endpoint_error = 'Die Google-Sheets-Verbindung ist noch nicht eingerichtet.'
+    assign tx_deadline_error = 'Die Reservierungsfrist ist bereits abgelaufen.'
+    assign tx_sending = 'Reservierung wird gesendet...'
+    assign tx_success = 'Vielen Dank! Deine Reservierung wurde erfolgreich übermittelt.'
+    assign tx_send_error = 'Die Reservierung konnte nicht gesendet werden. Bitte versuche es erneut.'
+    assign tx_collection_missing = 'Bitte im Theme-Editor zuerst eine Produktkollektion auswählen.'
+  endif
+
+  assign deadline_text = section.settings.deadline_text_de
+  assign pickup_text = section.settings.pickup_text_de
+  if is_english
+    assign deadline_text = section.settings.deadline_text_en
+    assign pickup_text = section.settings.pickup_text_en
+  endif
+-%}
+
+<section id="iq-reservation-{{ section.id }}" class="iq-reservation" data-locale="{% if is_english %}en{% else %}de{% endif %}">
+  <header class="iq-reservation__hero">
+    <div class="iq-reservation__container">
+      <p class="iq-reservation__eyebrow">{{ tx_eyebrow }}</p>
+      <h1>{{ tx_heading | escape }}</h1>
+      <p class="iq-reservation__lead">{{ tx_intro | escape }}</p>
+      <div class="iq-reservation__facts">
+        <span><strong>{{ tx_deadline_label }}</strong> {{ deadline_text | escape }}</span>
+        <span><strong>{{ tx_pickup_label }}</strong> {{ pickup_text | escape }}</span>
+        <span><strong>{{ tx_shipping_label }}</strong> {{ tx_free }}</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="iq-reservation__container iq-reservation__main">
+    {% if reservation_collection == blank %}
+      <div class="iq-reservation__notice iq-reservation__notice--error">{{ tx_collection_missing }}</div>
+    {% else %}
+      {% paginate reservation_collection.products by 250 %}
+        <div class="iq-reservation__catalog-header">
+          <div>
+            <h2>{{ tx_catalog }}</h2>
+            <p>{{ tx_catalog_intro }}</p>
+          </div>
+          <div class="iq-reservation__catalog-tools">
+            <label class="iq-reservation__search">
+              <span class="visually-hidden">{{ tx_search }}</span>
+              <input type="search" data-product-search placeholder="{{ tx_search | escape }}" autocomplete="off">
+            </label>
+            <button type="button" class="iq-button iq-button--reservation" data-open-drawer>
+              <span>{{ tx_your_selection }}</span>
+              <strong data-toolbar-count>0</strong>
+            </button>
+          </div>
+        </div>
+
+        <div class="iq-reservation__catalog" data-product-grid>
+          {% assign newest_products = reservation_collection.products | sort: 'published_at' | reverse %}
+
+          {% for product in newest_products %}
+            {%- liquid
+              assign product_has_stock = false
+              assign available_price = blank
+
+              for variant in product.variants
+                if variant.available and variant.inventory_quantity > 0
+                  assign product_has_stock = true
+
+                  if available_price == blank or variant.price < available_price
+                    assign available_price = variant.price
+                  endif
+                endif
+              endfor
+            -%}
+
+            {% if product_has_stock %}
+              <article class="iq-product-card" data-product-card data-product-index="{{ forloop.index0 }}" data-product-title="{{ product.title | escape | downcase }}">
+                <div class="iq-product-card__image-wrap">
+                  {% if product.featured_image %}
+                    {{ product.featured_image | image_url: width: 700 | image_tag:
+                      loading: 'lazy',
+                      widths: '240, 360, 480, 600, 700',
+                      sizes: '(max-width: 640px) 42vw, (max-width: 990px) 30vw, 24vw',
+                      class: 'iq-product-card__image',
+                      alt: product.title
+                    }}
+                  {% else %}
+                    <div class="iq-product-card__placeholder">{{ tx_no_image }}</div>
+                  {% endif %}
+                </div>
+
+                <div class="iq-product-card__content">
+                  <h3>{{ product.title | escape }}</h3>
+                  <p class="iq-product-card__price">{{ tx_from }} {{ available_price | money }}</p>
+
+                  <label class="iq-field">
+                    <span>{{ tx_variant }} *</span>
+                    <select data-card-variant>
+                      <option value="">{{ tx_choose_variant }}</option>
+                      {% for variant in product.variants %}
+                        {% if variant.available and variant.inventory_quantity > 0 %}
+                          <option
+                            value="{{ variant.id }}"
+                            data-product-id="{{ product.id }}"
+                            data-product-title="{{ product.title | escape }}"
+                            data-variant-title="{{ variant.title | escape }}"
+                            data-sku="{{ variant.sku | escape }}"
+                            data-price="{{ variant.price | money | strip_html | escape }}"
+                          >
+                            {{ variant.title }}{% if variant.sku != blank %} · {{ variant.sku }}{% endif %} · {{ variant.price | money }}
+                          </option>
+                        {% endif %}
+                      {% endfor %}
+                    </select>
+                  </label>
+
+                  <div class="iq-product-card__actions">
+                    <label class="iq-field iq-field--qty">
+                      <span>{{ tx_quantity }}</span>
+                      <input data-card-quantity type="number" min="1" max="10" value="1" inputmode="numeric">
+                    </label>
+                    <button type="button" class="iq-button iq-button--card" data-card-add>{{ tx_add }}</button>
+                  </div>
+                  <p class="iq-product-card__feedback" data-card-feedback aria-live="polite"></p>
+                </div>
+              </article>
+            {% endif %}
+          {% endfor %}
+        </div>
+
+        <p class="iq-reservation__empty-search" data-empty-search hidden>{{ tx_no_results }}</p>
+
+        <div class="iq-reservation__load-more-wrap" data-load-more-wrap>
+          <p class="iq-reservation__showing" data-showing></p>
+          <button type="button" class="iq-button iq-button--secondary" data-load-more>{{ tx_load_more }}</button>
+        </div>
+
+        <script type="application/json" id="iq-reservation-config-{{ section.id }}">
+          {
+            "endpoint": {{ google_endpoint | json }},
+            "locale": {% if is_english %}"en"{% else %}"de"{% endif %},
+            "deadlineIso": {{ section.settings.deadline_iso | json }},
+            "eventName": {{ section.settings.event_name | json }},
+            "pageSize": {{ section.settings.products_per_load | default: 24 | json }},
+            "texts": {
+              "added": {{ tx_added | json }},
+              "viewReservation": {{ tx_view_reservation | json }},
+              "complete": {{ tx_complete | json }},
+              "item": {{ tx_item | json }},
+              "items": {{ tx_items | json }},
+              "empty": {{ tx_empty | json }},
+              "remove": {{ tx_remove | json }},
+              "showing": {{ tx_showing | json }},
+              "of": {{ tx_of | json }},
+              "products": {{ tx_products | json }},
+              "chooseVariant": {{ tx_select_variant_error | json }},
+              "maxError": {{ tx_max_error | json }},
+              "requiredError": {{ tx_required_error | json }},
+              "emptyError": {{ tx_empty_error | json }},
+              "endpointError": {{ tx_endpoint_error | json }},
+              "deadlineError": {{ tx_deadline_error | json }},
+              "sending": {{ tx_sending | json }},
+              "success": {{ tx_success | json }},
+              "sendError": {{ tx_send_error | json }}
+            }
+          }
+        </script>
+      {% endpaginate %}
+    {% endif %}
+  </div>
+
+  <div class="iq-reservation__sticky" data-sticky hidden>
+    <div class="iq-reservation__sticky-inner">
+      <div>
+        <strong data-sticky-count>0 {{ tx_items }}</strong>
+        <span data-sticky-preview></span>
+      </div>
+      <button type="button" class="iq-button iq-button--primary" data-open-drawer>{{ tx_complete }}</button>
+    </div>
+  </div>
+
+  <div class="iq-reservation__drawer" data-drawer aria-hidden="true">
+    <button type="button" class="iq-reservation__drawer-backdrop" data-close-drawer aria-label="{{ tx_close }}"></button>
+    <aside class="iq-reservation__drawer-panel" role="dialog" aria-modal="true" aria-labelledby="iq-drawer-title-{{ section.id }}">
+      <div class="iq-reservation__drawer-head">
+        <div>
+          <h2 id="iq-drawer-title-{{ section.id }}">{{ tx_your_selection }}</h2>
+          <p>{{ tx_selection_intro }}</p>
+        </div>
+        <button type="button" class="iq-reservation__close" data-close-drawer aria-label="{{ tx_close }}">×</button>
+      </div>
+
+      <form id="iq-reservation-form-{{ section.id }}" class="iq-reservation__form" novalidate>
+        <div class="iq-reservation__selected" data-items>
+          <p class="iq-reservation__selection-empty" data-selection-empty>{{ tx_empty }}</p>
+        </div>
+
+        <div class="iq-reservation__contact">
+          <h3>{{ tx_contact }}</h3>
+          <div class="iq-reservation__grid iq-reservation__grid--2">
+            <label class="iq-field">
+              <span>{{ tx_first_name }} *</span>
+              <input name="first_name" autocomplete="given-name" required maxlength="80">
+            </label>
+            <label class="iq-field">
+              <span>{{ tx_last_name }} *</span>
+              <input name="last_name" autocomplete="family-name" required maxlength="80">
+            </label>
+            <label class="iq-field">
+              <span>{{ tx_email }} *</span>
+              <input name="email" type="email" autocomplete="email" required maxlength="150">
+            </label>
+            <label class="iq-field">
+              <span>{{ tx_phone }} *</span>
+              <input name="phone" type="tel" autocomplete="tel" required maxlength="40">
+            </label>
+          </div>
+
+          <label class="iq-field">
+            <span>{{ tx_note }}</span>
+            <textarea name="note" rows="3" maxlength="500" placeholder="{{ tx_note_placeholder | escape }}"></textarea>
+          </label>
+
+          <label class="iq-reservation__consent" for="iq-reservation-consent-{{ section.id }}">
+            <input id="iq-reservation-consent-{{ section.id }}" type="checkbox" name="consent" value="yes" required>
+            <span>{{ tx_consent }} *</span>
+          </label>
+
+          <input type="text" name="website" class="iq-reservation__honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+          <button type="submit" class="iq-button iq-button--primary iq-button--submit" data-submit>
+            <span class="iq-reservation__button-label" data-submit-label>{{ tx_submit }}</span>
+            <span class="iq-reservation__button-loader" data-submit-loader hidden aria-hidden="true"></span>
+          </button>
+          <p class="iq-reservation__privacy">{{ tx_privacy }}</p>
+          <div class="iq-reservation__message" data-message role="status" aria-live="polite"></div>
+        </div>
+      </form>
+    </aside>
+  </div>
+
+  <div class="iq-reservation__success-overlay" data-success-overlay hidden>
+    <div class="iq-reservation__success-card" role="dialog" aria-modal="true" aria-labelledby="iq-success-title-{{ section.id }}">
+      <div class="iq-reservation__success-icon" aria-hidden="true">✓</div>
+      <h2 id="iq-success-title-{{ section.id }}">{% if is_english %}Reservation received{% else %}Reservierung erfolgreich{% endif %}</h2>
+      <p data-success-text>{{ tx_success }}</p>
+      <p class="iq-reservation__success-items" data-success-items></p>
+      <button type="button" class="iq-button iq-button--primary" data-success-close>{% if is_english %}Close{% else %}Schließen{% endif %}</button>
+    </div>
+  </div>
+</section>
+
+<style>
+  #iq-reservation-{{ section.id }} {
+    --iq-red: #e30613;
+    --iq-black: #111111;
+    --iq-gray: #666666;
+    --iq-border: #dddddd;
+    --iq-soft: #f6f6f6;
+    color: var(--iq-black);
+    background: #ffffff;
+    font-family: inherit;
+  }
+  #iq-reservation-{{ section.id }} * { box-sizing: border-box; }
+  #iq-reservation-{{ section.id }} .visually-hidden {
+    position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  }
+  #iq-reservation-{{ section.id }} .iq-reservation__container {
+    width: min(1440px, calc(100% - 32px)); margin: 0 auto;
+  }
+  #iq-reservation-{{ section.id }} .iq-reservation__hero {
+    color: #fff; background: radial-gradient(circle at 85% 110%, rgba(227,6,19,.34), transparent 34%), linear-gradient(130deg, #0b0b0b, #1b1b1b);
+    padding: clamp(44px, 7vw, 92px) 0;
+  }
+  #iq-reservation-{{ section.id }} .iq-reservation__eyebrow { margin: 0 0 14px; color: #ff3944; font-weight: 900; letter-spacing: .12em; }
+  #iq-reservation-{{ section.id }} .iq-reservation__hero h1 { margin: 0; max-width: 980px; color: #ffffff !important; -webkit-text-fill-color: #ffffff !important; font-size: clamp(40px, 6vw, 88px); line-height: .98; text-transform: uppercase; font-weight: 950; font-style: italic; }
+  #iq-reservation-{{ section.id }} .iq-reservation__lead { max-width: 900px; margin: 28px 0 0; color: #ffffff !important; font-size: clamp(18px, 2vw, 27px); line-height: 1.45; }
+  #iq-reservation-{{ section.id }} .iq-reservation__facts { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+  #iq-reservation-{{ section.id }} .iq-reservation__facts span { padding: 12px 18px; border: 1px solid rgba(255,255,255,.25); border-radius: 999px; background: rgba(255,255,255,.08); }
+  #iq-reservation-{{ section.id }} .iq-reservation__main { padding: 48px 0 130px; }
+  #iq-reservation-{{ section.id }} .iq-reservation__catalog-header { display: grid; grid-template-columns: minmax(0, 1fr) minmax(300px, 560px); align-items: end; gap: 24px; margin-bottom: 26px; }
+  #iq-reservation-{{ section.id }} .iq-reservation__catalog-header h2 { margin: 0; font-size: clamp(30px, 4vw, 54px); text-transform: uppercase; font-weight: 950; font-style: italic; }
+  #iq-reservation-{{ section.id }} .iq-reservation__catalog-header p { margin: 8px 0 0; color: var(--iq-gray); font-size: 18px; }
+  #iq-reservation-{{ section.id }} .iq-reservation__catalog-tools { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px; align-items: center; }
+  #iq-reservation-{{ section.id }} .iq-reservation__search { width: 100%; min-width: 0; }
+  #iq-reservation-{{ section.id }} .iq-button--reservation { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-width: 190px; white-space: normal; background: var(--iq-red); color: #fff; }
+  #iq-reservation-{{ section.id }} .iq-button--reservation strong { display: inline-grid; place-items: center; min-width: 26px; height: 26px; padding: 0 7px; border-radius: 999px; background: #fff; color: #111; font-size: 13px; }
+  #iq-reservation-{{ section.id }} input, #iq-reservation-{{ section.id }} select, #iq-reservation-{{ section.id }} textarea {
+    width: 100%; min-height: 50px; border: 1px solid #c9c9c9; border-radius: 12px; padding: 12px 14px; background: #fff; color: #111; font: inherit;
+  }
+  #iq-reservation-{{ section.id }} .iq-reservation__search input { border-radius: 999px; padding-inline: 20px; }
+  #iq-reservation-{{ section.id }} .iq-reservation__catalog { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+  #iq-reservation-{{ section.id }} .iq-product-card { min-width: 0; border: 1px solid var(--iq-border); border-radius: 18px; overflow: hidden; background: #fff; display: flex; flex-direction: column; box-shadow: 0 8px 30px rgba(0,0,0,.04); }
+  #iq-reservation-{{ section.id }} .iq-product-card[hidden] { display: none !important; }
+  #iq-reservation-{{ section.id }} .iq-product-card__image-wrap { aspect-ratio: 1 / 1; background: #fafafa; overflow: hidden; }
+  #iq-reservation-{{ section.id }} .iq-product-card__image { width: 100%; height: 100%; object-fit: contain; display: block; padding: 12px; }
+  #iq-reservation-{{ section.id }} .iq-product-card__placeholder { height: 100%; display: grid; place-items: center; color: #777; }
+  #iq-reservation-{{ section.id }} .iq-product-card__content { padding: 16px; display: flex; flex: 1; flex-direction: column; }
+  #iq-reservation-{{ section.id }} .iq-product-card h3 { margin: 0; font-size: 18px; line-height: 1.25; text-transform: uppercase; font-weight: 900; overflow-wrap: anywhere; }
+  #iq-reservation-{{ section.id }} .iq-product-card__price { margin: 12px 0 18px; color: var(--iq-red); font-weight: 900; }
+  #iq-reservation-{{ section.id }} .iq-field { display: block; }
+  #iq-reservation-{{ section.id }} .iq-field > span { display: block; margin-bottom: 7px; font-size: 14px; font-weight: 800; }
+  #iq-reservation-{{ section.id }} .iq-product-card__actions { display: grid; grid-template-columns: 88px minmax(0, 1fr); gap: 10px; align-items: end; margin-top: auto; padding-top: 16px; min-width: 0; }
+  #iq-reservation-{{ section.id }} .iq-product-card__actions > * { min-width: 0; }
+  #iq-reservation-{{ section.id }} .iq-button { min-height: 50px; max-width: 100%; border: 0; border-radius: 12px; padding: 12px 16px; font: inherit; font-size: 14px; line-height: 1.15; font-weight: 900; text-transform: uppercase; white-space: normal; overflow-wrap: anywhere; cursor: pointer; transition: transform .15s ease, opacity .15s ease; }
+  #iq-reservation-{{ section.id }} .iq-button--card { width: 100%; min-width: 0; }
+  #iq-reservation-{{ section.id }} .iq-button:hover { transform: translateY(-1px); }
+  #iq-reservation-{{ section.id }} .iq-button--primary, #iq-reservation-{{ section.id }} .iq-button--card { background: var(--iq-black); color: #fff; }
+  #iq-reservation-{{ section.id }} .iq-button--secondary { background: #fff; color: #111; border: 2px solid #111; }
+  #iq-reservation-{{ section.id }} .iq-product-card__feedback { min-height: 18px; margin: 8px 0 0; color: var(--iq-red); font-size: 13px; font-weight: 800; }
+  #iq-reservation-{{ section.id }} .iq-reservation__load-more-wrap { text-align: center; margin-top: 34px; }
+  #iq-reservation-{{ section.id }} .iq-reservation__showing { color: #666; margin: 0 0 12px; }
+  #iq-reservation-{{ section.id }} .iq-reservation__empty-search, #iq-reservation-{{ section.id }} .iq-reservation__notice { padding: 18px; border-radius: 14px; background: #fff1f2; color: #9a0010; }
+
+  #iq-reservation-{{ section.id }} .iq-reservation__sticky { position: fixed; z-index: 40; left: 0; right: 0; bottom: 0; padding: 12px 16px; background: rgba(17,17,17,.96); color: #fff; box-shadow: 0 -8px 30px rgba(0,0,0,.18); backdrop-filter: blur(10px); }
+  #iq-reservation-{{ section.id }} .iq-reservation__sticky-inner { width: min(1180px, 100%); margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+  #iq-reservation-{{ section.id }} .iq-reservation__sticky strong { display: block; font-size: 18px; }
+  #iq-reservation-{{ section.id }} .iq-reservation__sticky span { display: block; color: #ccc; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 62vw; }
+  #iq-reservation-{{ section.id }} .iq-reservation__sticky .iq-button { background: var(--iq-red); }
+
+  #iq-reservation-{{ section.id }} .iq-reservation__drawer { position: fixed; z-index: 60; inset: 0; visibility: hidden; pointer-events: none; }
+  #iq-reservation-{{ section.id }} .iq-reservation__drawer.is-open { visibility: visible; pointer-events: auto; }
+  #iq-reservation-{{ section.id }} .iq-reservation__drawer-backdrop { position: absolute; inset: 0; border: 0; background: rgba(0,0,0,.58); opacity: 0; transition: opacity .2s ease; }
+  #iq-reservation-{{ section.id }} .iq-reservation__drawer.is-open .iq-reservation__drawer-backdrop { opacity: 1; }
+  #iq-reservation-{{ section.id }} .iq-reservation__drawer-panel { position: absolute; top: 0; right: 0; width: min(640px, 100%); height: 100%; overflow-y: auto; background: #fff; padding: 24px; transform: translateX(100%); transition: transform .25s ease; }
+  #iq-reservation-{{ section.id }} .iq-reservation__drawer.is-open .iq-reservation__drawer-panel { transform: translateX(0); }
+  #iq-reservation-{{ section.id }} .iq-reservation__drawer-head { display: flex; justify-content: space-between; gap: 20px; align-items: start; padding-bottom: 18px; border-bottom: 1px solid #ddd; }
+  #iq-reservation-{{ section.id }} .iq-reservation__drawer-head h2 { margin: 0; font-size: 32px; text-transform: uppercase; font-style: italic; }
+  #iq-reservation-{{ section.id }} .iq-reservation__drawer-head p { margin: 6px 0 0; color: #666; }
+  #iq-reservation-{{ section.id }} .iq-reservation__close { width: 44px; height: 44px; border: 0; border-radius: 50%; background: #111; color: #fff; font-size: 28px; cursor: pointer; }
+  #iq-reservation-{{ section.id }} .iq-reservation__selected { padding: 20px 0; }
+  #iq-reservation-{{ section.id }} .iq-selected-item { display: grid; grid-template-columns: 1fr 90px auto; gap: 12px; align-items: center; padding: 14px 0; border-bottom: 1px solid #e5e5e5; }
+  #iq-reservation-{{ section.id }} .iq-selected-item strong { display: block; }
+  #iq-reservation-{{ section.id }} .iq-selected-item small { color: #666; }
+  #iq-reservation-{{ section.id }} .iq-selected-item button { border: 0; background: transparent; color: var(--iq-red); font-weight: 800; cursor: pointer; }
+  #iq-reservation-{{ section.id }} .iq-reservation__contact { border-top: 1px solid #ddd; padding-top: 22px; }
+  #iq-reservation-{{ section.id }} .iq-reservation__contact h3 { margin: 0 0 16px; font-size: 24px; }
+  #iq-reservation-{{ section.id }} .iq-reservation__grid { display: grid; gap: 14px; }
+  #iq-reservation-{{ section.id }} .iq-reservation__grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  #iq-reservation-{{ section.id }} .iq-reservation__contact > .iq-field { margin-top: 14px; }
+  #iq-reservation-{{ section.id }} .iq-reservation__consent {
+    display: flex !important; gap: 12px; align-items: flex-start; margin: 18px 0;
+    cursor: pointer; position: relative; isolation: isolate;
+  }
+  #iq-reservation-{{ section.id }} .iq-reservation__consent::before,
+  #iq-reservation-{{ section.id }} .iq-reservation__consent::after { content: none !important; display: none !important; }
+  #iq-reservation-{{ section.id }} .iq-reservation__consent input[type="checkbox"] {
+    -webkit-appearance: checkbox !important; appearance: auto !important;
+    display: block !important; position: static !important; float: none !important;
+    opacity: 1 !important; visibility: visible !important;
+    clip: auto !important; clip-path: none !important;
+    width: 22px !important; height: 22px !important; min-width: 22px !important; min-height: 22px !important;
+    margin: 1px 0 0 !important; padding: 0 !important;
+    pointer-events: auto !important; cursor: pointer !important; z-index: 2;
+    accent-color: var(--iq-red); flex: 0 0 22px;
+  }
+  #iq-reservation-{{ section.id }} .iq-reservation__consent input[type="checkbox"]::before,
+  #iq-reservation-{{ section.id }} .iq-reservation__consent input[type="checkbox"]::after { content: none !important; display: none !important; }
+  #iq-reservation-{{ section.id }} .iq-reservation__consent span { cursor: pointer; line-height: 1.45; }
+  #iq-reservation-{{ section.id }} .iq-button--submit { width: 100%; background: var(--iq-red); }
+  #iq-reservation-{{ section.id }} .iq-reservation__privacy { color: #777; font-size: 13px; text-align: center; }
+  #iq-reservation-{{ section.id }} .iq-reservation__message { margin-top: 12px; font-weight: 800; }
+  #iq-reservation-{{ section.id }} .iq-reservation__message.is-error { color: #b00020; }
+  #iq-reservation-{{ section.id }} .iq-reservation__message.is-success { color: #087b2f; }
+  #iq-reservation-{{ section.id }} .iq-reservation__honeypot { position: absolute !important; left: -9999px !important; }
+  #iq-reservation-{{ section.id }} .iq-button--submit { display: inline-flex; align-items: center; justify-content: center; gap: 10px; }
+  #iq-reservation-{{ section.id }} .iq-reservation__button-loader { width: 20px; height: 20px; border: 3px solid rgba(255,255,255,.45); border-top-color: #fff; border-radius: 50%; animation: iqReservationSpin .75s linear infinite; }
+  #iq-reservation-{{ section.id }} .iq-reservation__button-loader[hidden] { display: none !important; }
+  #iq-reservation-{{ section.id }} .iq-button[disabled] { opacity: .7; cursor: wait; transform: none; }
+  #iq-reservation-{{ section.id }} .iq-reservation__success-overlay { position: fixed; z-index: 100; inset: 0; padding: 20px; background: rgba(0,0,0,.72); display: grid; place-items: center; }
+  #iq-reservation-{{ section.id }} .iq-reservation__success-overlay[hidden] { display: none !important; }
+  #iq-reservation-{{ section.id }} .iq-reservation__success-card { width: min(520px, 100%); padding: clamp(28px, 5vw, 48px); border-radius: 24px; background: #fff; text-align: center; box-shadow: 0 24px 80px rgba(0,0,0,.28); }
+  #iq-reservation-{{ section.id }} .iq-reservation__success-icon { width: 76px; height: 76px; margin: 0 auto 20px; border-radius: 50%; display: grid; place-items: center; background: #087b2f; color: #fff; font-size: 42px; font-weight: 900; }
+  #iq-reservation-{{ section.id }} .iq-reservation__success-card h2 { margin: 0 0 12px; font-size: clamp(28px, 5vw, 42px); text-transform: uppercase; font-weight: 950; }
+  #iq-reservation-{{ section.id }} .iq-reservation__success-card p { margin: 0 0 14px; font-size: 17px; line-height: 1.5; }
+  #iq-reservation-{{ section.id }} .iq-reservation__success-items { color: #555; font-weight: 800; }
+  @keyframes iqReservationSpin { to { transform: rotate(360deg); } }
+  body.iq-reservation-drawer-open { overflow: hidden; }
+
+  @media (max-width: 1180px) {
+    #iq-reservation-{{ section.id }} .iq-reservation__catalog { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    #iq-reservation-{{ section.id }} .iq-reservation__catalog-header { grid-template-columns: 1fr; align-items: stretch; }
+    #iq-reservation-{{ section.id }} .iq-reservation__catalog-tools { grid-template-columns: minmax(0, 1fr) auto; }
+  }
+  @media (max-width: 760px) {
+    #iq-reservation-{{ section.id }} .iq-reservation__container { width: min(100% - 24px, 1440px); }
+    #iq-reservation-{{ section.id }} .iq-reservation__hero { padding: 38px 0; }
+    #iq-reservation-{{ section.id }} .iq-reservation__facts { display: grid; }
+    #iq-reservation-{{ section.id }} .iq-reservation__catalog-tools { grid-template-columns: 1fr; }
+    #iq-reservation-{{ section.id }} .iq-button--reservation { width: 100%; }
+    #iq-reservation-{{ section.id }} .iq-reservation__catalog { grid-template-columns: 1fr; gap: 16px; }
+    #iq-reservation-{{ section.id }} .iq-product-card { display: grid; grid-template-columns: minmax(120px, 38%) minmax(0, 62%); }
+    #iq-reservation-{{ section.id }} .iq-product-card__image-wrap { aspect-ratio: auto; min-height: 260px; }
+    #iq-reservation-{{ section.id }} .iq-product-card__content { padding: 14px; }
+    #iq-reservation-{{ section.id }} .iq-product-card h3 { font-size: 16px; }
+    #iq-reservation-{{ section.id }} .iq-product-card__actions { grid-template-columns: 82px minmax(0, 1fr); }
+    #iq-reservation-{{ section.id }} .iq-reservation__sticky-inner { flex-direction: column; align-items: stretch; gap: 8px; }
+    #iq-reservation-{{ section.id }} .iq-reservation__sticky span { max-width: 92vw; }
+    #iq-reservation-{{ section.id }} .iq-reservation__sticky .iq-button { width: 100%; }
+    #iq-reservation-{{ section.id }} .iq-reservation__drawer-panel { width: 100%; padding: 18px; }
+    #iq-reservation-{{ section.id }} .iq-reservation__grid--2 { grid-template-columns: 1fr; }
+    #iq-reservation-{{ section.id }} .iq-selected-item { grid-template-columns: 1fr 76px; }
+    #iq-reservation-{{ section.id }} .iq-selected-item button { grid-column: 1 / -1; justify-self: start; }
+  }
+  @media (max-width: 520px) {
+    #iq-reservation-{{ section.id }} .iq-product-card { display: flex; }
+    #iq-reservation-{{ section.id }} .iq-product-card__image-wrap { aspect-ratio: 1 / 1; min-height: 0; }
+    #iq-reservation-{{ section.id }} .iq-product-card__actions { grid-template-columns: 76px minmax(0, 1fr); }
+    #iq-reservation-{{ section.id }} .iq-button--card { padding-inline: 10px; font-size: 12px; }
+    #iq-reservation-{{ section.id }} .iq-reservation__drawer-head h2 { font-size: 26px; }
+  }
+</style>
+
+<script>
+(() => {
+  const section = document.getElementById('iq-reservation-{{ section.id }}');
+  if (!section || section.dataset.initialized === 'true') return;
+  section.dataset.initialized = 'true';
+
+  const configNode = document.getElementById('iq-reservation-config-{{ section.id }}');
+  if (!configNode) return;
+  const config = JSON.parse(configNode.textContent || '{}');
+  const t = config.texts || {};
+
+  const cards = Array.from(section.querySelectorAll('[data-product-card]'));
+  const searchInput = section.querySelector('[data-product-search]');
+  const loadMoreButton = section.querySelector('[data-load-more]');
+  const loadMoreWrap = section.querySelector('[data-load-more-wrap]');
+  const showingText = section.querySelector('[data-showing]');
+  const emptySearch = section.querySelector('[data-empty-search]');
+  const sticky = section.querySelector('[data-sticky]');
+  const stickyCount = section.querySelector('[data-sticky-count]');
+  const stickyPreview = section.querySelector('[data-sticky-preview]');
+  const toolbarCount = section.querySelector('[data-toolbar-count]');
+  const drawer = section.querySelector('[data-drawer]');
+  const form = section.querySelector('#iq-reservation-form-{{ section.id }}');
+  const itemsContainer = section.querySelector('[data-items]');
+  const selectionEmpty = section.querySelector('[data-selection-empty]');
+  const submitButton = section.querySelector('[data-submit]');
+  const submitLabel = section.querySelector('[data-submit-label]');
+  const submitLoader = section.querySelector('[data-submit-loader]');
+  const message = section.querySelector('[data-message]');
+  const successOverlay = section.querySelector('[data-success-overlay]');
+  const successText = section.querySelector('[data-success-text]');
+  const successItems = section.querySelector('[data-success-items]');
+  const successClose = section.querySelector('[data-success-close]');
+
+  const pageSize = Math.max(8, Number(config.pageSize) || 24);
+  const maxItems = 10;
+  let visibleLimit = pageSize;
+  const selected = new Map();
+
+  const normalizedQuery = () => (searchInput?.value || '').trim().toLowerCase();
+  const matchingCards = () => {
+    const query = normalizedQuery();
+    return cards.filter(card => !query || (card.dataset.productTitle || '').includes(query));
+  };
+
+  function updateCatalog() {
+    const matches = matchingCards();
+    cards.forEach(card => { card.hidden = true; });
+    matches.slice(0, visibleLimit).forEach(card => { card.hidden = false; });
+
+    const shown = Math.min(visibleLimit, matches.length);
+    if (showingText) showingText.textContent = `${t.showing} ${shown} ${t.of} ${matches.length} ${t.products}`;
+    if (emptySearch) emptySearch.hidden = matches.length !== 0;
+    if (loadMoreWrap) loadMoreWrap.hidden = matches.length === 0;
+    if (loadMoreButton) loadMoreButton.hidden = shown >= matches.length;
+  }
+
+  function openDrawer() {
+    drawer?.classList.add('is-open');
+    drawer?.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('iq-reservation-drawer-open');
+  }
+
+  function closeDrawer() {
+    drawer?.classList.remove('is-open');
+    drawer?.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('iq-reservation-drawer-open');
+  }
+
+  function setSubmitting(active) {
+    if (!submitButton) return;
+    submitButton.disabled = active;
+    if (submitLoader) submitLoader.hidden = !active;
+    if (submitLabel) submitLabel.textContent = active ? t.sending : {{ tx_submit | json }};
+  }
+
+  function showSuccess(itemCount) {
+    if (successText) successText.textContent = t.success;
+    if (successItems) {
+      successItems.textContent = config.locale === 'en'
+        ? `${itemCount} ${itemCount === 1 ? 'item' : 'items'} reserved for Sunday collection.`
+        : `${itemCount} ${itemCount === 1 ? 'Artikel wurde' : 'Artikel wurden'} für die Abholung am Sonntag reserviert.`;
+    }
+    if (successOverlay) successOverlay.hidden = false;
+    document.body.classList.add('iq-reservation-drawer-open');
+  }
+
+  function hideSuccess() {
+    if (successOverlay) successOverlay.hidden = true;
+    document.body.classList.remove('iq-reservation-drawer-open');
+  }
+
+  function setFeedback(card, text, success = false) {
+    const node = card.querySelector('[data-card-feedback]');
+    if (!node) return;
+    node.textContent = text;
+    node.style.color = success ? '#087b2f' : '#e30613';
+  }
+
+  function updateSelection() {
+    const values = Array.from(selected.values());
+    if (selectionEmpty) selectionEmpty.hidden = values.length > 0;
+
+    itemsContainer.querySelectorAll('[data-selected-row]').forEach(node => node.remove());
+    values.forEach(item => {
+      const row = document.createElement('div');
+      row.className = 'iq-selected-item';
+      row.dataset.selectedRow = item.variant_id;
+      row.innerHTML = `
+        <div>
+          <strong>${escapeHtml(item.product_title)}</strong>
+          <small>${escapeHtml(item.variant_title)}${item.sku ? ` · ${escapeHtml(item.sku)}` : ''}</small>
+        </div>
+        <input type="number" min="1" max="10" value="${item.quantity}" aria-label="${escapeHtml(t.item)}" data-selected-qty="${item.variant_id}">
+        <button type="button" data-remove="${item.variant_id}">${escapeHtml(t.remove)}</button>
+      `;
+      itemsContainer.appendChild(row);
+    });
+
+    const totalQty = values.reduce((sum, item) => sum + Number(item.quantity || 0), 0);
+    if (sticky) sticky.hidden = values.length === 0;
+    if (stickyCount) stickyCount.textContent = `${totalQty} ${totalQty === 1 ? t.item : t.items}`;
+    if (toolbarCount) toolbarCount.textContent = String(totalQty);
+    if (stickyPreview) stickyPreview.textContent = values.map(item => `${item.product_title} (${item.variant_title})`).join(' · ');
+  }
+
+  function escapeHtml(value) {
+    return String(value ?? '')
+      .replaceAll('&', '&amp;')
+      .replaceAll('<', '&lt;')
+      .replaceAll('>', '&gt;')
+      .replaceAll('"', '&quot;')
+      .replaceAll("'", '&#039;');
+  }
+
+  cards.forEach(card => {
+    const addButton = card.querySelector('[data-card-add]');
+    addButton?.addEventListener('click', () => {
+      const select = card.querySelector('[data-card-variant]');
+      const qtyInput = card.querySelector('[data-card-quantity]');
+      const option = select?.selectedOptions?.[0];
+      if (!option || !option.value) {
+        setFeedback(card, t.chooseVariant);
+        select?.focus();
+        return;
+      }
+
+      const variantId = String(option.value);
+      const quantity = Math.min(10, Math.max(1, Number(qtyInput?.value) || 1));
+      if (!selected.has(variantId) && selected.size >= maxItems) {
+        setFeedback(card, t.maxError);
+        return;
+      }
+
+      const existing = selected.get(variantId);
+      selected.set(variantId, {
+        product_id: String(option.dataset.productId || ''),
+        variant_id: variantId,
+        product_title: option.dataset.productTitle || '',
+        variant_title: option.dataset.variantTitle || '',
+        sku: option.dataset.sku || '',
+        quantity: Math.min(10, (existing?.quantity || 0) + quantity)
+      });
+      setFeedback(card, t.added, true);
+      updateSelection();
+    });
+  });
+
+  itemsContainer?.addEventListener('input', event => {
+    const input = event.target.closest('[data-selected-qty]');
+    if (!input) return;
+    const id = String(input.dataset.selectedQty);
+    const item = selected.get(id);
+    if (!item) return;
+    item.quantity = Math.min(10, Math.max(1, Number(input.value) || 1));
+    selected.set(id, item);
+    updateSelection();
+  });
+
+  itemsContainer?.addEventListener('click', event => {
+    const button = event.target.closest('[data-remove]');
+    if (!button) return;
+    selected.delete(String(button.dataset.remove));
+    updateSelection();
+  });
+
+  searchInput?.addEventListener('input', () => {
+    visibleLimit = pageSize;
+    updateCatalog();
+  });
+
+  loadMoreButton?.addEventListener('click', () => {
+    visibleLimit += pageSize;
+    updateCatalog();
+  });
+
+  section.querySelectorAll('[data-open-drawer]').forEach(button => button.addEventListener('click', openDrawer));
+  section.querySelectorAll('[data-close-drawer]').forEach(button => button.addEventListener('click', closeDrawer));
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') {
+      closeDrawer();
+      hideSuccess();
+    }
+  });
+  successClose?.addEventListener('click', hideSuccess);
+  successOverlay?.addEventListener('click', event => {
+    if (event.target === successOverlay) hideSuccess();
+  });
+
+  form?.addEventListener('submit', async event => {
+    event.preventDefault();
+    message.textContent = '';
+    message.className = 'iq-reservation__message';
+
+    if (selected.size === 0) {
+      message.textContent = t.emptyError;
+      message.classList.add('is-error');
+      return;
+    }
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      message.textContent = t.requiredError;
+      message.classList.add('is-error');
+      return;
+    }
+    if (!config.endpoint) {
+      message.textContent = t.endpointError;
+      message.classList.add('is-error');
+      return;
+    }
+    if (config.deadlineIso && new Date() > new Date(config.deadlineIso)) {
+      message.textContent = t.deadlineError;
+      message.classList.add('is-error');
+      return;
+    }
+
+    const formData = new FormData(form);
+    const reservedItemCount = Array.from(selected.values()).reduce(
+      (sum, item) => sum + Number(item.quantity || 0),
+      0
+    );
+
+    const payload = {
+      event_name: config.eventName || 'VDH DM Petersaurach 2026',
+      first_name: String(formData.get('first_name') || '').trim(),
+      last_name: String(formData.get('last_name') || '').trim(),
+      email: String(formData.get('email') || '').trim(),
+      phone: String(formData.get('phone') || '').trim(),
+      note: String(formData.get('note') || '').trim(),
+      website: String(formData.get('website') || ''),
+      consent: Boolean(form.querySelector('[name="consent"]')?.checked),
+      page_url: window.location.href,
+      items: Array.from(selected.values())
+    };
+
+    setSubmitting(true);
+
+    try {
+      await fetch(config.endpoint, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'text/plain;charset=utf-8'
+        },
+        body: JSON.stringify(payload),
+        keepalive: true
+      });
+
+      selected.clear();
+      form.reset();
+      updateSelection();
+      closeDrawer();
+      showSuccess(reservedItemCount);
+    } catch (error) {
+      console.error('Reservation submission failed:', error);
+      message.textContent = t.sendError;
+      message.classList.add('is-error');
+    } finally {
+      setSubmitting(false);
+    }
+  });
+
+  updateCatalog();
+  updateSelection();
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Event reservation",
+  "tag": "section",
+  "class": "section-event-reservation",
+  "settings": [
+    {
+      "type": "text",
+      "id": "event_name",
+      "label": "Event name",
+      "default": "VDH DM Petersaurach 2026"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_all_products",
+      "label": "Show all Online Store products",
+      "default": true
+    },
+    {
+      "type": "collection",
+      "id": "product_collection",
+      "label": "Product collection (used when all products is disabled)"
+    },
+    {
+      "type": "range",
+      "id": "products_per_load",
+      "label": "Products shown per load",
+      "min": 8,
+      "max": 48,
+      "step": 4,
+      "default": 24
+    },
+    {
+      "type": "url",
+      "id": "google_script_url",
+      "label": "Google Apps Script /exec URL"
+    },
+    {
+      "type": "text",
+      "id": "deadline_iso",
+      "label": "Technical deadline ISO",
+      "default": "2026-08-01T20:00:00+02:00"
+    },
+    {
+      "type": "header",
+      "content": "German"
+    },
+    {
+      "type": "text",
+      "id": "heading_de",
+      "label": "Heading (German)",
+      "default": "Jetzt reservieren. Am Sonntag abholen."
+    },
+    {
+      "type": "textarea",
+      "id": "intro_de",
+      "label": "Introduction (German)",
+      "default": "Reserviere deine gewünschten IQ Dogsport Produkte bis Samstag, 20:00 Uhr. Wir bringen sie am Sonntag zur VDH DM nach Petersaurach — ohne Versandkosten."
+    },
+    {
+      "type": "text",
+      "id": "deadline_text_de",
+      "label": "Visible deadline (German)",
+      "default": "Samstag, 1. August 2026, 20:00 Uhr"
+    },
+    {
+      "type": "text",
+      "id": "pickup_text_de",
+      "label": "Pickup text (German)",
+      "default": "Sonntag am IQ Dogsport Stand in Petersaurach"
+    },
+    {
+      "type": "header",
+      "content": "English"
+    },
+    {
+      "type": "text",
+      "id": "heading_en",
+      "label": "Heading (English)",
+      "default": "Reserve now. Collect on Sunday."
+    },
+    {
+      "type": "textarea",
+      "id": "intro_en",
+      "label": "Introduction (English)",
+      "default": "Reserve your preferred IQ Dogsport products by Saturday at 8:00 PM. We will bring them to Petersaurach for collection on Sunday — with no shipping costs."
+    },
+    {
+      "type": "text",
+      "id": "deadline_text_en",
+      "label": "Visible deadline (English)",
+      "default": "Saturday, 1 August 2026, 8:00 PM"
+    },
+    {
+      "type": "text",
+      "id": "pickup_text_en",
+      "label": "Pickup text (English)",
+      "default": "Sunday at the IQ Dogsport stand in Petersaurach"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Event reservation"
+    }
+  ]
+}
+{% endschema %}

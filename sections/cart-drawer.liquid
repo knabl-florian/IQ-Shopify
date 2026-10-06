@@ -50,12 +50,21 @@
               {%- endif -%}
             </cart-count>
           </h2>
+          {% comment %}
           {%- liquid
             if section.settings.show_free_shipping_goal and settings.free_shipping_minimum_amount != blank
               assign minimum_amount = settings.free_shipping_minimum_amount | remove: ' '
               render 'free-shipping-goal', minimum_amount: minimum_amount, classes: 'w-full'
             endif
           -%}
+                 {% endcomment %}
+        {%- liquid
+          # Add by Hamza: Show free-shipping goal only for Germany market because the free-shipping offer applies only to DE customers
+          if section.settings.show_free_shipping_goal and settings.free_shipping_minimum_amount != blank and localization.country.iso_code == 'DE'
+            assign minimum_amount = settings.free_shipping_minimum_amount | remove: ' '
+            render 'free-shipping-goal', minimum_amount: minimum_amount, classes: 'w-full'
+          endif
+        -%}
         </div>
         <div
           id="CartDrawerEmpty-{{ section.id }}"

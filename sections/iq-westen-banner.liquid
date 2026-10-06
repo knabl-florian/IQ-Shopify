@@ -1,0 +1,165 @@
+{%- liquid
+  assign desktop = section.settings.desktop_image
+  assign mobile = images['download_1.webp']
+  assign title = section.settings.title_de
+  assign accent = section.settings.accent_de
+  assign description = section.settings.description_de
+  assign mobile_description = section.settings.mobile_description_de
+  assign label = section.settings.label_de
+  assign image_alt = section.settings.alt_de
+  if request.locale.iso_code == 'en'
+    assign title = section.settings.title_en
+    assign accent = section.settings.accent_en
+    assign description = section.settings.description_en
+    assign mobile_description = section.settings.mobile_description_en
+    assign label = section.settings.label_en
+    assign image_alt = section.settings.alt_en
+  endif
+-%}
+{%- if desktop != blank and mobile != blank -%}
+<div class="iq-vest-single">
+  <picture>
+    <source media="(max-width:749px)" srcset="{{ mobile | image_url: width: 400 }} 400w, {{ mobile | image_url: width: 750 }} 750w, {{ mobile | image_url: width: 1060 }} 1060w" sizes="100vw" width="{{ mobile.width }}" height="{{ mobile.height }}">
+    {{ desktop | image_url: width: 2160 | image_tag: widths: '800,1200,1600,1920,2160', sizes: '100vw', loading: 'eager', fetchpriority: 'high', alt: image_alt }}
+  </picture>
+  <div class="iq-vest-single__copy">
+    <h1 class="iq-vest-single__title">{{ title | escape }}<span>{{ accent | escape }}</span></h1>
+    <p class="iq-vest-single__desktop">{{ description | escape }}</p>
+    <div class="iq-vest-single__mobile">
+      <p class="iq-vest-single__label">{{ label | escape }}</p>
+      <p>{{ mobile_description | escape }}</p>
+    </div>
+  </div>
+</div>
+{%- elsif request.design_mode -%}
+<p>Bitte Desktopbild auswählen und download_1.webp unter Inhalte → Dateien prüfen.</p>
+{%- endif -%}
+{% stylesheet %}
+
+.iq-vest-single,.iq-vest-single *{box-sizing:border-box}
+.iq-vest-single{position:relative;isolation:isolate;width:100%;margin:0;font-family:Archivo,sans-serif;color:#171717}
+.iq-vest-single picture,.iq-vest-single img{display:block;width:100%;height:auto;margin:0;border:0;border-radius:0}
+.iq-vest-single__copy{position:absolute;z-index:1;left:6%;top:50%;transform:translateY(-50%);width:43%}
+.iq-vest-single__title{font-family:Montserrat,sans-serif;font-style:italic;font-weight:800;text-transform:uppercase;font-size:clamp(30px,4.1vw,78px);line-height:1.06;letter-spacing:-.035em;margin:0;color:#171717}
+.iq-vest-single__title span{display:block;color:#A51D1B;text-shadow:none}
+.iq-vest-single__desktop{font:400 clamp(14px,1.05vw,18px)/1.6 Archivo,sans-serif;max-width:470px;margin:22px 0 0;color:#FFFFFF;text-shadow:0 1px 3px rgba(23,23,23,.75),0 0 12px rgba(23,23,23,.35)}
+.iq-vest-single__mobile{display:none}
+@media(max-width:749px){
+.iq-vest-single:after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(to bottom,transparent 66%,rgba(23,23,23,.12) 78%,rgba(23,23,23,.52) 100%)}
+.iq-vest-single__copy{left:6%;bottom:3%;top:auto;transform:none;width:88%;text-align:center}
+.iq-vest-single__title{font-size:clamp(27px,7.4vw,48px);color:#FFFFFF;text-shadow:0 1px 3px rgba(23,23,23,.35)}
+.iq-vest-single__title span{color:#A51D1B;text-shadow:0 1px 2px rgba(255,255,255,.25)}
+.iq-vest-single__desktop{display:none}
+.iq-vest-single__mobile{display:block;margin:12px auto 0;max-width:520px;text-align:left;color:#FFFFFF;text-shadow:0 1px 3px rgba(23,23,23,.7)}
+.iq-vest-single__mobile p{font:400 14px/1.45 Archivo,sans-serif;margin:0;color:inherit}
+.iq-vest-single__mobile .iq-vest-single__label{font-size:12px;line-height:1.4;margin-bottom:6px}
+}
+{% endstylesheet %}
+{% schema %}
+{
+  "name": "IQ Westen Bildbanner",
+  "tag": "section",
+  "class": "iq-vest26-section",
+  "enabled_on": {
+    "templates": [
+      "collection"
+    ]
+  },
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "desktop_image",
+      "label": "Desktopbild – 2160 × 1080"
+    },
+    {
+      "type": "paragraph",
+      "content": "Mobil wird die Datei download_1.webp aus Inhalte → Dateien verwendet (durchgehendes Motiv)."
+    },
+    {
+      "type": "header",
+      "content": "Deutsch"
+    },
+    {
+      "type": "text",
+      "id": "title_de",
+      "label": "Überschrift",
+      "default": "Dein Training."
+    },
+    {
+      "type": "text",
+      "id": "accent_de",
+      "label": "Rote Zeile",
+      "default": "Deine Weste."
+    },
+    {
+      "type": "textarea",
+      "id": "description_de",
+      "label": "Erklärung",
+      "default": "Belohne direkt aus der Körpermitte. Mit der patentierten Brusttasche und Platz für das, was Ihr im Training braucht."
+    },
+    {
+      "type": "textarea",
+      "id": "mobile_description_de",
+      "label": "Erklärung mobil",
+      "default": "Patentierte Brusttasche, verdecktes Belohnen und modulares Taschensystem."
+    },
+    {
+      "type": "text",
+      "id": "label_de",
+      "label": "Kategorie mobil",
+      "default": "Hundesportwesten für Damen & Herren"
+    },
+    {
+      "type": "text",
+      "id": "alt_de",
+      "label": "Bildbeschreibung",
+      "default": "Marko und Kate in IQ Sommerwesten mit springendem Hund"
+    },
+    {
+      "type": "header",
+      "content": "English"
+    },
+    {
+      "type": "text",
+      "id": "title_en",
+      "label": "Überschrift",
+      "default": "Your training."
+    },
+    {
+      "type": "text",
+      "id": "accent_en",
+      "label": "Rote Zeile",
+      "default": "Your vest."
+    },
+    {
+      "type": "textarea",
+      "id": "description_en",
+      "label": "Erklärung",
+      "default": "Reward directly from the centre of your body. With the patented chest pocket and space for what you need in training."
+    },
+    {
+      "type": "textarea",
+      "id": "mobile_description_en",
+      "label": "Erklärung mobil",
+      "default": "Patented chest pocket, discreet rewards and a modular pocket system."
+    },
+    {
+      "type": "text",
+      "id": "label_en",
+      "label": "Kategorie mobil",
+      "default": "Dog training vests for women & men"
+    },
+    {
+      "type": "text",
+      "id": "alt_en",
+      "label": "Bildbeschreibung",
+      "default": "Marko and Kate wearing IQ summer vests with a jumping dog"
+    }
+  ],
+  "presets": [
+    {
+      "name": "IQ Westen Bildbanner"
+    }
+  ]
+}
+{% endschema %}

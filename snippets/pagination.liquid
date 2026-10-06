@@ -22,7 +22,7 @@
         {%- if paginate.next -%}
           <button
             class="btn btn--primary"
-            action="{{ shop.url }}{{ paginate.next.url }}"
+            action="{{ request.origin }}{{ paginate.next.url }}"
             type="{{ type }}"
             is="load-more-button"
           >

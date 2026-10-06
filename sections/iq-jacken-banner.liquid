@@ -1,0 +1,184 @@
+{%- liquid
+  assign iq_en = false
+  if request.locale.iso_code == 'en'
+    assign iq_en = true
+  endif
+  assign banner_image = section.settings.image
+  assign mobile_image = section.settings.image_mobile | default: banner_image
+  assign image_alt = banner_image.alt | default: collection.title
+-%}
+<section class="iq-jacket-hero" aria-labelledby="iq-jacket-title-{{ section.id }}">
+  <div class="iq-jacket-hero__visual">
+    {% if banner_image != blank %}
+      <picture>
+        <source media="(min-width: 750px)" srcset="{{ banner_image | image_url: width: 480 }} 480w, {{ banner_image | image_url: width: 750 }} 750w, {{ banner_image | image_url: width: 1000 }} 1000w, {{ banner_image | image_url: width: 1200 }} 1200w, {{ banner_image | image_url: width: 1600 }} 1600w" sizes="(min-width: 1200px) 660px, 55vw">
+        {{ mobile_image | image_url: width: 1200 | image_tag: widths: '480, 750, 1000, 1200', sizes: '(min-width: 1200px) 660px, (min-width: 750px) 55vw, 100vw', loading: 'eager', fetchpriority: 'high', class: 'iq-jacket-hero__image', alt: image_alt }}
+      </picture>
+    {% else %}
+      {{ 'lifestyle-1' | placeholder_svg_tag: 'iq-jacket-hero__image' }}
+    {% endif %}
+  </div>
+  <div class="iq-jacket-hero__fade"></div>
+  <div class="iq-jacket-hero__wrap">
+    <div class="iq-jacket-hero__copy">
+      <p class="iq-jacket-hero__kicker">{% if iq_en %}{{ section.settings.kicker_en | escape }}{% else %}{{ section.settings.kicker_de | escape }}{% endif %}</p>
+      <h1 id="iq-jacket-title-{{ section.id }}" class="iq-jacket-hero__title">
+        <span>{% if iq_en %}{{ section.settings.heading_en | escape }}{% else %}{{ section.settings.heading_de | escape }}{% endif %}</span>
+        <span>{% if iq_en %}{{ section.settings.accent_en | escape }}{% else %}{{ section.settings.accent_de | escape }}{% endif %}</span>
+      </h1>
+      <p class="iq-jacket-hero__description">{% if iq_en %}{{ section.settings.text_en | escape }}{% else %}{{ section.settings.text_de | escape }}{% endif %}</p>
+    </div>
+  </div>
+</section>
+<style>
+.iq-jacket-hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,660px);align-items:center;box-sizing:border-box;padding:0 max(24px,calc((100% - 1600px)/2));position:relative;background:#f3f3f1;color:#171717;isolation:isolate}
+.iq-jacket-hero__visual{grid-column:2;grid-row:1;position:relative;width:100%;height:740px;min-width:0;overflow:hidden}
+.iq-jacket-hero__visual picture{display:block;position:absolute;inset:0;width:100%;height:100%}
+.iq-jacket-hero__image{display:block;width:100%;height:100%;max-width:none;object-fit:cover;object-position:50% 18%}
+.iq-jacket-hero__visual:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,#f3f3f1,transparent 12%,transparent 94%,#f3f3f1)}
+.iq-jacket-hero__fade{display:none}
+.iq-jacket-hero__wrap{grid-column:1;grid-row:1;min-width:0;box-sizing:border-box;padding:36px 40px 36px 0}
+.iq-jacket-hero__copy{max-width:600px}
+.iq-jacket-hero .iq-jacket-hero__kicker{font-family:Archivo,Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;line-height:1.5;text-transform:uppercase;color:#a51d1b;margin:0 0 16px}
+.iq-jacket-hero .iq-jacket-hero__title{font-family:Montserrat,Arial,sans-serif;font-weight:800;font-style:italic;font-size:clamp(30px,3.2vw,50px);line-height:1.08;letter-spacing:-.035em;text-transform:uppercase;margin:0}
+.iq-jacket-hero__title span{display:block}
+.iq-jacket-hero__title span+span{color:#a51d1b;margin-top:5px}
+.iq-jacket-hero .iq-jacket-hero__description{font-family:Archivo,Arial,sans-serif;font-size:15px;line-height:1.5;margin:18px 0 0;max-width:440px}
+body.collection-template.jacken .collection__content>.flex,body.collection-template.jacken #ProductGridContainer,body.collection-template.jacken #ProductsList,body.collection-template.jacken #ProductsList>.collection-inline-block{min-width:0;max-width:100%;box-sizing:border-box}
+body.collection-template.jacken .collection__content>.flex{width:100%}
+body.collection-template.jacken #ProductsList>.collection-inline-block--full{grid-column:1/-1;width:100%}
+@media(min-width:750px) and (max-width:1199px){
+.iq-jacket-hero{grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)}
+.iq-jacket-hero__visual{height:640px}
+.iq-jacket-hero__wrap{padding-right:24px}
+}
+@media(max-width:749px){
+.iq-jacket-hero{display:flex;flex-direction:column;padding:0}
+.iq-jacket-hero__visual{order:0;width:100%;height:auto;aspect-ratio:4/5;flex:none}
+.iq-jacket-hero__image{object-position:center 18%}
+.iq-jacket-hero__visual:after{background:linear-gradient(180deg,transparent 94%,#f3f3f1)}
+.iq-jacket-hero__wrap{order:1;width:100%;padding:18px 20px 22px}
+.iq-jacket-hero .iq-jacket-hero__title{font-size:28px}
+.iq-jacket-hero .iq-jacket-hero__kicker{font-size:10px;letter-spacing:.08em;margin-bottom:10px}
+.iq-jacket-hero .iq-jacket-hero__description{font-size:14px;margin-top:12px}
+body.collection-template.jacken .iq-jv-jump{font-size:14px;line-height:1.5;margin:12px 0}
+}
+.iq-jacket-multifunktion{min-width:0;max-width:100%;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+body.collection-template.jacken .iq-jacket-multifunktion__copy{min-width:0;max-width:100%;overflow-wrap:anywhere;white-space:normal}
+body.collection-template.jacken .iq-jacket-multifunktion__photo img{max-width:100%}
+@media(max-width:989px){
+.iq-jacket-multifunktion{width:100%;padding:20px 0;gap:0}
+body.collection-template.jacken .iq-jacket-multifunktion__photo{order:-1;width:100%;min-width:0}
+body.collection-template.jacken .iq-jacket-multifunktion__photo img{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;object-position:center;max-width:100%;-webkit-mask-image:none;mask-image:none}
+body.collection-template.jacken .iq-jacket-multifunktion__copy{width:100%;padding:18px 16px 12px;font-size:14px;line-height:1.5}
+body.collection-template.jacken .iq-jacket-multifunktion h2{font-size:25px;margin-bottom:12px;white-space:normal}
+body.collection-template.jacken .iq-jacket-multifunktion .iq-jacket-multifunktion__kicker{font-size:10px;letter-spacing:.07em;margin-bottom:10px;white-space:normal}
+}
+.iq-jacket-training{min-width:0;max-width:100%;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+body.collection-template.jacken .iq-jacket-training__copy{min-width:0;max-width:100%;overflow-wrap:anywhere;white-space:normal}
+body.collection-template.jacken .iq-jacket-training__photo img{max-width:100%}
+@media(max-width:989px){
+.iq-jacket-training{width:100%;padding:20px 0;gap:0}
+body.collection-template.jacken .iq-jacket-training__photo{order:-1;width:100%;min-width:0}
+body.collection-template.jacken .iq-jacket-training__photo img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:center;max-width:100%;-webkit-mask-image:none;mask-image:none}
+body.collection-template.jacken .iq-jacket-training__copy{width:100%;padding:18px 16px 12px;font-size:14px;line-height:1.5}
+body.collection-template.jacken .iq-jacket-training h2{font-size:25px;margin-bottom:12px;white-space:normal}
+body.collection-template.jacken .iq-jacket-training .iq-jacket-training__kicker{font-size:10px;letter-spacing:.07em;margin-bottom:10px;white-space:normal}
+}
+.iq-jacket-allround{min-width:0;max-width:100%;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+body.collection-template.jacken .iq-jacket-allround__copy{min-width:0;max-width:100%;overflow-wrap:anywhere;white-space:normal}
+body.collection-template.jacken .iq-jacket-allround__photo img{max-width:100%}
+@media(max-width:989px){
+.iq-jacket-allround{width:100%;padding:20px 0;gap:0}
+body.collection-template.jacken .iq-jacket-allround__photo{order:-1;width:100%;min-width:0}
+body.collection-template.jacken .iq-jacket-allround__photo img{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;object-position:center;max-width:100%;-webkit-mask-image:none;mask-image:none}
+body.collection-template.jacken .iq-jacket-allround__copy{width:100%;padding:18px 16px 12px;font-size:14px;line-height:1.5}
+body.collection-template.jacken .iq-jacket-allround h2{font-size:25px;margin-bottom:12px;white-space:normal}
+body.collection-template.jacken .iq-jacket-allround .iq-jacket-allround__kicker{font-size:10px;letter-spacing:.07em;margin-bottom:10px;white-space:normal}
+}
+</style>
+{% schema %}
+{
+  "name": "IQ Jacken Banner",
+  "tag": "section",
+  "enabled_on": {
+    "templates": [
+      "collection"
+    ]
+  },
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Originalfoto",
+      "info": "Empfehlung: 1V1A5793.jpg. Rechts wird ein Ausschnitt des echten Fotos gezeigt."
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Alternatives Foto mobil (optional)"
+    },
+    {
+      "type": "header",
+      "content": "Deutsch"
+    },
+    {
+      "type": "text",
+      "id": "kicker_de",
+      "label": "Kleine Überschrift",
+      "default": "Hundesportjacken für Damen und Herren"
+    },
+    {
+      "type": "text",
+      "id": "heading_de",
+      "label": "Überschrift Schwarz",
+      "default": "Dein Hund."
+    },
+    {
+      "type": "text",
+      "id": "accent_de",
+      "label": "Überschrift Rot",
+      "default": "Draußen zu Hause."
+    },
+    {
+      "type": "textarea",
+      "id": "text_de",
+      "label": "Beschreibung",
+      "default": "Robust draußen unterwegs, gezielt auf dem Hundeplatz trainieren oder leicht durch den Regen: Entdecke unsere Multifunktionsjacke, Trainingsjacke und Allround-Jacke."
+    },
+    {
+      "type": "header",
+      "content": "Englisch"
+    },
+    {
+      "type": "text",
+      "id": "kicker_en",
+      "label": "Small heading",
+      "default": "Dog training jackets for women and men"
+    },
+    {
+      "type": "text",
+      "id": "heading_en",
+      "label": "Black heading",
+      "default": "You and your dog."
+    },
+    {
+      "type": "text",
+      "id": "accent_en",
+      "label": "Red heading",
+      "default": "At home outdoors."
+    },
+    {
+      "type": "textarea",
+      "id": "text_en",
+      "label": "Description",
+      "default": "Rugged outdoor adventures, focused training or rainy walks: explore our multifunctional jacket, training jacket and Allround jacket."
+    }
+  ],
+  "presets": [
+    {
+      "name": "IQ Jacken Banner"
+    }
+  ]
+}
+{% endschema %}

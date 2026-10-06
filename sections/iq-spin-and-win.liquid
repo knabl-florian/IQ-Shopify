@@ -1,0 +1,513 @@
+{% comment %}
+  IQ Dogsport - Physical Prize Wheel Newsletter Registration
+
+  FLOW
+  1. Visitor enters email and gives newsletter consent.
+  2. Shopify creates or updates the customer record.
+  3. New/unconfirmed subscribers receive Shopify's double-opt-in email.
+  4. Visitor confirms the email and shows the confirmation to staff.
+  5. Staff allows one spin on the PHYSICAL prize wheel.
+
+  IMPORTANT
+  - This section intentionally does NOT use localStorage duplicate blocking.
+  - Public Shopify Liquid cannot securely search the customer database by an entered email.
+  - Shopify itself handles an existing email/customer record without creating a second profile.
+{% endcomment %}
+
+{%- liquid
+  assign locale_code = request.locale.iso_code | downcase
+  assign is_english = false
+
+  if locale_code contains 'en'
+    assign is_english = true
+  endif
+
+  if is_english
+    assign tx_eyebrow = section.settings.eyebrow_en | default: 'AT THE IQ DOGSPORT STAND'
+    assign tx_heading = section.settings.heading_en | default: 'Subscribe & spin the wheel'
+    assign tx_intro = section.settings.intro_en | default: 'Subscribe to the IQ Dogsport newsletter. New subscribers will receive a confirmation email. After confirming your subscription, you may spin our physical prize wheel once and receive an instant prize.'
+    assign tx_email = 'Email address'
+    assign tx_consent = 'Yes, I would like to receive the IQ Dogsport newsletter by email. I can unsubscribe at any time. I have read the privacy policy.'
+    assign tx_button = 'Subscribe now'
+    assign tx_required = 'Please enter a valid email address and accept the newsletter consent.'
+    assign tx_processing = 'Registering…'
+    assign tx_success_title = 'Almost done!'
+    assign tx_success_text = 'Please check your inbox now. If Shopify has sent you a confirmation email, open it and confirm your newsletter subscription. Then show the confirmation to our team before spinning the physical prize wheel.'
+    assign tx_existing = 'Already subscribed? Please show our team that you already receive the IQ Dogsport newsletter.'
+    assign tx_next_person = 'Register next participant'
+    assign tx_privacy = 'Privacy policy'
+    assign tx_note = 'One spin per person. New newsletter subscriptions must be confirmed before spinning. Participation is available only at the IQ Dogsport stand.'
+  else
+    assign tx_eyebrow = section.settings.eyebrow_de | default: 'AM IQ DOGSPORT STAND'
+    assign tx_heading = section.settings.heading_de | default: 'Newsletter anmelden & Glücksrad drehen'
+    assign tx_intro = section.settings.intro_de | default: 'Melde dich zum IQ Dogsport Newsletter an. Neue Abonnenten erhalten eine Bestätigungs-E-Mail. Nach der Bestätigung darfst du einmal an unserem physischen Glücksrad drehen und erhältst einen Sofortgewinn.'
+    assign tx_email = 'E-Mail-Adresse'
+    assign tx_consent = 'Ja, ich möchte den IQ Dogsport Newsletter per E-Mail erhalten. Ich kann mich jederzeit abmelden. Die Datenschutzerklärung habe ich gelesen.'
+    assign tx_button = 'Jetzt anmelden'
+    assign tx_required = 'Bitte gib eine gültige E-Mail-Adresse ein und bestätige die Newsletter-Einwilligung.'
+    assign tx_processing = 'Anmeldung läuft…'
+    assign tx_success_title = 'Fast geschafft!'
+    assign tx_success_text = 'Bitte prüfe jetzt dein Postfach. Falls Shopify dir eine Bestätigungs-E-Mail geschickt hat, öffne sie und bestätige deine Newsletter-Anmeldung. Zeige die Bestätigung anschließend unserem Team, bevor du am physischen Glücksrad drehst.'
+    assign tx_existing = 'Du bist bereits angemeldet? Dann zeige unserem Team bitte, dass du den IQ Dogsport Newsletter bereits erhältst.'
+    assign tx_next_person = 'Nächste Person anmelden'
+    assign tx_privacy = 'Datenschutzerklärung'
+    assign tx_note = 'Eine Teilnahme pro Person. Neue Newsletter-Anmeldungen müssen vor dem Drehen bestätigt werden. Die Teilnahme ist nur am IQ Dogsport Stand möglich.'
+  endif
+
+  assign form_id = 'iq-wheel-signup-' | append: section.id
+-%}
+
+<section
+  id="iq-wheel-signup-section-{{ section.id }}"
+  class="iq-wheel-signup"
+>
+  <div class="iq-wheel-signup__shell">
+    <div class="iq-wheel-signup__card">
+      <div class="iq-wheel-signup__content" data-form-panel>
+        <p class="iq-wheel-signup__eyebrow">{{ tx_eyebrow | escape }}</p>
+        <h1>{{ tx_heading | escape }}</h1>
+        <p class="iq-wheel-signup__intro">{{ tx_intro | escape }}</p>
+
+        {% form 'customer', id: form_id, class: 'iq-wheel-signup__form', novalidate: 'novalidate' %}
+          <input
+            type="hidden"
+            name="contact[tags]"
+            value="VDH-2026-Newsletter"
+            value="newsletter, physical prize wheel, {{ section.settings.campaign_tag | escape }}"
+          >
+          <input
+            type="hidden"
+            name="return_to"
+            value="{{ request.path }}?iq_wheel_registered=1#iq-wheel-signup-section-{{ section.id }}"
+          >
+
+          {% if form.errors %}
+            <div class="iq-wheel-signup__alert iq-wheel-signup__alert--error" role="alert">
+              {{ form.errors | default_errors }}
+            </div>
+          {% endif %}
+
+          <label class="iq-wheel-signup__field" for="iq-wheel-email-{{ section.id }}">
+            <span>{{ tx_email }} *</span>
+            <input
+              id="iq-wheel-email-{{ section.id }}"
+              type="email"
+              name="contact[email]"
+              value="{{ form.email | escape }}"
+              autocomplete="email"
+              inputmode="email"
+              autocapitalize="off"
+              spellcheck="false"
+              maxlength="180"
+              required
+            >
+          </label>
+
+          <label class="iq-wheel-signup__consent">
+            <input type="checkbox" name="newsletter_consent" value="yes" required>
+            <span>{{ tx_consent }}</span>
+          </label>
+
+          <div
+            class="iq-wheel-signup__alert iq-wheel-signup__alert--error"
+            data-validation
+            hidden
+            role="alert"
+          ></div>
+
+          <button class="iq-wheel-signup__button" type="submit" data-submit>
+            <span data-button-label>{{ tx_button }}</span>
+          </button>
+
+          {% if shop.privacy_policy %}
+            <a
+              class="iq-wheel-signup__privacy"
+              href="{{ shop.privacy_policy.url }}"
+              target="_blank"
+              rel="noopener"
+            >
+              {{ tx_privacy }}
+            </a>
+          {% endif %}
+        {% endform %}
+
+        <p class="iq-wheel-signup__existing">{{ tx_existing }}</p>
+        <p class="iq-wheel-signup__note">{{ tx_note }}</p>
+      </div>
+
+      <div class="iq-wheel-signup__success" data-success-panel hidden aria-live="polite">
+        <div class="iq-wheel-signup__check" aria-hidden="true">✓</div>
+        <h2>{{ tx_success_title }}</h2>
+        <p>{{ tx_success_text }}</p>
+        <p class="iq-wheel-signup__success-existing">{{ tx_existing }}</p>
+
+        <button
+          type="button"
+          class="iq-wheel-signup__button iq-wheel-signup__button--secondary"
+          data-reset
+        >
+          {{ tx_next_person }}
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  #iq-wheel-signup-section-{{ section.id }} {
+    --iq-red: #8b0000;
+    --iq-olive: #6a804d;
+    --iq-text: #161616;
+    --iq-muted: #666;
+    --iq-border: #dcdcdc;
+    --iq-bg: #f4f4f1;
+    color: var(--iq-text);
+    background: var(--iq-bg);
+    padding: clamp(28px, 6vw, 76px) 16px;
+  }
+
+  #iq-wheel-signup-section-{{ section.id }} * {
+    box-sizing: border-box;
+  }
+
+  #iq-wheel-signup-section-{{ section.id }} .iq-wheel-signup__shell {
+    width: min(720px, 100%);
+    margin: 0 auto;
+  }
+
+  #iq-wheel-signup-section-{{ section.id }} .iq-wheel-signup__card {
+    background: #fff;
+    border: 1px solid var(--iq-border);
+    border-radius: 24px;
+    box-shadow: 0 18px 60px rgba(0, 0, 0, 0.09);
+    padding: clamp(24px, 5vw, 54px);
+  }
+
+  #iq-wheel-signup-section-{{ section.id }} .iq-wheel-signup__eyebrow {
+    margin: 0 0 12px;
+    color: var(--iq-olive);
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  #iq-wheel-signup-section-{{ section.id }} h1,
+  #iq-wheel-signup-section-{{ section.id }} h2 {
+    margin: 0;
+    color: var(--iq-text);
+    line-height: 1.08;
+  }
+
+  #iq-wheel-signup-section-{{ section.id }} h1 {
+    font-size: clamp(32px, 6vw, 54px);
+  }
+
+  #iq-wheel-signup-section-{{ section.id }} h2 {
+    font-size: clamp(30px, 5vw, 46px);
+  }
+
+  #iq-wheel-signup-section-{{ section.id }} .iq-wheel-signup__intro {
+    margin: 18px 0 30px;
+    font-size: clamp(17px, 2.4vw, 21px);
+    line-height: 1.55;
+  }
+
+  #iq-wheel-signup-section-{{ section.id }} .iq-wheel-signup__field span {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 750;
+  }
+
+  #iq-wheel-signup-section-{{ section.id }} input[type='email'] {
+    width: 100%;
+    min-height: 58px;
+    border: 1px solid #aaa;
+    border-radius: 12px;
+    padding: 13px 16px;
+    color: var(--iq-text);
+    background: #fff;
+    font: inherit;
+    font-size: 18px;
+  }
+
+  #iq-wheel-signup-section-{{ section.id }} input[type='email']:focus {
+    border-color: var(--iq-olive);
+    outline: 3px solid rgba(106, 128, 77, 0.2);
+  }
+
+  #iq-wheel-signup-section-{{ section.id }} .iq-wheel-signup__consent {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    margin: 20px 0;
+    line-height: 1.5;
+    cursor: pointer;
+  }
+
+  #iq-wheel-signup-section-{{ section.id }} .iq-wheel-signup__consent input {
+    width: 23px;
+    height: 23px;
+    min-width: 23px;
+    margin: 1px 0 0;
+    accent-color: var(--iq-olive);
+  }
+
+  #iq-wheel-signup-section-{{ section.id }} .iq-wheel-signup__button {
+    width: 100%;
+    min-height: 58px;
+    border: 0;
+    border-radius: 12px;
+    padding: 14px 20px;
+    color: #fff;
+    background: var(--iq-red);
+    font: inherit;
+    font-size: 17px;
+    font-weight: 850;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  #iq-wheel-signup-section-{{ section.id }} .iq-wheel-signup__button:disabled {
+    opacity: 0.55;
+    cursor: wait;
+  }
+
+  #iq-wheel-signup-section-{{ section.id }} .iq-wheel-signup__button--secondary {
+    margin-top: 24px;
+    background: var(--iq-olive);
+  }
+
+  #iq-wheel-signup-section-{{ section.id }} .iq-wheel-signup__privacy {
+    display: inline-block;
+    margin-top: 14px;
+    color: var(--iq-text);
+    text-decoration: underline;
+  }
+
+  #iq-wheel-signup-section-{{ section.id }} .iq-wheel-signup__existing {
+    margin: 22px 0 0;
+    padding: 14px 16px;
+    border-radius: 10px;
+    color: #374329;
+    background: #f0f4eb;
+    border: 1px solid #cad5bd;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  #iq-wheel-signup-section-{{ section.id }} .iq-wheel-signup__note {
+    margin: 18px 0 0;
+    color: var(--iq-muted);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  #iq-wheel-signup-section-{{ section.id }} .iq-wheel-signup__alert {
+    margin: 0 0 18px;
+    padding: 13px 15px;
+    border-radius: 10px;
+    font-weight: 700;
+    line-height: 1.45;
+  }
+
+  #iq-wheel-signup-section-{{ section.id }} .iq-wheel-signup__alert--error {
+    color: #8a0010;
+    background: #fff0f2;
+    border: 1px solid #efb8c0;
+  }
+
+  #iq-wheel-signup-section-{{ section.id }} .iq-wheel-signup__success {
+    text-align: center;
+    padding: clamp(12px, 4vw, 32px) 0;
+  }
+
+  #iq-wheel-signup-section-{{ section.id }} .iq-wheel-signup__success > p {
+    max-width: 580px;
+    margin: 18px auto 0;
+    font-size: clamp(18px, 3vw, 23px);
+    line-height: 1.55;
+  }
+
+  #iq-wheel-signup-section-{{ section.id }} .iq-wheel-signup__success-existing {
+    padding: 14px 16px;
+    border-radius: 10px;
+    color: #374329;
+    background: #f0f4eb;
+    border: 1px solid #cad5bd;
+    font-size: 15px !important;
+  }
+
+  #iq-wheel-signup-section-{{ section.id }} .iq-wheel-signup__check {
+    display: grid;
+    place-items: center;
+    width: 88px;
+    height: 88px;
+    margin: 0 auto 24px;
+    border-radius: 50%;
+    color: #fff;
+    background: var(--iq-olive);
+    font-size: 52px;
+    font-weight: 900;
+  }
+
+  @media (max-width: 520px) {
+    #iq-wheel-signup-section-{{ section.id }} {
+      padding: 18px 10px;
+    }
+
+    #iq-wheel-signup-section-{{ section.id }} .iq-wheel-signup__card {
+      border-radius: 18px;
+      padding: 24px 18px;
+    }
+  }
+</style>
+
+<script>
+  (() => {
+    const root = document.getElementById('iq-wheel-signup-section-{{ section.id }}');
+    if (!root || root.dataset.initialized === 'true') return;
+    root.dataset.initialized = 'true';
+
+    const form = root.querySelector('form');
+    const emailInput = root.querySelector('input[name="contact[email]"]');
+    const consentInput = root.querySelector('input[name="newsletter_consent"]');
+    const validation = root.querySelector('[data-validation]');
+    const submitButton = root.querySelector('[data-submit]');
+    const buttonLabel = root.querySelector('[data-button-label]');
+    const formPanel = root.querySelector('[data-form-panel]');
+    const successPanel = root.querySelector('[data-success-panel]');
+    const resetButton = root.querySelector('[data-reset]');
+
+    const messages = {
+      required: {{ tx_required | json }},
+      processing: {{ tx_processing | json }},
+      button: {{ tx_button | json }}
+    };
+
+    function showError(message) {
+      if (!validation) return;
+      validation.textContent = message;
+      validation.hidden = false;
+    }
+
+    function clearError() {
+      if (!validation) return;
+      validation.textContent = '';
+      validation.hidden = true;
+    }
+
+    function showSuccess() {
+      if (formPanel) formPanel.hidden = true;
+      if (successPanel) {
+        successPanel.hidden = false;
+        successPanel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+
+    const params = new URLSearchParams(window.location.search);
+
+    if (params.get('iq_wheel_registered') === '1') {
+      showSuccess();
+
+      params.delete('iq_wheel_registered');
+      const cleanQuery = params.toString();
+      const cleanUrl =
+        window.location.pathname +
+        (cleanQuery ? '?' + cleanQuery : '') +
+        window.location.hash;
+
+      window.history.replaceState({}, '', cleanUrl);
+    }
+
+    form?.addEventListener('submit', (event) => {
+      clearError();
+
+      const validEmail = emailInput?.checkValidity();
+      const acceptedConsent = Boolean(consentInput?.checked);
+
+      if (!validEmail || !acceptedConsent) {
+        event.preventDefault();
+        showError(messages.required);
+        form.reportValidity();
+        return;
+      }
+
+      submitButton.disabled = true;
+      buttonLabel.textContent = messages.processing;
+    });
+
+    emailInput?.addEventListener('input', clearError);
+    consentInput?.addEventListener('change', clearError);
+
+    resetButton?.addEventListener('click', () => {
+      form?.reset();
+      clearError();
+
+      if (successPanel) successPanel.hidden = true;
+      if (formPanel) formPanel.hidden = false;
+
+      if (submitButton) submitButton.disabled = false;
+      if (buttonLabel) buttonLabel.textContent = messages.button;
+
+      emailInput?.focus();
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Physical wheel signup",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "campaign_tag",
+      "label": "Shopify customer tag",
+      "default": "VDH 2026 Physical Wheel"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow_de",
+      "label": "Eyebrow German",
+      "default": "AM IQ DOGSPORT STAND"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow_en",
+      "label": "Eyebrow English",
+      "default": "AT THE IQ DOGSPORT STAND"
+    },
+    {
+      "type": "text",
+      "id": "heading_de",
+      "label": "Heading German",
+      "default": "Newsletter anmelden & Glücksrad drehen"
+    },
+    {
+      "type": "text",
+      "id": "heading_en",
+      "label": "Heading English",
+      "default": "Subscribe & spin the wheel"
+    },
+    {
+      "type": "textarea",
+      "id": "intro_de",
+      "label": "Introduction German",
+      "default": "Melde dich zum IQ Dogsport Newsletter an. Neue Abonnenten erhalten eine Bestätigungs-E-Mail. Nach der Bestätigung darfst du einmal an unserem physischen Glücksrad drehen und erhältst einen Sofortgewinn."
+    },
+    {
+      "type": "textarea",
+      "id": "intro_en",
+      "label": "Introduction English",
+      "default": "Subscribe to the IQ Dogsport newsletter. New subscribers will receive a confirmation email. After confirming your subscription, you may spin our physical prize wheel once and receive an instant prize."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Physical wheel signup"
+    }
+  ]
+}
+{% endschema %}

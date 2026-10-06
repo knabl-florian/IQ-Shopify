@@ -1,0 +1,2677 @@
+{% comment %}
+  IQ Dogsport Spin & Win — Online + Onsite
+
+  Customer page:
+  /pages/gluecksrad
+
+  Staff page:
+  /pages/gluecksrad?staff=1
+
+  Campaign ends:
+  Sunday, 2 August 2026 at 23:59 Europe/Berlin
+
+  Active Shopify prize codes:
+  VDHRED2026
+  VDHWHITE2026
+  VDHBLACK2026
+  VDHCLICKWHITE2026
+
+  Google Apps Script actions:
+  register
+  spin
+  claim
+  redeem
+{% endcomment %}
+
+{% liquid
+  assign section_id = 'iq-spin-win-' | append: section.id
+  assign locale_code = request.locale.iso_code | downcase
+  assign is_de = false
+
+  if locale_code contains 'de'
+    assign is_de = true
+  endif
+%}
+
+{% if is_de %}
+  {% assign tx_campaign_label = 'IQ Dogsport Spin & Win' %}
+  {% assign tx_title = 'Drehen & gewinnen' %}
+  {% assign tx_intro = 'Nimm online oder direkt vor Ort teil, drehe einmal am Glücksrad und sichere dir deinen Gewinn.' %}
+  {% assign tx_deadline = 'Nur bis Sonntag, 2. August 2026, 23:59 Uhr verfügbar.' %}
+  {% assign tx_expired_title = 'Die Aktion ist beendet' %}
+  {% assign tx_expired_text = 'Die Spin-&-Win-Aktion war bis Sonntag, 2. August 2026 verfügbar.' %}
+
+  {% assign tx_step_register = 'Teilnehmen' %}
+  {% assign tx_step_spin = 'Drehen' %}
+  {% assign tx_step_result = 'Ergebnis' %}
+
+  {% assign tx_first_name = 'Vorname' %}
+  {% assign tx_email = 'E-Mail-Adresse' %}
+  {% assign tx_newsletter = 'Ja, ich möchte Neuigkeiten und Angebote von IQ Dogsport per E-Mail erhalten.' %}
+  {% assign tx_privacy = 'Datenschutz' %}
+  {% assign tx_start = 'Glücksrad öffnen' %}
+
+  {% assign tx_restore = 'Du hast bereits einen persönlichen Gewinncode?' %}
+  {% assign tx_claim_code = 'Persönlicher Gewinncode' %}
+  {% assign tx_open_claim = 'Gewinn öffnen' %}
+
+  {% assign tx_spin_title = 'Dein einmaliger Dreh' %}
+  {% assign tx_good_luck = 'Viel Glück' %}
+  {% assign tx_spin_text = 'Dein Ergebnis wird sofort gespeichert. Der Gewinn kann online oder direkt vor Ort eingelöst werden.' %}
+  {% assign tx_spin_button = 'Glücksrad drehen' %}
+  {% assign tx_tap_spin = 'Tippen zum Drehen' %}
+  {% assign tx_determining = 'Ergebnis wird ermittelt …' %}
+  {% assign tx_show_prizes = 'Mögliche Gewinne anzeigen' %}
+
+  {% assign tx_rule_1 = 'Eine Teilnahme pro E-Mail-Adresse' %}
+  {% assign tx_rule_2 = 'Jeder Gewinn kann nur einmal eingelöst werden' %}
+  {% assign tx_rule_3 = 'Online oder direkt vor Ort einlösbar' %}
+
+  {% assign tx_congrats = 'Glückwunsch' %}
+  {% assign tx_you_won = 'Du hast gewonnen:' %}
+  {% assign tx_prize_code = 'Dein Code' %}
+  {% assign tx_copy_code = 'Code kopieren' %}
+  {% assign tx_copied = 'Kopiert' %}
+  {% assign tx_status = 'Status' %}
+  {% assign tx_reserved = 'Reserviert' %}
+  {% assign tx_redeemed = 'Eingelöst' %}
+
+  {% assign tx_online_title = 'Online einlösen' %}
+  {% assign tx_online_text = 'Lege genau den gewonnenen Artikel in den Warenkorb und gib den angezeigten Code beim Checkout in das Rabattcode-Feld ein. Der Artikel wird dadurch zu 100 % rabattiert.' %}
+  {% assign tx_shop_now = 'Gewinnprodukt öffnen' %}
+  {% assign tx_product_steps_title = 'So löst du deinen Gewinn online ein' %}
+  {% assign tx_product_step_1 = 'Öffne ausschließlich das unten verlinkte Gewinnprodukt.' %}
+  {% assign tx_product_step_2 = 'Wähle exakt diese Gewinnvariante:' %}
+  {% assign tx_product_step_3 = 'Lege genau ein Stück dieser Variante in den Warenkorb.' %}
+  {% assign tx_product_step_4 = 'Gib beim Checkout diesen Aktionscode ein:' %}
+  {% assign tx_product_warning = 'Wichtig: Der Code funktioniert nur mit dem unten verlinkten Produkt und der exakt angezeigten Variante. Bei einem anderen Produkt oder einer anderen Variante wird kein Rabatt angewendet.' %}
+
+  {% assign tx_onsite_title = 'Vor Ort einlösen' %}
+  {% assign tx_onsite_text = 'Zeige diesen Bildschirm mit deinem Gewinn, deinem persönlichen Gewinncode und dem Aktionscode an unserer IQ Dogsport Kasse.' %}
+
+  {% assign tx_important = 'Wichtig' %}
+  {% assign tx_important_text = 'Der Code gilt nur für den angezeigten Gewinn und nur während des Aktionszeitraums. Versandkosten und andere Artikel werden nicht rabattiert.' %}
+
+  {% assign tx_team = 'Hinweis für unser Team' %}
+
+  {% assign tx_missed_title = 'Leider daneben' %}
+  {% assign tx_missed_text = 'Dieses Mal hat es leider nicht für einen Gewinn gereicht. Vielen Dank fürs Mitmachen!' %}
+
+  {% assign tx_missing_name = 'Bitte gib deinen Vornamen ein.' %}
+  {% assign tx_missing_email = 'Bitte gib eine gültige E-Mail-Adresse ein.' %}
+  {% assign tx_missing_claim = 'Bitte gib deinen persönlichen Gewinncode ein.' %}
+  {% assign tx_loading = 'Bitte warten …' %}
+  {% assign tx_connection_error = 'Die Verbindung ist fehlgeschlagen. Bitte versuche es erneut.' %}
+
+  {% assign tx_staff_title = 'Kassenmodus' %}
+  {% assign tx_staff_intro = 'Persönlichen Gewinncode prüfen und die Ausgabe des Gewinns bestätigen.' %}
+  {% assign tx_staff_pin = 'Mitarbeiter-PIN' %}
+  {% assign tx_staff_open = 'Kassenmodus öffnen' %}
+  {% assign tx_staff_search = 'Gewinn suchen' %}
+  {% assign tx_customer = 'Kunde' %}
+  {% assign tx_prize = 'Gewinn' %}
+  {% assign tx_discount = 'Aktionscode' %}
+  {% assign tx_order = 'Bestellnummer oder Belegnummer (optional)' %}
+  {% assign tx_issue = 'Gewinn jetzt ausgeben' %}
+  {% assign tx_issued = 'Gewinn wurde erfolgreich ausgegeben' %}
+  {% assign tx_next = 'Nächsten Gewinn bearbeiten' %}
+  {% assign tx_missing_pin = 'Bitte gib den Mitarbeiter-PIN ein.' %}
+{% else %}
+  {% assign tx_campaign_label = 'IQ Dogsport Spin & Win' %}
+  {% assign tx_title = 'Spin & win' %}
+  {% assign tx_intro = 'Take part online or directly at the event, spin once and secure your prize.' %}
+  {% assign tx_deadline = 'Available only until Sunday, August 2, 2026 at 11:59 PM.' %}
+  {% assign tx_expired_title = 'The promotion has ended' %}
+  {% assign tx_expired_text = 'The Spin & Win promotion was available until Sunday, August 2, 2026.' %}
+
+  {% assign tx_step_register = 'Enter' %}
+  {% assign tx_step_spin = 'Spin' %}
+  {% assign tx_step_result = 'Result' %}
+
+  {% assign tx_first_name = 'First name' %}
+  {% assign tx_email = 'Email address' %}
+  {% assign tx_newsletter = 'Yes, I would like to receive news and offers from IQ Dogsport by email.' %}
+  {% assign tx_privacy = 'Privacy policy' %}
+  {% assign tx_start = 'Open the wheel' %}
+
+  {% assign tx_restore = 'Already have a personal claim code?' %}
+  {% assign tx_claim_code = 'Personal claim code' %}
+  {% assign tx_open_claim = 'Open prize' %}
+
+  {% assign tx_spin_title = 'Your one-time spin' %}
+  {% assign tx_good_luck = 'Good luck' %}
+  {% assign tx_spin_text = 'Your result is saved immediately. The prize can be redeemed online or directly at the event.' %}
+  {% assign tx_spin_button = 'Spin the wheel' %}
+  {% assign tx_tap_spin = 'Tap to spin' %}
+  {% assign tx_determining = 'Selecting your result …' %}
+  {% assign tx_show_prizes = 'Show possible prizes' %}
+
+  {% assign tx_rule_1 = 'One entry per email address' %}
+  {% assign tx_rule_2 = 'Each prize can only be redeemed once' %}
+  {% assign tx_rule_3 = 'Redeem online or directly at the event' %}
+
+  {% assign tx_congrats = 'Congratulations' %}
+  {% assign tx_you_won = 'You won:' %}
+  {% assign tx_prize_code = 'Your code' %}
+  {% assign tx_copy_code = 'Copy code' %}
+  {% assign tx_copied = 'Copied' %}
+  {% assign tx_status = 'Status' %}
+  {% assign tx_reserved = 'Reserved' %}
+  {% assign tx_redeemed = 'Redeemed' %}
+
+  {% assign tx_online_title = 'Redeem online' %}
+  {% assign tx_online_text = 'Add the exact product you won to your cart and enter the displayed code in the discount-code field during checkout. The product will receive a 100% discount.' %}
+  {% assign tx_shop_now = 'Open prize product' %}
+  {% assign tx_product_steps_title = 'How to redeem your prize online' %}
+  {% assign tx_product_step_1 = 'Open only the prize product linked below.' %}
+  {% assign tx_product_step_2 = 'Select this exact prize variant:' %}
+  {% assign tx_product_step_3 = 'Add exactly one unit of this variant to your cart.' %}
+  {% assign tx_product_step_4 = 'At checkout, enter this promotion code:' %}
+  {% assign tx_product_warning = 'Important: The code works only with the product linked below and the exact variant shown. No discount will be applied to another product or variant.' %}
+
+  {% assign tx_onsite_title = 'Redeem at the event' %}
+  {% assign tx_onsite_text = 'Show this screen with your prize, personal claim code and promotion code at the IQ Dogsport checkout.' %}
+
+  {% assign tx_important = 'Important' %}
+  {% assign tx_important_text = 'The code applies only to the displayed prize and only during the promotion period. Shipping and other products are not discounted.' %}
+
+  {% assign tx_team = 'Note for our team' %}
+
+  {% assign tx_missed_title = 'Missed it' %}
+  {% assign tx_missed_text = 'Unfortunately, there is no prize this time. Thank you for taking part!' %}
+
+  {% assign tx_missing_name = 'Please enter your first name.' %}
+  {% assign tx_missing_email = 'Please enter a valid email address.' %}
+  {% assign tx_missing_claim = 'Please enter your personal claim code.' %}
+  {% assign tx_loading = 'Please wait …' %}
+  {% assign tx_connection_error = 'The connection failed. Please try again.' %}
+
+  {% assign tx_staff_title = 'Checkout mode' %}
+  {% assign tx_staff_intro = 'Check the personal claim code and confirm that the prize was issued.' %}
+  {% assign tx_staff_pin = 'Staff PIN' %}
+  {% assign tx_staff_open = 'Open checkout mode' %}
+  {% assign tx_staff_search = 'Find prize' %}
+  {% assign tx_customer = 'Customer' %}
+  {% assign tx_prize = 'Prize' %}
+  {% assign tx_discount = 'Promotion code' %}
+  {% assign tx_order = 'Order or receipt number (optional)' %}
+  {% assign tx_issue = 'Issue prize now' %}
+  {% assign tx_issued = 'The prize was issued successfully' %}
+  {% assign tx_next = 'Process next prize' %}
+  {% assign tx_missing_pin = 'Please enter the staff PIN.' %}
+{% endif %}
+
+<section
+  id="{{ section_id }}"
+  class="iq-spin-win-section color-{{ section.settings.color_scheme }}"
+  data-hide-footer-newsletter="{{ section.settings.hide_footer_newsletter }}"
+>
+  <div class="page-width">
+    <div class="iqw-customer-header" data-customer-only>
+      <p class="text-subheading">{{ section.settings.campaign_label | default: tx_campaign_label }}</p>
+      <h1 class="h2">{{ tx_title }}</h1>
+      <p>{{ tx_intro }}</p>
+
+      <div class="iqw-deadline">
+        <strong>{{ tx_deadline }}</strong>
+      </div>
+    </div>
+
+    <div class="iqw-expired" data-expired-view hidden>
+      <span class="iqw-icon iqw-icon--large" aria-hidden="true">
+        <svg viewBox="0 0 24 24" focusable="false">
+          <circle cx="12" cy="13" r="8"></circle>
+          <path d="M12 9v4l3 2"></path>
+          <path d="M9 2h6"></path>
+          <path d="M12 5V2"></path>
+        </svg>
+      </span>
+      <h2 class="h2">{{ tx_expired_title }}</h2>
+      <p>{{ tx_expired_text }}</p>
+    </div>
+
+    <div class="iqw-panel" data-customer-app>
+      <div class="iqw-progress">
+        <span class="is-active" data-progress="register">1 · {{ tx_step_register }}</span>
+        <span data-progress="spin">2 · {{ tx_step_spin }}</span>
+        <span data-progress="claim">3 · {{ tx_step_result }}</span>
+      </div>
+
+      <div class="iqw-message" data-message hidden></div>
+
+      <div class="iqw-view is-active" data-view="register">
+        <div class="iqw-register-layout">
+          <div class="iqw-register-copy">
+            <p class="text-subheading">{{ section.settings.campaign_label | default: tx_campaign_label }}</p>
+            <h2 class="h3">{{ tx_step_register }}</h2>
+            <p>{{ tx_intro }}</p>
+
+            <ul class="iqw-rules list-unstyled">
+              <li><span>1</span>{{ tx_rule_1 }}</li>
+              <li><span>2</span>{{ tx_rule_2 }}</li>
+              <li><span>3</span>{{ tx_rule_3 }}</li>
+            </ul>
+          </div>
+
+          <form class="iqw-form" data-register-form novalidate>
+            <div class="form-field">
+              <label class="form-label" for="iqw-name-{{ section.id }}">
+                {{ tx_first_name }}
+              </label>
+
+              <input
+                id="iqw-name-{{ section.id }}"
+                class="form-control"
+                name="firstName"
+                type="text"
+                autocomplete="given-name"
+                maxlength="80"
+                required
+              >
+            </div>
+
+            <div class="form-field">
+              <label class="form-label" for="iqw-email-{{ section.id }}">
+                {{ tx_email }}
+              </label>
+
+              <input
+                id="iqw-email-{{ section.id }}"
+                class="form-control"
+                name="email"
+                type="email"
+                autocomplete="email"
+                maxlength="180"
+                required
+              >
+            </div>
+
+            {% if section.settings.show_newsletter %}
+              <label class="iqw-consent">
+                <input
+                  type="checkbox"
+                  name="newsletterConsent"
+                  value="true"
+                >
+
+                <span>
+                  {{ tx_newsletter }}
+
+                  {% if section.settings.privacy_url != blank %}
+                    <a
+                      href="{{ section.settings.privacy_url }}"
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      {{ tx_privacy }}
+                    </a>
+                  {% endif %}
+                </span>
+              </label>
+            {% endif %}
+
+            <button
+              class="btn btn--primary iqw-full"
+              type="submit"
+              data-register-button
+            >
+              <span data-button-text>{{ tx_start }}</span>
+              <span class="iqw-button-loader" hidden></span>
+            </button>
+          </form>
+        </div>
+
+        <details class="iqw-restore">
+          <summary>{{ tx_restore }}</summary>
+
+          <form data-restore-form>
+            <div class="form-field">
+              <label class="form-label" for="iqw-restore-{{ section.id }}">
+                {{ tx_claim_code }}
+              </label>
+
+              <input
+                id="iqw-restore-{{ section.id }}"
+                class="form-control"
+                name="claimCode"
+                type="text"
+                maxlength="120"
+                autocomplete="off"
+              >
+            </div>
+
+            <button class="btn btn--secondary" type="submit">
+              {{ tx_open_claim }}
+            </button>
+          </form>
+        </details>
+      </div>
+
+      <div class="iqw-view" data-view="spin">
+        <div class="iqw-spin-layout">
+          <div class="iqw-wheel-stage">
+            <div class="iqw-pointer" aria-hidden="true"></div>
+
+            <div
+              class="iqw-wheel"
+              data-wheel
+              data-spin-trigger
+              role="button"
+              tabindex="0"
+              aria-label="{{ tx_tap_spin }}"
+            >
+              <svg viewBox="0 0 400 400" role="img" aria-label="{{ tx_spin_button }}">
+                <g class="iqw-wheel__segments">
+                  <path class="iqw-segment iqw-segment--1" d="M200 200 L141.9 21.2 A188 188 0 0 1 258.1 21.2 Z"/>
+                  <path class="iqw-segment iqw-segment--2" d="M200 200 L258.1 21.2 A188 188 0 0 1 352.1 89.5 Z"/>
+                  <path class="iqw-segment iqw-segment--3" d="M200 200 L352.1 89.5 A188 188 0 0 1 388 200 Z"/>
+                  <path class="iqw-segment iqw-segment--4" d="M200 200 L388 200 A188 188 0 0 1 352.1 310.5 Z"/>
+                  <path class="iqw-segment iqw-segment--5" d="M200 200 L352.1 310.5 A188 188 0 0 1 258.1 378.8 Z"/>
+                  <path class="iqw-segment iqw-segment--6" d="M200 200 L258.1 378.8 A188 188 0 0 1 141.9 378.8 Z"/>
+                  <path class="iqw-segment iqw-segment--7" d="M200 200 L141.9 378.8 A188 188 0 0 1 47.9 310.5 Z"/>
+                  <path class="iqw-segment iqw-segment--8" d="M200 200 L47.9 310.5 A188 188 0 0 1 12 200 Z"/>
+                  <path class="iqw-segment iqw-segment--9" d="M200 200 L12 200 A188 188 0 0 1 47.9 89.5 Z"/>
+                  <path class="iqw-segment iqw-segment--10 iqw-segment--missed" d="M200 200 L47.9 89.5 A188 188 0 0 1 141.9 21.2 Z"/>
+                </g>
+
+                <g class="iqw-wheel__labels">
+                  <text x="200" y="65">1</text>
+                  <text x="280" y="90">2</text>
+                  <text x="338" y="157">3</text>
+                  <text x="338" y="243">4</text>
+                  <text x="280" y="310">5</text>
+                  <text x="200" y="338">6</text>
+                  <text x="120" y="310">7</text>
+                  <text x="62" y="243">8</text>
+                  <text x="62" y="157">9</text>
+                  <text x="120" y="90">10</text>
+                </g>
+
+                <circle class="iqw-wheel__hub" cx="200" cy="200" r="47"/>
+                <circle class="iqw-wheel__hub-ring" cx="200" cy="200" r="47"/>
+              </svg>
+
+              <button
+                class="iqw-wheel-tap"
+                type="button"
+                data-spin-trigger
+                aria-label="{{ tx_tap_spin }}"
+              >
+                <span class="iqw-icon iqw-icon--spin" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" focusable="false">
+                    <path d="M20 11a8 8 0 1 0-2.3 5.7"></path>
+                    <path d="M20 4v7h-7"></path>
+                  </svg>
+                </span>
+                <strong>{{ tx_tap_spin }}</strong>
+              </button>
+
+              <div class="iqw-wheel-loading" data-wheel-loading hidden>
+                <span></span>
+                <strong>{{ tx_determining }}</strong>
+              </div>
+            </div>
+
+            <details class="iqw-wheel-legend-details">
+              <summary>{{ tx_show_prizes }}</summary>
+
+              <div class="iqw-wheel-legend">
+                {% if is_de %}
+                  {% assign wheel_legend = 'Sticker Rot|Sticker Weiß|Sticker Schwarz|Ringclicker Weiß|Sticker Rot|Sticker Weiß|Sticker Schwarz|Ringclicker Weiß|Sticker Rot|Leider daneben' | split: '|' %}
+                {% else %}
+                  {% assign wheel_legend = 'Red sticker|White sticker|Black sticker|White Ringclicker|Red sticker|White sticker|Black sticker|White Ringclicker|Red sticker|Missed it' | split: '|' %}
+                {% endif %}
+
+                {% for item in wheel_legend %}
+                  <span class="{% if forloop.index == 10 %}is-missed{% endif %}">
+                    <b>{{ forloop.index }}</b>
+                    {{ item }}
+                  </span>
+                {% endfor %}
+              </div>
+            </details>
+          </div>
+
+          <div class="iqw-spin-copy">
+            <p class="text-subheading">{{ tx_spin_title }}</p>
+
+            <h2 class="h2">
+              {{ tx_good_luck }}<span data-customer-name></span>
+            </h2>
+
+            <p>{{ tx_spin_text }}</p>
+
+            <div class="iqw-deadline iqw-deadline--small">
+              <strong>{{ tx_deadline }}</strong>
+            </div>
+
+            <ul class="iqw-rules list-unstyled">
+              <li><span>1</span>{{ tx_rule_1 }}</li>
+              <li><span>2</span>{{ tx_rule_2 }}</li>
+              <li><span>3</span>{{ tx_rule_3 }}</li>
+            </ul>
+
+            <button
+              class="btn btn--primary iqw-full iqw-desktop-spin-button"
+              type="button"
+              data-spin-trigger
+            >
+              <span data-button-text>{{ tx_spin_button }}</span>
+              <span class="iqw-button-loader" hidden></span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="iqw-view" data-view="claim">
+        <div class="iqw-result">
+          <div data-winning-result>
+            <p class="text-subheading">
+              {{ tx_congrats }}, <span data-claim-name></span>
+            </p>
+
+            <p class="iqw-won-label">{{ tx_you_won }}</p>
+            <h2 class="h2" data-prize-name></h2>
+
+            <div class="iqw-code-card">
+              <small>{{ tx_prize_code }}</small>
+              <strong data-discount-code></strong>
+
+              <button
+                class="btn btn--secondary"
+                type="button"
+                data-copy-discount
+              >
+                {{ tx_copy_code }}
+              </button>
+            </div>
+
+            <div class="iqw-product-instructions">
+              <span class="iqw-product-instructions__icon iqw-icon iqw-icon--large" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false">
+                  <path d="M4 7.5 12 3l8 4.5v9L12 21l-8-4.5z"></path>
+                  <path d="m4 7.5 8 4.5 8-4.5"></path>
+                  <path d="M12 12v9"></path>
+                </svg>
+              </span>
+
+              <h3 class="h4">{{ tx_product_steps_title }}</h3>
+
+              <ol>
+                <li>{{ tx_product_step_1 }}</li>
+                <li>{{ tx_product_step_2 }} <strong data-variant-instruction></strong></li>
+                <li>{{ tx_product_step_3 }}</li>
+                <li>{{ tx_product_step_4 }} <strong data-discount-code-inline></strong></li>
+              </ol>
+
+              <p class="iqw-product-instructions__warning">
+                <strong>{{ tx_product_warning }}</strong>
+              </p>
+
+              <a
+                class="btn btn--primary iqw-full"
+                href="#"
+                data-product-link
+                target="_blank"
+                rel="noopener"
+                hidden
+              >
+                <span class="iqw-button-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" focusable="false">
+                    <path d="M14 5h5v5"></path>
+                    <path d="m10 14 9-9"></path>
+                    <path d="M19 13v6H5V5h6"></path>
+                  </svg>
+                </span>
+                {{ tx_shop_now }}
+              </a>
+            </div>
+
+            <div class="iqw-redemption-grid">
+              <div class="iqw-redemption-card">
+                <span class="iqw-icon iqw-icon--large" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" focusable="false">
+                    <path d="M3 4h2l2.2 10.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6L20 8H7"></path>
+                    <circle cx="10" cy="19" r="1.5"></circle>
+                    <circle cx="17" cy="19" r="1.5"></circle>
+                  </svg>
+                </span>
+                <h3 class="h4">{{ tx_online_title }}</h3>
+                <p>{{ tx_online_text }}</p>
+              </div>
+
+              <div class="iqw-redemption-card">
+                <span class="iqw-icon iqw-icon--large" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" focusable="false">
+                    <path d="M4 20V10l8-6 8 6v10"></path>
+                    <path d="M2 20h20"></path>
+                    <path d="M8 20v-6h8v6"></path>
+                    <path d="M6 10h12"></path>
+                  </svg>
+                </span>
+                <h3 class="h4">{{ tx_onsite_title }}</h3>
+                <p>{{ tx_onsite_text }}</p>
+              </div>
+            </div>
+
+            <div class="iqw-claim-grid">
+              <div>
+                <small>{{ tx_claim_code }}</small>
+                <strong data-claim-code></strong>
+              </div>
+
+              <div>
+                <small>{{ tx_status }}</small>
+                <strong data-claim-status>{{ tx_reserved }}</strong>
+              </div>
+            </div>
+
+            <div class="iqw-important">
+              <strong>{{ tx_important }}</strong>
+              <p>{{ tx_important_text }}</p>
+              <p><strong>{{ tx_deadline }}</strong></p>
+            </div>
+
+            <div class="iqw-team-note">
+              <small>{{ tx_team }}</small>
+              <strong data-instruction></strong>
+            </div>
+          </div>
+
+          <div class="iqw-missed" data-missed-result hidden>
+            <span class="iqw-icon iqw-icon--large" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <circle cx="12" cy="12" r="9"></circle>
+                <path d="m9 9 6 6"></path>
+                <path d="m15 9-6 6"></path>
+              </svg>
+            </span>
+            <h2 class="h2">{{ tx_missed_title }}</h2>
+            <p>{{ tx_missed_text }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="iqw-staff" data-staff-app hidden>
+      <div class="text-center">
+        <p class="text-subheading">{{ section.settings.campaign_label | default: tx_campaign_label }}</p>
+        <h1 class="h2">{{ tx_staff_title }}</h1>
+        <p>{{ tx_staff_intro }}</p>
+      </div>
+
+      <div class="iqw-message" data-staff-message hidden></div>
+
+      <form class="iqw-staff-form" data-staff-login>
+        <div class="form-field">
+          <label class="form-label" for="iqw-pin-{{ section.id }}">
+            {{ tx_staff_pin }}
+          </label>
+
+          <input
+            id="iqw-pin-{{ section.id }}"
+            class="form-control"
+            name="staffPin"
+            type="password"
+            autocomplete="off"
+            required
+          >
+        </div>
+
+        <button class="btn btn--primary" type="submit">
+          {{ tx_staff_open }}
+        </button>
+      </form>
+
+      <div data-staff-workspace hidden>
+        <form class="iqw-staff-form" data-staff-search>
+          <div class="form-field">
+            <label class="form-label" for="iqw-staff-code-{{ section.id }}">
+              {{ tx_claim_code }}
+            </label>
+
+            <input
+              id="iqw-staff-code-{{ section.id }}"
+              class="form-control"
+              name="claimCode"
+              type="text"
+              autocomplete="off"
+            >
+          </div>
+
+          <button class="btn btn--secondary" type="submit">
+            {{ tx_staff_search }}
+          </button>
+        </form>
+
+        <div class="iqw-staff-result" data-staff-result hidden>
+          <dl>
+            <div>
+              <dt>{{ tx_customer }}</dt>
+              <dd data-staff-customer></dd>
+            </div>
+
+            <div>
+              <dt>{{ tx_prize }}</dt>
+              <dd data-staff-prize></dd>
+            </div>
+
+            <div>
+              <dt>{{ tx_discount }}</dt>
+              <dd data-staff-discount></dd>
+            </div>
+
+            <div>
+              <dt>{{ tx_status }}</dt>
+              <dd data-staff-status></dd>
+            </div>
+          </dl>
+
+          <div class="form-field">
+            <label class="form-label" for="iqw-order-{{ section.id }}">
+              {{ tx_order }}
+            </label>
+
+            <input
+              id="iqw-order-{{ section.id }}"
+              class="form-control"
+              data-staff-order
+              type="text"
+              autocomplete="off"
+            >
+          </div>
+
+          <button
+            class="btn btn--primary iqw-full"
+            type="button"
+            data-staff-redeem
+          >
+            <span data-button-text>{{ tx_issue }}</span>
+            <span class="iqw-button-loader" hidden></span>
+          </button>
+        </div>
+
+        <div class="iqw-staff-success" data-staff-success hidden>
+          <span class="iqw-icon iqw-icon--large" aria-hidden="true">
+            <svg viewBox="0 0 24 24" focusable="false">
+              <circle cx="12" cy="12" r="9"></circle>
+              <path d="m8 12 2.5 2.5L16 9"></path>
+            </svg>
+          </span>
+          <h2 class="h3">{{ tx_issued }}</h2>
+
+          <button
+            class="btn btn--secondary"
+            type="button"
+            data-staff-next
+          >
+            {{ tx_next }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="application/json" data-iqw-config>
+    {
+      "apiUrl": {{ section.settings.api_url | strip | json }},
+      "storageKey": {{ 'iq-spin-win-' | append: section.id | json }},
+      "campaignEnd": "2026-08-02T23:59:59+02:00",
+      "animationMs": 5200,
+      "texts": {
+        "loading": {{ tx_loading | json }},
+        "start": {{ tx_start | json }},
+        "spin": {{ tx_spin_button | json }},
+        "determining": {{ tx_determining | json }},
+        "reserved": {{ tx_reserved | json }},
+        "redeemed": {{ tx_redeemed | json }},
+        "missingName": {{ tx_missing_name | json }},
+        "missingEmail": {{ tx_missing_email | json }},
+        "missingClaim": {{ tx_missing_claim | json }},
+        "missingPin": {{ tx_missing_pin | json }},
+        "connectionError": {{ tx_connection_error | json }},
+        "copyCode": {{ tx_copy_code | json }},
+        "copied": {{ tx_copied | json }},
+        "issue": {{ tx_issue | json }}
+      }
+    }
+  </script>
+
+  <style>
+    #{{ section_id }} {
+      padding-top: clamp(3rem, 6vw, 7rem);
+      padding-bottom: clamp(3rem, 6vw, 7rem);
+      background: rgb(var(--color-background));
+      color: rgb(var(--color-foreground));
+    }
+
+    #{{ section_id }} [hidden] {
+      display: none !important;
+    }
+
+    #{{ section_id }} .iqw-customer-header {
+      max-width: 78rem;
+      margin: 0 auto 3rem;
+      text-align: center;
+    }
+
+    #{{ section_id }} .iqw-customer-header > p {
+      max-width: 68rem;
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    #{{ section_id }} .iqw-deadline {
+      max-width: 68rem;
+      margin: 2rem auto 0;
+      padding: 1.3rem 1.6rem;
+      border: 1px solid #b42318;
+      border-radius: 1rem;
+      background: #fff1f0;
+      color: #8a1c13;
+      text-align: center;
+    }
+
+    #{{ section_id }} .iqw-deadline--small {
+      margin: 2rem 0;
+    }
+
+    #{{ section_id }} .iqw-panel,
+    #{{ section_id }} .iqw-staff {
+      overflow: hidden;
+      border: 1px solid rgb(var(--color-border));
+      border-radius: 1.6rem;
+      background: rgb(var(--color-background));
+      box-shadow: 0 1.6rem 5rem rgba(0, 0, 0, .07);
+    }
+
+    #{{ section_id }} .iqw-progress {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-bottom: 1px solid rgb(var(--color-border));
+      background: rgb(var(--color-secondary-background));
+    }
+
+    #{{ section_id }} .iqw-progress span {
+      display: grid;
+      place-items: center;
+      min-height: 5.5rem;
+      padding: 1rem;
+      color: var(--color-foreground-lighten-60);
+      font-size: 1.2rem;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    #{{ section_id }} .iqw-progress .is-active {
+      background: rgb(var(--color-button));
+      color: rgb(var(--color-button-text));
+    }
+
+    #{{ section_id }} .iqw-progress .is-done {
+      color: rgb(var(--color-foreground));
+    }
+
+    #{{ section_id }} .iqw-view {
+      display: none;
+      padding: clamp(2rem, 5vw, 6rem);
+    }
+
+    #{{ section_id }} .iqw-view.is-active {
+      display: block;
+    }
+
+    #{{ section_id }} .iqw-register-layout,
+    #{{ section_id }} .iqw-spin-layout {
+      display: grid;
+      grid-template-columns: minmax(28rem, .9fr) minmax(30rem, 1.1fr);
+      gap: clamp(3rem, 7vw, 8rem);
+      align-items: center;
+      max-width: 116rem;
+      margin: auto;
+    }
+
+    #{{ section_id }} .iqw-form {
+      display: grid;
+      gap: 1.6rem;
+    }
+
+    #{{ section_id }} .iqw-consent {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.4rem;
+      border: 1px solid rgb(var(--color-border));
+      border-radius: .8rem;
+      background: rgb(var(--color-secondary-background));
+      font-size: 1.2rem;
+      line-height: 1.5;
+    }
+
+    #{{ section_id }} .iqw-consent input {
+      flex: 0 0 auto;
+      width: 1.8rem;
+      height: 1.8rem;
+      margin-top: .2rem;
+      accent-color: rgb(var(--color-button));
+    }
+
+    #{{ section_id }} .iqw-rules {
+      display: grid;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    #{{ section_id }} .iqw-rules li {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    #{{ section_id }} .iqw-rules li span {
+      display: grid;
+      place-items: center;
+      flex: 0 0 2.6rem;
+      width: 2.6rem;
+      height: 2.6rem;
+      border-radius: 50%;
+      background: rgb(var(--color-button));
+      color: rgb(var(--color-button-text));
+      font-size: 1.1rem;
+      font-weight: 800;
+    }
+
+    #{{ section_id }} .iqw-full {
+      width: 100%;
+    }
+
+    #{{ section_id }} .iqw-restore {
+      max-width: 72rem;
+      margin: 3rem auto 0;
+      padding-top: 2rem;
+      border-top: 1px solid rgb(var(--color-border));
+      text-align: center;
+    }
+
+    #{{ section_id }} .iqw-restore summary {
+      cursor: pointer;
+      font-weight: 700;
+      text-decoration: underline;
+    }
+
+    #{{ section_id }} .iqw-restore form,
+    #{{ section_id }} .iqw-staff-form {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 1rem;
+      align-items: end;
+      max-width: 68rem;
+      margin: 1.5rem auto 0;
+      text-align: left;
+    }
+
+    #{{ section_id }} .iqw-wheel-stage {
+      position: relative;
+      display: grid;
+      place-items: center;
+      padding: 3rem 1rem 1rem;
+    }
+
+    #{{ section_id }} .iqw-pointer {
+      position: absolute;
+      top: .3rem;
+      z-index: 7;
+      width: 0;
+      height: 0;
+      border-right: 2rem solid transparent;
+      border-left: 2rem solid transparent;
+      border-top: 4rem solid rgb(var(--color-button));
+    }
+
+    #{{ section_id }} .iqw-wheel {
+      position: relative;
+      width: min(100%, 54rem);
+      cursor: pointer;
+      touch-action: manipulation;
+      transition: transform 5.2s cubic-bezier(.08, .58, .1, 1);
+      will-change: transform;
+    }
+
+    #{{ section_id }} .iqw-wheel svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      overflow: visible;
+      border-radius: 50%;
+      box-shadow: 0 1.4rem 4rem rgba(0, 0, 0, .16);
+    }
+
+    #{{ section_id }} .iqw-segment {
+      stroke: rgb(var(--color-background));
+      stroke-width: 2;
+    }
+
+    #{{ section_id }} .iqw-segment:nth-child(4n+1) {
+      fill: rgb(var(--color-button));
+    }
+
+    #{{ section_id }} .iqw-segment:nth-child(4n+2) {
+      fill: rgb(var(--color-secondary-button));
+    }
+
+    #{{ section_id }} .iqw-segment:nth-child(4n+3) {
+      fill: rgb(var(--color-foreground));
+    }
+
+    #{{ section_id }} .iqw-segment:nth-child(4n+4) {
+      fill: rgb(var(--color-secondary-background));
+    }
+
+    #{{ section_id }} .iqw-segment--missed {
+      fill: #969a9d !important;
+    }
+
+    #{{ section_id }} .iqw-wheel__labels text {
+      fill: rgb(var(--color-button-text));
+      font-size: 18px;
+      font-weight: 800;
+      text-anchor: middle;
+      dominant-baseline: central;
+      pointer-events: none;
+    }
+
+    #{{ section_id }} .iqw-wheel__labels text:nth-child(4),
+    #{{ section_id }} .iqw-wheel__labels text:nth-child(8),
+    #{{ section_id }} .iqw-wheel__labels text:nth-child(10) {
+      fill: #111;
+    }
+
+    #{{ section_id }} .iqw-wheel__hub {
+      fill: rgb(var(--color-background));
+    }
+
+    #{{ section_id }} .iqw-wheel__hub-ring {
+      fill: none;
+      stroke: rgb(var(--color-border));
+      stroke-width: 3;
+    }
+
+    #{{ section_id }} .iqw-wheel-tap {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 6;
+      display: grid;
+      place-items: center;
+      width: 9.5rem;
+      height: 9.5rem;
+      padding: 1rem;
+      border: .3rem solid rgb(var(--color-border));
+      border-radius: 50%;
+      background: rgb(var(--color-background));
+      color: rgb(var(--color-foreground));
+      box-shadow: 0 .8rem 2.4rem rgba(0, 0, 0, .17);
+      cursor: pointer;
+      transform: translate(-50%, -50%);
+    }
+
+    #{{ section_id }} .iqw-wheel-tap span {
+      font-size: 2.5rem;
+      line-height: 1;
+    }
+
+    #{{ section_id }} .iqw-wheel-tap strong {
+      max-width: 7rem;
+      font-size: .85rem;
+      line-height: 1.1;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    #{{ section_id }} .iqw-wheel-tap.is-hidden {
+      display: none;
+    }
+
+    #{{ section_id }} .iqw-wheel-loading {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 8;
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      max-width: calc(100% - 3rem);
+      padding: 1.2rem 1.6rem;
+      border: 1px solid rgb(var(--color-border));
+      border-radius: 999px;
+      background: rgb(var(--color-background));
+      box-shadow: 0 1rem 3rem rgba(0, 0, 0, .17);
+      text-align: center;
+      transform: translate(-50%, -50%);
+    }
+
+    #{{ section_id }} .iqw-wheel-loading > span,
+    #{{ section_id }} .iqw-button-loader {
+      display: inline-block;
+      width: 1.8rem;
+      height: 1.8rem;
+      border: .25rem solid currentColor;
+      border-right-color: transparent;
+      border-radius: 50%;
+      animation: iqw-loader .7s linear infinite;
+    }
+
+    @keyframes iqw-loader {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    #{{ section_id }} .iqw-wheel-legend-details {
+      width: min(100%, 54rem);
+      margin-top: 1.5rem;
+    }
+
+    #{{ section_id }} .iqw-wheel-legend-details summary {
+      cursor: pointer;
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-align: center;
+      text-decoration: underline;
+    }
+
+    #{{ section_id }} .iqw-wheel-legend {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: .7rem;
+      margin-top: 1.2rem;
+    }
+
+    #{{ section_id }} .iqw-wheel-legend span {
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+      font-size: 1.1rem;
+    }
+
+    #{{ section_id }} .iqw-wheel-legend b {
+      display: grid;
+      place-items: center;
+      flex: 0 0 2.2rem;
+      width: 2.2rem;
+      height: 2.2rem;
+      border-radius: 50%;
+      background: rgb(var(--color-button));
+      color: rgb(var(--color-button-text));
+    }
+
+    #{{ section_id }} .iqw-wheel-legend .is-missed b {
+      background: #969a9d;
+      color: #111;
+    }
+
+    #{{ section_id }} .iqw-result {
+      max-width: 96rem;
+      margin: auto;
+      text-align: center;
+    }
+
+    #{{ section_id }} .iqw-won-label {
+      margin-bottom: .4rem;
+    }
+
+    #{{ section_id }} .iqw-code-card {
+      display: grid;
+      gap: 1rem;
+      max-width: 68rem;
+      margin: 2.5rem auto;
+      padding: 2.5rem;
+      border: 2px dashed rgb(var(--color-button));
+      border-radius: 1.2rem;
+      background: rgb(var(--color-secondary-background));
+    }
+
+    #{{ section_id }} .iqw-code-card strong {
+      overflow-wrap: anywhere;
+      font-size: clamp(2.5rem, 7vw, 4.2rem);
+      letter-spacing: .06em;
+    }
+
+    #{{ section_id }} .iqw-code-card .btn {
+      justify-self: center;
+    }
+
+    #{{ section_id }} .iqw-redemption-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin: 3rem 0;
+    }
+
+    #{{ section_id }} .iqw-redemption-card {
+      display: flex;
+      flex-direction: column;
+      padding: 2.5rem;
+      border: 1px solid rgb(var(--color-border));
+      border-radius: 1.2rem;
+      background: rgb(var(--color-background));
+    }
+
+    #{{ section_id }} .iqw-redemption-card > span {
+      font-size: 3.5rem;
+    }
+
+    #{{ section_id }} .iqw-redemption-card p {
+      flex: 1 1 auto;
+    }
+
+    #{{ section_id }} .iqw-claim-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin: 2.5rem 0;
+    }
+
+    #{{ section_id }} .iqw-claim-grid > div,
+    #{{ section_id }} .iqw-team-note {
+      display: grid;
+      gap: .6rem;
+      padding: 2rem;
+      border: 1px solid rgb(var(--color-border));
+      border-radius: 1rem;
+      background: rgb(var(--color-secondary-background));
+    }
+
+    #{{ section_id }} .iqw-claim-grid strong {
+      overflow-wrap: anywhere;
+    }
+
+    #{{ section_id }} .iqw-important {
+      max-width: 75rem;
+      margin: 2rem auto;
+      padding: 1.7rem;
+      border: 1px solid #d79b00;
+      border-radius: 1rem;
+      background: #fff7db;
+      color: #563d00;
+    }
+
+    #{{ section_id }} .iqw-important p {
+      margin-bottom: .5rem;
+    }
+
+    #{{ section_id }} .iqw-team-note {
+      max-width: 75rem;
+      margin: 2rem auto 0;
+    }
+
+    #{{ section_id }} .iqw-missed,
+    #{{ section_id }} .iqw-expired {
+      max-width: 68rem;
+      margin: auto;
+      padding: clamp(3rem, 7vw, 7rem);
+      border: 1px solid rgb(var(--color-border));
+      border-radius: 1.4rem;
+      background: rgb(var(--color-secondary-background));
+      text-align: center;
+    }
+
+    #{{ section_id }} .iqw-missed > span,
+    #{{ section_id }} .iqw-expired > span {
+      display: grid;
+      place-items: center;
+      width: 7rem;
+      height: 7rem;
+      margin: 0 auto 2rem;
+      border-radius: 50%;
+      background: #969a9d;
+      color: #fff;
+      font-size: 3.5rem;
+    }
+
+    #{{ section_id }} .iqw-message {
+      margin: 2rem;
+      padding: 1.3rem 1.5rem;
+      border: 1px solid rgb(var(--color-border));
+      border-radius: .8rem;
+      background: rgb(var(--color-secondary-background));
+      text-align: center;
+      font-weight: 700;
+    }
+
+    #{{ section_id }} .iqw-message.is-error {
+      border-color: #b42318;
+      color: #b42318;
+    }
+
+    #{{ section_id }} .iqw-message.is-success {
+      border-color: #2e7d32;
+      color: #2e7d32;
+    }
+
+    #{{ section_id }} .iqw-staff {
+      max-width: 92rem;
+      margin: auto;
+      padding: clamp(2rem, 5vw, 5rem);
+    }
+
+    #{{ section_id }} .iqw-staff-result {
+      display: grid;
+      gap: 1.5rem;
+      max-width: 68rem;
+      margin: 3rem auto 0;
+    }
+
+    #{{ section_id }} .iqw-staff-result dl {
+      display: grid;
+      gap: 1px;
+      margin: 0;
+      background: rgb(var(--color-border));
+    }
+
+    #{{ section_id }} .iqw-staff-result dl > div {
+      display: grid;
+      grid-template-columns: 15rem 1fr;
+      gap: 1rem;
+      padding: 1.4rem;
+      background: rgb(var(--color-background));
+    }
+
+    #{{ section_id }} .iqw-staff-result dd {
+      margin: 0;
+      overflow-wrap: anywhere;
+      font-weight: 700;
+    }
+
+    #{{ section_id }} .iqw-staff-success {
+      max-width: 68rem;
+      margin: 3rem auto 0;
+      padding: 3rem;
+      border: 1px solid #2e7d32;
+      border-radius: 1rem;
+      background: #edf7ed;
+      color: #1b5e20;
+      text-align: center;
+    }
+
+    #{{ section_id }} .iqw-staff-success > span {
+      display: grid;
+      place-items: center;
+      width: 6rem;
+      height: 6rem;
+      margin: auto;
+      border-radius: 50%;
+      background: #2e7d32;
+      color: #fff;
+      font-size: 3rem;
+    }
+
+
+    #{{ section_id }} .iqw-icon {
+      display: inline-grid;
+      place-items: center;
+      color: currentColor;
+    }
+
+    #{{ section_id }} .iqw-icon svg,
+    #{{ section_id }} .iqw-button-icon svg {
+      display: block;
+      width: 1em;
+      height: 1em;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    #{{ section_id }} .iqw-icon--large {
+      font-size: 3.5rem;
+    }
+
+    #{{ section_id }} .iqw-icon--spin {
+      font-size: 2.5rem;
+      line-height: 1;
+    }
+
+    #{{ section_id }} .iqw-button-icon {
+      display: inline-grid;
+      place-items: center;
+      margin-right: .7rem;
+      font-size: 1.6rem;
+      vertical-align: middle;
+    }
+
+    #{{ section_id }} .iqw-product-instructions {
+      max-width: 75rem;
+      margin: 2.5rem auto;
+      padding: clamp(2rem, 5vw, 3.5rem);
+      border: 1px solid rgb(var(--color-border));
+      border-radius: 1.2rem;
+      background: rgb(var(--color-secondary-background));
+      text-align: left;
+    }
+
+    #{{ section_id }} .iqw-product-instructions__icon {
+      display: grid;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    #{{ section_id }} .iqw-product-instructions h3 {
+      text-align: center;
+    }
+
+    #{{ section_id }} .iqw-product-instructions ol {
+      display: grid;
+      gap: 1rem;
+      margin: 2rem 0;
+      padding-left: 2.5rem;
+    }
+
+    #{{ section_id }} .iqw-product-instructions li {
+      padding-left: .5rem;
+      line-height: 1.55;
+    }
+
+    #{{ section_id }} .iqw-product-instructions li strong {
+      font-weight: 800;
+    }
+
+    #{{ section_id }} .iqw-product-instructions [data-product-link] {
+      margin-top: 1.5rem;
+      text-align: center;
+    }
+
+
+
+    #{{ section_id }} .iqw-product-instructions__warning {
+      margin: 1.5rem 0 0;
+      padding: 1.4rem 1.6rem;
+      border: 1px solid #b42318;
+      border-radius: .9rem;
+      background: #fff1f0;
+      color: #8a1c13;
+      line-height: 1.55;
+      text-align: left;
+    }
+
+    #{{ section_id }} [data-discount-code-inline],
+    #{{ section_id }} [data-variant-instruction] {
+      overflow-wrap: anywhere;
+    }
+
+    #{{ section_id }} .iqw-wheel-stage,
+    #{{ section_id }} .iqw-wheel,
+    #{{ section_id }} .iqw-spin-layout > *,
+    #{{ section_id }} .iqw-register-layout > * {
+      min-width: 0;
+    }
+
+    @media (max-width: 989px) {
+      #{{ section_id }} .iqw-register-layout,
+      #{{ section_id }} .iqw-spin-layout {
+        grid-template-columns: 1fr;
+      }
+
+      #{{ section_id }} .iqw-spin-copy {
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 749px) {
+      #{{ section_id }} .iqw-progress span {
+        min-height: 4.8rem;
+        padding: .7rem .4rem;
+        font-size: .95rem;
+      }
+
+      #{{ section_id }} .iqw-view {
+        padding: 2rem 1.2rem;
+      }
+
+      #{{ section_id }} .iqw-spin-copy {
+        order: 1;
+      }
+
+      #{{ section_id }} .iqw-wheel-stage {
+        order: 2;
+        padding-top: 2.4rem;
+      }
+
+      #{{ section_id }} .iqw-desktop-spin-button,
+      #{{ section_id }} .iqw-spin-copy .iqw-rules {
+        display: none;
+      }
+
+      #{{ section_id }} .iqw-wheel {
+        width: min(100%, 38rem);
+      }
+
+      #{{ section_id }} .iqw-wheel-tap {
+        width: 8.5rem;
+        height: 8.5rem;
+      }
+
+      #{{ section_id }} .iqw-wheel__labels text {
+        font-size: 15px;
+      }
+
+      #{{ section_id }} .iqw-redemption-grid,
+      #{{ section_id }} .iqw-claim-grid,
+      #{{ section_id }} .iqw-restore form,
+      #{{ section_id }} .iqw-staff-form {
+        grid-template-columns: 1fr;
+      }
+
+      #{{ section_id }} .iqw-staff-result dl > div {
+        grid-template-columns: 1fr;
+      }
+
+      #{{ section_id }} {
+        overflow-x: hidden;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+      }
+
+      #{{ section_id }} .page-width {
+        padding-right: 1rem;
+        padding-left: 1rem;
+      }
+
+      #{{ section_id }} .iqw-panel {
+        border-radius: 1rem;
+      }
+
+      #{{ section_id }} .iqw-wheel-stage {
+        width: 100%;
+        padding-right: 0;
+        padding-left: 0;
+      }
+
+      #{{ section_id }} .iqw-wheel {
+        width: min(92vw, 36rem);
+        max-width: 100%;
+      }
+
+      #{{ section_id }} .iqw-wheel-tap {
+        width: 7.8rem;
+        height: 7.8rem;
+        padding: .7rem;
+      }
+
+      #{{ section_id }} .iqw-wheel-tap strong {
+        max-width: 6.2rem;
+        font-size: .78rem;
+      }
+
+      #{{ section_id }} .iqw-pointer {
+        top: .8rem;
+        border-right-width: 1.4rem;
+        border-left-width: 1.4rem;
+        border-top-width: 2.8rem;
+      }
+
+      #{{ section_id }} .iqw-product-instructions,
+      #{{ section_id }} .iqw-redemption-card,
+      #{{ section_id }} .iqw-code-card,
+      #{{ section_id }} .iqw-important,
+      #{{ section_id }} .iqw-team-note {
+        padding: 1.6rem;
+      }
+
+      #{{ section_id }} .iqw-product-instructions ol {
+        padding-left: 2rem;
+      }
+
+      #{{ section_id }} .btn {
+        min-height: 4.8rem;
+        white-space: normal;
+        text-align: center;
+      }
+    }
+  </style>
+
+  <script>
+    (() => {
+      const root = document.getElementById({{ section_id | json }});
+
+      if (!root || root.dataset.initialized === 'true') return;
+      root.dataset.initialized = 'true';
+
+      const configElement = root.querySelector('[data-iqw-config]');
+      if (!configElement) return;
+
+      const cfg = JSON.parse(configElement.textContent);
+      const text = cfg.texts;
+
+      const apiUrl = String(cfg.apiUrl || '')
+        .trim()
+        .replace(/\/dev(?:\?.*)?$/, '/exec');
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const staffMode = urlParams.get('staff') === '1';
+
+      const customerOnly = root.querySelector('[data-customer-only]');
+      const customerApp = root.querySelector('[data-customer-app]');
+      const staffApp = root.querySelector('[data-staff-app]');
+      const expiredView = root.querySelector('[data-expired-view]');
+
+      const campaignEnd = new Date(cfg.campaignEnd);
+      const campaignExpired =
+        Number.isFinite(campaignEnd.getTime()) &&
+        new Date().getTime() > campaignEnd.getTime();
+
+      if (staffMode) {
+        if (customerOnly) customerOnly.hidden = true;
+        if (customerApp) customerApp.hidden = true;
+        if (expiredView) expiredView.hidden = true;
+        if (staffApp) staffApp.hidden = false;
+      } else if (campaignExpired) {
+        if (customerOnly) customerOnly.hidden = true;
+        if (customerApp) customerApp.hidden = true;
+        if (staffApp) staffApp.hidden = true;
+        if (expiredView) expiredView.hidden = false;
+      }
+
+      const customerMessage = root.querySelector('[data-message]');
+      const staffMessage = root.querySelector('[data-staff-message]');
+
+      const prizeConfiguration = {
+        'IQD-EPD-LAK': {
+          discountCode: 'VDHRED2026',
+          productUrl: 'https://iq-dogsport.de/products/iq-dogsport-aufkleber',
+          variantDe: '8,5x9cm – Rot',
+          variantEn: '8.5x9cm – Red'
+        },
+
+        'IQG-EPD-LAK': {
+          discountCode: 'VDHRED2026',
+          productUrl: 'https://iq-dogsport.de/products/iq-dogsport-aufkleber',
+          variantDe: '8,5x9cm – Rot',
+          variantEn: '8.5x9cm – Red'
+        },
+
+        'IQD-EPD-LAK.WEISS': {
+          discountCode: 'VDHWHITE2026',
+          productUrl: 'https://iq-dogsport.de/products/iq-dogsport-aufkleber',
+          variantDe: 'weiß – 8,5x9cm',
+          variantEn: 'White – 8.5x9cm'
+        },
+
+        'IQD-EPD-LAK.SCHWARZ': {
+          discountCode: 'VDHBLACK2026',
+          productUrl: 'https://iq-dogsport.de/products/iq-dogsport-aufkleber',
+          variantDe: 'schwarz – 8,5x9cm',
+          variantEn: 'Black – 8.5x9cm'
+        },
+
+        'IQD-ZBU-PCF.WH': {
+          discountCode: 'VDHCLICKWHITE2026',
+          productUrl: 'https://iq-dogsport.de/products/ring-clicker-finger-mounted-igp-training',
+          variantDe: 'Weiß',
+          variantEn: 'White'
+        },
+
+        'IQD-ZBU-PCF.WHITE': {
+          discountCode: 'VDHCLICKWHITE2026',
+          productUrl: 'https://iq-dogsport.de/products/ring-clicker-finger-mounted-igp-training',
+          variantDe: 'Weiß',
+          variantEn: 'White'
+        },
+
+        'IQD-ZBU-PCF.BK': {
+          discountCode: 'VDHCLICKBLACK2026',
+          productUrl: 'https://iq-dogsport.de/products/ring-clicker-finger-mounted-igp-training',
+          variantDe: 'Schwarz',
+          variantEn: 'Black'
+        },
+
+        'IQD-ZBU-PCF.BL': {
+          discountCode: 'VDHCLICKBLACK2026',
+          productUrl: 'https://iq-dogsport.de/products/ring-clicker-finger-mounted-igp-training',
+          variantDe: 'Schwarz',
+          variantEn: 'Black'
+        },
+
+        'IQD-ZBU-PCF.SCHWARZ': {
+          discountCode: 'VDHCLICKBLACK2026',
+          productUrl: 'https://iq-dogsport.de/products/ring-clicker-finger-mounted-igp-training',
+          variantDe: 'Schwarz',
+          variantEn: 'Black'
+        }
+      };
+
+      const getPrizeCode = (prize) => {
+        return String(
+          prize?.code ||
+          prize?.prizeCode ||
+          prize?.productCode ||
+          ''
+        ).trim();
+      };
+
+      const getPrizeConfiguration = (prize) => {
+        const code = getPrizeCode(prize).toUpperCase();
+        const exactMatch = prizeConfiguration[code];
+
+        if (exactMatch) return exactMatch;
+
+        const name = String(prize?.name || '').toLowerCase();
+        const isRingclicker =
+          name.includes('ringclicker') ||
+          name.includes('ring clicker');
+
+        if (isRingclicker && (name.includes('schwarz') || name.includes('black'))) {
+          return {
+            discountCode: 'VDHCLICKBLACK2026',
+            productUrl: 'https://iq-dogsport.de/products/ring-clicker-finger-mounted-igp-training',
+            variantDe: 'Schwarz',
+            variantEn: 'Black'
+          };
+        }
+
+        if (isRingclicker && (name.includes('weiß') || name.includes('weiss') || name.includes('white'))) {
+          return {
+            discountCode: 'VDHCLICKWHITE2026',
+            productUrl: 'https://iq-dogsport.de/products/ring-clicker-finger-mounted-igp-training',
+            variantDe: 'Weiß',
+            variantEn: 'White'
+          };
+        }
+
+        return null;
+      };
+
+      const getDiscountCode = (prize) => {
+        return getPrizeConfiguration(prize)?.discountCode || '';
+      };
+
+      const buildDiscountProductUrl = (configuration) => {
+        if (!configuration?.discountCode || !configuration?.productUrl) {
+          return '';
+        }
+
+        const productUrl = new URL(configuration.productUrl);
+        const redirectPath = productUrl.pathname + productUrl.search;
+
+        return (
+          productUrl.origin +
+          '/discount/' +
+          encodeURIComponent(configuration.discountCode) +
+          '?redirect=' +
+          encodeURIComponent(redirectPath)
+        );
+      };
+
+      const isMissedPrize = (prize) => {
+        const slot = Number(prize?.slot || 0);
+        const code = getPrizeCode(prize).toUpperCase();
+        const name = String(prize?.name || '').toLowerCase();
+
+        return (
+          slot === 10 ||
+          code === 'MISSED' ||
+          name.includes('leider daneben') ||
+          name.includes('missed it')
+        );
+      };
+
+      const showMessage = (element, value, type = '') => {
+        if (!element) return;
+
+        element.hidden = !value;
+        element.textContent = value || '';
+        element.classList.toggle('is-error', type === 'error');
+        element.classList.toggle('is-success', type === 'success');
+      };
+
+      const setButtonLoading = (
+        button,
+        loading,
+        loadingText,
+        normalText
+      ) => {
+        if (!button) return;
+
+        const label = button.querySelector('[data-button-text]');
+        const loader = button.querySelector('.iqw-button-loader');
+
+        button.disabled = loading;
+
+        if (label) {
+          label.textContent = loading ? loadingText : normalText;
+        }
+
+        if (loader) {
+          loader.hidden = !loading;
+        }
+      };
+
+      const jsonp = (payload) => {
+        return new Promise((resolve, reject) => {
+          if (!apiUrl.includes('script.google.com/macros/s/')) {
+            reject(new Error('Apps Script URL missing.'));
+            return;
+          }
+
+          const callbackName =
+            'iqw_' +
+            Date.now() +
+            '_' +
+            Math.random().toString(36).slice(2);
+
+          const script = document.createElement('script');
+          const requestUrl = new URL(apiUrl);
+
+          Object.entries(payload).forEach(([key, value]) => {
+            requestUrl.searchParams.set(
+              key,
+              String(value ?? '')
+            );
+          });
+
+          requestUrl.searchParams.set('callback', callbackName);
+
+          const cleanup = () => {
+            delete window[callbackName];
+            script.remove();
+          };
+
+          const timeout = window.setTimeout(() => {
+            cleanup();
+            reject(new Error(text.connectionError));
+          }, 15000);
+
+          window[callbackName] = (data) => {
+            window.clearTimeout(timeout);
+            cleanup();
+            resolve(data);
+          };
+
+          script.onerror = () => {
+            window.clearTimeout(timeout);
+            cleanup();
+            reject(new Error(text.connectionError));
+          };
+
+          script.src = requestUrl.toString();
+          document.head.appendChild(script);
+        });
+      };
+
+      const views = [...root.querySelectorAll('[data-view]')];
+      const progressItems = [
+        ...root.querySelectorAll('[data-progress]')
+      ];
+
+      const steps = ['register', 'spin', 'claim'];
+
+      const showView = (name) => {
+        views.forEach((view) => {
+          view.classList.toggle(
+            'is-active',
+            view.dataset.view === name
+          );
+        });
+
+        const currentIndex = steps.indexOf(name);
+
+        progressItems.forEach((item, index) => {
+          item.classList.toggle(
+            'is-active',
+            index === currentIndex
+          );
+
+          item.classList.toggle(
+            'is-done',
+            index < currentIndex
+          );
+        });
+
+        if (customerApp) {
+          const top =
+            customerApp.getBoundingClientRect().top +
+            window.scrollY -
+            105;
+
+          window.scrollTo({
+            top: Math.max(0, top),
+            behavior: 'smooth'
+          });
+        }
+      };
+
+      const customerState = {
+        participantId: '',
+        firstName: '',
+        email: '',
+        claimCode: '',
+        prize: null,
+        rotation: 0,
+        spinning: false
+      };
+
+      const saveCustomerState = () => {
+        try {
+          localStorage.setItem(
+            cfg.storageKey,
+            JSON.stringify({
+              participantId: customerState.participantId,
+              firstName: customerState.firstName,
+              email: customerState.email,
+              claimCode: customerState.claimCode
+            })
+          );
+        } catch (error) {}
+      };
+
+      const showClaim = (data) => {
+        customerState.participantId =
+          data.participantId ||
+          customerState.participantId;
+
+        customerState.firstName =
+          data.firstName ||
+          customerState.firstName;
+
+        customerState.email =
+          data.email ||
+          customerState.email;
+
+        customerState.claimCode =
+          data.claimCode ||
+          customerState.claimCode;
+
+        customerState.prize =
+          data.prize ||
+          customerState.prize;
+
+        const missed = isMissedPrize(customerState.prize);
+        const winningResult =
+          root.querySelector('[data-winning-result]');
+        const missedResult =
+          root.querySelector('[data-missed-result]');
+
+        if (winningResult) {
+          winningResult.hidden = missed;
+        }
+
+        if (missedResult) {
+          missedResult.hidden = !missed;
+        }
+
+        if (!missed) {
+          const configuration =
+            getPrizeConfiguration(customerState.prize);
+
+          const discountCode =
+            configuration?.discountCode || '';
+
+          const productUrl =
+            buildDiscountProductUrl(configuration);
+
+          const variantInstruction =
+            document.documentElement.lang
+              .toLowerCase()
+              .startsWith('de')
+              ? configuration?.variantDe || ''
+              : configuration?.variantEn || '';
+
+          root.querySelector(
+            '[data-claim-name]'
+          ).textContent =
+            customerState.firstName;
+
+          root.querySelector(
+            '[data-prize-name]'
+          ).textContent =
+            customerState.prize?.name || '';
+
+          root.querySelector(
+            '[data-discount-code]'
+          ).textContent =
+            discountCode;
+
+          const inlineDiscountCode =
+            root.querySelector('[data-discount-code-inline]');
+
+          if (inlineDiscountCode) {
+            inlineDiscountCode.textContent = discountCode;
+          }
+
+          root.querySelector(
+            '[data-variant-instruction]'
+          ).textContent =
+            variantInstruction;
+
+          const productLink =
+            root.querySelector('[data-product-link]');
+
+          if (productLink) {
+            productLink.href = productUrl || '#';
+            productLink.hidden = !productUrl;
+          }
+
+          root.querySelector(
+            '[data-claim-code]'
+          ).textContent =
+            customerState.claimCode;
+
+          root.querySelector(
+            '[data-claim-status]'
+          ).textContent =
+            data.status === 'REDEEMED'
+              ? text.redeemed
+              : text.reserved;
+
+          root.querySelector(
+            '[data-instruction]'
+          ).textContent =
+            customerState.prize?.instruction || '';
+        }
+
+        saveCustomerState();
+        showView('claim');
+      };
+
+      const restoreClaim = async (claimCode) => {
+        const data = await jsonp({
+          action: 'claim',
+          claimCode
+        });
+
+        if (!data.success) {
+          throw new Error(
+            data.message || 'Claim not found.'
+          );
+        }
+
+        showClaim(data);
+      };
+
+      const registerForm =
+        root.querySelector('[data-register-form]');
+
+      registerForm?.addEventListener(
+        'submit',
+        async (event) => {
+          event.preventDefault();
+
+          if (campaignExpired) return;
+
+          showMessage(customerMessage, '');
+
+          const formData = new FormData(registerForm);
+
+          const firstName = String(
+            formData.get('firstName') || ''
+          ).trim();
+
+          const email = String(
+            formData.get('email') || ''
+          ).trim().toLowerCase();
+
+          const newsletterConsent =
+            formData.get('newsletterConsent') === 'true';
+
+          const button =
+            root.querySelector('[data-register-button]');
+
+          if (!firstName) {
+            showMessage(
+              customerMessage,
+              text.missingName,
+              'error'
+            );
+            return;
+          }
+
+          if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            showMessage(
+              customerMessage,
+              text.missingEmail,
+              'error'
+            );
+            return;
+          }
+
+          setButtonLoading(
+            button,
+            true,
+            text.loading,
+            text.start
+          );
+
+          try {
+            const data = await jsonp({
+              action: 'register',
+              firstName,
+              email,
+              newsletterConsent
+            });
+
+            if (!data.success) {
+              if (data.claimCode) {
+                await restoreClaim(data.claimCode);
+                return;
+              }
+
+              throw new Error(
+                data.message || 'Registration failed.'
+              );
+            }
+
+            customerState.participantId =
+              data.participantId;
+
+            customerState.firstName =
+              data.firstName || firstName;
+
+            customerState.email =
+              data.email || email;
+
+            saveCustomerState();
+
+            root.querySelector(
+              '[data-customer-name]'
+            ).textContent =
+              ', ' + customerState.firstName + '!';
+
+            showView('spin');
+          } catch (error) {
+            showMessage(
+              customerMessage,
+              error.message,
+              'error'
+            );
+          } finally {
+            setButtonLoading(
+              button,
+              false,
+              text.loading,
+              text.start
+            );
+          }
+        }
+      );
+
+      root
+        .querySelector('[data-restore-form]')
+        ?.addEventListener('submit', async (event) => {
+          event.preventDefault();
+
+          const claimCode = String(
+            new FormData(event.currentTarget)
+              .get('claimCode') || ''
+          ).trim();
+
+          if (!claimCode) {
+            showMessage(
+              customerMessage,
+              text.missingClaim,
+              'error'
+            );
+            return;
+          }
+
+          try {
+            await restoreClaim(claimCode);
+          } catch (error) {
+            showMessage(
+              customerMessage,
+              error.message,
+              'error'
+            );
+          }
+        });
+
+      const wheel = root.querySelector('[data-wheel]');
+      const wheelLoading =
+        root.querySelector('[data-wheel-loading]');
+      const wheelTap =
+        root.querySelector('.iqw-wheel-tap');
+
+      const spinTriggers = [
+        ...root.querySelectorAll('[data-spin-trigger]')
+      ];
+
+      const setSpinLoading = (loading) => {
+        spinTriggers.forEach((trigger) => {
+          trigger.disabled = loading;
+
+          if (trigger.matches('.btn')) {
+            setButtonLoading(
+              trigger,
+              loading,
+              text.determining,
+              text.spin
+            );
+          }
+        });
+
+        wheel?.classList.toggle(
+          'is-spinning',
+          loading
+        );
+
+        wheelTap?.classList.toggle(
+          'is-hidden',
+          loading
+        );
+      };
+
+      const startSpin = async () => {
+        if (
+          campaignExpired ||
+          customerState.spinning ||
+          !customerState.participantId
+        ) {
+          return;
+        }
+
+        customerState.spinning = true;
+        showMessage(customerMessage, '');
+
+        if (wheelLoading) {
+          wheelLoading.hidden = false;
+        }
+
+        setSpinLoading(true);
+
+        try {
+          const data = await jsonp({
+            action: 'spin',
+            participantId: customerState.participantId
+          });
+
+          if (!data.success) {
+            if (data.claimCode) {
+              if (wheelLoading) {
+                wheelLoading.hidden = true;
+              }
+
+              await restoreClaim(data.claimCode);
+              return;
+            }
+
+            throw new Error(
+              data.message || 'Spin failed.'
+            );
+          }
+
+          if (wheelLoading) {
+            wheelLoading.hidden = true;
+          }
+
+          const slot = Math.min(
+            10,
+            Math.max(
+              1,
+              Number(data.prize?.slot || 1)
+            )
+          );
+
+          const segmentAngle = 360 / 10;
+          const segmentCenter =
+            ((slot - 1) * segmentAngle) +
+            (segmentAngle / 2);
+
+          const additionalTurns = 2160;
+
+          const targetRotation =
+            customerState.rotation +
+            additionalTurns +
+            (360 - segmentCenter);
+
+          customerState.rotation = targetRotation;
+
+          if (wheel) {
+            wheel.style.transform =
+              'rotate(' +
+              targetRotation +
+              'deg)';
+          }
+
+          window.setTimeout(() => {
+            customerState.claimCode =
+              data.claimCode || '';
+
+            customerState.prize =
+              data.prize || null;
+
+            customerState.spinning = false;
+            setSpinLoading(false);
+            showClaim(data);
+          }, Number(cfg.animationMs || 5200));
+        } catch (error) {
+          if (wheelLoading) {
+            wheelLoading.hidden = true;
+          }
+
+          customerState.spinning = false;
+          setSpinLoading(false);
+
+          showMessage(
+            customerMessage,
+            error.message,
+            'error'
+          );
+        }
+      };
+
+      spinTriggers.forEach((trigger) => {
+        trigger.addEventListener(
+          'click',
+          startSpin
+        );
+
+        if (trigger.matches('[role="button"]')) {
+          trigger.addEventListener(
+            'keydown',
+            (event) => {
+              if (
+                event.key === 'Enter' ||
+                event.key === ' '
+              ) {
+                event.preventDefault();
+                startSpin();
+              }
+            }
+          );
+        }
+      });
+
+      root
+        .querySelector('[data-copy-discount]')
+        ?.addEventListener(
+          'click',
+          async (event) => {
+            const button = event.currentTarget;
+
+            const code = String(
+              root.querySelector(
+                '[data-discount-code]'
+              )?.textContent || ''
+            ).trim();
+
+            if (!code) return;
+
+            try {
+              await navigator.clipboard.writeText(code);
+            } catch (error) {
+              const textarea =
+                document.createElement('textarea');
+
+              textarea.value = code;
+              document.body.appendChild(textarea);
+              textarea.select();
+              document.execCommand('copy');
+              textarea.remove();
+            }
+
+            button.textContent = text.copied;
+
+            window.setTimeout(() => {
+              button.textContent = text.copyCode;
+            }, 1600);
+          }
+        );
+
+      try {
+        const saved = JSON.parse(
+          localStorage.getItem(
+            cfg.storageKey
+          ) || '{}'
+        );
+
+        if (
+          saved.claimCode &&
+          !staffMode
+        ) {
+          restoreClaim(saved.claimCode).catch(() => {
+            localStorage.removeItem(cfg.storageKey);
+          });
+        } else if (saved.participantId) {
+          customerState.participantId =
+            saved.participantId;
+
+          customerState.firstName =
+            saved.firstName || '';
+
+          customerState.email =
+            saved.email || '';
+        }
+      } catch (error) {}
+
+      const staffLogin =
+        root.querySelector('[data-staff-login]');
+      const staffWorkspace =
+        root.querySelector('[data-staff-workspace]');
+      const staffSearch =
+        root.querySelector('[data-staff-search]');
+      const staffResult =
+        root.querySelector('[data-staff-result]');
+      const staffSuccess =
+        root.querySelector('[data-staff-success]');
+      const staffRedeem =
+        root.querySelector('[data-staff-redeem]');
+
+      let staffPin =
+        sessionStorage.getItem('iqwStaffPin') || '';
+
+      let activeClaim = null;
+
+      const openStaffWorkspace = () => {
+        if (staffLogin) {
+          staffLogin.hidden = true;
+        }
+
+        if (staffWorkspace) {
+          staffWorkspace.hidden = false;
+        }
+
+        root
+          .querySelector('[data-staff-code]')
+          ?.focus();
+      };
+
+      if (staffMode && staffPin) {
+        openStaffWorkspace();
+      }
+
+      staffLogin?.addEventListener(
+        'submit',
+        (event) => {
+          event.preventDefault();
+
+          const value = String(
+            new FormData(staffLogin)
+              .get('staffPin') || ''
+          ).trim();
+
+          if (!value) {
+            showMessage(
+              staffMessage,
+              text.missingPin,
+              'error'
+            );
+            return;
+          }
+
+          staffPin = value;
+          sessionStorage.setItem(
+            'iqwStaffPin',
+            staffPin
+          );
+
+          showMessage(staffMessage, '');
+          openStaffWorkspace();
+        }
+      );
+
+      staffSearch?.addEventListener(
+        'submit',
+        async (event) => {
+          event.preventDefault();
+          showMessage(staffMessage, '');
+
+          const claimCode = String(
+            new FormData(staffSearch)
+              .get('claimCode') || ''
+          ).trim();
+
+          if (!claimCode) {
+            showMessage(
+              staffMessage,
+              text.missingClaim,
+              'error'
+            );
+            return;
+          }
+
+          try {
+            const data = await jsonp({
+              action: 'claim',
+              claimCode
+            });
+
+            if (!data.success) {
+              throw new Error(
+                data.message || 'Claim not found.'
+              );
+            }
+
+            activeClaim = data;
+
+            const missed =
+              isMissedPrize(data.prize);
+
+            if (staffSuccess) {
+              staffSuccess.hidden = true;
+            }
+
+            if (staffResult) {
+              staffResult.hidden = false;
+            }
+
+            root.querySelector(
+              '[data-staff-customer]'
+            ).textContent =
+              data.firstName || '—';
+
+            root.querySelector(
+              '[data-staff-prize]'
+            ).textContent =
+              data.prize?.name || '—';
+
+            root.querySelector(
+              '[data-staff-discount]'
+            ).textContent =
+              missed
+                ? '—'
+                : getDiscountCode(data.prize);
+
+            root.querySelector(
+              '[data-staff-status]'
+            ).textContent =
+              data.status === 'REDEEMED'
+                ? text.redeemed
+                : text.reserved;
+
+            if (
+              missed ||
+              data.status === 'REDEEMED'
+            ) {
+              staffRedeem.disabled = true;
+            } else {
+              staffRedeem.disabled = false;
+            }
+          } catch (error) {
+            if (staffResult) {
+              staffResult.hidden = true;
+            }
+
+            showMessage(
+              staffMessage,
+              error.message,
+              'error'
+            );
+          }
+        }
+      );
+
+      staffRedeem?.addEventListener(
+        'click',
+        async () => {
+          if (
+            !activeClaim ||
+            activeClaim.status === 'REDEEMED' ||
+            isMissedPrize(activeClaim.prize)
+          ) {
+            return;
+          }
+
+          const orderNumber = String(
+            root.querySelector(
+              '[data-staff-order]'
+            )?.value || ''
+          ).trim();
+
+          setButtonLoading(
+            staffRedeem,
+            true,
+            text.loading,
+            text.issue
+          );
+
+          try {
+            const data = await jsonp({
+              action: 'redeem',
+              claimCode: activeClaim.claimCode,
+              orderNumber,
+              staffPin,
+              redeemedBy: 'Kasse'
+            });
+
+            if (!data.success) {
+              throw new Error(
+                data.message ||
+                'Redemption failed.'
+              );
+            }
+
+            if (staffResult) {
+              staffResult.hidden = true;
+            }
+
+            if (staffSuccess) {
+              staffSuccess.hidden = false;
+            }
+
+            showMessage(staffMessage, '');
+          } catch (error) {
+            showMessage(
+              staffMessage,
+              error.message,
+              'error'
+            );
+          } finally {
+            setButtonLoading(
+              staffRedeem,
+              false,
+              text.loading,
+              text.issue
+            );
+          }
+        }
+      );
+
+      root
+        .querySelector('[data-staff-next]')
+        ?.addEventListener('click', () => {
+          activeClaim = null;
+
+          if (staffSuccess) {
+            staffSuccess.hidden = true;
+          }
+
+          if (staffResult) {
+            staffResult.hidden = true;
+          }
+
+          staffSearch?.reset();
+
+          const orderInput =
+            root.querySelector(
+              '[data-staff-order]'
+            );
+
+          if (orderInput) {
+            orderInput.value = '';
+          }
+
+          showMessage(staffMessage, '');
+
+          root
+            .querySelector('[data-staff-code]')
+            ?.focus();
+        });
+
+      if (
+        root.dataset.hideFooterNewsletter === 'true'
+      ) {
+        const hideFooterNewsletter = () => {
+          document
+            .querySelectorAll(
+              '.shopify-section-group-footer-group .shopify-section'
+            )
+            .forEach((footerSection) => {
+              if (
+                footerSection.querySelector(
+                  'input[type="email"]'
+                )
+              ) {
+                footerSection.style.display = 'none';
+              }
+            });
+        };
+
+        hideFooterNewsletter();
+        window.setTimeout(hideFooterNewsletter, 500);
+        window.setTimeout(hideFooterNewsletter, 1500);
+      }
+    })();
+  </script>
+</section>
+
+{% schema %}
+{
+  "name": "IQ Spin & Win final",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "api_url",
+      "label": "Google Apps Script Web-App-URL",
+      "default": "https://script.google.com/macros/s/AKfycbzEqP-ojubEwwlh_Nk0A9dtabs7KA24yQ3iXXVRcC4Hp45KOLdxpFBx8OGlrySuxyad/exec",
+      "info": "Die veröffentlichte URL muss auf /exec enden."
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Farbschema",
+      "default": "scheme-1"
+    },
+    {
+      "type": "text",
+      "id": "campaign_label",
+      "label": "Aktionsbezeichnung",
+      "default": "IQ Dogsport Spin & Win · Online & vor Ort"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_newsletter",
+      "label": "Newsletter-Checkbox anzeigen",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_footer_newsletter",
+      "label": "Newsletter-Bereich im Footer auf dieser Seite ausblenden",
+      "default": true
+    },
+    {
+      "type": "url",
+      "id": "privacy_url",
+      "label": "Datenschutz-Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "IQ Spin & Win final"
+    }
+  ]
+}
+{% endschema %}

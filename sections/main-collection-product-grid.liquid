@@ -159,7 +159,7 @@
               class="grid-list products-list f-grid md:f-grid-{{ columns_tablet }}-cols lg:f-grid-{{ columns_tablet_large }}-cols xl:f-grid-{{ columns_desktop }}-cols {{ default_grid_mobile }} f-grid--gap-medium"
             >
               {%- for product in collection.products -%}
-                <div class="f-column card">
+                <div class="f-column card" id="iq-product-{{ product.id }}" style="scroll-margin-top: 160px;">
                   {%- if is_metro -%}
                     {%- render 'card-product-metro',
                       product: product,
