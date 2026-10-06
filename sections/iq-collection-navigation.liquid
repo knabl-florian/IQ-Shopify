@@ -1,0 +1,52 @@
+{% if section.settings.only_collection == blank or section.settings.only_collection.handle == collection.handle %}
+{% if section.blocks.size > 0 %}
+<nav class="iqcn" aria-label="{% if request.locale.iso_code == 'en' %}Product categories{% else %}Produktkategorien{% endif %}">
+{% for block in section.blocks %}
+{% liquid
+  assign label = block.settings.label_de
+  assign target = block.settings.url_de
+  if block.settings.collection != blank
+    assign target = block.settings.collection.url
+  endif
+  if request.locale.iso_code == 'en'
+    assign label = block.settings.label_en | default: label
+    if block.settings.url_en != blank
+      assign target = block.settings.url_en
+    endif
+  endif
+%}
+{% if label != blank %}
+{% if target != blank %}
+<a href="{{ target | escape }}" {{ block.shopify_attributes }}>{{ label | escape }}</a>
+{% elsif request.design_mode %}
+<span class="iqcn__missing" {{ block.shopify_attributes }}>{{ label | escape }} — Linkziel fehlt</span>
+{% endif %}
+{% endif %}
+{% endfor %}
+</nav>
+{% endif %}
+{% endif %}
+{% stylesheet %}
+.iqcn{box-sizing:border-box;display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-start;gap:4px 26px;width:100%;max-width:1440px;margin:0 auto;padding:12px 50px;color:#171717;background:#fff}
+.iqcn a,.iqcn__missing{display:inline-flex;align-items:center;min-height:44px;max-width:100%;font:700 16px/1.4 Archivo,sans-serif;color:#171717;text-decoration:none;overflow-wrap:anywhere}
+.iqcn a:hover{text-decoration:underline;text-underline-offset:4px;color:#A51D1B}
+.iqcn a:focus-visible{outline:2px solid #A51D1B;outline-offset:4px}
+.iqcn__missing{color:#A51D1B}
+@media(max-width:749px){.iqcn{padding:8px 20px;gap:2px 20px;justify-content:center}.iqcn a,.iqcn__missing{font-size:14px}}
+{% endstylesheet %}
+{% schema %}
+{
+ "name":"IQ Kategorien-Links",
+ "enabled_on":{"templates":["collection"]},
+ "max_blocks":8,
+ "settings":[{"type":"collection","id":"only_collection","label":"Nur für diese Collection","info":"Leer = alle Collections mit dieser Vorlage."}],
+ "blocks":[{"type":"link","name":"Kategorie-Link","settings":[
+ {"type":"text","id":"label_de","label":"Beschriftung Deutsch"},
+ {"type":"text","id":"label_en","label":"Beschriftung Englisch"},
+ {"type":"collection","id":"collection","label":"Ziel-Collection","info":"Bevorzugt: berücksichtigt automatisch die Shop-Sprache."},
+ {"type":"url","id":"url_de","label":"Alternatives Linkziel Deutsch"},
+ {"type":"url","id":"url_en","label":"Alternatives Linkziel Englisch","info":"Leer = gemeinsames Ziel. Nur für abweichende englische URLs nötig."}
+ ]}],
+ "presets":[{"name":"IQ Kategorien-Links"}]
+}
+{% endschema %}

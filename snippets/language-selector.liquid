@@ -56,7 +56,7 @@
   <img src="{{ 'de.svg' | file_url }}" width="20" height="14" alt="Deutsch">
   Deutsch
 {% elsif localization.language.iso_code == 'en' %}
-  <img src="{{ 'gb.svg' | file_url }}" width="20" height="14" alt="English">
+  <img src="{{ 'us.png' | file_url }}" width="20" height="14" alt="English">
   English
 {% else %}
   {{ localization.language.endonym_name | capitalize }}
@@ -85,7 +85,7 @@
     <img src="{{ 'de.svg' | file_url }}" width="20" height="14" alt="Deutsch">
     Deutsch
   {% elsif language.iso_code == 'en' %}
-    <img src="{{ 'gb.svg' | file_url }}" width="20" height="14" alt="English">
+    <img src="{{ 'us.png' | file_url }}" width="20" height="14" alt="English">
     English
   {% else %}
     {{ language.endonym_name | capitalize }}

@@ -1,4 +1,60 @@
 {%- liquid
+  assign iq_card_title = product.title
+  if collection_card_titles
+    assign iq_card_title = product.title | split: ' – ' | first | split: ' | ' | first
+  endif
+  assign iq_card_benefit = blank
+  assign iq_card_material = blank
+  if iq_collection_card 
+    case product.id
+      when 10709813788936
+        if request.locale.iso_code == 'en'
+          assign iq_card_title = 'IQ Dog Training Vest 3.0'
+        elsif request.locale.iso_code == 'de'
+          assign iq_card_title = 'IQ Hundesportweste 3.0'
+        endif
+      when 10709814739208
+        if request.locale.iso_code == 'en'
+          assign iq_card_title = 'IQ Summer Vest 3.0'
+        elsif request.locale.iso_code == 'de'
+          assign iq_card_title = 'IQ Sommerweste 3.0'
+        endif
+      when 10709801337096
+        if request.locale.iso_code == 'en'
+          assign iq_card_title = 'IQ K9 Handler Vest Blue'
+        elsif request.locale.iso_code == 'de'
+          assign iq_card_title = 'IQ Diensthundeführerweste Blau'
+        endif
+      when 10709815361800
+        if request.locale.iso_code == 'en'
+          assign iq_card_title = 'IQ K9 Handler Vest Pro Black'
+        elsif request.locale.iso_code == 'de'
+          assign iq_card_title = 'IQ K9 Diensthundeführerweste Pro Schwarz'
+        endif
+    endcase
+  endif
+
+  if collection_card_titles and request.locale.iso_code == 'en'
+    case product.id
+      when 10709800583432
+        assign iq_card_title = 'IQ Multifunctional Jacket 3.0 Unisex Black'
+      when 10709800354056
+        assign iq_card_title = 'IQ Multifunctional Jacket 3.0 Women Black'
+      when 10709815886088
+        assign iq_card_title = 'IQ Multifunctional Jacket 3.0 Unisex Olive'
+      when 10709816344840
+        assign iq_card_title = 'IQ Multifunctional Jacket 3.0 Women Olive'
+      when 10709844721928
+        assign iq_card_title = 'IQ Multifunctional Jacket 3.0 Unisex Blue'
+      when 10709844885768
+        assign iq_card_title = 'IQ Multifunctional Jacket 3.0 Women Blue'
+      when 10709844099336
+        assign iq_card_title = 'IQ Multifunctional Jacket K9 Pro Women Black'
+      when 10709843837192
+        assign iq_card_title = 'IQ Multifunctional Jacket K9 Pro Unisex Black'
+    endcase
+  endif
+
   assign variant = product.selected_or_first_available_variant
   assign compare_at_price = variant.compare_at_price
   assign price = variant.price
@@ -10,6 +66,9 @@
   assign show_soldout = settings.pcard_show_badge_soldout
   assign show_on_sale_badge = settings.pcard_show_sale_badge
   assign show_color_swatches = settings.pcard_enable_color_swatches
+  if collection_color_swatches == false
+    assign show_color_swatches = false
+  endif
 
   unless on_sale
     assign show_on_sale_badge = false
@@ -308,8 +367,14 @@
         {%- render 'pcard-color-swatch', product: product -%}
       {%- endif -%}
       <h3 class="product-card__title text-pcard-title">
-        <a class="reversed-link" href="{{ product.url }}">{{- product.title -}}</a>
+        <a class="reversed-link" href="{{ product.url }}">{{- iq_card_title | escape -}}</a>
       </h3>
+      {%- if iq_card_benefit != blank -%}
+        <p class="iq-vest-card-benefit">
+          <span>{{ iq_card_benefit | escape }}</span>
+          <span>{{ iq_card_material | escape }}</span>
+        </p>
+      {%- endif -%}
 
 <!-- Start of Judge.me code -->
   <div class='jdgm-widget jdgm-preview-badge'>
@@ -324,3 +389,27 @@
     {% render 'quick-view-modal', modal_id: quick_view_modal_id, product: product %}
   {%- endif -%}
 </div>
+{% stylesheet %}
+.product-card .iq-vest-card-benefit {
+  margin: 6px 0 10px;
+  min-height: 2.9em;
+  font-family: Archivo, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.45;
+  letter-spacing: normal;
+  text-transform: none;
+  color: #4b4b48;
+}
+.iq-vest-card-benefit span { display: block; }
+@media (max-width: 749px) {
+  .product-card .iq-vest-card-benefit {
+    font-size: 13px;
+    min-height: 5.8em;
+  }
+}
+{% endstylesheet %}
+
+
+

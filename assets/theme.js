@@ -1026,6 +1026,9 @@ class AccordionGroup extends AccordionDetails {
 
   handleAfterToggle() {
     if (this.isOpen) {
+      this._tracking = true;
+      this._lastTop = this.getBoundingClientRect().top;
+
       const parent = this.closest('.accordion-parent') || document;
       const siblingsAccordions = parent.querySelectorAll('details[is="accordion-group"]');
 
@@ -1034,7 +1037,29 @@ class AccordionGroup extends AccordionDetails {
           details.open = false;
         }
       });
+
+      this.trackScroll();
     }
+  }
+
+  trackScroll() {
+    if (!this._tracking) return;
+
+    const currentTop = this.getBoundingClientRect().top;
+    const diff = currentTop - this._lastTop;
+
+    if (diff !== 0) {
+      window.scrollBy(0, diff);
+    }
+
+    this._lastTop = this.getBoundingClientRect().top;
+
+    this._raf = requestAnimationFrame(() => this.trackScroll());
+  }
+
+  handleAfterAnimated() {
+    this._tracking = false;
+    cancelAnimationFrame(this._raf);
   }
 }
 customElements.define('accordion-group', AccordionGroup, { extends: 'details' });
@@ -1607,7 +1632,7 @@ class GridList extends HTMLElement {
   constructor() {
     super();
 
-    if (FoxTheme.config.motionReduced || this.hasAttribute('motion-reduced')) return;
+    // if (FoxTheme.config.motionReduced || this.hasAttribute('motion-reduced')) return;
 
     this.hideGridItems();
     FoxTheme.Motion.inView(this, this.showGridItems.bind(this), { margin: '0px 0px -50px 0px' });
@@ -1977,7 +2002,7 @@ class MotionElement extends HTMLElement {
   }
 
   connectedCallback() {
-    if (FoxTheme.config.motionReduced) return;
+    // if (FoxTheme.config.motionReduced) return;
     FoxTheme.Motion.inView(
       this,
       async () => {
@@ -2692,7 +2717,7 @@ if (!customElements.get('scrolling-promotion')) {
   class ScrollingPromotion extends HTMLElement {
     constructor() {
       super();
-      if (FoxTheme.config.motionReduced) return;
+      // if (FoxTheme.config.motionReduced) return;
       this.promotion = this.querySelector('.promotion');
       FoxTheme.Motion.inView(this, this.init.bind(this), { margin: '200px 0px 200px 0px' });
     }

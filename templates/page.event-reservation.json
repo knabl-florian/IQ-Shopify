@@ -1,0 +1,35 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "event-reservation",
+      "settings": {
+        "event_name": "VDH DM Petersaurach 2026",
+        "show_all_products": true,
+        "product_collection": "",
+        "products_per_load": 24,
+        "google_script_url": "https://script.google.com/macros/s/AKfycbxzqdpsoOfheQ5rr8yvrRKcb78oFE1ce3n6v7IFsdK20m6ofPWIxE03XnwEwRval-my/exec",
+        "deadline_iso": "2026-08-01T20:00:00+02:00",
+        "heading_de": "Jetzt reservieren. Am Sonntag abholen.",
+        "intro_de": "Reserviere deine gewünschten IQ Dogsport Produkte bis Samstag, 20:00 Uhr. Wir bringen sie am Sonntag zur VDH DM nach Petersaurach — ohne Versandkosten.",
+        "deadline_text_de": "Samstag, 1. August 2026, 20:00 Uhr",
+        "pickup_text_de": "Sonntag am IQ Dogsport Stand in Petersaurach",
+        "heading_en": "Reserve now. Collect on Sunday.",
+        "intro_en": "Reserve your preferred IQ Dogsport products by Saturday at 8:00 PM. We will bring them to Petersaurach for collection on Sunday — with no shipping costs.",
+        "deadline_text_en": "Saturday, 1 August 2026, 8:00 PM",
+        "pickup_text_en": "Sunday at the IQ Dogsport stand in Petersaurach"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

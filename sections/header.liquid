@@ -110,7 +110,6 @@
   {%- endif -%}
 
   {%- if request.page_type == 'index' -%}
-    {% comment %} <h1 class="header__logo flex justify-center z-1"> {% endcomment %}
     <div class="header__logo flex justify-center z-1">
   {%- else -%}
     <div class="header__logo flex justify-center z-1">
@@ -197,7 +196,6 @@
     {%- endif -%}
   </a>
   {%- if request.page_type == 'index' -%}
-    {% comment %} </h1> {% endcomment %}
   </div>
   {%- else -%}
     </div>
@@ -278,26 +276,37 @@
 <div class="fixed-overlay z-10"></div>
 {%- render 'menu-drawer', section: section, blocks: section.blocks -%}
 
+{%- liquid
+  assign org_url = shop.url | append: '/'
+-%}
+{%- capture org_same_as_raw -%}{{ settings.social_twitter_link }}|{{ settings.social_facebook_link }}|{{ settings.social_pinterest_link }}|{{ settings.social_instagram_link }}|{{ settings.social_tiktok_link }}|{{ settings.social_tumblr_link }}|{{ settings.social_snapchat_link }}|{{ settings.social_youtube_link }}|{{ settings.social_vimeo_link }}{%- endcapture -%}
+{%- liquid
+  assign org_same_as = ''
+  assign org_same_as_parts = org_same_as_raw | split: '|'
+  for org_link in org_same_as_parts
+    assign org_link = org_link | strip
+    if org_link != blank
+      if org_same_as != blank
+        assign org_same_as = org_same_as | append: '|'
+      endif
+      assign org_same_as = org_same_as | append: org_link
+    endif
+  endfor
+  assign org_same_as = org_same_as | split: '|'
+-%}
 <script type="application/ld+json">
   {
     "@context": "http://schema.org",
     "@type": "Organization",
     "name": {{ shop.name | json }},
+    "alternateName": "IQ Dogsport",
     {% if settings.logo %}
       "logo": {{ settings.logo | image_url: width: 500 | prepend: "https:" | json }},
     {% endif %}
-    "sameAs": [
-      {{ settings.social_twitter_link | json }},
-      {{ settings.social_facebook_link | json }},
-      {{ settings.social_pinterest_link | json }},
-      {{ settings.social_instagram_link | json }},
-      {{ settings.social_tiktok_link | json }},
-      {{ settings.social_tumblr_link | json }},
-      {{ settings.social_snapchat_link | json }},
-      {{ settings.social_youtube_link | json }},
-      {{ settings.social_vimeo_link | json }}
-    ],
-    "url": {{ request.origin | append: page.url | json }}
+    {% if org_same_as.size > 0 %}
+      "sameAs": {{ org_same_as | json }},
+    {% endif %}
+    "url": {{ org_url | json }}
   }
 </script>
 

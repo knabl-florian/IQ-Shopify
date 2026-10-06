@@ -133,7 +133,7 @@ if (!customElements.get('slideshow-component')) {
           videoElement?.play();
         }
 
-        if (!FoxTheme.config.motionReduced) {
+        // if (!FoxTheme.config.motionReduced) {
           const motionEls = selectedElement.querySelectorAll('motion-element');
           motionEls.forEach((motionEl) => {
             setTimeout(() => {
@@ -143,7 +143,7 @@ if (!customElements.get('slideshow-component')) {
               motionEl.initialize();
             });
           });
-        }
+        // }
       }
 
       handleAfterInit() {

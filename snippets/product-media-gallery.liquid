@@ -10,7 +10,38 @@
 {% endcomment %}
 
 {%- liquid
-  assign media_count = product.media.size
+  assign current_language = localization.language.iso_code | split: '-' | first
+
+  assign use_language_filter = false
+  if current_language == 'de' or current_language == 'en'
+    assign use_language_filter = true
+  endif
+
+  assign media_count = 0
+
+  for media in product.media
+    assign should_hide = false
+    assign media_lang = media.alt | default: '' | downcase | split: '|' | first | strip
+
+    if use_language_filter
+      if media.media_type == 'video' or media.media_type == 'external_video'
+        if media_lang == 'lang-de' and current_language != 'de'
+          assign should_hide = true
+        elsif media_lang == 'lang-en' and current_language != 'en'
+          assign should_hide = true
+        endif
+      endif
+    endif
+
+    unless should_hide
+      assign media_count = media_count | plus: 1
+    endunless
+  endfor
+
+  if media_count == 0
+    assign use_language_filter = false
+    assign media_count = product.media.size
+  endif
 
   assign has_only_once_media = false
   if media_count < 2
@@ -34,6 +65,7 @@
 
   assign enable_desktop_slider = false
   assign slider_css_class = ''
+
   if has_only_once_media == false
     if media_layout contains 'carousel' or media_layout == 'slider-freemode'
       assign enable_desktop_slider = true
@@ -48,6 +80,7 @@
     endif
   endif
 -%}
+
 <media-gallery
   id="MediaGallery-{{ section.id }}"
   role="region"
@@ -62,35 +95,60 @@
   style="--media-item-gap: {{ media_item_gap }}px"
 >
   <div id="GalleryStatus-{{ section.id }}" class="visually-hidden" role="status"></div>
+
   <div class="product__media-gallery-viewer-wrap relative{{ slider_css_class }}">
     <div
       id="GalleryViewer-{{ section.id }}"
       class="product__media-gallery-viewer blocks-radius swiper"
     >
-      <a class="skip-to-content-link button visually-hidden" href="#ProductInfo-{{ section.id }}">
+      <a
+        class="skip-to-content-link button visually-hidden"
+        href="#ProductInfo-{{ section.id }}"
+      >
         {{ 'accessibility.skip_to_product_info' | t }}
       </a>
+
       <div
         id="Slider-Gallery-{{ section.id }}"
         class="product__media-list flex swiper-wrapper"
         role="list"
       >
+        {%- assign visible_position = 0 -%}
+
         {%- for media in product.media -%}
-          {% render 'product-thumbnail',
-            media: media,
-            media_count: media_count,
-            position: forloop.index0,
-            desktop_layout: media_layout,
-            mobile_layout: mobile_thumbnails,
-            enable_image_zoom: enable_image_zoom,
-            loop: section.settings.enable_video_looping,
-            modal_id: section.id,
-            xr_button: true,
-            media_width: media_width
-          %}
+          {%- assign should_hide = false -%}
+          {%- assign media_lang = media.alt | default: '' | downcase | split: '|' | first | strip -%}
+
+          {%- if use_language_filter -%}
+            {%- if media.media_type == 'video' or media.media_type == 'external_video' -%}
+              {%- if media_lang == 'lang-de' and current_language != 'de' -%}
+                {%- assign should_hide = true -%}
+              {%- elsif media_lang == 'lang-en' and current_language != 'en' -%}
+                {%- assign should_hide = true -%}
+              {%- endif -%}
+            {%- endif -%}
+          {%- endif -%}
+
+          {%- unless should_hide -%}
+            {% render 'product-thumbnail',
+              media: media,
+              media_count: media_count,
+              position: visible_position,
+              desktop_layout: media_layout,
+              mobile_layout: mobile_thumbnails,
+              enable_image_zoom: enable_image_zoom,
+              loop: section.settings.enable_video_looping,
+              modal_id: section.id,
+              xr_button: true,
+              media_width: media_width
+            %}
+
+            {%- assign visible_position = visible_position | plus: 1 -%}
+          {%- endunless -%}
         {%- endfor -%}
       </div>
     </div>
+
     {%- if media_count > 1 -%}
       <div class="slider-controls--group{% if enable_desktop_slider == false %} md:hidden{% endif %}">
         <div class="slider-controls">
@@ -102,6 +160,7 @@
           >
             {%- render 'icon-slider-prev' -%}
           </button>
+
           <button
             type="button"
             class="swiper-button-next btn"
@@ -110,6 +169,7 @@
           >
             {%- render 'icon-slider-next' -%}
           </button>
+
           {%- unless enable_mobile_thumbnails -%}
             <div class="swiper-pagination"></div>
           {%- endunless -%}
@@ -117,15 +177,18 @@
       </div>
     {%- endif -%}
   </div>
+
   {%- if media_count > 1 and media_layout contains 'carousel' or mobile_thumbnails == 'show' -%}
     {%- liquid
       assign thumbnail_class = ''
+
       if enable_desktop_slider and mobile_thumbnails != 'show'
         assign thumbnail_class = ' hidden md:block'
       elsif enable_desktop_slider == false and mobile_thumbnails == 'show'
         assign thumbnail_class = ' block md:hidden'
       endif
     -%}
+
     <div
       id="GalleryThumbnails-{{ section.id }}"
       class="product__media-gallery-thumbails swiper{{ thumbnail_class }}"
@@ -135,49 +198,68 @@
         class="thumbnail-list swiper-wrapper"
       >
         {%- for media in product.media -%}
-          {%- liquid
-            capture media_index
-              if media.media_type == 'model'
-                increment model_index
-              elsif media.media_type == 'video' or media.media_type == 'external_video'
-                increment video_index
-              elsif media.media_type == 'image'
-                increment image_index
-              endif
-            endcapture
-            assign media_index = media_index | plus: 1
-          -%}
-          <div
-            class="product__thumbs-item swiper-slide"
-            data-target="{{ media.id }}"
-            data-media-position="{{ media_index }}"
-          >
-            <div class="product__thumbs-container medium-blocks-radius media-wrapper">
-              <div class="product__thumbs-inner" style="--aspect-ratio: 1">
-                {{
-                  media.preview_image
-                  | image_url: width: media.preview_image.width
-                  | image_tag:
-                    loading: 'lazy',
-                    widths: '70, 100, 140, 150, 200, 300, 400',
-                    sizes: '(max-width: 767px) calc((100vw - 30px) / 4), (max-width: 1023px) 70px, 150px',
-                    id: thumbnail_id,
-                    is: 'image-lazy',
-                    alt: media.alt
-                  | escape
-                }}
-              </div>
-              {%- if media.media_type == 'model' -%}
-                <span class="product__thumbs-badge" aria-hidden="true">
-                  {%- render 'icon-3d-model', size: 'small' -%}
-                </span>
-              {%- elsif media.media_type == 'video' or media.media_type == 'external_video' -%}
-                <span class="product__thumbs-badge" aria-hidden="true">
-                  {%- render 'icon-video', size: 'small' -%}
-                </span>
+          {%- assign should_hide = false -%}
+          {%- assign media_lang = media.alt | default: '' | downcase | split: '|' | first | strip -%}
+
+          {%- if use_language_filter -%}
+            {%- if media.media_type == 'video' or media.media_type == 'external_video' -%}
+              {%- if media_lang == 'lang-de' and current_language != 'de' -%}
+                {%- assign should_hide = true -%}
+              {%- elsif media_lang == 'lang-en' and current_language != 'en' -%}
+                {%- assign should_hide = true -%}
               {%- endif -%}
+            {%- endif -%}
+          {%- endif -%}
+
+          {%- unless should_hide -%}
+            {%- liquid
+              capture media_index
+                if media.media_type == 'model'
+                  increment model_index
+                elsif media.media_type == 'video' or media.media_type == 'external_video'
+                  increment video_index
+                elsif media.media_type == 'image'
+                  increment image_index
+                endif
+              endcapture
+
+              assign media_index = media_index | plus: 1
+            -%}
+
+            <div
+              class="product__thumbs-item swiper-slide"
+              data-target="{{ media.id }}"
+              data-media-position="{{ media_index }}"
+            >
+              <div class="product__thumbs-container medium-blocks-radius media-wrapper">
+                <div class="product__thumbs-inner" style="--aspect-ratio: 1">
+                  {{
+                    media.preview_image
+                    | image_url: width: media.preview_image.width
+                    | image_tag:
+                      loading: 'lazy',
+                      widths: '70, 100, 140, 150, 200, 300, 400',
+                      sizes: '(max-width: 767px) calc((100vw - 30px) / 4), (max-width: 1023px) 70px, 150px',
+                      id: thumbnail_id,
+                      is: 'image-lazy',
+                      alt: media.alt
+                    | escape
+                  }}
+                </div>
+
+                {%- if media.media_type == 'model' -%}
+                  <span class="product__thumbs-badge" aria-hidden="true">
+                    {%- render 'icon-3d-model', size: 'small' -%}
+                  </span>
+
+                {%- elsif media.media_type == 'video' or media.media_type == 'external_video' -%}
+                  <span class="product__thumbs-badge" aria-hidden="true">
+                    {%- render 'icon-video', size: 'small' -%}
+                  </span>
+                {%- endif -%}
+              </div>
             </div>
-          </div>
+          {%- endunless -%}
         {%- endfor -%}
       </div>
     </div>

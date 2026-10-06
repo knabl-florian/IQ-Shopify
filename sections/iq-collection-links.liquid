@@ -1,0 +1,69 @@
+<div class="iq-collection-links"><nav aria-label="{% if request.locale.iso_code == 'en' %}Collection navigation{% else %}Kollektion auswählen{% endif %}">
+{% for block in section.blocks %}
+  {% liquid
+    assign label = block.settings.label_de
+    assign target = block.settings.target
+    if request.locale.iso_code == 'en'
+      assign label = block.settings.label_en
+    endif
+    if block.settings.product != blank
+      assign target = '#iq-product-' | append: block.settings.product.id
+    endif
+    assign first_char = target | slice: 0
+    if first_char == '/'
+      assign target = routes.root_url | append: target | replace: '//', '/'
+    endif
+  %}
+  <a href="{{ target | escape }}" {{ block.shopify_attributes }}>{{ label | escape }}{% if block.settings.arrow %} <svg class="iq-collection-links__arrow" viewBox="0 0 20 20" width="14" height="14" aria-hidden="true"><path d="M4 16 16 4M4 4h12v12" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>{% endif %}</a>
+{% endfor %}
+</nav></div>
+{% schema %}
+{
+  "name": "IQ Collection Links",
+  "enabled_on": {
+    "templates": [
+      "collection"
+    ]
+  },
+  "max_blocks": 6,
+  "blocks": [
+    {
+      "type": "link",
+      "name": "Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label_de",
+          "label": "Deutsch"
+        },
+        {
+          "type": "text",
+          "id": "label_en",
+          "label": "English"
+        },
+        {
+          "type": "text",
+          "id": "target",
+          "label": "Ziel (#Anker oder /Pfad)"
+        },
+        {
+          "type": "checkbox",
+          "id": "arrow",
+          "label": "Pfeil anzeigen",
+          "default": false
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Optional: zum Produkt im Raster springen"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "IQ Collection Links"
+    }
+  ]
+}
+{% endschema %}

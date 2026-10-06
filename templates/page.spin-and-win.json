@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "main": {
+      "type": "iq-spin-and-win",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
