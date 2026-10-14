@@ -1,0 +1,24 @@
+{% doc %}
+  Editor-managed content preserving the existing collection layout.
+  @param {block} block - Content block.
+{% enddoc %}
+{% if collection.handle == 'hundesport-jacken' %}
+{% assign iq_training_mobile = block.settings.bild_1 %}
+{% assign iq_training_desktop = block.settings.bild_2 %}
+{% if iq_training_mobile != blank and iq_training_desktop != blank %}
+<section class="iq-collection-feature iq-collection-feature--split">
+<picture>
+<source media="(max-width:749px)" width="1080" height="1920" sizes="100vw" srcset="{{ iq_training_mobile | image_url: width: 540 }} 540w, {{ iq_training_mobile | image_url: width: 1080 }} 1080w">
+{{ iq_training_desktop | image_url: width: 1920 | image_tag: widths: '750, 1200, 1600, 1920', sizes: '(min-width:1440px) 1340px, (min-width:1200px) calc(100vw - 100px), (min-width:750px) calc(100vw - 48px), calc(100vw - 30px)', loading: 'lazy', alt: block.settings.text_3 }}
+</picture>
+{% if request.locale.iso_code == 'en' %}
+<div class="copy"><div class="top"><p class="label">{{ block.settings.text_4 | escape }}</p><h2>{{ block.settings.text_5 | escape }}<br/>{{ block.settings.text_6 | escape }}</h2></div><div class="bottom"><p class="short">{{ block.settings.text_7 | escape }}<br>{{ block.settings.text_8 | escape }}</p><p class="long">{{ block.settings.text_9 | escape }}</p></div></div>
+{% else %}
+<div class="copy"><div class="top"><p class="label">{{ block.settings.text_10 | escape }}</p><h2>{{ block.settings.text_11 | escape }}<br/>{{ block.settings.text_12 | escape }}</h2></div><div class="bottom"><p class="short">{{ block.settings.text_13 | escape }}<br>{{ block.settings.text_14 | escape }}</p><p class="long">{{ block.settings.text_15 | escape }}</p></div></div>
+{% endif %}
+</section>
+{% elsif request.design_mode %}
+<p>Bitte iq-trainingsjacke-funktion-mobil-unten.jpg und iq-trainingsjacke-funktion-desktop-quer.jpg unter Inhalte → Dateien hochladen.</p>
+{% endif %}
+
+{% endif %}

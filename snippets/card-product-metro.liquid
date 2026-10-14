@@ -410,7 +410,7 @@
         </p>
       {%- endif -%}
       <h3 class="product-card__title text-pcard-title">
-        <a class="reversed-link" href="{{ product.url }}">{{- product.title -}}</a>
+        <a class="reversed-link" href="{{ product.url }}">{%- capture iq_display_title -%}{%- render 'iq-card-short-title', product: product -%}{%- endcapture -%}{{- iq_display_title | strip | escape -}}</a>
       </h3>
       {% render 'price', product: product, alignment: settings.pcard_content_alignment %}
       {%- if show_color_swatches -%}

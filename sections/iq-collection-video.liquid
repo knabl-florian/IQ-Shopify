@@ -1,0 +1,77 @@
+{% if section.settings.only_collection != blank and section.settings.only_collection.handle == collection.handle %}
+{% liquid
+ assign clip = section.settings.video
+ if clip == blank and section.settings.product != blank
+  assign clips = section.settings.product.media | where: 'media_type', 'video'
+  assign clip = clips | first
+ endif
+ assign heading = section.settings.heading_de
+ if request.locale.iso_code == 'en'
+  assign heading = section.settings.heading_en
+ endif
+%}
+{% if clip != blank %}
+<div class="iq-native-video">
+{% if heading != blank %}<h2>{{ heading | escape }}</h2>{% endif %}
+{% if section.settings.poster != blank %}
+{% assign poster = section.settings.poster | image_url: width: 1600 %}
+{{ clip | video_tag: controls: true, autoplay: false, loop: false, preload: 'none', poster: poster }}
+{% else %}
+{{ clip | video_tag: controls: true, autoplay: false, loop: false, preload: 'none' }}
+{% endif %}
+</div>
+{% elsif request.design_mode %}<p class="iq-native-video">Bitte ein Shopify-Video oder ein Produkt mit Video auswählen. Im Shop wird kein Platzhalter gezeigt.</p>{% endif %}
+{% elsif request.design_mode %}<p class="iq-native-video">Bitte zuerst die Collection auswählen.</p>{% endif %}
+{% stylesheet %}
+.iq-native-video{box-sizing:border-box;max-width:1440px;margin:48px auto;padding:0 50px;color:#171717;font:400 16px/1.5 Archivo,sans-serif}.iq-native-video h2{font:700 clamp(24px,2.5vw,34px)/1.2 Archivo,sans-serif;margin:0 0 24px}.iq-native-video video{display:block;width:100%;height:auto;max-height:75vh;object-fit:contain;background:#171717}.iq-native-video video:focus-visible{outline:3px solid #A51D1B;outline-offset:4px}@media(max-width:749px){.iq-native-video{margin:32px auto;padding:0 20px}}
+{% endstylesheet %}
+{% schema %}
+{
+  "name": "IQ Produktvideo",
+  "enabled_on": {
+    "templates": [
+      "collection"
+    ]
+  },
+  "settings": [
+    {
+      "type": "collection",
+      "id": "only_collection",
+      "label": "Nur für diese Collection",
+      "info": "Pflicht: Ohne Auswahl nicht im Shop sichtbar."
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Shopify-Video",
+      "info": "Das unter Inhalte → Dateien hochgeladene Video auswählen. Kein YouTube-Link erforderlich."
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Alternativ: Video aus Produkt",
+      "info": "Wenn oben kein Video gewählt ist, wird das erste Shopify-Video dieses Produkts verwendet."
+    },
+    {
+      "type": "image_picker",
+      "id": "poster",
+      "label": "Optionales Vorschaubild"
+    },
+    {
+      "type": "text",
+      "id": "heading_de",
+      "label": "Überschrift Deutsch"
+    },
+    {
+      "type": "text",
+      "id": "heading_en",
+      "label": "Heading English"
+    }
+  ],
+  "presets": [
+    {
+      "name": "IQ Produktvideo"
+    }
+  ]
+}
+{% endschema %}

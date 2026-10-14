@@ -1,0 +1,168 @@
+{% assign iq_part_1 = section.blocks | where: 'type', 'part1' | first %}
+{% assign iq_part_2 = section.blocks | where: 'type', 'part2' | first %}
+<section id="iq-hosen-wissen" class="iq-collection-knowledge"><div class="iq-collection-knowledge__inner"><div>{% if request.locale.iso_code == 'en' %}<p class="iq-collection-knowledge__label">{{ iq_part_1.settings.text_3 | escape }}</p><h2>{{ iq_part_1.settings.text_4 | escape }}<br>{{ iq_part_1.settings.text_5 | escape }}</h2>{% else %}<p class="iq-collection-knowledge__label">{{ iq_part_1.settings.text_6 | escape }}</p><h2>{{ iq_part_1.settings.text_7 | escape }}<br>{{ iq_part_1.settings.text_8 | escape }}</h2>{% endif %}</div><div class="iq-collection-knowledge__text">{% if request.locale.iso_code == 'en' %}<details class="iq-collection-accordion"><summary>{{ iq_part_1.settings.text_9 | escape }}<span aria-hidden="true" class="iq-collection-accordion__icon"></span></summary><div class="iq-collection-accordion__body"><p>{{ iq_part_1.settings.text_10 | escape }}</p></div></details><details class="iq-collection-accordion"><summary>{{ iq_part_1.settings.text_11 | escape }}<span aria-hidden="true" class="iq-collection-accordion__icon"></span></summary><div class="iq-collection-accordion__body"><p>{{ iq_part_1.settings.text_12 | escape }} <a href="{% if request.locale.iso_code == 'en' %}{{ iq_part_1.settings.link_1 }}{% else %}{{ iq_part_1.settings.link_1 }}{% endif %}">{{ iq_part_1.settings.text_13 | escape }}</a> {{ iq_part_1.settings.text_14 | escape }}</p></div></details><details class="iq-collection-accordion"><summary>{{ iq_part_1.settings.text_15 | escape }}<span aria-hidden="true" class="iq-collection-accordion__icon"></span></summary><div class="iq-collection-accordion__body">{{ collection.description }}<p>{{ iq_part_1.settings.text_16 | escape }}</p></div></details><details class="iq-collection-accordion"><summary>{{ iq_part_1.settings.text_17 | escape }}<span aria-hidden="true" class="iq-collection-accordion__icon"></span></summary><div class="iq-collection-accordion__body">{{ collection.metafields.custom.text_kategorie_unten | metafield_tag }}</div></details>{% else %}<details class="iq-collection-accordion"><summary>{{ iq_part_1.settings.text_18 | escape }}<span aria-hidden="true" class="iq-collection-accordion__icon"></span></summary><div class="iq-collection-accordion__body"><p>{{ iq_part_1.settings.text_19 | escape }}</p></div></details><details class="iq-collection-accordion"><summary>{{ iq_part_1.settings.text_20 | escape }}<span aria-hidden="true" class="iq-collection-accordion__icon"></span></summary><div class="iq-collection-accordion__body"><p>{{ iq_part_2.settings.text_21 | escape }} <a href="{% if request.locale.iso_code == 'en' %}{{ iq_part_1.settings.link_2 }}{% else %}{{ iq_part_1.settings.link_2 }}{% endif %}">{{ iq_part_2.settings.text_22 | escape }}</a> {{ iq_part_2.settings.text_23 | escape }}</p></div></details><details class="iq-collection-accordion"><summary>{{ iq_part_2.settings.text_24 | escape }}<span aria-hidden="true" class="iq-collection-accordion__icon"></span></summary><div class="iq-collection-accordion__body">{{ collection.description }}<p>{{ iq_part_2.settings.text_25 | escape }}</p></div></details><details class="iq-collection-accordion"><summary>{{ iq_part_2.settings.text_26 | escape }}<span aria-hidden="true" class="iq-collection-accordion__icon"></span></summary><div class="iq-collection-accordion__body">{{ collection.metafields.custom.text_kategorie_unten | metafield_tag }}</div></details>{% endif %}</div></div></section>
+{% schema %}
+{
+  "name": "IQ Hosen Inhalt",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "part1",
+      "name": "Inhalt 1: /en/products/iq",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "url",
+          "id": "link_1",
+          "label": "Linkziel DE: /en/products/iq-modulare-futtertasche"
+        },
+        {
+          "type": "url",
+          "id": "link_2",
+          "label": "Linkziel DE: /products/iq-modulare-futtertasche"
+        },
+        {
+          "type": "textarea",
+          "id": "text_3",
+          "label": "Text: KNOWLEDGE & FEATURES"
+        },
+        {
+          "type": "textarea",
+          "id": "text_4",
+          "label": "Überschrift: MORE ABOUT"
+        },
+        {
+          "type": "textarea",
+          "id": "text_5",
+          "label": "Überschrift: IQ TRAINING TROUSERS."
+        },
+        {
+          "type": "textarea",
+          "id": "text_6",
+          "label": "Text: WISSEN & AUSSTATTUNG"
+        },
+        {
+          "type": "textarea",
+          "id": "text_7",
+          "label": "Überschrift: MEHR ÜBER"
+        },
+        {
+          "type": "textarea",
+          "id": "text_8",
+          "label": "Überschrift: IQ HUNDESPORTHOSEN."
+        },
+        {
+          "type": "textarea",
+          "id": "text_9",
+          "label": "Frage: Durable fabric, matte finish and freedom to move"
+        },
+        {
+          "type": "textarea",
+          "id": "text_10",
+          "label": "Text: The IQ Trainer Pants combine durable fabric with a matt"
+        },
+        {
+          "type": "textarea",
+          "id": "text_11",
+          "label": "Frage: Removable treat pockets and a hidden back pocket"
+        },
+        {
+          "type": "textarea",
+          "id": "text_12",
+          "label": "Text: The coated treat pockets are removable and easy to clea"
+        },
+        {
+          "type": "textarea",
+          "id": "text_13",
+          "label": "Linktext: IQ modular treat pouch"
+        },
+        {
+          "type": "textarea",
+          "id": "text_14",
+          "label": "Linktext: when you need more space. Sold separately."
+        },
+        {
+          "type": "textarea",
+          "id": "text_15",
+          "label": "Frage: Dog training trousers for training and everyday use"
+        },
+        {
+          "type": "textarea",
+          "id": "text_16",
+          "label": "Text: Leggings are currently unavailable."
+        },
+        {
+          "type": "textarea",
+          "id": "text_17",
+          "label": "Frage: More about IQ dog training trousers"
+        },
+        {
+          "type": "textarea",
+          "id": "text_18",
+          "label": "Frage: Robuster Stoff, matter Look und Bewegungsfreiheit"
+        },
+        {
+          "type": "textarea",
+          "id": "text_19",
+          "label": "Text: Die IQ Trainer Pants verbinden robusten Stoff mit matte"
+        },
+        {
+          "type": "textarea",
+          "id": "text_20",
+          "label": "Frage: Herausnehmbare Futtertaschen und versteckte Rückentasch"
+        }
+      ]
+    },
+    {
+      "type": "part2",
+      "name": "Inhalt 2: Die beschichtet",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "text_21",
+          "label": "Text: Die beschichteten Futtertaschen sind herausnehmbar und "
+        },
+        {
+          "type": "textarea",
+          "id": "text_22",
+          "label": "Linktext: IQ Modulare Futtertasche"
+        },
+        {
+          "type": "textarea",
+          "id": "text_23",
+          "label": "Linktext: ergänzen."
+        },
+        {
+          "type": "textarea",
+          "id": "text_24",
+          "label": "Frage: Hundesporthosen für Training und Alltag"
+        },
+        {
+          "type": "textarea",
+          "id": "text_25",
+          "label": "Text: Die Leggings sind derzeit nicht erhältlich."
+        },
+        {
+          "type": "textarea",
+          "id": "text_26",
+          "label": "Frage: Mehr über IQ Hundesporthosen"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "IQ Hosen Inhalt",
+      "blocks": [
+        {
+          "type": "part1"
+        },
+        {
+          "type": "part2"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

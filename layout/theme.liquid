@@ -60,7 +60,7 @@
       echo 'theme.css' | asset_url | stylesheet_tag: preload: true
       echo 'custom.css' | asset_url | stylesheet_tag: preload: true
       assign iq_collection_standard = false
-      if request.page_type == 'collection' and content_for_layout contains 'iq-collection-hero'
+      if request.page_type == 'collection'
         assign iq_collection_standard = true
         echo 'iq-collection-system.css' | asset_url | stylesheet_tag
       endif
@@ -359,5 +359,6 @@ document.addEventListener('click', function (e) {
       </script>
     </body>
 </html>
+
 
 

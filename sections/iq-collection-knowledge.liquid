@@ -1,0 +1,140 @@
+{% liquid
+  assign english = false
+  if request.locale.iso_code == 'en'
+    assign english = true
+  endif
+  assign topic = collection.title
+  case collection.handle
+    when 'hundesport-trainingszubehoer'
+      assign topic = 'Trainingszubehör'
+      if english
+        assign topic = 'training equipment'
+      endif
+    when 'trainingsfutter-supplemente'
+      assign topic = 'Futter & Belohnung'
+      if english
+        assign topic = 'food & rewards'
+      endif
+    when 'hundesport-spielzeug'
+      assign topic = 'Hundespielzeug'
+      if english
+        assign topic = 'dog toys'
+      endif
+    when 'k9-diensthundefuehrer-ausruestung'
+      assign topic = 'K9 Ausrüstung'
+      if english
+        assign topic = 'K9 equipment'
+      endif
+    when 'zzz-hundesport-hosen-damen', 'hundesport-hosen', 'zz-hosen-herren'
+      assign topic = 'IQ Hundesporthosen'
+      if english
+        assign topic = 'IQ dog training trousers'
+      endif
+    when 'gutschein-fun-stuff'
+      assign topic = 'Gutscheine & Geschenke'
+      if english
+        assign topic = 'gift cards & gifts'
+      endif
+  endcase
+  assign display_topic = topic
+  case collection.handle
+    when 'hundesportbekleidung', 'hundesportbekleidung-damen', 'hundesportbekleidung-herren'
+      assign display_topic = 'IQ Bekleidung'
+      if english
+        assign display_topic = 'IQ clothing'
+      endif
+    when 'hundesport-jacken', 'hundesport-jacken-damen', 'hundesport-jacken-herren'
+      assign display_topic = 'IQ Jacken'
+      if english
+        assign display_topic = 'IQ jackets'
+      endif
+    when 'hundesport-hoodies-herren', 't-shirt-pullover-frauen', 'hundesport-t-shirts-hoodies'
+      assign display_topic = 'Shirts & Hoodies'
+    when 'hundesport-zubehoer-damen'
+      assign display_topic = 'IQ Zubehör'
+      if english
+        assign display_topic = 'IQ accessories'
+      endif
+    when 'bucher-deutsch'
+      assign display_topic = 'Bücher & Wissen'
+      if english
+        assign display_topic = 'books & knowledge'
+      endif
+    when 'iq-produkte', 'all'
+      assign display_topic = 'IQ Dogsport'
+    when 'zzz-hundesport-hosen-damen', 'hundesport-hosen', 'zz-hosen-herren'
+      assign display_topic = 'IQ Hosen'
+      if english
+        assign display_topic = 'IQ trousers'
+      endif
+  endcase
+  assign heading = section.settings.heading_de
+  assign label = 'WISSEN & AUSSTATTUNG'
+  assign intro_label = topic | append: ' – Auswahl und Einsatz'
+  assign detail_label = 'Mehr erfahren über ' | append: topic
+  if english
+    assign heading = section.settings.heading_en
+    assign label = 'KNOWLEDGE & EQUIPMENT'
+    assign intro_label = topic | append: ' – choosing and using'
+    assign detail_label = 'More about ' | append: topic
+  endif
+  capture seo
+    echo collection.metafields.custom.text_kategorie_unten | metafield_tag
+  endcapture
+  assign seo_text = seo | strip_html | strip
+  assign description_html = collection.description
+  assign description_text = description_html | strip_html | strip
+%}
+{% if collection.handle == 'all' and description_text == blank %}
+  {% capture description_html %}{% if english %}<p>Browse IQ Dogsport equipment for training and everyday life with your dog. Start with <a href="{{ routes.collections_url }}/hundesportbekleidung">clothing</a>, <a href="{{ routes.collections_url }}/hundesport-trainingszubehoer">training equipment</a> or <a href="{{ routes.collections_url }}/trainingsfutter-supplemente">food and rewards</a>. Find the details, available variants and current prices on each product page.</p>{% else %}<p>Entdecke das IQ Dogsport Sortiment für Training und Alltag mit Deinem Hund. Steige direkt bei <a href="{{ routes.collections_url }}/hundesportbekleidung">Hundesportbekleidung</a>, <a href="{{ routes.collections_url }}/hundesport-trainingszubehoer">Trainingszubehör</a> oder <a href="{{ routes.collections_url }}/trainingsfutter-supplemente">Futter und Belohnung</a> ein. Details, verfügbare Varianten und aktuelle Preise findest Du auf den jeweiligen Produktseiten.</p>{% endif %}{% endcapture %}
+  {% assign description_text = description_html | strip_html %}
+{% endif %}
+{% if description_text != blank or seo_text != blank or section.blocks.size > 0 %}
+<section class="iq-collection-knowledge" id="iq-knowledge-{{ section.id }}">
+  <div class="iq-collection-knowledge__inner">
+    <div>
+      <p class="iq-collection-knowledge__label">{{ label }}</p>
+      <h2>{% if heading != blank %}{{ heading | escape }}{% elsif english %}MORE ABOUT<br>{{ display_topic | escape }}.{% else %}MEHR ÜBER<br>{{ display_topic | escape }}.{% endif %}</h2>
+    </div>
+    <div class="iq-collection-knowledge__text">
+      {% for block in section.blocks %}
+        {% liquid
+          assign title = block.settings.heading_de
+          assign text = block.settings.text_de
+          if english
+            assign title = block.settings.heading_en | default: title
+            assign text = block.settings.text_en | default: text
+          endif
+        %}
+        {% if title != blank and text != blank and block.settings.only_collection.handle == collection.handle %}
+          <details class="iq-collection-accordion" {{ block.shopify_attributes }}>
+            <summary>{{ title | escape }}<span class="iq-collection-accordion__icon" aria-hidden="true"></span></summary>
+            <div class="iq-collection-accordion__body rte">{{ text }}</div>
+          </details>
+        {% endif %}
+      {% endfor %}
+      {% if description_text != blank %}{% render 'iq-knowledge-panels', html: description_html, fallback: intro_label %}{% endif %}
+      {% if seo_text != blank %}{% render 'iq-knowledge-panels', html: seo, fallback: detail_label %}{% endif %}
+    </div>
+  </div>
+</section>
+{% endif %}
+{% schema %}
+{
+  "name":"IQ Wissen & Ausstattung",
+  "enabled_on":{"templates":["collection"]},
+  "settings":[
+    {"type":"paragraph","content":"Zeigt automatisch die Beschreibung und den unteren SEO-Text der gerade geöffneten Collection. Pflege diese Texte unter Produkte > Kollektionen. Bestehende Überschriften werden zu aufklappbaren Themen. So bleiben alle Inhalte und Links erhalten."},
+    {"type":"text","id":"heading_de","label":"Überschrift Deutsch (optional)","info":"Leer = passend zur aktuellen Collection."},
+    {"type":"text","id":"heading_en","label":"Überschrift English (optional)"}
+  ],
+  "blocks":[{"type":"topic","name":"Zusätzliches Thema","settings":[
+    {"type":"collection","id":"only_collection","label":"Nur für diese Collection","info":"Bitte auswählen. So erscheint dieses Zusatzthema nur in der gewünschten Collection."},
+    {"type":"text","id":"heading_de","label":"Titel Deutsch"},
+    {"type":"richtext","id":"text_de","label":"Text Deutsch"},
+    {"type":"text","id":"heading_en","label":"Title English"},
+    {"type":"richtext","id":"text_en","label":"Text English"}
+  ]}],
+  "presets":[{"name":"IQ Wissen & Ausstattung"}]
+}
+{% endschema %}

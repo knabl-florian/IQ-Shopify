@@ -857,3 +857,85 @@ line-height: 1.25;
    ================================================================ */
 @media (min-width:750px){ .iq-insider__inner{ padding-bottom:72px !important; } }
 @media (max-width:749px){ .iq-insider__inner{ padding-bottom:56px !important; } }
+body:not(.product-template) .product-card:not(.product-card--list) .product-card__info {
+  padding-top: 8px !important;
+  gap: 4px !important;
+  text-align: center !important;
+  align-items: stretch !important;
+}
+body:not(.product-template) .product-card:not(.product-card--list) .iq-vest-card-benefit {
+  display: none !important;
+}
+body:not(.product-template) .product-card:not(.product-card--list) .product-card__title {
+  margin: 0 !important;
+  display: block;
+  -webkit-line-clamp: unset;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  hyphens: auto;
+  font-family: Archivo, sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 1.35;
+  letter-spacing: 0;
+  text-transform: none;
+  text-align: center !important;
+}
+body:not(.product-template) .product-card:not(.product-card--list) .jdgm-preview-badge {
+  margin: 2px 0 0 !important;
+  font-family: Archivo, sans-serif;
+  font-size: 12px;
+  line-height: 1.4;
+  text-align: center !important;
+}
+body:not(.product-template) .product-card:not(.product-card--list) .jdgm-prev-badge {
+  line-height: 1.4;
+  text-align: center !important;
+}
+body:not(.product-template) .product-card:not(.product-card--list) .jdgm-star {
+  font-size: 12px;
+  color: #FFB400;
+}
+body:not(.product-template) .product-card:not(.product-card--list) .jdgm-prev-badge[data-number-of-reviews] .jdgm-prev-badge__text {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+body:not(.product-template) .product-card:not(.product-card--list) .jdgm-prev-badge[data-number-of-reviews]::after {
+  content: " (" attr(data-number-of-reviews) ")";
+  display: inline-block;
+  margin-left: 5px;
+  font: 400 12px/1.4 Archivo, sans-serif;
+  color: #171717;
+}
+body:not(.product-template) .product-card:not(.product-card--list) .f-price {
+  margin-top: 2px !important;
+  line-height: 1.4;
+  justify-content: center !important;
+  text-align: center !important;
+}
+body:not(.product-template) .product-card:not(.product-card--list) .f-price-item {
+  font-family: Archivo, sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+}
+@media (max-width: 749px) {
+  body:not(.product-template) .product-card:not(.product-card--list) .product-card__info {
+    padding-top: 6px !important;
+    gap: 3px !important;
+  }
+  body:not(.product-template) .product-card:not(.product-card--list) .product-card__title,
+  body:not(.product-template) .product-card:not(.product-card--list) .f-price-item {
+    font-size: 14px;
+  }
+}
+
+
+body:not(.product-template) .product-card--list .product-card__title { font: 700 14px/1.35 Archivo, sans-serif; text-transform: none; letter-spacing: 0; }

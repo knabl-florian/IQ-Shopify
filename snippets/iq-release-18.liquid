@@ -1,0 +1,40 @@
+{% doc %}
+  Editor-managed content preserving the existing collection layout.
+  @param {block} block - Content block.
+{% enddoc %}
+{%- assign iq_ball_en = false -%}
+{%- if request.locale.iso_code == 'en' -%}{%- assign iq_ball_en = true -%}{%- endif -%}
+{%- assign iq_ball_image = block.settings.bild_1 -%}
+<div class="iq-ball-feature">
+  <div class="iq-ball-feature__photo">
+    {%- if iq_ball_image != blank -%}
+    <img src="{{ iq_ball_image | image_url: width: 1000 }}" srcset="{{ iq_ball_image | image_url: width: 480 }} 480w, {{ iq_ball_image | image_url: width: 750 }} 750w, {{ iq_ball_image | image_url: width: 1000 }} 1000w" sizes="(min-width: 750px) 53vw, 100vw" width="{{ iq_ball_image.width }}" height="{{ iq_ball_image.height }}" loading="lazy" alt="{% if iq_ball_en %}Handler releases a ball beside the vest while the dog watches{% else %}Hundeführer gibt einen Ball seitlich an der Weste frei, während der Hund aufmerksam hochschaut{% endif %}">
+    {%- elsif request.design_mode -%}
+    <p>Bitte frano-weste.jpg unter Inhalte → Dateien hochladen.</p>
+    {%- endif -%}
+  </div>
+  <div class="iq-ball-feature__copy">
+    <p class="iq-ball-feature__kicker">{% if iq_ball_en %}{{ block.settings.text_4 | escape }}{% else %}{{ block.settings.text_5 | escape }}{% endif %}</p>
+    <h2>{% if iq_ball_en %}{{ block.settings.text_6 | escape }}<br>{{ block.settings.text_7 | escape }}{% else %}{{ block.settings.text_8 | escape }}<br>{{ block.settings.text_9 | escape }}{% endif %}</h2>
+    <p>{% if iq_ball_en %}{{ block.settings.text_10 | escape }}{% else %}{{ block.settings.text_11 | escape }}{% endif %}</p>
+    <a class="iq-ball-feature__button" href="{% if request.locale.iso_code == 'en' %}{{ block.settings.link_3 }}{% else %}{{ block.settings.link_2 }}{% endif %}">{% if iq_ball_en %}{{ block.settings.text_12 | escape }}{% else %}{{ block.settings.text_13 | escape }}{% endif %}<span aria-hidden="true">→</span></a>
+  </div>
+</div>
+<style>
+.iq-ball-feature,.iq-ball-feature *{box-sizing:border-box}
+.iq-ball-feature{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);align-items:center;background:#FFFFFF;border-radius:0;width:100%;color:#171717}
+.iq-ball-feature__photo{min-width:0}
+.iq-ball-feature__photo img{display:block;width:100%;height:auto;border-radius:0}
+.iq-ball-feature__copy{min-width:0;padding:36px clamp(24px,4vw,64px);font:400 15px/1.6 Archivo,sans-serif}
+.iq-ball-feature .iq-ball-feature__kicker{margin:0 0 14px;font:700 11px/1.5 Archivo,sans-serif;letter-spacing:.12em;color:#A51D1B}
+.iq-ball-feature h2{margin:0 0 22px;font-family:Montserrat,sans-serif;font-weight:800;font-style:italic;font-size:clamp(28px,3vw,46px);line-height:1.1;letter-spacing:-.035em;text-transform:uppercase;color:#171717;overflow-wrap:break-word}
+.iq-ball-feature__copy>p{margin:0 0 16px}
+.iq-ball-feature .iq-ball-feature__models{margin:0;border-top:1px solid #DCDBD7;padding-top:14px;font-size:12px;color:#171717}
+@media(max-width:749px){
+.iq-ball-feature{grid-template-columns:minmax(0,1fr)}
+.iq-ball-feature__copy{padding:25px 20px 28px;font-size:14px}
+.iq-ball-feature h2{font-size:clamp(26px,7vw,32px)}
+}
+.iq-ball-feature .iq-ball-feature__button{display:inline-flex;align-items:center;gap:12px;min-height:44px;color:#A51D1B;font:700 14px/1.5 Archivo,sans-serif;text-decoration:underline;text-underline-offset:5px;background:transparent;border:0;border-radius:0;padding:0;margin-top:8px}
+.iq-ball-feature__button:focus-visible{outline:2px solid #171717;outline-offset:4px}
+</style>

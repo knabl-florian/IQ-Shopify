@@ -1,4 +1,4 @@
-{% if section.settings.only_collection == blank or section.settings.only_collection.handle == collection.handle %}
+{% if section.settings.only_collection.handle == collection.handle or section.settings.only_collection == blank and section.settings.require_collection != true %}
 {% if section.blocks.size > 0 %}
 <nav class="iqcn" aria-label="{% if request.locale.iso_code == 'en' %}Product categories{% else %}Produktkategorien{% endif %}">
 {% for block in section.blocks %}
@@ -13,6 +13,10 @@
     if block.settings.url_en != blank
       assign target = block.settings.url_en
     endif
+  endif
+  if block.settings.anchor_id != blank
+    assign anchor = block.settings.anchor_id | remove: '#' | strip
+    assign target = anchor | prepend: '#'
   endif
 %}
 {% if label != blank %}
@@ -36,17 +40,76 @@
 {% endstylesheet %}
 {% schema %}
 {
- "name":"IQ Kategorien-Links",
- "enabled_on":{"templates":["collection"]},
- "max_blocks":8,
- "settings":[{"type":"collection","id":"only_collection","label":"Nur für diese Collection","info":"Leer = alle Collections mit dieser Vorlage."}],
- "blocks":[{"type":"link","name":"Kategorie-Link","settings":[
- {"type":"text","id":"label_de","label":"Beschriftung Deutsch"},
- {"type":"text","id":"label_en","label":"Beschriftung Englisch"},
- {"type":"collection","id":"collection","label":"Ziel-Collection","info":"Bevorzugt: berücksichtigt automatisch die Shop-Sprache."},
- {"type":"url","id":"url_de","label":"Alternatives Linkziel Deutsch"},
- {"type":"url","id":"url_en","label":"Alternatives Linkziel Englisch","info":"Leer = gemeinsames Ziel. Nur für abweichende englische URLs nötig."}
- ]}],
- "presets":[{"name":"IQ Kategorien-Links"}]
+  "name": "IQ Kategorien-Links",
+  "enabled_on": {
+    "templates": [
+      "collection"
+    ]
+  },
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "collection",
+      "id": "only_collection",
+      "label": "Nur für diese Collection",
+      "info": "Gewünschte Collection auswählen. Bei gemeinsam genutzter Vorlage erforderlich."
+    },
+    {
+      "type": "checkbox",
+      "id": "require_collection",
+      "label": "Collection-Auswahl erforderlich",
+      "default": false,
+      "info": "Für neue Abschnitte eingeschaltet lassen. Aus: bisherige Nutzung auf gesamter Vorlage."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "link",
+      "name": "Kategorie-Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label_de",
+          "label": "Beschriftung Deutsch"
+        },
+        {
+          "type": "text",
+          "id": "label_en",
+          "label": "Beschriftung Englisch"
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Ziel-Collection",
+          "info": "Bevorzugt: berücksichtigt automatisch die Shop-Sprache."
+        },
+        {
+          "type": "url",
+          "id": "url_de",
+          "label": "Alternatives Linkziel Deutsch"
+        },
+        {
+          "type": "url",
+          "id": "url_en",
+          "label": "Alternatives Linkziel Englisch",
+          "info": "Leer = gemeinsames Ziel. Nur für abweichende englische URLs nötig."
+        },
+        {
+          "type": "text",
+          "id": "anchor_id",
+          "label": "Sprungziel-ID auf dieser Seite",
+          "info": "Nur vorhandene Ziel-ID, ohne #. Hat Vorrang vor Links. Erstellt keine Produktgruppen."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "IQ Kategorien-Links",
+      "settings": {
+        "require_collection": true
+      }
+    }
+  ]
 }
 {% endschema %}

@@ -470,7 +470,7 @@
                         </div>
                       </div>
                     </div>
-                    {%- if section.settings.enable_cart_recommendations -%}
+                    {%- if section.settings.enable_cart_recommendations and settings.iq_cart_addons_enabled != true -%}
                       {%- render 'cart-drawer-products-recommendation',
                         section_id: section.id
                         product_id: item.product_id,
@@ -507,6 +507,7 @@
                 -%}
               </ul>
             </cart-items>
+            {% render 'iq-cart-addons', section_id: section.id %}
           </div>
         </div>
         <div

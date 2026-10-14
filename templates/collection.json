@@ -1,1 +1,614 @@
-{"sections":{"iq_collection_hero_Vc6pjz":{"type":"iq-collection-hero","name":"IQ Collection Banner","settings":{"only_collection":"hundesport-trainingszubehoer","desktop_image":"shopify:\/\/shop_images\/iq-training-und-hund-hero-desktop-2560x1200.webp","mobile_image":"shopify:\/\/shop_images\/iq-training-und-hund-hero-mobile-1200x1500.webp","text_tone":"dark","desktop_position":"top","show_mobile_label":true,"focus_y":75,"title_de":"Dein Training.","accent_de":"Deine Ausrüstung.","description_de":"Für Belohnung, Fußarbeit, Fährte und Schutzdienst.","mobile_description_de":"Für Belohnung, Fußarbeit, Fährte und Schutzdienst.","label_de":"Hundesport Trainingszubehör","alt_de":"Malinois beim Training am IQ Wurfversteck","title_en":"Your training.","accent_en":"Your equipment.","description_en":"For rewards, heelwork, tracking and protection work.","mobile_description_en":"For rewards, heelwork, tracking and protection work.","label_en":"Dog training equipment","alt_en":"Malinois training at the IQ portable blind","mobile_position":"bottom","mobile_alignment":"center","mobile_tone":"light","heading_tag":"h1","button_de":"","button_en":"","button_url":""}},"iq_collection_hero_wA8hfy":{"type":"iq-collection-hero","custom_css":["@media (max-width: 749px) {.iqcb .iqcb__copy .iqcb__title, .iqcb .iqcb__copy .iqcb__title span, .iqcb .iqcb__copy .iqcb__label, .iqcb .iqcb__copy .iqcb__description {text-shadow: 0 2px 6px rgba(23, 23, 23, 0.55); }}"],"name":"IQ Collection Banner","settings":{"only_collection":"zzz-hundesport-hosen-damen","desktop_image":"shopify:\/\/shop_images\/hosedesktop.jpg","mobile_image":"shopify:\/\/shop_images\/hosemobil.jpg","text_tone":"light","desktop_position":"center","show_mobile_label":true,"focus_y":80,"title_de":"Dein Training.","accent_de":"Deine Hose.","description_de":"Robuster Stoff. Bewegungsfreiheit durch Stretch-Anteile. Mit herausnehmbaren Futtertaschen und versteckter Rückentasche.","mobile_description_de":"Robuster Stoff mit Stretch-Anteil. Herausnehmbare Futtertaschen und versteckte Rückentasche.","label_de":"Hundesporthosen","alt_de":"Zwei Männer in schwarzen IQ Hundesporthosen mit einem Hund auf einer Wiese.","title_en":"Your Training.","accent_en":"Your Pants.","description_en":"Durable fabric. Freedom to move with stretch panels. Removable treat pouches and a concealed rear pocket.","mobile_description_en":"Durable fabric. Freedom to move with stretch panels. Removable treat pouches and a concealed rear pocket.","label_en":"Pants","alt_en":"Two men in black IQ Dogsport Trainer Pants heeling with a German shepherd","mobile_position":"top","mobile_alignment":"center","mobile_tone":"light","heading_tag":"h1","button_de":"","button_en":"","button_url":""}},"iq_collection_navigation_WCq9Pa":{"type":"iq-collection-navigation","blocks":{"link_jtPBdK":{"type":"link","name":"Geschirre","settings":{"label_de":"Hetz- & Zuggeschirre","label_en":"Protection Harnesses","collection":"","url_de":"#iq-product-10709831811336","url_en":""}},"link_GPkEAN":{"type":"link","name":"Unterordnung","settings":{"label_de":"Unterordnung","label_en":"Obedience","collection":"","url_de":"#iq-product-10709814771976","url_en":""}},"link_LJ7UYW":{"type":"link","name":"Schutzdienst","settings":{"label_de":"Schutzdienst","label_en":"Protection","collection":"","url_de":"#iq-product-10709793145096","url_en":""}},"link_fnE4JN":{"type":"link","name":"Fährte","settings":{"label_de":"Fährte & Sucharbeit","label_en":"Tracking & Detection","collection":"","url_de":"#iq-product-10709826109704","url_en":""}}},"block_order":["link_jtPBdK","link_GPkEAN","link_LJ7UYW","link_fnE4JN"],"name":"IQ Kategorien-Links","settings":{"only_collection":"hundesport-trainingszubehoer"}},"banner":{"type":"main-collection-banner","blocks":{"collection_info_zUNyKV":{"type":"collection_info","settings":{"heading_size":"h3","heading_tag":"h1","show_description":false,"padding_top":0,"padding_bottom":0}}},"block_order":["collection_info_zUNyKV"],"custom_css":[".collection-hero .page-width {max-width: none !important; width: 100% !important; padding-left: 0 !important; padding-right: 0 !important;}",".collection-hero .collection-hero__text {justify-content: flex-end !important; text-align: center !important;}"," \/* Added by Hamza: improve responsive collection banner layout *\/.collection-hero .media,.collection-hero img {object-position: center center !important;}",".collection-hero .collection-hero__inner {border-radius: 0 !important;}"],"settings":{"color_scheme":"scheme-6","text_alignment":"center","show_collection_image":true,"image":"{{ collection.metafields.custom.header_picture_desktop.value }}","image_overlay_opacity":0,"image_position":"as-bg","image_height":"medium","enable_parallax":false,"parallax_direction":"vertical","image_mobile":"{{ collection.metafields.custom.header_picture_mobile.value }}","image_height_mobile":"adapt","padding_top":0,"padding_bottom":0}},"custom_liquid_FpycJH":{"type":"custom-liquid","disabled":true,"custom_css":[],"name":"Collection banner Top","settings":{"custom_liquid":"{% if collection.description != blank %}\n  <div style=\"padding:12px 20px 0;\">\n    <div style=\"max-width:1180px;margin:0 auto;text-align:center;font-size:18px;line-height:1.5;color:#222;\">\n      {{ collection.description | replace: '<p>', '<p style=\"margin:0;\">' }}\n    <\/div>\n  <\/div>\n{% endif %}","color_scheme":"","padding_top":0,"padding_bottom":0,"custom_class":""}},"breadcrumbs_Gxg9wp":{"type":"breadcrumbs","disabled":true,"custom_css":[".breadcrumbs {padding: 2rem 0;}"],"settings":{"text_alignment":"center"}},"product-grid":{"type":"main-collection-product-grid","custom_css":[],"settings":{"color_scheme":"scheme-9","products_per_page":21,"columns_desktop":3,"grid_layout":"standard","pagination":"infinite","enable_color_swatch":true,"enable_filtering":true,"filter_type":"drawer","enable_sorting":true,"expand_filter_groups":"Verfügbarkeit, Preis, Farbe, Größe, Produkttyp, Geschlecht","columns_mobile":"2","padding_top":40,"padding_bottom":70,"show_section_divider":true,"divider_width":"fixed"}},"custom_liquid_aqAmH6":{"type":"custom-liquid","name":"Produktvideo","settings":{"custom_liquid":"{% if collection.handle == 'hundesport-hosen' %}\n{% assign pants = all_products['iq-dogsport-hose-unisex'] %}\n{% assign en = false %}{% if request.locale.iso_code == 'en' %}{% assign en = true %}{% endif %}\n{% if pants != blank %}\n{% assign pants_video = pants.media | where: 'media_type', 'video' | first %}\n{% if pants_video != blank %}\n<div class=\"iq-pants-block\"><div class=\"iq-pants-video-wrap\">\n<p class=\"iq-pants-kicker\">{% if en %}See it in action{% else %}Im Einsatz{% endif %}<\/p>\n<h2>{% if en %}Your trousers in training.{% else %}Deine Hose im Training.{% endif %}<\/h2>\n{{ pants_video | video_tag: image_size: '1000x', controls: true, autoplay: false, loop: false, preload: 'none', class: 'iq-pants-video' }}\n<\/div><\/div>\n{% elsif request.design_mode %}<p>Für diese Hose ist noch kein Shopify-Produktvideo hinterlegt.<\/p>{% endif %}\n<style>.iq-pants-block{max-width:1180px;margin:0 auto;padding:40px 24px;color:#171717;font:400 16px\/1.55 Archivo,sans-serif}.iq-pants-block *{box-sizing:border-box}.iq-pants-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}.iq-pants-block h2{font:800 italic clamp(28px,3vw,42px)\/1.12 Montserrat,sans-serif;text-transform:uppercase;margin:0 0 20px}.iq-pants-block h3{font:700 20px\/1.3 Archivo,sans-serif;margin:0 0 8px}.iq-pants-block p{margin:0 0 18px}.iq-pants-block .iq-pants-kicker{font:700 12px\/1.4 Archivo,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#A51D1B;margin-bottom:12px}.iq-pants-photo{display:block;width:100%;height:auto}.iq-pants-product{height:480px;object-fit:contain}.iq-pants-block ul{padding-left:20px;margin:20px 0}.iq-pants-block li{margin:8px 0}.iq-pants-block .iq-pants-price{font:700 24px\/1.3 Archivo,sans-serif;margin:24px 0 12px}.iq-pants-cta{display:inline-flex;align-items:center;justify-content:center;background:#171717;color:#fff!important;padding:14px 24px;min-height:48px;text-decoration:none;font-weight:700}.iq-pants-cta:focus-visible{outline:3px solid #A51D1B;outline-offset:4px}.iq-pants-block .iq-pants-small{font-size:13px;margin-top:10px}.iq-pants-block a:not(.iq-pants-cta){color:inherit;text-underline-offset:4px}.iq-pants-detail{border-top:1px solid #DCDBD7}.iq-pants-detail article+article{border-top:1px solid #DCDBD7;margin-top:22px;padding-top:22px}.iq-pants-video{display:block;width:100%;max-height:640px;background:#171717;object-fit:contain;height:auto}.iq-pants-video-wrap{max-width:850px;margin:auto}.iq-pants-video-wrap h2{font-size:clamp(26px,3vw,36px)}@media(max-width:749px){.iq-pants-block{padding:28px 20px;font-size:15px}.iq-pants-grid{grid-template-columns:1fr;gap:24px}.iq-pants-product{height:330px}.iq-pants-block h2{font-size:28px}.iq-pants-cta{width:100%}.iq-pants-video{max-height:70vh}}<\/style>\n{% endif %}\n{% endif %}","color_scheme":"","padding_top":0,"padding_bottom":0,"custom_class":""}},"custom_liquid_T3dHzC":{"type":"custom-liquid","name":"Bild Erklärung","settings":{"custom_liquid":"{% if collection.handle == 'hundesport-hosen' %}\n{% assign pants = all_products['iq-dogsport-hose-unisex'] %}\n{% assign en = false %}{% if request.locale.iso_code == 'en' %}{% assign en = true %}{% endif %}\n{% if pants != blank %}\n<div class=\"iq-pants-block iq-pants-detail\"><div class=\"iq-pants-grid\">\n<img class=\"iq-pants-photo\" src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0625\/2806\/1688\/files\/hundesport-hose-futtertasche-iq-dogsport.jpg?v=1775315587&width=900\" width=\"900\" height=\"900\" style=\"aspect-ratio:1;object-fit:contain\" loading=\"lazy\" alt=\"{% if en %}Removable treat pouch on the IQ Trainer Pants{% else %}Herausnehmbare Futtertasche der IQ Trainer Pants{% endif %}\">\n<div><p class=\"iq-pants-kicker\">{% if en %}Details that make a difference{% else %}Durchdachte Details{% endif %}<\/p>\n<h2>{% if en %}Ready to reward.{% else %}Bereit zum Belohnen.{% endif %}<\/h2>\n<article><h3>{% if en %}Remove. Rinse. Keep training.{% else %}Rausnehmen. Abwaschen. Weitertrainieren.{% endif %}<\/h3><p>{% if en %}The integrated treat pouches are coated and removable, making them easy to clean after training.{% else %}Die integrierten Futtertaschen sind beschichtet und herausnehmbar. So lassen sie sich nach dem Training einfach reinigen.{% endif %}<\/p><\/article>\n<article><h3>{% if en %}Room for your reward toy{% else %}Platz für Dein Belohnungsspielzeug{% endif %}<\/h3><p>{% if en %}The concealed rear pocket holds your toy or bite pillow.{% else %}In der versteckten Rückentasche finden Spielzeug oder Beißkissen Platz.{% endif %}<\/p><\/article>\n\n<article><h3>{% if en %}Need more space?{% else %}Du brauchst mehr Platz?{% endif %}<\/h3><p>{% if en %}Add the optional <a href=\"{{ routes.root_url }}{% unless routes.root_url == '\/' %}\/{% endunless %}products\/iq-modulare-futtertasche\">IQ modular treat pouch<\/a>. Sold separately.{% else %}Die optionale <a href=\"{{ routes.root_url }}{% unless routes.root_url == '\/' %}\/{% endunless %}products\/iq-modulare-futtertasche\">IQ Modulare Futtertasche<\/a> lässt sich zusätzlich einhängen. Separat erhältlich.{% endif %}<\/p><\/article>\n<\/div><\/div><\/div>\n<style>.iq-pants-block{max-width:1180px;margin:0 auto;padding:40px 24px;color:#171717;font:400 16px\/1.55 Archivo,sans-serif}.iq-pants-block *{box-sizing:border-box}.iq-pants-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}.iq-pants-block h2{font:800 italic clamp(28px,3vw,42px)\/1.12 Montserrat,sans-serif;text-transform:uppercase;margin:0 0 20px}.iq-pants-block h3{font:700 20px\/1.3 Archivo,sans-serif;margin:0 0 8px}.iq-pants-block p{margin:0 0 18px}.iq-pants-block .iq-pants-kicker{font:700 12px\/1.4 Archivo,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#A51D1B;margin-bottom:12px}.iq-pants-photo{display:block;width:100%;height:auto}.iq-pants-product{height:480px;object-fit:contain}.iq-pants-block ul{padding-left:20px;margin:20px 0}.iq-pants-block li{margin:8px 0}.iq-pants-block .iq-pants-price{font:700 24px\/1.3 Archivo,sans-serif;margin:24px 0 12px}.iq-pants-cta{display:inline-flex;align-items:center;justify-content:center;background:#171717;color:#fff!important;padding:14px 24px;min-height:48px;text-decoration:none;font-weight:700}.iq-pants-cta:focus-visible{outline:3px solid #A51D1B;outline-offset:4px}.iq-pants-block .iq-pants-small{font-size:13px;margin-top:10px}.iq-pants-block a:not(.iq-pants-cta){color:inherit;text-underline-offset:4px}.iq-pants-detail{border-top:1px solid #DCDBD7}.iq-pants-detail article+article{border-top:1px solid #DCDBD7;margin-top:22px;padding-top:22px}.iq-pants-video{display:block;width:100%;max-height:640px;background:#171717;object-fit:contain;height:auto}.iq-pants-video-wrap{max-width:850px;margin:auto}.iq-pants-video-wrap h2{font-size:clamp(26px,3vw,36px)}@media(max-width:749px){.iq-pants-block{padding:28px 20px;font-size:15px}.iq-pants-grid{grid-template-columns:1fr;gap:24px}.iq-pants-product{height:330px}.iq-pants-block h2{font-size:28px}.iq-pants-cta{width:100%}.iq-pants-video{max-height:70vh}}<\/style>\n{% endif %}\n{% endif %}","color_scheme":"","padding_top":0,"padding_bottom":0,"custom_class":""}},"rich_text_ARFW3U":{"type":"rich-text","blocks":{"text_YWhhmP":{"type":"text","settings":{"text":"{{ collection.metafields.custom.text_kategorie_unten | metafield_tag }}","text_size":"text-inherit"}}},"block_order":["text_YWhhmP"],"disabled":true,"name":"t:sections.rich-text.presets.name","settings":{"color_scheme":"","content_alignment":"center","padding_top":50,"padding_bottom":50,"show_section_divider":false,"divider_width":"fixed","custom_class":""}},"custom_liquid_DHTpCY":{"type":"custom-liquid","disabled":true,"custom_css":[],"name":"Collection banner bottom","settings":{"custom_liquid":"{% if collection.description != blank %}\n  {% assign description_parts = collection.description | split: '<\/p>' %}\n  {% assign rest_description = description_parts | slice: 1, 999 | join: '<\/p>' %}\n\n  {% if rest_description != blank %}\n    <div class=\"page-width collection-seo-text\">\n      {{ rest_description }}\n    <\/div>\n  {% endif %}\n{% endif %}","color_scheme":"","padding_top":0,"padding_bottom":0,"custom_class":""}},"177730905751d89578":{"type":"apps","blocks":{"instafeed_app_block_t9Jfpx":{"type":"shopify:\/\/apps\/instafeed\/blocks\/app-block\/c447db20-095d-4a10-9725-b5977662c9d5","settings":{"title":"Built for training. Ready for anything.","title_color":"","title_size_v2":0,"alignment":"center","instafeed_margin_top":0,"instafeed_margin_bottom":0,"instafeed_margin_sides":0,"show_instagram_link":false,"link_alignment":"left","link_color":"#000000","background_color":"","feed_id":"","html_area":""}}},"block_order":["instafeed_app_block_t9Jfpx"],"settings":{"include_margins":true,"padding_top":0,"padding_bottom":0,"custom_class":""}},"iq_collection_info_WxCMDh":{"type":"iq-collection-info","name":"IQ Collection Infos","settings":{"only_collection":"{{ collection }}","heading_de":"Wissen fürs Training","heading_en":"Training Tips","use_description":true,"text_de":"","text_en":""}},"collapsible_tabs_NGxnDR":{"type":"collapsible-tabs","blocks":{"collapsible_item_eXYJJd":{"type":"collapsible_item","settings":{"icon":"none","heading":"➔ Was hinter IQ Dogsport steht:  {{ collection.title }}","content":"{{ collection.metafields.custom.text_kategorie_unten | metafield_tag }}","custom_liquid":"","page":"","open":false}}},"block_order":["collapsible_item_eXYJJd"],"name":"t:sections.collapsible-tabs.presets.name","settings":{"container":"fixed","color_scheme":"","header_layout":"vertical","heading":"","heading_size":"h1","heading_highlight_style":"none","subheading":"","description":"","text_size":"text-base","button_label":"","button_link":"","button_style":"btn--primary","column_gap":"large","row_gap":"inherit","item_style":"standard","item_color_scheme":"","item_heading_font":"heading","item_heading_size":"h4","item_icon_size":"extra-large","padding_top":0,"padding_bottom":70,"show_section_divider":false,"divider_width":"fixed","custom_class":""}}},"order":["iq_collection_hero_Vc6pjz","iq_collection_hero_wA8hfy","iq_collection_navigation_WCq9Pa","banner","custom_liquid_FpycJH","breadcrumbs_Gxg9wp","product-grid","custom_liquid_aqAmH6","custom_liquid_T3dHzC","rich_text_ARFW3U","custom_liquid_DHTpCY","177730905751d89578","iq_collection_info_WxCMDh","collapsible_tabs_NGxnDR"]}
+{
+  "sections": {
+    "iq_collection_hero_Vc6pjz": {
+      "type": "iq-collection-hero",
+      "name": "IQ Collection Banner",
+      "settings": {
+        "only_collection": "hundesport-trainingszubehoer",
+        "desktop_image": "shopify://shop_images/iq-training-und-hund-hero-desktop-2560x1200.webp",
+        "mobile_image": "shopify://shop_images/iq-training-und-hund-hero-mobile-1200x1500.webp",
+        "text_tone": "light",
+        "desktop_position": "top",
+        "show_mobile_label": true,
+        "focus_y": 75,
+        "title_de": "Dein Training.",
+        "accent_de": "Deine Ausrüstung.",
+        "description_de": "Für Belohnung, Fußarbeit, Fährte und Schutzdienst.",
+        "mobile_description_de": "Für Belohnung, Fußarbeit, Fährte und Schutzdienst.",
+        "label_de": "Hundesport Trainingszubehör",
+        "alt_de": "Malinois beim Training am IQ Wurfversteck",
+        "title_en": "Your training.",
+        "accent_en": "Your equipment.",
+        "description_en": "For rewards, heelwork, tracking and protection work.",
+        "mobile_description_en": "For rewards, heelwork, tracking and protection work.",
+        "label_en": "Dog training equipment",
+        "alt_en": "Malinois training at the IQ portable blind",
+        "mobile_position": "bottom",
+        "mobile_alignment": "center",
+        "mobile_tone": "light",
+        "heading_tag": "h1",
+        "button_de": "",
+        "button_en": "",
+        "button_url": ""
+      },
+      "custom_css": [
+        ".iqcb__label, .iqcb__description { color: #FFFFFF; text-shadow: 0 2px 6px rgba(23,23,23,.55); } .iqcb__title { text-shadow: 0 2px 6px rgba(23,23,23,.55); }"
+      ]
+    },
+    "iq_collection_hero_wA8hfy": {
+      "type": "iq-collection-hero",
+      "custom_css": [
+        "@media (max-width: 749px) {.iqcb .iqcb__copy .iqcb__title, .iqcb .iqcb__copy .iqcb__title span, .iqcb .iqcb__copy .iqcb__label, .iqcb .iqcb__copy .iqcb__description {text-shadow: 0 2px 6px rgba(23, 23, 23, 0.55); }}"
+      ],
+      "name": "IQ Collection Banner",
+      "settings": {
+        "only_collection": "zzz-hundesport-hosen-damen",
+        "desktop_image": "shopify://shop_images/hosedesktop.jpg",
+        "mobile_image": "shopify://shop_images/hosemobil.jpg",
+        "text_tone": "light",
+        "desktop_position": "center",
+        "show_mobile_label": true,
+        "focus_y": 50,
+        "title_de": "DIE HOSE,",
+        "accent_de": "DIE MEHR KANN.",
+        "description_de": "Stretch-Anteile, herausnehmbare Futtertaschen und eine versteckte Rückentasche.",
+        "mobile_description_de": "Stretch-Anteile, herausnehmbare Futtertaschen und eine versteckte Rückentasche.",
+        "label_de": "HUNDESPORTHOSEN",
+        "alt_de": "IQ Hundesporthosen im Einsatz beim Training mit Hund.",
+        "title_en": "TROUSERS THAT",
+        "accent_en": "DO MORE.",
+        "description_en": "Added stretch, removable treat pockets and a hidden back pocket.",
+        "mobile_description_en": "Added stretch, removable treat pockets and a hidden back pocket.",
+        "label_en": "DOG TRAINING TROUSERS",
+        "alt_en": "IQ dog training trousers in use during training with a dog.",
+        "mobile_position": "top",
+        "mobile_alignment": "left",
+        "mobile_tone": "light",
+        "heading_tag": "h1",
+        "button_de": "Hose entdecken",
+        "button_en": "Explore trousers",
+        "button_url": "",
+        "require_collection": true
+      }
+    },
+    "iq_collection_navigation_WCq9Pa": {
+      "type": "iq-collection-navigation",
+      "blocks": {
+        "link_jtPBdK": {
+          "type": "link",
+          "name": "Geschirre",
+          "settings": {
+            "label_de": "Hetz- & Zuggeschirre",
+            "label_en": "Protection Harnesses",
+            "collection": "",
+            "url_de": "#iq-product-10709831811336",
+            "url_en": ""
+          }
+        },
+        "link_GPkEAN": {
+          "type": "link",
+          "name": "Unterordnung",
+          "settings": {
+            "label_de": "Unterordnung",
+            "label_en": "Obedience",
+            "collection": "",
+            "url_de": "#iq-product-10709814771976",
+            "url_en": ""
+          }
+        },
+        "link_LJ7UYW": {
+          "type": "link",
+          "name": "Schutzdienst",
+          "settings": {
+            "label_de": "Schutzdienst",
+            "label_en": "Protection",
+            "collection": "",
+            "url_de": "#iq-product-10709793145096",
+            "url_en": ""
+          }
+        },
+        "link_fnE4JN": {
+          "type": "link",
+          "name": "Fährte",
+          "settings": {
+            "label_de": "Fährte & Sucharbeit",
+            "label_en": "Tracking & Detection",
+            "collection": "",
+            "url_de": "#iq-product-10709826109704",
+            "url_en": ""
+          }
+        }
+      },
+      "block_order": [
+        "link_jtPBdK",
+        "link_GPkEAN",
+        "link_LJ7UYW",
+        "link_fnE4JN"
+      ],
+      "name": "IQ Kategorien-Links",
+      "settings": {
+        "only_collection": "hundesport-trainingszubehoer"
+      },
+      "disabled": true
+    },
+    "banner": {
+      "type": "main-collection-banner",
+      "blocks": {
+        "collection_info_zUNyKV": {
+          "type": "collection_info",
+          "settings": {
+            "heading_size": "h3",
+            "heading_tag": "h1",
+            "show_description": false,
+            "padding_top": 0,
+            "padding_bottom": 0
+          }
+        }
+      },
+      "block_order": [
+        "collection_info_zUNyKV"
+      ],
+      "custom_css": [
+        ".collection-hero .page-width {max-width: none !important; width: 100% !important; padding-left: 0 !important; padding-right: 0 !important;}",
+        ".collection-hero .collection-hero__text {justify-content: flex-end !important; text-align: center !important;}",
+        " /* Added by Hamza: improve responsive collection banner layout */.collection-hero .media,.collection-hero img {object-position: center center !important;}",
+        ".collection-hero .collection-hero__inner {border-radius: 0 !important;}"
+      ],
+      "settings": {
+        "color_scheme": "scheme-6",
+        "text_alignment": "center",
+        "show_collection_image": true,
+        "image": "{{ collection.metafields.custom.header_picture_desktop.value }}",
+        "image_overlay_opacity": 0,
+        "image_position": "as-bg",
+        "image_height": "medium",
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "image_mobile": "{{ collection.metafields.custom.header_picture_mobile.value }}",
+        "image_height_mobile": "adapt",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "custom_liquid_FpycJH": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "custom_css": [],
+      "name": "Collection banner Top",
+      "settings": {
+        "custom_liquid": "{% if collection.description != blank %}\n  <div style=\"padding:12px 20px 0;\">\n    <div style=\"max-width:1180px;margin:0 auto;text-align:center;font-size:18px;line-height:1.5;color:#222;\">\n      {{ collection.description | replace: '<p>', '<p style=\"margin:0;\">' }}\n    </div>\n  </div>\n{% endif %}",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "custom_class": ""
+      }
+    },
+    "breadcrumbs_Gxg9wp": {
+      "type": "breadcrumbs",
+      "disabled": true,
+      "custom_css": [
+        ".breadcrumbs {padding: 2rem 0;}"
+      ],
+      "settings": {
+        "text_alignment": "center"
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid-magazine",
+      "custom_css": [],
+      "settings": {
+        "color_scheme": "scheme-9",
+        "products_per_page": 24,
+        "columns_desktop": 4,
+        "grid_layout": "standard",
+        "pagination": "load_more",
+        "enable_color_swatch": true,
+        "enable_filtering": true,
+        "filter_type": "drawer",
+        "enable_sorting": true,
+        "expand_filter_groups": "Verfügbarkeit, Preis, Farbe, Größe, Produkttyp, Geschlecht",
+        "columns_mobile": "2",
+        "padding_top": 0,
+        "padding_bottom": 70,
+        "show_section_divider": true,
+        "divider_width": "fixed",
+        "collection_card_titles": true
+      },
+      "blocks": {
+        "iq_training_harness": {
+          "type": "iq_editorial",
+          "settings": {
+            "only_collection": "hundesport-trainingszubehoer",
+            "product": "iq-performance-pro-click-go",
+            "image": "shopify://shop_images/Morpheus-rennend.jpg",
+            "mode": "product",
+            "position": 3,
+            "position_mobile": 3,
+            "eyebrow_de": "Performance Pro · Hetz- & Zuggeschirr",
+            "eyebrow_en": "IQ training equipment",
+            "heading_de": "Die Konstruktion macht den Unterschied.",
+            "heading_en": "The construction makes the difference.",
+            "body_de": "Zugführung zum Brustbein. Platz entlang der Wirbelsäule. Zwei Verschlusssysteme.",
+            "body_en": "Load directed towards the sternum. Space along the spine. Two closure systems.",
+            "alt_de": "Performance Pro · Hetz- & Zuggeschirr",
+            "alt_en": "The construction makes the difference."
+          }
+        },
+        "iq_training_blind": {
+          "type": "iq_editorial",
+          "settings": {
+            "only_collection": "hundesport-trainingszubehoer",
+            "product": "wurfversteck",
+            "image": "shopify://shop_images/Wurfversteck-Revier-frei.jpg",
+            "mode": "photo",
+            "position": 15,
+            "position_mobile": 16,
+            "eyebrow_de": "IQ Wurfversteck · Schutzdienst",
+            "eyebrow_en": "IQ training equipment",
+            "heading_de": "Groß im Training. Klein im Gepäck.",
+            "heading_en": "Ready for training. Compact for travel.",
+            "body_de": "2,5 kg. Rund zusammenfaltbar. Mit Schultertasche und vier Heringen.",
+            "body_en": "2.5 kg. Folds into a circle. Includes a shoulder bag and four ground pegs.",
+            "alt_de": "IQ Wurfversteck · Schutzdienst",
+            "alt_en": "Ready for training. Compact for travel."
+          }
+        },
+        "iq_food_reward": {
+          "type": "iq_editorial",
+          "settings": {
+            "only_collection": "trainingsfutter-supplemente",
+            "product": "iq-pure-bites-rinderlunge-trainingshappen-mini",
+            "mode": "product",
+            "position": 6,
+            "position_mobile": 4,
+            "eyebrow_de": "IQ Pure Bites · Rinderlunge Mini",
+            "eyebrow_en": "IQ Pure Bites · Beef lung mini",
+            "heading_de": "Kleine Happen. Nächste Wiederholung.",
+            "heading_en": "Small bites. Next repetition.",
+            "body_de": "100 % Rinderlunge. Kleine Trainingshappen für Unterordnung, Markertraining und viele kurze Belohnungen.",
+            "body_en": "100% beef lung. Small treats for obedience, marker training and frequent rewards.",
+            "alt_de": "IQ Pure Bites Rinderlunge Mini Trainingshappen",
+            "alt_en": "IQ Pure Bites beef lung mini training treats"
+          }
+        }
+      },
+      "block_order": [
+        "iq_training_harness",
+        "iq_training_blind",
+        "iq_food_reward"
+      ]
+    },
+    "custom_liquid_aqAmH6": {
+      "type": "iq-release-section-14",
+      "name": "Produktvideo",
+      "settings": {},
+      "blocks": {
+        "part1": {
+          "type": "part1",
+          "settings": {
+            "text_1": "See it in action",
+            "text_2": "Im Einsatz",
+            "text_3": "Your trousers in training.",
+            "text_4": "Deine Hose im Training.",
+            "text_5": "Für diese Hose ist noch kein Shopify-Produktvideo hinterlegt."
+          }
+        }
+      },
+      "block_order": [
+        "part1"
+      ]
+    },
+    "custom_liquid_T3dHzC": {
+      "type": "iq-release-section-15",
+      "name": "Bild Erklärung",
+      "settings": {},
+      "blocks": {
+        "part1": {
+          "type": "part1",
+          "settings": {
+            "text_1": "Details that make a difference",
+            "text_2": "Durchdachte Details",
+            "text_3": "Ready to reward.",
+            "text_4": "Bereit zum Belohnen.",
+            "text_5": "Remove. Rinse. Keep training.",
+            "text_6": "Rausnehmen. Abwaschen. Weitertrainieren.",
+            "text_7": "The integrated treat pouches are coated and removable, making them easy to clean after training.",
+            "text_8": "Die integrierten Futtertaschen sind beschichtet und herausnehmbar. So lassen sie sich nach dem Training einfach reinigen.",
+            "text_9": "Room for your reward toy",
+            "text_10": "Platz für Dein Belohnungsspielzeug",
+            "text_11": "The concealed rear pocket holds your toy or bite pillow.",
+            "text_12": "In der versteckten Rückentasche finden Spielzeug oder Beißkissen Platz.",
+            "text_13": "Need more space?",
+            "text_14": "Du brauchst mehr Platz?",
+            "text_15": "Add the optional",
+            "text_16": "IQ modular treat pouch",
+            "text_17": ". Sold separately.",
+            "text_18": "Die optionale",
+            "text_19": "IQ Modulare Futtertasche",
+            "text_20": "lässt sich zusätzlich einhängen. Separat erhältlich."
+          }
+        },
+        "part2": {
+          "type": "part2",
+          "settings": {
+            "image_url_21": "https://cdn.shopify.com/s/files/1/0625/2806/1688/files/hundesport-hose-futtertasche-iq-dogsport.jpg?v=1775315587&width=900"
+          }
+        }
+      },
+      "block_order": [
+        "part1",
+        "part2"
+      ]
+    },
+    "rich_text_ARFW3U": {
+      "type": "rich-text",
+      "blocks": {
+        "text_YWhhmP": {
+          "type": "text",
+          "settings": {
+            "text": "{{ collection.metafields.custom.text_kategorie_unten | metafield_tag }}",
+            "text_size": "text-inherit"
+          }
+        }
+      },
+      "block_order": [
+        "text_YWhhmP"
+      ],
+      "disabled": true,
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "color_scheme": "",
+        "content_alignment": "center",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "custom_class": ""
+      }
+    },
+    "custom_liquid_DHTpCY": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "custom_css": [],
+      "name": "Collection banner bottom",
+      "settings": {
+        "custom_liquid": "{% if collection.description != blank %}\n  {% assign description_parts = collection.description | split: '</p>' %}\n  {% assign rest_description = description_parts | slice: 1, 999 | join: '</p>' %}\n\n  {% if rest_description != blank %}\n    <div class=\"page-width collection-seo-text\">\n      {{ rest_description }}\n    </div>\n  {% endif %}\n{% endif %}",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "custom_class": ""
+      }
+    },
+    "177730905751d89578": {
+      "type": "apps",
+      "blocks": {
+        "instafeed_app_block_t9Jfpx": {
+          "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
+          "settings": {
+            "title": "Built for training. Ready for anything.",
+            "title_color": "",
+            "title_size_v2": 0,
+            "alignment": "center",
+            "instafeed_margin_top": 0,
+            "instafeed_margin_bottom": 0,
+            "instafeed_margin_sides": 0,
+            "show_instagram_link": false,
+            "link_alignment": "left",
+            "link_color": "#000000",
+            "background_color": "",
+            "feed_id": "",
+            "html_area": ""
+          }
+        }
+      },
+      "block_order": [
+        "instafeed_app_block_t9Jfpx"
+      ],
+      "settings": {
+        "include_margins": true,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "custom_class": ""
+      }
+    },
+    "iq_knowledge": {
+      "type": "iq-collection-knowledge",
+      "settings": {}
+    },
+    "iq_training_details": {
+      "type": "iq-collection-story",
+      "blocks": {
+        "magnet": {
+          "type": "feature",
+          "settings": {
+            "layout": "split",
+            "image": "shopify://shop_images/IQ-Magnetizer-Rueckseite.jpg",
+            "product": "iq-magnetizer",
+            "heading_de": "Befestigen. Positionieren. Bestätigen.",
+            "heading_en": "Attach. Position. Reward.",
+            "body_de": "<p>Befestige den Adapter mit Kabelbindern am geeigneten Spielzeug und kombiniere ihn mit einem passenden Magnetsystem, beispielsweise Top-Matic. Normal ist für Sucharbeit und Detection gedacht, Extra für größere Spielzeuge und dynamische Arbeit.</p>",
+            "body_en": "<p>Attach the adapter to a suitable toy using cable ties and combine it with a compatible magnetic system, such as Top-Matic. Normal is intended for scent work and detection; Extra for larger toys and dynamic training.</p>",
+            "eyebrow_de": "IQ Magnetizer · Unterordnung & Sucharbeit",
+            "eyebrow_en": "IQ training equipment",
+            "alt_de": "IQ Magnetizer · Unterordnung & Sucharbeit",
+            "alt_en": "Your toy. Magnetically positioned.",
+            "link_label_de": "Produkt ansehen",
+            "link_label_en": "View product",
+            "reverse": false,
+            "focal_x": 50,
+            "focal_y": 50
+          }
+        },
+        "trainer": {
+          "type": "feature",
+          "settings": {
+            "layout": "split",
+            "image": "shopify://shop_images/Gegenstandstrainer-2.0-Funktion_web.jpg",
+            "product": "iq-gegenstandstrainer",
+            "heading_de": "Die Bestätigung kommt am Gegenstand.",
+            "heading_en": "Reward at the article.",
+            "body_de": "<p>Befestige den Fährtengegenstand auf dem Trainer und lege Futter darunter. Zum Bestätigen hebst Du den Trainer an. Die Metallspitzen sind für weichen Boden einschraubbar und für den Einsatz drinnen abnehmbar.</p>",
+            "body_en": "<p>Attach the tracking article to the trainer and place food underneath. Lift the trainer to release the reward. Screw in the metal spikes for soft ground and remove them for indoor use.</p>",
+            "eyebrow_de": "IQ Gegenstandstrainer 2.0 · Fährte",
+            "eyebrow_en": "IQ training equipment",
+            "alt_de": "IQ Gegenstandstrainer 2.0 · Fährte",
+            "alt_en": "Stay at the article. Reward with purpose.",
+            "link_label_de": "Produkt ansehen",
+            "link_label_en": "View product",
+            "reverse": true,
+            "focal_x": 50,
+            "focal_y": 50
+          }
+        }
+      },
+      "block_order": [
+        "magnet",
+        "trainer"
+      ],
+      "settings": {
+        "only_collection": "hundesport-trainingszubehoer"
+      }
+    },
+    "iq_food_details": {
+      "type": "iq-collection-story",
+      "blocks": {
+        "sticks": {
+          "type": "feature",
+          "settings": {
+            "layout": "split",
+            "image": "shopify://shop_images/iq-sticks-pferd-10cm.jpg",
+            "product": "iq-sticks-pferd",
+            "heading_de": "Für die Fährte. Für zwischendurch.",
+            "heading_en": "For tracking. For everyday rewards.",
+            "body_de": "<p>Die IQ Sticks Pferd enthalten 71 % Pferd. Ihre feste Konsistenz lässt sich portionieren – für die Fährtenarbeit oder als vorbereitete Belohnung aus der IQ Balltasche.</p>",
+            "body_en": "<p>IQ horse sticks contain 71% horse. Their firm texture can be portioned for tracking or prepared as rewards in the IQ ball pocket.</p>",
+            "alt_de": "Für die Fährte. Für zwischendurch.",
+            "alt_en": "For tracking. For everyday rewards.",
+            "link_label_de": "Produkt ansehen",
+            "link_label_en": "View product",
+            "reverse": false,
+            "focal_x": 50,
+            "focal_y": 50
+          }
+        },
+        "athletics": {
+          "type": "feature",
+          "settings": {
+            "layout": "split",
+            "image": "shopify://shop_images/Kynovital-Grainfree-Adult.png",
+            "product": "kynovital-adult-athletics-28-20",
+            "heading_de": "Die tägliche Mahlzeit für aktive Hunde.",
+            "heading_en": "Everyday meals for active dogs.",
+            "body_de": "<p>KYNOVITAL Adult Athletics 28/20 ist ein Alleinfutter mit Huhn und Truthahn für erwachsene, aktive Hunde. Zusammensetzung und Fütterungsempfehlung findest Du auf der Produktseite.</p>",
+            "body_en": "<p>KYNOVITAL Adult Athletics 28/20 is a complete food with chicken and turkey for active adult dogs. See the product page for ingredients and feeding guidance.</p>",
+            "alt_de": "Die tägliche Mahlzeit für aktive Hunde.",
+            "alt_en": "Everyday meals for active dogs.",
+            "link_label_de": "Produkt ansehen",
+            "link_label_en": "View product",
+            "reverse": true,
+            "focal_x": 50,
+            "focal_y": 50
+          }
+        }
+      },
+      "block_order": [
+        "sticks",
+        "athletics"
+      ],
+      "settings": {
+        "only_collection": "trainingsfutter-supplemente"
+      }
+    },
+    "iq_hosen_main": {
+      "type": "iq-collection-hero",
+      "custom_css": [
+        "@media (max-width: 749px) {.iqcb .iqcb__copy .iqcb__title, .iqcb .iqcb__copy .iqcb__title span, .iqcb .iqcb__copy .iqcb__label, .iqcb .iqcb__copy .iqcb__description {text-shadow: 0 2px 6px rgba(23, 23, 23, 0.55); }}"
+      ],
+      "name": "IQ Collection Banner",
+      "settings": {
+        "only_collection": "hundesport-hosen",
+        "desktop_image": "shopify://shop_images/hosedesktop.jpg",
+        "mobile_image": "shopify://shop_images/hosemobil.jpg",
+        "text_tone": "light",
+        "desktop_position": "center",
+        "show_mobile_label": true,
+        "focus_y": 50,
+        "title_de": "DIE HOSE,",
+        "accent_de": "DIE MEHR KANN.",
+        "description_de": "Stretch-Anteile, herausnehmbare Futtertaschen und eine versteckte Rückentasche.",
+        "mobile_description_de": "Stretch-Anteile, herausnehmbare Futtertaschen und eine versteckte Rückentasche.",
+        "label_de": "HUNDESPORTHOSEN",
+        "alt_de": "IQ Hundesporthosen im Einsatz beim Training mit Hund.",
+        "title_en": "TROUSERS THAT",
+        "accent_en": "DO MORE.",
+        "description_en": "Added stretch, removable treat pockets and a hidden back pocket.",
+        "mobile_description_en": "Added stretch, removable treat pockets and a hidden back pocket.",
+        "label_en": "DOG TRAINING TROUSERS",
+        "alt_en": "IQ dog training trousers in use during training with a dog.",
+        "mobile_position": "top",
+        "mobile_alignment": "left",
+        "mobile_tone": "light",
+        "heading_tag": "h1",
+        "button_de": "Hose entdecken",
+        "button_en": "Explore trousers",
+        "button_url": "",
+        "require_collection": true
+      }
+    },
+    "iq_hosen_herren": {
+      "type": "iq-collection-hero",
+      "custom_css": [
+        "@media (max-width: 749px) {.iqcb .iqcb__copy .iqcb__title, .iqcb .iqcb__copy .iqcb__title span, .iqcb .iqcb__copy .iqcb__label, .iqcb .iqcb__copy .iqcb__description {text-shadow: 0 2px 6px rgba(23, 23, 23, 0.55); }}"
+      ],
+      "name": "IQ Collection Banner",
+      "settings": {
+        "only_collection": "zz-hosen-herren",
+        "desktop_image": "shopify://shop_images/hosedesktop.jpg",
+        "mobile_image": "shopify://shop_images/hosemobil.jpg",
+        "text_tone": "light",
+        "desktop_position": "center",
+        "show_mobile_label": true,
+        "focus_y": 50,
+        "title_de": "DIE HOSE,",
+        "accent_de": "DIE MEHR KANN.",
+        "description_de": "Stretch-Anteile, herausnehmbare Futtertaschen und eine versteckte Rückentasche.",
+        "mobile_description_de": "Stretch-Anteile, herausnehmbare Futtertaschen und eine versteckte Rückentasche.",
+        "label_de": "HUNDESPORTHOSEN",
+        "alt_de": "IQ Hundesporthosen im Einsatz beim Training mit Hund.",
+        "title_en": "TROUSERS THAT",
+        "accent_en": "DO MORE.",
+        "description_en": "Added stretch, removable treat pockets and a hidden back pocket.",
+        "mobile_description_en": "Added stretch, removable treat pockets and a hidden back pocket.",
+        "label_en": "DOG TRAINING TROUSERS",
+        "alt_en": "IQ dog training trousers in use during training with a dog.",
+        "mobile_position": "top",
+        "mobile_alignment": "left",
+        "mobile_tone": "light",
+        "heading_tag": "h1",
+        "button_de": "Hose entdecken",
+        "button_en": "Explore trousers",
+        "button_url": "",
+        "require_collection": true
+      }
+    }
+  },
+  "order": [
+    "iq_collection_hero_Vc6pjz",
+    "iq_collection_hero_wA8hfy",
+    "iq_hosen_herren",
+    "iq_hosen_main",
+    "iq_collection_navigation_WCq9Pa",
+    "banner",
+    "custom_liquid_FpycJH",
+    "breadcrumbs_Gxg9wp",
+    "product-grid",
+    "iq_training_details",
+    "iq_food_details",
+    "custom_liquid_aqAmH6",
+    "custom_liquid_T3dHzC",
+    "rich_text_ARFW3U",
+    "custom_liquid_DHTpCY",
+    "177730905751d89578",
+    "iq_knowledge"
+  ]
+}
