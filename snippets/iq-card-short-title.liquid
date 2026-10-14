@@ -1,0 +1,119 @@
+{% doc %}
+Outputs the short product-card title without altering product data.
+@param {product} product - Product shown in a card
+@param {string} [fallback_title] - Existing card title to preserve approved wording
+{% enddoc %}
+{%- liquid
+  assign title = fallback_title | default: product.title | split: ' – ' | first | split: ' | ' | first
+  if request.locale.iso_code == 'de'
+    case product.id
+      when 10709813788936
+        assign title = 'IQ Hundesportweste 3.0'
+      when 10709814739208
+        assign title = 'IQ Sommerweste 3.0'
+      when 10709801337096
+        assign title = 'IQ Diensthundeführerweste Blau'
+      when 10709815361800
+        assign title = 'IQ K9 Diensthundeführerweste Pro Schwarz'
+      when 10709794849032
+        assign title = 'Buch: Gemeinsam erfolgreich · Unterordnung'
+      when 10709799829768
+        assign title = 'Buch: Gemeinsam erfolgreich · Begleithundprüfung'
+      when 10709800354056
+        assign title = 'IQ MFJ 3.0 Damen Schwarz'
+      when 10709800583432
+        assign title = 'IQ MFJ 3.0 Unisex Schwarz'
+      when 10709812379912
+        assign title = 'Buch: Gemeinsam erfolgreich · Schutzdienst'
+      when 10709813461256
+        assign title = 'IQ Hoodie ’Train Hard. Fight Easy.’ Schwarz'
+      when 10709815525640
+        assign title = 'Ersatzgürtel MFJ 3.0 Damen'
+      when 10709815886088
+        assign title = 'IQ MFJ 3.0 Unisex Olive'
+      when 10709816344840
+        assign title = 'IQ MFJ 3.0 Damen Olive'
+      when 10709818638600
+        assign title = 'IQ Hoodie Schwarz Blanko'
+      when 10709820702984
+        assign title = 'IQ Hoodie ’Train Hard. Fight Easy.’ Olive'
+      when 10709824241928
+        assign title = 'IQ Performance Pro Cobra Hetzgeschirr'
+      when 10709831811336
+        assign title = 'IQ Performance Pro Click & Go Geschirr'
+      when 10709843837192
+        assign title = 'IQ MFJ K9 Pro Unisex Schwarz'
+      when 10709844099336
+        assign title = 'IQ MFJ K9 Pro Damen Schwarz'
+      when 10709844721928
+        assign title = 'IQ MFJ 3.0 Unisex Blau'
+      when 10709844885768
+        assign title = 'IQ MFJ 3.0 Damen Blau'
+      when 10709845180680
+        assign title = 'IQ Hoodie ’Train Hard Ice’ Blau Limited Edition'
+      when 10709845606664
+        assign title = 'Futterbeutel-Set für IQ MFJ Damen'
+      when 10709845704968
+        assign title = 'Futterbeutel-Set für IQ MFJ Unisex'
+      when 10709846229256
+        assign title = 'IQ Hoodie ’In Dog We Trust’ Schwarz'
+      when 11358708007176
+        assign title = 'IQ Hoodie "Cross" Unisex'
+      when 12109893730568
+        assign title = 'IQ Trainingsshirt Damen'
+      when 12109897040136
+        assign title = 'IQ Trainingsshirt Unisex'
+      when 12121130893576
+        assign title = 'IQ Softball aus Neopren'
+    endcase
+  elsif request.locale.iso_code == 'en'
+    case product.id
+      when 12121130893576
+        assign title = 'IQ Neoprene Softball'
+      when 12109897040136
+        assign title = 'IQ Training Shirt Unisex'
+      when 12109893730568
+        assign title = 'IQ Training Shirt Women'
+      when 10709813788936
+        assign title = 'IQ Dog Training Vest 3.0'
+      when 10709814739208
+        assign title = 'IQ Summer Vest 3.0'
+      when 10709801337096
+        assign title = 'IQ K9 Handler Vest Blue'
+      when 10709815361800
+        assign title = 'IQ K9 Handler Vest Pro Black'
+      when 10709843837192
+        assign title = 'IQ MFJ K9 Pro Unisex Black'
+      when 10709844099336
+        assign title = 'IQ MFJ K9 Pro Women Black'
+      when 10709800354056
+        assign title = 'IQ MFJ 3.0 Women - Black'
+      when 10709800583432
+        assign title = 'IQ MFJ 3.0 - Black'
+      when 10709815525640
+        assign title = 'Replacement Belt for IQ MFJ 3.0 Women’s'
+      when 10709815886088
+        assign title = 'IQ MFJ 3.0 - Olive'
+      when 10709816344840
+        assign title = 'IQ MFJ 3.0 Women - Olive'
+      when 10709824241928
+        assign title = 'IQ Performance Pro Cobra Harness'
+      when 10709831811336
+        assign title = 'IQ Performance Pro Click & Go Harness'
+      when 10709844721928
+        assign title = 'IQ MFJ 3.0 - Blue Limited Edition'
+      when 10709844885768
+        assign title = 'IQ MFJ 3.0 Women - Blue Limited Edition'
+    endcase
+  endif
+  if title == 'Book' or title == 'Buch' or title == blank
+    assign title = product.title
+  endif
+  assign custom_card_title = product.metafields.custom.kurzer_kartentitel.value | strip
+  if request.page_type == 'product'
+    assign title = fallback_title | default: product.title
+  elsif custom_card_title != blank
+    assign title = custom_card_title
+  endif
+  echo title
+-%}

@@ -648,5 +648,9 @@
       "send_on": "JJJJ-MM-TT",
       "send_on_label": "Senden an (optional)"
     }
+  },
+  "iq_cart_addons": {
+    "variant": "Ausführung wählen",
+    "add": "Hinzufügen"
   }
 }

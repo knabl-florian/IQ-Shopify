@@ -1,0 +1,52 @@
+{% doc %}
+  Editor-managed content preserving the existing collection layout.
+  @param {block} block - Content block.
+{% enddoc %}
+{%- liquid
+  assign iq_mobile = block.settings.bild_1
+  assign iq_desktop = block.settings.bild_2
+  assign iq_english = false
+  if request.locale.iso_code == 'en'
+    assign iq_english = true
+  endif
+-%}
+{% if collection.handle == 'hundesport-westen' %}
+  {% if iq_mobile != blank and iq_desktop != blank %}
+    <div class="iq-reward-banner">
+      <picture>
+        <source media="(max-width: 749px)" width="1080" height="1080" sizes="100vw" srcset="{{ iq_mobile | image_url: width: 375 }} 375w, {{ iq_mobile | image_url: width: 750 }} 750w, {{ iq_mobile | image_url: width: 1080 }} 1080w">
+        {%- capture iq_alt -%}{% if iq_english %}{{ block.settings.text_4 | escape }}{% else %}{{ block.settings.text_5 | escape }}{% endif %}{%- endcapture -%}
+        {{ iq_desktop | image_url: width: 1800 | image_tag: widths: '900,1350,1800', sizes: '100vw', loading: 'lazy', alt: iq_alt }}
+      </picture>
+      <div class="iq-reward-banner__copy">
+        <h2>{% if iq_english %}{{ block.settings.text_6 | escape }}<br>{{ block.settings.text_7 | escape }}{% else %}{{ block.settings.text_8 | escape }}<br>{{ block.settings.text_9 | escape }}{% endif %}</h2>
+        <p>{% if iq_english %}{{ block.settings.text_10 | escape }}{% else %}{{ block.settings.text_11 | escape }}{% endif %}</p>
+        <a href="{% if request.locale.iso_code == 'en' %}{{ block.settings.link_3 }}{% else %}{{ block.settings.link_3 }}{% endif %}">{% if iq_english %}{{ block.settings.text_12 | escape }}{% else %}{{ block.settings.text_13 | escape }}{% endif %}<svg width="17" height="17" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 16 16 4M4 4h12v12" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
+      </div>
+    </div>
+  {% elsif request.design_mode %}
+    <p>Bitte beide Dateien hochladen: iq-westen-brusttasche-mobil.webp und iq-westen-brusttasche-desktop.webp.</p>
+  {% endif %}
+{% endif %}
+<style>
+.iq-reward-banner,.iq-reward-banner *{box-sizing:border-box}
+.iq-reward-banner{position:relative;isolation:isolate;display:block;width:100%;max-width:none;margin:16px auto;background:#fff;color:#171717;aspect-ratio:30/11;border:0;border-radius:0;overflow:hidden}
+.iq-reward-banner picture,.iq-reward-banner img{display:block;width:100%;height:100%;margin:0;border:0;border-radius:0}
+.iq-reward-banner img{object-fit:contain}
+.iq-reward-banner__copy{position:absolute;z-index:1;left:47%;right:4%;top:50%;transform:translateY(-50%);min-width:0;text-align:left}
+.iq-reward-banner h2{margin:0;font:italic 800 clamp(24px,2.4vw,32px)/1.06 Montserrat,sans-serif;letter-spacing:-.035em;text-transform:uppercase;color:#171717;overflow-wrap:normal}
+.iq-reward-banner__copy>p{margin:14px 0 4px;max-width:360px;font:400 15px/1.55 Archivo,sans-serif;color:#171717}
+.iq-reward-banner__copy>a{display:inline-flex;align-items:center;gap:9px;min-height:44px;margin:5px 0 0;padding:0;color:#A51D1B;font:700 14px/1.4 Archivo,sans-serif;text-decoration:none}
+.iq-reward-banner__copy>a:hover{text-decoration:underline;text-underline-offset:4px}
+.iq-reward-banner__copy>a:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+.iq-reward-banner svg{flex:none}
+#iq-westen-funktionen{scroll-margin-top:120px}
+@media(max-width:749px){
+  .iq-reward-banner{aspect-ratio:1;max-width:none;margin:12px auto}
+  .iq-reward-banner::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(0deg,rgba(23,23,23,.78),rgba(23,23,23,.25) 28%,transparent 56%)}
+  .iq-reward-banner__copy{left:6%;right:6%;top:auto;bottom:2%;transform:none;text-shadow:0 2px 8px #17171788}
+  .iq-reward-banner h2{font-size:clamp(23px,6.3vw,35px);line-height:1.03;color:#fff}
+  .iq-reward-banner__copy>p{display:none}
+  .iq-reward-banner__copy>a{margin-top:1px;font-size:13px;color:#fff}
+}
+</style>

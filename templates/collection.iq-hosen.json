@@ -1,0 +1,286 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "iq_collection_hero_wA8hfy": {
+      "type": "iq-collection-hero",
+      "custom_css": [
+        "@media (max-width: 749px) {.iqcb .iqcb__copy .iqcb__title, .iqcb .iqcb__copy .iqcb__title span, .iqcb .iqcb__copy .iqcb__label, .iqcb .iqcb__copy .iqcb__description {text-shadow: 0 2px 6px rgba(23, 23, 23, 0.55); }}"
+      ],
+      "name": "IQ Collection Banner",
+      "settings": {
+        "only_collection": "zzz-hundesport-hosen-damen",
+        "desktop_image": "shopify://shop_images/hosedesktop.jpg",
+        "mobile_image": "shopify://shop_images/hosemobil.jpg",
+        "text_tone": "light",
+        "desktop_position": "center",
+        "show_mobile_label": true,
+        "focus_y": 50,
+        "title_de": "DIE HOSE,",
+        "accent_de": "DIE MEHR KANN.",
+        "description_de": "Stretch-Anteile, herausnehmbare Futtertaschen und eine versteckte Rückentasche.",
+        "mobile_description_de": "Stretch-Anteile, herausnehmbare Futtertaschen und eine versteckte Rückentasche.",
+        "label_de": "HUNDESPORTHOSEN",
+        "alt_de": "IQ Hundesporthosen im Einsatz beim Training mit Hund.",
+        "title_en": "TROUSERS THAT",
+        "accent_en": "DO MORE.",
+        "description_en": "Added stretch, removable treat pockets and a hidden back pocket.",
+        "mobile_description_en": "Added stretch, removable treat pockets and a hidden back pocket.",
+        "label_en": "DOG TRAINING TROUSERS",
+        "alt_en": "IQ dog training trousers in use during training with a dog.",
+        "mobile_position": "top",
+        "mobile_alignment": "left",
+        "mobile_tone": "light",
+        "heading_tag": "h1",
+        "button_de": "Hose entdecken",
+        "button_en": "Explore trousers",
+        "button_url": "",
+        "require_collection": true
+      }
+    },
+    "custom_liquid_FpycJH": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "custom_css": [],
+      "name": "Collection banner Top",
+      "settings": {
+        "custom_liquid": "{% if collection.description != blank %}\n  <div style=\"padding:12px 20px 0;\">\n    <div style=\"max-width:1180px;margin:0 auto;text-align:center;font-size:18px;line-height:1.5;color:#222;\">\n      {{ collection.description | replace: '<p>', '<p style=\"margin:0;\">' }}\n    </div>\n  </div>\n{% endif %}",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "custom_class": ""
+      }
+    },
+    "breadcrumbs_Gxg9wp": {
+      "type": "breadcrumbs",
+      "disabled": true,
+      "custom_css": [
+        ".breadcrumbs {padding: 2rem 0;}"
+      ],
+      "settings": {
+        "text_alignment": "center"
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid-magazine",
+      "custom_css": [],
+      "settings": {
+        "color_scheme": "scheme-9",
+        "products_per_page": 24,
+        "columns_desktop": 4,
+        "grid_layout": "standard",
+        "pagination": "load_more",
+        "enable_color_swatch": true,
+        "enable_filtering": true,
+        "filter_type": "drawer",
+        "enable_sorting": true,
+        "expand_filter_groups": "Verfügbarkeit, Preis, Farbe, Größe, Produkttyp, Geschlecht",
+        "columns_mobile": "2",
+        "padding_top": 0,
+        "padding_bottom": 70,
+        "show_section_divider": true,
+        "divider_width": "fixed",
+        "collection_card_titles": true
+      }
+    },
+    "custom_liquid_aqAmH6": {
+      "type": "iq-release-section-6",
+      "name": "Produktvideo",
+      "settings": {},
+      "blocks": {
+        "part1": {
+          "type": "part1",
+          "settings": {
+            "text_1": "See it in action",
+            "text_2": "Im Einsatz",
+            "text_3": "Your trousers in training.",
+            "text_4": "Deine Hose im Training.",
+            "text_5": "Für diese Hose ist noch kein Shopify-Produktvideo hinterlegt."
+          }
+        }
+      },
+      "block_order": [
+        "part1"
+      ]
+    },
+    "custom_liquid_T3dHzC": {
+      "type": "iq-release-section-7",
+      "name": "Bild Erklärung",
+      "settings": {},
+      "blocks": {
+        "part1": {
+          "type": "part1",
+          "settings": {
+            "text_1": "Details that make a difference",
+            "text_2": "Durchdachte Details",
+            "text_3": "Ready to reward.",
+            "text_4": "Bereit zum Belohnen.",
+            "text_5": "Remove. Rinse. Keep training.",
+            "text_6": "Rausnehmen. Abwaschen. Weitertrainieren.",
+            "text_7": "The integrated treat pouches are coated and removable, making them easy to clean after training.",
+            "text_8": "Die integrierten Futtertaschen sind beschichtet und herausnehmbar. So lassen sie sich nach dem Training einfach reinigen.",
+            "text_9": "Room for your reward toy",
+            "text_10": "Platz für Dein Belohnungsspielzeug",
+            "text_11": "The concealed rear pocket holds your toy or bite pillow.",
+            "text_12": "In der versteckten Rückentasche finden Spielzeug oder Beißkissen Platz.",
+            "text_13": "Need more space?",
+            "text_14": "Du brauchst mehr Platz?",
+            "text_15": "Add the optional",
+            "text_16": "IQ modular treat pouch",
+            "text_17": ". Sold separately.",
+            "text_18": "Die optionale",
+            "text_19": "IQ Modulare Futtertasche",
+            "text_20": "lässt sich zusätzlich einhängen. Separat erhältlich."
+          }
+        },
+        "part2": {
+          "type": "part2",
+          "settings": {
+            "image_url_21": "https://cdn.shopify.com/s/files/1/0625/2806/1688/files/hundesport-hose-futtertasche-iq-dogsport.jpg?v=1775315587&width=900"
+          }
+        }
+      },
+      "block_order": [
+        "part1",
+        "part2"
+      ]
+    },
+    "rich_text_ARFW3U": {
+      "type": "rich-text",
+      "blocks": {
+        "text_YWhhmP": {
+          "type": "text",
+          "settings": {
+            "text": "{{ collection.metafields.custom.text_kategorie_unten | metafield_tag }}",
+            "text_size": "text-inherit"
+          }
+        }
+      },
+      "block_order": [
+        "text_YWhhmP"
+      ],
+      "disabled": true,
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "color_scheme": "",
+        "content_alignment": "center",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "custom_class": ""
+      }
+    },
+    "custom_liquid_DHTpCY": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "custom_css": [],
+      "name": "Collection banner bottom",
+      "settings": {
+        "custom_liquid": "{% if collection.description != blank %}\n  {% assign description_parts = collection.description | split: '</p>' %}\n  {% assign rest_description = description_parts | slice: 1, 999 | join: '</p>' %}\n\n  {% if rest_description != blank %}\n    <div class=\"page-width collection-seo-text\">\n      {{ rest_description }}\n    </div>\n  {% endif %}\n{% endif %}",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "custom_class": ""
+      }
+    },
+    "177730905751d89578": {
+      "type": "apps",
+      "blocks": {
+        "instafeed_app_block_t9Jfpx": {
+          "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
+          "settings": {
+            "title": "Built for training. Ready for anything.",
+            "title_color": "",
+            "title_size_v2": 0,
+            "alignment": "center",
+            "instafeed_margin_top": 0,
+            "instafeed_margin_bottom": 0,
+            "instafeed_margin_sides": 0,
+            "show_instagram_link": false,
+            "link_alignment": "left",
+            "link_color": "#000000",
+            "background_color": "",
+            "feed_id": "",
+            "html_area": ""
+          }
+        }
+      },
+      "block_order": [
+        "instafeed_app_block_t9Jfpx"
+      ],
+      "settings": {
+        "include_margins": true,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "custom_class": ""
+      }
+    },
+    "iq_collection_info_WxCMDh": {
+      "type": "iq-release-section-8",
+      "name": "Hosen – Wissen & Ausstattung",
+      "settings": {},
+      "blocks": {
+        "part1": {
+          "type": "part1",
+          "settings": {
+            "link_1": "/en/products/iq-modulare-futtertasche",
+            "link_2": "/products/iq-modulare-futtertasche",
+            "text_3": "KNOWLEDGE & FEATURES",
+            "text_4": "MORE ABOUT",
+            "text_5": "IQ TRAINING TROUSERS.",
+            "text_6": "WISSEN & AUSSTATTUNG",
+            "text_7": "MEHR ÜBER",
+            "text_8": "IQ HUNDESPORTHOSEN.",
+            "text_9": "Durable fabric, matte finish and freedom to move",
+            "text_10": "The IQ Trainer Pants combine durable fabric with a matte finish and added stretch for freedom of movement during training and everyday life with your dog.",
+            "text_11": "Removable treat pockets and a hidden back pocket",
+            "text_12": "The coated treat pockets are removable and easy to clean. The hidden back pocket provides room for reward toys or a bite pillow. Add the optional",
+            "text_13": "IQ modular treat pouch",
+            "text_14": "when you need more space. Sold separately.",
+            "text_15": "Dog training trousers for training and everyday use",
+            "text_16": "Leggings are currently unavailable.",
+            "text_17": "More about IQ dog training trousers",
+            "text_18": "Robuster Stoff, matter Look und Bewegungsfreiheit",
+            "text_19": "Die IQ Trainer Pants verbinden robusten Stoff mit mattem Look und Stretch-Anteilen. So hast Du Bewegungsfreiheit beim Hundetraining und im Alltag mit Deinem Hund.",
+            "text_20": "Herausnehmbare Futtertaschen und versteckte Rückentasche"
+          }
+        },
+        "part2": {
+          "type": "part2",
+          "settings": {
+            "text_21": "Die beschichteten Futtertaschen sind herausnehmbar und einfach zu reinigen. Die versteckte Rückentasche bietet Platz für Belohnungsspielzeug oder ein Beißkissen. Wenn Du mehr Stauraum brauchst, kannst Du die separat erhältliche",
+            "text_22": "IQ Modulare Futtertasche",
+            "text_23": "ergänzen.",
+            "text_24": "Hundesporthosen für Training und Alltag",
+            "text_25": "Die Leggings sind derzeit nicht erhältlich.",
+            "text_26": "Mehr über IQ Hundesporthosen"
+          }
+        }
+      },
+      "block_order": [
+        "part1",
+        "part2"
+      ]
+    }
+  },
+  "order": [
+    "iq_collection_hero_wA8hfy",
+    "custom_liquid_FpycJH",
+    "breadcrumbs_Gxg9wp",
+    "product-grid",
+    "custom_liquid_aqAmH6",
+    "custom_liquid_T3dHzC",
+    "rich_text_ARFW3U",
+    "custom_liquid_DHTpCY",
+    "177730905751d89578",
+    "iq_collection_info_WxCMDh"
+  ]
+}

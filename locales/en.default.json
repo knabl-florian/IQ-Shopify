@@ -673,5 +673,6 @@
         "confirm_address_deletion": "Are you sure you want to delete the address {{address}} ?"
       }
     }
-  }
+  },
+  "iq_cart_addons": {"variant":"Choose an option","add":"Add"}
 }

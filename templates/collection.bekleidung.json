@@ -62,13 +62,15 @@
         "padding_top": 0,
         "padding_bottom": 0,
         "custom_class": ""
-      }
+      },
+      "disabled": true
     },
     "breadcrumbs_Gxg9wp": {
       "type": "breadcrumbs",
       "settings": {
         "text_alignment": "center"
-      }
+      },
+      "disabled": true
     },
     "custom_content_F47NJV": {
       "type": "custom-content",
@@ -292,24 +294,24 @@
       "custom_css": [],
       "settings": {
         "iq_jv_enabled": false,
-        "iq_jv_position": 18,
         "iq_jv_products": [],
         "color_scheme": "scheme-9",
-        "products_per_page": 21,
+        "products_per_page": 24,
         "app_blocks_position": 24,
-        "columns_desktop": 3,
+        "columns_desktop": 4,
         "grid_layout": "standard",
-        "pagination": "infinite",
+        "pagination": "load_more",
         "enable_color_swatch": true,
         "enable_filtering": true,
-        "filter_type": "vertical",
+        "filter_type": "drawer",
         "enable_sorting": true,
         "expand_filter_groups": "Verfügbarkeit, Preis, Farbe, Größe, Produkttyp",
         "columns_mobile": "2",
-        "padding_top": 40,
+        "padding_top": 0,
         "padding_bottom": 70,
         "show_section_divider": true,
-        "divider_width": "fixed"
+        "divider_width": "fixed",
+        "collection_card_titles": true
       }
     },
     "rich_text_ARFW3U": {
@@ -370,51 +372,9 @@
         "custom_class": ""
       }
     },
-    "collapsible_tabs_NGxnDR": {
-      "type": "collapsible-tabs",
-      "blocks": {
-        "collapsible_item_eXYJJd": {
-          "type": "collapsible_item",
-          "settings": {
-            "icon": "none",
-            "heading": "➔ Was hinter IQ Dogsport steht:  {{ collection.title }}",
-            "content": "{{ collection.metafields.custom.text_kategorie_unten | metafield_tag }}",
-            "custom_liquid": "",
-            "page": "",
-            "open": false
-          }
-        }
-      },
-      "block_order": [
-        "collapsible_item_eXYJJd"
-      ],
-      "name": "t:sections.collapsible-tabs.presets.name",
-      "settings": {
-        "container": "fixed",
-        "color_scheme": "",
-        "header_layout": "vertical",
-        "heading": "",
-        "heading_size": "h1",
-        "heading_highlight_style": "none",
-        "subheading": "",
-        "description": "",
-        "text_size": "text-base",
-        "button_label": "",
-        "button_link": "",
-        "button_style": "btn--primary",
-        "column_gap": "large",
-        "row_gap": "inherit",
-        "item_style": "standard",
-        "item_color_scheme": "",
-        "item_heading_font": "heading",
-        "item_heading_size": "h4",
-        "item_icon_size": "extra-large",
-        "padding_top": 0,
-        "padding_bottom": 70,
-        "show_section_divider": false,
-        "divider_width": "fixed",
-        "custom_class": ""
-      }
+    "iq_knowledge": {
+      "type": "iq-collection-knowledge",
+      "settings": {}
     }
   },
   "order": [
@@ -426,6 +386,6 @@
     "product-grid",
     "rich_text_ARFW3U",
     "177730905751d89578",
-    "collapsible_tabs_NGxnDR"
+    "iq_knowledge"
   ]
 }

@@ -443,7 +443,16 @@
           "product_price_sale": "#a51d1b"
         }
       }
-    }
+    },
+    "iq_cart_addons_enabled": true,
+    "iq_cart_addon_products": [
+      "iq-pure-bites-rinderlunge-trainingshappen-mini",
+      "iq-gebrauchshunde-schlusselanhanger-miniatur",
+      "iq-trainer-cap-black-white",
+      "iq-unbreakaball"
+    ],
+    "iq_cart_addons_heading_de": "Noch etwas fürs Training?",
+    "iq_cart_addons_heading_en": "Anything else for training?"
   },
   "presets": {
     "Sleek": {

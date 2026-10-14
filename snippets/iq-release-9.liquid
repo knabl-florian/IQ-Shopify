@@ -1,0 +1,22 @@
+{% doc %}
+  Editor-managed content preserving the existing collection layout.
+  @param {block} block - Content block.
+{% enddoc %}
+{% if collection.handle == 'hundesport-jacken' %}
+{% assign iq_rugged_mobile = block.settings.bild_1 %}
+{% assign iq_rugged_desktop = block.settings.bild_2 %}
+{% if iq_rugged_mobile != blank and iq_rugged_desktop != blank %}
+<section class="iq-collection-feature iq-collection-feature--left">
+<picture>
+<source media="(max-width:749px)" width="1080" height="1200" sizes="100vw" srcset="{{ iq_rugged_mobile | image_url: width: 540 }} 540w, {{ iq_rugged_mobile | image_url: width: 1080 }} 1080w">
+{{ iq_rugged_desktop | image_url: width: 1560 | image_tag: widths: '780, 1200, 1560', sizes: '(min-width:1440px) 1340px, (min-width:1200px) calc(100vw - 100px), (min-width:750px) calc(100vw - 48px), calc(100vw - 30px)', loading: 'lazy', alt: block.settings.text_3 }}
+</picture>
+{% if request.locale.iso_code == 'en' %}
+<div class="iq-collection-feature--left__copy"><p class="iq-collection-feature--left__label">{{ block.settings.text_4 | escape }}</p><h2>{{ block.settings.text_5 | escape }}<br>{{ block.settings.text_6 | escape }}</h2><p class="iq-collection-feature--left__desktop">{{ block.settings.text_7 | escape }}</p><p class="iq-collection-feature--left__mobile">{{ block.settings.text_8 | escape }}<br>{{ block.settings.text_9 | escape }}</p></div>
+{% else %}
+<div class="iq-collection-feature--left__copy"><p class="iq-collection-feature--left__label">{{ block.settings.text_10 | escape }}</p><h2>{{ block.settings.text_11 | escape }}<br>{{ block.settings.text_12 | escape }}</h2><p class="iq-collection-feature--left__desktop">{{ block.settings.text_13 | escape }}</p><p class="iq-collection-feature--left__mobile">{{ block.settings.text_14 | escape }}<br>{{ block.settings.text_15 | escape }}</p></div>
+{% endif %}
+</section>
+{% elsif request.design_mode %}<p>Bitte die beiden mfj-blau-robust JPG-Dateien unter Inhalte → Dateien hochladen.</p>{% endif %}
+
+{% endif %}
