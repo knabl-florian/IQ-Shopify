@@ -1,0 +1,363 @@
+{%- liquid
+  assign enable_rtl = settings.enable_rtl
+  assign language_support_rtl = settings.language_support_rtl
+  if enable_rtl and language_support_rtl != blank
+    assign shop_locale = localization.language.iso_code
+    assign language_support_rtl_list = language_support_rtl | split: ','
+    assign is_rtl = language_support_rtl_list | where: shop_locale
+    if is_rtl.size > 0
+      assign enable_rtl = true
+    else
+      assign enable_rtl = false
+    endif
+  endif
+-%}
+<!doctype html>
+<html
+  class="no-js{% if cart != empty %} cart-has-items{% endif %}"
+  lang="{{ request.locale.iso_code }}"
+  {% if enable_rtl %}
+    dir="rtl"
+  {% endif %}
+>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+     <meta name="theme-color" content="">
+    <link rel="canonical" href="{{ canonical_url }}">
+    <meta name="google-site-verification" content="pzxo5ahC87ULU_nUDTTV5fKkDHIlP43lZPnuFKEMPME" />  
+    <!-- Bing site verification (Hamza) -->
+    <meta name="msvalidate.01" content="9B72311CFB52CA8108DEFC95493E0BC0" />
+  {%- if settings.favicon != blank -%}
+  <!-- Apple touch icon MUST come first for iOS Safari -->
+  <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.shopify.com/s/files/1/0625/2806/1688/files/apple-touch-icon.png?v=2">
+  <!-- Desktop favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="https:{{ settings.favicon | image_url: width: 32, height: 32 }}">
+{%- endif -%}
+    <title>
+      {{- page_title -}}
+      {%- if current_tags -%}
+        {%- assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags -}}
+      {%- endif -%}
+      {%- if current_page != 1 %} &ndash; {{ 'general.meta.page' | t: page: current_page }}{% endif -%}
+      {%- if template == 'password' -%}
+        {{- shop.name -}}
+      {%- else -%}
+        {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+      {%- endif -%}
+    </title>
+
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
+
+    {%- liquid
+      render 'meta-tags'
+      render 'css-variables'
+
+      echo 'vendor.css' | asset_url | stylesheet_tag: preload: true
+      echo 'theme.css' | asset_url | stylesheet_tag: preload: true
+      echo 'custom.css' | asset_url | stylesheet_tag: preload: true
+      assign iq_collection_standard = false
+      if request.page_type == 'collection' and content_for_layout contains 'iq-collection-hero'
+        assign iq_collection_standard = true
+        echo 'iq-collection-system.css' | asset_url | stylesheet_tag
+      endif
+
+      if enable_rtl
+        echo 'rtl.css' | asset_url | stylesheet_tag: preload: true
+      endif
+    -%}
+
+    {{ content_for_header }}
+
+    <script src="{{ 'vendor.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
+
+    {%- if request.page_type contains 'customers/' -%}
+      <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
+    {%- endif -%}
+
+    <script>
+      if (Shopify.designMode) {
+        document.documentElement.classList.add('shopify-design-mode');
+      }
+    </script>
+
+    {%- if request.design_mode -%}
+      <script src="{{ 'theme-editor.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
+
+    {%- render 'js-variables' -%}
+
+    {% comment %} Custom metafield for head tag like GTag tracking {% endcomment %}
+    {{ shop.metafields.foxtheme.code_head.value }}
+    {% comment %} End custom metafield for head tag like GTag tracking {% endcomment %}
+    {%- render 'foxify-head' -%}
+    {% render 'rapid-search-settings' %}
+    {% render 'iq-collection-text' %}
+  </head>
+
+  <body
+    class="{{ request.page_type }}-template {{ template.suffix }}{% if iq_collection_standard %} iq-collection-standard{% endif %} blocks-corner--{{ settings.blocks_corner_radius }}{% if request.design_mode %} shopify-design-mode{% endif %}"
+    data-initializing
+  >  
+    {% sections 'foxify-header-group' %}
+    {% comment %} Custom metafield for body tag like GTag tracking {% endcomment %}
+    {{ shop.metafields.foxtheme.code_body.value }}
+    {% comment %} End custom metafield for body tab like GTag tracking {% endcomment %}
+
+    <a class="skip-to-content-link button visually-hidden" href="#MainContent">
+      {{ 'accessibility.skip_to_text' | t }}
+    </a>
+
+    {%- liquid
+      if settings.enable_page_transition
+        render 'page-transition'
+      endif
+    -%}
+
+    <div class="site-wrapper min-height-screen">
+      {% sections 'header-group' %}
+
+      <main id="MainContent" class="main-content content-for-layout focus-none" role="main" tabindex="-1">
+        {{ content_for_layout }}
+      </main>
+
+      {% sections 'footer-group' %}
+    </div>
+
+    {% sections 'overlay-group' %}
+    {%- liquid
+      if template.name == 'product'
+        section 'sticky-atc-bar'
+      endif
+      if settings.enable_back_to_top
+        render 'back-to-top'
+      endif
+    -%}
+
+    <ul hidden>
+      <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>
+      <li id="a11y-new-window-message">{{ 'accessibility.link_messages.new_window' | t }}</li>
+    </ul>
+
+    {% if settings.pcard_show_quickview_button or settings.pcard_choose_options_actions == 'open_popup' %}
+      <script src="{{ 'quick-view.js' | asset_url }}" defer="defer"></script>
+    {% endif %}
+    {%- render 'foxify-footer' -%}
+    {% sections 'foxify-footer-group' %}
+<script>
+document.addEventListener('click', function (e) {
+  const badge = e.target.closest('.product__blocks.accordion-parent .jdgm-preview-badge');
+
+  if (!badge) return;
+
+  const reviewSection = document.querySelector('.accordion-details summary#judgebutton');
+
+  if (reviewSection) {
+    reviewSection.click();
+  }
+});
+</script>
+
+
+   
+    <div
+      class="menu-drawer__localization-form hidden md:flex justify-center flex-wrap gap-x-6 gap-y-4"
+      style="position: fixed;top: 92%;right: 15px;background: white;padding: 5px 20px;border-radius: 999px;box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;"
+    >
+      {%- liquid
+        render 'language-selector', position: 'up'
+      -%}
+    </div>
+    {% comment %}
+    Custom JS to override Shopify Forms shadow DOM styles (removes textarea ::before)
+    {% endcomment %}
+     <script src="{{ 'custom-form-fix.js' | asset_url }}" defer></script>
+      <script>
+        // Added by Hamza: Custom JS to translate app-generated content (Mini Upload & Bundle header) based on Shopify language since the app does not support native translations
+        (function () {
+          function getCurrentShopifyLanguage() {
+            var hiddenInput = document.querySelector('input[name="locale_code"][data-disclosure-input]');
+            if (hiddenInput && hiddenInput.value) {
+              return hiddenInput.value.toLowerCase().trim();
+            }
+
+            var currentOption = document.querySelector('[data-disclosure-option][aria-current="true"]');
+            if (currentOption) {
+              var value = currentOption.getAttribute('data-value');
+              if (value) return value.toLowerCase().trim();
+            }
+
+            var noscriptSelect = document.querySelector('select[name="locale_code"]');
+            if (noscriptSelect && noscriptSelect.value) {
+              return noscriptSelect.value.toLowerCase().trim();
+            }
+
+            var htmlLang = document.documentElement.getAttribute('lang');
+            if (htmlLang) {
+              return htmlLang.toLowerCase().trim();
+            }
+
+            return 'de';
+          }
+
+          function translateMiniUploadBlock(lang) {
+            var containers = document.querySelectorAll('.image-upload-field-container');
+            if (!containers.length) return false;
+
+            var isEn = lang === 'en' || lang.indexOf('en-') === 0;
+
+            var text = isEn
+              ? {
+                  subtitle: 'Upload Official ID if available',
+                  description: 'Upload file as JPG, PNG, or PDF up to 10 MB.',
+                  group: 'Authorization to wear the official patch',
+                  yes: 'Yes, available (see upload)',
+                  no: 'No, not available (blank patch)'
+                }
+              : {
+                  subtitle: 'ggf. Dienstausweis hochladen',
+                  description: 'Datei hochladen als JPG, PNG, oder PDF bis zu 10 MB.',
+                  group: 'Berechtigung zum Tragen des behördlichen Patches',
+                  yes: 'Ja, vorhanden (siehe Upload)',
+                  no: 'Nein, nicht vorhanden (Blanko Patch)'
+                };
+
+            containers.forEach(function (container) {
+              var subtitle = container.querySelector('.image-upload-field-subtitle');
+              var description = container.querySelector('.image-upload-field-description');
+              var group = container.querySelector('.polaris-radio-group__label');
+              var labels = container.querySelectorAll('.polaris-radio__label');
+
+              if (subtitle) subtitle.textContent = text.subtitle;
+              if (description) description.textContent = text.description;
+              if (group) group.textContent = text.group;
+              if (labels[0]) labels[0].textContent = text.yes;
+              if (labels[1]) labels[1].textContent = text.no;
+            });
+
+            return true;
+          }
+          function fixBundleHeadingTag() {
+            document.querySelectorAll('.xb_checkbox_upsell_title').forEach(function (el) {
+              if (el.tagName.toLowerCase() === 'h3') {
+                var h2 = document.createElement('h2');
+                h2.className = el.className;
+                h2.innerHTML = el.innerHTML;
+                el.replaceWith(h2);
+              }
+            });
+          }
+
+          function translateBundleHeader(lang) {
+            var headers = document.querySelectorAll('.xb_bundle_header');
+            if (!headers.length) return false;
+
+            var isEn = lang === 'en' || lang.indexOf('en-') === 0;
+
+            headers.forEach(function (header) {
+              var title = header.querySelector('.xb_checkbox_upsell_title');
+              var subtitle = header.querySelector('.xb_checkbox_upsell_subtitle');
+
+              if (title) {
+                title.textContent = isEn
+                  ? 'Recommended: Your training setup'
+                  : 'Empfohlen: Dein Trainings-Setup';
+              }
+
+              if (subtitle) {
+                var currentText = subtitle.textContent.trim();
+                var match = currentText.match(/\d+(?:[.,]\d+)?\s?%/);
+
+                if (match) {
+                  var percent = match[0];
+                  subtitle.textContent = isEn
+                    ? 'Save ' + percent + ' as a bundle'
+                    : 'Spare ' + percent + ' im Set';
+                } else {
+                  subtitle.textContent = isEn
+                    ? 'Save as a bundle'
+                    : 'Spare im Set';
+                }
+              }
+            });
+
+            return true;
+          }
+
+          function applyTranslations() {
+            if (!window.location.pathname.includes('/products/')) return true;
+
+            var lang = getCurrentShopifyLanguage();
+            var miniUploadDone = translateMiniUploadBlock(lang);
+            var bundleDone = translateBundleHeader(lang);
+            fixBundleHeadingTag();
+            return miniUploadDone && bundleDone;
+          }
+
+          function initTranslations() {
+            if (applyTranslations()) return;
+
+            var attempts = 0;
+            var maxAttempts = 6;
+
+            var timer = setInterval(function () {
+              attempts += 1;
+
+              if (applyTranslations() || attempts >= maxAttempts) {
+                clearInterval(timer);
+              }
+            }, 500);
+          }
+
+          if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initTranslations, { once: true });
+          } else {
+            initTranslations();
+          }
+        })();
+      </script>
+      {% comment %}
+         Custom js function for opening collapsible tabs
+         // Listen for clicks on the Judge.me star badge and open + scroll to the reviews section inside its collapsible tab without affecting other elements
+      {% endcomment %}
+      <script>
+        (function () {
+          function openAndScrollToJudgeMeReviews(event) {
+            var clickedBadge = event.target.closest('.jdgm-preview-badge');
+
+            if (!clickedBadge) return;
+
+            event.preventDefault();
+            event.stopPropagation();
+
+            var reviewWidget = document.getElementById('judgeme_product_reviews');
+            if (!reviewWidget) return;
+
+            var reviewAccordion = reviewWidget.closest('details');
+
+            if (reviewAccordion && !reviewAccordion.open) {
+              reviewAccordion.open = true;
+              reviewAccordion.setAttribute('aria-expanded', 'true');
+              reviewAccordion.style.overflow = 'visible';
+              reviewAccordion.style.height = 'auto';
+            }
+
+            window.setTimeout(function () {
+              reviewWidget.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+              });
+            }, 250);
+          }
+
+          document.addEventListener('click', openAndScrollToJudgeMeReviews, true);
+        })();
+      </script>
+    </body>
+</html>
+
+

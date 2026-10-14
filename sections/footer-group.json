@@ -1,0 +1,122 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "newsletter_fWYkNV": {
+      "type": "newsletter",
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "color_scheme": "scheme-3",
+        "layout": "vertical",
+        "heading": "10 % auf deine erste Bestellung",
+        "heading_size": "h4",
+        "heading_highlight_style": "none",
+        "subheading": "IQ INSIDER",
+        "description": "<p>Neue Produkte, exklusive Aktionen und Trainingstipps.</p>",
+        "text_size": "text-sm",
+        "alignment": "center",
+        "design": "design-1",
+        "form_width": 520,
+        "newsletter_term": "<p>Mit deiner Anmeldung akzeptierst du unsere Datenschutzbestimmungen.</p>",
+        "newsletter_term_size": "text-sm",
+        "button_style": "btn--primary",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "custom_class": ""
+      }
+    },
+    "custom_liquid_3tRaPV": {
+      "type": "custom-liquid",
+      "custom_css": [],
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<style>\n  .iq-footer-brand {\n    width: 100%;\n    box-sizing: border-box;\n\n    background: #000000;\n    color: #FFFFFF;\n\n    border-top: 1px solid rgba(255,255,255,.08);\n  }\n\n  .iq-footer-brand__inner {\n    width: 100%;\n    max-width: 1360px;\n\n    margin: 0 auto;\n\n    /* vorher viel größer:\n       jetzt bewusst enger */\n    padding: 18px 20px 24px;\n\n    box-sizing: border-box;\n  }\n\n  .iq-footer-brand__claim {\n    margin: 0;\n\n    font-family: var(--font-heading-family, Montserrat, Arial, sans-serif);\n    font-style: italic;\n    font-weight: 800;\n    text-transform: uppercase;\n\n    font-size: clamp(27px, 7vw, 30px);\n    line-height: 1.02;\n    letter-spacing: -.4px;\n\n    color: #FFFFFF;\n  }\n\n  .iq-footer-brand__line1,\n  .iq-footer-brand__line2 {\n    display: block;\n  }\n\n  .iq-footer-brand__dash {\n    color: #A51D1B;\n  }\n\n  .iq-footer-brand__line2 {\n    margin-top: 2px;\n    color: #FFFFFF;\n  }\n\n  @media (min-width: 750px) {\n    .iq-footer-brand__inner {\n      padding: 26px 32px 28px;\n    }\n\n    .iq-footer-brand__claim {\n      font-size: clamp(34px, 2.7vw, 42px);\n    }\n\n    .iq-footer-brand__line1,\n    .iq-footer-brand__line2 {\n      display: inline;\n    }\n\n    .iq-footer-brand__line2 {\n      margin-top: 0;\n      margin-left: 8px;\n    }\n  }\n</style>\n\n<div class=\"iq-footer-brand\">\n  <div class=\"iq-footer-brand__inner\">\n\n    <p class=\"iq-footer-brand__claim\">\n\n      <span class=\"iq-footer-brand__line1\">\n        DOGSPORT <span class=\"iq-footer-brand__dash\">—</span>\n      </span>\n\n      <span class=\"iq-footer-brand__line2\">\n        MORE THAN A PASSION\n      </span>\n\n    </p>\n\n  </div>\n</div>",
+        "color_scheme": "scheme-inverse",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "custom_class": ""
+      }
+    },
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "image_text_iFmd9b": {
+          "type": "image_text",
+          "settings": {
+            "block_width": 33,
+            "heading": "Kontakt & Support",
+            "heading_size": "h6",
+            "image_width": 250,
+            "text": "<p>Wir antworten am nächsten Werktag.</p><p><a href=\"/pages/contact\" title=\"Kontakt\">Kontaktformular</a></p>",
+            "button_label": "",
+            "button_link": "",
+            "open_default": false,
+            "show_divider": false
+          }
+        },
+        "menu_Lydab3": {
+          "type": "menu",
+          "settings": {
+            "block_width": 33,
+            "heading": "Shop Service",
+            "heading_size": "h6",
+            "menu": "footer",
+            "open_default": false,
+            "show_divider": false
+          }
+        },
+        "menu_qxNnp8": {
+          "type": "menu",
+          "settings": {
+            "block_width": 33,
+            "heading": "Informationen",
+            "heading_size": "h6",
+            "menu": "informationen-menu",
+            "open_default": false,
+            "show_divider": false
+          }
+        }
+      },
+      "block_order": [
+        "image_text_iFmd9b",
+        "menu_Lydab3",
+        "menu_qxNnp8"
+      ],
+      "custom_css": [
+        ".footer,.footer__content-top,.footer__content-bottom,.footer__blocks-wrapper,.footer__content-bottom-wrapper,.footer__localization,.footer__column,.footer__column--info {background-color: #000 !important;}",
+        ".footer {color: #fff;}",
+        ".footer * {--color-background: 0, 0, 0;}",
+        ".footer__content-top,.footer__content-bottom {border-color: rgba(255, 255, 255, 0.1) !important;}",
+        ".iq-footer-brand {display: none !important;}"
+      ],
+      "settings": {
+        "color_scheme": "scheme-4",
+        "enable_follow_on_shop": false,
+        "show_social": true,
+        "enable_country_selector": false,
+        "enable_language_selector": true,
+        "payment_enable": false,
+        "footer_bottom_menu": "footer-rechtliches",
+        "show_section_divider": false,
+        "divider_width": "full"
+      }
+    }
+  },
+  "order": [
+    "newsletter_fWYkNV",
+    "custom_liquid_3tRaPV",
+    "footer"
+  ]
+}

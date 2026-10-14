@@ -1,0 +1,135 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [
+        ".main-page-title.page-title.h1.text-center {display: none;}"
+      ],
+      "settings": {
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "rich_text_wPgifi": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_TydJFN": {
+          "type": "heading",
+          "settings": {
+            "heading": "Widerrufsrecht",
+            "heading_size": "hd3",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_rhfdGh": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Sie haben das Recht, binnen 14 Tagen ohne Angabe von Gründen diesen Vertrag zu widerrufen. Die Widerrufsfrist beträgt 14 Tage ab dem Tag, an dem Sie oder ein von Ihnen benannter Dritter, der nicht der Beförderer ist, die Waren in Besitz genommen haben bzw. hat.</p><p>Um Ihr Widerrufsrecht auszuüben, müssen Sie uns (IQ Dogsport GmbH, Langenwiesen 2, 85276 Pfaffenhofen, E-Mail: <a href=\"mailto:mail@iq-dogsport.de\">mail@iq-dogsport.de</a>) mittels einer eindeutigen Erklärung (z.B. ein mit der Post versandter Brief oder E-Mail) über Ihren Entschluss, diesen Vertrag zu widerrufen, informieren. Sie können dafür das beigefügte Muster-Widerrufsformular verwenden, das jedoch nicht vorgeschrieben ist.</p><p>Zur Wahrung der Widerrufsfrist reicht es aus, dass Sie die Mitteilung über die Ausübung des Widerrufsrechts vor Ablauf der Widerrufsfrist absenden.</p><h3><strong>Folgen des Widerrufs</strong></h3><p>Wenn Sie diesen Vertrag widerrufen, haben wir Ihnen alle Zahlungen, die wir von Ihnen erhalten haben, einschließlich der Lieferkosten (mit Ausnahme der zusätzlichen Kosten, die sich daraus ergeben, dass Sie eine andere Art der Lieferung als die von uns angebotene, günstigste Standardlieferung gewählt haben), unverzüglich und spätestens binnen vierzehn Tagen ab dem Tag zurückzuzahlen, an dem die Mitteilung über Ihren Widerruf dieses Vertrags bei uns eingegangen ist. Für diese Rückzahlung verwenden wir dasselbe Zahlungsmittel, das Sie bei der ursprünglichen Transaktion eingesetzt haben, es sei denn, mit Ihnen wurde ausdrücklich etwas anderes vereinbart; in keinem Fall werden Ihnen wegen dieser Rückzahlung Entgelte berechnet.</p><p>Wir können die Rückzahlung verweigern, bis wir die Waren wieder zurückerhalten haben oder bis Sie den Nachweis erbracht haben, dass Sie die Waren zurückgesandt haben, je nachdem, welches der frühere Zeitpunkt ist.</p><p>Sie haben die Waren unverzüglich und in jedem Fall spätestens binnen vierzehn Tagen ab dem Tag, an dem Sie uns über den Widerruf dieses Vertrags unterrichten, an uns <strong>(IQ Dogsport GmbH, Langenwiesen 2, 85276 Pfaffenhofen)</strong> zurückzusenden oder zu übergeben. Die Frist ist gewahrt, wenn Sie die Waren vor Ablauf der Frist von vierzehn Tagen absenden.</p><p>Sie tragen die unmittelbaren Kosten der Rücksendung der Waren.</p><p>Sie müssen für einen etwaigen Wertverlust der Waren nur aufkommen, wenn dieser Wertverlust auf einen zur Prüfung der Beschaffenheit, Eigenschaften und Funktionsweise der Waren nicht notwendigen Umgang mit ihnen zurückzuführen ist.</p><h3><strong>Ausschluss des Widerrufsrechts (Ausschluss - bzw. Erlöschensgründe)</strong></h3><p>Das Widerrufsrecht besteht nicht bei Verträgen:</p><p>-          Verträge zur Lieferung von Waren, die nicht vorgefertigt sind und für deren Herstellung eine individuelle Auswahl oder Bestimmung durch den Verbraucher maßgeblich ist oder die eindeutig auf die persönlichen Bedürfnisse des Verbrauchers zugeschnitten sind;</p><p>-          Verträge zur Lieferung von Ton- oder Videoaufnahmen oder Computersoftware in einer versiegelten Packung, wenn die Versiegelung nach der Lieferung entfernt wurde.</p><p>Wenn der Kunde die beim Anbieter gekauften Produkte zum Zwecke seiner gewerblichen oder selbstständigen beruflichen Tätigkeit erworben hat, besteht gleichfalls kein Widerrufsrecht, da der Kunde in diesem Fall nicht als Verbraucher, sondern als Unternehmen handelt.</p><p>Der Widerruf ist zu richten an:<br/>IQ Dogsport GmbH<br/>Langenwiesen 2<br/>85276 Pfaffenhofen<br/>E-Mail: <a href=\"mailto:mail@iq-dogsport.de\">mail@iq-dogsport.de</a></p><p><strong>- Ende der Widerrufsbelehrung -</strong></p><p><strong>Download: </strong><a href=\"https://iq-dogsport.de/media/pdf/c2/77/95/IQDogsport_Muster_Widerrufsformular_de.pdf\" target=\"_blank\" title=\"IQDogsport_Muster_Widerrufsformular_de\"><strong>IQ Dogsport - Muster-Widerrufsformular herunterladen (hier klicken)</strong></a></p>",
+            "text_size": "text-base"
+          }
+        },
+        "button_CeTQn3": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style": "btn--primary"
+          }
+        }
+      },
+      "block_order": [
+        "heading_TydJFN",
+        "text_rhfdGh",
+        "button_CeTQn3"
+      ],
+      "disabled": true,
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "color_scheme": "",
+        "content_alignment": "center",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "custom_class": ""
+      }
+    },
+    "custom_liquid_RqzGUc": {
+      "type": "custom-liquid",
+      "custom_css": [
+        ".dealer-inquiry-center {max-width: 980px; margin: 0 auto 32px auto; text-align: center; padding: 0 20px;}",
+        ".dealer-inquiry-center h2,.dealer-inquiry-center h3 {text-align: center; margin-bottom: 12px;}",
+        ".dealer-inquiry-center p {text-align: center; margin-bottom: 12px;}",
+        ".dealer-inquiry-center ul {text-align: left; margin: 16px auto; max-width: 520px; padding-left: 18px;}"
+      ],
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "{% assign lang = request.locale.iso_code | downcase %}\n\n<div class=\"dealer-inquiry-center rte\">\n  {% if lang == 'de' %}\n    <h2>Händleranfrage</h2>\n\n    <p>\n      Vielen Dank für Ihr Interesse an einer Zusammenarbeit mit IQ Dogsport.\n      Bitte füllen Sie das folgende Formular vollständig aus, damit wir Ihre Anfrage prüfen können.\n    </p>\n\n    <p>\n      Nach dem Absenden wird Ihre Anfrage intern geprüft. Bitte haben Sie Verständnis,\n      dass wir Händleranfragen sorgfältig bewerten und nicht in jedem Land oder jeder Region\n      zusätzliche Vertriebspartner aufnehmen können.\n    </p>\n\n    <h3>Wichtige Hinweise</h3>\n    <ul>\n      <li>Bitte geben Sie vollständige und korrekte Unternehmensdaten an.</li>\n      <li>Falls vorhanden, tragen Sie bitte Ihre Website und Social-Media-Kanäle ein.</li>\n      <li>Unter <strong>Zielgruppe</strong> können Sie angeben, in welchem Bereich Sie tätig sind.</li>\n      <li>Nach erfolgreicher Prüfung melden wir uns schnellstmöglich bei Ihnen zurück.</li>\n    </ul>\n\n    <p>\n      Bei Rückfragen kontaktieren Sie uns bitte per E-Mail oder Telefon.\n    </p>\n  {% else %}\n    <h2>Dealer Inquiry</h2>\n\n    <p>\n      Thank you for your interest in working with IQ Dogsport.\n      Please complete the form below in full so that we can review your request properly.\n    </p>\n\n    <p>\n      After submission, your request will be reviewed internally. Please understand\n      that we carefully assess dealer applications and may not be able to accept\n      additional sales partners in every country or region.\n    </p>\n\n    <h3>Important information</h3>\n    <ul>\n      <li>Please provide complete and accurate company details.</li>\n      <li>If available, include your website and social media channels.</li>\n      <li>Under <strong>Target Group</strong>, you can specify the area in which you operate.</li>\n      <li>Once your request has been reviewed, we will get back to you as soon as possible.</li>\n    </ul>\n\n    <p>\n      If you have any questions, please contact us by email or phone.\n    </p>\n  {% endif %}\n</div>",
+        "color_scheme": "",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "custom_class": ""
+      }
+    },
+    "1774944944d99a5661": {
+      "type": "apps",
+      "blocks": {
+        "forms_inline_mQbrda": {
+          "type": "shopify://apps/forms/blocks/inline/8744a304-fcb1-4347-b211-bb6b4759a76a",
+          "settings": {
+            "form_id": "934764",
+            "text_color": "#202020",
+            "button_background_color": "#202020",
+            "button_label_color": "#ffffff",
+            "links_color": "#1878b9",
+            "errors_color": "#e02229",
+            "text_alignment": "center",
+            "form_alignment": "center",
+            "padding_top": 0,
+            "padding_bottom": 24,
+            "padding_right": 0,
+            "padding_left": 0
+          }
+        }
+      },
+      "block_order": [
+        "forms_inline_mQbrda"
+      ],
+      "settings": {
+        "include_margins": true,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "custom_class": ""
+      }
+    },
+    "custom_liquid_xtnyYi": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "",
+        "color_scheme": "",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "custom_class": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "rich_text_wPgifi",
+    "custom_liquid_RqzGUc",
+    "1774944944d99a5661",
+    "custom_liquid_xtnyYi"
+  ]
+}

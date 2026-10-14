@@ -1,0 +1,482 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumbs": {
+      "type": "breadcrumbs",
+      "settings": {
+        "text_alignment": "start"
+      }
+    },
+    "rich_text_pTBMLx": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_qmkUfQ": {
+          "type": "heading",
+          "settings": {
+            "heading": "{{ product.title }}",
+            "heading_size": "h3",
+            "heading_highlight_style": "none"
+          }
+        }
+      },
+      "block_order": [
+        "heading_qmkUfQ"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "color_scheme": "",
+        "content_alignment": "center",
+        "padding_top": 50,
+        "padding_bottom": 18,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "custom_class": "mobile-only-iq"
+      }
+    },
+    "17614968881680f860": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_preview_badge_tUpyhe": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_preview_badge_tUpyhe"
+      ],
+      "custom_css": [
+        ".jdgm-prev-badge {text-align: center;}"
+      ],
+      "settings": {
+        "include_margins": true,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "custom_class": "mobile-only-iq"
+      }
+    },
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title_4AQrFC": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h3"
+          }
+        },
+        "judge_me_reviews_preview_badge_f9Nc6i": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        },
+        "badges": {
+          "type": "badges",
+          "settings": {
+            "show_soldout_badge": true,
+            "show_sale_badge": true,
+            "sale_badge_type": "percentage"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "inventory": {
+          "type": "inventory",
+          "settings": {
+            "text_style": "uppercase",
+            "inventory_threshold": 1,
+            "show_inventory_quantity": false
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_type": "color_swatch",
+            "button_style": "circle",
+            "button_size": 36,
+            "size_title": "Größentabelle",
+            "size_chart_from_page": "{{ product.metafields.custom.grosentabelle.value }}"
+          }
+        },
+        "xboost_bundle_checkbox_upsell_fXe6aY": {
+          "type": "shopify://apps/xboost-bundle/blocks/checkbox_upsell/8707ef23-ba0e-4d63-a83a-1460e9bac021",
+          "settings": {
+            "product": "",
+            "showExample": true,
+            "marginY": 16
+          }
+        },
+        "mini_image_upload_app_block_ztmB3F": {
+          "type": "shopify://apps/mini-image-upload/blocks/app-block/019a499d-2f45-732c-96ee-872049547d70",
+          "settings": {
+            "product": "{{product}}"
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_quantity_selector": true,
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "icon_with_text": {
+          "type": "icon-with-text",
+          "settings": {
+            "layout": "horizontal",
+            "title_font": "body",
+            "title_size": "text-base",
+            "icon_1": "package",
+            "heading_1": "<a href=\"/pages/zahlungs-und-versandinformation\" target=\"_blank\" title=\"Zahlungs- und Versandinformation\">ab 150€ versandkostenfrei*</a>",
+            "icon_2": "arrow-up-left",
+            "heading_2": "<a href=\"/pages/anfrage-ruckgabe-umtausch\" target=\"_blank\" title=\"Anfrage - Rückgabe / Umtausch\">14 Tage Rückgaberecht</a>",
+            "icon_3": "heart",
+            "heading_3": "Top Service"
+          }
+        },
+        "pickup_availability": {
+          "type": "pickup_availability",
+          "settings": {}
+        },
+        "collapsible-row-1": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Highlights",
+            "icon": "confetti",
+            "content": "{{ product.description }}",
+            "custom_liquid": "",
+            "page": "",
+            "default_open": true
+          }
+        },
+        "collapsible-row-2": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Fit & Sizing",
+            "icon": "ruler",
+            "content": "",
+            "custom_liquid": "",
+            "page": "{{ product.metafields.custom.grosentabelle.value }}",
+            "default_open": false
+          }
+        },
+        "collapsible_tab_8GYHQG": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Bewertungen",
+            "icon": "seal-check",
+            "content": "",
+            "custom_liquid": "<!-- Start of Judge.me code -->\n{% assign has_legacy = false %}{% if product.metafields.judgeme.widget.size > 20 %}{% assign has_legacy = true %}{% endif %}<div style='clear:both'></div><div id='judgeme_product_reviews' class='jdgm-widget jdgm-review-widget' data-product-title='{{ product.title | escape }}' data-id='{{ product.id }}' data-product-id='{{ product.id }}' data-widget='review' data-auto-install='false' data-shop-reviews-count='{{ shop.metafields.judgeme.shop_reviews_count | default: 0 | escape }}' data-entry-point='review_widget.js' data-entry-key='review-widget/main.js'>{% if has_legacy %}<div class='jdgm-legacy-widget-content' style='display: none;'>{{ product.metafields.judgeme.widget }}</div>{% endif %}</div>{% if product.metafields.judgeme.review_widget_data %}<script>jdgm.data ||= {}; jdgm.data.reviewWidget ||= {}; jdgm.data.reviewWidget[{{ product.id }}] = {{ product.metafields.judgeme.review_widget_data }}</script>{% endif %}  \n<!-- End of Judge.me code -->",
+            "page": "",
+            "default_open": false
+          }
+        },
+        "collapsible_tab_PxyDpJ": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Produktdetails",
+            "icon": "tag",
+            "content": "{{ product.metafields.custom.produktdetails | metafield_tag }}",
+            "custom_liquid": "",
+            "page": "",
+            "default_open": false
+          }
+        },
+        "collapsible_tab_zdT3EM": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Produkt FAQ",
+            "icon": "check-circle",
+            "content": "{{ product.metafields.custom.product_faq | metafield_tag }}",
+            "custom_liquid": "",
+            "page": "",
+            "default_open": false
+          }
+        },
+        "collapsible-row-3": {
+          "type": "collapsible_tab",
+          "disabled": true,
+          "settings": {
+            "heading": "Versand & Rückgabe",
+            "icon": "arrow-up-left",
+            "content": "<h5>Versand innerhalb Deutschlands</h5><p>Ab einem Einkaufswert von 130,00 € liefern wir innerhalb Deutschlands <strong>versandkostenfrei</strong>, sofern das Höchstgewicht unter 40 kg liegt und die Ware nicht sperrig ist.<br/>Liegt der Wert unter 130,00 €, betragen die Versandkosten 5,90 €.<br/>Der erste Umtausch von Waren ist für Sie kostenlos. Die Rücksendung von Waren ohne Umtausch kostet 5,90 €.</p><h5>Versand in andere Länder </h5><p>Die Versandkosten innerhalb der EU und in andere Länder werden Ihnen <br/>während des Bestellvorgangs und vor Abschluss der Bestellung angezeigt. <br/>Die Berechnung der Versandkosten erfolgt je nach Gewicht und Größe. Bei <br/>Bestellungen innerhalb der EU mit Warenwert über 130,00 € berechnen wir <br/>reduzierte Versandkosten (z.B. 5,90 € bei einem Sendungsgewicht bis <br/>5kg). Sperrgutversand ist von dieser Aktion ausgeschlossen.</p><p>Die vollständige Regelung finden Sie unter <a href=\"/pages/zahlungs-und-versandinformation\" title=\"Zahlungs- und Versandinformation\">Versand- & Zahlungsinformationen</a></p><p></p><h5><strong>Rückgabe</strong></h5><p><strong>Hinweis auf unsere Rückgaberichtlinien</strong><br/>- Für Rückgabe und Umtausch gilt die gesetzliche Frist von 14 Tagen. <br/>Diese Frist beginnt am Tag nach der vollständigen Zustellung.<br/>- Bei einem reinen Rückversand (innerhalb Deutschlands), wenn kein Kaufvertrag zustande kommt, berechnen wir 5,90 Euro Versand.<br/>- Erfolgt<br/> eine Teilrückgabe, durch die der ursprüngliche Bestellwert unter die <br/>Versandfreigrenze von 130 Euro fällt, behalten wir uns vor, die <br/>regulären Versandkosten in Höhe von 5,90 Euro nachträglich zu berechnen.<br/>- Bei Rückgabe/Umtausch im Ausland übernehmen wir keine Versandkosten.<br/>-<br/> Der erste Rückversand innerhalb Deutschlands bei Umtausch einer Ware <br/>ist für Sie kostenlos. Bei jedem weiteren Umtausch werden Retourenkosten<br/> berechnet.<br/>- Rücksendeetikett kann nur für Deutschland ausgestellt werden.<br/>- Die retournierte Ware darf keine Gebrauchsspuren aufweisen oder verschmutzt sein. Es dürfen keine Futterreste in den Taschen sein. Das Warenetikett muss vorhanden sein.</p><p><strong>Rückgabe von Trainingshappen und Futter</strong><br/>Gemäß §312 g Abs. 2 Nr. 3 BGB ist die Rückgabe von versiegelter Lebensmittel <strong>ausgeschlossen</strong>,<br/> wenn ihre Versiegelung nach der Lieferung entfernt wurde. Sollten Sie <br/>fehlerhafte Ware erhalten haben, kontaktieren Sie uns bitte. Wir bemühen<br/> uns, die bestmögliche Lösung zu finden.</p><p><strong>Rückgabe von Büchern</strong><br/>Ein gesetzliches Rückgaberecht für Bücher gibt es <strong>nicht.</strong> Die Rückgabemöglichkeit ist <strong>nach</strong> <strong>Absprache</strong> und <strong>aus reiner Kulanz</strong> gestattet. Gegenstand des Kaufvertrages ist der Inhalt, nicht der Datenträger.</p><p>Die vollständige Regelung finden Sie unter <a href=\"/pages/anfrage-ruckgabe-umtausch\" title=\"Anfrage - Rückgabe / Umtausch\">Rückgabe & Umtausch</a></p>",
+            "custom_liquid": "",
+            "page": "",
+            "default_open": false
+          }
+        },
+        "addons": {
+          "type": "addons",
+          "settings": {
+            "show_share": true,
+            "show_ask_question": true
+          }
+        },
+        "sku_LJebPk": {
+          "type": "sku",
+          "settings": {
+            "text_style": "body"
+          }
+        },
+        "mini_image_upload_app_block_eLJwBn": {
+          "type": "shopify://apps/mini-image-upload/blocks/app-block/019a499d-2f45-732c-96ee-872049547d70",
+          "settings": {
+            "product": "{{product}}"
+          }
+        }
+      },
+      "block_order": [
+        "title_4AQrFC",
+        "judge_me_reviews_preview_badge_f9Nc6i",
+        "badges",
+        "price",
+        "inventory",
+        "variant_picker",
+        "xboost_bundle_checkbox_upsell_fXe6aY",
+        "mini_image_upload_app_block_ztmB3F",
+        "buy_buttons",
+        "icon_with_text",
+        "pickup_availability",
+        "collapsible-row-1",
+        "collapsible-row-2",
+        "collapsible_tab_8GYHQG",
+        "collapsible_tab_PxyDpJ",
+        "collapsible_tab_zdT3EM",
+        "collapsible-row-3",
+        "addons",
+        "sku_LJebPk",
+        "mini_image_upload_app_block_eLJwBn"
+      ],
+      "custom_css": [
+        "/* FK - Start */.jdgm-widget.jdgm-preview-badge.jdgm-preview-badge--with-link.jdgm--done-setup {margin-top: -20px;}",
+        " /* FK - end */"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "enable_sticky_info": true,
+        "media_size": "medium",
+        "gallery_layout": "carousel",
+        "mobile_thumbnails": "show",
+        "enable_image_zoom": true,
+        "enable_video_looping": true,
+        "padding_top": 0,
+        "padding_bottom": 100
+      }
+    },
+    "custom_liquid_XXJQHU": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "{%- comment -%}\n  ===========================================================================\n  IQ Jacken-Vergleich – CUSTOM LIQUID (Testversion)\n  ---------------------------------------------------------------------------\n  Einfach den GESAMTEN Inhalt dieser Datei in eine \"Custom Liquid\"-Section\n  (oder einen \"Custom Liquid\"-Block) im Theme-Editor einfügen und speichern.\n\n  • Produkte werden LIVE per Handle geladen (Bild, Preis, Link kommen vom\n    Produkt – bleiben also automatisch korrekt).\n  • Die Vergleichsdaten (Wärme, Wetterschutz, Features, \"Nicht für…\") sind\n    hier fest hinterlegt und per Handle zugeordnet.\n  • Kein Snippet, kein Schema, kein JS nötig – reines Liquid + Inline-CSS.\n\n  >> Welche Jacken / welche Reihenfolge?  Die Liste \"handles\" unten anpassen.\n\n  >> Automatisch aus einer Collection statt fester Liste? Ersetze in der\n     Schleife weiter unten:\n        {%- assign p = all_products[handle] -%}\n     durch eine Collection-Schleife, z. B.:\n        {%- for p in collections['jacken'].products -%}\n     (und entferne die handles-Zeile + all_products-Zeile).\n  ===========================================================================\n{%- endcomment -%}\n\n{%- liquid\n  assign handles = 'iq-multifunktionsjacke-3-0-unisex,iq-trainingsjacke-2-0-unisex,iq-allround-jacke-unisex,iq-softshelljacke-2-0-unisex,iq-multifunktionsjacke-k9-pro-unisex-schwarz' | split: ','\n\n  assign cards_html = ''\n  assign mobile_html = ''\n  assign thead_html = ''\n  assign row_wetter = ''\n  assign row_waerme = ''\n  assign row_features = ''\n  assign row_price = ''\n  assign is_first = true\n-%}\n\n{%- for handle in handles -%}\n  {%- assign p = all_products[handle] -%}\n  {%- unless p == empty -%}\n\n    {%- liquid\n      assign hh = p.handle | downcase\n\n      # ---- defaults / fallback ----\n      assign short_title = p.title\n      assign use = p.type | default: 'IQ Jacke'\n      assign desc = p.description | strip_html | truncatewords: 24\n      assign notfor = ''\n      assign link_label = 'Ansehen'\n      assign badge = ''\n      assign card_class = ''\n      assign heat_dots = ''\n      assign heat_label = ''\n      assign ideal = ''\n      assign w1 = ''\n      assign w2 = ''\n      assign w3 = ''\n      assign f1 = ''\n      assign f2 = ''\n      assign f3 = ''\n\n      # ---- K9 Pro (zuerst prüfen: Handle enthält auch \"multifunktionsjacke\") ----\n      if hh contains 'k9'\n        assign short_title = 'MFJ K9 Pro'\n        assign badge = 'K9 Einsatz'\n        assign card_class = 'iq-jv__quick-card--k9'\n        assign use = 'Diensthundeführer'\n        assign desc = 'Die professionelle Einsatzjacke mit Patchflächen, Bodycam-Schlaufen und Holsterzugriff.'\n        assign notfor = 'Für Behörden und professionellen Dienst. Klassischer Hundesport: reguläre MFJ 3.0.'\n        assign link_label = 'K9 Pro ansehen'\n        assign w1 = '20.000 mm'\n        assign w2 = 'winddicht'\n        assign w3 = 'versiegelte Nähte'\n        assign heat_dots = '●●●●'\n        assign heat_label = 'warm gefüttert'\n        assign f1 = 'Patchflächen'\n        assign f2 = 'Bodycam-Schlaufen'\n        assign f3 = 'Holsterzugriff'\n        assign ideal = 'Diensthundeführer und Behörden.'\n\n      elsif hh contains 'trainingsjacke'\n        assign short_title = 'Trainingsjacke 2.0'\n        assign use = 'Ganzjahres-Training'\n        assign desc = 'Die vielseitige Systemjacke mit patentierter Brusttasche, Gertenfach und Magnettaschen-Kompatibilität (Unsichtbare Bestätigung).'\n        assign notfor = 'Ungefüttert, mit Zip-In wintertauglich.'\n        assign link_label = 'Trainingsjacke ansehen'\n        assign w1 = '20.000 mm'\n        assign w2 = 'winddicht'\n        assign w3 = 'getapte Nähte'\n        assign heat_dots = '●●○○'\n        assign heat_label = 'robust · mit Zip-In wintertauglich'\n        assign f1 = 'Patentierte Brusttasche'\n        assign f2 = 'Magnettaschen-kompatibel — Unsichtbare Bestätigung'\n        assign f3 = 'Gertenfach'\n        assign ideal = 'Ganzjahrestraining und maximale Systemfunktion.'\n\n      elsif hh contains 'allround'\n        assign short_title = 'Allround Jacke'\n        assign use = 'Regen & Übergangszeit'\n        assign desc = 'Leicht, wasserdicht und mit viel Stauraum. Ideal für Hundeplatz, Gassi und wechselhaftes Wetter.'\n        assign notfor = 'Keine Winterjacke.'\n        assign link_label = 'Allround Jacke ansehen'\n        assign w1 = 'wasserdicht'\n        assign w2 = 'winddicht'\n        assign w3 = 'wasserdichte Nähte'\n        assign heat_dots = '●○○○'\n        assign heat_label = 'ungefüttert'\n        assign f1 = 'Herausnehmbare XL-Futtertaschen'\n        assign f2 = 'Clicker- & Kotbeutelfach'\n        assign f3 = 'Verstaubare Kapuze'\n        assign ideal = 'Regen, Übergangszeit und leichte Einsätze.'\n\n      elsif hh contains 'softshell'\n        assign short_title = 'Softshell 2.0'\n        assign use = 'Verein & Wettkampf'\n        assign desc = 'Sportlich, beweglich und leicht wärmend. Für Training, Teamauftritt und Wettkampf in der Übergangszeit.'\n        assign notfor = 'Nicht für Dauerregen oder starke Kälte.'\n        assign link_label = 'Softshell ansehen'\n        assign w1 = 'wasserabweisend'\n        assign w2 = 'winddicht'\n        assign w3 = 'atmungsaktiv'\n        assign heat_dots = '●●○○'\n        assign heat_label = 'Innenfleece'\n        assign f1 = 'Seitliche Mesh-Einsätze'\n        assign f2 = 'Reflektierende Logos'\n        assign f3 = 'Ideal als Teamjacke'\n        assign ideal = 'Verein, Wettkampf und Übergangszeit.'\n\n      elsif hh contains 'multifunktionsjacke'\n        assign short_title = 'MFJ 3.0'\n        assign badge = 'Bestseller'\n        assign card_class = 'iq-jv__quick-card--featured'\n        assign use = 'Winter & Schlechtwetter'\n        assign desc = 'Warm, wasserdicht und maximal ausgestattet. Die richtige Wahl für tägliches Training bei Kälte und schlechtem Wetter.'\n        assign notfor = 'Nicht für warme Übergangstage.'\n        assign link_label = 'MFJ 3.0 ansehen'\n        assign w1 = '20.000 mm'\n        assign w2 = 'winddicht'\n        assign w3 = 'versiegelte Nähte'\n        assign heat_dots = '●●●●'\n        assign heat_label = 'warm gefüttert'\n        assign f1 = 'Original seit 2011'\n        assign f2 = '3 Magnetfächer'\n        assign f3 = 'Napoleon- & Handytasche'\n        assign ideal = 'Winter, Regen und tägliches Training.'\n      endif\n\n      # ---- Wetterschutz mehrzeilig ----\n      assign wetter_html = w1\n      if w2 != blank\n        assign wetter_html = wetter_html | append: '<br>' | append: w2\n      endif\n      if w3 != blank\n        assign wetter_html = wetter_html | append: '<br>' | append: w3\n      endif\n\n      # ---- Wetterschutz inline (mobil) ----\n      assign wetter_inline = ''\n      if w1 != blank\n        assign wetter_inline = w1\n      endif\n      if w2 != blank\n        if wetter_inline != blank\n          assign wetter_inline = wetter_inline | append: ', '\n        endif\n        assign wetter_inline = wetter_inline | append: w2\n      endif\n      if w3 != blank\n        if wetter_inline != blank\n          assign wetter_inline = wetter_inline | append: ', '\n        endif\n        assign wetter_inline = wetter_inline | append: w3\n      endif\n\n      # ---- Features als Liste ----\n      assign features_html = '<ul>'\n      if f1 != blank\n        assign features_html = features_html | append: '<li>' | append: f1 | append: '</li>'\n      endif\n      if f2 != blank\n        assign features_html = features_html | append: '<li>' | append: f2 | append: '</li>'\n      endif\n      if f3 != blank\n        assign features_html = features_html | append: '<li>' | append: f3 | append: '</li>'\n      endif\n      assign features_html = features_html | append: '</ul>'\n\n      # ---- Features inline (mobil) ----\n      assign features_inline = ''\n      if f1 != blank\n        assign features_inline = f1\n      endif\n      if f2 != blank\n        if features_inline != blank\n          assign features_inline = features_inline | append: ', '\n        endif\n        assign features_inline = features_inline | append: f2\n      endif\n      if f3 != blank\n        if features_inline != blank\n          assign features_inline = features_inline | append: ', '\n        endif\n        assign features_inline = features_inline | append: f3\n      endif\n    -%}\n\n    {%- comment -%} ---- Karte ---- {%- endcomment -%}\n    {%- capture card -%}\n      <a class=\"iq-jv__quick-card {{ card_class }}\" href=\"{{ p.url }}\">\n        {%- if badge != blank -%}<span class=\"iq-jv__badge\">{{ badge }}</span>{%- endif -%}\n        {%- if p.featured_image -%}{{ p.featured_image | image_url: width: 520 | image_tag: loading: 'lazy', widths: '260,520', sizes: '(max-width: 767px) 82vw, 260px', alt: p.title }}{%- endif -%}\n        <div class=\"iq-jv__quick-copy\">\n          <span class=\"iq-jv__use\">{{ use }}</span>\n          <h3>{{ short_title }}</h3>\n          <p>{{ desc }}</p>\n          {%- if notfor != blank -%}<span class=\"iq-jv__not\">{{ notfor }}</span>{%- endif -%}\n          <span class=\"iq-jv__link\">{{ link_label }}</span>\n        </div>\n      </a>\n    {%- endcapture -%}\n    {%- assign cards_html = cards_html | append: card -%}\n\n    {%- comment -%} ---- Tabellen-Zellen ---- {%- endcomment -%}\n    {%- capture cell -%}<th><a href=\"{{ p.url }}\">{{ short_title }}</a></th>{%- endcapture -%}\n    {%- assign thead_html = thead_html | append: cell -%}\n\n    {%- capture cell -%}<td>{{ wetter_html }}</td>{%- endcapture -%}\n    {%- assign row_wetter = row_wetter | append: cell -%}\n\n    {%- capture cell -%}<td><span class=\"iq-jv__heat\">{{ heat_dots }}</span><br>{{ heat_label }}</td>{%- endcapture -%}\n    {%- assign row_waerme = row_waerme | append: cell -%}\n\n    {%- capture cell -%}<td>{{ features_html }}</td>{%- endcapture -%}\n    {%- assign row_features = row_features | append: cell -%}\n\n    {%- capture cell -%}<td><strong>{{ p.price | money }}</strong><a href=\"{{ p.url }}\">Zur Jacke</a></td>{%- endcapture -%}\n    {%- assign row_price = row_price | append: cell -%}\n\n    {%- comment -%} ---- Mobile Accordion ---- {%- endcomment -%}\n    {%- capture det -%}\n      <details{% if is_first %} open{% endif %}>\n        <summary>{{ short_title }} <span>{{ p.price | money }}</span></summary>\n        <div class=\"iq-jv__detail-body\">\n          <p><strong>Ideal für:</strong> {{ ideal }}</p>\n          <p><strong>Wetterschutz:</strong> {{ wetter_inline }}</p>\n          <p><strong>Wärme:</strong> {{ heat_dots }} {{ heat_label }}</p>\n          <p><strong>Top-Features:</strong> {{ features_inline }}</p>\n          <a href=\"{{ p.url }}\">{{ link_label }}</a>\n        </div>\n      </details>\n    {%- endcapture -%}\n    {%- assign mobile_html = mobile_html | append: det -%}\n    {%- assign is_first = false -%}\n\n  {%- endunless -%}\n{%- endfor -%}\n\n<section class=\"iq-jv\" aria-labelledby=\"iq-jv-title\">\n  <div class=\"iq-jv__inner\">\n    <header class=\"iq-jv__header\">\n      <p class=\"iq-jv__eyebrow\">IQ JACKENBERATUNG</p>\n      <h2 id=\"iq-jv-title\">Welche IQ Jacke passt zu Dir?</h2>\n      <p class=\"iq-jv__intro\">\n        Alle IQ Jacken sind für aktives Hundetraining gebaut. Entscheidend sind Wetter,\n        Wärme und Dein Einsatzbereich.\n      </p>\n    </header>\n\n    <div class=\"iq-jv__quick-grid\" aria-label=\"Schnellauswahl nach Einsatzbereich\">{{ cards_html }}</div>\n\n    <div class=\"iq-jv__shared\">\n      <strong>Bei allen IQ Jacken inklusive:</strong>\n      Große Känguru-Rückentasche, Loops für die modulare Futtertasche und robuste\n      Verarbeitung für den täglichen Einsatz.\n    </div>\n\n    <div class=\"iq-jv__compare-head\">\n      <div>\n        <p class=\"iq-jv__eyebrow\">DETAILVERGLEICH</p>\n        <h3>Alle Unterschiede auf einen Blick</h3>\n      </div>\n      <p>Vergleiche Wetterschutz, Wärme, Ausstattung und Preis.</p>\n    </div>\n\n    <div class=\"iq-jv__table-wrap\">\n      <table class=\"iq-jv__table\">\n        <thead>\n          <tr><th></th>{{ thead_html }}</tr>\n        </thead>\n        <tbody>\n          <tr><th>Wetterschutz</th>{{ row_wetter }}</tr>\n          <tr><th>Wärme</th>{{ row_waerme }}</tr>\n          <tr><th>Top-Features</th>{{ row_features }}</tr>\n          <tr class=\"iq-jv__price-row\"><th>Preis</th>{{ row_price }}</tr>\n        </tbody>\n      </table>\n    </div>\n\n    <div class=\"iq-jv__mobile-compare\">{{ mobile_html }}</div>\n\n    <div class=\"iq-jv__footer-note\">\n      <p>\n        MFJ 3.0, Trainingsjacke 2.0, Allround Jacke und MFJ K9 Pro sind auch im\n        Damen-Schnitt erhältlich.\n      </p>\n      <p>\n        Mit der <a href=\"/products/iq-zip-in-shell-unisex\">IQ Zip-In Shell</a>\n        wird die Trainingsjacke 2.0 zur Winterjacke.\n      </p>\n    </div>\n  </div>\n</section>\n\n<style>\n  .iq-jv{\n    --iq-red:#e30613;\n    --iq-ink:#101010;\n    --iq-muted:#686868;\n    --iq-soft:#f6f6f4;\n    --iq-line:#e7e7e3;\n    --iq-white:#fff;\n    color:var(--iq-ink);\n    padding:72px 0;\n    background:var(--iq-white);\n    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;\n  }\n  .iq-jv *{box-sizing:border-box}\n  .iq-jv__inner{\n    width:min(1240px,calc(100% - 40px));\n    margin:0 auto;\n  }\n  .iq-jv__header{\n    max-width:760px;\n    margin-bottom:32px;\n  }\n  .iq-jv__eyebrow{\n    margin:0 0 8px;\n    font-size:.75rem;\n    line-height:1;\n    letter-spacing:.14em;\n    font-weight:800;\n    color:var(--iq-red);\n  }\n  .iq-jv h2,\n  .iq-jv h3,\n  .iq-jv p{margin-top:0}\n  .iq-jv h2{\n    margin-bottom:12px;\n    font-size:clamp(2rem,4vw,3.3rem);\n    line-height:1.02;\n    letter-spacing:-.04em;\n  }\n  .iq-jv__intro{\n    margin-bottom:0;\n    font-size:clamp(1rem,1.5vw,1.15rem);\n    line-height:1.55;\n    color:var(--iq-muted);\n  }\n  .iq-jv__quick-grid{\n    display:grid;\n    grid-template-columns:repeat(5,minmax(0,1fr));\n    gap:14px;\n  }\n  .iq-jv__quick-card{\n    position:relative;\n    display:flex;\n    min-height:100%;\n    flex-direction:column;\n    overflow:hidden;\n    border:1px solid var(--iq-line);\n    background:var(--iq-white);\n    color:inherit;\n    text-decoration:none;\n    transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease;\n  }\n  .iq-jv__quick-card:hover{\n    transform:translateY(-4px);\n    border-color:#c9c9c4;\n    box-shadow:0 16px 34px rgba(0,0,0,.08);\n  }\n  .iq-jv__quick-card--featured{\n    border:2px solid var(--iq-ink);\n  }\n  .iq-jv__quick-card--k9{\n    background:#111;\n    color:#fff;\n    border-color:#111;\n  }\n  .iq-jv__quick-card img{\n    display:block;\n    width:100%;\n    aspect-ratio:1/1;\n    object-fit:contain;\n    background:#fafafa;\n    padding:14px;\n  }\n  .iq-jv__quick-card--k9 img{\n    background:#1b1b1b;\n  }\n  .iq-jv__badge{\n    position:absolute;\n    z-index:1;\n    top:12px;\n    left:12px;\n    padding:7px 10px;\n    border-radius:999px;\n    background:var(--iq-red);\n    color:#fff;\n    font-size:.7rem;\n    line-height:1;\n    font-weight:800;\n    letter-spacing:.05em;\n    text-transform:uppercase;\n  }\n  .iq-jv__quick-copy{\n    display:flex;\n    flex:1;\n    flex-direction:column;\n    padding:18px;\n  }\n  .iq-jv__use{\n    display:block;\n    margin-bottom:7px;\n    color:var(--iq-red);\n    font-size:.72rem;\n    font-weight:800;\n    letter-spacing:.08em;\n    text-transform:uppercase;\n  }\n  .iq-jv__quick-card h3{\n    margin-bottom:9px;\n    font-size:1.25rem;\n    line-height:1.1;\n  }\n  .iq-jv__quick-card p{\n    margin-bottom:10px;\n    color:var(--iq-muted);\n    font-size:.9rem;\n    line-height:1.5;\n  }\n  .iq-jv__quick-card--k9 p,\n  .iq-jv__quick-card--k9 .iq-jv__not{\n    color:#cfcfcf;\n  }\n  .iq-jv__not{\n    display:block;\n    margin-bottom:18px;\n    color:var(--iq-muted);\n    font-size:.8rem;\n    line-height:1.4;\n  }\n  .iq-jv__link{\n    display:inline-flex;\n    align-items:center;\n    gap:6px;\n    margin-top:auto;\n    font-size:.88rem;\n    font-weight:800;\n  }\n  .iq-jv__link::after{\n    content:\"→\";\n    transition:transform .2s ease;\n  }\n  .iq-jv__quick-card:hover .iq-jv__link::after{\n    transform:translateX(4px);\n  }\n  .iq-jv__shared{\n    margin:18px 0 62px;\n    padding:16px 18px;\n    border-left:4px solid var(--iq-red);\n    background:var(--iq-soft);\n    color:var(--iq-muted);\n    font-size:.9rem;\n    line-height:1.5;\n  }\n  .iq-jv__shared strong{color:var(--iq-ink)}\n  .iq-jv__compare-head{\n    display:flex;\n    align-items:end;\n    justify-content:space-between;\n    gap:30px;\n    margin-bottom:22px;\n  }\n  .iq-jv__compare-head h3{\n    margin-bottom:0;\n    font-size:clamp(1.5rem,3vw,2.2rem);\n    letter-spacing:-.03em;\n  }\n  .iq-jv__compare-head > p{\n    max-width:360px;\n    margin-bottom:3px;\n    color:var(--iq-muted);\n    font-size:.92rem;\n    text-align:right;\n  }\n  .iq-jv__table-wrap{\n    overflow-x:auto;\n    border:1px solid var(--iq-line);\n    background:#fff;\n  }\n  .iq-jv__table{\n    width:100%;\n    min-width:980px;\n    border-collapse:collapse;\n    font-size:.88rem;\n  }\n  .iq-jv__table th,\n  .iq-jv__table td{\n    padding:18px 14px;\n    border-bottom:1px solid var(--iq-line);\n    border-right:1px solid var(--iq-line);\n    text-align:center;\n    vertical-align:top;\n  }\n  .iq-jv__table tr > *:last-child{border-right:0}\n  .iq-jv__table thead th{\n    position:sticky;\n    top:0;\n    z-index:1;\n    background:#111;\n    color:#fff;\n    font-size:.95rem;\n  }\n  .iq-jv__table thead th:first-child{\n    background:#111;\n    width:130px;\n  }\n  .iq-jv__table thead a{\n    color:#fff;\n    text-decoration:none;\n  }\n  .iq-jv__table tbody th{\n    background:var(--iq-soft);\n    color:var(--iq-muted);\n    font-size:.73rem;\n    letter-spacing:.06em;\n    text-align:left;\n    text-transform:uppercase;\n  }\n  .iq-jv__table ul{\n    margin:0;\n    padding:0;\n    list-style:none;\n    text-align:left;\n  }\n  .iq-jv__table li{\n    position:relative;\n    margin-bottom:7px;\n    padding-left:14px;\n    line-height:1.35;\n  }\n  .iq-jv__table li::before{\n    content:\"\";\n    position:absolute;\n    left:0;\n    top:.5em;\n    width:5px;\n    height:5px;\n    background:var(--iq-red);\n  }\n  .iq-jv__heat{\n    color:var(--iq-red);\n    letter-spacing:.08em;\n    font-size:.85rem;\n  }\n  .iq-jv__price-row td{\n    background:#fbfbfa;\n  }\n  .iq-jv__price-row strong{\n    display:block;\n    margin-bottom:9px;\n    font-size:1.08rem;\n  }\n  .iq-jv__price-row a{\n    display:inline-block;\n    padding-bottom:2px;\n    border-bottom:2px solid var(--iq-red);\n    color:var(--iq-ink);\n    font-weight:800;\n    text-decoration:none;\n  }\n  .iq-jv__mobile-compare{display:none}\n  .iq-jv__footer-note{\n    display:flex;\n    justify-content:space-between;\n    gap:28px;\n    margin-top:22px;\n    color:var(--iq-muted);\n    font-size:.84rem;\n    line-height:1.5;\n  }\n  .iq-jv__footer-note p{\n    max-width:560px;\n    margin-bottom:0;\n  }\n  .iq-jv__footer-note a{\n    color:inherit;\n    font-weight:700;\n    text-decoration:underline;\n    text-decoration-color:var(--iq-red);\n    text-underline-offset:3px;\n  }\n  @media (max-width:1100px){\n    .iq-jv__quick-grid{\n      grid-template-columns:repeat(3,minmax(0,1fr));\n    }\n  }\n  @media (max-width:767px){\n    .iq-jv{\n      padding:48px 0;\n    }\n    .iq-jv__inner{\n      width:min(100% - 28px,1240px);\n    }\n    .iq-jv__quick-grid{\n      display:flex;\n      gap:12px;\n      margin-right:-14px;\n      padding-right:14px;\n      overflow-x:auto;\n      scroll-snap-type:x mandatory;\n      scrollbar-width:none;\n    }\n    .iq-jv__quick-grid::-webkit-scrollbar{display:none}\n    .iq-jv__quick-card{\n      min-width:82%;\n      scroll-snap-align:start;\n    }\n    .iq-jv__quick-card img{\n      aspect-ratio:4/3;\n    }\n    .iq-jv__shared{\n      margin-bottom:42px;\n    }\n    .iq-jv__compare-head{\n      display:block;\n    }\n    .iq-jv__compare-head > p{\n      margin-top:8px;\n      text-align:left;\n    }\n    .iq-jv__table-wrap{display:none}\n    .iq-jv__mobile-compare{\n      display:grid;\n      gap:10px;\n    }\n    .iq-jv__mobile-compare details{\n      border:1px solid var(--iq-line);\n      background:#fff;\n    }\n    .iq-jv__mobile-compare summary{\n      display:flex;\n      align-items:center;\n      justify-content:space-between;\n      gap:15px;\n      padding:17px 18px;\n      cursor:pointer;\n      font-weight:800;\n      list-style:none;\n    }\n    .iq-jv__mobile-compare summary::-webkit-details-marker{display:none}\n    .iq-jv__mobile-compare summary::after{\n      content:\"+\";\n      margin-left:auto;\n      color:var(--iq-red);\n      font-size:1.3rem;\n    }\n    .iq-jv__mobile-compare details[open] summary::after{\n      content:\"–\";\n    }\n    .iq-jv__mobile-compare summary span{\n      margin-left:auto;\n      font-size:.88rem;\n      white-space:nowrap;\n    }\n    .iq-jv__detail-body{\n      padding:0 18px 18px;\n      color:var(--iq-muted);\n      font-size:.9rem;\n      line-height:1.5;\n    }\n    .iq-jv__detail-body p{\n      margin-bottom:8px;\n    }\n    .iq-jv__detail-body strong{color:var(--iq-ink)}\n    .iq-jv__detail-body a{\n      display:inline-block;\n      margin-top:8px;\n      padding-bottom:2px;\n      border-bottom:2px solid var(--iq-red);\n      color:var(--iq-ink);\n      font-weight:800;\n      text-decoration:none;\n    }\n    .iq-jv__footer-note{\n      display:block;\n    }\n    .iq-jv__footer-note p + p{\n      margin-top:10px;\n    }\n  }\n</style>",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "custom_class": ""
+      }
+    },
+    "1761861909e9ba3a66": {
+      "type": "apps",
+      "blocks": {
+        "instafeed_app_block_FiaN6E": {
+          "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
+          "settings": {
+            "title": "",
+            "title_color": "",
+            "title_size_v2": 0,
+            "alignment": "center",
+            "instafeed_margin_top": 0,
+            "instafeed_margin_bottom": 0,
+            "instafeed_margin_sides": 0,
+            "show_instagram_link": false,
+            "link_alignment": "left",
+            "link_color": "#000000",
+            "background_color": "",
+            "feed_id": "",
+            "html_area": ""
+          }
+        }
+      },
+      "block_order": [
+        "instafeed_app_block_FiaN6E"
+      ],
+      "settings": {
+        "include_margins": true,
+        "padding_top": 22,
+        "padding_bottom": 60,
+        "custom_class": ""
+      }
+    },
+    "feature_list_cW3d9c": {
+      "type": "feature-list",
+      "blocks": {
+        "feature_item_VbCwL3": {
+          "type": "feature_item",
+          "settings": {
+            "color_scheme": "scheme-10",
+            "icon": "check",
+            "icon_style": "btn--secondary",
+            "text": "Hoher Qualitätsanspruch"
+          }
+        },
+        "feature_item_NzxQGa": {
+          "type": "feature_item",
+          "settings": {
+            "color_scheme": "scheme-10",
+            "icon": "check",
+            "icon_style": "btn--secondary",
+            "text": "Innovativ und durchdacht"
+          }
+        },
+        "feature_item_yyNV9A": {
+          "type": "feature_item",
+          "settings": {
+            "color_scheme": "scheme-10",
+            "icon": "check",
+            "icon_style": "btn--secondary",
+            "text": "Aus der Praxis, für die Praxis"
+          }
+        }
+      },
+      "block_order": [
+        "feature_item_VbCwL3",
+        "feature_item_NzxQGa",
+        "feature_item_yyNV9A"
+      ],
+      "custom_css": [
+        ".rich-text__heading{text-align: center}"
+      ],
+      "settings": {
+        "color_scheme": "scheme-7",
+        "subheading": "",
+        "heading": "Why you will love it",
+        "heading_size": "h1",
+        "heading_highlight_style": "underline",
+        "description": "",
+        "text_size": "text-base",
+        "item_alignment": "center",
+        "icon_size": "extra-medium",
+        "swipe_on_mobile": false,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "custom_class": ""
+      }
+    },
+    "image_with_text_overlay_a4LEci": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "heading_ArzBDb": {
+          "type": "heading",
+          "settings": {
+            "heading": "Made by dog People for Dog People",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_kbWTqe": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Wir sind selbst mitten im Hundesport unterwegs – genau deshalb wissen wir, was draußen wirklich gebraucht wird. Unsere Produkte entstehen direkt aus der Praxis, aus echten Trainingsmomenten und aus unserer Community. Authentisch, funktional, von Dog People für Dog People.</p>",
+            "text_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "heading_ArzBDb",
+        "text_kbWTqe"
+      ],
+      "custom_css": [
+        ".rich-text {max-width: 65rem;}"
+      ],
+      "settings": {
+        "container": "full",
+        "image": "shopify://shop_images/K9-and-sport-event2.jpg",
+        "desktop_height": "medium",
+        "overlay_opacity": 35,
+        "enable_parallax": true,
+        "parallax_direction": "vertical",
+        "color_scheme": "",
+        "content_position": "middle-center",
+        "content_alignment": "center",
+        "image_mobile": "shopify://shop_images/K9-and-sport-event-mob_770be926-b8ab-465e-a67b-ec414a2ebcce.jpg",
+        "mobile_height": "large",
+        "padding_top": 60,
+        "padding_bottom": 0,
+        "custom_class": ""
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "heading": "Auch interessant <em>für dich</em>",
+        "heading_size": "h1",
+        "heading_highlight_style": "none",
+        "subheading": "",
+        "description": "",
+        "limit": 6,
+        "columns": 6,
+        "column_gap": "extra-small",
+        "row_gap": "inherit",
+        "enable_slider": true,
+        "controls_position": "outside",
+        "pcard_image_ratio": "",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "custom_class": ""
+      }
+    },
+    "recently_viewed_products_nLbEzE": {
+      "type": "recently-viewed-products",
+      "name": "t:sections.recently-viewed-products.name",
+      "settings": {
+        "color_scheme": "",
+        "heading": "Kürzlich <em>angeschaut</em>",
+        "heading_size": "h1",
+        "heading_highlight_style": "underline",
+        "subheading": "",
+        "description": "",
+        "limit": 8,
+        "columns": 6,
+        "column_gap": "medium",
+        "row_gap": "inherit",
+        "enable_slider": true,
+        "controls_position": "inside",
+        "pcard_image_ratio": "",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "custom_class": ""
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs",
+    "rich_text_pTBMLx",
+    "17614968881680f860",
+    "main",
+    "custom_liquid_XXJQHU",
+    "1761861909e9ba3a66",
+    "feature_list_cW3d9c",
+    "image_with_text_overlay_a4LEci",
+    "related-products",
+    "recently_viewed_products_nLbEzE"
+  ]
+}

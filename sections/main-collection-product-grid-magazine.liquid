@@ -1,0 +1,2031 @@
+{% render 'rapid-search-results-template-v2' %}
+{{ 'collection.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'show-more.js' | asset_url }}" defer="defer"></script>
+{%- liquid
+  assign iq_collection_card = false
+  if collection.template_suffix == 'westen' or collection.template_suffix == 'jacken'
+    assign iq_collection_card = true
+  endif
+  assign current_filter_size = 0
+  assign columns_desktop = section.settings.columns_desktop
+  assign columns_tablet = 3
+  assign columns_tablet_large = 4
+  assign columns_mobile = section.settings.columns_mobile | times: 1
+
+  for filter in collection.filters
+    assign current_filter_size = current_filter_size | plus: filter.active_values.size
+  endfor
+
+  assign enable_sorting = section.settings.enable_sorting
+  assign enable_filtering = section.settings.enable_filtering
+  assign filter_type = section.settings.filter_type
+  assign show_toolbar = false
+  if enable_filtering or enable_sorting
+    assign show_toolbar = true
+  endif
+
+  assign default_grid_mobile = 'f-grid-' | append: columns_mobile | append: '-cols'
+
+  assign is_metro = false
+  if section.settings.grid_layout == 'metro'
+    assign is_metro = true
+  endif
+-%}
+{%- if is_metro -%}
+  {%- render 'product-grid-metro-style',
+    section_id: section.id,
+    columns_desktop: columns_desktop,
+    columns_tablet_large: columns_tablet_large,
+    columns_tablet: columns_tablet,
+    columns_mobile: columns_mobile
+  -%}
+{%- endif -%}
+{%- capture image_sizes -%}
+(max-width: 767px) calc((100vw - 38px) / {{ columns_mobile }}),
+(max-width: 1279px) calc((100vw - 90px) / {{ columns_tablet }}),
+{%- if enable_filtering -%}
+  calc({{ settings.page_width}}px / {{ columns_desktop | plus: 1 }})
+{%- else -%}
+{{ settings.page_width | divided_by: columns_desktop }}px
+{%- endif -%}
+{%- endcapture -%}
+
+{%- if section.settings.iq_jv_enabled -%}
+{%- comment -%} IQ Jacken-Vergleich: einmal unter dem Produktraster ausgeben {%- endcomment -%}
+{%- liquid
+
+  # === Sprache: DE = Standard, EN auf /en/ ===
+  assign lang = request.locale.iso_code
+
+  # Feste UI-Texte (Überschriften, Tabellen-Labels, Buttons)
+  assign tx_eyebrow = 'IQ Jackenberatung'
+  assign tx_heading = 'Welche Jacke passt zu Dir?'
+  assign tx_intro = 'Alle IQ Jacken sind für aktives Hundetraining gebaut. Entscheidend sind Wetter, Wärme und Dein Einsatzbereich.'
+  assign tx_shared_bold = 'Bei allen IQ Jacken inklusive:'
+  assign tx_shared_rest = 'Große Känguru-Rückentasche, Loops für die modulare Futtertasche und robuste Verarbeitung für den täglichen Einsatz.'
+  assign tx_cmp_eyebrow = 'Detailvergleich'
+  assign tx_cmp_heading = 'Alle Unterschiede auf einen Blick'
+  assign tx_cmp_sub = 'Vergleiche Wetterschutz, Wärme, Ausstattung und Preis.'
+  assign tx_row_wetter = 'Wetterschutz'
+  assign tx_row_waerme = 'Wärme'
+  assign tx_row_feat = 'Top-Features'
+  assign tx_row_price = 'Preis'
+  assign tx_zur = 'Zur Jacke'
+  assign tx_ideal_label = 'Ideal für:'
+  assign tx_wetter_label = 'Wetterschutz:'
+  assign tx_waerme_label = 'Wärme:'
+  assign tx_feat_label = 'Top-Features:'
+  assign tx_footer1 = 'MFJ 3.0, Trainingsjacke 2.0, Allround Jacke und MFJ K9 Pro sind auch im Damen-Schnitt erhältlich.'
+  assign tx_footer2_pre = 'Mit der '
+  assign tx_footer2_post = ' wird die Trainingsjacke 2.0 zur Winterjacke.'
+  if lang == 'en'
+    assign tx_eyebrow = 'IQ jacket advice'
+    assign tx_heading = 'Which jacket suits you?'
+    assign tx_intro = 'Every IQ jacket is built for active dog training. What matters is weather, warmth and your use case.'
+    assign tx_shared_bold = 'Included with every IQ jacket:'
+    assign tx_shared_rest = 'Large kangaroo back pocket, loops for the modular treat pouch and rugged construction for everyday use.'
+    assign tx_cmp_eyebrow = 'Detailed comparison'
+    assign tx_cmp_heading = 'All the differences at a glance'
+    assign tx_cmp_sub = 'Compare weather protection, warmth, features and price.'
+    assign tx_row_wetter = 'Weather protection'
+    assign tx_row_waerme = 'Warmth'
+    assign tx_row_feat = 'Top features'
+    assign tx_row_price = 'Price'
+    assign tx_zur = 'View jacket'
+    assign tx_ideal_label = 'Ideal for:'
+    assign tx_wetter_label = 'Weather protection:'
+    assign tx_waerme_label = 'Warmth:'
+    assign tx_feat_label = 'Top features:'
+    assign tx_footer1 = 'MFJ 3.0, Training Jacket 2.0, Allround Jacket and MFJ K9 Pro are also available in a women’s fit.'
+    assign tx_footer2_pre = 'With the '
+    assign tx_footer2_post = ' the Training Jacket 2.0 becomes a winter jacket.'
+  endif
+
+  # Produkte aus dem product_list-Setting. Leer lassen = Standard (5 IQ Jacken).
+  assign iq_jv_picked = ''
+  for iq_jv_prod in section.settings.iq_jv_products
+    if iq_jv_picked != blank
+      assign iq_jv_picked = iq_jv_picked | append: ','
+    endif
+    assign iq_jv_picked = iq_jv_picked | append: iq_jv_prod.handle
+  endfor
+  assign iq_jv_default = 'iq-multifunktionsjacke-3-0-unisex,iq-trainingsjacke-2-0-unisex,iq-allround-jacke-unisex,iq-softshelljacke-2-0-unisex,iq-multifunktionsjacke-k9-pro-unisex-schwarz'
+  assign iq_jv_handle_str = iq_jv_default
+  if iq_jv_picked != blank
+    assign iq_jv_handle_str = iq_jv_picked
+  endif
+-%}
+    {%- comment -%} IQ Jacken-Vergleich – serverseitig gerendert, Bilder laden verzögert. {%- endcomment -%}
+    {%- liquid
+      assign handles = iq_jv_handle_str | split: ','
+      assign card_count = 0
+      assign cards_html = ''
+      assign mobile_html = ''
+      assign thead_html = ''
+      assign row_wetter = ''
+      assign row_waerme = ''
+      assign row_features = ''
+      assign row_price = ''
+      assign is_first = true
+    -%}
+    {%- for handle in handles -%}
+      {%- assign p = all_products[handle] -%}
+      {%- unless p == empty -%}
+        {%- liquid
+          assign card_count = card_count | plus: 1
+          # Nach fixem Eingabe-Handle matchen (nicht p.handle), damit es auch auf /en/ mit lokalisierten Handles greift
+          assign hh = handle | downcase
+          assign short_title = p.title
+          assign use = p.type | default: 'IQ Jacke'
+          assign desc = p.description | strip_html | truncatewords: 24
+          assign notfor = ''
+          assign link_label = 'Ansehen'
+          if lang == 'en'
+            assign link_label = 'View jacket'
+          endif
+          assign search_q = ''
+          assign badge = ''
+          assign badge_icon = ''
+          assign card_mod = ''
+          assign heat_dots = ''
+          assign heat_label = ''
+          assign ideal = ''
+          assign w1 = ''
+          assign w2 = ''
+          assign w3 = ''
+          assign f1 = ''
+          assign f2 = ''
+          assign f3 = ''
+          if hh contains 'k9'
+            assign short_title = 'MFJ K9 Pro'
+            assign badge = 'K9 Einsatz'
+            assign badge_icon = 'shield'
+            assign card_mod = 'iq-jv__card--k9'
+            assign use = 'Dienst & Einsatz'
+            assign desc = 'Mit Holsterzugriff, Patchflächen und Bodycam-Schlaufen.'
+            assign notfor = 'Für Behörden und professionellen Dienst. Klassischer Hundesport: reguläre MFJ 3.0.'
+            assign link_label = 'K9 Pro ansehen'
+            assign search_q = 'MFJ K9 Pro'
+            assign w1 = '20.000 mm'
+            assign w2 = 'winddicht'
+            assign w3 = 'versiegelte Nähte'
+            assign heat_dots = '●●●●'
+            assign heat_label = 'warm gefüttert'
+            assign f1 = 'Patchflächen'
+            assign f2 = 'Bodycam-Schlaufen'
+            assign f3 = 'Holsterzugriff'
+            assign ideal = 'Diensthundeführer und Behörden.'
+            if lang == 'en'
+              # EN: offizielle Übersetzung (translationsRegister) hier eintragen
+              assign use = 'K9 duty'
+              assign desc = 'With holster access, patch areas and bodycam loops.'
+              assign notfor = 'For agencies and professional duty. For regular dog sport: the standard MFJ 3.0.'
+              assign link_label = 'View K9 Pro'
+              assign w1 = '20,000 mm'
+              assign w2 = 'windproof'
+              assign w3 = 'sealed seams'
+              assign heat_label = 'warmly lined'
+              assign f1 = 'Patch areas'
+              assign f2 = 'Bodycam loops'
+              assign f3 = 'Holster access'
+              assign ideal = 'Dog handlers and agencies.'
+            endif
+          elsif hh contains 'trainingsjacke'
+            assign short_title = 'Trainingsjacke 2.0'
+            assign use = 'Funktionen fürs Training'
+            assign desc = 'Die Funktionen der Hundesportweste als Jacke: patentierte Brusttasche, optional mit IQ Balltasche und wärmendem Zip-In.'
+            assign notfor = 'Ungefüttert, mit Zip-In wintertauglich.'
+            assign link_label = 'Trainingsjacke ansehen'
+            assign search_q = 'Trainingsjacke 2.0'
+            assign w1 = '20.000 mm'
+            assign w2 = 'winddicht'
+            assign w3 = 'getapte Nähte'
+            assign heat_dots = '●●○○'
+            assign heat_label = 'ungefüttert · zusätzliche Wärme mit optionalem Zip-In'
+            assign f1 = 'Patentierte Brusttasche'
+            assign f2 = 'Kompatibel mit optionaler IQ Balltasche'
+            assign f3 = 'Loops für die IQ modulare Futtertasche'
+            assign ideal = 'Gezieltes Hundetraining mit den Funktionen der Hundesportweste.'
+            if lang == 'en'
+              # EN: offizielle Übersetzung (translationsRegister) hier eintragen
+              assign short_title = 'Training Jacket 2.0'
+              assign use = 'Built for training'
+              assign search_q = 'Training Jacket 2.0'
+              assign desc = 'Your training vest’s features in a jacket: a patented chest pocket, compatibility with the optional IQ ball pocket and a Zip-In for extra warmth.'
+              assign notfor = 'Unlined; winter-ready with the Zip-In.'
+              assign link_label = 'View Training Jacket'
+              assign w1 = '20,000 mm'
+              assign w2 = 'windproof'
+              assign w3 = 'taped seams'
+              assign heat_label = 'unlined · extra warmth with the optional Zip-In'
+              assign f1 = 'Patented chest pocket'
+              assign f2 = 'Compatible with the optional IQ ball pocket'
+              assign f3 = 'Loops for the IQ modular treat pouch'
+              assign ideal = 'Focused dog training with the features of a dog training vest.'
+            endif
+          elsif hh contains 'allround'
+            assign short_title = 'Allround Jacke'
+            assign use = 'Leichter Regenschutz'
+            assign desc = 'Leichte Regenjacke mit herausnehmbaren, abwaschbaren Futtertaschen, Clicker-Fach und verstecktem Kotbeutelspender.'
+            assign notfor = 'Keine Winterjacke.'
+            assign link_label = 'Allround Jacke ansehen'
+            assign search_q = 'Allround Jacke'
+            assign w1 = 'wasserdicht'
+            assign w2 = 'winddicht'
+            assign w3 = 'wasserdichte Nähte'
+            assign heat_dots = '●○○○'
+            assign heat_label = 'ungefüttert'
+            assign f1 = 'Herausnehmbare XL-Futtertaschen'
+            assign f2 = 'Clicker- & Kotbeutelfach'
+            assign f3 = 'Große Rückentasche'
+            assign ideal = 'Aktive Zeit mit Hund bei Regen und milden Temperaturen.'
+            if lang == 'en'
+              # EN: offizielle Übersetzung (translationsRegister) hier eintragen
+              assign short_title = 'Allround Jacket'
+              assign use = 'Lightweight rain protection'
+              assign search_q = 'Allround'
+              assign desc = 'A lightweight rain jacket with removable, wipe-clean treat pockets, a clicker pocket and a concealed waste-bag dispenser.'
+              assign notfor = 'Not a winter jacket.'
+              assign link_label = 'View Allround Jacket'
+              assign w1 = 'waterproof'
+              assign w2 = 'windproof'
+              assign w3 = 'waterproof seams'
+              assign heat_label = 'unlined'
+              assign f1 = 'Removable XL treat pockets'
+              assign f2 = 'Clicker & poop-bag pocket'
+              assign f3 = 'Large rear pocket'
+              assign ideal = 'Active days with your dog in rain and mild weather.'
+            endif
+          elsif hh contains 'softshell'
+            assign short_title = 'Softshell 2.0'
+            assign use = 'Training & Verein'
+            assign desc = 'Beweglich und leicht wärmend für die Übergangszeit.'
+            assign notfor = 'Nicht für Dauerregen oder starke Kälte.'
+            assign link_label = 'Softshell ansehen'
+            assign search_q = 'Softshelljacke 2.0'
+            assign w1 = 'wasserabweisend'
+            assign w2 = 'winddicht'
+            assign w3 = 'atmungsaktiv'
+            assign heat_dots = '●●○○'
+            assign heat_label = 'Innenfleece'
+            assign f1 = 'Seitliche Mesh-Einsätze'
+            assign f2 = 'Reflektierende Logos'
+            assign f3 = 'Ideal als Teamjacke'
+            assign ideal = 'Verein, Wettkampf und Übergangszeit.'
+            if lang == 'en'
+              # EN: offizielle Übersetzung (translationsRegister) hier eintragen
+              assign use = 'Training & club'
+              assign search_q = 'Softshell 2.0'
+              assign desc = 'Flexible and lightly warming for the changing seasons.'
+              assign notfor = 'Not for continuous rain or severe cold.'
+              assign link_label = 'View Softshell'
+              assign w1 = 'water-repellent'
+              assign w2 = 'windproof'
+              assign w3 = 'breathable'
+              assign heat_label = 'inner fleece'
+              assign f1 = 'Side mesh panels'
+              assign f2 = 'Reflective logos'
+              assign f3 = 'Ideal as a team jacket'
+              assign ideal = 'Club, competition and transitional weather.'
+            endif
+          elsif hh contains 'multifunktionsjacke'
+            assign short_title = 'MFJ 3.0'
+            assign badge = 'Bestseller'
+            assign badge_icon = 'star'
+            assign card_mod = 'iq-jv__card--featured'
+            assign use = 'Robust & warm'
+            assign desc = 'Robuster Bestseller seit 2011. Warm gefüttert, mit herausnehmbaren Futtertaschen und großer Rückentasche.'
+            assign notfor = 'Nicht für warme Übergangstage.'
+            assign link_label = 'MFJ 3.0 ansehen'
+            assign search_q = 'MFJ 3.0'
+            assign w1 = '20.000 mm'
+            assign w2 = 'winddicht'
+            assign w3 = 'versiegelte Nähte'
+            assign heat_dots = '●●●●'
+            assign heat_label = 'warm gefüttert'
+            assign f1 = 'Herausnehmbare Futtertaschen'
+            assign f2 = 'Große Rückentasche'
+            assign f3 = 'Geriegelte Nähte'
+            assign ideal = 'Robuste Begleitung für draußen mit Hund, besonders bei Kälte und Regen.'
+            if lang == 'en'
+              # EN: offizielle Übersetzung (translationsRegister) hier eintragen
+              assign use = 'Rugged & warm'
+              assign desc = 'A rugged bestseller since 2011. Warmly lined, with removable treat pockets and a large rear pocket.'
+              assign notfor = 'Not for warm transitional days.'
+              assign link_label = 'View MFJ 3.0'
+              assign w1 = '20,000 mm'
+              assign w2 = 'windproof'
+              assign w3 = 'sealed seams'
+              assign heat_label = 'warmly lined'
+              assign f1 = 'Removable treat pockets'
+              assign f2 = 'Large rear pocket'
+              assign f3 = 'Reinforced stitching'
+              assign ideal = 'Outdoor life with your dog, especially in cold and wet weather.'
+            endif
+          endif
+          # Wetterschutz mehrzeilig (Tabelle)
+          assign wetter_html = w1
+          if w2 != blank
+            assign wetter_html = wetter_html | append: '<br>' | append: w2
+          endif
+          if w3 != blank
+            assign wetter_html = wetter_html | append: '<br>' | append: w3
+          endif
+          # Wetterschutz inline (mobil)
+          assign wetter_inline = ''
+          if w1 != blank
+            assign wetter_inline = w1
+          endif
+          if w2 != blank
+            if wetter_inline != blank
+              assign wetter_inline = wetter_inline | append: ', '
+            endif
+            assign wetter_inline = wetter_inline | append: w2
+          endif
+          if w3 != blank
+            if wetter_inline != blank
+              assign wetter_inline = wetter_inline | append: ', '
+            endif
+            assign wetter_inline = wetter_inline | append: w3
+          endif
+          # Features (li-Elemente, ul kommt im Markup)
+          assign features_items = ''
+          if f1 != blank
+            assign features_items = features_items | append: '<li>' | append: f1 | append: '</li>'
+          endif
+          if f2 != blank
+            assign features_items = features_items | append: '<li>' | append: f2 | append: '</li>'
+          endif
+          if f3 != blank
+            assign features_items = features_items | append: '<li>' | append: f3 | append: '</li>'
+          endif
+          # Features inline (mobil)
+          assign features_inline = ''
+          if f1 != blank
+            assign features_inline = f1
+          endif
+          if f2 != blank
+            if features_inline != blank
+              assign features_inline = features_inline | append: ', '
+            endif
+            assign features_inline = features_inline | append: f2
+          endif
+          if f3 != blank
+            if features_inline != blank
+              assign features_inline = features_inline | append: ', '
+            endif
+            assign features_inline = features_inline | append: f3
+          endif
+        -%}
+        {%- if search_q == blank -%}{%- assign search_q = short_title -%}{%- endif -%}
+        {%- capture jacket_link -%}{{ routes.search_url }}?q={{ search_q | url_encode }}&type=product{%- endcapture -%}
+        {%- capture img -%}{%- if p.featured_image -%}{{ p.featured_image | image_url: width: 520 | image_tag: loading: 'lazy', widths: '260,520', sizes: '(max-width: 767px) 45vw, 260px', alt: p.title, class: 'iq-jv__img' }}{%- endif -%}{%- endcapture -%}
+        {%- capture badge_svg -%}{%- case badge_icon -%}{%- when 'star' -%}<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.26 6.84.62-5.17 4.54 1.54 6.7L12 16.98 5.89 20.66l1.54-6.7L2.26 8.88l6.84-.62L12 2z"/></svg>{%- when 'shield' -%}<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l7.5 3v6.2c0 4.7-3.2 9.1-7.5 10.6C7.7 20.3 4.5 15.9 4.5 11.2V5L12 2zm-1.1 13.7l5-5-1.5-1.5-3.5 3.5-1.6-1.6-1.5 1.5 3.1 3.1z"/></svg>{%- endcase -%}{%- endcapture -%}
+        {%- comment -%} Karte {%- endcomment -%}
+        {%- capture card -%}
+          <div class="f-column">
+            <a class="iq-jv__card {{ card_mod }}" href="{{ jacket_link }}">
+              <span class="iq-jv__media">{{ img }}</span>
+              <span class="iq-jv__body">
+                <span class="iq-jv__use iq-jv__accent text-sm-extra font-body-bolder text-upper">{{ use }}</span>
+                <span class="iq-jv__title h5">{{ short_title }}</span>
+                <span class="iq-jv__desc text-sm text-subtext">{{ desc }}</span>
+                <span class="iq-jv__link text-sm font-body-bolder">{{ link_label }} <span class="iq-jv__arrow" aria-hidden="true">→</span></span>
+              </span>
+            </a>
+          </div>
+        {%- endcapture -%}
+        {%- assign cards_html = cards_html | append: card -%}
+        {%- comment -%} Tabelle {%- endcomment -%}
+        {%- capture cell -%}<th class="iq-jv__col"><a href="{{ jacket_link }}"><span class="font-body-bolder">{{ short_title }}</span></a></th>{%- endcapture -%}
+        {%- assign thead_html = thead_html | append: cell -%}
+        {%- capture cell -%}<td><span class="text-sm">{{ wetter_html }}</span></td>{%- endcapture -%}
+        {%- assign row_wetter = row_wetter | append: cell -%}
+        {%- capture cell -%}<td><span class="iq-jv__heat iq-jv__accent">{{ heat_dots }}</span><br><span class="text-sm">{{ heat_label }}</span></td>{%- endcapture -%}
+        {%- assign row_waerme = row_waerme | append: cell -%}
+        {%- capture cell -%}<td><ul class="iq-jv__features text-sm">{{ features_items }}</ul>{% if notfor != blank %}<p class="text-sm text-subtext">{{ notfor }}</p>{% endif %}</td>{%- endcapture -%}
+        {%- assign row_features = row_features | append: cell -%}
+        {%- capture cell -%}<td><strong class="iq-jv__price text-base font-body-bolder">{{ p.price | money }}</strong><a class="iq-jv__zur iq-jv__accent text-sm font-body-bolder" href="{{ jacket_link }}">{{ tx_zur }}</a></td>{%- endcapture -%}
+        {%- assign row_price = row_price | append: cell -%}
+        {%- comment -%} Mobile Accordion {%- endcomment -%}
+        {%- capture det -%}
+          <details class="iq-jv__acc">
+            <summary class="iq-jv__acc-sum">
+              <span class="iq-jv__acc-title h5">{{ short_title }}</span>
+              <span class="iq-jv__acc-price text-base font-body-bolder">{{ p.price | money }}</span>
+            </summary>
+            <div class="iq-jv__acc-body text-sm text-subtext">
+              <p><strong class="iq-jv__ink font-body-bolder">{{ tx_ideal_label }}</strong> {{ ideal }}</p>
+              <p><strong class="iq-jv__ink font-body-bolder">{{ tx_wetter_label }}</strong> {{ wetter_inline }}</p>
+              <p><strong class="iq-jv__ink font-body-bolder">{{ tx_waerme_label }}</strong> <span class="iq-jv__accent">{{ heat_dots }}</span> {{ heat_label }}</p>
+              <p><strong class="iq-jv__ink font-body-bolder">{{ tx_feat_label }}</strong> {{ features_inline }}</p>
+              {% if notfor != blank %}<p>{{ notfor }}</p>{% endif %}
+              <a class="iq-jv__zur iq-jv__accent text-sm font-body-bolder" href="{{ jacket_link }}">{{ link_label }}</a>
+            </div>
+          </details>
+        {%- endcapture -%}
+        {%- assign mobile_html = mobile_html | append: det -%}
+        {%- assign is_first = false -%}
+      {%- endunless -%}
+    {%- endfor -%}
+{%- capture iq_jv_markup -%}
+    <section class="iq-jv" id="iq-jacken-vergleich-{{ section.id }}" aria-labelledby="iq-jacken-vergleich-title-{{ section.id }}" tabindex="-1">
+      <div class="iq-jv__head">
+        <h2 class="h2" id="iq-jacken-vergleich-title-{{ section.id }}">{{ tx_heading }}</h2>
+      </div>
+      <div class="iq-jv__grid f-grid f-grid-2-cols md:f-grid-3-cols lg:f-grid-5-cols f-grid--gap-small f-grid--row-gap-medium" style="--iq-cols:{{ card_count | at_least: 1 }}">{{ cards_html }}</div>
+      <details class="iq-jv__comparison">
+        <summary class="iq-jv__comparison-toggle text-base font-body-bolder">
+          <span>{{ tx_cmp_eyebrow }}: {{ tx_cmp_heading }}</span>
+        </summary>
+        <div class="iq-jv__comparison-content">
+          <p class="text-base text-subtext">{{ tx_cmp_sub }}</p>
+      <div class="iq-jv__table-wrap">
+        <table class="iq-jv__table">
+          <thead>
+            <tr><th></th>{{ thead_html }}</tr>
+          </thead>
+          <tbody>
+            <tr><th class="text-sm-extra font-body-bolder text-upper">{{ tx_row_wetter }}</th>{{ row_wetter }}</tr>
+            <tr><th class="text-sm-extra font-body-bolder text-upper">{{ tx_row_waerme }}</th>{{ row_waerme }}</tr>
+            <tr><th class="text-sm-extra font-body-bolder text-upper">{{ tx_row_feat }}</th>{{ row_features }}</tr>
+            <tr class="iq-jv__price-row"><th class="text-sm-extra font-body-bolder text-upper">{{ tx_row_price }}</th>{{ row_price }}</tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="iq-jv__mobile">{{ mobile_html }}</div>
+        </div>
+      </details>
+      <div class="iq-jv__footer text-sm text-subtext">
+        <p>{{ tx_footer1 }}</p>
+        <p>{{ tx_footer2_pre }}<a href="{{ routes.root_url }}products/iq-zip-in-shell-unisex">IQ Zip-In Shell</a>{{ tx_footer2_post }}</p>
+      </div>
+    </section>
+{%- endcapture -%}
+{%- capture iq_jv_style -%}
+    <style>
+      /* Nur Layout/Farben/Radius über Theme-Tokens – KEINE Schrift-Definitionen. */
+      .iq-jv{ --iq-accent:#a51d1b; --iq-card-radius:var(--pcard-radius, 1rem); width:100%; }
+      .iq-jv{margin-top:4rem;scroll-margin-top:140px;}
+      .iq-jv-jump{margin:1rem 0 2rem;}
+      .iq-jv-jump a{display:inline-block;padding:10px 0;color:inherit;text-decoration:underline;text-decoration-color:#a51d1b;text-underline-offset:4px;}
+      .iq-jv-jump a:focus-visible{outline:2px solid #a51d1b;outline-offset:4px;}
+      /* Karten-Grid füllt die Breite mit der gewählten Produktanzahl (Desktop) */
+      @media (min-width:990px){
+        .iq-jv__grid{ grid-template-columns:repeat(var(--iq-cols,5), minmax(0,1fr)) !important; }
+      }
+      .iq-jv *{ box-sizing:border-box; }
+      .iq-jv__comparison{ margin-top:2.4rem; border-top:1px solid rgb(var(--color-border)); border-bottom:1px solid rgb(var(--color-border)); }
+      .iq-jv__comparison > .iq-jv__comparison-toggle{ display:flex; align-items:center; justify-content:space-between; gap:1.6rem; padding:1.8rem 0; cursor:pointer; list-style:none; font-style:normal; text-transform:none; }
+      .iq-jv__comparison-toggle::-webkit-details-marker{ display:none; }
+      .iq-jv__comparison-toggle::after{ content:"+"; flex-shrink:0; color:var(--iq-accent); font-size:2.4rem; line-height:1; }
+      .iq-jv__comparison[open] > .iq-jv__comparison-toggle::after{ content:"−"; }
+      .iq-jv__comparison-toggle:focus-visible{ outline:2px solid var(--iq-accent); outline-offset:4px; }
+      .iq-jv__comparison-content{ padding-bottom:2rem; }
+      .iq-jv__comparison:not([open]) > .iq-jv__comparison-content{ display:none; }
+
+      .iq-jv__accent{ color:var(--iq-accent); }
+      .iq-jv__ink{ color:rgb(var(--color-foreground)); }
+      .iq-jv__head{ max-width:76rem; margin-bottom:3.2rem; }
+      .iq-jv__eyebrow{ display:block; margin-bottom:.8rem; }
+      .iq-jv__intro{ margin-top:1.2rem; }
+      /* Karten */
+      .iq-jv__card{
+        position:relative; display:flex; flex-direction:column; height:100%;
+        overflow:hidden; text-decoration:none; color:inherit; cursor:pointer;
+        background:rgb(var(--color-background));
+        border:1px solid rgb(var(--color-border));
+        border-radius:var(--iq-card-radius);
+        transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+      }
+      .iq-jv__card:focus-visible{ outline:2px solid var(--iq-accent); outline-offset:2px; }
+      .iq-jv__card:hover{
+        transform:translateY(-.4rem);
+        box-shadow:0 1.6rem 3.4rem rgba(var(--color-foreground),.08);
+        border-color:rgba(var(--color-foreground),.35);
+      }
+      /* Featured-Karte: normaler Rahmen (kein roter/schwarzer Rand), nur Stern-Badge hebt sie hervor */
+      .iq-jv__card--featured{ border-width:1px; border-color:rgb(var(--color-border)); }
+      /* K9-Karte: normal (kein schwarzer Hintergrund/Rahmen) */
+      .iq-jv__card--k9{ background:rgb(var(--color-background)); border-color:rgb(var(--color-border)); color:inherit; }
+      .iq-jv__media{ display:block; overflow:hidden; }
+      .iq-jv__img{ display:block; width:100%; aspect-ratio:1/1; object-fit:contain; background:rgb(var(--color-secondary-background)); padding:1.4rem; transition:transform .35s ease; }
+      .iq-jv__card:hover .iq-jv__img{ transform:scale(1.04); }
+      .iq-jv__badge{
+        position:absolute; z-index:1; top:1.2rem; left:1.2rem;
+        padding:.6rem 1rem; border-radius:var(--badges-radius, .5rem);
+        background:var(--iq-accent); color:#fff;
+      }
+      /* Icon-only Badge (statt Text) */
+      .iq-jv__badge--icon{ padding:0; width:3.4rem; height:3.4rem; border-radius:999px; display:inline-flex; align-items:center; justify-content:center; box-shadow:0 .2rem .6rem rgba(var(--color-foreground),.18); }
+      .iq-jv__badge--icon svg{ width:1.9rem; height:1.9rem; display:block; fill:#fff; }
+      .iq-jv__body{ display:flex; flex-direction:column; flex:1; padding:1.8rem; }
+      .iq-jv__use{ display:block; margin-bottom:.7rem; line-height:1.4; min-height:2.8em; }
+      .iq-jv__title{ display:block; margin-bottom:.9rem; line-height:1.25; min-height:2.5em; }
+      .iq-jv__desc{ display:block; margin-bottom:1rem; }
+      .iq-jv__not{ display:block; margin-bottom:1.8rem; }
+      .iq-jv__link{ display:inline-flex; align-items:center; gap:.6rem; margin-top:auto; padding-top:.8rem; }
+      .iq-jv__arrow{ transition:transform .2s ease; }
+      .iq-jv__card:hover .iq-jv__arrow{ transform:translateX(.4rem); }
+      /* Hinweis-Box */
+      .iq-jv__shared{
+        margin:1.8rem 0 4.4rem; padding:1.6rem 1.8rem;
+        border-left:.4rem solid var(--iq-accent);
+        background:rgb(var(--color-secondary-background));
+      }
+      /* Vergleichs-Kopf */
+      .iq-jv__compare-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:3rem; margin-bottom:2.2rem; }
+      .iq-jv__compare-head > p{ max-width:36rem; text-align:right; margin:0; }
+      /* Tabelle */
+      .iq-jv__table-wrap{ border:1px solid rgb(var(--color-border)); }
+      .iq-jv__table{ width:100%; table-layout:fixed; border-collapse:collapse; }
+      .iq-jv__table th,
+      .iq-jv__table td{ padding:1.4rem 1rem; border-bottom:1px solid rgb(var(--color-border)); border-right:1px solid rgb(var(--color-border)); text-align:center; vertical-align:top; word-wrap:break-word; overflow-wrap:break-word; hyphens:auto; }
+      .iq-jv__table tr > *:last-child{ border-right:0; }
+      .iq-jv__table thead th{ background:rgb(var(--color-foreground)); color:rgb(var(--color-background)); }
+      .iq-jv__table thead th:first-child{ width:11rem; }
+      .iq-jv__table thead a{ color:rgb(var(--color-background)); }
+      .iq-jv__table tbody th{ background:rgb(var(--color-secondary-background)); color:var(--color-foreground-lighten-60); text-align:left; }
+      .iq-jv__features{ text-align:left; }
+      .iq-jv__features li{ position:relative; margin-bottom:.7rem; padding-left:1.4rem; }
+      .iq-jv__features li:last-child{ margin-bottom:0; }
+      .iq-jv__features li::before{ content:""; position:absolute; left:0; top:.6em; width:.5rem; height:.5rem; background:var(--iq-accent); }
+      .iq-jv__price-row td{ background:rgba(var(--color-secondary-background),.55); }
+      .iq-jv__price{ display:block; margin-bottom:.9rem; }
+      .iq-jv__zur{ display:inline-block; padding-bottom:.2rem; border-bottom:2px solid var(--iq-accent); }
+      /* Mobile Accordion */
+      .iq-jv__mobile{ display:none; }
+      @media (max-width:767.98px){
+        .iq-jv__table-wrap{ display:none; }
+        .iq-jv__mobile{ display:grid; gap:1rem; }
+        .iq-jv__acc{ border:1px solid rgb(var(--color-border)); border-radius:var(--iq-card-radius); overflow:hidden; }
+        .iq-jv__acc-sum{ display:flex; align-items:center; gap:1.5rem; padding:1.7rem 1.8rem; cursor:pointer; list-style:none; }
+        .iq-jv__acc-sum::-webkit-details-marker{ display:none; }
+        .iq-jv__acc-price{ margin-left:auto; }
+        .iq-jv__acc-sum::after{ content:"+"; color:var(--iq-accent); font-size:1.8rem; line-height:1; }
+        .iq-jv__acc[open] .iq-jv__acc-sum::after{ content:"–"; }
+        .iq-jv__acc-body{ padding:0 1.8rem 1.8rem; }
+        .iq-jv__acc-body p{ margin-bottom:.8rem; }
+        .iq-jv__acc-body a{ margin-top:.4rem; }
+      }
+      /* Fußnoten */
+      .iq-jv__footer{ display:flex; justify-content:space-between; gap:2.8rem; margin-top:2.2rem; }
+      .iq-jv__footer p{ max-width:56rem; margin:0; }
+      .iq-jv__footer a{ color:rgb(var(--color-foreground)); text-decoration:underline; text-decoration-color:var(--iq-accent); text-underline-offset:.3rem; }
+      @media (max-width:767.98px){
+        .iq-jv-cell{ margin:1.2rem 0; }
+        .iq-jv__compare-head{ display:block; }
+        .iq-jv__compare-head > p{ text-align:left; margin-top:.8rem; }
+        .iq-jv__footer{ display:block; }
+        .iq-jv__footer p + p{ margin-top:1rem; }
+        /* Jacken in EINER Zeile, horizontal scrollen, halbe naechste Karte sichtbar */
+        .iq-jv__grid{
+          display:flex !important;
+          grid-template-columns:none !important;
+          flex-wrap:nowrap;
+          overflow-x:auto;
+          scroll-snap-type:x mandatory;
+          -webkit-overflow-scrolling:touch;
+          gap:1.2rem;
+          padding-bottom:.6rem;
+          scrollbar-width:none;
+        }
+        .iq-jv__grid::-webkit-scrollbar{ display:none; }
+        .iq-jv__grid > *{ flex:0 0 66% !important; width:66% !important; scroll-snap-align:start; }
+      }
+    </style>{%- endcapture -%}
+
+{%- endif -%}
+
+{% render 'divider',
+  show_divider: section.settings.show_section_divider,
+  divider_width: section.settings.divider_width
+%}
+
+<div
+  class="section--padding color-{{ section.settings.color_scheme }}"
+  style="--section-padding-top: {{ section.settings.padding_top }}px;--section-padding-bottom: {{ section.settings.padding_bottom }}px;"
+>
+  <div class="collection page-width">
+    {%- paginate collection.products by section.settings.products_per_page -%}
+      <div class="collection__content flex">
+        {%- if collection.all_products_count > 0 -%}
+          <div
+            class="hidden{% if enable_filtering and filter_type == 'vertical' %} xl:block{% endif %}"
+            id="FacetFiltersContainer"
+          >
+            <div class="sticky-element z-10">
+              {%- render 'facets', context: 'vertical', results: collection -%}
+            </div>
+          </div>
+        {%- endif -%}
+        <div class="flex flex-col flex-grow{% if show_toolbar %} show-toolbar{% endif %}" id="ProductGridWrapper">
+          <div class="sticky-element grid gap-5 z-10" style="--sticky-offset: 0px;">
+            {%- if enable_filtering or enable_sorting -%}
+              <div class="collection__toolbar flex items-center justify-between">
+                {%- if filter_type == 'drawer' and collection.all_products_count > 0 and enable_filtering -%}
+                  {%- render 'facets-drawer', results: collection, enable_sorting: enable_sorting -%}
+                {%- endif -%}
+
+                {%- if filter_type == 'vertical' and collection.all_products_count > 0 and enable_filtering -%}
+                  <div class="flex xl:hidden">
+                    {%- render 'facets-drawer', results: collection, enable_sorting: enable_sorting -%}
+                  </div>
+                {%- endif -%}
+
+                <div class="gap-10 hidden md:flex items-center justify-between{% if filter_type == 'vertical' or enable_filtering == false %} xl:flex-grow{% endif %}">
+                  {%- if collection.all_products_count > 0 -%}
+                    <div data-facet-loading>
+                      {%- render 'loading-spinner' -%}
+                      <p id="ProductCount" class="m-0" role="status">
+                        {%- liquid
+                          if collection.results_count
+                            echo 'products.facets.filters_selected' | t: terms: collection.terms, count: collection.results_count
+                          elsif collection.products_count == collection.all_products_count
+                            echo 'products.facets.product_count_simple' | t: count: collection.products_count
+                          else
+                            echo 'products.facets.product_count' | t: product_count: collection.products_count, count: collection.all_products_count
+                          endif
+                        -%}
+                      </p>
+                    </div>
+                  {%- endif -%}
+                  {%- if enable_sorting and collection.all_products_count > 0 -%}
+                    <div class="flex items-center gap-3" id="SortByContainer">
+                      {%- render 'facet-short',
+                        results: collection,
+                        icon_size: 'extra-small',
+                        label_class: 'font-body-bolder'
+                      -%}
+                    </div>
+                  {%- endif -%}
+                </div>
+
+                <layout-switcher class="flex md:hidden gap-2" style="--buttons-width: 4rem;">
+                  {%- for per_row in (1..2) -%}
+                    {%- assign layout = 'f-grid-' | append: per_row | append: '-cols' -%}
+                    <button
+                      class="btn btn--icon{% if layout == default_grid_mobile %} btn--active{% endif %}"
+                      data-layout-mode="grid-{{ per_row }}"
+                      aria-label="{{ 'accessibility.layout_switcher' | t: col: per_row }}"
+                    >
+                      {%- render 'icon-grid-column', layout: per_row, classes: 'pointer-events-none' -%}
+                    </button>
+                  {%- endfor -%}
+                </layout-switcher>
+              </div>
+            {%- endif -%}
+          </div>
+          {%- liquid
+            if enable_filtering
+              render 'facets-active', results: collection
+            endif
+          -%}
+          <div id="ProductGridContainer">
+            {%- if section.settings.iq_jv_enabled and card_count > 0 -%}
+              {{ iq_jv_style }}
+              <p class="iq-jv-jump text-sm"><a href="#iq-jacken-vergleich-{{ section.id }}">{% if lang == 'en' %}Which jacket suits you? Compare jackets{% else %}Welche Jacke passt zu Dir? Zum Vergleich{% endif %} <span aria-hidden="true">↓</span></a></p>
+            {%- endif -%}
+
+            {%- if collection.products.size == 0 -%}
+              <div class="empty-state flex flex-col items-center justify-center gap-6 text-center">
+                {%- if collection.all_products_count > 0 -%}
+                  <div class="gap-3 flex flex-col items-center justify-center text-center">
+                    {%- render 'icon-empty-state' -%}
+                    <p class="h4">{{ 'collections.general.no_results' | t }}</p>
+                    <p class="m-0">{{ 'collections.general.use_fewer_filters' | t }}</p>
+                  </div>
+                  <a class="btn btn--primary" href="{{ collection.url }}" is="facet-remove">
+                    {{- 'products.facets.clear_all' | t -}}
+                  </a>
+                {%- else -%}
+                  <div class="gap-3 flex flex-col items-center justify-center text-center">
+                    {%- render 'icon-empty-state' -%}
+                    <p class="h4">{{ 'collections.general.empty' | t }}</p>
+                  </div>
+                  <a class="btn btn--primary" href="{{ routes.all_products_collection_url }}">
+                    {{ 'collections.general.continue_shopping' | t }}
+                  </a>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+            <!-- DEBUG mobile columns: {{ section.settings.columns_mobile }} -->
+
+            <grid-list
+              id="ProductsList"
+              class="grid-list products-list f-grid md:f-grid-{{ columns_tablet }}-cols lg:f-grid-{{ columns_tablet_large }}-cols xl:f-grid-{{ columns_desktop }}-cols {{ default_grid_mobile }} f-grid--gap-medium"
+            >
+              {%- for product in collection.products -%}
+                <div class="f-column card" data-product-card{% if iq_collection_card and product.id == 10709801337096 %} id="iq-westen-dienst"{% else %} id="iq-product-{{ product.id }}"{% endif %}>
+                  {%- if is_metro -%}
+                    {%- render 'card-product-metro',
+                      product: product,
+                      image_sizes: image_sizes,
+                      section_id: section.id,
+                      section_index: 2,
+                      index: forloop.index,
+                      index0: forloop.index0,
+                      desktop_breakpoint: 1280,
+                      columns_desktop: columns_desktop,
+                      columns_tablet: columns_tablet,
+                      columns_mobile: columns_mobile
+                    -%}
+                  {%- else -%}
+                    {%- render 'card-product',
+                      iq_collection_card: iq_collection_card,
+                      collection_card_titles: section.settings.collection_card_titles,
+                      collection_color_swatches: section.settings.enable_color_swatch,
+                      product: product,
+                      image_sizes: image_sizes,
+                      section_id: section.id,
+                      section_index: 2,
+                      index: forloop.index
+                    -%}
+                  {%- endif -%}
+                </div>
+              {%- endfor -%}
+            </grid-list>
+
+            {%- liquid
+              if paginate.pages > 1
+                render 'pagination', paginate: paginate, type: section.settings.pagination
+              endif
+            -%}
+            {%- if section.settings.iq_jv_enabled and card_count > 0 -%}
+              {{ iq_jv_markup }}
+            {%- endif -%}
+
+
+          </div>
+           <div id="CollectionInlineBlocks-{{ section.id }}" hidden>
+  {%- assign current_app_position = 24 -%}
+
+  {%- for block in section.blocks -%}
+
+    {%- if block.type == 'app_position' -%}
+      {%- assign current_app_position = block.settings.position -%}
+      {%- continue -%}
+    {%- endif -%}
+
+    {%- if block.type == '@app' -%}
+      {%- assign block_position = current_app_position -%}
+    {%- else -%}
+      {%- assign block_position = block.settings.position -%}
+    {%- endif -%}
+
+    <template
+        data-inline-block-template
+        data-position="{{ block_position }}"
+        data-position-mobile="{{ block.settings.position_mobile | default: block_position }}"
+        data-block-id="{{ block.id }}"
+      >
+      {%- case block.type -%}
+
+        {%- when '@app' -%}
+          <div class="f-column card collection-inline-block collection-inline-block--full" data-inline-block="{{ block.id }}" {{ block.shopify_attributes }}>
+            {% render block %}
+          </div>
+
+        {%- when 'inline_rich_text' -%}
+          <div class="f-column collection-inline-block collection-inline-block--{{ block.settings.width }}" data-inline-block="{{ block.id }}" {{ block.shopify_attributes }}>
+            <div class="collection-inline-block__inner collection-inline-block__inner--{{ block.settings.text_alignment }}">
+              {%- if block.settings.heading != blank -%}
+                <h2 class="{{ block.settings.heading_size }}">{{ block.settings.heading }}</h2>
+              {%- endif -%}
+              {%- if block.settings.text != blank -%}
+                <div class="rte">{{ block.settings.text }}</div>
+              {%- endif -%}
+              {%- if block.settings.button_label != blank and block.settings.button_link != blank -%}
+                <a href="{{ block.settings.button_link }}" class="btn btn--{{ block.settings.button_style }}">
+                  {{ block.settings.button_label }}
+                </a>
+              {%- endif -%}
+            </div>
+          </div>
+
+        {%- when 'inline_image_text' -%}
+          <div class="f-column collection-inline-block collection-inline-block--{{ block.settings.width }}" data-inline-block="{{ block.id }}" {{ block.shopify_attributes }}>
+            <div class="collection-inline-image-text collection-inline-image-text--{{ block.settings.layout }}">
+              {%- if block.settings.image != blank -%}
+                <div class="collection-inline-image-text__media">
+                  <img
+                    src="{{ block.settings.image | image_url: width: 1600 }}"
+                    alt="{{ block.settings.heading | escape }}"
+                    width="{{ block.settings.image.width }}"
+                    height="{{ block.settings.image.height }}"
+                    loading="lazy"
+                    class="collection-inline-block__image"
+                  >
+                </div>
+              {%- endif -%}
+              <div class="collection-inline-image-text__content collection-inline-block__inner collection-inline-block__inner--{{ block.settings.text_alignment }}">
+                {%- if block.settings.heading != blank -%}
+                  <h2 class="{{ block.settings.heading_size }}">{{ block.settings.heading }}</h2>
+                {%- endif -%}
+                {%- if block.settings.text != blank -%}
+                  <div class="rte">{{ block.settings.text | newline_to_br }}</div>
+                {%- endif -%}
+                {%- if block.settings.button_label != blank and block.settings.button_link != blank -%}
+                  <a href="{{ block.settings.button_link }}" class="btn btn--{{ block.settings.button_style }}">
+                    {{ block.settings.button_label }}
+                  </a>
+                {%- endif -%}
+              </div>
+            </div>
+          </div>
+
+        {%- when 'inline_promo_image' -%}
+          <div class="f-column collection-inline-block collection-inline-block--{{ block.settings.width }}" data-inline-block="{{ block.id }}" {{ block.shopify_attributes }}>
+            {%- if block.settings.link != blank -%}
+              <a href="{{ block.settings.link }}" class="collection-inline-promo-image">
+            {%- else -%}
+              <div class="collection-inline-promo-image">
+            {%- endif -%}
+
+            {%- if block.settings.image != blank -%}
+              <img
+                src="{{ block.settings.image | image_url: width: 1600 }}"
+                alt="{{ block.settings.heading | escape }}"
+                width="{{ block.settings.image.width }}"
+                height="{{ block.settings.image.height }}"
+                loading="lazy"
+                class="collection-inline-block__image"
+              >
+            {%- endif -%}
+
+            {%- if block.settings.heading != blank or block.settings.text != blank or block.settings.button_label != blank -%}
+              <div class="collection-inline-promo-image__content collection-inline-promo-image__content--{{ block.settings.text_position }}">
+                {%- if block.settings.heading != blank -%}
+                  <h2 class="{{ block.settings.heading_size }}">{{ block.settings.heading }}</h2>
+                {%- endif -%}
+                {%- if block.settings.text != blank -%}
+                  <p>{{ block.settings.text }}</p>
+                {%- endif -%}
+                {%- if block.settings.button_label != blank -%}
+                  <span class="btn btn--{{ block.settings.button_style }}">{{ block.settings.button_label }}</span>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+
+            {%- if block.settings.link != blank -%}
+              </a>
+            {%- else -%}
+              </div>
+            {%- endif -%}
+          </div>
+{%- when 'inline_video' -%}
+  <div class="f-column collection-inline-block collection-inline-block--{{ block.settings.width }}" data-inline-block="{{ block.id }}" {{ block.shopify_attributes }}>
+   {%- assign video_ratio = block.settings.video_ratio -%}
+
+{%- if video_ratio == 'auto' -%}
+  {%- if block.settings.width == 'full' -%}
+    {%- assign video_ratio = '16-9' -%}
+  {%- else -%}
+    {%- assign video_ratio = '4-3' -%}
+  {%- endif -%}
+{%- endif -%}
+
+<div class="collection-inline-video collection-inline-video--{{ video_ratio }} collection-inline-video--fit-{{ block.settings.video_fit }}">
+      {%- if block.settings.video != blank -%}
+        {%- assign poster_image = block.settings.cover_image | default: block.settings.video.preview_image -%}
+
+        {%- if block.settings.autoplay -%}
+          {{
+            block.settings.video
+            | video_tag:
+              image_size: '1600x',
+              autoplay: true,
+              loop: block.settings.loop,
+              muted: block.settings.muted,
+              controls: true,
+              class: 'collection-inline-video__media'
+          }}
+        {%- else -%}
+          <button
+            type="button"
+            class="collection-inline-video__poster"
+            data-inline-video-play
+            aria-label="Play video"
+          >
+            {%- if poster_image != blank -%}
+             <img
+              src="{{ poster_image | image_url: width: 1600 }}"
+              alt=""
+              width="{{ poster_image.width }}"
+              height="{{ poster_image.height }}"
+              loading="lazy"
+              class="collection-inline-video__media"
+            >
+            {%- endif -%}
+            <span class="collection-inline-video__play">▶</span>
+          </button>
+
+          <template data-inline-video-template>
+            {{
+              block.settings.video
+              | video_tag:
+                image_size: '1600x',
+                autoplay: true,
+                loop: block.settings.loop,
+                muted: block.settings.muted,
+                controls: true,
+                class: 'collection-inline-video__media'
+            }}
+          </template>
+        {%- endif -%}
+
+      {%- elsif block.settings.cover_image != blank -%}
+        <img
+          src="{{ block.settings.cover_image | image_url: width: 1600 }}"
+          alt=""
+          width="{{ block.settings.cover_image.width }}"
+          height="{{ block.settings.cover_image.height }}"
+          loading="lazy"
+          class="collection-inline-video__media"
+        >
+      {%- endif -%}
+    </div>
+  </div>
+        {%- when 'inline_custom_liquid' -%}
+          <div class="f-column collection-inline-block collection-inline-block--{{ block.settings.width }}" data-inline-block="{{ block.id }}" {{ block.shopify_attributes }}>
+            {{ block.settings.custom_liquid }}
+          </div>
+
+      {%- endcase -%}
+    </template>
+  {%- endfor -%}
+</div>
+<script>
+const grid = document.getElementById('ProductsList');
+
+grid.addEventListener('scroll', function(event) {
+  const slider = event.target.closest('motion-element');
+  if (!slider) return;
+
+  const wrapper = slider.closest('.product-card__image-wrapper');
+  if (!wrapper) return;
+
+  wrapper.classList.toggle(
+    'is-second-image',
+    slider.scrollLeft > slider.offsetWidth / 2
+  );
+}, true);
+  (function () {
+    var timer = null;
+    var lastProductCount = -1;
+
+    function getCurrentPosition(template) {
+      var isMobile = window.matchMedia('(max-width: 767px)').matches;
+
+      var desktopPosition = parseInt(template.getAttribute('data-position'), 10);
+      var mobilePosition = parseInt(template.getAttribute('data-position-mobile'), 10);
+
+      if (isMobile && mobilePosition) {
+        return mobilePosition;
+      }
+
+      return desktopPosition;
+    }
+
+   function placeCollectionInlineBlocks() {
+      var grid = document.getElementById('ProductsList');
+      var holder = document.getElementById('CollectionInlineBlocks-{{ section.id }}');
+
+      if (!grid || !holder) return;
+
+      var products = grid.querySelectorAll('[data-product-card]');
+      var templates = Array.prototype.slice.call(
+        holder.querySelectorAll('template[data-inline-block-template]')
+      );
+
+      if (!products.length || !templates.length) return;
+
+      templates.sort(function (a, b) {
+        return getCurrentPosition(a) - getCurrentPosition(b);
+      });
+
+      var lastInsertedByIndex = {};
+
+      templates.forEach(function (template) {
+        var position = getCurrentPosition(template);
+        var blockId = template.getAttribute('data-block-id');
+
+        if (!position || !blockId) return;
+
+        var targetIndex = products.length < position
+          ? products.length - 1
+          : position - 1;
+
+        var targetProduct = products[targetIndex];
+
+        if (!targetProduct) return;
+
+        var existingBlock = grid.querySelector('[data-inline-block="' + blockId + '"]');
+        var block = existingBlock || template.content.firstElementChild.cloneNode(true);
+
+        if (!block) return;
+
+        var insertAfter = lastInsertedByIndex[targetIndex] || targetProduct;
+        insertAfter.insertAdjacentElement('afterend', block);
+        lastInsertedByIndex[targetIndex] = block;
+
+        if (!existingBlock && block.innerHTML.indexOf('jdgm') !== -1 && window.jdgm && window.jdgm.initializeWidgets) {
+          window.jdgm.initializeWidgets();
+        }
+      });
+
+      lastProductCount = products.length;
+    }
+    function schedulePlacement() {
+      clearTimeout(timer);
+      timer = setTimeout(placeCollectionInlineBlocks, 150);
+    }
+
+    document.addEventListener('DOMContentLoaded', placeCollectionInlineBlocks);
+    document.addEventListener('shopify:section:load', placeCollectionInlineBlocks);
+    window.addEventListener('resize', schedulePlacement);
+
+    var container = document.getElementById('ProductGridContainer');
+
+    if (container) {
+      new MutationObserver(function () {
+        var grid = document.getElementById('ProductsList');
+        if (!grid) return;
+
+        var count = grid.querySelectorAll('[data-product-card]').length;
+
+        if (count !== lastProductCount) {
+          schedulePlacement();
+        }
+      }).observe(container, {
+        childList: true,
+        subtree: true
+      });
+    }
+    document.addEventListener('fullscreenchange', function () {
+  if (document.fullscreenElement) {
+    clearTimeout(timer);
+  }
+});
+
+document.addEventListener('webkitfullscreenchange', function () {
+  if (document.webkitFullscreenElement) {
+    clearTimeout(timer);
+  }
+});
+  })();
+  document.addEventListener('click', function (event) {
+    var button = event.target.closest('[data-inline-video-play]');
+    if (!button) return;
+
+    var wrapper = button.closest('.collection-inline-video');
+    var template = wrapper.querySelector('template[data-inline-video-template]');
+    if (!template) return;
+
+    var video = template.content.firstElementChild.cloneNode(true);
+    button.replaceWith(video);
+
+    if (video && video.play) {
+      video.play();
+    }
+  });
+</script>
+        </div>
+      </div>
+    {%- endpaginate -%}
+  </div>
+</div>
+<style>
+   .collection-inline-video {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #000;
+  position: relative;
+}
+
+.collection-inline-video__media,
+.collection-inline-video__poster {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: inherit;
+}
+.collection-inline-video--fit-contain .collection-inline-video__media {
+  object-fit: cover;
+}
+
+.collection-inline-video--fit-cover .collection-inline-video__media {
+  object-fit: cover;
+}
+
+.collection-inline-video__poster {
+  padding: 0;
+  border: 0;
+  cursor: pointer;
+  background: #000;
+  position: relative;
+  overflow: hidden;
+}
+
+.collection-inline-block--full .collection-inline-video {
+  max-height: 600px;
+}
+
+.collection-inline-block--2 .collection-inline-video {
+  max-height: 450px;
+}
+
+.collection-inline-block--1 .collection-inline-video {
+  max-height: 320px;
+}
+
+.collection-inline-video--16-9 {
+  aspect-ratio: 16 / 9;
+}
+
+.collection-inline-video--4-3 {
+  aspect-ratio: 4 / 3;
+}
+
+.collection-inline-video--1-1 {
+  aspect-ratio: 1 / 1;
+}
+
+.collection-inline-video--9-16 {
+  aspect-ratio: 9 / 16;
+}
+
+.collection-inline-video--adapt {
+  aspect-ratio: 16 / 9;
+}
+
+.collection-inline-video__play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 64px;
+  height: 64px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.65);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  line-height: 1;
+}
+
+/* Desktop fullscreen fix */
+.collection-inline-block:has(.collection-inline-video),
+.collection-inline-video,
+.collection-inline-video__media {
+  transform: none !important;
+}
+
+.collection-inline-video__media:fullscreen {
+  width: 100vw !important;
+  height: 100vh !important;
+  max-height: none !important;
+  object-fit: contain !important;
+  background: #000;
+  border-radius: 0 !important;
+}
+
+.collection-inline-video__media:-webkit-full-screen {
+  width: 100vw !important;
+  height: 100vh !important;
+  max-height: none !important;
+  object-fit: contain !important;
+  background: #000;
+  border-radius: 0 !important;
+}
+
+@media screen and (max-width: 767px) {
+  #ProductsList.f-grid-1-cols .collection-inline-block {
+    grid-column: 1 / -1 !important;
+    width: 100% !important;
+  }
+  .collection-inline-block--full .collection-inline-video,
+  .collection-inline-block--2 .collection-inline-video,
+  .collection-inline-block--1 .collection-inline-video {
+    max-height: 70vh;
+  }
+
+  .collection-inline-video__play {
+    width: 52px;
+    height: 52px;
+    font-size: 22px;
+  } #ProductsList .product-card__image-wrapper motion-element {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+</style>
+{% schema %}
+{
+  "name": "t:sections.main-collection-product-grid.name",
+  "class": "collection-section",
+  "blocks": [
+    {
+      "type": "inline_rich_text",
+      "name": "Inline rich text",
+      "settings": [
+        {
+          "type": "range",
+          "id": "position",
+          "label": "Show after product number",
+          "min": 1,
+          "max": 101,
+          "step": 1,
+          "default": 8
+        },
+        {
+          "type": "range",
+          "id": "position_mobile",
+          "label": "Show after product number on mobile",
+          "min": 1,
+          "max": 101,
+          "step": 1,
+          "default": 2
+        },
+        {
+          "type": "select",
+          "id": "width",
+          "label": "Width",
+          "options": [
+            {
+              "value": "1",
+              "label": "1 column"
+            },
+            {
+              "value": "2",
+              "label": "2 columns"
+            },
+            {
+              "value": "full",
+              "label": "Full row"
+            }
+          ],
+          "default": "full"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Entwickelt für echten Hundesport"
+        },
+        {
+          "type": "select",
+          "id": "heading_size",
+          "label": "Heading size",
+          "options": [
+            {
+              "value": "h2",
+              "label": "H2"
+            },
+            {
+              "value": "h3",
+              "label": "H3"
+            },
+            {
+              "value": "h4",
+              "label": "H4"
+            }
+          ],
+          "default": "h2"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Funktionale Bekleidung für Training, Prüfung und Alltag mit Hund.</p>"
+        },
+        {
+          "type": "select",
+          "id": "text_alignment",
+          "label": "Text alignment",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "center"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        },
+        {
+          "type": "select",
+          "id": "button_style",
+          "label": "Button style",
+          "options": [
+            {
+              "value": "primary",
+              "label": "Primary"
+            },
+            {
+              "value": "secondary",
+              "label": "Secondary"
+            }
+          ],
+          "default": "primary"
+        }
+      ]
+    },
+    {
+      "type": "inline_image_text",
+      "name": "Inline image with text",
+      "settings": [
+        {
+          "type": "range",
+          "id": "position",
+          "label": "Show after product number",
+          "min": 1,
+          "max": 101,
+          "step": 1,
+          "default": 8
+        },
+        {
+          "type": "range",
+          "id": "position_mobile",
+          "label": "Show after product number on mobile",
+          "min": 1,
+          "max": 101,
+          "step": 1,
+          "default": 2
+        },
+        {
+          "type": "select",
+          "id": "width",
+          "label": "Width",
+          "options": [
+            {
+              "value": "1",
+              "label": "1 column"
+            },
+            {
+              "value": "2",
+              "label": "2 columns"
+            },
+            {
+              "value": "full",
+              "label": "Full row"
+            }
+          ],
+          "default": "full"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "select",
+          "id": "layout",
+          "label": "Layout",
+          "options": [
+            {
+              "value": "image-left",
+              "label": "Image left"
+            },
+            {
+              "value": "image-right",
+              "label": "Image right"
+            },
+            {
+              "value": "image-top",
+              "label": "Image top"
+            }
+          ],
+          "default": "image-left"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Entwickelt für Training, Prüfung & Alltag"
+        },
+        {
+          "type": "select",
+          "id": "heading_size",
+          "label": "Heading size",
+          "options": [
+            {
+              "value": "h2",
+              "label": "H2"
+            },
+            {
+              "value": "h3",
+              "label": "H3"
+            },
+            {
+              "value": "h4",
+              "label": "H4"
+            }
+          ],
+          "default": "h2"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "Durchdachte Taschen, robuste Materialien und maximale Bewegungsfreiheit für jede Trainingseinheit."
+        },
+        {
+          "type": "select",
+          "id": "text_alignment",
+          "label": "Text alignment",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        },
+        {
+          "type": "select",
+          "id": "button_style",
+          "label": "Button style",
+          "options": [
+            {
+              "value": "primary",
+              "label": "Primary"
+            },
+            {
+              "value": "secondary",
+              "label": "Secondary"
+            }
+          ],
+          "default": "primary"
+        }
+      ]
+    },
+    {
+      "type": "inline_promo_image",
+      "name": "Inline promo image",
+      "settings": [
+        {
+          "type": "range",
+          "id": "position",
+          "label": "Show after product number",
+          "min": 1,
+          "max": 101,
+          "step": 1,
+          "default": 8
+        },
+        {
+          "type": "range",
+          "id": "position_mobile",
+          "label": "Show after product number on mobile",
+          "min": 1,
+          "max": 101,
+          "step": 1,
+          "default": 2
+        },
+        {
+          "type": "select",
+          "id": "width",
+          "label": "Width",
+          "options": [
+            {
+              "value": "1",
+              "label": "1 column"
+            },
+            {
+              "value": "2",
+              "label": "2 columns"
+            },
+            {
+              "value": "full",
+              "label": "Full row"
+            }
+          ],
+          "default": "2"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Overlay heading"
+        },
+        {
+          "type": "select",
+          "id": "heading_size",
+          "label": "Heading size",
+          "options": [
+            {
+              "value": "h2",
+              "label": "H2"
+            },
+            {
+              "value": "h3",
+              "label": "H3"
+            },
+            {
+              "value": "h4",
+              "label": "H4"
+            }
+          ],
+          "default": "h3"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Overlay text"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label"
+        },
+        {
+          "type": "select",
+          "id": "button_style",
+          "label": "Button style",
+          "options": [
+            {
+              "value": "primary",
+              "label": "Primary"
+            },
+            {
+              "value": "secondary",
+              "label": "Secondary"
+            }
+          ],
+          "default": "primary"
+        },
+        {
+          "type": "select",
+          "id": "text_position",
+          "label": "Text position",
+          "options": [
+            {
+              "value": "bottom-left",
+              "label": "Bottom left"
+            },
+            {
+              "value": "bottom-center",
+              "label": "Bottom center"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            }
+          ],
+          "default": "bottom-left"
+        }
+      ]
+    },
+    {
+      "type": "inline_custom_liquid",
+      "name": "Inline custom liquid",
+      "settings": [
+        {
+          "type": "range",
+          "id": "position",
+          "label": "Show after product number",
+          "min": 1,
+          "max": 101,
+          "step": 1,
+          "default": 8
+        },
+        {
+          "type": "range",
+          "id": "position_mobile",
+          "label": "Show after product number on mobile",
+          "min": 1,
+          "max": 101,
+          "step": 1,
+          "default": 2
+        },
+        {
+          "type": "select",
+          "id": "width",
+          "label": "Width",
+          "options": [
+            {
+              "value": "1",
+              "label": "1 column"
+            },
+            {
+              "value": "2",
+              "label": "2 columns"
+            },
+            {
+              "value": "full",
+              "label": "Full row"
+            }
+          ],
+          "default": "full"
+        },
+        {
+          "type": "liquid",
+          "id": "custom_liquid",
+          "label": "Custom liquid"
+        }
+      ]
+    },
+    {
+      "type": "inline_video",
+      "name": "Inline video",
+      "settings": [
+        {
+          "type": "select",
+          "id": "video_ratio",
+          "label": "Video ratio",
+          "options": [
+            {
+              "value": "auto",
+              "label": "Auto by width"
+            },
+            {
+              "value": "16-9",
+              "label": "16:9"
+            },
+            {
+              "value": "4-3",
+              "label": "4:3"
+            },
+            {
+              "value": "1-1",
+              "label": "Square"
+            },
+            {
+              "value": "9-16",
+              "label": "Vertical 9:16"
+            }
+          ],
+          "default": "auto"
+        },
+        {
+          "type": "select",
+          "id": "video_fit",
+          "label": "Video fit",
+          "options": [
+            {
+              "value": "contain",
+              "label": "Show full video"
+            },
+            {
+              "value": "cover",
+              "label": "Fill area / crop"
+            }
+          ],
+          "default": "contain"
+        },
+        {
+          "type": "range",
+          "id": "position",
+          "label": "Show after product number",
+          "min": 1,
+          "max": 101,
+          "step": 1,
+          "default": 8
+        },
+        {
+          "type": "range",
+          "id": "position_mobile",
+          "label": "Show after product number on mobile",
+          "min": 1,
+          "max": 101,
+          "step": 1,
+          "default": 2
+        },
+        {
+          "type": "select",
+          "id": "width",
+          "label": "Width",
+          "options": [
+            {
+              "value": "1",
+              "label": "1 column"
+            },
+            {
+              "value": "2",
+              "label": "2 columns"
+            },
+            {
+              "value": "full",
+              "label": "Full row"
+            }
+          ],
+          "default": "full"
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Video"
+        },
+        {
+          "type": "image_picker",
+          "id": "cover_image",
+          "label": "Cover image"
+        },
+        {
+          "type": "checkbox",
+          "id": "autoplay",
+          "label": "Autoplay video",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "loop",
+          "label": "Loop video",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "muted",
+          "label": "Mute video",
+          "default": true
+        }
+      ]
+    },
+    {
+      "type": "app_position",
+      "name": "App block position",
+      "settings": [
+        {
+          "type": "range",
+          "id": "position",
+          "label": "Show app block after product number",
+          "min": 1,
+          "max": 101,
+          "step": 1,
+          "default": 24
+        }
+      ]
+    },
+    {
+      "type": "@app"
+    }
+  ],
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "collection_card_titles",
+      "label": "Kurze Kartentitel (ohne Zusatz nach – oder |)",
+      "default": false
+    },
+    {
+      "type": "paragraph",
+      "content": "[Read How-to](https://foxecom.link/LgqT3v8)"
+    },
+    {
+      "type": "header",
+      "content": "IQ Jacken-Vergleich"
+    },
+    {
+      "type": "checkbox",
+      "id": "iq_jv_enabled",
+      "label": "Vergleich anzeigen",
+      "info": "Vergleich unter dem Produktraster und Sprunglink darüber anzeigen. Nur in der gewünschten Jacken-Vorlage aktivieren.",
+      "default": false
+    },
+    {
+      "type": "product_list",
+      "id": "iq_jv_products",
+      "label": "Produkte im Vergleich",
+      "limit": 5,
+      "info": "2–5 Produkte auswählen und sortieren. Nichts ausgewählt = Standard (die 5 IQ Jacken)."
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "min": 8,
+      "max": 108,
+      "step": 1,
+      "default": 15,
+      "label": "t:sections.main-collection-product-grid.settings.products_per_page.label"
+    },
+    {
+      "type": "range",
+      "id": "app_blocks_position",
+      "label": "Show app blocks after product number",
+      "min": 1,
+      "max": 101,
+      "step": 1,
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 4,
+      "label": "t:sections.main-collection-product-grid.settings.columns_desktop.label"
+    },
+    {
+      "type": "select",
+      "id": "grid_layout",
+      "options": [
+        {
+          "value": "standard",
+          "label": "t:sections.product-tabs.settings.grid_layout.options__1.label"
+        },
+        {
+          "value": "metro",
+          "label": "t:sections.product-tabs.settings.grid_layout.options__2.label"
+        }
+      ],
+      "default": "standard",
+      "info": "t:sections.product-tabs.settings.grid_layout.info",
+      "label": "t:sections.product-tabs.settings.grid_layout.label"
+    },
+    {
+      "type": "select",
+      "id": "pagination",
+      "label": "t:sections.main-collection-product-grid.settings.pagination.label",
+      "options": [
+        {
+          "value": "infinite",
+          "label": "t:sections.main-collection-product-grid.settings.pagination.options__1.label"
+        },
+        {
+          "value": "load_more",
+          "label": "t:sections.main-collection-product-grid.settings.pagination.options__2.label"
+        },
+        {
+          "value": "number",
+          "label": "t:sections.main-collection-product-grid.settings.pagination.options__3.label"
+        }
+      ],
+      "default": "number"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.main-collection-product-grid.settings.header__1.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_color_swatch",
+      "label": "t:settings_schema.color_swatches.settings.enable_color_swatch.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_filtering",
+      "default": true,
+      "label": "t:sections.main-collection-product-grid.settings.enable_filtering.label",
+      "info": "t:sections.main-collection-product-grid.settings.enable_filtering.info"
+    },
+    {
+      "type": "select",
+      "id": "filter_type",
+      "options": [
+        {
+          "value": "vertical",
+          "label": "t:sections.main-collection-product-grid.settings.filter_type.options__2.label"
+        },
+        {
+          "value": "drawer",
+          "label": "t:sections.main-collection-product-grid.settings.filter_type.options__3.label"
+        }
+      ],
+      "default": "vertical",
+      "label": "t:sections.main-collection-product-grid.settings.filter_type.label",
+      "info": "t:sections.main-collection-product-grid.settings.filter_type.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sorting",
+      "default": true,
+      "label": "t:sections.main-collection-product-grid.settings.enable_sorting.label"
+    },
+    {
+      "type": "text",
+      "id": "expand_filter_groups",
+      "label": "t:sections.main-collection-product-grid.settings.expand_filter_groups.label",
+      "placeholder": "Color, Price, Size",
+      "info": "t:sections.main-collection-product-grid.settings.expand_filter_groups.info"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.main-collection-product-grid.settings.header_mobile.content"
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "default": "2",
+      "label": "t:sections.main-collection-product-grid.settings.columns_mobile.label",
+      "options": [
+        {
+          "value": "1",
+          "label": "t:sections.main-collection-product-grid.settings.columns_mobile.options__1.label"
+        },
+        {
+          "value": "2",
+          "label": "t:sections.main-collection-product-grid.settings.columns_mobile.options__2.label"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 50
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.divider.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_section_divider",
+      "default": false,
+      "label": "t:sections.all.divider.settings.show_divider.label"
+    },
+    {
+      "type": "select",
+      "id": "divider_width",
+      "options": [
+        {
+          "value": "fixed",
+          "label": "t:sections.all.container.options__fixed.label"
+        },
+        {
+          "value": "full",
+          "label": "t:sections.all.container.options__full.label"
+        }
+      ],
+      "default": "fixed",
+      "label": "t:sections.all.divider.settings.divider_width.label",
+      "visible_if": "{{ section.settings.show_section_divider == true }}"
+    }
+  ]
+}
+{% endschema %}

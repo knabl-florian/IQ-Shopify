@@ -1,0 +1,859 @@
+/*
+@media (max-width: 767px){
+.product__block--title,
+.product__block:has(#shopify-block-ATDhua2ZIK0kwdWJrU__judge_me_reviews_preview_badge_f9Nc6i)
+{
+display: none;
+}
+}
+
+
+@media (min-width: 768px){
+#shopify-section-template--26544461709576__rich_text_pTBMLx,
+#shopify-section-template--26544461709576__17614968881680f860{
+display: none;
+}
+}
+*/
+
+@media (max-width: 767px) {
+.product__info-container .product__block.product__block--title,
+.product__info-container .jdgm-widget.jdgm-preview-badge.jdgm-preview-badge--with-link.jdgm--done-setup,
+.desktop-only-iq {
+display: none !important;
+  }
+}
+
+@media (min-width: 768px) {
+.mobile-only-iq,.mobile-only.IQ {
+display: none !important;
+  }
+}
+[data-form-root],
+[data-form-root] shopify-forms-embed,
+shopify-forms-embed {
+--form-field-border-radius: 22px !important;
+--button-border-radius: 22px !important;
+--container-border-radius: 40px !important;
+--forms-heading-font-size: 32px !important;
+--forms-heading-font: italic 800 32px Montserrat, sans-serif !important;
+--inline-container-max-width: 800px !important;
+--inline-container-width: 100% !important;
+--button-background-color: #6a804d !important;
+--button-text-color: #ffffff !important;
+--button-hover-background-color: #000000 !important;
+--button-hover-text-color: #ffffff !important;
+}
+/* Added by Hamza - product help hub inside contact accordion */
+.product-help-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:12px;align-items:start}
+.product-help-card{display:flex;flex-direction:column;gap:8px;padding:14px;border:1px solid rgba(var(--color-foreground),.08);border-radius:12px;background:linear-gradient(rgba(var(--color-foreground),.03),rgba(var(--color-foreground),.03)),rgb(var(--color-background))}
+.product-help-card h3,.product-help-card p{margin:0}
+.product-help-card p{opacity:.75}
+.product-help-card img{display:block;width:100%;height:auto;border-radius:8px}
+.product-help-video{aspect-ratio:16/9;border-radius:8px;overflow:hidden}
+.product-help-video iframe{display:block;width:100%;height:100%;border:0}
+.product-help-card .btn{margin:0}
+@media(max-width:1023px){.product-help-grid{grid-template-columns:1fr}}
+
+a.link-as-button,
+.rte a.link-as-button,
+a.link-as-button:hover,
+.rte a.link-as-button:hover,
+a.link-as-button:focus,
+.rte a.link-as-button:focus{
+color:rgb(var(--color-secondary-button-text));
+text-decoration:none;
+}
+/* Added by Hamza - Payment help in Contact Page */
+.payment-overview{padding:12px;border:1px solid rgba(var(--color-foreground),.08);border-radius:12px;background:rgba(var(--color-foreground),.02)}
+.payment-overview__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 16px}
+.payment-overview__item{padding:6px 0;border-bottom:1px solid rgba(var(--color-foreground),.08)}
+.payment-overview__item h6,.payment-overview__item p,.payment-overview__item ul{margin:0}
+.payment-overview__item h6{margin-bottom:4px}
+.payment-overview__item ul{padding-left:16px}
+.payment-overview__actions{margin-top:10px}
+@media(max-width:767px){.payment-overview__grid{grid-template-columns:1fr}}
+
+.site-card{
+padding:20px;
+border:1px solid rgba(var(--color-foreground),.08);
+border-radius:16px;
+background:rgba(var(--color-foreground),.02);
+}
+
+.site-card__title{
+margin:0 0 10px;
+}
+
+.site-card__text > *:first-child{
+margin-top:0;
+}
+
+.site-card__text > *:last-child{
+margin-bottom:0;
+}
+
+.site-card__actions{
+display:flex;
+flex-wrap:wrap;
+gap:12px;
+margin-top:16px;
+}
+
+.site-card__actions .button{
+min-width:180px;
+}
+
+.site-card--muted{
+background:rgba(var(--color-foreground),.02);
+}
+
+.site-card-grid{
+display:grid;
+grid-template-columns:1fr;
+gap:16px;
+}
+
+@media screen and (min-width:750px){
+.site-card-grid--2{
+grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+.site-card-grid--3{
+grid-template-columns:repeat(3,minmax(0,1fr));
+  }
+}
+/* Added by Hamza - for reducing space of size checkboxes on product details page */
+.product-form__input--button-circle input[type=radio]+label:not([data-swatch-type=variant_image],[data-swatch-type=color_swatch],[data-swatch-type=shopify_swatch],[data-swatch-type=text]) {
+padding: 0 1.5rem !important;
+}
+/* Added by Hamza -  Hide "Alles für Damen" and "Alles für Herren" (first submenu item) on desktop (1024px and above) → These links will ONLY be visible on mobile */
+@media (min-width: 1024px)  {
+.mega-menu__item > a[href="/collections/hundesportbekleidung-damen"] + .mega-menu__item-child > li:first-child,
+.mega-menu__item > a[href="/collections/hundesportbekleidung-herren"] + .mega-menu__item-child > li:first-child,
+.mega-menu__item > a[href="/en/collections/hundesportbekleidung-damen"] + .mega-menu__item-child > li:first-child,
+.mega-menu__item > a[href="/en/collections/hundesportbekleidung-herren"] + .mega-menu__item-child > li:first-child,
+.mega-menu__item:has(> a[href="/collections/hundesportbekleidung"]),
+.mega-menu__item:has(> a[href="/en/collections/hundesportbekleidung"]){
+display: none;
+  }
+}
+
+/* Added by Hamza: Force consistent swatch colors for German/English values (e.g., Rot/Red, Hellblau/Lightblue) because theme does not correctly map multilingual color names, so we override via CSS to ensure correct display */
+.product-form__input--color input[value="Rot"] + label .swatch-color,
+.product-form__input--color input[value="Red"] + label .swatch-color,
+.product-form__input--color input[value="red"] + label .swatch-color {
+--swatch-background: #cc2024 !important;
+background: #cc2024 !important;
+background-color: #cc2024 !important;
+}
+
+/* Added by Hamza: Force consistent swatch color for Hellblau/LightBlue across product, filters, and cards */
+
+.product-form__input--color input[value*="hellblau"] + label .swatch-color,
+.product-form__input--color input[value*="LightBlue"] + label .swatch-color,
+.product-form__input--color input[value*="lightblue"] + label .swatch-color,
+input[name="filter.v.option.farbe"][value*="LightBlue"] + label.swatch-color,
+input[name="filter.v.option.farbe"][value*="lightblue"] + label.swatch-color,
+input[name="filter.v.option.farbe"][value*="hellblau"] + label.swatch-color,
+label.swatch-color[style*="lightblue"],
+a.swatch-color[title*="lightblue"],
+a.swatch-color[aria-label*="lightblue"],
+a.swatch-color[title*="LightBlue"],
+a.swatch-color[aria-label*="LightBlue"] {
+--swatch-background: #9fb3cf !important;
+background: #9fb3cf !important;
+}
+/* Force consistent swatch color for Graublau / Grey Blue */
+
+.product-form__input--color input[value*="graublau" i] + label .swatch-color,
+.product-form__input--color input[value*="grey blue" i] + label .swatch-color,
+.product-form__input--color input[value*="grayblue" i] + label .swatch-color,
+.product-form__input--color input[value*="blue grey" i] + label .swatch-color,
+.product-form__input--color input[value*="blue gray" i] + label .swatch-color,
+.product-form__input--color input[value*="greyblue" i] + label .swatch-color,
+.product-form__input--color input[value*="grayblue" i] + label .swatch-color,
+
+input[name="filter.v.option.farbe"][value*="graublau" i] + label.swatch-color,
+input[name="filter.v.option.farbe"][value*="grayblue" i] + label.swatch-color,
+input[name="filter.v.option.farbe"][value*="gray blue" i] + label.swatch-color,
+input[name="filter.v.option.farbe"][value*="blue grey" i] + label.swatch-color,
+input[name="filter.v.option.farbe"][value*="blue gray" i] + label.swatch-color,
+
+label.swatch-color[style*="graublau" i],
+a.swatch-color[title*="graublau" i],
+a.swatch-color[aria-label*="graublau" i],
+a.swatch-color[title*="grey blue" i],
+a.swatch-color[aria-label*="grayblue" i],
+a.swatch-color[title*="gray blue" i],
+a.swatch-color[aria-label*="gray blue" i],
+a.swatch-color[title*="blue grey" i],
+a.swatch-color[aria-label*="blue grey" i],
+a.swatch-color[title*="blue gray" i],
+a.swatch-color[aria-label*="blue gray" i] {
+--swatch-background: #6d728c !important;
+background: #6d728c !important;
+}
+
+#judgeme_product_reviews {
+scroll-margin-top: 120px;
+}
+/* Added by hamza Removing total articles from cards */
+.no-quan-tag .collection-card__summary .collection-card__count {
+display: none!important;
+}
+
+
+
+/* Added by Hamza — Premium Free Shipping Goal UI for Cart Drawer */
+cart-drawer .cart-drawer__header free-shipping-goal.free-shipping-goal:before{
+font-family: Montserrat, sans-serif;
+}
+cart-drawer .cart-drawer__header free-shipping-goal.free-shipping-goal{
+position:relative!important;
+background:linear-gradient(180deg,#f4f7ee 0%,#edf3e3 100%)!important;
+border-radius:10px!important;
+padding:16px 20px 18px!important;
+width:100%!important;
+gap:12px!important;
+border:1px solid rgba(111,133,80,.16)!important;
+box-shadow:0 10px 30px rgba(91,107,67,.08),inset 0 1px 0 rgba(255,255,255,.7)!important;
+overflow:hidden!important;
+}
+cart-drawer .cart-drawer__header free-shipping-goal.free-shipping-goal:before{
+content:"GRATIS VERSAND";
+font-family:Montserrat,sans-serif;
+position:relative;
+z-index:2;
+display:block;
+text-align:center;
+margin-bottom:2px;
+font-size:13px;
+line-height:1;
+font-weight:900;
+letter-spacing:.2em;
+color:#55673e;
+text-transform:uppercase;
+}
+
+
+cart-drawer .cart-drawer__header free-shipping-goal.free-shipping-goal:after{
+content:"";
+position:absolute;
+inset:0;
+background:radial-gradient(circle at top right,rgba(145,168,107,.18),transparent 45%);
+pointer-events:none;
+}
+
+cart-drawer .cart-drawer__header .free-shipping-goal__label{
+position:relative!important;
+z-index:2!important;
+margin:0!important;
+display:flex!important;
+flex-wrap:wrap!important;
+justify-content:center!important;
+text-align:center!important;
+justify-content:center!important;
+gap:10px!important;
+font-size:16px!important;
+font-family:Montserrat,sans-serif;
+line-height:1.35!important;
+font-weight:900!important;
+letter-spacing:-.02em!important;
+color:#000!important;
+text-align:center!important;
+animation:shippingFade .35s ease!important;
+}
+cart-drawer .cart-drawer__header .free-shipping-goal__label--success {
+flex-wrap: nowrap !important;
+}
+cart-drawer .cart-drawer__header .free-shipping-goal__label strong{
+color:#6f8550!important;
+font-weight:900!important;
+}
+
+cart-drawer .cart-drawer__header .free-shipping-goal__label:before{
+content:"";
+width:24px;
+height:24px;
+min-width:24px;
+display:inline-block;
+background-repeat:no-repeat;
+background-position:center;
+background-size:contain;
+background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 640'%3E%3Cpath fill='%236f8550' d='M64 176C80.6 176 94.2 188.6 95.8 204.7L96.1 211.3C97.8 227.4 111.4 240 128 240L307.1 240L448 300.4L448 544C448 561.7 433.7 576 416 576L384 576C366.3 576 352 561.7 352 544L352 412.7C328 425 300.8 432 272 432C243.2 432 216 425 192 412.7L192 544C192 561.7 177.7 576 160 576L128 576C110.3 576 96 561.7 96 544L96 298.4C58.7 285.2 32 249.8 32 208C32 190.3 46.3 176 64 176zM387.8 32C395.5 32 402.7 35.6 407.4 41.8L424 64L476.1 64C488.8 64 501 69.1 510 78.1L528 96L584 96C597.3 96 608 106.7 608 120L608 144C608 188.2 572.2 224 528 224L464 224L457 252L332.3 198.6L363.9 51.4C366.3 40.1 376.2 32 387.8 32zM480 108C469 108 460 117 460 128C460 139 469 148 480 148C491 148 500 139 500 128C500 117 491 108 480 108z'/%3E%3C/svg%3E");
+}
+
+cart-drawer .cart-drawer__header .free-shipping-goal__label--success{display:none!important;}
+cart-drawer .cart-drawer__header .free-shipping-goal__label--default{display:flex!important;}
+
+cart-drawer .cart-drawer__header free-shipping-goal.free-shipping-goal--done .free-shipping-goal__label--success{display:flex!important;}
+cart-drawer .cart-drawer__header free-shipping-goal.free-shipping-goal--done .free-shipping-goal__label--default{display:none!important;}
+
+
+
+cart-drawer .cart-drawer__header progress-bar.progress-bar:before{
+content:"";
+position:absolute;
+inset:0 auto 0 0;
+width:min(var(--percent),100%)!important;
+height:100%;
+border-radius:inherit;
+background:linear-gradient(90deg,#55673e 0%,#6f8550 45%,#95ac71 100%)!important;
+transition:width .6s cubic-bezier(.22,.61,.36,1);
+box-shadow:0 0 14px rgba(111,133,80,.25);
+}
+
+cart-drawer .cart-drawer__header progress-bar.progress-bar:after{
+content:"";
+position:absolute;
+top:0;
+left:-40%;
+width:40%;
+height:100%;
+background:linear-gradient(90deg,transparent,rgba(255,255,255,.45),transparent);
+animation:shippingShimmer 2.8s infinite;
+}
+
+@keyframes shippingShimmer{100%{left:140%}}
+@keyframes shippingFade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+
+@media screen and (max-width:749px){
+cart-drawer .cart-drawer__header free-shipping-goal.free-shipping-goal{
+border-radius:20px!important;
+padding:15px 16px 17px!important;
+gap:11px!important;
+}
+cart-drawer .cart-drawer__header free-shipping-goal.free-shipping-goal:before{
+font-size:9px;
+letter-spacing:.34em;
+}
+cart-drawer .cart-drawer__header .free-shipping-goal__label{
+font-size:15px!important;
+line-height:1.35!important;
+}
+cart-drawer .cart-drawer__header .free-shipping-goal__label:before{
+width:21px;
+height:21px;
+min-width:21px;
+}
+cart-drawer .cart-drawer__header progress-bar.progress-bar{
+height:9px!important;
+}
+}
+
+cart-drawer .cart-drawer__header free-shipping-goal.free-shipping-goal:before {
+content: none !important;
+display: none !important;
+}
+
+/* Equalizes product card title/swatches spacing per row for consistent grid alignment added by hamza */
+.f-column.card.is-equalizing {
+opacity: 0;
+}
+
+.f-column.card {
+transition: opacity 0.15s ease;
+}
+
+.f-column.card .product-card__info {
+display: flex;
+flex-direction: column;
+align-items: center;
+/*  justify-content: flex-start !important; */
+}
+
+.product-card__swatch-placeholder.no-empty {
+display: block !important;
+visibility: hidden;
+}
+
+.f-column.card .product-card__swatches {
+margin-bottom: 10px;
+justify-content: center;
+}
+/* When translated English card total number hidden  added by hamza */
+.f-column.card .jdgm-prev-badge__text {
+visibility: visible;
+}
+@media (max-width: 768px) {
+.f-column.card .product-card__title, .title-mobile-responsive .product-card__title {
+display: -webkit-box;
+-webkit-line-clamp: 2;
+-webkit-box-orient: vertical;
+overflow: hidden;
+white-space: normal;
+text-overflow: ellipsis;
+margin-bottom: 10px;
+  }
+.title-mobile-responsive .product-card__info{
+justify-content:flex-start !important;
+  }
+ }
+/* Added by hamza Bucher & Wissen Mega menu items into 3 items*/
+#shopify-section-sections--28771476865288__header #Mega-menu-item-promotion_banner_YzYxBL{--promotion-columns:3!important;}
+#shopify-section-sections--28771476865288__header #Mega-menu-item-promotion_banner_YzYxBL .mega-menu__promotions-grid{grid-template-columns:repeat(3,1fr)!important;}
+#shopify-section-sections--28771476865288__header #Mega-menu-item-promotion_banner_YzYxBL .card-media__media {
+height: 260px !important;
+aspect-ratio: unset !important;
+}
+#shopify-section-sections--28771476865288__header #Mega-menu-item-promotion_banner_YzYxBL .card-media__media img {
+height: 100% !important;
+object-fit: cover !important;
+}
+
+
+
+/* Inline blocks inside collection product grid */
+.collection-inline-block {
+position: relative;
+overflow: hidden;
+border-radius: var(--blocks-radius);
+}
+
+.collection-inline-block--1 {
+grid-column: span 1;
+}
+
+.collection-inline-block--2 {
+grid-column: span 2;
+}
+
+.collection-inline-block--full {
+grid-column: 1 / -1;
+}
+
+.collection-inline-block__inner {
+padding: 40px;
+background: rgb(var(--color-background));
+}
+
+.collection-inline-block__inner--left {
+text-align: left;
+}
+
+.collection-inline-block__inner--center {
+text-align: center;
+}
+
+.collection-inline-block__inner--right {
+text-align: right;
+}
+
+.collection-inline-block__image {
+width: 100%;
+height: 100%;
+min-height: 100%;
+aspect-ratio: 1 / 1;
+object-fit: cover;
+display: block;
+border-radius:12px;
+}
+
+.collection-inline-image-text {
+display: grid;
+grid-template-columns: 1fr 1fr;
+background: rgb(var(--color-background));
+border-radius: var(--blocks-radius);
+overflow: hidden;
+}
+
+.collection-inline-image-text--image-right .collection-inline-image-text__media {
+order: 2;
+}
+
+.collection-inline-image-text--image-top {
+grid-template-columns: 1fr;
+}
+
+.collection-inline-image-text__media {
+min-height: 100%;
+}
+
+.collection-inline-promo-image {
+position: relative;
+display: block;
+min-height: 100%;
+color: inherit;
+text-decoration: none;
+border-radius: var(--blocks-radius);
+overflow: hidden;
+border-radius:12px;
+}
+
+.collection-inline-promo-image::after {
+content: "";
+position: absolute;
+inset: 0;
+background: linear-gradient(to top, rgba(0,0,0,.55), rgba(0,0,0,.05));
+pointer-events: none;
+}
+
+.collection-inline-promo-image__content {
+position: absolute;
+z-index: 1;
+color: #fff;
+padding: 28px;
+max-width: 520px;
+border-radius:12px;
+}
+
+.collection-inline-promo-image__content--bottom-left {
+left: 0;
+bottom: 0;
+text-align: left;
+}
+.collection-inline-image-text__content {
+display: flex;
+flex-direction: column;
+justify-content: center;
+height: 100%;
+}
+.collection-inline-image-text__content .rte{
+margin:20px 0;
+}
+
+.collection-inline-promo-image__content--bottom-center {
+left: 50%;
+bottom: 0;
+transform: translateX(-50%);
+text-align: center;
+}
+.collection-inline-promo-image__content .h2, .collection-inline-promo-image__content .h3{
+color: #fff !important;
+}
+
+.collection-inline-promo-image__content--center {
+left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
+text-align: center;
+}
+@media screen and (max-width: 767px) {
+.collection-inline-block--2,
+.collection-inline-block--full {
+grid-column: 1 / -1;
+  }
+
+.collection-inline-image-text {
+grid-template-columns: 1fr;
+  }
+
+.collection-inline-image-text--image-right .collection-inline-image-text__media {
+order: 0;
+  }
+
+.collection-inline-block__inner {
+padding: 28px 10px;
+  }
+/*Adding mobile +1 on mobile    */
+#ProductsList .product-card__image-wrapper motion-element {
+scrollbar-width: none; /* Firefox */
+-ms-overflow-style: none; /* IE/Edge */
+  }
+
+#ProductsList .product-card__image-wrapper motion-element::-webkit-scrollbar {
+display: none; /* Chrome/Safari */
+  }
+#ProductsList .product-card__image-wrapper:not(.product-card__image-wrapper--main-only) {
+position: relative;
+padding-bottom: 14px;
+  }
+
+/* Default: first image active */
+#ProductsList .product-card__image-wrapper:not(.product-card__image-wrapper--main-only)::after {
+content: "";
+position: absolute;
+left: 50%;
+bottom: 3px;
+transform: translateX(-50%);
+z-index: 1;
+
+width: 28px;
+height: 6px;
+
+background:
+radial-gradient(circle, #6a804d 3px, transparent 3.5px) left center / 10px 6px no-repeat,
+radial-gradient(circle, rgba(0,0,0,.28) 3px, transparent 3.5px) right center / 10px 6px no-repeat;
+
+pointer-events: none;
+  }
+
+/* Second image active */
+#ProductsList .product-card__image-wrapper.is-second-image::after {
+background:
+radial-gradient(circle, rgba(0,0,0,.28) 3px, transparent 3.5px) left center / 10px 6px no-repeat,
+radial-gradient(circle, #6a804d 3px, transparent 3.5px) right center / 10px 6px no-repeat;
+}
+
+
+#ProductsList .product-card__image-wrapper a {
+overflow: hidden;
+display: block;
+  }
+
+#ProductsList .product-card__image-wrapper motion-element {
+display: flex !important;
+overflow-x: auto;
+overflow-y: hidden;
+scroll-snap-type: x mandatory;
+-webkit-overflow-scrolling: touch;
+gap: 0;
+  }
+
+#ProductsList .product-card__image-wrapper .product-card__image {
+flex: 0 0 100% !important;
+min-width: 100% !important;
+width: 100% !important;
+aspect-ratio: 1 / 1 !important;
+position: relative !important;
+inset: auto !important;
+overflow: hidden !important;
+scroll-snap-align: start;
+background: transparent !important;
+  }
+
+#ProductsList .product-card__image-wrapper .product-card__image--second {
+display: block !important;
+position: relative !important;
+inset: auto !important;
+opacity: 1 !important;
+visibility: visible !important;
+transform: none !important;
+  }
+
+#ProductsList .product-card__image-wrapper .product-card__image img {
+position: absolute !important;
+inset: 0 !important;
+width: 100% !important;
+height: 100% !important;
+object-fit: contain !important;
+display: block !important;
+border-radius:12px !important;
+  }
+}
+
+/* Added by Hamza | Premium Dealers | Soft Champagne Luxury */
+.premium-featured .multicolumn__items{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px}.premium-featured .multicolumn-card{height:100%;padding:30px;background:linear-gradient(180deg,#fcfbf8,#f7f3ea);color:#222;border:1px solid #ddd3bf;border-radius:22px;box-shadow:0 14px 34px rgba(90,70,30,.08);transition:.25s ease}.premium-featured .multicolumn-card:hover{transform:translateY(-5px);border-color:#c4ab73;box-shadow:0 18px 40px rgba(90,70,30,.12)}.premium-featured .multicolumn-card h3,.premium-featured .multicolumn-card p,.premium-featured .multicolumn-card a,.premium-featured .multicolumn-card__text{color:#222}.premium-featured .multicolumn-card__image{margin-bottom:18px}.premium-featured .multicolumn-card__image img{width:62px!important;height:auto!important}.premium-featured .btn{margin-top:14px;font-weight:800}.premium-featured .f-column:first-child .multicolumn-card{position:relative;padding-top:96px;background:linear-gradient(180deg,#ffffff,#faf6ed);border:1px solid #c3a15a;border-left:8px solid #b8903f;box-shadow:0 20px 42px rgba(184,144,63,.15)}.premium-featured .f-column:first-child .multicolumn-card__image{position:absolute;top:30px;left:30px;margin:0!important}.premium-featured .f-column:first-child .multicolumn-card__image img{display:block;width:68px!important}.premium-featured .f-column:first-child .multicolumn-card:before{position:absolute;top:30px;right:30px;display:inline-block;max-width:calc(100% - 130px);padding:8px 14px;background:linear-gradient(180deg,#caa65f,#b48835);color:#fff;border-radius:999px;font-size:11px;font-weight:900;letter-spacing:.07em;text-transform:uppercase;white-space:normal;box-shadow:0 6px 18px rgba(184,136,53,.25)}html[lang=de] .premium-featured .f-column:first-child .multicolumn-card:before{content:"Nr. 1 Premium-Händler"}html[lang=en] .premium-featured .f-column:first-child .multicolumn-card:before{content:"No. 1 Premium Dealer"}.premium-featured .f-column:first-child h3{font-size:34px;color:#222}@media(max-width:989px){.premium-featured .multicolumn__items{grid-template-columns:repeat(2,1fr)}}@media(max-width:749px){.premium-featured .multicolumn__items{grid-template-columns:1fr;gap:18px}.premium-featured .multicolumn-card{padding:22px;border-radius:18px}.premium-featured .f-column:first-child .multicolumn-card{padding-top:86px;border-left-width:6px}.premium-featured .f-column:first-child .multicolumn-card__image{top:24px;left:22px}.premium-featured .f-column:first-child .multicolumn-card__image img{width:58px!important}.premium-featured .f-column:first-child .multicolumn-card:before{top:24px;right:22px;font-size:10px;padding:7px 10px;max-width:calc(100% - 105px)}.premium-featured .f-column:first-child h3{font-size:30px}}
+
+
+/* Removing border when hover on language switch button and also adding z index so that it will sit on top Added by hamza */
+.menu-drawer__localization-form:has(.language-switcher) {
+z-index: 29 !important;
+}
+.language-switcher .disclosure__toggle{
+box-shadow: none !important;
+}
+/* Every product Details heading size changed from 26px to 18px */
+.product__block--collapsible_tab .rte h3 {
+font-size: 18px !important;
+line-height: 1.3;
+}
+/* Cart Details sidebar for gifcards Updated */
+.cart-item[data-handle="iq-geschenkgutschein-1"] .cart-item__options .flex {
+display: flex;
+flex-direction: column;
+gap: 2px;
+}
+
+.cart-item[data-handle="iq-geschenkgutschein-1"] dt {
+font-weight: 600;
+}
+
+.cart-item[data-handle="iq-geschenkgutschein-1"] dd {
+margin: 0;
+overflow-wrap: anywhere;
+}
+/* Gift card details fix: cart page mobile */
+@media (max-width: 767px) {
+main-cart .cart-item:has(a[href*="iq-geschenkgutschein-1"]) .cart-item__options {
+display: grid;
+gap: 0.6rem;
+margin-top: 0.4rem;
+  }
+
+main-cart .cart-item:has(a[href*="iq-geschenkgutschein-1"]) .cart-item__options .flex {
+display: grid;
+gap: 0.2rem;
+  }
+
+main-cart .cart-item:has(a[href*="iq-geschenkgutschein-1"]) .cart-item__options dt,
+main-cart .cart-item:has(a[href*="iq-geschenkgutschein-1"]) .cart-item__option-name {
+font-weight: 700;
+line-height: 1.3;
+  }
+
+main-cart .cart-item:has(a[href*="iq-geschenkgutschein-1"]) .cart-item__options dd,
+main-cart .cart-item:has(a[href*="iq-geschenkgutschein-1"]) .cart-item__option-value {
+margin: 0;
+line-height: 1.35;
+overflow-wrap: anywhere;
+word-break: break-word;
+  }
+
+main-cart .cart-item:has(a[href*="iq-geschenkgutschein-1"]) .cart-item__title {
+white-space: normal !important;
+line-height: 1.25;
+  }
+}
+@media (max-width: 480px) {
+.cart-item[data-handle="iq-geschenkgutschein-1"] .cart-item__title {
+white-space: normal !important;
+overflow: hidden;
+display: -webkit-box;
+-webkit-line-clamp: 2;
+-webkit-box-orient: vertical;
+line-height: 1.25;
+  }
+}
+
+/* ================================================================
+   IQ STARTSEITE – FARBEN + ABSTÄNDE (konsolidiert) 2026-09-21
+   Ersetzt den früheren --iq-sec-Abstandsblock.
+   Zusätzlich im Customizer:
+   - Kategorien:   Abstand oben 40, unten 28
+   - IQ Klassiker: Abstand oben 32, unten 40
+   ================================================================ */
+
+/* -------- HINTERGRÜNDE (alle Breiten) -------- */
+.iqjack{ background:#FFFFFF !important; }
+.iqw{ background:#FFFFFF !important; }
+.iq-new-drops, .iq-new-drops .iq-drop{ background:#F3F3F1 !important; }
+
+/* Gründer -> Schwarz, Schrift auf Weiß */
+.iqfounder{ background:#000000 !important; color:#F5F4F2 !important; }
+.iqfounder__eyebrow{ color:rgba(245,244,242,.60) !important; }
+.iqfounder__quote{ color:#F5F4F2 !important; }
+.iqfounder__body{ color:rgba(245,244,242,.78) !important; }
+.iqfounder__pill{ border-color:#F5F4F2 !important; color:#F5F4F2 !important; }
+
+/* -------- ABSTÄNDE – nur Mobile -------- */
+@media (max-width:749px){
+.iqjack{ padding-top:28px !important; }
+.iqjack__content{ padding-bottom:24px !important; }
+.iqjack__product + .iqjack__product{ margin-top:20px !important; }
+.iqjack__products{ padding-bottom:4px !important; }
+
+.iq-drop__inner{ padding-top:28px !important; padding-bottom:32px !important; }
+
+.iqfounder__content{ padding-top:28px !important; padding-bottom:24px !important; }
+
+.iq-review-editorial__inner{ padding-top:20px !important; padding-bottom:24px !important; }
+
+.iqw__head{ padding-top:40px !important; }
+.iqw{ padding-bottom:24px !important; }
+
+.iq-insider__inner{ padding-top:40px !important; padding-bottom:40px !important; }
+}
+
+/* ================================================================
+   IQ STARTSEITE – ZENTRALE TYPOSKALA
+   Drei Ebenen: Hero (Theme) · Haupt-Kapitel · Abschluss
+   Nur font-size/line-height/weight – Italic/Uppercase bleibt.
+   ================================================================ */
+
+/* HAUPT-KAPITEL-H2 – 34px mobil / ~47px Desktop
+   Kategorien · Jacken · New Drops · Klassiker · Reviews · Wissen */
+.iq-catcar__heading,
+.iqjack__heading,
+.iq-drop__heading,
+.iqk__title,
+.iq-review-editorial__heading,
+.iqw__title{
+  font-size: clamp(34px, 4.4vw, 47px) !important;
+  line-height: 1.02 !important;
+  font-weight: 800 !important;
+}
+
+/* AUSNAHME – IQ Insider: Abschluss-Hero, größer (~40px mobil) */
+.iq-insider__heading{
+  font-size: clamp(40px, 9.5vw, 56px) !important;
+  line-height: .98 !important;
+}
+
+/* AUSNAHME – SEO/Info-Abschluss: kleiner (26–28 mobil) */
+.iqseo__h2{
+  font-size: clamp(26px, 3.2vw, 34px) !important;
+}
+
+/* EYEBROWS einheitlich – 12px mobil / 13px Desktop */
+.iq-catcar__eyebrow,
+.iqjack__eyebrow,
+.iq-drop__eyebrow,
+.iqk__eyebrow,
+.iqfounder__eyebrow,
+.iq-review-editorial__eyebrow,
+.iqw__eyebrow,
+.iq-insider__eyebrow,
+.iqseo__eyebrow{ font-size: 12px !important; }
+
+@media (min-width:990px){
+  .iq-catcar__eyebrow,
+  .iqjack__eyebrow,
+  .iq-drop__eyebrow,
+  .iqk__eyebrow,
+  .iqfounder__eyebrow,
+  .iq-review-editorial__eyebrow,
+  .iqw__eyebrow,
+  .iq-insider__eyebrow,
+  .iqseo__eyebrow{ font-size: 13px !important; }
+}
+
+/* ================================================================
+   IQ STARTSEITE – DESKTOP-AUSRICHTUNG (SEO-Text + Footer-Spalten)
+   auf die Homepage-Flucht (Inhalt 632–1928 bei 1360/32)
+   ================================================================ */
+@media (min-width:990px){
+  /* SEO-Info-Text bis an die rechte Flucht laufen lassen */
+  .iqseo__col{ max-width: none !important; }
+  /* Footer-Spalten UND untere Leiste exakt auf die Flucht (632–1928 wie SEO/DOGSPORT) */
+  .footer__top-wrapper,
+  .footer__bottom-row{
+    max-width: 1360px !important;
+    padding-left: 32px !important;
+    padding-right: 32px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .footer__top-wrapper{ justify-content: space-between !important; }
+  .footer__top-wrapper > .f-column{ flex: 1 1 0 !important; max-width: none !important; padding-left: 0 !important; padding-right: 0 !important; }
+  /* Alle drei Spalten linksbuendig, gleichmaessig verteilt */
+  .footer__top-wrapper > .f-column{ text-align: left !important; }
+  .footer__top-wrapper > .f-column ul,
+  .footer__top-wrapper > .f-column li,
+  .footer__top-wrapper > .f-column a{ justify-content: flex-start !important; align-items: flex-start !important; text-align: left !important; }
+}
+
+/* DOGSPORT-Slogan im Footer entfernen */
+.iq-footer-brand{ display: none !important; }
+
+/* ================================================================
+   IQ ATHLETES - Mehrspalten-Section Feinschliff
+   Voraussetzung: Section hat custom_class "iq-athletes".
+   Rotes "Athletes": im Ueberschriftfeld das Wort "Athletes" fett (B).
+   ================================================================ */
+.iq-athletes .rich-text__heading strong,
+.iq-athletes .rich-text__heading b{
+  color:#A51D1B !important;
+  font-weight:inherit !important;
+}
+.iq-athletes .multicolumn-card__text > p:first-child{
+  color:#A51D1B !important;
+  font-weight:600 !important;
+  font-size:14px !important;
+  line-height:1.35 !important;
+  margin:0 0 10px !important;
+  min-height:2.7em !important;
+}
+.iq-athletes .multicolumn-card__text > p:not(:first-child){
+  color:#5b5b58 !important;
+}
+@media (max-width:749px){
+  .iq-athletes .multicolumn-card__text > p:first-child{ min-height:0 !important; }
+}
+
+/* ================================================================
+   IQ INSIDER (Newsletter) - mehr Raum unten (war 12px, zu gedraengt)
+   ================================================================ */
+@media (min-width:750px){ .iq-insider__inner{ padding-bottom:72px !important; } }
+@media (max-width:749px){ .iq-insider__inner{ padding-bottom:56px !important; } }

@@ -1,0 +1,109 @@
+<section class="dealer-inquiry-section page-width">
+  <div class="dealer-inquiry-grid">
+    <div class="dealer-inquiry-content">
+      {%- assign current_lang = request.locale.iso_code | downcase -%}
+
+      {% if current_lang contains 'de' %}
+        {% if section.settings.heading_de != blank %}
+          <h2>{{ section.settings.heading_de }}</h2>
+        {% endif %}
+
+        {% if section.settings.intro_de != blank %}
+          <div class="rte">{{ section.settings.intro_de }}</div>
+        {% endif %}
+      {% else %}
+        {% if section.settings.heading_en != blank %}
+          <h2>{{ section.settings.heading_en }}</h2>
+        {% endif %}
+
+        {% if section.settings.intro_en != blank %}
+          <div class="rte">{{ section.settings.intro_en }}</div>
+        {% endif %}
+      {% endif %}
+    </div>
+
+    <div class="dealer-inquiry-form">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when '@app' %}
+            {% render block %}
+        {% endcase %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .dealer-inquiry-section {
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+
+  .dealer-inquiry-grid {
+    display: grid;
+    grid-template-columns: minmax(280px, 460px) minmax(0, 1fr);
+    gap: 40px;
+    align-items: start;
+  }
+
+  .dealer-inquiry-content h2 {
+    margin: 0 0 12px;
+  }
+
+  .dealer-inquiry-content p {
+    margin: 0 0 12px;
+  }
+
+  .dealer-inquiry-content ul {
+    margin: 0 0 16px 18px;
+  }
+
+  @media (max-width: 989px) {
+    .dealer-inquiry-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Dealer inquiry layout",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading_de",
+      "label": "Heading (DE)",
+      "default": "Händleranfrage"
+    },
+    {
+      "type": "richtext",
+      "id": "intro_de",
+      "label": "Content (DE)",
+      "default": "<p>Vielen Dank für Ihr Interesse an einer Zusammenarbeit mit IQ Dogsport. Bitte füllen Sie das Formular vollständig aus, damit wir Ihre Anfrage prüfen können.</p><p>Nach dem Absenden wird Ihre Anfrage intern geprüft. Bitte haben Sie Verständnis, dass wir Händleranfragen sorgfältig bewerten und nicht in jeder Region zusätzliche Vertriebspartner aufnehmen können.</p><ul><li>Bitte geben Sie vollständige Unternehmensdaten an.</li><li>Falls vorhanden, tragen Sie Website und Social Media ein.</li><li>Unter Zielgruppe können Sie Ihren Tätigkeitsbereich angeben.</li><li>Nach der Prüfung melden wir uns schnellstmöglich bei Ihnen.</li></ul>"
+    },
+    {
+      "type": "text",
+      "id": "heading_en",
+      "label": "Heading (EN)",
+      "default": "Dealer Inquiry"
+    },
+    {
+      "type": "richtext",
+      "id": "intro_en",
+      "label": "Content (EN)",
+      "default": "<p>Thank you for your interest in working with IQ Dogsport. Please complete the form in full so we can review your request properly.</p><p>After submission, your request will be reviewed internally. Please understand that we carefully assess dealer applications and may not be able to accept additional sales partners in every region.</p><ul><li>Please provide complete company details.</li><li>If available, include your website and social media.</li><li>Under Target Group, you can specify your business area.</li><li>Once reviewed, we will get back to you as soon as possible.</li></ul>"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Dealer inquiry layout"
+    }
+  ]
+}
+{% endschema %}

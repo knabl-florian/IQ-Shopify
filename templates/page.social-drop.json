@@ -1,0 +1,412 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [
+        ".main-page-title.page-title.h1.text-center {display: none;}"
+      ],
+      "settings": {
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "rich_text_JNM38a": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_BG9enG": {
+          "type": "heading",
+          "settings": {
+            "heading": "TRAIN HARD. TRAIN EASY.",
+            "heading_size": "h2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_Bzktf7": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Performance Gear für echten Hundesport.</p>",
+            "text_size": "text-base"
+          }
+        }
+      },
+      "block_order": [
+        "heading_BG9enG",
+        "text_Bzktf7"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "color_scheme": "",
+        "content_alignment": "center",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "custom_class": ""
+      }
+    },
+    "slideshow_QtPDRW": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_tnMyVG": {
+          "type": "slide",
+          "settings": {
+            "color_scheme": "",
+            "background": "shopify://shop_images/train-hard-tshirt.jpg",
+            "image_overlay_opacity": 0,
+            "show_content_in_container": true,
+            "content_position": "middle-left",
+            "content_position_mobile": "middle-center",
+            "text_alignment": "left",
+            "title": "Training Gear für echte Hundesportler.",
+            "heading_size": "h2",
+            "subheading": "",
+            "description": "<p>Entdecke ausgewählte IQ DOGSPORT Performance-Bekleidung für Training, Alltag und Wettkampf.</p>",
+            "description_size": "text-base",
+            "button_label": "Jetzt Social Selection shoppen",
+            "button_link": "#social-selection",
+            "button_style": "btn--primary"
+          }
+        }
+      },
+      "block_order": [
+        "slide_tnMyVG"
+      ],
+      "disabled": true,
+      "name": "t:sections.slideshow.name",
+      "settings": {
+        "container": "full",
+        "layout": "standard",
+        "slide_height": "large",
+        "show_dots": true,
+        "autoplay": false,
+        "autoplay_delay": 3,
+        "controls_position": "bottom",
+        "show_text_below": false,
+        "text_alignment_mobile": "center",
+        "accessibility_info": "Slideshow about our brand",
+        "custom_class": ""
+      }
+    },
+    "1778675908e61664f2": {
+      "type": "apps",
+      "blocks": {
+        "instafeed_app_block_GztAdb": {
+          "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
+          "disabled": true,
+          "settings": {
+            "title": "",
+            "title_color": "",
+            "title_size_v2": 0,
+            "alignment": "center",
+            "instafeed_margin_top": 50,
+            "instafeed_margin_bottom": 50,
+            "instafeed_margin_sides": 0,
+            "show_instagram_link": false,
+            "link_alignment": "left",
+            "link_color": "#000000",
+            "background_color": "",
+            "feed_id": "",
+            "html_area": ""
+          }
+        }
+      },
+      "block_order": [
+        "instafeed_app_block_GztAdb"
+      ],
+      "settings": {
+        "include_margins": true,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "custom_class": ""
+      }
+    },
+    "featured_collection_nVRR7j": {
+      "type": "featured-collection",
+      "custom_css": [],
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "color_scheme": "",
+        "header_layout": "horizontal",
+        "heading": "Social Selection",
+        "heading_size": "h1",
+        "heading_highlight_style": "none",
+        "subheading": "",
+        "description": "",
+        "text_size": "text-base",
+        "show_collection_description": false,
+        "collection": "social-highlights",
+        "limit": 8,
+        "columns": 4,
+        "column_gap": "medium",
+        "row_gap": "inherit",
+        "grid_layout": "standard",
+        "enable_slider": false,
+        "controls_position": "inside",
+        "pcard_image_ratio": "",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "show_all_button_on_top": false,
+        "button_label": "ALLE ANZEIGEN",
+        "button_style": "btn--primary",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "custom_class": "title-mobile-responsive"
+      }
+    },
+    "featured_product_JpGAhm": {
+      "type": "featured-product",
+      "blocks": {
+        "badges_xtpThg": {
+          "type": "badges",
+          "settings": {
+            "show_soldout_badge": true,
+            "show_sale_badge": true,
+            "sale_badge_type": "percentage"
+          }
+        },
+        "title_qwADXr": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "price_9Xhdgb": {
+          "type": "price",
+          "settings": {}
+        },
+        "description_tDiTNM": {
+          "type": "description",
+          "settings": {}
+        },
+        "inventory_nDQc7E": {
+          "type": "inventory",
+          "settings": {
+            "text_style": "body",
+            "inventory_threshold": 10,
+            "show_inventory_quantity": true
+          }
+        },
+        "variant_picker_Kr9Pqk": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_type": "color_swatch",
+            "button_style": "standard",
+            "button_size": 40,
+            "size_title": "Size",
+            "size_chart_from_page": ""
+          }
+        },
+        "buy_buttons_TzEUCf": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_quantity_selector": true,
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "icon_with_text_Y7a4c8": {
+          "type": "icon-with-text",
+          "settings": {
+            "layout": "horizontal",
+            "title_font": "body",
+            "title_size": "text-base",
+            "icon_1": "package",
+            "heading_1": "Orders over $50 ship free",
+            "icon_2": "currency-circle-dollar",
+            "heading_2": "30 day returns",
+            "icon_3": "star-four",
+            "heading_3": "Heading"
+          }
+        },
+        "addons_MWhdkJ": {
+          "type": "addons",
+          "settings": {
+            "show_share": true,
+            "show_ask_question": true
+          }
+        }
+      },
+      "block_order": [
+        "badges_xtpThg",
+        "title_qwADXr",
+        "price_9Xhdgb",
+        "description_tDiTNM",
+        "inventory_nDQc7E",
+        "variant_picker_Kr9Pqk",
+        "buy_buttons_TzEUCf",
+        "icon_with_text_Y7a4c8",
+        "addons_MWhdkJ"
+      ],
+      "disabled": true,
+      "name": "t:sections.featured-product.presets.name",
+      "settings": {
+        "product": "iq-trainingshoodie-train-hard-unisex-blau",
+        "color_scheme": "",
+        "enable_sticky_info": true,
+        "media_size": "large",
+        "mobile_thumbnails": "hide",
+        "enable_image_zoom": true,
+        "enable_video_looping": false,
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "custom_class": ""
+      }
+    },
+    "image_with_text_XYjgKE": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_wYVG7z": {
+          "type": "heading",
+          "settings": {
+            "heading": "Gemacht Für Training",
+            "heading_size": "h1",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_q8e77b": {
+          "type": "text",
+          "settings": {
+            "text": "<p>• <strong>BEWEGUNGSFREIHEIT </strong>– Anatomischer Schnitt für uneingeschränktes Handling.<br/>• <strong>STAURAUM </strong>– Strategisch platzierte Taschen für Beißwürste, Bälle und Zubehör.<br/>• <strong>OUTDOOR-TAUGLICH</strong> – Für wechselnde Bedingungen beim Training draußen.<br/>• <strong>COMMUNITY-GEPRÜFT </strong>– Für Menschen, die Hundesport wirklich leben.</p>",
+            "text_size": "text-base"
+          }
+        },
+        "button_pBhXxi": {
+          "type": "button",
+          "settings": {
+            "button_label": "JETZT ENTDECKEN",
+            "button_link": "https://iq-dogsport.de/products/iq-multifunktionsjacke-3-0-damen-olive",
+            "button_style": "btn--primary"
+          }
+        }
+      },
+      "block_order": [
+        "heading_wYVG7z",
+        "text_q8e77b",
+        "button_pBhXxi"
+      ],
+      "disabled": true,
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image": "shopify://shop_images/MFJ-Women-Oliv-Front-Foodpocket.jpg",
+        "image_height": "adapt",
+        "layout": "text_first",
+        "desktop_content_position": "center",
+        "desktop_content_alignment": "left",
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "mobile_content_alignment": "left",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "custom_class": ""
+      }
+    },
+    "multicolumn_dBtyFz": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_kHMRKY": {
+          "type": "column",
+          "settings": {
+            "show_image": true,
+            "image": "shopify://shop_images/IQ-T-Shirt-Power-Unisex-Olive-vorne_2c753fce-d6e7-4a2b-8f9f-5791dc5e0b87.jpg",
+            "image_width": "medium",
+            "title": "SOMMER SET",
+            "heading_size": "h4",
+            "text": "<p>T-Shirt + Socken + Trainingspants</p>",
+            "text_size": "text-base",
+            "button_label": "SET ENTDECKEN",
+            "button_style": "btn--underline",
+            "button_link": "/collections/accessoires-frauen",
+            "mobile_layout": "inherit"
+          }
+        },
+        "column_Gf7MwL": {
+          "type": "column",
+          "settings": {
+            "show_image": true,
+            "image": "shopify://shop_images/Allrounder-Jacke-Uni_vorne_67f7836e-3e45-4561-b9bb-df63a6ffa2f8.jpg",
+            "image_width": "medium",
+            "title": "ALL-WEATHER",
+            "heading_size": "h4",
+            "text": "<p>Jacke + Weste + Hose</p>",
+            "text_size": "text-base",
+            "button_label": "SET ENTDECKEN",
+            "button_style": "btn--underline",
+            "button_link": "shopify://collections/hundesportbekleidung-herren",
+            "mobile_layout": "inherit"
+          }
+        },
+        "column_BQKfGD": {
+          "type": "column",
+          "settings": {
+            "show_image": true,
+            "image": "shopify://shop_images/IQ-Trainingshoodie-Futtertasche_9cdfc7ea-44f1-49da-a4a1-1cd6b8ac51ec.jpg",
+            "image_width": "medium",
+            "title": "HOODIE SET",
+            "heading_size": "h4",
+            "text": "<p>Ice Hoodie + Trainhard Hoodie</p>",
+            "text_size": "text-base",
+            "button_label": "SET ENTDECKEN",
+            "button_style": "btn--underline",
+            "button_link": "shopify://collections/hundesport-hoodies-herren",
+            "mobile_layout": "inherit"
+          }
+        }
+      },
+      "block_order": [
+        "column_kHMRKY",
+        "column_Gf7MwL",
+        "column_BQKfGD"
+      ],
+      "disabled": true,
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "color_scheme": "",
+        "heading": "PERFEKT KOMBINIERT",
+        "heading_size": "h1",
+        "heading_highlight_style": "none",
+        "subheading": "",
+        "description": "",
+        "text_size": "text-base",
+        "column_alignment": "left",
+        "columns_desktop": 3,
+        "column_gap": "large",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "custom_class": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "rich_text_JNM38a",
+    "slideshow_QtPDRW",
+    "1778675908e61664f2",
+    "featured_collection_nVRR7j",
+    "featured_product_JpGAhm",
+    "image_with_text_XYjgKE",
+    "multicolumn_dBtyFz"
+  ]
+}

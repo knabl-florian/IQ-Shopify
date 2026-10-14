@@ -1,0 +1,116 @@
+{% if request.page_type == 'collection' %}
+<style>
+body.collection-template #MainContent :is(
+  .iq-collection-intro__text,
+  .collection-hero__description,
+  .shopify-section:has(.collection-hero) + .shopify-section .section > div[style] > div[style*="max-width:1180px"]
+) {
+  max-width: none !important;
+  font-family: Archivo, Arial, sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+  line-height: 1.5 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  text-align: center !important;
+  color: #4B4B48 !important;
+  opacity: 1 !important;
+}
+body.collection-template #MainContent :is(
+  .iq-collection-intro__text,
+  .collection-hero__description,
+  .shopify-section:has(.collection-hero) + .shopify-section .section > div[style] > div[style*="max-width:1180px"]
+) :is(p, span, a, strong, b, em, i, li, h2, h3, h4, h5, h6) {
+  font-family: inherit !important;
+  font-size: inherit !important;
+  font-style: normal !important;
+  line-height: inherit !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  color: inherit !important;
+}
+body.collection-template #MainContent :is(
+  .iq-collection-intro__text,
+  .collection-hero__description,
+  .shopify-section:has(.collection-hero) + .shopify-section .section > div[style] > div[style*="max-width:1180px"]
+) :is(p, h2, h3, h4, h5, h6) {
+  margin: 0 0 5px !important;
+}
+body.collection-template #MainContent :is(
+  .iq-collection-intro__text,
+  .collection-hero__description,
+  .shopify-section:has(.collection-hero) + .shopify-section .section > div[style] > div[style*="max-width:1180px"]
+) > :last-child {margin-bottom: 0 !important}
+body.collection-template #MainContent :is(
+  .iq-collection-intro__text,
+  .collection-hero__description,
+  .shopify-section:has(.collection-hero) + .shopify-section .section > div[style] > div[style*="max-width:1180px"]
+) :is(strong, b, h2, h3, h4, h5, h6) {font-weight: 700 !important}
+body.collection-template #MainContent :is(
+  .iq-collection-intro__text,
+  .collection-hero__description,
+  .shopify-section:has(.collection-hero) + .shopify-section .section > div[style] > div[style*="max-width:1180px"]
+) a {
+  font-weight: 400 !important;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+body.collection-template #MainContent :is(
+  .iq-collection-intro__text,
+  .collection-hero__description,
+  .shopify-section:has(.collection-hero) + .shopify-section .section > div[style] > div[style*="max-width:1180px"]
+) a :is(strong, b) {font-weight: 400 !important}
+body.collection-template #MainContent .iq-collection-intro {padding-top: 10px !important; padding-bottom: 0 !important}
+body.collection-template #MainContent .section--collapsible-tabs {
+  padding-top: 12px !important;
+  padding-bottom: 24px !important;
+}
+body.collection-template #MainContent .section--collapsible-tabs .accordion-details__summary {
+  min-height: 44px;
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+}
+body.collection-template #MainContent .section--collapsible-tabs .accordion-details__summary :is(h2, h3, h4, span, strong, em) {
+  font-family: Archivo, Arial, sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+  line-height: 1.45 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+}
+body.collection-template #MainContent .section--collapsible-tabs .accordion-details__summary .icon {width: 16px; height: 16px; flex-shrink: 0}
+body.collection-template #MainContent .section--collapsible-tabs .accordion-details__content {
+  font-family: Archivo, Arial, sans-serif !important;
+  font-size: 14px !important;
+  line-height: 1.65 !important;
+}
+body.collection-template #MainContent .section--collapsible-tabs .accordion-details__content :is(p, li, span, a) {
+  font-family: inherit !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+}
+body.collection-template #MainContent .section--collapsible-tabs .accordion-details__content p {margin-top: 0; margin-bottom: 12px}
+body.collection-template #MainContent .section--collapsible-tabs .accordion-details__content :is(h2, h3, h4, h5, h6) {
+  margin-top: 20px;
+  margin-bottom: 8px;
+  font-family: Archivo, Arial, sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  font-style: normal !important;
+  line-height: 1.5 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+}
+@media (max-width: 749px) {
+  body.collection-template #MainContent :is(
+  .iq-collection-intro__text,
+  .collection-hero__description,
+  .shopify-section:has(.collection-hero) + .shopify-section .section > div[style] > div[style*="max-width:1180px"]
+) {font-size: 14px !important; text-align: left !important}
+  body.collection-template #MainContent .section--collapsible-tabs .accordion-details__summary :is(h2, h3, h4, span, strong, em) {font-size: 14px !important}
+  body.collection-template #MainContent .section--collapsible-tabs {padding-top: 8px !important; padding-bottom: 20px !important}
+}
+</style>
+{% endif %}
