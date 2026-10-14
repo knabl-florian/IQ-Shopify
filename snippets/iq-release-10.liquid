@@ -1,0 +1,13 @@
+{% doc %}
+  Editor-managed content preserving the existing collection layout.
+  @param {block} block - Content block.
+{% enddoc %}
+<div class="iq-collection-intro">
+{% if request.locale.iso_code == 'en' %}
+<h2>{{ block.settings.text_3 | escape }}</h2>
+<a href="{% if request.locale.iso_code == 'en' %}{{ block.settings.link_2 }}{% else %}{{ block.settings.link_1 }}{% endif %}">{{ block.settings.text_4 | escape }} <span aria-hidden="true">→</span></a>
+{% else %}
+<h2>{{ block.settings.text_5 | escape }}</h2>
+<a href="{% if request.locale.iso_code == 'en' %}{{ block.settings.link_2 }}{% else %}{{ block.settings.link_1 }}{% endif %}">{{ block.settings.text_6 | escape }} <span aria-hidden="true">→</span></a>
+{% endif %}
+</div>

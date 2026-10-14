@@ -683,6 +683,7 @@
             endif
           -%}
           <div id="ProductGridContainer">
+            {% unless template.suffix == 'westen' or template.suffix == 'jacken' %}{% render 'iq-collection-product-jumps', products: collection.products %}{% endunless %}
             {%- if section.settings.iq_jv_enabled and card_count > 0 -%}
               {{ iq_jv_style }}
               <p class="iq-jv-jump text-sm"><a href="#iq-jacken-vergleich-{{ section.id }}">{% if lang == 'en' %}Which jacket suits you? Compare jackets{% else %}Welche Jacke passt zu Dir? Zum Vergleich{% endif %} <span aria-hidden="true">↓</span></a></p>
@@ -762,6 +763,7 @@
   {%- assign current_app_position = 24 -%}
 
   {%- for block in section.blocks -%}
+{%- if block.type == 'iq_editorial' and block.settings.only_collection.handle != collection.handle -%}{%- continue -%}{%- endif -%}
 
     {%- if block.type == 'app_position' -%}
       {%- assign current_app_position = block.settings.position -%}
@@ -781,6 +783,7 @@
         data-block-id="{{ block.id }}"
       >
       {%- case block.type -%}
+{%- when 'iq_editorial' -%}{% render 'iq-editorial-banner', block: block %}
 
         {%- when '@app' -%}
           <div class="f-column card collection-inline-block collection-inline-block--full" data-inline-block="{{ block.id }}" {{ block.shopify_attributes }}>
@@ -947,7 +950,29 @@
       {%- endif -%}
     </div>
   </div>
-        {%- when 'inline_custom_liquid' -%}
+        {%- when 'iq_release_2' -%}
+<div class="f-column collection-inline-block collection-inline-block--{{ block.settings.width }}" data-inline-block="{{ block.id }}" {{ block.shopify_attributes }}>{% render 'iq-release-2', block: block %}</div>
+{%- when 'iq_release_3' -%}
+<div class="f-column collection-inline-block collection-inline-block--{{ block.settings.width }}" data-inline-block="{{ block.id }}" {{ block.shopify_attributes }}>{% render 'iq-release-3', block: block %}</div>
+{%- when 'iq_release_4' -%}
+<div class="f-column collection-inline-block collection-inline-block--{{ block.settings.width }}" data-inline-block="{{ block.id }}" {{ block.shopify_attributes }}>{% render 'iq-release-4', block: block %}</div>
+{%- when 'iq_release_5' -%}
+<div class="f-column collection-inline-block collection-inline-block--{{ block.settings.width }}" data-inline-block="{{ block.id }}" {{ block.shopify_attributes }}>{% render 'iq-release-5', block: block %}</div>
+{%- when 'iq_release_9' -%}
+<div class="f-column collection-inline-block collection-inline-block--{{ block.settings.width }}" data-inline-block="{{ block.id }}" {{ block.shopify_attributes }}>{% render 'iq-release-9', block: block %}</div>
+{%- when 'iq_release_10' -%}
+<div class="f-column collection-inline-block collection-inline-block--{{ block.settings.width }}" data-inline-block="{{ block.id }}" {{ block.shopify_attributes }}>{% render 'iq-release-10', block: block %}</div>
+{%- when 'iq_release_11' -%}
+<div class="f-column collection-inline-block collection-inline-block--{{ block.settings.width }}" data-inline-block="{{ block.id }}" {{ block.shopify_attributes }}>{% render 'iq-release-11', block: block %}</div>
+{%- when 'iq_release_12' -%}
+<div class="f-column collection-inline-block collection-inline-block--{{ block.settings.width }}" data-inline-block="{{ block.id }}" {{ block.shopify_attributes }}>{% render 'iq-release-12', block: block %}</div>
+{%- when 'iq_release_17' -%}
+<div class="f-column collection-inline-block collection-inline-block--{{ block.settings.width }}" data-inline-block="{{ block.id }}" {{ block.shopify_attributes }}>{% render 'iq-release-17', block: block %}</div>
+{%- when 'iq_release_18' -%}
+<div class="f-column collection-inline-block collection-inline-block--{{ block.settings.width }}" data-inline-block="{{ block.id }}" {{ block.shopify_attributes }}>{% render 'iq-release-18', block: block %}</div>
+{%- when 'iq_release_19' -%}
+<div class="f-column collection-inline-block collection-inline-block--{{ block.settings.width }}" data-inline-block="{{ block.id }}" {{ block.shopify_attributes }}>{% render 'iq-release-19', block: block %}</div>
+{%- when 'inline_custom_liquid' -%}
           <div class="f-column collection-inline-block collection-inline-block--{{ block.settings.width }}" data-inline-block="{{ block.id }}" {{ block.shopify_attributes }}>
             {{ block.settings.custom_liquid }}
           </div>
@@ -1807,6 +1832,1284 @@ document.addEventListener('webkitfullscreenchange', function () {
     },
     {
       "type": "@app"
+    },
+    {
+      "type": "iq_editorial",
+      "name": "IQ Erklärbanner",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "only_collection",
+          "label": "Nur für diese Collection"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Produkt / Linkziel"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Bild Desktop",
+          "info": "Leer = erstes Produktbild."
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Bild mobil"
+        },
+        {
+          "type": "select",
+          "id": "mode",
+          "label": "Bildtyp",
+          "options": [
+            {
+              "value": "photo",
+              "label": "Actionfoto – helle Schrift"
+            },
+            {
+              "value": "product",
+              "label": "Produktfoto – dunkle Schrift"
+            }
+          ],
+          "default": "photo"
+        },
+        {
+          "type": "range",
+          "id": "position",
+          "label": "Nach Produktnummer Desktop",
+          "min": 1,
+          "max": 101,
+          "step": 1,
+          "default": 6
+        },
+        {
+          "type": "range",
+          "id": "position_mobile",
+          "label": "Nach Produktnummer mobil",
+          "min": 1,
+          "max": 101,
+          "step": 1,
+          "default": 4
+        },
+        {
+          "type": "header",
+          "content": "Deutsch"
+        },
+        {
+          "type": "text",
+          "id": "eyebrow_de",
+          "label": "Kleine Überschrift"
+        },
+        {
+          "type": "text",
+          "id": "heading_de",
+          "label": "Überschrift"
+        },
+        {
+          "type": "textarea",
+          "id": "body_de",
+          "label": "Kurze Erklärung"
+        },
+        {
+          "type": "text",
+          "id": "alt_de",
+          "label": "Bildbeschreibung"
+        },
+        {
+          "type": "header",
+          "content": "English"
+        },
+        {
+          "type": "text",
+          "id": "eyebrow_en",
+          "label": "Kleine Überschrift"
+        },
+        {
+          "type": "text",
+          "id": "heading_en",
+          "label": "Überschrift"
+        },
+        {
+          "type": "textarea",
+          "id": "body_en",
+          "label": "Kurze Erklärung"
+        },
+        {
+          "type": "text",
+          "id": "alt_en",
+          "label": "Bildbeschreibung"
+        }
+      ]
+    },
+    {
+      "type": "iq_release_2",
+      "name": "IQ Inhalt 2",
+      "settings": [
+        {
+          "type": "range",
+          "id": "position",
+          "label": "Show after product number",
+          "min": 1,
+          "max": 101,
+          "step": 1,
+          "default": 8
+        },
+        {
+          "type": "range",
+          "id": "position_mobile",
+          "label": "Show after product number on mobile",
+          "min": 1,
+          "max": 101,
+          "step": 1,
+          "default": 2
+        },
+        {
+          "type": "select",
+          "id": "width",
+          "label": "Width",
+          "options": [
+            {
+              "value": "1",
+              "label": "1 column"
+            },
+            {
+              "value": "2",
+              "label": "2 columns"
+            },
+            {
+              "value": "full",
+              "label": "Full row"
+            }
+          ],
+          "default": "full"
+        },
+        {
+          "type": "image_picker",
+          "id": "bild_1",
+          "label": "Bild: iq-04-performance-tshirt.webp"
+        },
+        {
+          "type": "text",
+          "id": "text_2",
+          "label": "Bildbeschreibung: Man taking a blue toy from the back pocket o"
+        },
+        {
+          "type": "text",
+          "id": "text_3",
+          "label": "Bildbeschreibung: Mann zieht ein blaues Spielzeug aus der Rück"
+        },
+        {
+          "type": "textarea",
+          "id": "text_4",
+          "label": "Text: IQ Performance T-Shirt · Women & Unisex"
+        },
+        {
+          "type": "textarea",
+          "id": "text_5",
+          "label": "Überschrift: Thoughtful fabric."
+        },
+        {
+          "type": "textarea",
+          "id": "text_6",
+          "label": "Überschrift: Rewards within reach."
+        },
+        {
+          "type": "textarea",
+          "id": "text_7",
+          "label": "Text: Two-layer double-face fabric: cotton jersey outside, po"
+        },
+        {
+          "type": "textarea",
+          "id": "text_8",
+          "label": "Text: IQ Performance T-Shirt · Damen & Unisex"
+        },
+        {
+          "type": "textarea",
+          "id": "text_9",
+          "label": "Überschrift: Durchdachter Stoff."
+        },
+        {
+          "type": "textarea",
+          "id": "text_10",
+          "label": "Überschrift: Belohnung griffbereit."
+        },
+        {
+          "type": "textarea",
+          "id": "text_11",
+          "label": "Text: Zweilagiger Double-Face-Stoff: Baumwolljersey außen, Po"
+        }
+      ]
+    },
+    {
+      "type": "iq_release_3",
+      "name": "IQ Inhalt 3",
+      "settings": [
+        {
+          "type": "range",
+          "id": "position",
+          "label": "Show after product number",
+          "min": 1,
+          "max": 101,
+          "step": 1,
+          "default": 8
+        },
+        {
+          "type": "range",
+          "id": "position_mobile",
+          "label": "Show after product number on mobile",
+          "min": 1,
+          "max": 101,
+          "step": 1,
+          "default": 2
+        },
+        {
+          "type": "select",
+          "id": "width",
+          "label": "Width",
+          "options": [
+            {
+              "value": "1",
+              "label": "1 column"
+            },
+            {
+              "value": "2",
+              "label": "2 columns"
+            },
+            {
+              "value": "full",
+              "label": "Full row"
+            }
+          ],
+          "default": "full"
+        },
+        {
+          "type": "image_picker",
+          "id": "bild_1",
+          "label": "Bild: iq-05-modulare-futtertasche.webp"
+        },
+        {
+          "type": "text",
+          "id": "text_2",
+          "label": "Bildbeschreibung: Woman in an olive IQ hoodie with the optiona"
+        },
+        {
+          "type": "text",
+          "id": "text_3",
+          "label": "Bildbeschreibung: Olivfarbener Hoodie mit seitlich befestigter"
+        },
+        {
+          "type": "textarea",
+          "id": "text_4",
+          "label": "Text: Optional accessory · IQ modular treat pocket"
+        },
+        {
+          "type": "textarea",
+          "id": "text_5",
+          "label": "Überschrift: Your hoodie."
+        },
+        {
+          "type": "textarea",
+          "id": "text_6",
+          "label": "Überschrift: Room for more."
+        },
+        {
+          "type": "textarea",
+          "id": "text_7",
+          "label": "Text: Extra reward storage, right on your hoodie. The IQ modu"
+        },
+        {
+          "type": "textarea",
+          "id": "text_8",
+          "label": "Text: Optionales Zubehör · IQ modulare Futtertasche"
+        },
+        {
+          "type": "textarea",
+          "id": "text_9",
+          "label": "Überschrift: Dein Hoodie."
+        },
+        {
+          "type": "textarea",
+          "id": "text_10",
+          "label": "Überschrift: Noch mehr dabei."
+        },
+        {
+          "type": "textarea",
+          "id": "text_11",
+          "label": "Text: Mehr Platz für Belohnungen, direkt am Hoodie. Die IQ mo"
+        }
+      ]
+    },
+    {
+      "type": "iq_release_4",
+      "name": "IQ Inhalt 4",
+      "settings": [
+        {
+          "type": "range",
+          "id": "position",
+          "label": "Show after product number",
+          "min": 1,
+          "max": 101,
+          "step": 1,
+          "default": 8
+        },
+        {
+          "type": "range",
+          "id": "position_mobile",
+          "label": "Show after product number on mobile",
+          "min": 1,
+          "max": 101,
+          "step": 1,
+          "default": 2
+        },
+        {
+          "type": "select",
+          "id": "width",
+          "label": "Width",
+          "options": [
+            {
+              "value": "1",
+              "label": "1 column"
+            },
+            {
+              "value": "2",
+              "label": "2 columns"
+            },
+            {
+              "value": "full",
+              "label": "Full row"
+            }
+          ],
+          "default": "full"
+        },
+        {
+          "type": "image_picker",
+          "id": "bild_1",
+          "label": "Bild: iq-03-damen-zip-hoodie.webp"
+        },
+        {
+          "type": "text",
+          "id": "text_2",
+          "label": "Bildbeschreibung: Woman in a grey and black IQ zip hoodie with"
+        },
+        {
+          "type": "text",
+          "id": "text_3",
+          "label": "Bildbeschreibung: Frau im grau-schwarzen IQ Damen-Zip-Hoodie m"
+        },
+        {
+          "type": "textarea",
+          "id": "text_4",
+          "label": "Text: IQ women’s zip hoodie"
+        },
+        {
+          "type": "textarea",
+          "id": "text_5",
+          "label": "Überschrift: Flattering fit."
+        },
+        {
+          "type": "textarea",
+          "id": "text_6",
+          "label": "Überschrift: Clever details."
+        },
+        {
+          "type": "textarea",
+          "id": "text_7",
+          "label": "Text: A flattering fit with comfortable stretch and soft flee"
+        },
+        {
+          "type": "textarea",
+          "id": "text_8",
+          "label": "Text: IQ Zip-Hoodie Damen"
+        },
+        {
+          "type": "textarea",
+          "id": "text_9",
+          "label": "Überschrift: Schöner Schnitt."
+        },
+        {
+          "type": "textarea",
+          "id": "text_10",
+          "label": "Überschrift: Viel dahinter."
+        },
+        {
+          "type": "textarea",
+          "id": "text_11",
+          "label": "Text: Figurbetont und bequem: Stretch außen, flauschiges Flee"
+        }
+      ]
+    },
+    {
+      "type": "iq_release_5",
+      "name": "IQ Inhalt 5",
+      "settings": [
+        {
+          "type": "range",
+          "id": "position",
+          "label": "Show after product number",
+          "min": 1,
+          "max": 101,
+          "step": 1,
+          "default": 8
+        },
+        {
+          "type": "range",
+          "id": "position_mobile",
+          "label": "Show after product number on mobile",
+          "min": 1,
+          "max": 101,
+          "step": 1,
+          "default": 2
+        },
+        {
+          "type": "select",
+          "id": "width",
+          "label": "Width",
+          "options": [
+            {
+              "value": "1",
+              "label": "1 column"
+            },
+            {
+              "value": "2",
+              "label": "2 columns"
+            },
+            {
+              "value": "full",
+              "label": "Full row"
+            }
+          ],
+          "default": "full"
+        },
+        {
+          "type": "image_picker",
+          "id": "bild_1",
+          "label": "Bild: iq-02-hoodie.webp"
+        },
+        {
+          "type": "text",
+          "id": "text_2",
+          "label": "Bildbeschreibung: Man in a black IQ hoodie playing tug with hi"
+        },
+        {
+          "type": "text",
+          "id": "text_3",
+          "label": "Bildbeschreibung: Mann im schwarzen IQ Hoodie spielt mit seine"
+        },
+        {
+          "type": "textarea",
+          "id": "text_4",
+          "label": "Text: IQ hoodies"
+        },
+        {
+          "type": "textarea",
+          "id": "text_5",
+          "label": "Überschrift: Everyday style."
+        },
+        {
+          "type": "textarea",
+          "id": "text_6",
+          "label": "Überschrift: Ready for your dog."
+        },
+        {
+          "type": "textarea",
+          "id": "text_7",
+          "label": "Text: An XL back pocket and hidden, wipe-clean treat pockets."
+        },
+        {
+          "type": "textarea",
+          "id": "text_8",
+          "label": "Text: IQ Hoodies"
+        },
+        {
+          "type": "textarea",
+          "id": "text_9",
+          "label": "Überschrift: Alltagslook."
+        },
+        {
+          "type": "textarea",
+          "id": "text_10",
+          "label": "Überschrift: Alles parat."
+        },
+        {
+          "type": "textarea",
+          "id": "text_11",
+          "label": "Text: XL-Rückentasche, versteckte und auswischbare Futtertasc"
+        }
+      ]
+    },
+    {
+      "type": "iq_release_9",
+      "name": "IQ Inhalt 9",
+      "settings": [
+        {
+          "type": "range",
+          "id": "position",
+          "label": "Show after product number",
+          "min": 1,
+          "max": 101,
+          "step": 1,
+          "default": 8
+        },
+        {
+          "type": "range",
+          "id": "position_mobile",
+          "label": "Show after product number on mobile",
+          "min": 1,
+          "max": 101,
+          "step": 1,
+          "default": 2
+        },
+        {
+          "type": "select",
+          "id": "width",
+          "label": "Width",
+          "options": [
+            {
+              "value": "1",
+              "label": "1 column"
+            },
+            {
+              "value": "2",
+              "label": "2 columns"
+            },
+            {
+              "value": "full",
+              "label": "Full row"
+            }
+          ],
+          "default": "full"
+        },
+        {
+          "type": "image_picker",
+          "id": "bild_1",
+          "label": "Bild: mfj-blau-robust-mobil-klein.jpg"
+        },
+        {
+          "type": "image_picker",
+          "id": "bild_2",
+          "label": "Bild: mfj-blau-robust-desktop-klein.jpg"
+        },
+        {
+          "type": "text",
+          "id": "text_3",
+          "label": "Bildbeschreibung: IQ Multifunktionsjacke 3.0 Unisex Blau"
+        },
+        {
+          "type": "textarea",
+          "id": "text_4",
+          "label": "Text: THE ORIGINAL SINCE 2011"
+        },
+        {
+          "type": "textarea",
+          "id": "text_5",
+          "label": "Überschrift: Built tough."
+        },
+        {
+          "type": "textarea",
+          "id": "text_6",
+          "label": "Überschrift: Made to last."
+        },
+        {
+          "type": "textarea",
+          "id": "text_7",
+          "label": "Text: Our toughest dog training jacket: scratch-resistant Tas"
+        },
+        {
+          "type": "textarea",
+          "id": "text_8",
+          "label": "Text: Scratch-resistant Taslon. Reinforced seams."
+        },
+        {
+          "type": "textarea",
+          "id": "text_9",
+          "label": "Text: Insulated. 20,000 mm waterproof rating."
+        },
+        {
+          "type": "textarea",
+          "id": "text_10",
+          "label": "Text: DAS ORIGINAL SEIT 2011"
+        },
+        {
+          "type": "textarea",
+          "id": "text_11",
+          "label": "Überschrift: Hart im Nehmen."
+        },
+        {
+          "type": "textarea",
+          "id": "text_12",
+          "label": "Überschrift: Gemacht für Jahre."
+        },
+        {
+          "type": "textarea",
+          "id": "text_13",
+          "label": "Text: Unsere robusteste Hundesportjacke: kratzfestes Taslon, "
+        },
+        {
+          "type": "textarea",
+          "id": "text_14",
+          "label": "Text: Kratzfestes Taslon. Verstärkte Nähte."
+        },
+        {
+          "type": "textarea",
+          "id": "text_15",
+          "label": "Text: Gefüttert. 20.000 mm Wassersäule."
+        }
+      ]
+    },
+    {
+      "type": "iq_release_10",
+      "name": "Dienst-Trenner",
+      "settings": [
+        {
+          "type": "range",
+          "id": "position",
+          "label": "Show after product number",
+          "min": 1,
+          "max": 101,
+          "step": 1,
+          "default": 8
+        },
+        {
+          "type": "range",
+          "id": "position_mobile",
+          "label": "Show after product number on mobile",
+          "min": 1,
+          "max": 101,
+          "step": 1,
+          "default": 2
+        },
+        {
+          "type": "select",
+          "id": "width",
+          "label": "Width",
+          "options": [
+            {
+              "value": "1",
+              "label": "1 column"
+            },
+            {
+              "value": "2",
+              "label": "2 columns"
+            },
+            {
+              "value": "full",
+              "label": "Full row"
+            }
+          ],
+          "default": "full"
+        },
+        {
+          "type": "url",
+          "id": "link_1",
+          "label": "Linkziel DE: /collections/k9-diensthundefuehrer-ausruestung"
+        },
+        {
+          "type": "url",
+          "id": "link_2",
+          "label": "Linkziel EN: /en/collections/k9-diensthundefuehrer-ausruestun"
+        },
+        {
+          "type": "textarea",
+          "id": "text_3",
+          "label": "Überschrift: Jackets for K9 handlers"
+        },
+        {
+          "type": "textarea",
+          "id": "text_4",
+          "label": "Linktext: More equipment"
+        },
+        {
+          "type": "textarea",
+          "id": "text_5",
+          "label": "Überschrift: Jacken für Diensthundeführer"
+        },
+        {
+          "type": "textarea",
+          "id": "text_6",
+          "label": "Linktext: Weitere Ausrüstung"
+        }
+      ]
+    },
+    {
+      "type": "iq_release_11",
+      "name": "IQ Inhalt 11",
+      "settings": [
+        {
+          "type": "range",
+          "id": "position",
+          "label": "Show after product number",
+          "min": 1,
+          "max": 101,
+          "step": 1,
+          "default": 8
+        },
+        {
+          "type": "range",
+          "id": "position_mobile",
+          "label": "Show after product number on mobile",
+          "min": 1,
+          "max": 101,
+          "step": 1,
+          "default": 2
+        },
+        {
+          "type": "select",
+          "id": "width",
+          "label": "Width",
+          "options": [
+            {
+              "value": "1",
+              "label": "1 column"
+            },
+            {
+              "value": "2",
+              "label": "2 columns"
+            },
+            {
+              "value": "full",
+              "label": "Full row"
+            }
+          ],
+          "default": "full"
+        },
+        {
+          "type": "image_picker",
+          "id": "bild_1",
+          "label": "Bild: iq-allround-funktion-mobil.jpg"
+        },
+        {
+          "type": "image_picker",
+          "id": "bild_2",
+          "label": "Bild: iq-allround-funktion-desktop.jpg"
+        },
+        {
+          "type": "text",
+          "id": "text_3",
+          "label": "Bildbeschreibung: IQ Allround-Jacke beim Training mit Hund"
+        },
+        {
+          "type": "textarea",
+          "id": "text_4",
+          "label": "Text: THE ALLROUND JACKET"
+        },
+        {
+          "type": "textarea",
+          "id": "text_5",
+          "label": "Überschrift: Travel light."
+        },
+        {
+          "type": "textarea",
+          "id": "text_6",
+          "label": "Überschrift: Bring the essentials."
+        },
+        {
+          "type": "textarea",
+          "id": "text_7",
+          "label": "Text: Lightweight rain jacket with a storm hood"
+        },
+        {
+          "type": "textarea",
+          "id": "text_8",
+          "label": "Text: and removable treat pockets."
+        },
+        {
+          "type": "textarea",
+          "id": "text_9",
+          "label": "Text: Lightweight rain jacket with a large storm hood, remova"
+        },
+        {
+          "type": "textarea",
+          "id": "text_10",
+          "label": "Text: DIE ALLROUND-JACKE"
+        },
+        {
+          "type": "textarea",
+          "id": "text_11",
+          "label": "Überschrift: Leicht unterwegs."
+        },
+        {
+          "type": "textarea",
+          "id": "text_12",
+          "label": "Überschrift: Alles dabei."
+        },
+        {
+          "type": "textarea",
+          "id": "text_13",
+          "label": "Text: Leichte Regenjacke mit Sturmkapuze"
+        },
+        {
+          "type": "textarea",
+          "id": "text_14",
+          "label": "Text: und herausnehmbaren Futtertaschen."
+        },
+        {
+          "type": "textarea",
+          "id": "text_15",
+          "label": "Text: Leichte Regenjacke mit großer Sturmkapuze, herausnehmba"
+        }
+      ]
+    },
+    {
+      "type": "iq_release_12",
+      "name": "IQ Inhalt 12",
+      "settings": [
+        {
+          "type": "range",
+          "id": "position",
+          "label": "Show after product number",
+          "min": 1,
+          "max": 101,
+          "step": 1,
+          "default": 8
+        },
+        {
+          "type": "range",
+          "id": "position_mobile",
+          "label": "Show after product number on mobile",
+          "min": 1,
+          "max": 101,
+          "step": 1,
+          "default": 2
+        },
+        {
+          "type": "select",
+          "id": "width",
+          "label": "Width",
+          "options": [
+            {
+              "value": "1",
+              "label": "1 column"
+            },
+            {
+              "value": "2",
+              "label": "2 columns"
+            },
+            {
+              "value": "full",
+              "label": "Full row"
+            }
+          ],
+          "default": "full"
+        },
+        {
+          "type": "image_picker",
+          "id": "bild_1",
+          "label": "Bild: iq-trainingsjacke-funktion-mobil-unten.jpg"
+        },
+        {
+          "type": "image_picker",
+          "id": "bild_2",
+          "label": "Bild: iq-trainingsjacke-funktion-desktop-quer.jpg"
+        },
+        {
+          "type": "text",
+          "id": "text_3",
+          "label": "Bildbeschreibung: IQ Trainingsjacke 2.0 mit Balltasche im Eins"
+        },
+        {
+          "type": "textarea",
+          "id": "text_4",
+          "label": "Text: The training jacket 2.0"
+        },
+        {
+          "type": "textarea",
+          "id": "text_5",
+          "label": "Überschrift: Your vest’s features."
+        },
+        {
+          "type": "textarea",
+          "id": "text_6",
+          "label": "Überschrift: Now in a jacket."
+        },
+        {
+          "type": "textarea",
+          "id": "text_7",
+          "label": "Text: Patented chest pocket."
+        },
+        {
+          "type": "textarea",
+          "id": "text_8",
+          "label": "Text: Optional: ball pocket, modular treat pocket & Zip-In."
+        },
+        {
+          "type": "textarea",
+          "id": "text_9",
+          "label": "Text: Patented chest pocket, compatible with the optional IQ "
+        },
+        {
+          "type": "textarea",
+          "id": "text_10",
+          "label": "Text: Die Trainingsjacke 2.0"
+        },
+        {
+          "type": "textarea",
+          "id": "text_11",
+          "label": "Überschrift: Deine Weste kann das."
+        },
+        {
+          "type": "textarea",
+          "id": "text_12",
+          "label": "Überschrift: Deine Jacke auch."
+        },
+        {
+          "type": "textarea",
+          "id": "text_13",
+          "label": "Text: Patentierte Brusttasche."
+        },
+        {
+          "type": "textarea",
+          "id": "text_14",
+          "label": "Text: Optional: Balltasche, modulare Futtertasche & Zip-In."
+        },
+        {
+          "type": "textarea",
+          "id": "text_15",
+          "label": "Text: Patentierte Brusttasche, kompatibel mit der optionalen "
+        }
+      ]
+    },
+    {
+      "type": "iq_release_17",
+      "name": "IQ Inhalt 17",
+      "settings": [
+        {
+          "type": "range",
+          "id": "position",
+          "label": "Show after product number",
+          "min": 1,
+          "max": 101,
+          "step": 1,
+          "default": 8
+        },
+        {
+          "type": "range",
+          "id": "position_mobile",
+          "label": "Show after product number on mobile",
+          "min": 1,
+          "max": 101,
+          "step": 1,
+          "default": 2
+        },
+        {
+          "type": "select",
+          "id": "width",
+          "label": "Width",
+          "options": [
+            {
+              "value": "1",
+              "label": "1 column"
+            },
+            {
+              "value": "2",
+              "label": "2 columns"
+            },
+            {
+              "value": "full",
+              "label": "Full row"
+            }
+          ],
+          "default": "full"
+        },
+        {
+          "type": "image_picker",
+          "id": "bild_1",
+          "label": "Bild: iq-westen-brusttasche-mobil.webp"
+        },
+        {
+          "type": "image_picker",
+          "id": "bild_2",
+          "label": "Bild: iq-westen-brusttasche-desktop.webp"
+        },
+        {
+          "type": "url",
+          "id": "link_3",
+          "label": "Linkziel DE: #iq-westen-funktionen"
+        },
+        {
+          "type": "textarea",
+          "id": "text_4",
+          "label": "Text: Dog catches a toy released in front of the handler's ve"
+        },
+        {
+          "type": "textarea",
+          "id": "text_5",
+          "label": "Text: Hund fängt das vor der Weste freigegebene Spielzeug"
+        },
+        {
+          "type": "textarea",
+          "id": "text_6",
+          "label": "Überschrift: Reward where you"
+        },
+        {
+          "type": "textarea",
+          "id": "text_7",
+          "label": "Überschrift: want your dog to be."
+        },
+        {
+          "type": "textarea",
+          "id": "text_8",
+          "label": "Überschrift: Belohne dort, wo"
+        },
+        {
+          "type": "textarea",
+          "id": "text_9",
+          "label": "Überschrift: Dein Hund sein soll."
+        },
+        {
+          "type": "textarea",
+          "id": "text_10",
+          "label": "Text: With the patented chest pocket, reward directly in fron"
+        },
+        {
+          "type": "textarea",
+          "id": "text_11",
+          "label": "Text: Mit der patentierten Brusttasche bestätigst Du direkt v"
+        },
+        {
+          "type": "textarea",
+          "id": "text_12",
+          "label": "Linktext: Explore the features"
+        },
+        {
+          "type": "textarea",
+          "id": "text_13",
+          "label": "Linktext: Funktionen entdecken"
+        }
+      ]
+    },
+    {
+      "type": "iq_release_18",
+      "name": "IQ Inhalt 18",
+      "settings": [
+        {
+          "type": "range",
+          "id": "position",
+          "label": "Show after product number",
+          "min": 1,
+          "max": 101,
+          "step": 1,
+          "default": 8
+        },
+        {
+          "type": "range",
+          "id": "position_mobile",
+          "label": "Show after product number on mobile",
+          "min": 1,
+          "max": 101,
+          "step": 1,
+          "default": 2
+        },
+        {
+          "type": "select",
+          "id": "width",
+          "label": "Width",
+          "options": [
+            {
+              "value": "1",
+              "label": "1 column"
+            },
+            {
+              "value": "2",
+              "label": "2 columns"
+            },
+            {
+              "value": "full",
+              "label": "Full row"
+            }
+          ],
+          "default": "full"
+        },
+        {
+          "type": "image_picker",
+          "id": "bild_1",
+          "label": "Bild: frano-weste.jpg"
+        },
+        {
+          "type": "url",
+          "id": "link_2",
+          "label": "Linkziel DE: /products/iq-magnettasche"
+        },
+        {
+          "type": "url",
+          "id": "link_3",
+          "label": "Linkziel EN: /en/products/iq-magnettasche"
+        },
+        {
+          "type": "textarea",
+          "id": "text_4",
+          "label": "Text: THE OPTIONAL IQ BALL POCKET"
+        },
+        {
+          "type": "textarea",
+          "id": "text_5",
+          "label": "Text: DIE OPTIONALE IQ BALLTASCHE"
+        },
+        {
+          "type": "textarea",
+          "id": "text_6",
+          "label": "Überschrift: YOUR TIMING."
+        },
+        {
+          "type": "textarea",
+          "id": "text_7",
+          "label": "Überschrift: YOUR REWARD."
+        },
+        {
+          "type": "textarea",
+          "id": "text_8",
+          "label": "Überschrift: DEIN TIMING."
+        },
+        {
+          "type": "textarea",
+          "id": "text_9",
+          "label": "Überschrift: DEINE BELOHNUNG."
+        },
+        {
+          "type": "textarea",
+          "id": "text_10",
+          "label": "Text: With the optional IQ Ball Pocket, you can reward your d"
+        },
+        {
+          "type": "textarea",
+          "id": "text_11",
+          "label": "Text: Mit der optionalen IQ Balltasche belohnst Du Deinen Hun"
+        },
+        {
+          "type": "textarea",
+          "id": "text_12",
+          "label": "Linktext: Discover the Ball Pocket"
+        },
+        {
+          "type": "textarea",
+          "id": "text_13",
+          "label": "Linktext: Balltasche entdecken"
+        }
+      ]
+    },
+    {
+      "type": "iq_release_19",
+      "name": "IQ Inhalt 19",
+      "settings": [
+        {
+          "type": "range",
+          "id": "position",
+          "label": "Show after product number",
+          "min": 1,
+          "max": 101,
+          "step": 1,
+          "default": 8
+        },
+        {
+          "type": "range",
+          "id": "position_mobile",
+          "label": "Show after product number on mobile",
+          "min": 1,
+          "max": 101,
+          "step": 1,
+          "default": 2
+        },
+        {
+          "type": "select",
+          "id": "width",
+          "label": "Width",
+          "options": [
+            {
+              "value": "1",
+              "label": "1 column"
+            },
+            {
+              "value": "2",
+              "label": "2 columns"
+            },
+            {
+              "value": "full",
+              "label": "Full row"
+            }
+          ],
+          "default": "full"
+        },
+        {
+          "type": "image_picker",
+          "id": "bild_1",
+          "label": "Bild: iq-westen-innenleben.webp"
+        },
+        {
+          "type": "image_picker",
+          "id": "bild_2",
+          "label": "Bild: weste_innenleben.webp"
+        },
+        {
+          "type": "url",
+          "id": "link_3",
+          "label": "Linkziel DE: /products/iq-sommerweste-3-0-unisex"
+        },
+        {
+          "type": "url",
+          "id": "link_4",
+          "label": "Linkziel EN: /en/products/iq-sommerweste-3-0-unisex"
+        },
+        {
+          "type": "textarea",
+          "id": "text_5",
+          "label": "Text: Inside view of the IQ Summer Vest showing its mesh mate"
+        },
+        {
+          "type": "textarea",
+          "id": "text_6",
+          "label": "Text: Innenansicht der IQ Sommerweste mit sichtbarem Mesh"
+        },
+        {
+          "type": "textarea",
+          "id": "text_7",
+          "label": "Text: THE SUMMER VEST · A LOOK INSIDE"
+        },
+        {
+          "type": "textarea",
+          "id": "text_8",
+          "label": "Überschrift: AIRY"
+        },
+        {
+          "type": "textarea",
+          "id": "text_9",
+          "label": "Überschrift: MESH."
+        },
+        {
+          "type": "textarea",
+          "id": "text_10",
+          "label": "Text: For warm training days: the Summer Vest’s mesh lets air"
+        },
+        {
+          "type": "textarea",
+          "id": "text_11",
+          "label": "Linktext: View the Summer Vest"
+        },
+        {
+          "type": "textarea",
+          "id": "text_12",
+          "label": "Text: DIE SOMMERWESTE · EIN BLICK NACH INNEN"
+        },
+        {
+          "type": "textarea",
+          "id": "text_13",
+          "label": "Überschrift: LUFTIG"
+        },
+        {
+          "type": "textarea",
+          "id": "text_14",
+          "label": "Überschrift: DURCH MESH."
+        },
+        {
+          "type": "textarea",
+          "id": "text_15",
+          "label": "Text: Für warme Trainingstage: Das Mesh der Sommerweste lässt"
+        },
+        {
+          "type": "textarea",
+          "id": "text_16",
+          "label": "Linktext: Sommerweste ansehen"
+        }
+      ]
     }
   ],
   "settings": [

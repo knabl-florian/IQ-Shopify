@@ -1,0 +1,118 @@
+{% assign iq_part_1 = section.blocks | where: 'type', 'part1' | first %}
+{% liquid
+  assign mobile = iq_part_1.settings.bild_1
+  assign desktop = iq_part_1.settings.bild_2
+  assign english = false
+  if request.locale.iso_code == 'en'
+    assign english = true
+  endif
+%}
+{% if collection.handle == 'hundesport-t-shirts-hoodies' %}
+{% if mobile != blank and desktop != blank %}
+<section class="iq-hoodie-hero" aria-labelledby="iq-hoodie-title">
+  <picture>
+    <source media="(max-width:749px)" srcset="{{ mobile | image_url: width: 600 }} 600w, {{ mobile | image_url: width: 900 }} 900w, {{ mobile | image_url: width: 1200 }} 1200w, {{ mobile | image_url: width: 1600 }} 1600w" sizes="100vw" width="{{ mobile.width }}" height="{{ mobile.height }}">
+    {{ desktop | image_url: width: 2160 | image_tag: widths: '960,1280,1600,1920,2160', sizes: '100vw', loading: 'eager', fetchpriority: 'high', alt: '' }}
+  </picture>
+  <div class="iq-hoodie-copy">
+    <span class="iq-hoodie-label">{{ iq_part_1.settings.text_3 | escape }}</span>
+    <h1 id="iq-hoodie-title">{% if english %}{{ iq_part_1.settings.text_4 | escape }}<span>{{ iq_part_1.settings.text_5 | escape }}</span>{% else %}{{ iq_part_1.settings.text_6 | escape }}<span>{{ iq_part_1.settings.text_7 | escape }}</span>{% endif %}</h1>
+    <p>{% if english %}{{ iq_part_1.settings.text_8 | escape }}<br>{{ iq_part_1.settings.text_9 | escape }}{% else %}{{ iq_part_1.settings.text_10 | escape }}<br>{{ iq_part_1.settings.text_11 | escape }}{% endif %}</p>
+  </div>
+</section>
+{% elsif request.design_mode %}
+<p>{{ iq_part_1.settings.text_12 | escape }}</p>
+{% endif %}
+<style>
+.iq-hoodie-hero,.iq-hoodie-hero *{box-sizing:border-box}
+.iq-hoodie-hero{position:relative;isolation:isolate;overflow:hidden}.iq-hoodie-hero picture,.iq-hoodie-hero img{display:block;width:100%}.iq-hoodie-hero img{height:auto}.iq-hoodie-copy{position:absolute;left:5%;top:33%;width:30%;z-index:2}.iq-hoodie-copy h1{font:italic 800 clamp(28px,3.3vw,64px)/1.04 Montserrat,sans-serif;text-transform:uppercase;letter-spacing:-.035em;margin:0 0 18px;color:white;text-shadow:0 2px 8px #17171766}.iq-hoodie-copy h1 span{display:block;color:#A51D1B;text-shadow:0 1px 1px #ffffff33}.iq-hoodie-copy p{font:400 16px/1.5 Archivo,sans-serif;color:white;text-shadow:0 1px 4px #171717;margin:0;max-width:320px}.iq-hoodie-label{font:400 12px/1.4 Archivo,sans-serif;color:white;display:block;margin-bottom:12px;letter-spacing:.06em}.iq-hoodie-hero:after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,#17171750,transparent 42%);z-index:1}@media(max-width:749px){.iq-hoodie-hero{aspect-ratio:4/5}.iq-hoodie-hero picture,.iq-hoodie-hero img{height:100%;width:100%}.iq-hoodie-hero img{object-fit:cover;object-position:49% center}.iq-hoodie-copy{left:6%;right:6%;width:auto;top:auto;bottom:5%}.iq-hoodie-copy h1{font-size:clamp(29px,8vw,48px);text-align:center;margin-bottom:14px}.iq-hoodie-label{text-align:center;font-size:11px;margin-bottom:9px}.iq-hoodie-copy p{font-size:14px;line-height:1.45;max-width:none}.iq-hoodie-hero:after{background:linear-gradient(0deg,#171717b3 0%,#17171765 25%,transparent 52%)}}@media(max-width:749px){.iq-hoodie-copy h1 span{color:#A51D1B;text-shadow:0 1px 1px #ffffff33}}
+
+.iq-hoodie-copy .mobile-copy{display:none}@media(max-width:749px){.iq-hoodie-copy .desktop-copy{display:none}.iq-hoodie-copy .mobile-copy{display:block}.iq-hoodie-copy .mobile-copy span{display:block}}
+
+</style>
+{% endif %}
+{% schema %}
+{
+  "name": "IQ Hoodie Inhalt",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "part1",
+      "name": "Inhalt 1: hoodie-tara.web",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "bild_1",
+          "label": "Bild: hoodie-tara.webp"
+        },
+        {
+          "type": "image_picker",
+          "id": "bild_2",
+          "label": "Bild: hoodie-frano.webp"
+        },
+        {
+          "type": "textarea",
+          "id": "text_3",
+          "label": "Text: HOODIES & T-SHIRTS"
+        },
+        {
+          "type": "textarea",
+          "id": "text_4",
+          "label": "Überschrift: Your everyday."
+        },
+        {
+          "type": "textarea",
+          "id": "text_5",
+          "label": "Überschrift: With your dog."
+        },
+        {
+          "type": "textarea",
+          "id": "text_6",
+          "label": "Überschrift: Dein Alltag."
+        },
+        {
+          "type": "textarea",
+          "id": "text_7",
+          "label": "Überschrift: Mit Hund."
+        },
+        {
+          "type": "textarea",
+          "id": "text_8",
+          "label": "Text: Hoodies & T-shirts with room for more."
+        },
+        {
+          "type": "textarea",
+          "id": "text_9",
+          "label": "Text: For everything you want to bring along with your dog."
+        },
+        {
+          "type": "textarea",
+          "id": "text_10",
+          "label": "Text: Hoodies & T-Shirts mit Platz für mehr."
+        },
+        {
+          "type": "textarea",
+          "id": "text_11",
+          "label": "Text: Für alles, was Du mit Deinem Hund dabeihaben willst."
+        },
+        {
+          "type": "textarea",
+          "id": "text_12",
+          "label": "Text: Bannerbilder fehlen: Bitte hoodie-tara.webp und hoodie-"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "IQ Hoodie Inhalt",
+      "blocks": [
+        {
+          "type": "part1"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

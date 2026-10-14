@@ -9,7 +9,7 @@
     assign body = collection.description
   endif
 %}
-{% if section.settings.only_collection == blank or section.settings.only_collection.handle == collection.handle %}
+{% if section.settings.only_collection.handle == collection.handle or section.settings.only_collection == blank and section.settings.require_collection != true %}
 {% if body != blank or section.blocks.size > 0 %}
 <section class="iqci">
   {% if heading != blank %}<h2>{{ heading | escape }}</h2>{% endif %}
@@ -17,6 +17,7 @@
   {% if section.blocks.size > 0 %}
   <ul class="iqci__links" role="list">
   {% for block in section.blocks %}
+  {% if block.type == 'guide' %}
     {% liquid
       assign label = block.settings.label_de
       assign target = block.settings.url_de
@@ -26,9 +27,21 @@
       endif
     %}
     {% if label != blank and target != blank %}<li {{ block.shopify_attributes }}><a href="{{ target | escape }}">{{ label | escape }}</a></li>{% endif %}
+  {% endif %}
   {% endfor %}
   </ul>
   {% endif %}
+{% for block in section.blocks %}{% if block.type == 'faq' %}
+{% liquid
+ assign question = block.settings.question_de
+ assign answer = block.settings.answer_de
+ if request.locale.iso_code == 'en'
+  assign question = block.settings.question_en
+  assign answer = block.settings.answer_en
+ endif
+%}
+{% if question != blank and answer != blank %}<details class="iqci__faq" {{ block.shopify_attributes }}><summary>{{ question | escape }}</summary><div class="iqci__text rte">{{ answer }}</div></details>{% endif %}
+{% endif %}{% endfor %}
 </section>
 {% endif %}
 {% endif %}
@@ -42,26 +55,122 @@
 .iqci__links{list-style:none;margin:20px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px 24px}
 .iqci__links a{display:inline-flex;align-items:center;min-height:44px;font:700 15px/1.4 Archivo,sans-serif}
 @media(max-width:749px){.iqci{padding:28px 20px}.iqci h2{font-size:21px}.iqci__text,.iqci__links a{font-size:14px}}
+.iqci__faq{border-top:1px solid #DCDBD7;padding:16px 0}.iqci__faq summary{cursor:pointer;font:700 16px/1.4 Archivo,sans-serif;min-height:32px}.iqci__faq summary:focus-visible{outline:2px solid #A51D1B}.iqci__faq[open] summary{margin-bottom:14px}
 {% endstylesheet %}
 {% schema %}
 {
- "name":"IQ Collection Infos",
- "enabled_on":{"templates":["collection"]},
- "max_blocks":6,
- "settings":[
- {"type":"collection","id":"only_collection","label":"Nur für diese Collection","info":"Leer = alle Collections mit dieser Vorlage."},
- {"type":"text","id":"heading_de","label":"Überschrift Deutsch","default":"Wissen fürs Training"},
- {"type":"text","id":"heading_en","label":"Überschrift Englisch","default":"Training guides"},
- {"type":"checkbox","id":"use_description","label":"Collection-Beschreibung übernehmen","default":true,"info":"Übernimmt den vorhandenen Text einschließlich Links und Shop-Übersetzungen. Eigene Texte unten werden dann nicht angezeigt."},
- {"type":"richtext","id":"text_de","label":"Eigener Text Deutsch"},
- {"type":"richtext","id":"text_en","label":"Eigener Text Englisch"}
- ],
- "blocks":[{"type":"guide","name":"Ratgeber-Link","settings":[
- {"type":"text","id":"label_de","label":"Beschriftung Deutsch"},
- {"type":"text","id":"label_en","label":"Beschriftung Englisch"},
- {"type":"url","id":"url_de","label":"Linkziel Deutsch"},
- {"type":"url","id":"url_en","label":"Linkziel Englisch"}
- ]}],
- "presets":[{"name":"IQ Collection Infos"}]
+  "name": "IQ Collection Infos",
+  "enabled_on": {
+    "templates": [
+      "collection"
+    ]
+  },
+  "max_blocks": 12,
+  "settings": [
+    {
+      "type": "collection",
+      "id": "only_collection",
+      "label": "Nur für diese Collection",
+      "info": "Gewünschte Collection auswählen. Bei gemeinsam genutzter Vorlage erforderlich."
+    },
+    {
+      "type": "checkbox",
+      "id": "require_collection",
+      "label": "Collection-Auswahl erforderlich",
+      "default": false,
+      "info": "Für neue Abschnitte eingeschaltet lassen. Aus: bisherige Nutzung auf gesamter Vorlage."
+    },
+    {
+      "type": "text",
+      "id": "heading_de",
+      "label": "Überschrift Deutsch",
+      "default": "Wissen fürs Training"
+    },
+    {
+      "type": "text",
+      "id": "heading_en",
+      "label": "Überschrift Englisch",
+      "default": "Training guides"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_description",
+      "label": "Collection-Beschreibung übernehmen",
+      "default": true,
+      "info": "Übernimmt den vorhandenen Text einschließlich Links und Shop-Übersetzungen. Eigene Texte unten werden dann nicht angezeigt."
+    },
+    {
+      "type": "richtext",
+      "id": "text_de",
+      "label": "Eigener Text Deutsch"
+    },
+    {
+      "type": "richtext",
+      "id": "text_en",
+      "label": "Eigener Text Englisch"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "guide",
+      "name": "Ratgeber-Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label_de",
+          "label": "Beschriftung Deutsch"
+        },
+        {
+          "type": "text",
+          "id": "label_en",
+          "label": "Beschriftung Englisch"
+        },
+        {
+          "type": "url",
+          "id": "url_de",
+          "label": "Linkziel Deutsch"
+        },
+        {
+          "type": "url",
+          "id": "url_en",
+          "label": "Linkziel Englisch"
+        }
+      ]
+    },
+    {
+      "type": "faq",
+      "name": "Frage und Antwort",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question_de",
+          "label": "Frage Deutsch"
+        },
+        {
+          "type": "richtext",
+          "id": "answer_de",
+          "label": "Antwort Deutsch"
+        },
+        {
+          "type": "text",
+          "id": "question_en",
+          "label": "Question English"
+        },
+        {
+          "type": "richtext",
+          "id": "answer_en",
+          "label": "Answer English"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "IQ Collection Infos",
+      "settings": {
+        "require_collection": true
+      }
+    }
+  ]
 }
 {% endschema %}

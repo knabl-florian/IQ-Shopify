@@ -1,0 +1,42 @@
+{%- comment -%}Keep the existing HTML and links. Use its own headings as accordion labels.{%- endcomment -%}
+{%- liquid
+  assign html = html | strip
+  assign wrapper = '<div class="metafield-rich_text_field">'
+  if html contains wrapper
+    assign html = html | remove_first: wrapper
+    assign body_length = html.size | minus: 6
+    assign html = html | slice: 0, body_length
+  endif
+  assign marker = '<h2' 
+  assign end_marker = '</h2>'
+  unless html contains marker
+    assign marker = '<h3'
+    assign end_marker = '</h3>'
+  endunless
+  assign parts = html | split: marker
+-%}
+{%- for part in parts -%}
+  {%- liquid
+    assign label = fallback
+    assign body = part
+    if forloop.first == false
+      assign opening = part | split: '>' | first | append: '>'
+      assign title_html = part | split: end_marker | first | remove_first: opening
+      assign label = title_html | strip_html | strip
+      assign prefix = part | split: end_marker | first | append: end_marker
+      assign body = part | remove_first: prefix
+      if title_html contains '<a '
+        assign body = title_html | append: body
+      endif
+    endif
+    assign visible = body | strip_html | strip
+  -%}
+  {%- if visible != blank or body contains '<img' or body contains '<video' -%}
+    <details class="iq-collection-accordion">
+      <summary>{{ label }}<span class="iq-collection-accordion__icon" aria-hidden="true"></span></summary>
+      <div class="iq-collection-accordion__body rte">{{ body }}</div>
+    </details>
+  {%- elsif forloop.first == false and label != blank -%}
+    <p>{{ label }}</p>
+  {%- endif -%}
+{%- endfor -%}

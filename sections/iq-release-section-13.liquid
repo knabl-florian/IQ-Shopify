@@ -1,0 +1,560 @@
+{% assign iq_part_1 = section.blocks | where: 'type', 'part1' | first %}
+{% assign iq_part_2 = section.blocks | where: 'type', 'part2' | first %}
+{% assign iq_part_3 = section.blocks | where: 'type', 'part3' | first %}
+{% assign iq_part_4 = section.blocks | where: 'type', 'part4' | first %}
+{% assign iq_part_5 = section.blocks | where: 'type', 'part5' | first %}
+{% if collection.handle == 'hundesport-jacken' %}
+<section class="iq-collection-compare" id="iq-jacken-vergleich">
+<h2>{% if request.locale.iso_code == 'en' %}{{ iq_part_1.settings.text_13 | escape }}{% else %}{{ iq_part_1.settings.text_14 | escape }}{% endif %}</h2><p class="iq-compare-intro">{% if request.locale.iso_code == 'en' %}{{ iq_part_1.settings.text_15 | escape }}{% else %}{{ iq_part_1.settings.text_16 | escape }}{% endif %}</p><p class="iq-compare-swipe">{% if request.locale.iso_code == 'en' %}{{ iq_part_1.settings.text_17 | escape }}{% else %}{{ iq_part_1.settings.text_18 | escape }}{% endif %}</p><div class="iq-compare-grid" tabindex="0" role="region" aria-label="{% if request.locale.iso_code == 'en' %}Jacket comparison, horizontally scrollable{% else %}Jackenvergleich, horizontal scrollbar{% endif %}"><article><div class="iq-compare-content"><h3>{% if request.locale.iso_code == 'en' %}{{ iq_part_1.settings.text_19 | escape }}{% else %}{{ iq_part_1.settings.text_20 | escape }}{% endif %}</h3><p class="iq-compare-use">{% if request.locale.iso_code == 'en' %}{{ iq_part_2.settings.text_21 | escape }}{% else %}{{ iq_part_2.settings.text_22 | escape }}{% endif %}</p><dl><dt class="iq-compare-warmth-label">{% if request.locale.iso_code == 'en' %}{{ iq_part_2.settings.text_23 | escape }}{% else %}{{ iq_part_2.settings.text_24 | escape }}{% endif %}</dt><dd class="iq-compare-warmth"><svg viewBox="0 0 24 28" width="24" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v22M3 8l18 12M3 20 21 8M8 5l4 3 4-3M8 23l4-3 4 3M3 12l4-1-1-4m15 9-4 1 1 4M3 16l4 1-1 4m15-9-4-1 1-4"/></svg><span>{% if request.locale.iso_code == 'en' %}{{ iq_part_2.settings.text_25 | escape }}{% else %}{{ iq_part_2.settings.text_26 | escape }}{% endif %}</span></dd><dt>{% if request.locale.iso_code == 'en' %}{{ iq_part_2.settings.text_27 | escape }}{% else %}{{ iq_part_2.settings.text_28 | escape }}{% endif %}</dt><dd class="iq-compare-weather"><svg viewBox="0 0 24 28" width="24" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16a4 4 0 1 1 .3-8 6 6 0 0 1 11.4 1A3.5 3.5 0 0 1 18 16H6Z"/><path d="m7 20-1 3m6-3-1 3m6-3-1 3"/></svg><span>{% if request.locale.iso_code == 'en' %}{{ iq_part_2.settings.text_29 | escape }}{% else %}{{ iq_part_2.settings.text_30 | escape }}{% endif %}</span></dd><dt>{% if request.locale.iso_code == 'en' %}{{ iq_part_2.settings.text_31 | escape }}{% else %}{{ iq_part_2.settings.text_32 | escape }}{% endif %}</dt><dd>{% if request.locale.iso_code == 'en' %}{{ iq_part_2.settings.text_33 | escape }}{% else %}{{ iq_part_2.settings.text_34 | escape }}{% endif %}</dd><dt>{% if request.locale.iso_code == 'en' %}{{ iq_part_2.settings.text_35 | escape }}{% else %}{{ iq_part_2.settings.text_36 | escape }}{% endif %}</dt><dd>{% if request.locale.iso_code == 'en' %}{{ iq_part_2.settings.text_37 | escape }}{% else %}{{ iq_part_2.settings.text_38 | escape }}{% endif %}</dd></dl><a class="iq-compare-link" href="{% if request.locale.iso_code == 'en' %}{{ iq_part_1.settings.link_1 }}{% else %}{{ iq_part_1.settings.link_1 }}{% endif %}">{% if request.locale.iso_code == 'en' %}{{ iq_part_2.settings.text_39 | escape }}{% else %}{{ iq_part_2.settings.text_40 | escape }}{% endif %}</a></div></article><article><div class="iq-compare-content"><h3>{% if request.locale.iso_code == 'en' %}{{ iq_part_3.settings.text_41 | escape }}{% else %}{{ iq_part_3.settings.text_42 | escape }}{% endif %}</h3><p class="iq-compare-use">{% if request.locale.iso_code == 'en' %}{{ iq_part_3.settings.text_43 | escape }}{% else %}{{ iq_part_3.settings.text_44 | escape }}{% endif %}</p><dl><dt class="iq-compare-warmth-label">{% if request.locale.iso_code == 'en' %}{{ iq_part_2.settings.text_23 | escape }}{% else %}{{ iq_part_2.settings.text_24 | escape }}{% endif %}</dt><dd class="iq-compare-warmth"><svg viewBox="0 0 24 28" width="24" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M9 17.8V5a3 3 0 0 1 6 0v12.8a5 5 0 1 1-6 0Z"/><path d="M12 11V22"/><circle cx="12" cy="22" r="1.8" fill="currentColor" stroke="none"/><path d="M18 6h2m-2 5h2m-2 5h2"/></svg><span>{% if request.locale.iso_code == 'en' %}{{ iq_part_3.settings.text_45 | escape }}{% else %}{{ iq_part_3.settings.text_46 | escape }}{% endif %}</span></dd><dt>{% if request.locale.iso_code == 'en' %}{{ iq_part_2.settings.text_27 | escape }}{% else %}{{ iq_part_2.settings.text_28 | escape }}{% endif %}</dt><dd class="iq-compare-weather"><svg viewBox="0 0 24 28" width="24" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16a4 4 0 1 1 .3-8 6 6 0 0 1 11.4 1A3.5 3.5 0 0 1 18 16H6Z"/><path d="m7 20-1 3m6-3-1 3m6-3-1 3"/></svg><span>{% if request.locale.iso_code == 'en' %}{{ iq_part_3.settings.text_47 | escape }}{% else %}{{ iq_part_3.settings.text_48 | escape }}{% endif %}</span></dd><dt>{% if request.locale.iso_code == 'en' %}{{ iq_part_2.settings.text_31 | escape }}{% else %}{{ iq_part_2.settings.text_32 | escape }}{% endif %}</dt><dd>{% if request.locale.iso_code == 'en' %}{{ iq_part_3.settings.text_49 | escape }}{% else %}{{ iq_part_3.settings.text_50 | escape }}{% endif %}</dd><dt>{% if request.locale.iso_code == 'en' %}{{ iq_part_2.settings.text_35 | escape }}{% else %}{{ iq_part_2.settings.text_36 | escape }}{% endif %}</dt><dd>{% if request.locale.iso_code == 'en' %}{{ iq_part_3.settings.text_51 | escape }}{% else %}{{ iq_part_3.settings.text_52 | escape }}{% endif %}</dd></dl><a class="iq-compare-link" href="{% if request.locale.iso_code == 'en' %}{{ iq_part_1.settings.link_2 }}{% else %}{{ iq_part_1.settings.link_2 }}{% endif %}">{% if request.locale.iso_code == 'en' %}{{ iq_part_2.settings.text_39 | escape }}{% else %}{{ iq_part_2.settings.text_40 | escape }}{% endif %}</a></div></article><article><div class="iq-compare-content"><h3>{% if request.locale.iso_code == 'en' %}{{ iq_part_3.settings.text_53 | escape }}{% else %}{{ iq_part_3.settings.text_54 | escape }}{% endif %}</h3><p class="iq-compare-use">{% if request.locale.iso_code == 'en' %}{{ iq_part_3.settings.text_55 | escape }}{% else %}{{ iq_part_3.settings.text_56 | escape }}{% endif %}</p><dl><dt class="iq-compare-warmth-label">{% if request.locale.iso_code == 'en' %}{{ iq_part_2.settings.text_23 | escape }}{% else %}{{ iq_part_2.settings.text_24 | escape }}{% endif %}</dt><dd class="iq-compare-warmth"><svg viewBox="0 0 24 28" width="24" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M9 17.8V5a3 3 0 0 1 6 0v12.8a5 5 0 1 1-6 0Z"/><path d="M12 15V22"/><circle cx="12" cy="22" r="1.8" fill="currentColor" stroke="none"/><path d="M18 6h2m-2 5h2m-2 5h2"/></svg><span>{% if request.locale.iso_code == 'en' %}{{ iq_part_3.settings.text_57 | escape }}{% else %}{{ iq_part_3.settings.text_58 | escape }}{% endif %}</span></dd><dt>{% if request.locale.iso_code == 'en' %}{{ iq_part_2.settings.text_27 | escape }}{% else %}{{ iq_part_2.settings.text_28 | escape }}{% endif %}</dt><dd class="iq-compare-weather"><svg viewBox="0 0 24 28" width="24" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16a4 4 0 1 1 .3-8 6 6 0 0 1 11.4 1A3.5 3.5 0 0 1 18 16H6Z"/><path d="m7 20-1 3m6-3-1 3m6-3-1 3"/></svg><span>{% if request.locale.iso_code == 'en' %}{{ iq_part_3.settings.text_59 | escape }}{% else %}{{ iq_part_3.settings.text_60 | escape }}{% endif %}</span></dd><dt>{% if request.locale.iso_code == 'en' %}{{ iq_part_2.settings.text_31 | escape }}{% else %}{{ iq_part_2.settings.text_32 | escape }}{% endif %}</dt><dd>{% if request.locale.iso_code == 'en' %}{{ iq_part_4.settings.text_61 | escape }}{% else %}{{ iq_part_4.settings.text_62 | escape }}{% endif %}</dd><dt>{% if request.locale.iso_code == 'en' %}{{ iq_part_2.settings.text_35 | escape }}{% else %}{{ iq_part_2.settings.text_36 | escape }}{% endif %}</dt><dd>{% if request.locale.iso_code == 'en' %}{{ iq_part_4.settings.text_63 | escape }}{% else %}{{ iq_part_4.settings.text_64 | escape }}{% endif %}</dd></dl><a class="iq-compare-link" href="{% if request.locale.iso_code == 'en' %}{{ iq_part_1.settings.link_3 }}{% else %}{{ iq_part_1.settings.link_3 }}{% endif %}">{% if request.locale.iso_code == 'en' %}{{ iq_part_2.settings.text_39 | escape }}{% else %}{{ iq_part_2.settings.text_40 | escape }}{% endif %}</a></div></article><article><div class="iq-compare-content"><h3>{% if request.locale.iso_code == 'en' %}{{ iq_part_4.settings.text_65 | escape }}{% else %}{{ iq_part_4.settings.text_66 | escape }}{% endif %}</h3><p class="iq-compare-use">{% if request.locale.iso_code == 'en' %}{{ iq_part_4.settings.text_67 | escape }}{% else %}{{ iq_part_4.settings.text_68 | escape }}{% endif %}</p><dl><dt class="iq-compare-warmth-label">{% if request.locale.iso_code == 'en' %}{{ iq_part_4.settings.text_69 | escape }}{% else %}{{ iq_part_4.settings.text_70 | escape }}{% endif %}</dt><dd class="iq-compare-warmth"><svg viewBox="0 0 24 28" width="24" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M9 17.8V5a3 3 0 0 1 6 0v12.8a5 5 0 1 1-6 0Z"/><path d="M12 11V22"/><circle cx="12" cy="22" r="1.8" fill="currentColor" stroke="none"/><path d="M18 6h2m-2 5h2m-2 5h2"/></svg><span>{% if request.locale.iso_code == 'en' %}{{ iq_part_4.settings.text_71 | escape }}{% else %}{{ iq_part_4.settings.text_72 | escape }}{% endif %}</span></dd><dt>{% if request.locale.iso_code == 'en' %}{{ iq_part_2.settings.text_27 | escape }}{% else %}{{ iq_part_2.settings.text_28 | escape }}{% endif %}</dt><dd class="iq-compare-weather"><svg viewBox="0 0 24 28" width="24" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16a4 4 0 1 1 .3-8 6 6 0 0 1 11.4 1A3.5 3.5 0 0 1 18 16H6Z"/><path d="m7 20-1 3m6-3-1 3m6-3-1 3"/></svg><span>{% if request.locale.iso_code == 'en' %}{{ iq_part_4.settings.text_73 | escape }}{% else %}{{ iq_part_4.settings.text_74 | escape }}{% endif %}</span></dd><dt>{% if request.locale.iso_code == 'en' %}{{ iq_part_2.settings.text_31 | escape }}{% else %}{{ iq_part_2.settings.text_32 | escape }}{% endif %}</dt><dd>{% if request.locale.iso_code == 'en' %}{{ iq_part_4.settings.text_75 | escape }}{% else %}{{ iq_part_4.settings.text_76 | escape }}{% endif %}</dd><dt>{% if request.locale.iso_code == 'en' %}{{ iq_part_2.settings.text_35 | escape }}{% else %}{{ iq_part_2.settings.text_36 | escape }}{% endif %}</dt><dd>{% if request.locale.iso_code == 'en' %}{{ iq_part_3.settings.text_51 | escape }}{% else %}{{ iq_part_3.settings.text_52 | escape }}{% endif %}</dd></dl><div class="iq-compare-model-links"><a class="iq-compare-link" href="{% if request.locale.iso_code == 'en' %}{{ iq_part_1.settings.link_5 }}{% else %}{{ iq_part_1.settings.link_4 }}{% endif %}">{% if request.locale.iso_code == 'en' %}{{ iq_part_4.settings.text_77 | escape }}{% else %}{{ iq_part_4.settings.text_78 | escape }}{% endif %}</a><a class="iq-compare-link" href="{% if request.locale.iso_code == 'en' %}{{ iq_part_1.settings.link_7 }}{% else %}{{ iq_part_1.settings.link_6 }}{% endif %}">{{ iq_part_4.settings.text_79 | escape }}</a></div></div></article><article><div class="iq-compare-content"><h3>{% if request.locale.iso_code == 'en' %}{{ iq_part_4.settings.text_80 | escape }}{% else %}{{ iq_part_4.settings.text_80 | escape }}{% endif %}</h3><p class="iq-compare-use">{% if request.locale.iso_code == 'en' %}{{ iq_part_5.settings.text_81 | escape }}{% else %}{{ iq_part_5.settings.text_82 | escape }}{% endif %}</p><dl><dt class="iq-compare-warmth-label">{% if request.locale.iso_code == 'en' %}{{ iq_part_4.settings.text_69 | escape }}{% else %}{{ iq_part_4.settings.text_70 | escape }}{% endif %}</dt><dd class="iq-compare-warmth"><svg viewBox="0 0 24 28" width="24" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M9 17.8V5a3 3 0 0 1 6 0v12.8a5 5 0 1 1-6 0Z"/><path d="M12 11V22"/><circle cx="12" cy="22" r="1.8" fill="currentColor" stroke="none"/><path d="M18 6h2m-2 5h2m-2 5h2"/></svg><span>{% if request.locale.iso_code == 'en' %}{{ iq_part_5.settings.text_83 | escape }}{% else %}{{ iq_part_5.settings.text_84 | escape }}{% endif %}</span></dd><dt>{% if request.locale.iso_code == 'en' %}{{ iq_part_2.settings.text_27 | escape }}{% else %}{{ iq_part_2.settings.text_28 | escape }}{% endif %}</dt><dd>{% if request.locale.iso_code == 'en' %}{{ iq_part_5.settings.text_85 | escape }}{% else %}{{ iq_part_5.settings.text_86 | escape }}{% endif %}</dd><dt>{% if request.locale.iso_code == 'en' %}{{ iq_part_2.settings.text_31 | escape }}{% else %}{{ iq_part_2.settings.text_32 | escape }}{% endif %}</dt><dd>{% if request.locale.iso_code == 'en' %}{{ iq_part_5.settings.text_87 | escape }}{% else %}{{ iq_part_5.settings.text_88 | escape }}{% endif %}</dd><dt>{% if request.locale.iso_code == 'en' %}{{ iq_part_2.settings.text_35 | escape }}{% else %}{{ iq_part_2.settings.text_36 | escape }}{% endif %}</dt><dd>{% if request.locale.iso_code == 'en' %}{{ iq_part_3.settings.text_51 | escape }}{% else %}{{ iq_part_3.settings.text_52 | escape }}{% endif %}</dd></dl><div class="iq-compare-model-links"><a class="iq-compare-link" href="{% if request.locale.iso_code == 'en' %}{{ iq_part_1.settings.link_9 }}{% else %}{{ iq_part_1.settings.link_8 }}{% endif %}">{% if request.locale.iso_code == 'en' %}{{ iq_part_4.settings.text_77 | escape }}{% else %}{{ iq_part_4.settings.text_78 | escape }}{% endif %}</a><a class="iq-compare-link" href="{% if request.locale.iso_code == 'en' %}{{ iq_part_1.settings.link_11 }}{% else %}{{ iq_part_1.settings.link_10 }}{% endif %}">{{ iq_part_4.settings.text_79 | escape }}</a></div></div></article></div><p class="iq-compare-common"><strong>{% if request.locale.iso_code == 'en' %}{{ iq_part_5.settings.text_89 | escape }}{% else %}{{ iq_part_5.settings.text_90 | escape }}{% endif %}</strong> {% if request.locale.iso_code == 'en' %}{{ iq_part_5.settings.text_91 | escape }}{% else %}{{ iq_part_5.settings.text_92 | escape }}{% endif %}</p><p class="iq-compare-extra"><strong>{{ iq_part_5.settings.text_93 | escape }}</strong> {% if request.locale.iso_code == 'en' %}{{ iq_part_5.settings.text_94 | escape }}{% else %}{{ iq_part_5.settings.text_95 | escape }}{% endif %} <a href="{% if request.locale.iso_code == 'en' %}{{ iq_part_1.settings.link_12 }}{% else %}{{ iq_part_1.settings.link_12 }}{% endif %}">{% if request.locale.iso_code == 'en' %}{{ iq_part_5.settings.text_96 | escape }}{% else %}{{ iq_part_5.settings.text_97 | escape }}{% endif %}</a></p></section>
+
+{% endif %}
+{% schema %}
+{
+  "name": "IQ Jackenvergleich",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "part1",
+      "name": "Inhalt 1: #iq-product-107",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "url",
+          "id": "link_1",
+          "label": "Linkziel DE: #iq-product-10709800583432"
+        },
+        {
+          "type": "url",
+          "id": "link_2",
+          "label": "Linkziel DE: #iq-product-10709812936968"
+        },
+        {
+          "type": "url",
+          "id": "link_3",
+          "label": "Linkziel DE: #iq-product-10709817131272"
+        },
+        {
+          "type": "url",
+          "id": "link_4",
+          "label": "Linkziel DE: /products/iq-softshelljacke-2-0-damen"
+        },
+        {
+          "type": "url",
+          "id": "link_5",
+          "label": "Linkziel EN: /en/products/iq-softshelljacke-2-0-damen"
+        },
+        {
+          "type": "url",
+          "id": "link_6",
+          "label": "Linkziel DE: /products/iq-softshelljacke-2-0-unisex"
+        },
+        {
+          "type": "url",
+          "id": "link_7",
+          "label": "Linkziel EN: /en/products/iq-softshelljacke-2-0-unisex"
+        },
+        {
+          "type": "url",
+          "id": "link_8",
+          "label": "Linkziel DE: /products/iq-zip-in-shell-damen"
+        },
+        {
+          "type": "url",
+          "id": "link_9",
+          "label": "Linkziel EN: /en/products/iq-zip-in-shell-damen"
+        },
+        {
+          "type": "url",
+          "id": "link_10",
+          "label": "Linkziel DE: /products/iq-zip-in-shell-unisex"
+        },
+        {
+          "type": "url",
+          "id": "link_11",
+          "label": "Linkziel EN: /en/products/iq-zip-in-shell-unisex"
+        },
+        {
+          "type": "url",
+          "id": "link_12",
+          "label": "Linkziel DE: #iq-product-10709844099336"
+        },
+        {
+          "type": "textarea",
+          "id": "text_13",
+          "label": "Überschrift: Which jacket is right for you?"
+        },
+        {
+          "type": "textarea",
+          "id": "text_14",
+          "label": "Überschrift: Welche Jacke passt zu Dir?"
+        },
+        {
+          "type": "textarea",
+          "id": "text_15",
+          "label": "Text: Compare five jacket types. Find the right features for "
+        },
+        {
+          "type": "textarea",
+          "id": "text_16",
+          "label": "Text: Fünf Jackentypen im Vergleich. Finde die passende Ausst"
+        },
+        {
+          "type": "textarea",
+          "id": "text_17",
+          "label": "Text: Swipe to compare →"
+        },
+        {
+          "type": "textarea",
+          "id": "text_18",
+          "label": "Text: Zum Vergleichen wischen →"
+        },
+        {
+          "type": "textarea",
+          "id": "text_19",
+          "label": "Überschrift: Multifunction Jacket 3.0"
+        },
+        {
+          "type": "textarea",
+          "id": "text_20",
+          "label": "Überschrift: Multifunktionsjacke 3.0"
+        }
+      ]
+    },
+    {
+      "type": "part2",
+      "name": "Inhalt 2: For cold traini",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "text_21",
+          "label": "Text: For cold training days"
+        },
+        {
+          "type": "textarea",
+          "id": "text_22",
+          "label": "Text: Für kalte Trainingstage"
+        },
+        {
+          "type": "textarea",
+          "id": "text_23",
+          "label": "Merkmal: Insulation"
+        },
+        {
+          "type": "textarea",
+          "id": "text_24",
+          "label": "Merkmal: Fütterung"
+        },
+        {
+          "type": "textarea",
+          "id": "text_25",
+          "label": "Wert: Insulated for activity in cold weather"
+        },
+        {
+          "type": "textarea",
+          "id": "text_26",
+          "label": "Wert: Gefüttert – für Bewegung in der Kälte"
+        },
+        {
+          "type": "textarea",
+          "id": "text_27",
+          "label": "Merkmal: Weather protection"
+        },
+        {
+          "type": "textarea",
+          "id": "text_28",
+          "label": "Merkmal: Wetterschutz"
+        },
+        {
+          "type": "textarea",
+          "id": "text_29",
+          "label": "Wert: 20,000 mm · sealed seams"
+        },
+        {
+          "type": "textarea",
+          "id": "text_30",
+          "label": "Wert: 20.000 mm · versiegelte Nähte"
+        },
+        {
+          "type": "textarea",
+          "id": "text_31",
+          "label": "Merkmal: Key feature"
+        },
+        {
+          "type": "textarea",
+          "id": "text_32",
+          "label": "Merkmal: Besonderheit"
+        },
+        {
+          "type": "textarea",
+          "id": "text_33",
+          "label": "Wert: Scratch-resistant Taslon; our toughest jacket"
+        },
+        {
+          "type": "textarea",
+          "id": "text_34",
+          "label": "Wert: Kratzfestes Taslon; unsere robusteste Jacke"
+        },
+        {
+          "type": "textarea",
+          "id": "text_35",
+          "label": "Merkmal: Colours"
+        },
+        {
+          "type": "textarea",
+          "id": "text_36",
+          "label": "Merkmal: Farben"
+        },
+        {
+          "type": "textarea",
+          "id": "text_37",
+          "label": "Wert: Black · Olive · Grey blue"
+        },
+        {
+          "type": "textarea",
+          "id": "text_38",
+          "label": "Wert: Schwarz · Olive · Graublau"
+        },
+        {
+          "type": "textarea",
+          "id": "text_39",
+          "label": "Linktext: View models ↑"
+        },
+        {
+          "type": "textarea",
+          "id": "text_40",
+          "label": "Linktext: Zu den Modellen ↑"
+        }
+      ]
+    },
+    {
+      "type": "part3",
+      "name": "Inhalt 3: Training Jacket",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "text_41",
+          "label": "Überschrift: Training Jacket 2.0"
+        },
+        {
+          "type": "textarea",
+          "id": "text_42",
+          "label": "Überschrift: Trainingsjacke 2.0"
+        },
+        {
+          "type": "textarea",
+          "id": "text_43",
+          "label": "Text: For your training system"
+        },
+        {
+          "type": "textarea",
+          "id": "text_44",
+          "label": "Text: Für Dein Trainingssystem"
+        },
+        {
+          "type": "textarea",
+          "id": "text_45",
+          "label": "Wert: Uninsulated · optional Zip-In"
+        },
+        {
+          "type": "textarea",
+          "id": "text_46",
+          "label": "Wert: Ungefüttert · Zip-In optional"
+        },
+        {
+          "type": "textarea",
+          "id": "text_47",
+          "label": "Wert: 20,000 mm · taped seams"
+        },
+        {
+          "type": "textarea",
+          "id": "text_48",
+          "label": "Wert: 20.000 mm · getapte Nähte"
+        },
+        {
+          "type": "textarea",
+          "id": "text_49",
+          "label": "Wert: Patented chest pocket; optional ball pocket"
+        },
+        {
+          "type": "textarea",
+          "id": "text_50",
+          "label": "Wert: Patentierte Brusttasche; Balltasche optional"
+        },
+        {
+          "type": "textarea",
+          "id": "text_51",
+          "label": "Wert: Black"
+        },
+        {
+          "type": "textarea",
+          "id": "text_52",
+          "label": "Wert: Schwarz"
+        },
+        {
+          "type": "textarea",
+          "id": "text_53",
+          "label": "Überschrift: Allround Jacket"
+        },
+        {
+          "type": "textarea",
+          "id": "text_54",
+          "label": "Überschrift: Allroundjacke"
+        },
+        {
+          "type": "textarea",
+          "id": "text_55",
+          "label": "Text: For rain and everyday life"
+        },
+        {
+          "type": "textarea",
+          "id": "text_56",
+          "label": "Text: Für Regen und Alltag"
+        },
+        {
+          "type": "textarea",
+          "id": "text_57",
+          "label": "Wert: Lightweight and uninsulated"
+        },
+        {
+          "type": "textarea",
+          "id": "text_58",
+          "label": "Wert: Leicht und ungefüttert"
+        },
+        {
+          "type": "textarea",
+          "id": "text_59",
+          "label": "Wert: Waterproof · extra-large storm hood"
+        },
+        {
+          "type": "textarea",
+          "id": "text_60",
+          "label": "Wert: Wasserdicht · extra große Sturmkapuze"
+        }
+      ]
+    },
+    {
+      "type": "part4",
+      "name": "Inhalt 4: Clicker pocket ",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "text_61",
+          "label": "Wert: Clicker pocket and concealed waste-bag pocket"
+        },
+        {
+          "type": "textarea",
+          "id": "text_62",
+          "label": "Wert: Clicker-Fach und versteckte Kotbeuteltasche"
+        },
+        {
+          "type": "textarea",
+          "id": "text_63",
+          "label": "Wert: Dark blue"
+        },
+        {
+          "type": "textarea",
+          "id": "text_64",
+          "label": "Wert: Dunkelblau"
+        },
+        {
+          "type": "textarea",
+          "id": "text_65",
+          "label": "Überschrift: Softshell Jacket 2.0"
+        },
+        {
+          "type": "textarea",
+          "id": "text_66",
+          "label": "Überschrift: Softshelljacke 2.0"
+        },
+        {
+          "type": "textarea",
+          "id": "text_67",
+          "label": "Text: For training between seasons"
+        },
+        {
+          "type": "textarea",
+          "id": "text_68",
+          "label": "Text: Für Training und Übergangszeit"
+        },
+        {
+          "type": "textarea",
+          "id": "text_69",
+          "label": "Merkmal: Insulation / warmth"
+        },
+        {
+          "type": "textarea",
+          "id": "text_70",
+          "label": "Merkmal: Fütterung / Wärme"
+        },
+        {
+          "type": "textarea",
+          "id": "text_71",
+          "label": "Wert: Soft fleece lining"
+        },
+        {
+          "type": "textarea",
+          "id": "text_72",
+          "label": "Wert: Weiches Innenfleece"
+        },
+        {
+          "type": "textarea",
+          "id": "text_73",
+          "label": "Wert: Windproof and water-repellent"
+        },
+        {
+          "type": "textarea",
+          "id": "text_74",
+          "label": "Wert: Winddicht und wasserabweisend"
+        },
+        {
+          "type": "textarea",
+          "id": "text_75",
+          "label": "Wert: Back pocket and coated treat pockets"
+        },
+        {
+          "type": "textarea",
+          "id": "text_76",
+          "label": "Wert: Rückentasche und beschichtete Futtertaschen"
+        },
+        {
+          "type": "textarea",
+          "id": "text_77",
+          "label": "Linktext: Women ↑"
+        },
+        {
+          "type": "textarea",
+          "id": "text_78",
+          "label": "Linktext: Damen ↑"
+        },
+        {
+          "type": "textarea",
+          "id": "text_79",
+          "label": "Linktext: Unisex ↑"
+        },
+        {
+          "type": "textarea",
+          "id": "text_80",
+          "label": "Überschrift: Zip-In Shell"
+        }
+      ]
+    },
+    {
+      "type": "part5",
+      "name": "Inhalt 5: On its own or a",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "text_81",
+          "label": "Text: On its own or as an extra layer"
+        },
+        {
+          "type": "textarea",
+          "id": "text_82",
+          "label": "Text: Solo oder als Wärmeschicht"
+        },
+        {
+          "type": "textarea",
+          "id": "text_83",
+          "label": "Wert: Extra warmth for cold days"
+        },
+        {
+          "type": "textarea",
+          "id": "text_84",
+          "label": "Wert: Zusätzliche Wärme für kalte Tage"
+        },
+        {
+          "type": "textarea",
+          "id": "text_85",
+          "label": "Wert: Pair with the Training Jacket 2.0"
+        },
+        {
+          "type": "textarea",
+          "id": "text_86",
+          "label": "Wert: Mit der Trainingsjacke 2.0 kombinieren"
+        },
+        {
+          "type": "textarea",
+          "id": "text_87",
+          "label": "Wert: Wear on its own or zip into the matching training jacke"
+        },
+        {
+          "type": "textarea",
+          "id": "text_88",
+          "label": "Wert: Einzeln tragbar oder als passende Zip-In-Innenjacke"
+        },
+        {
+          "type": "textarea",
+          "id": "text_89",
+          "label": "Text: Included with the Multifunction, Training and Allround "
+        },
+        {
+          "type": "textarea",
+          "id": "text_90",
+          "label": "Text: Bei Multifunktions-, Trainings- und Allroundjacke dabei"
+        },
+        {
+          "type": "textarea",
+          "id": "text_91",
+          "label": "Text: removable treat pockets and a large back pocket."
+        },
+        {
+          "type": "textarea",
+          "id": "text_92",
+          "label": "Text: herausnehmbare Futtertaschen und eine große Rückentasch"
+        },
+        {
+          "type": "textarea",
+          "id": "text_93",
+          "label": "Text: K9 Pro:"
+        },
+        {
+          "type": "textarea",
+          "id": "text_94",
+          "label": "Text: For duty use – with holster access and patch panels."
+        },
+        {
+          "type": "textarea",
+          "id": "text_95",
+          "label": "Text: Für den Dienst – mit Holsterzugriff und Klettflächen."
+        },
+        {
+          "type": "textarea",
+          "id": "text_96",
+          "label": "Linktext: Duty jackets ↑"
+        },
+        {
+          "type": "textarea",
+          "id": "text_97",
+          "label": "Linktext: Dienstjacken ↑"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "IQ Jackenvergleich",
+      "blocks": [
+        {
+          "type": "part1"
+        },
+        {
+          "type": "part2"
+        },
+        {
+          "type": "part3"
+        },
+        {
+          "type": "part4"
+        },
+        {
+          "type": "part5"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,291 @@
+{% if section.settings.only_collection != blank and section.settings.only_collection.handle == collection.handle %}
+<div class="iq-story-set">
+{% for block in section.blocks %}
+{% liquid
+ assign heading = block.settings.heading_de
+ assign eyebrow = block.settings.eyebrow_de
+ assign body = block.settings.body_de
+ assign alt = block.settings.alt_de
+ assign label = block.settings.link_label_de
+ if request.locale.iso_code == 'en'
+  assign heading = block.settings.heading_en | default: heading
+  assign eyebrow = block.settings.eyebrow_en | default: eyebrow
+  assign body = block.settings.body_en | default: body
+  assign alt = block.settings.alt_en | default: alt
+  assign label = block.settings.link_label_en | default: label
+ endif
+ assign photo = block.settings.image
+ assign mobile = block.settings.mobile_image | default: photo
+ assign target = block.settings.url
+ if block.settings.product != blank
+  assign target = block.settings.product.url
+ endif
+ assign split = false
+ if block.settings.layout == 'split'
+  assign split = true
+ endif
+%}
+{% if photo != blank and heading != blank %}
+<article class="iq-story iq-story--{{ block.settings.layout }} iq-story--{{ block.settings.position }} iq-story--{{ block.settings.tone }} iq-story--mobile-{{ block.settings.mobile_position }}{% if block.settings.reverse %} iq-story--reverse{% endif %}" style="--iq-story-x:{{ block.settings.focal_x }}%;--iq-story-y:{{ block.settings.focal_y }}%" {{ block.shopify_attributes }}>
+<div class="iq-story__media">
+{% if split and block.settings.video != blank %}
+{% assign poster = photo | image_url: width: 1000 %}
+{{ block.settings.video | video_tag: controls: true, autoplay: false, loop: false, preload: 'none', poster: poster }}
+{% else %}
+{% if target != blank %}<a class="iq-story__image-link" href="{{ target }}" aria-label="{{ heading | escape }}">{% endif %}
+<picture><source media="(max-width:749px)" width="{{ mobile.width }}" height="{{ mobile.height }}" srcset="{{ mobile | image_url: width: 500 }} 500w, {{ mobile | image_url: width: 800 }} 800w, {{ mobile | image_url: width: 1200 }} 1200w" sizes="100vw">
+{{ photo | image_url: width: 1600 | image_tag: widths: '600,900,1200,1600', sizes: '(min-width:1440px) 1340px, (min-width:750px) calc(100vw - 100px), calc(100vw - 40px)', loading: 'lazy', alt: alt }}
+</picture>
+{% if target != blank %}</a>{% endif %}
+{% endif %}
+</div>
+<div class="iq-story__copy">
+{% if eyebrow != blank %}<p class="iq-story__eyebrow">{{ eyebrow | escape }}</p>{% endif %}
+<h2>{{ heading | escape }}</h2>
+{% if body != blank %}<div class="iq-story__body rte">{{ body }}</div>{% endif %}
+{% if split and target != blank and label != blank %}<a class="iq-story__link" href="{{ target }}">{{ label | escape }} <span aria-hidden="true">↗</span></a>{% endif %}
+</div>
+</article>
+{% elsif request.design_mode %}<div class="iq-story__empty" {{ block.shopify_attributes }}>Bild und Überschrift für diese Produkt-Erklärung auswählen.</div>{% endif %}
+{% endfor %}
+</div>
+{% elsif request.design_mode %}<p class="iq-story__empty">Bitte zuerst die Collection für diesen Abschnitt auswählen.</p>{% endif %}
+{% stylesheet %}
+.iq-story-set{width:100%;max-width:1440px;padding:0 50px;margin:0 auto;color:#171717}.iq-story{position:relative;margin:48px 0;isolation:isolate;overflow:hidden;border-radius:0}.iq-story,.iq-story *{box-sizing:border-box}.iq-story__media{min-width:0}.iq-story__media picture,.iq-story__media img,.iq-story__media video{display:block;width:100%}.iq-story__media img{height:100%;object-fit:cover;object-position:var(--iq-story-x) var(--iq-story-y)}.iq-story__media a{display:block;width:100%;height:100%}.iq-story__media picture{height:100%}.iq-story__eyebrow{font:700 12px/1.4 Archivo,sans-serif;letter-spacing:.05em;margin:0 0 12px}.iq-story h2{margin:0 0 18px;color:inherit}.iq-story__body{font:400 16px/1.55 Archivo,sans-serif}.iq-story__body p{margin:0 0 14px}.iq-story__body p:last-child{margin-bottom:0}.iq-story__link{display:inline-block;padding:12px 0;color:#A51D1B;font:700 16px/1.4 Archivo,sans-serif;text-decoration:underline;text-underline-offset:4px}.iq-story a:focus-visible{outline:3px solid #A51D1B;outline-offset:-4px}.iq-story--overlay{aspect-ratio:2/1}.iq-story--overlay .iq-story__media{position:absolute;inset:0;z-index:-1}.iq-story--overlay .iq-story__copy{position:absolute;left:5%;top:50%;transform:translateY(-50%);width:43%;pointer-events:none}.iq-story--overlay .iq-story__body a{pointer-events:auto}.iq-story--overlay h2{font:italic 800 clamp(28px,3.3vw,48px)/1.08 Montserrat,sans-serif;text-transform:uppercase;letter-spacing:-.025em}.iq-story--overlay.iq-story--right .iq-story__copy{left:auto;right:5%}.iq-story--overlay.iq-story--light{color:#fff}.iq-story--overlay.iq-story--light .iq-story__copy{text-shadow:0 1px 4px #17171799}.iq-story--split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:6%;align-items:center}.iq-story--split .iq-story__media{aspect-ratio:1;overflow:hidden;border-radius:0}.iq-story--split .iq-story__media img{object-fit:contain}.iq-story--split .iq-story__media video{height:100%;object-fit:contain}.iq-story--split h2{font:700 clamp(24px,2.5vw,34px)/1.2 Archivo,sans-serif;text-transform:none;letter-spacing:0}.iq-story--split.iq-story--reverse .iq-story__media{order:2}.iq-story__empty{padding:24px;background:#F3F3F1;margin:24px 0;font:400 16px Archivo,sans-serif}@media(max-width:749px){.iq-story-set{padding:0 20px}.iq-story{margin:32px 0}.iq-story--overlay{aspect-ratio:4/5}.iq-story--overlay .iq-story__copy,.iq-story--overlay.iq-story--right .iq-story__copy{left:6%;right:6%;width:auto;top:auto;bottom:6%;transform:none;text-align:center}.iq-story--overlay.iq-story--mobile-top .iq-story__copy{top:6%;bottom:auto}.iq-story--overlay h2{font-size:clamp(26px,7vw,36px)}.iq-story__body{font-size:15px}.iq-story--split{grid-template-columns:1fr;gap:24px}.iq-story--split.iq-story--reverse .iq-story__media{order:0}.iq-story--split h2{font-size:25px}}
+{% endstylesheet %}
+{% schema %}
+{
+  "name": "IQ Bild und Text",
+  "enabled_on": {
+    "templates": [
+      "collection"
+    ]
+  },
+  "settings": [
+    {
+      "type": "collection",
+      "id": "only_collection",
+      "label": "Nur für diese Collection",
+      "info": "Pflicht: Ohne Auswahl erscheint der Abschnitt nicht im Shop. Für jede Collection eine eigene Instanz hinzufügen."
+    },
+    {
+      "type": "paragraph",
+      "content": "Text auf Bild für redaktionelle Banner. Bild neben Text ausschließlich nach dem Produktraster platzieren. Zwischen einzelnen Produkten die Bildblöcke des Produktrasters verwenden."
+    }
+  ],
+  "max_blocks": 8,
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Produkt-Erklärung",
+      "settings": [
+        {
+          "type": "select",
+          "id": "layout",
+          "label": "Darstellung",
+          "options": [
+            {
+              "value": "overlay",
+              "label": "Text auf Bild"
+            },
+            {
+              "value": "split",
+              "label": "Bild und Text getrennt"
+            }
+          ],
+          "default": "split"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Bild Desktop"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Bild mobil",
+          "info": "Leer = Desktopbild. Für Text auf Bild ein Motiv mit freier Textfläche auswählen."
+        },
+        {
+          "type": "select",
+          "id": "position",
+          "label": "Textposition im Bild",
+          "options": [
+            {
+              "value": "left",
+              "label": "Links"
+            },
+            {
+              "value": "right",
+              "label": "Rechts"
+            }
+          ],
+          "default": "left"
+        },
+        {
+          "type": "select",
+          "id": "tone",
+          "label": "Schrift auf Bild",
+          "options": [
+            {
+              "value": "light",
+              "label": "Hell"
+            },
+            {
+              "value": "dark",
+              "label": "Dunkel"
+            }
+          ],
+          "default": "light"
+        },
+        {
+          "type": "select",
+          "id": "mobile_position",
+          "label": "Textposition mobil",
+          "options": [
+            {
+              "value": "bottom",
+              "label": "Unten"
+            },
+            {
+              "value": "top",
+              "label": "Oben"
+            }
+          ],
+          "default": "bottom"
+        },
+        {
+          "type": "checkbox",
+          "id": "reverse",
+          "label": "Getrennte Darstellung: Bild rechts",
+          "default": false
+        },
+        {
+          "type": "range",
+          "id": "focal_x",
+          "label": "Bildfokus horizontal",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "unit": "%",
+          "default": 50
+        },
+        {
+          "type": "range",
+          "id": "focal_y",
+          "label": "Bildfokus vertikal",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "unit": "%",
+          "default": 50
+        },
+        {
+          "type": "header",
+          "content": "Deutsch"
+        },
+        {
+          "type": "text",
+          "id": "eyebrow_de",
+          "label": "Kleine Überschrift"
+        },
+        {
+          "type": "text",
+          "id": "heading_de",
+          "label": "Überschrift"
+        },
+        {
+          "type": "richtext",
+          "id": "body_de",
+          "label": "Erklärung"
+        },
+        {
+          "type": "text",
+          "id": "alt_de",
+          "label": "Bildbeschreibung"
+        },
+        {
+          "type": "text",
+          "id": "link_label_de",
+          "label": "Textlink unter getrenntem Text"
+        },
+        {
+          "type": "header",
+          "content": "English"
+        },
+        {
+          "type": "text",
+          "id": "eyebrow_en",
+          "label": "Kleine Überschrift"
+        },
+        {
+          "type": "text",
+          "id": "heading_en",
+          "label": "Überschrift"
+        },
+        {
+          "type": "richtext",
+          "id": "body_en",
+          "label": "Erklärung"
+        },
+        {
+          "type": "text",
+          "id": "alt_en",
+          "label": "Bildbeschreibung"
+        },
+        {
+          "type": "text",
+          "id": "link_label_en",
+          "label": "Textlink unter getrenntem Text"
+        },
+        {
+          "type": "header",
+          "content": "Verlinkung und Video"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Passendes Produkt",
+          "info": "Bild verlinkt zur Produktseite. Keine Buttons auf Bildbannern."
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Alternatives Linkziel",
+          "info": "Wird nur verwendet, wenn kein Produkt ausgewählt ist."
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Video für getrennte Darstellung",
+          "info": "Mit manueller Wiedergabe und Bedienelementen. Das gewählte Bild dient als Vorschau. Kein Autoplay."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "IQ Bild mit Text darauf",
+      "blocks": [
+        {
+          "type": "feature",
+          "settings": {
+            "layout": "overlay"
+          }
+        }
+      ]
+    },
+    {
+      "name": "IQ Bild neben Text",
+      "blocks": [
+        {
+          "type": "feature",
+          "settings": {
+            "layout": "split"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

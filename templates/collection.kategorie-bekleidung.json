@@ -13,7 +13,8 @@
       "type": "breadcrumbs",
       "settings": {
         "text_alignment": "center"
-      }
+      },
+      "disabled": true
     },
     "banner": {
       "type": "main-collection-banner",
@@ -23,7 +24,7 @@
           "settings": {
             "heading_size": "hd3",
             "heading_tag": "h1",
-            "show_description": true,
+            "show_description": false,
             "padding_top": 0,
             "padding_bottom": 0
           }
@@ -40,11 +41,11 @@
         "image_overlay_opacity": 0,
         "image_position": "top",
         "image_height": "extra-small",
-        "enable_parallax": true,
+        "enable_parallax": false,
         "parallax_direction": "vertical",
         "image_height_mobile": "auto",
         "padding_top": 10,
-        "padding_bottom": 60
+        "padding_bottom": 0
       }
     },
     "custom_content_F47NJV": {
@@ -213,33 +214,39 @@
       }
     },
     "product-grid": {
-      "type": "main-collection-product-grid",
+      "type": "main-collection-product-grid-magazine",
       "custom_css": [
         ".jdgm-prev-badge__stars {padding-right: 5px;}"
       ],
       "settings": {
         "color_scheme": "scheme-9",
-        "products_per_page": 15,
-        "columns_desktop": 3,
+        "products_per_page": 24,
+        "columns_desktop": 4,
         "grid_layout": "standard",
         "pagination": "load_more",
         "enable_color_swatch": true,
         "enable_filtering": true,
-        "filter_type": "vertical",
+        "filter_type": "drawer",
         "enable_sorting": true,
         "expand_filter_groups": "Availability, Price, Color, Size, Product type",
         "columns_mobile": "2",
-        "padding_top": 40,
+        "padding_top": 0,
         "padding_bottom": 100,
         "show_section_divider": true,
-        "divider_width": "fixed"
+        "divider_width": "fixed",
+        "collection_card_titles": true
       }
+    },
+    "iq_knowledge": {
+      "type": "iq-collection-knowledge",
+      "settings": {}
     }
   },
   "order": [
     "breadcrumbs_Gxg9wp",
     "banner",
     "custom_content_F47NJV",
-    "product-grid"
+    "product-grid",
+    "iq_knowledge"
   ]
 }
