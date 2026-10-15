@@ -374,7 +374,22 @@
     })();
   </script>
 {% endif %}
-
+{%- liquid
+  # [Hamza 2026-10-15] added: count product Media, or Variant Galerie images if the product has no Media
+  assign gallery_media_size = product.media.size
+  if gallery_media_size == 0
+    for v in product.variants
+      assign v_gallery = v.metafields.custom.variant_galerie.value
+      if v_gallery != blank
+        assign gallery_media_size = gallery_media_size | plus: v_gallery.size
+      endif
+    endfor
+  endif
+  assign has_gallery_media = false
+  if gallery_media_size > 0
+    assign has_gallery_media = true
+  endif
+-%}
 {%- liquid
   assign media_layout = section.settings.gallery_layout | default: 'carousel'
   assign mobile_thumbnails = section.settings.mobile_thumbnails | default: 'hide'
@@ -383,14 +398,15 @@
 
   assign product_class = 'product--' | append: section.settings.media_size
   assign product_class = product_class | append: ' product--' | append: media_layout
-  assign product_class = product_class | append: ' product--media-has-' | append: product.media.size
-  if product.media.size > 1
+  # [Hamza 2026-10-15] changed: product.media.size -> gallery_media_size (counts Variant Galerie images too)
+  assign product_class = product_class | append: ' product--media-has-' | append: gallery_media_size
+  if gallery_media_size > 1
     assign product_class = product_class | append: ' product--media-has-many'
   endif
 
   case media_layout
     when 'grid-mix'
-      assign media_modulo = product.media.size | modulo: 3
+      assign media_modulo = gallery_media_size | modulo: 3
       if media_modulo == 2
         assign product_class = product_class | append: ' product--odd-media'
       endif
@@ -447,8 +463,8 @@
 
   {% assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' %}
   <div class="product flex flex-wrap {{ product_class }}">
-    {%- if product.media.size > 0 -%}
-      <motion-element data-motion="fade-up" data-motion-delay="50" class="product__media-wrapper w-full relative">
+    {%- if has_gallery_media -%} {%- # [Hamza 2026-10-15] changed: was product.media.size > 0 -%}
+    <motion-element data-motion="fade-up" data-motion-delay="50" class="product__media-wrapper w-full relative">
         {% render 'product-media-gallery',
           enable_sticky_info: enable_sticky_info,
           media_layout: media_layout,
@@ -471,7 +487,7 @@
     <script src="{{ 'photoswipe.js' | asset_url }}" defer="defer"></script>
   {%- endif -%}
 
-  {%- if product.media.size > 0 -%}
+  {%- if has_gallery_media -%} {%- # [Hamza 2026-10-15] changed: was product.media.size > 0 -%}
     <script src="{{ 'media-gallery.js' | asset_url }}" defer="defer"></script>
   {%- endif -%}
 
