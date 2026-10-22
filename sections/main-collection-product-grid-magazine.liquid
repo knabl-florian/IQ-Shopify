@@ -7,6 +7,7 @@
   if collection.template_suffix == 'westen' or collection.template_suffix == 'jacken'
     assign iq_collection_card = true
   endif
+  assign iq_group_filter = collection.filters | where: 'param_name', 'filter.p.m.custom.iq_product_groups' | first
   assign current_filter_size = 0
   assign columns_desktop = section.settings.columns_desktop
   assign columns_tablet = columns_desktop | at_most: 3
@@ -664,6 +665,7 @@
           </div>
         {%- endif -%}
         <div class="flex flex-col flex-grow{% if show_toolbar %} show-toolbar{% endif %}" id="ProductGridWrapper">
+          {% render 'iq-collection-group-filters' %}
           <div class="sticky-element grid gap-5 z-10" style="--sticky-offset: 0px;">
             {%- if enable_filtering or enable_sorting -%}
               <div class="collection__toolbar flex items-center justify-between">
@@ -728,7 +730,7 @@
             endif
           -%}
           <div id="ProductGridContainer">
-            {% unless template.suffix == 'westen' or template.suffix == 'jacken' %}{% render 'iq-collection-product-jumps', products: iq_display_products %}{% endunless %}
+            {% if iq_group_filter == blank %}{% unless template.suffix == 'westen' or template.suffix == 'jacken' %}{% render 'iq-collection-product-jumps', products: iq_display_products %}{% endunless %}{% endif %}
             {%- if section.settings.iq_jv_enabled and card_count > 0 -%}
               {{ iq_jv_style }}
               <p class="iq-jv-jump text-sm"><a href="#iq-jacken-vergleich-{{ section.id }}">{% if lang == 'en' %}Which jacket suits you? Compare jackets{% else %}Welche Jacke passt zu Dir? Zum Vergleich{% endif %} <span aria-hidden="true">↓</span></a></p>

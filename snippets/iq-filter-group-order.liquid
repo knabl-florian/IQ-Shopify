@@ -1,0 +1,29 @@
+{% doc %}
+Ordered product-group values for the current collection.
+{% enddoc %}
+{% liquid
+ case collection.handle
+ when 'hundesportbekleidung'
+ echo 'hundesportbekleidung--jacken|hundesportbekleidung--mantel|hundesportbekleidung--westen|hundesportbekleidung--hosen|hundesportbekleidung--shirts-hoodies|hundesportbekleidung--accessoires'
+ when 'hundesport-jacken'
+ echo 'hundesport-jacken--winter|hundesport-jacken--multifunktion|hundesport-jacken--training|hundesport-jacken--regen-softshell|hundesport-jacken--k9'
+ when 'hundesport-westen'
+ echo 'hundesport-westen--hundesport|hundesport-westen--sommer|hundesport-westen--k9-dienst'
+ when 'hundesport-t-shirts-hoodies'
+ echo 'hundesport-t-shirts-hoodies--hoodies|hundesport-t-shirts-hoodies--zip-hoodies|hundesport-t-shirts-hoodies--trainingsshirts|hundesport-t-shirts-hoodies--t-shirts|hundesport-t-shirts-hoodies--tanktops'
+ when 'hundesport-zubehoer-damen'
+ echo 'hundesport-zubehoer-damen--caps-mutzen|hundesport-zubehoer-damen--taschen-gurtel|hundesport-zubehoer-damen--socken|hundesport-zubehoer-damen--clicker|hundesport-zubehoer-damen--pflege-ersatzteile|hundesport-zubehoer-damen--schlusselanhanger'
+ when 'hundesport-trainingszubehoer'
+ echo 'hundesport-trainingszubehoer--fussarbeit-clicker|hundesport-trainingszubehoer--apportieren|hundesport-trainingszubehoer--fahrte|hundesport-trainingszubehoer--geschirre-schutzdienst|hundesport-trainingszubehoer--taschen-gurtel|hundesport-trainingszubehoer--hundeplatz-verein'
+ when 'hundesport-spielzeug'
+ echo 'hundesport-spielzeug--balle|hundesport-spielzeug--beissrollen|hundesport-spielzeug--magnetsysteme'
+ when 'k9-diensthundefuehrer-ausruestung'
+ echo 'k9-diensthundefuehrer-ausruestung--jacken|k9-diensthundefuehrer-ausruestung--westen|k9-diensthundefuehrer-ausruestung--geschirre|k9-diensthundefuehrer-ausruestung--taschen-belohnung|k9-diensthundefuehrer-ausruestung--zubehor-patches'
+ when 'trainingsfutter-supplemente'
+ echo 'trainingsfutter-supplemente--trainingssnacks|trainingsfutter-supplemente--kausnacks|trainingsfutter-supplemente--hauptfutter'
+ when 'bucher-deutsch'
+ echo 'bucher-deutsch--unterordnung|bucher-deutsch--schutzdienst|bucher-deutsch--begleithundprufung'
+ when 'gutschein-fun-stuff'
+ echo 'gutschein-fun-stuff--gutscheine|gutschein-fun-stuff--banner|gutschein-fun-stuff--schlusselanhanger|gutschein-fun-stuff--balle|gutschein-fun-stuff--caps-socken|gutschein-fun-stuff--aufkleber'
+ endcase
+%}

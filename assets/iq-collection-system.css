@@ -353,3 +353,97 @@ body.collection-template [id^="iq-product-"]{scroll-margin-top:150px}
 body.collection-template .collection-hero__title,body.collection-template .collection-hero__title motion-element{word-break:normal!important;overflow-wrap:normal!important;hyphens:auto}
 body.collection-template .iq-collection-knowledge h2{word-break:normal!important;overflow-wrap:normal!important;hyphens:auto}
 body.collection-template layout-switcher{display:none!important}
+
+
+/* IQ product-group filters: shared desktop and mobile styling. */
+#IQCollectionGroupFilters {
+  scroll-margin-top: 140px;
+  padding-top: 24px;
+  min-width: 0;
+}
+
+.iq-group-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 20px;
+  padding: 0 0 16px;
+  border-bottom: 1px solid #DCDBD7;
+}
+
+.iq-group-filters__option {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid #DCDBD7;
+  border-radius: var(--buttons-radius, 2px);
+  font: 700 14px/1.4 Archivo, sans-serif;
+  color: #171717;
+  text-decoration: none;
+  background: #FFFFFF;
+}
+
+.iq-group-filters__option.is-active {
+  background: #171717;
+  color: #FFFFFF;
+  border-color: #171717;
+}
+
+.iq-group-filters__option:focus-visible {
+  outline: 2px solid #A51D1B;
+  outline-offset: 3px;
+}
+
+.iq-group-filters__option:hover { border-color: #171717; }
+.iq-group-filters__count { font-weight: 400; }
+.iq-group-filters__option.is-disabled { opacity: .5; }
+
+/* Mobile: allow the FLEX CHILD to shrink before scrolling its own children.
+   Without min-width: 0 on #ProductGridWrapper, the row can grow to 1069px
+   inside a 375px viewport, clipping links instead of becoming scrollable. */
+@media screen and (max-width: 749px) {
+  .collection__content,
+  #ProductGridWrapper {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  #ProductGridWrapper {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  #IQCollectionGroupFilters {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    padding-top: 16px;
+  }
+
+  #IQCollectionGroupFilters .iq-group-filters {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    scroll-padding-inline: 4px;
+    padding-left: 3px;
+    padding-right: 3px;
+    scrollbar-width: thin;
+  }
+
+  #IQCollectionGroupFilters .iq-group-filters__option {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+}

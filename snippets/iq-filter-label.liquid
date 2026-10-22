@@ -1,0 +1,43 @@
+{% doc %}
+@param {string} param - Native filter parameter.
+@param {string} [value] - Native filter value.
+@param {string} fallback - Default label.
+{% enddoc %}
+{%- liquid
+ if param == 'filter.p.m.custom.iq_product_groups'
+  if value != blank
+   assign key = 'iq_filters.groups.' | append: value
+   echo key | t
+  else
+   echo 'iq_filters.product_group' | t
+  endif
+ elsif param == 'filter.p.m.custom.iq_book_languages'
+  if value == 'de'
+   echo 'iq_filters.german' | t
+  elsif value == 'en'
+   echo 'iq_filters.english' | t
+  elsif value == blank
+   echo 'iq_filters.book_language' | t
+  else
+   echo fallback | escape
+  endif
+ elsif param == 'filter.v.option.größe' or param == 'filter.v.option.size'
+  if value == blank
+   echo 'iq_filters.size' | t
+  else
+   echo fallback | escape
+  endif
+ elsif param == 'filter.v.t.shopify.target-gender'
+  if value contains '/18'
+   echo 'iq_filters.women' | t
+  elsif value contains '/20'
+   echo 'iq_filters.unisex' | t
+  elsif value == blank
+   echo 'iq_filters.fit' | t
+  else
+   echo fallback | escape
+  endif
+ else
+  echo fallback | escape
+ endif
+-%}

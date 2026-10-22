@@ -1,0 +1,29 @@
+{% doc %}
+Native product groups, filtered on Shopify across all result pages.
+{% enddoc %}
+{%- liquid
+ assign group_filter = collection.filters | where: 'param_name', 'filter.p.m.custom.iq_product_groups' | first
+ capture group_order
+  render 'iq-filter-group-order'
+ endcapture
+ assign group_order = group_order | strip | split: '|'
+-%}
+<div id="IQCollectionGroupFilters">
+{%- if group_filter != blank and group_order.first != blank -%}
+ <nav class="iq-group-filters" aria-label="{{ 'iq_filters.product_group' | t }}">
+  <a class="iq-group-filters__option{% if group_filter.active_values.size == 0 %} is-active{% endif %}" href="{{ group_filter.url_to_remove | escape }}#IQCollectionGroupFilters"{% if group_filter.active_values.size == 0 %} aria-current="true"{% endif %}>{{ 'iq_filters.all' | t }}</a>
+  {%- for group_key in group_order -%}
+   {%- assign option = group_filter.values | where: 'value', group_key | first -%}
+   {%- if option != blank -%}
+    {%- assign href = option.url_to_add -%}
+    {%- if option.active -%}{%- assign href = option.url_to_remove -%}{%- endif -%}
+    {%- if option.count > 0 or option.active -%}
+     <a class="iq-group-filters__option{% if option.active %} is-active{% endif %}" href="{{ href | escape }}#IQCollectionGroupFilters"{% if option.active %} aria-current="true"{% endif %}>{% render 'iq-filter-label', param: group_filter.param_name, value: option.value, fallback: option.label %}<span class="iq-group-filters__count">({{ option.count }})</span></a>
+    {%- else -%}
+     <span class="iq-group-filters__option is-disabled" aria-disabled="true">{% render 'iq-filter-label', param: group_filter.param_name, value: option.value, fallback: option.label %}<span class="iq-group-filters__count">(0)</span></span>
+    {%- endif -%}
+   {%- endif -%}
+  {%- endfor -%}
+ </nav>
+{%- endif -%}
+</div>

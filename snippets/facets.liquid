@@ -29,7 +29,19 @@
       {%- endif -%}
     </div>
     {%- for filter in results.filters -%}
-      {%- assign filter_id = context | append: '-' | append: filter.param_name -%}
+      {%- if filter.param_name == 'filter.p.m.custom.iq_product_groups' -%}
+        {%- unless request.page_type == 'collection' -%}{%- continue -%}{%- endunless -%}
+        {%- capture iq_drawer_group_order -%}{%- render 'iq-filter-group-order' -%}{%- endcapture -%}
+        {%- assign iq_drawer_group_order = iq_drawer_group_order | strip -%}
+        {%- if iq_drawer_group_order == blank -%}{%- continue -%}{%- endif -%}
+      {%- endif -%}
+      {%- if request.page_type == 'collection' and filter.param_name == 'filter.p.m.custom.iq_book_languages' -%}
+        {%- unless collection.handle == 'bucher-deutsch' or filter.active_values.size > 0 -%}{%- continue -%}{%- endunless -%}
+      {%- endif -%}
+      {%- if request.page_type == 'collection' and filter.param_name == 'filter.v.t.shopify.target-gender' -%}
+ {%- unless collection.handle == 'hundesportbekleidung' or collection.handle == 'hundesport-jacken' or collection.handle == 'hundesport-t-shirts-hoodies' or collection.handle == 'hundesport-hosen' or collection.handle == 'sale' or collection.handle == 'k9-diensthundefuehrer-ausruestung' or filter.active_values.size > 0 -%}{%- continue -%}{%- endunless -%}
+{%- endif -%}
+{%- assign filter_id = context | append: '-' | append: filter.param_name -%}
       {% liquid
         if filter.presentation == 'image'
           assign show_more_number = 12
@@ -80,7 +92,7 @@
           >
             <summary class="accordion-details__summary flex items-center justify-between">
               <span class="h4">
-                {{- filter.label | escape -}}
+                {% render 'iq-filter-label', param: filter.param_name, fallback: filter.label %}
                 {%- if filter.operator == 'AND' -%}
                   <small class="accordion-details__helptext block text-subtext text-sm overflow-hidden">
                     {{- 'products.facets.filter_and_operator_subtitle' | t -}}
@@ -93,6 +105,11 @@
               {%- if is_color or filter.presentation == 'swatch' -%}
                 <ul class="swatches flex flex-wrap items-center">
                   {%- for filter_value in sorted_values -%}
+{%- if filter.param_name == 'filter.p.m.custom.iq_product_groups' -%}
+ {%- assign iq_group_prefix = collection.handle | append: '--' -%}
+ {%- assign iq_value_prefix = filter_value.value | split: '--' | first | append: '--' -%}
+ {%- unless iq_value_prefix == iq_group_prefix -%}{%- continue -%}{%- endunless -%}
+{%- endif -%}
                     {%- liquid
                       assign filter_value_id = filter_id | append: '-' | append: forloop.index
                       assign is_disabled = false
@@ -118,6 +135,11 @@
               {%- elsif filter.presentation == 'image' -%}
                 <ul class="swatches flex items-center">
                   {%- for filter_value in sorted_values -%}
+{%- if filter.param_name == 'filter.p.m.custom.iq_product_groups' -%}
+ {%- assign iq_group_prefix = collection.handle | append: '--' -%}
+ {%- assign iq_value_prefix = filter_value.value | split: '--' | first | append: '--' -%}
+ {%- unless iq_value_prefix == iq_group_prefix -%}{%- continue -%}{%- endunless -%}
+{%- endif -%}
                     {%- liquid
                       assign filter_value_id = filter_id | append: '-' | append: forloop.index
                       assign is_disabled = false
@@ -163,6 +185,11 @@
               {%- else -%}
                 <ul class="grid gap-3">
                   {%- for filter_value in sorted_values -%}
+{%- if filter.param_name == 'filter.p.m.custom.iq_product_groups' -%}
+ {%- assign iq_group_prefix = collection.handle | append: '--' -%}
+ {%- assign iq_value_prefix = filter_value.value | split: '--' | first | append: '--' -%}
+ {%- unless iq_value_prefix == iq_group_prefix -%}{%- continue -%}{%- endunless -%}
+{%- endif -%}
                     {%- liquid
                       assign filter_value_id = filter_id | append: '-' | append: forloop.index
                       assign is_disabled = false
@@ -185,7 +212,7 @@
                         {% endif %}
                       >
                       <label for="{{ filter_value_id }}" class="flex items-center gap-1">
-                        {{- filter_value.label | escape -}}
+                        {% render 'iq-filter-label', param: filter.param_name, value: filter_value.value, fallback: filter_value.label %}
                         <span class="text-sm{% unless filter_value.active %} text-subtext{% endunless %}"
                           >({{ filter_value.count }})</span
                         >
@@ -231,7 +258,7 @@
             {% endif %}
           >
             <summary class="accordion-details__summary flex items-center justify-between">
-              <span class="h4">{{- filter.label | escape -}}</span>
+              <span class="h4">{% render 'iq-filter-label', param: filter.param_name, fallback: filter.label %}</span>
               {%- render 'icon-plus-toggle' -%}
             </summary>
             <div class="accordion-details__content accordion-details__content--price">
@@ -317,3 +344,4 @@
     {%- endfor -%}
   </form>
 {%- endif -%}
+

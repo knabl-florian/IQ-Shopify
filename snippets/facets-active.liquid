@@ -45,7 +45,7 @@
                 if filter.type == 'boolean'
                   echo filter.label | append: ': ' | append: active_value.label
                 else
-                  echo active_value.label
+                  render 'iq-filter-label', param: filter.param_name, value: active_value.value, fallback: active_value.label
                 endif
               -%}
             </div>
@@ -79,3 +79,4 @@
 <div class="facets-active flex flex-wrap items-center gap-3 z-1 relative" id="FacetFiltersActive">
   {{- active_facets -}}
 </div>
+

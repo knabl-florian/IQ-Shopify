@@ -1,5 +1,7 @@
 <div class="iq-collection-links"><nav aria-label="{% if request.locale.iso_code == 'en' %}Collection navigation{% else %}Kollektion auswählen{% endif %}">
+{% assign iq_group_filter = collection.filters | where: 'param_name', 'filter.p.m.custom.iq_product_groups' | first %}
 {% for block in section.blocks %}
+{% if iq_group_filter != blank and block.settings.product != blank %}{% continue %}{% endif %}
   {% liquid
     assign label = block.settings.label_de
     assign target = block.settings.target
@@ -69,3 +71,4 @@
   ]
 }
 {% endschema %}
+

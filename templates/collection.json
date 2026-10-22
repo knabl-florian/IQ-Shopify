@@ -800,6 +800,29 @@
         "button_en": "",
         "button_url": ""
       }
+    },
+    "iq_performance_video": {
+      "type": "iq-responsive-collection-video",
+      "settings": {
+        "only_collection": "hundesport-trainingszubehoer",
+        "heading_de": "Bewegungsfreiheit. Auch unter Zug.",
+        "heading_en": "Freedom of movement. Even under tension.",
+        "intro_de": "<p>Mit Tierärzten und Physiotherapeuten entwickelt. In der Schweiz gefertigt.</p>",
+        "intro_en": "<p>Developed with veterinarians and physiotherapists. Made in Switzerland.</p>",
+        "benefits_de": "<ul><li>Freie Atmung und Schulterbewegung, auch unter Zug.</li><li>Zugführung zur Verringerung des Überschlagrisikos bei der Leinenarbeit.</li><li>Satteldesign mit Wirbelsäulentunnel zur Druckentlastung.</li><li>Schnell angelegt mit Click &amp; Go- oder Cobra-Schnallen – je nach Modell.</li></ul>",
+        "benefits_en": "<ul><li>Free breathing and shoulder movement, even under tension.</li><li>Leash attachment designed to reduce the risk of flipping during leash work.</li><li>Saddle design with a spinal tunnel to relieve pressure.</li><li>Quick to put on with Click &amp; Go or Cobra buckles, depending on the model.</li></ul>",
+        "button_de": "Performance Pro entdecken",
+        "button_en": "Discover Performance Pro",
+        "button_url": "/products/iq-performance-pro-click-go",
+        "video_desktop_de": "shopify://files/videos/iq-performance-pro-desktop-de.mp4",
+        "video_desktop_en": "shopify://files/videos/iq-performance-pro-desktop-en.mp4",
+        "video_mobile_de": "shopify://files/videos/iq-performance-pro-mobile-de_a570da22-28dd-4306-b130-0c2912162f47.mp4",
+        "video_mobile_en": "shopify://files/videos/iq-performance-pro-mobile-en_f9a9da14-335d-4a70-afb9-d6dd08ec75dc.mp4",
+        "poster_mobile_de": "shopify://shop_images/iq-performance-pro-mobile-de-titelbild.jpg",
+        "poster_mobile_en": "shopify://shop_images/iq-performance-pro-mobile-en-titelbild.jpg",
+        "poster_desktop_de": "shopify://shop_images/iq-performance-pro-desktop-de-titelbild_19918eeb-dac0-49ba-8792-2c7cc4fdff81.jpg",
+        "poster_desktop_en": "shopify://shop_images/iq-performance-pro-desktop-en-titelbild.jpg"
+      }
     }
   },
   "order": [
@@ -817,6 +840,7 @@
     "custom_liquid_FpycJH",
     "breadcrumbs_Gxg9wp",
     "product-grid",
+    "iq_performance_video",
     "iq_training_details",
     "iq_food_details",
     "custom_liquid_aqAmH6",

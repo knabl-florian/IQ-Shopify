@@ -313,7 +313,7 @@
         "grid_layout": "standard",
         "pagination": "load_more",
         "enable_color_swatch": true,
-        "enable_filtering": false,
+        "enable_filtering": true,
         "filter_type": "drawer",
         "enable_sorting": false,
         "expand_filter_groups": "Verfügbarkeit, Preis, Farbe, Größe, Produkttyp, Geschlecht",

@@ -264,6 +264,7 @@ class FacetForm extends HTMLFormElement {
           () => {
             this.renderFilters(responseText, event);
             this.renderFiltersActive(responseText);
+            this.renderGroupFilters(responseText);
             this.renderProductGridContainer(responseText);
             this.renderProductCount(responseText);
             this.renderSortBy(responseText);
@@ -286,6 +287,7 @@ class FacetForm extends HTMLFormElement {
       const responseText = this.cachedMap.get(url);
       this.renderFilters(responseText, event);
       this.renderFiltersActive(responseText);
+            this.renderGroupFilters(responseText);
       this.renderProductGridContainer(responseText);
       this.renderProductCount(responseText);
       this.renderSortBy(responseText);
@@ -319,6 +321,13 @@ class FacetForm extends HTMLFormElement {
         }
       }
     });
+  }
+
+  renderGroupFilters(responseText) {
+    const current = document.getElementById('IQCollectionGroupFilters');
+    if (!current) return;
+    const next = new DOMParser().parseFromString(responseText, 'text/html').getElementById('IQCollectionGroupFilters');
+    if (next) current.innerHTML = next.innerHTML;
   }
 
   renderFiltersActive(responseText) {

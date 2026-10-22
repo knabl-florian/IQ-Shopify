@@ -452,7 +452,10 @@
         "part1": {
           "type": "part1",
           "settings": {
-            "link_1": "#iq-product-10709800583432",
+            "link_1": "/products/iq-multifunktionsjacke-3-0-damen",
+"link_mfj_damen_en": "/en/products/iq-multifunktionsjacke-3-0-damen",
+"link_mfj_unisex_de": "/products/iq-multifunktionsjacke-3-0-unisex",
+"link_mfj_unisex_en": "/en/products/iq-multifunktionsjacke-3-0-unisex",
             "link_2": "#iq-product-10709812936968",
             "link_3": "#iq-product-10709817131272",
             "link_4": "/products/iq-softshelljacke-2-0-damen",
