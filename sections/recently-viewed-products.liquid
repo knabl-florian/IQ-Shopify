@@ -54,11 +54,16 @@
         <div class="products-grid f-grid f-grid-{{ columns_mobile }}-cols md:f-grid-{{ columns_tablet }}-cols lg:f-grid-{{ columns }}-cols f-grid--gap-{{ section.settings.column_gap }} f-grid--row-gap-{{ section.settings.row_gap }}{% if enable_slider %} swiper-wrapper{% endif %}{% if enable_swipe_mobile %} swipe-mobile__inner{% endif %}">
           {%- liquid
             assign parsed_terms = search.terms | split: ' OR '
+            # [Hamza 2026-10-16] added: remember shown products so the same product is not shown twice
+            assign iq_shown_ids = ','
           -%}
           {%- for parsed_term in parsed_terms -%}
             {%- assign id = parsed_term | split: 'id:' | last | times: 1 -%}
             {%- for product in search.results -%}
+              {%- assign iq_id_key = ',' | append: product.id | append: ',' -%}
+              {%- if product.id == id and iq_shown_ids contains iq_id_key -%}{%- continue -%}{%- endif -%}{%- comment -%} [Hamza 2026-10-16] added: skip duplicates {%- endcomment -%}
               {%- if product.id == id -%}
+                {%- assign iq_shown_ids = iq_shown_ids | append: product.id | append: ',' -%}
                 <div class="{{ item_css_class }}">
                   {% render 'card-product',
                     product: product,

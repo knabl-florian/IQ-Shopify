@@ -1,0 +1,30 @@
+{% liquid
+  assign heading = block.settings.heading_de
+  assign body = block.settings.body_de
+  assign eyebrow = block.settings.eyebrow_de
+  assign alt = block.settings.alt_de
+  if request.locale.iso_code == 'en'
+    assign heading = block.settings.heading_en | default: heading
+    assign body = block.settings.body_en | default: body
+    assign eyebrow = block.settings.eyebrow_en | default: eyebrow
+    assign alt = block.settings.alt_en | default: alt
+  endif
+  assign product = block.settings.product
+  assign photo = block.settings.image | default: product.featured_image
+  assign mobile = block.settings.mobile_image | default: photo
+%}
+{% if photo != blank and product != blank %}
+<div class="f-column collection-inline-block collection-inline-block--full" data-inline-block="{{ block.id }}" {{ block.shopify_attributes }}>
+  <a class="iq-editorial-banner iq-editorial-banner--{{ block.settings.mode }}" href="{{ product.url }}">
+    <picture>
+      <source media="(max-width:749px)" width="{{ mobile.width }}" height="{{ mobile.height }}" srcset="{{ mobile | image_url: width: 800 }}">
+      {{ photo | image_url: width: 1600 | image_tag: widths: '600,900,1200,1600', sizes: '(min-width:1440px) 1340px, 100vw', loading: 'lazy', alt: alt }}
+    </picture>
+    <div class="iq-editorial-banner__copy">
+      {% if eyebrow != blank %}<p class="iq-editorial-banner__label">{{ eyebrow | escape }}</p>{% endif %}
+      <h2>{{ heading | escape }}</h2>
+      <p>{{ body | escape }}</p>
+    </div>
+  </a>
+</div>
+{% endif %}

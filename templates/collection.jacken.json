@@ -57,12 +57,13 @@
       "name": "IQ Collection Banner",
       "settings": {
         "only_collection": "",
+        "require_collection": false,
         "desktop_image": "shopify://shop_images/iq-jacken-hero-desktop.webp",
         "mobile_image": "shopify://shop_images/iq-jacken-hero-mobil.webp",
         "text_tone": "light",
         "desktop_position": "top",
         "show_mobile_label": false,
-        "focus_y": 50,
+        "focus_y": 30,
         "title_de": "Starke Hunde.",
         "accent_de": "Starke Jacken.",
         "description_de": "Robuste Materialien. Taschen am richtigen Platz.",
@@ -198,43 +199,105 @@
     "product-grid": {
       "type": "main-collection-product-grid-magazine",
       "blocks": {
+        "inline_video_hzEgWL": {
+          "type": "inline_video",
+          "disabled": true,
+          "settings": {
+            "video_ratio": "auto",
+            "video_fit": "contain",
+            "position": 4,
+            "position_mobile": 1,
+            "width": "2",
+            "video": "shopify://files/videos/wintermantal-en.mp4",
+            "autoplay": false,
+            "loop": false,
+            "muted": false
+          }
+        },
         "inline_custom_liquid_jLyiVe": {
-          "type": "inline_custom_liquid",
+          "type": "iq_release_9",
           "name": "Multi Blau Banner",
           "settings": {
-            "position": 3,
-            "position_mobile": 4,
+            "position": 2,
+            "position_mobile": 2,
             "width": "full",
-            "custom_liquid": "{% if collection.handle == 'hundesport-jacken' %}\n{% assign iq_rugged_mobile = images['mfj-blau-robust-mobil-klein.jpg'] %}\n{% assign iq_rugged_desktop = images['mfj-blau-robust-desktop-klein.jpg'] %}\n{% if iq_rugged_mobile != blank and iq_rugged_desktop != blank %}\n<section class=\"iq-collection-feature iq-collection-feature--left\">\n<picture>\n<source media=\"(max-width:749px)\" width=\"1080\" height=\"1200\" sizes=\"100vw\" srcset=\"{{ iq_rugged_mobile | image_url: width: 540 }} 540w, {{ iq_rugged_mobile | image_url: width: 1080 }} 1080w\">\n{{ iq_rugged_desktop | image_url: width: 1560 | image_tag: widths: '780, 1200, 1560', sizes: '(min-width:1440px) 1340px, (min-width:1200px) calc(100vw - 100px), (min-width:750px) calc(100vw - 48px), calc(100vw - 30px)', loading: 'lazy', alt: 'IQ Multifunktionsjacke 3.0 Unisex Blau' }}\n</picture>\n{% if request.locale.iso_code == 'en' %}\n<div class=\"iq-collection-feature--left__copy\"><p class=\"iq-collection-feature--left__label\">THE ORIGINAL SINCE 2011</p><h2>Built tough.<br>Made to last.</h2><p class=\"iq-collection-feature--left__desktop\">Our toughest dog training jacket: scratch-resistant Taslon with reinforced, sealed seams. Insulated and waterproof with a 20,000 mm waterproof rating.</p><p class=\"iq-collection-feature--left__mobile\">Scratch-resistant Taslon. Reinforced seams.<br>Insulated. 20,000 mm waterproof rating.</p></div>\n{% else %}\n<div class=\"iq-collection-feature--left__copy\"><p class=\"iq-collection-feature--left__label\">DAS ORIGINAL SEIT 2011</p><h2>Hart im Nehmen.<br>Gemacht für Jahre.</h2><p class=\"iq-collection-feature--left__desktop\">Unsere robusteste Hundesportjacke: kratzfestes Taslon, mehrfach verriegelte und versiegelte Nähte. Gefüttert und wasserdicht mit 20.000 mm Wassersäule.</p><p class=\"iq-collection-feature--left__mobile\">Kratzfestes Taslon. Verstärkte Nähte.<br>Gefüttert. 20.000 mm Wassersäule.</p></div>\n{% endif %}\n</section>\n{% elsif request.design_mode %}<p>Bitte die beiden mfj-blau-robust JPG-Dateien unter Inhalte → Dateien hochladen.</p>{% endif %}\n\n{% endif %}"
+            "bild_1": "shopify://shop_images/mfj-blau-robust-mobil-klein.jpg",
+            "bild_2": "shopify://shop_images/mfj-blau-robust-desktop-klein.jpg",
+            "text_3": "IQ Multifunktionsjacke 3.0 Unisex Blau",
+            "text_4": "THE ORIGINAL SINCE 2011",
+            "text_5": "Built tough.",
+            "text_6": "Made to last.",
+            "text_7": "Our toughest dog training jacket: scratch-resistant Taslon with reinforced, sealed seams. Insulated and waterproof with a 20,000 mm waterproof rating.",
+            "text_8": "Scratch-resistant Taslon. Reinforced seams.",
+            "text_9": "Insulated. 20,000 mm waterproof rating.",
+            "text_10": "DAS ORIGINAL SEIT 2011",
+            "text_11": "Hart im Nehmen.",
+            "text_12": "Gemacht für Jahre.",
+            "text_13": "Unsere robusteste Hundesportjacke: kratzfestes Taslon, mehrfach verriegelte und versiegelte Nähte. Gefüttert und wasserdicht mit 20.000 mm Wassersäule.",
+            "text_14": "Kratzfestes Taslon. Verstärkte Nähte.",
+            "text_15": "Gefüttert. 20.000 mm Wassersäule."
           }
         },
         "inline_custom_liquid_jX7CNp": {
-          "type": "inline_custom_liquid",
+          "type": "iq_release_10",
           "settings": {
-            "position": 14,
-            "position_mobile": 14,
+            "position": 30,
+            "position_mobile": 30,
             "width": "full",
-            "custom_liquid": "<div class=\"iq-collection-intro\">\n{% if request.locale.iso_code == 'en' %}\n<h2>Jackets for K9 handlers</h2>\n<a href=\"{{ routes.collections_url }}/k9-diensthundefuehrer-ausruestung\">More equipment <span aria-hidden=\"true\">→</span></a>\n{% else %}\n<h2>Jacken für Diensthundeführer</h2>\n<a href=\"{{ routes.collections_url }}/k9-diensthundefuehrer-ausruestung\">Weitere Ausrüstung <span aria-hidden=\"true\">→</span></a>\n{% endif %}\n</div>"
+            "link_1": "/collections/k9-diensthundefuehrer-ausruestung",
+            "link_2": "/en/collections/k9-diensthundefuehrer-ausruestung",
+            "text_3": "Jackets for K9 handlers",
+            "text_4": "More equipment",
+            "text_5": "Jacken für Diensthundeführer",
+            "text_6": "Weitere Ausrüstung"
           }
         },
         "inline_custom_liquid_AHzzML": {
-          "type": "inline_custom_liquid",
+          "type": "iq_release_11",
           "name": "Banner Allround Jacke",
           "settings": {
             "position": 10,
             "position_mobile": 10,
             "width": "full",
-            "custom_liquid": "{% if collection.handle == 'hundesport-jacken' %}\n{% assign iq_allround_mobile = images['iq-allround-funktion-mobil.jpg'] %}\n{% assign iq_allround_desktop = images['iq-allround-funktion-desktop.jpg'] %}\n{% if iq_allround_mobile != blank and iq_allround_desktop != blank %}\n<section class=\"iq-collection-feature iq-collection-feature--right\">\n<picture>\n<source media=\"(max-width:749px)\" width=\"1080\" height=\"1200\" sizes=\"100vw\" srcset=\"{{ iq_allround_mobile | image_url: width: 540 }} 540w, {{ iq_allround_mobile | image_url: width: 1080 }} 1080w\">\n{{ iq_allround_desktop | image_url: width: 1920 | image_tag: widths: '750, 1200, 1600, 1920', sizes: '(min-width:1440px) 1340px, (min-width:1200px) calc(100vw - 100px), (min-width:750px) calc(100vw - 48px), calc(100vw - 30px)', loading: 'lazy', alt: 'IQ Allround-Jacke beim Training mit Hund' }}\n</picture>\n{% if request.locale.iso_code == 'en' %}\n<div class=\"copy\"><p class=\"label\">THE ALLROUND JACKET</p><h2>Travel light.<br/>Bring the essentials.</h2><p class=\"short\">Lightweight rain jacket with a storm hood<br/>and removable treat pockets.</p><p class=\"long\">Lightweight rain jacket with a large storm hood, removable treat pockets, clicker compartment and concealed waste-bag dispenser.</p></div>\n{% else %}\n<div class=\"copy\"><p class=\"label\">DIE ALLROUND-JACKE</p><h2>Leicht unterwegs.<br/>Alles dabei.</h2><p class=\"short\">Leichte Regenjacke mit Sturmkapuze<br/>und herausnehmbaren Futtertaschen.</p><p class=\"long\">Leichte Regenjacke mit großer Sturmkapuze, herausnehmbaren Futtertaschen, Clicker-Fach und verstecktem Kotbeutelspender.</p></div>\n{% endif %}\n</section>\n{% elsif request.design_mode %}\n<p>Bitte iq-allround-funktion-mobil.jpg und iq-allround-funktion-desktop.jpg unter Inhalte → Dateien hochladen.</p>\n{% endif %}\n\n{% endif %}"
+            "bild_1": "shopify://shop_images/iq-allround-funktion-mobil.jpg",
+            "bild_2": "shopify://shop_images/iq-allround-funktion-desktop.jpg",
+            "text_3": "IQ Allround-Jacke beim Training mit Hund",
+            "text_4": "THE ALLROUND JACKET",
+            "text_5": "Travel light.",
+            "text_6": "Bring the essentials.",
+            "text_7": "Lightweight rain jacket with a storm hood",
+            "text_8": "and removable treat pockets.",
+            "text_9": "Lightweight rain jacket with a large storm hood, removable treat pockets, clicker compartment and concealed waste-bag dispenser.",
+            "text_10": "DIE ALLROUND-JACKE",
+            "text_11": "Leicht unterwegs.",
+            "text_12": "Alles dabei.",
+            "text_13": "Leichte Regenjacke mit Sturmkapuze",
+            "text_14": "und herausnehmbaren Futtertaschen.",
+            "text_15": "Leichte Regenjacke mit großer Sturmkapuze, herausnehmbaren Futtertaschen, Clicker-Fach und verstecktem Kotbeutelspender."
           }
         },
         "inline_custom_liquid_PbakU8": {
-          "type": "inline_custom_liquid",
+          "type": "iq_release_12",
           "name": "Banner Trainingsjacke 2.0 Damen",
           "settings": {
             "position": 6,
-            "position_mobile": 7,
+            "position_mobile": 4,
             "width": "full",
-            "custom_liquid": "{% if collection.handle == 'hundesport-jacken' %}\n{% assign iq_training_mobile = images['iq-trainingsjacke-funktion-mobil-unten.jpg'] %}\n{% assign iq_training_desktop = images['iq-trainingsjacke-funktion-desktop-quer.jpg'] %}\n{% if iq_training_mobile != blank and iq_training_desktop != blank %}\n<section class=\"iq-collection-feature iq-collection-feature--split\">\n<picture>\n<source media=\"(max-width:749px)\" width=\"1080\" height=\"1920\" sizes=\"100vw\" srcset=\"{{ iq_training_mobile | image_url: width: 540 }} 540w, {{ iq_training_mobile | image_url: width: 1080 }} 1080w\">\n{{ iq_training_desktop | image_url: width: 1920 | image_tag: widths: '750, 1200, 1600, 1920', sizes: '(min-width:1440px) 1340px, (min-width:1200px) calc(100vw - 100px), (min-width:750px) calc(100vw - 48px), calc(100vw - 30px)', loading: 'lazy', alt: 'IQ Trainingsjacke 2.0 mit Balltasche im Einsatz' }}\n</picture>\n{% if request.locale.iso_code == 'en' %}\n<div class=\"copy\"><div class=\"top\"><p class=\"label\">The training jacket 2.0</p><h2>Your vest’s features.<br/>Now in a jacket.</h2></div><div class=\"bottom\"><p class=\"short\">Patented chest pocket.<br>Optional: ball pocket, modular treat pocket &amp; Zip-In.</p><p class=\"long\">Patented chest pocket, compatible with the optional IQ ball pocket and modular treat pocket. Optional Zip-In for cold training days.</p></div></div>\n{% else %}\n<div class=\"copy\"><div class=\"top\"><p class=\"label\">Die Trainingsjacke 2.0</p><h2>Deine Weste kann das.<br/>Deine Jacke auch.</h2></div><div class=\"bottom\"><p class=\"short\">Patentierte Brusttasche.<br>Optional: Balltasche, modulare Futtertasche &amp; Zip-In.</p><p class=\"long\">Patentierte Brusttasche, kompatibel mit der optionalen IQ Balltasche und modularen Futtertasche. Optionales Zip-In für kalte Trainingstage.</p></div></div>\n{% endif %}\n</section>\n{% elsif request.design_mode %}\n<p>Bitte iq-trainingsjacke-funktion-mobil-unten.jpg und iq-trainingsjacke-funktion-desktop-quer.jpg unter Inhalte → Dateien hochladen.</p>\n{% endif %}\n\n{% endif %}"
+            "bild_1": "shopify://shop_images/iq-trainingsjacke-funktion-mobil-unten.jpg",
+            "bild_2": "shopify://shop_images/iq-trainingsjacke-funktion-desktop-quer.jpg",
+            "text_3": "IQ Trainingsjacke 2.0 mit Balltasche im Einsatz",
+            "text_4": "The training jacket 2.0",
+            "text_5": "Your vest’s features.",
+            "text_6": "Now in a jacket.",
+            "text_7": "Patented chest pocket.",
+            "text_8": "Optional: ball pocket, modular treat pocket & Zip-In.",
+            "text_9": "Patented chest pocket, compatible with the optional IQ ball pocket and modular treat pocket. Optional Zip-In for cold training days.",
+            "text_10": "Die Trainingsjacke 2.0",
+            "text_11": "Deine Weste kann das.",
+            "text_12": "Deine Jacke auch.",
+            "text_13": "Patentierte Brusttasche.",
+            "text_14": "Optional: Balltasche, modulare Futtertasche & Zip-In.",
+            "text_15": "Patentierte Brusttasche, kompatibel mit der optionalen IQ Balltasche und modularen Futtertasche. Optionales Zip-In für kalte Trainingstage."
           }
         },
         "inline_custom_liquid_3pckAR": {
@@ -249,6 +312,7 @@
         }
       },
       "block_order": [
+        "inline_video_hzEgWL",
         "inline_custom_liquid_jLyiVe",
         "inline_custom_liquid_jX7CNp",
         "inline_custom_liquid_AHzzML",
@@ -263,16 +327,16 @@
         "color_scheme": "scheme-9",
         "products_per_page": 33,
         "app_blocks_position": 24,
-        "columns_desktop": 3,
+        "columns_desktop": 4,
         "grid_layout": "standard",
-        "pagination": "infinite",
+        "pagination": "load_more",
         "enable_color_swatch": true,
         "enable_filtering": true,
         "filter_type": "drawer",
         "enable_sorting": true,
         "expand_filter_groups": "Verfügbarkeit, Preis, Farbe, Größe, Produkttyp",
         "columns_mobile": "2",
-        "padding_top": 8,
+        "padding_top": 0,
         "padding_bottom": 0,
         "show_section_divider": true,
         "divider_width": "fixed"
@@ -336,61 +400,193 @@
         "custom_class": ""
       }
     },
-    "custom_liquid_npgRKp": {
-      "type": "custom-liquid",
-      "name": "Jacken Vergleich",
-      "settings": {
-        "custom_liquid": "{% if collection.handle == 'hundesport-jacken' %}\n<section class=\"iq-collection-compare\" id=\"iq-jacken-vergleich\">\n<h2>{% if request.locale.iso_code == 'en' %}Which jacket is right for you?{% else %}Welche Jacke passt zu Dir?{% endif %}</h2><p class=\"iq-compare-intro\">{% if request.locale.iso_code == 'en' %}Compare five jacket types. Find the right features for your everyday life together.{% else %}Fünf Jackentypen im Vergleich. Finde die passende Ausstattung für Euren Alltag.{% endif %}</p><p class=\"iq-compare-swipe\">{% if request.locale.iso_code == 'en' %}Swipe to compare →{% else %}Zum Vergleichen wischen →{% endif %}</p><div class=\"iq-compare-grid\" tabindex=\"0\" role=\"region\" aria-label=\"{% if request.locale.iso_code == 'en' %}Jacket comparison, horizontally scrollable{% else %}Jackenvergleich, horizontal scrollbar{% endif %}\"><article><div class=\"iq-compare-content\"><h3>{% if request.locale.iso_code == 'en' %}Multifunction Jacket 3.0{% else %}Multifunktionsjacke 3.0{% endif %}</h3><p class=\"iq-compare-use\">{% if request.locale.iso_code == 'en' %}For cold training days{% else %}Für kalte Trainingstage{% endif %}</p><dl><dt class=\"iq-compare-warmth-label\">{% if request.locale.iso_code == 'en' %}Insulation{% else %}Fütterung{% endif %}</dt><dd class=\"iq-compare-warmth\"><svg viewBox=\"0 0 24 28\" width=\"24\" height=\"28\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 3v22M3 8l18 12M3 20 21 8M8 5l4 3 4-3M8 23l4-3 4 3M3 12l4-1-1-4m15 9-4 1 1 4M3 16l4 1-1 4m15-9-4-1 1-4\"/></svg><span>{% if request.locale.iso_code == 'en' %}Insulated for activity in cold weather{% else %}Gefüttert – für Bewegung in der Kälte{% endif %}</span></dd><dt>{% if request.locale.iso_code == 'en' %}Weather protection{% else %}Wetterschutz{% endif %}</dt><dd class=\"iq-compare-weather\"><svg viewBox=\"0 0 24 28\" width=\"24\" height=\"28\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M6 16a4 4 0 1 1 .3-8 6 6 0 0 1 11.4 1A3.5 3.5 0 0 1 18 16H6Z\"/><path d=\"m7 20-1 3m6-3-1 3m6-3-1 3\"/></svg><span>{% if request.locale.iso_code == 'en' %}20,000 mm · sealed seams{% else %}20.000 mm · versiegelte Nähte{% endif %}</span></dd><dt>{% if request.locale.iso_code == 'en' %}Key feature{% else %}Besonderheit{% endif %}</dt><dd>{% if request.locale.iso_code == 'en' %}Scratch-resistant Taslon; our toughest jacket{% else %}Kratzfestes Taslon; unsere robusteste Jacke{% endif %}</dd><dt>{% if request.locale.iso_code == 'en' %}Colours{% else %}Farben{% endif %}</dt><dd>{% if request.locale.iso_code == 'en' %}Black · Olive · Grey blue{% else %}Schwarz · Olive · Graublau{% endif %}</dd></dl><a class=\"iq-compare-link\" href=\"{{ collection.url }}#iq-product-10709800583432\">{% if request.locale.iso_code == 'en' %}View models ↑{% else %}Zu den Modellen ↑{% endif %}</a></div></article><article><div class=\"iq-compare-content\"><h3>{% if request.locale.iso_code == 'en' %}Training Jacket 2.0{% else %}Trainingsjacke 2.0{% endif %}</h3><p class=\"iq-compare-use\">{% if request.locale.iso_code == 'en' %}For your training system{% else %}Für Dein Trainingssystem{% endif %}</p><dl><dt class=\"iq-compare-warmth-label\">{% if request.locale.iso_code == 'en' %}Insulation{% else %}Fütterung{% endif %}</dt><dd class=\"iq-compare-warmth\"><svg viewBox=\"0 0 24 28\" width=\"24\" height=\"28\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" aria-hidden=\"true\"><path d=\"M9 17.8V5a3 3 0 0 1 6 0v12.8a5 5 0 1 1-6 0Z\"/><path d=\"M12 11V22\"/><circle cx=\"12\" cy=\"22\" r=\"1.8\" fill=\"currentColor\" stroke=\"none\"/><path d=\"M18 6h2m-2 5h2m-2 5h2\"/></svg><span>{% if request.locale.iso_code == 'en' %}Uninsulated · optional Zip-In{% else %}Ungefüttert · Zip-In optional{% endif %}</span></dd><dt>{% if request.locale.iso_code == 'en' %}Weather protection{% else %}Wetterschutz{% endif %}</dt><dd class=\"iq-compare-weather\"><svg viewBox=\"0 0 24 28\" width=\"24\" height=\"28\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M6 16a4 4 0 1 1 .3-8 6 6 0 0 1 11.4 1A3.5 3.5 0 0 1 18 16H6Z\"/><path d=\"m7 20-1 3m6-3-1 3m6-3-1 3\"/></svg><span>{% if request.locale.iso_code == 'en' %}20,000 mm · taped seams{% else %}20.000 mm · getapte Nähte{% endif %}</span></dd><dt>{% if request.locale.iso_code == 'en' %}Key feature{% else %}Besonderheit{% endif %}</dt><dd>{% if request.locale.iso_code == 'en' %}Patented chest pocket; optional ball pocket{% else %}Patentierte Brusttasche; Balltasche optional{% endif %}</dd><dt>{% if request.locale.iso_code == 'en' %}Colours{% else %}Farben{% endif %}</dt><dd>{% if request.locale.iso_code == 'en' %}Black{% else %}Schwarz{% endif %}</dd></dl><a class=\"iq-compare-link\" href=\"{{ collection.url }}#iq-product-10709812936968\">{% if request.locale.iso_code == 'en' %}View models ↑{% else %}Zu den Modellen ↑{% endif %}</a></div></article><article><div class=\"iq-compare-content\"><h3>{% if request.locale.iso_code == 'en' %}Allround Jacket{% else %}Allroundjacke{% endif %}</h3><p class=\"iq-compare-use\">{% if request.locale.iso_code == 'en' %}For rain and everyday life{% else %}Für Regen und Alltag{% endif %}</p><dl><dt class=\"iq-compare-warmth-label\">{% if request.locale.iso_code == 'en' %}Insulation{% else %}Fütterung{% endif %}</dt><dd class=\"iq-compare-warmth\"><svg viewBox=\"0 0 24 28\" width=\"24\" height=\"28\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" aria-hidden=\"true\"><path d=\"M9 17.8V5a3 3 0 0 1 6 0v12.8a5 5 0 1 1-6 0Z\"/><path d=\"M12 15V22\"/><circle cx=\"12\" cy=\"22\" r=\"1.8\" fill=\"currentColor\" stroke=\"none\"/><path d=\"M18 6h2m-2 5h2m-2 5h2\"/></svg><span>{% if request.locale.iso_code == 'en' %}Lightweight and uninsulated{% else %}Leicht und ungefüttert{% endif %}</span></dd><dt>{% if request.locale.iso_code == 'en' %}Weather protection{% else %}Wetterschutz{% endif %}</dt><dd class=\"iq-compare-weather\"><svg viewBox=\"0 0 24 28\" width=\"24\" height=\"28\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M6 16a4 4 0 1 1 .3-8 6 6 0 0 1 11.4 1A3.5 3.5 0 0 1 18 16H6Z\"/><path d=\"m7 20-1 3m6-3-1 3m6-3-1 3\"/></svg><span>{% if request.locale.iso_code == 'en' %}Waterproof · extra-large storm hood{% else %}Wasserdicht · extra große Sturmkapuze{% endif %}</span></dd><dt>{% if request.locale.iso_code == 'en' %}Key feature{% else %}Besonderheit{% endif %}</dt><dd>{% if request.locale.iso_code == 'en' %}Clicker pocket and concealed waste-bag pocket{% else %}Clicker-Fach und versteckte Kotbeuteltasche{% endif %}</dd><dt>{% if request.locale.iso_code == 'en' %}Colours{% else %}Farben{% endif %}</dt><dd>{% if request.locale.iso_code == 'en' %}Dark blue{% else %}Dunkelblau{% endif %}</dd></dl><a class=\"iq-compare-link\" href=\"{{ collection.url }}#iq-product-10709817131272\">{% if request.locale.iso_code == 'en' %}View models ↑{% else %}Zu den Modellen ↑{% endif %}</a></div></article><article><div class=\"iq-compare-content\"><h3>{% if request.locale.iso_code == 'en' %}Softshell Jacket 2.0{% else %}Softshelljacke 2.0{% endif %}</h3><p class=\"iq-compare-use\">{% if request.locale.iso_code == 'en' %}For training between seasons{% else %}Für Training und Übergangszeit{% endif %}</p><dl><dt class=\"iq-compare-warmth-label\">{% if request.locale.iso_code == 'en' %}Insulation / warmth{% else %}Fütterung / Wärme{% endif %}</dt><dd class=\"iq-compare-warmth\"><svg viewBox=\"0 0 24 28\" width=\"24\" height=\"28\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" aria-hidden=\"true\"><path d=\"M9 17.8V5a3 3 0 0 1 6 0v12.8a5 5 0 1 1-6 0Z\"/><path d=\"M12 11V22\"/><circle cx=\"12\" cy=\"22\" r=\"1.8\" fill=\"currentColor\" stroke=\"none\"/><path d=\"M18 6h2m-2 5h2m-2 5h2\"/></svg><span>{% if request.locale.iso_code == 'en' %}Soft fleece lining{% else %}Weiches Innenfleece{% endif %}</span></dd><dt>{% if request.locale.iso_code == 'en' %}Weather protection{% else %}Wetterschutz{% endif %}</dt><dd class=\"iq-compare-weather\"><svg viewBox=\"0 0 24 28\" width=\"24\" height=\"28\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M6 16a4 4 0 1 1 .3-8 6 6 0 0 1 11.4 1A3.5 3.5 0 0 1 18 16H6Z\"/><path d=\"m7 20-1 3m6-3-1 3m6-3-1 3\"/></svg><span>{% if request.locale.iso_code == 'en' %}Windproof and water-repellent{% else %}Winddicht und wasserabweisend{% endif %}</span></dd><dt>{% if request.locale.iso_code == 'en' %}Key feature{% else %}Besonderheit{% endif %}</dt><dd>{% if request.locale.iso_code == 'en' %}Back pocket and coated treat pockets{% else %}Rückentasche und beschichtete Futtertaschen{% endif %}</dd><dt>{% if request.locale.iso_code == 'en' %}Colours{% else %}Farben{% endif %}</dt><dd>{% if request.locale.iso_code == 'en' %}Black{% else %}Schwarz{% endif %}</dd></dl><div class=\"iq-compare-model-links\"><a class=\"iq-compare-link\" href=\"{% if request.locale.iso_code == 'en' %}/en{% endif %}/products/iq-softshelljacke-2-0-damen\">{% if request.locale.iso_code == 'en' %}Women ↑{% else %}Damen ↑{% endif %}</a><a class=\"iq-compare-link\" href=\"{% if request.locale.iso_code == 'en' %}/en{% endif %}/products/iq-softshelljacke-2-0-unisex\">Unisex ↑</a></div></div></article><article><div class=\"iq-compare-content\"><h3>{% if request.locale.iso_code == 'en' %}Zip-In Shell{% else %}Zip-In Shell{% endif %}</h3><p class=\"iq-compare-use\">{% if request.locale.iso_code == 'en' %}On its own or as an extra layer{% else %}Solo oder als Wärmeschicht{% endif %}</p><dl><dt class=\"iq-compare-warmth-label\">{% if request.locale.iso_code == 'en' %}Insulation / warmth{% else %}Fütterung / Wärme{% endif %}</dt><dd class=\"iq-compare-warmth\"><svg viewBox=\"0 0 24 28\" width=\"24\" height=\"28\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" aria-hidden=\"true\"><path d=\"M9 17.8V5a3 3 0 0 1 6 0v12.8a5 5 0 1 1-6 0Z\"/><path d=\"M12 11V22\"/><circle cx=\"12\" cy=\"22\" r=\"1.8\" fill=\"currentColor\" stroke=\"none\"/><path d=\"M18 6h2m-2 5h2m-2 5h2\"/></svg><span>{% if request.locale.iso_code == 'en' %}Extra warmth for cold days{% else %}Zusätzliche Wärme für kalte Tage{% endif %}</span></dd><dt>{% if request.locale.iso_code == 'en' %}Weather protection{% else %}Wetterschutz{% endif %}</dt><dd>{% if request.locale.iso_code == 'en' %}Pair with the Training Jacket 2.0{% else %}Mit der Trainingsjacke 2.0 kombinieren{% endif %}</dd><dt>{% if request.locale.iso_code == 'en' %}Key feature{% else %}Besonderheit{% endif %}</dt><dd>{% if request.locale.iso_code == 'en' %}Wear on its own or zip into the matching training jacket{% else %}Einzeln tragbar oder als passende Zip-In-Innenjacke{% endif %}</dd><dt>{% if request.locale.iso_code == 'en' %}Colours{% else %}Farben{% endif %}</dt><dd>{% if request.locale.iso_code == 'en' %}Black{% else %}Schwarz{% endif %}</dd></dl><div class=\"iq-compare-model-links\"><a class=\"iq-compare-link\" href=\"{% if request.locale.iso_code == 'en' %}/en{% endif %}/products/iq-zip-in-shell-damen\">{% if request.locale.iso_code == 'en' %}Women ↑{% else %}Damen ↑{% endif %}</a><a class=\"iq-compare-link\" href=\"{% if request.locale.iso_code == 'en' %}/en{% endif %}/products/iq-zip-in-shell-unisex\">Unisex ↑</a></div></div></article></div><p class=\"iq-compare-common\"><strong>{% if request.locale.iso_code == 'en' %}Included with the Multifunction, Training and Allround jackets:{% else %}Bei Multifunktions-, Trainings- und Allroundjacke dabei:{% endif %}</strong> {% if request.locale.iso_code == 'en' %}removable treat pockets and a large back pocket.{% else %}herausnehmbare Futtertaschen und eine große Rückentasche.{% endif %}</p><p class=\"iq-compare-extra\"><strong>K9 Pro:</strong> {% if request.locale.iso_code == 'en' %}For duty use – with holster access and patch panels.{% else %}Für den Dienst – mit Holsterzugriff und Klettflächen.{% endif %} <a href=\"{{ collection.url }}#iq-product-10709844099336\">{% if request.locale.iso_code == 'en' %}Duty jackets ↑{% else %}Dienstjacken ↑{% endif %}</a></p></section>\n\n{% endif %}",
-        "color_scheme": "",
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "custom_class": ""
-      }
-    },
-    "collapsible_tabs_NGxnDR": {
-      "type": "collapsible-tabs",
+    "video_with_text_9BEkp8": {
+      "type": "video-with-text",
       "blocks": {
-        "collapsible_item_eXYJJd": {
-          "type": "collapsible_item",
+        "heading_VFyTNm": {
+          "type": "heading",
           "settings": {
-            "icon": "none",
-            "heading": "Mehr über unsere Hundesportjacken",
-            "content": "{{ collection.metafields.custom.text_kategorie_unten | metafield_tag }}",
-            "custom_liquid": "",
-            "page": "",
-            "open": false
+            "heading": "LANG, WENN DU WARTEST. KURZ, WENN’S LOSGEHT.",
+            "heading_size": "h4",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_QKG69G": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Ein Zip. Vom Wintermantel zum Parka: Dicke Feathertouch-Wattierung. Durchdachte Taschen. Als Unisex-Parka oder Damenmantel mit Zip-Verlängerung.</p>",
+            "text_size": "text-base"
           }
         }
       },
       "block_order": [
-        "collapsible_item_eXYJJd"
+        "heading_VFyTNm",
+        "text_QKG69G"
       ],
-      "name": "Mehr über Jacken SEO",
+      "custom_css": [
+        "h1 em,h2 em,h3 em,h1 i,h2 i,h3 i {display: block; font-style: inherit;}"
+      ],
+      "name": "Mantel Video",
       "settings": {
-        "container": "fixed",
-        "color_scheme": "",
-        "header_layout": "vertical",
-        "heading": "",
-        "heading_size": "h3",
-        "heading_highlight_style": "none",
-        "subheading": "",
-        "description": "",
-        "text_size": "text-base",
-        "button_label": "",
-        "button_link": "",
-        "button_style": "btn--primary",
-        "column_gap": "large",
-        "row_gap": "inherit",
-        "item_style": "standard",
-        "item_color_scheme": "",
-        "item_heading_font": "body",
-        "item_heading_size": "h4",
-        "item_icon_size": "medium",
-        "padding_top": 0,
-        "padding_bottom": 70,
+        "color_scheme": "scheme-1",
+        "video": "shopify://files/videos/wintermantal-en.mp4",
+        "video_url": "",
+        "video_ratio": "9/16",
+        "description": "Ehepaar spaziert Wintermantel und Parka mit ihren Hunden.",
+        "enable_video_autoplay": false,
+        "enable_video_looping": false,
+        "video_placement": "first",
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "text_alignment": "left",
+        "padding_top": 30,
+        "padding_bottom": 30,
         "show_section_divider": false,
         "divider_width": "fixed",
         "custom_class": ""
+      }
+    },
+    "custom_liquid_npgRKp": {
+      "type": "iq-release-section-13",
+      "blocks": {
+        "part1": {
+          "type": "part1",
+          "settings": {
+            "link_1": "#iq-product-10709800583432",
+            "link_2": "#iq-product-10709812936968",
+            "link_3": "#iq-product-10709817131272",
+            "link_4": "/products/iq-softshelljacke-2-0-damen",
+            "link_5": "/en/products/iq-softshelljacke-2-0-damen",
+            "link_6": "/products/iq-softshelljacke-2-0-unisex",
+            "link_7": "/en/products/iq-softshelljacke-2-0-unisex",
+            "link_8": "/products/iq-zip-in-shell-damen",
+            "link_9": "/en/products/iq-zip-in-shell-damen",
+            "link_10": "/products/iq-zip-in-shell-unisex",
+            "link_11": "/en/products/iq-zip-in-shell-unisex",
+            "link_12": "#iq-product-10709844099336",
+            "text_13": "Which jacket is right for you?",
+            "text_14": "Welche Jacke passt zu Dir?",
+            "text_15": "Compare five jacket types. Find the right features for your everyday life together.",
+            "text_16": "Fünf Jackentypen im Vergleich. Finde die passende Ausstattung für Euren Alltag.",
+            "text_17": "Swipe to compare →",
+            "text_18": "Zum Vergleichen wischen →",
+            "text_19": "Multifunction Jacket 3.0",
+            "text_20": "Multifunktionsjacke 3.0"
+          }
+        },
+        "part2": {
+          "type": "part2",
+          "settings": {
+            "text_21": "For cold training days",
+            "text_22": "Für kalte Trainingstage",
+            "text_23": "Insulation",
+            "text_24": "Fütterung",
+            "text_25": "Insulated for activity in cold weather",
+            "text_26": "Gefüttert – für Bewegung in der Kälte",
+            "text_27": "Weather protection",
+            "text_28": "Wetterschutz",
+            "text_29": "20,000 mm · sealed seams",
+            "text_30": "20.000 mm · versiegelte Nähte",
+            "text_31": "Key feature",
+            "text_32": "Besonderheit",
+            "text_33": "Scratch-resistant Taslon; our toughest jacket",
+            "text_34": "Kratzfestes Taslon; unsere robusteste Jacke",
+            "text_35": "Colours",
+            "text_36": "Farben",
+            "text_37": "Black · Olive · Grey blue",
+            "text_38": "Schwarz · Olive · Graublau",
+            "text_39": "View models ↑",
+            "text_40": "Zu den Modellen ↑"
+          }
+        },
+        "part3": {
+          "type": "part3",
+          "settings": {
+            "text_41": "Training Jacket 2.0",
+            "text_42": "Trainingsjacke 2.0",
+            "text_43": "For your training system",
+            "text_44": "Für Dein Trainingssystem",
+            "text_45": "Uninsulated · optional Zip-In",
+            "text_46": "Ungefüttert · Zip-In optional",
+            "text_47": "20,000 mm · taped seams",
+            "text_48": "20.000 mm · getapte Nähte",
+            "text_49": "Patented chest pocket; optional ball pocket",
+            "text_50": "Patentierte Brusttasche; Balltasche optional",
+            "text_51": "Black",
+            "text_52": "Schwarz",
+            "text_53": "Allround Jacket",
+            "text_54": "Allroundjacke",
+            "text_55": "For rain and everyday life",
+            "text_56": "Für Regen und Alltag",
+            "text_57": "Lightweight and uninsulated",
+            "text_58": "Leicht und ungefüttert",
+            "text_59": "Waterproof · extra-large storm hood",
+            "text_60": "Wasserdicht · extra große Sturmkapuze"
+          }
+        },
+        "part4": {
+          "type": "part4",
+          "settings": {
+            "text_61": "Clicker pocket and concealed waste-bag pocket",
+            "text_62": "Clicker-Fach und versteckte Kotbeuteltasche",
+            "text_63": "Dark blue",
+            "text_64": "Dunkelblau",
+            "text_65": "Softshell Jacket 2.0",
+            "text_66": "Softshelljacke 2.0",
+            "text_67": "For training between seasons",
+            "text_68": "Für Training und Übergangszeit",
+            "text_69": "Insulation / warmth",
+            "text_70": "Fütterung / Wärme",
+            "text_71": "Soft fleece lining",
+            "text_72": "Weiches Innenfleece",
+            "text_73": "Windproof and water-repellent",
+            "text_74": "Winddicht und wasserabweisend",
+            "text_75": "Back pocket and coated treat pockets",
+            "text_76": "Rückentasche und beschichtete Futtertaschen",
+            "text_77": "Women ↑",
+            "text_78": "Damen ↑",
+            "text_79": "Unisex ↑",
+            "text_80": "Zip-In Shell"
+          }
+        },
+        "part5": {
+          "type": "part5",
+          "settings": {
+            "text_81": "On its own or as an extra layer",
+            "text_82": "Solo oder als Wärmeschicht",
+            "text_83": "Extra warmth for cold days",
+            "text_84": "Zusätzliche Wärme für kalte Tage",
+            "text_85": "Pair with the Training Jacket 2.0",
+            "text_86": "Mit der Trainingsjacke 2.0 kombinieren",
+            "text_87": "Wear on its own or zip into the matching training jacket",
+            "text_88": "Einzeln tragbar oder als passende Zip-In-Innenjacke",
+            "text_89": "Included with the Multifunction, Training and Allround jackets:",
+            "text_90": "Bei Multifunktions-, Trainings- und Allroundjacke dabei:",
+            "text_91": "removable treat pockets and a large back pocket.",
+            "text_92": "herausnehmbare Futtertaschen und eine große Rückentasche.",
+            "text_93": "K9 Pro:",
+            "text_94": "For duty use – with holster access and patch panels.",
+            "text_95": "Für den Dienst – mit Holsterzugriff und Klettflächen.",
+            "text_96": "Duty jackets ↑",
+            "text_97": "Dienstjacken ↑"
+          }
+        }
+      },
+      "block_order": [
+        "part1",
+        "part2",
+        "part3",
+        "part4",
+        "part5"
+      ],
+      "name": "Jacken Vergleich",
+      "settings": {}
+    },
+    "iq_knowledge": {
+      "type": "iq-collection-knowledge",
+      "settings": {
+        "heading_de": "",
+        "heading_en": ""
       }
     }
   },
@@ -405,7 +601,8 @@
     "product-grid",
     "rich_text_ARFW3U",
     "177730905751d89578",
+    "video_with_text_9BEkp8",
     "custom_liquid_npgRKp",
-    "collapsible_tabs_NGxnDR"
+    "iq_knowledge"
   ]
 }

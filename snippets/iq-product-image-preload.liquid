@@ -1,0 +1,34 @@
+{% doc %}
+  Preloads the mobile product image using the selected variant gallery.
+{% enddoc %}
+{%- liquid
+  assign iq_variant = product.selected_or_first_available_variant
+  assign iq_gallery = iq_variant.metafields.custom.variant_galerie.value
+  assign iq_lcp_media = iq_variant.featured_media | default: product.featured_media
+  if iq_gallery != blank
+    assign iq_gallery_first = iq_gallery | first
+    assign iq_featured_file = iq_lcp_media.preview_image.src | split: '/' | last | split: '?' | first
+    for iq_picked in iq_gallery
+      assign iq_picked_file = iq_picked.preview_image.src | split: '/' | last | split: '?' | first
+      if iq_picked.id == iq_lcp_media.id or iq_picked_file == iq_featured_file
+        assign iq_gallery_first = iq_picked
+        break
+      endif
+    endfor
+    assign iq_lcp_media = iq_gallery_first
+  else
+    for iq_other_variant in product.variants
+      if iq_other_variant.metafields.custom.variant_galerie.value != blank
+        assign iq_lcp_media = nil
+        break
+      endif
+    endfor
+  endif
+-%}
+{%- if iq_lcp_media.media_type == 'image' -%}
+  {%- capture iq_lcp_tag -%}
+    {{- iq_lcp_media.preview_image | image_url: width: 1946 | image_tag: widths: '400, 620, 690, 810, 980, 1240, 1380, 1620, 1960' -}}
+  {%- endcapture -%}
+  {%- assign iq_lcp_srcset = iq_lcp_tag | split: 'srcset="' | last | split: '"' | first -%}
+  <link rel="preload" as="image" href="{{ iq_lcp_media.preview_image | image_url: width: 1946 | escape }}" imagesrcset="{{ iq_lcp_srcset }}" imagesizes="calc(100vw - 3rem)" media="(max-width: 767px)" fetchpriority="high">
+{%- endif -%}

@@ -1,4 +1,4 @@
-{% if collection.handle != 'hundesport-trainingszubehoer' %}
+{% unless collection.handle == 'hundesport-trainingszubehoer' or collection.handle == 'zzz-hundesport-hosen-damen' or collection.handle == 'hundesport-hosen' or collection.handle == 'zz-hosen-herren' %}
 {{ 'section-collection-hero.css' | asset_url | stylesheet_tag }}
 
 {% liquid
@@ -165,7 +165,7 @@
   </div>
 </div>
 
-{% endif %}
+{% endunless %}
 {% schema %}
 {
   "name": "t:sections.main-collection-banner.name",
@@ -485,4 +485,5 @@
   ]
 }
 {% endschema %}
+
 

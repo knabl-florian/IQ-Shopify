@@ -227,6 +227,7 @@
           }
         },
         "mini_image_upload_app_block_eLJwBn": {
+          "disabled": true,
           "type": "shopify://apps/mini-image-upload/blocks/app-block/019a499d-2f45-732c-96ee-872049547d70",
           "settings": {
             "product": "{{product}}"

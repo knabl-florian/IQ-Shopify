@@ -1,0 +1,15 @@
+{%- assign outlet_root = routes.root_url | append: '/' | replace: '//', '/' -%}
+<nav class="iq-outlet-service" aria-label="{{ 'iq_outlet.navigation' | t | escape }}">
+  <div class="iq-outlet-service__inner">
+    <a class="font-body-bolder" href="{{ outlet_root }}collections/sale">{{ 'iq_outlet.link' | t }}</a>
+  </div>
+</nav>
+{% style %}
+.iq-outlet-service{display:none;background:#F3F3F1;color:#171717;border-bottom:1px solid #DCDBD7}
+@media(min-width:1024px){.iq-outlet-service{display:block}.iq-outlet-service__inner{min-height:32px;padding:0 50px;display:flex;justify-content:flex-end;align-items:center}.iq-outlet-service a{display:inline-flex;min-height:32px;align-items:center;color:inherit;font-size:13px;text-decoration:none}.iq-outlet-service a:hover{text-decoration:underline}.iq-outlet-service a:focus-visible{outline:2px solid currentColor;outline-offset:-3px}}
+.iq-outlet-intro{padding-block:24px 8px}
+.iq-outlet-menu{border-top:1px solid #DCDBD7;margin-top:16px;padding-top:8px}
+{% endstyle %}
+{% schema %}
+{"name":"IQ Outlet – Service-Link","settings":[],"presets":[{"name":"IQ Outlet – Service-Link"}]}
+{% endschema %}

@@ -13,7 +13,8 @@
       "type": "breadcrumbs",
       "settings": {
         "text_alignment": "center"
-      }
+      },
+      "disabled": true
     },
     "banner": {
       "type": "main-collection-banner",
@@ -39,22 +40,22 @@
         "image_overlay_opacity": 10,
         "image_position": "as-bg",
         "image_height": "extra-small",
-        "enable_parallax": true,
+        "enable_parallax": false,
         "parallax_direction": "vertical",
         "image_height_mobile": "auto",
         "padding_top": 0,
-        "padding_bottom": 40
+        "padding_bottom": 0
       }
     },
     "product-grid": {
-      "type": "main-collection-product-grid",
+      "type": "main-collection-product-grid-magazine",
       "custom_css": [],
       "settings": {
         "color_scheme": "scheme-9",
-        "products_per_page": 16,
+        "products_per_page": 24,
         "columns_desktop": 4,
         "grid_layout": "standard",
-        "pagination": "infinite",
+        "pagination": "load_more",
         "enable_filtering": true,
         "filter_type": "drawer",
         "enable_sorting": true,
@@ -63,13 +64,19 @@
         "padding_top": 0,
         "padding_bottom": 100,
         "show_section_divider": false,
-        "divider_width": "fixed"
+        "divider_width": "fixed",
+        "collection_card_titles": true
       }
+    },
+    "iq_knowledge": {
+      "type": "iq-collection-knowledge",
+      "settings": {}
     }
   },
   "order": [
     "breadcrumbs_Gxg9wp",
     "banner",
-    "product-grid"
+    "product-grid",
+    "iq_knowledge"
   ]
 }

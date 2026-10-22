@@ -224,6 +224,9 @@
                                 </a>
                               </li>
                             {%- endfor -%}
+                            {%- if block.settings.show_iq_outlet -%}
+                              <li><a href="{{ collections['sale'].url }}" class="reversed-link">{{ 'iq_outlet.link' | t }}</a></li>
+                            {%- endif -%}
                           </ul>
                         </{{ tag }}>
                       {%- endif -%}
@@ -490,6 +493,12 @@
           "id": "show_divider",
           "default": false,
           "label": "t:sections.all.divider.settings.show_divider.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_iq_outlet",
+          "label": "Show IQ Outlet link",
+          "default": false
         }
       ]
     },
@@ -936,7 +945,9 @@
     ]
   },
   "enabled_on": {
-    "groups": ["footer"]
+    "groups": [
+      "footer"
+    ]
   }
 }
 {% endschema %}

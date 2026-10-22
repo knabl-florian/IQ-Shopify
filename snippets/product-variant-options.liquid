@@ -22,6 +22,7 @@
 -%}
 
 {%- for value in option.values -%}
+  {%- capture iq_value_label -%}{%- render 'iq-color-label', value: value -%}{%- endcapture -%}
   {%- liquid
     assign option_disabled = true
     if value.available
@@ -61,7 +62,7 @@
 
   {%- if picker_type == 'swatch' -%}
     {%- capture help_text -%}
-      <span class="visually-hidden">{{ value | escape }}</span>
+      <span class="visually-hidden">{{ iq_value_label | escape }}</span>
       {{ label_unavailable }}
     {%- endcapture -%}
     {% render 'swatch-input',
@@ -140,7 +141,7 @@
       data-swatch-type="{{ block.settings.swatch_type }}"
       data-tooltip
     >
-      <span class="tooltip pointer-events-none">{{ value | escape }}</span>
+      <span class="tooltip pointer-events-none">{{ iq_value_label | escape }}</span>
       <span class="swatch-color block" style="--swatch-background: {{ swatch_value }}"></span>
     </label>
   {%- elsif picker_type == 'button' -%}
@@ -159,7 +160,7 @@
       {{ input_dataset }}
     >
     <label for="{{ input_id }}">
-      {{ value -}}
+      {{ iq_value_label | escape -}}
       {{ label_unavailable }}
     </label>
   {%- elsif picker_type == 'dropdown' or picker_type == 'swatch_dropdown' -%}
@@ -183,7 +184,7 @@
         {%- else -%}
         {%- endif %}
       {% endcomment %}
-      {{- value -}}
+      {{- iq_value_label | escape -}}
     </option>
   {%- endif -%}
 {%- endfor -%}

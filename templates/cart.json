@@ -45,6 +45,33 @@
         "padding_bottom": 0
       }
     },
+    "recently_viewed_products_iTgMb7": {
+      "type": "recently-viewed-products",
+      "disabled": true,
+      "name": "t:sections.recently-viewed-products.name",
+      "settings": {
+        "color_scheme": "",
+        "heading": "Neu bei IQ",
+        "heading_size": "h1",
+        "heading_highlight_style": "underline",
+        "subheading": "",
+        "description": "",
+        "limit": 8,
+        "columns": 4,
+        "column_gap": "medium",
+        "row_gap": "inherit",
+        "enable_slider": true,
+        "controls_position": "inside",
+        "pcard_image_ratio": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "custom_class": ""
+      }
+    },
     "featured_collection_HfgMWa": {
       "type": "featured-collection",
       "name": "Neuheiten",
@@ -77,34 +104,8 @@
         "show_section_divider": false,
         "divider_width": "fixed",
         "custom_class": ""
-      }
-    },
-    "recently_viewed_products_iTgMb7": {
-      "type": "recently-viewed-products",
-      "disabled": true,
-      "name": "t:sections.recently-viewed-products.name",
-      "settings": {
-        "color_scheme": "",
-        "heading": "Neu bei IQ",
-        "heading_size": "h1",
-        "heading_highlight_style": "underline",
-        "subheading": "",
-        "description": "",
-        "limit": 8,
-        "columns": 4,
-        "column_gap": "medium",
-        "row_gap": "inherit",
-        "enable_slider": true,
-        "controls_position": "inside",
-        "pcard_image_ratio": "",
-        "columns_mobile": "1",
-        "swipe_on_mobile": true,
-        "padding_top": 50,
-        "padding_bottom": 50,
-        "show_section_divider": false,
-        "divider_width": "fixed",
-        "custom_class": ""
-      }
+      },
+      "disabled": true
     }
   },
   "order": [

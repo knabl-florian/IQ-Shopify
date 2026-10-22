@@ -318,6 +318,10 @@
     }
   },
   "templates": {
+    "404": {
+      "title": "404 Page not found",
+      "subtext": "The page you requested does not exist."
+    },
     "search": {
       "no_results_text": "No results found for “{{ terms }}”.",
       "no_results_message": "Check the spelling or use a different word or phrase.",
@@ -353,7 +357,7 @@
       "most_searched_products": "Most searched products"
     },
     "cart": {
-      "cart": "Cart",
+      "cart": "Cart"
     },
     "contact": {
       "form": {
@@ -366,10 +370,6 @@
         "post_success": "Thanks for contacting us. We'll get back to you as soon as possible.",
         "error_heading": "Please adjust the following:"
       }
-    },
-    "404": {
-      "title": "404 Page not found",
-      "subtext": "The page you requested does not exist."
     }
   },
   "sections": {
@@ -673,5 +673,45 @@
         "confirm_address_deletion": "Are you sure you want to delete the address {{address}} ?"
       }
     }
+  },
+  "iq_cart_addons": {
+    "variant": "Choose an option",
+    "add": "Add"
+  },
+  "iq_translation": {
+    "home": {
+      "categories": "Vests|Jackets|Shirts & Hoodies|Training|Food|Toys",
+      "category_alts": "Handler wearing an IQ dog sport vest, with a ball dropping from the patented chest pocket|Handler wearing an IQ multifunction jacket with a German Shepherd in autumn|Rear view of an IQ training hoodie with a print, with a dog at heel in the snow|IGP training equipment: tracking marker, blind and handler vest|Young German Shepherd carrying a pack of IQ Pure Bites training treats|Malinois looking at a durable tug ball on a rope",
+      "heading_main": "What do you need for",
+      "heading_accent": "training?",
+      "discover": "Discover",
+      "classics_eyebrow": "Years on the training field",
+      "classics_heading": "The IQ classics",
+      "all_bestsellers": "Discover all bestsellers",
+      "knowledge_training_alt": "Dr. Florian Knabl training protection work with a black German Shepherd on the bite sleeve",
+      "knowledge_book_alt": "Malinois looking over the shoulder of a man holding a book on obedience"
+    },
+    "pants": {
+      "stretch": "Freedom of movement with 4-way stretch.",
+      "pockets": "Removable, washable treat pockets.",
+      "storage": "Large thigh pockets and a protected back pocket for your training equipment.",
+      "fabric": "Robust, tear-resistant fabric developed for hunting."
+    },
+    "jumps": {
+      "clothing": "Clothing",
+      "training": "Training equipment",
+      "tracking": "Tracking equipment"
+    },
+    "colors": {
+      "black": "Black",
+      "anthracite": "Anthracite",
+      "grey_green": "Grey-green"
+    }
+  },
+  "iq_outlet": {
+    "link": "IQ Outlet",
+    "navigation": "More from IQ",
+    "title": "IQ Outlet",
+    "description": "Selected items at reduced prices."
   }
 }

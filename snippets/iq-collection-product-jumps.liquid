@@ -1,0 +1,145 @@
+{% doc %}
+@param {product[]} products - Products rendered on the current collection page.
+{% enddoc %}
+{% liquid
+ assign seen = '|'
+ assign total = 0
+ assign en = false
+ if request.locale.iso_code == 'en'
+  assign en = true
+ endif
+%}
+{% capture links %}
+{% for item in products %}
+{% liquid
+ assign key = item.type | handleize
+ assign label = item.type
+ if item.handle contains 'hose' or item.handle contains 'pants'
+  assign key = 'hosen'
+  assign label = 'Hosen'
+  if en
+   assign label = 'Trousers'
+  endif
+ elsif item.handle contains 'weste' or item.handle contains 'vest'
+  assign key = 'westen'
+  assign label = 'Westen'
+  if en
+   assign label = 'Vests'
+  endif
+ elsif item.handle contains 'jacke' or item.handle contains 'jacket' or item.handle contains 'zip-in'
+  assign key = 'jacken'
+  assign label = 'Jacken'
+  if en
+   assign label = 'Jackets'
+  endif
+ elsif item.handle contains 'hoodie' or item.handle contains 'pullover'
+  assign key = 'hoodies'
+  assign label = 'Hoodies'
+  if en
+   assign label = 'Hoodies'
+  endif
+ elsif item.handle contains 'shirt'
+  assign key = 'shirts'
+  assign label = 'Shirts'
+  if en
+   assign label = 'Shirts'
+  endif
+ elsif item.handle contains 'cap' or item.handle contains 'muetze' or item.handle contains 'beanie'
+  assign key = 'caps'
+  assign label = 'Caps & Mützen'
+  if en
+   assign label = 'Caps & hats'
+  endif
+ elsif item.handle contains 'performance-pro' or item.handle contains 'geschirr'
+  assign key = 'geschirre'
+  assign label = 'Geschirre'
+  if en
+   assign label = 'Harnesses'
+  endif
+ elsif item.handle contains 'faehrte' or item.handle contains 'gegenstandstrainer'
+  assign key = 'faehrte'
+  assign label = 'Fährte'
+  if en
+   assign label = 'Tracking'
+  endif
+ elsif item.handle contains 'wurfversteck' or item.handle contains 'revierstab'
+  assign key = 'schutzdienst'
+  assign label = 'Schutzdienst'
+  if en
+   assign label = 'Protection work'
+  endif
+ elsif item.handle contains 'tasche' or item.handle contains 'guertel'
+  assign key = 'futtertaschen'
+  assign label = 'Taschen & Gürtel'
+  if en
+   assign label = 'Pockets & belts'
+  endif
+ elsif item.handle contains 'positions' or item.handle contains 'magnetizer' or item.handle contains 'clicker' or item.handle contains 'apportier'
+  assign key = 'fussarbeit'
+  assign label = 'Fußarbeit & Clicker'
+  if en
+   assign label = 'Heelwork & clickers'
+  endif
+ elsif item.handle contains 'sticks' or item.handle contains 'pure-bites' or item.handle contains 'lunge' or item.handle contains 'happen'
+  assign key = 'snacks'
+  assign label = 'Trainingssnacks'
+  if en
+   assign label = 'Training treats'
+  endif
+ elsif item.handle contains 'kopfhaut'
+  assign key = 'kauen'
+  assign label = 'Kausnacks'
+  if en
+   assign label = 'Chews'
+  endif
+ elsif item.handle contains 'kynovital'
+  assign key = 'futter'
+  assign label = 'Hauptfutter'
+  if en
+   assign label = 'Complete food'
+  endif
+ elsif item.handle contains 'ball' or item.handle contains 'beiss' or item.handle contains 'beiß' or item.handle contains 'spielzeug'
+  assign key = 'spielzeug'
+  assign label = 'Spielzeug'
+  if en
+   assign label = 'Toys'
+  endif
+ elsif item.handle contains 'buch' or item.handle contains 'book'
+  assign key = 'buecher'
+  assign label = 'Bücher'
+  if en
+   assign label = 'Books'
+  endif
+ endif
+ if en
+  case label
+   when 'Bekleidung'
+    assign label = 'iq_translation.jumps.clothing' | t
+   when 'Trainingszubehör'
+    assign label = 'iq_translation.jumps.training' | t
+   when 'Fährtenzubehör'
+    assign label = 'iq_translation.jumps.tracking' | t
+  endcase
+ endif
+ if label == blank
+  assign key = 'products'
+  assign label = 'Produkte'
+  if en
+   assign label = 'Products'
+  endif
+ endif
+ assign token = '|' | append: key | append: '|'
+%}
+{% unless seen contains token %}
+{% if total < 8 %}<a href="#iq-product-{{ item.id }}">{{ label | escape }}</a>{% assign total = total | plus: 1 %}{% endif %}
+{% assign seen = seen | append: key | append: '|' %}
+{% endunless %}
+{% endfor %}
+{% endcapture %}
+{% if products.size > 0 %}
+<div class="iq-product-jumps"><nav aria-label="{% if en %}Jump to products{% else %}Direkt zu den Produkten{% endif %}">
+{% if total == 1 and products.size > 1 and products.size <= 8 %}
+{% for item in products limit:6 %}<a href="#iq-product-{{ item.id }}">{% render 'iq-card-short-title', product: item, fallback_title: item.title %}</a>{% endfor %}
+{% else %}{{ links }}{% endif %}
+</nav></div>
+{% endif %}

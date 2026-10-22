@@ -857,3 +857,206 @@ line-height: 1.25;
    ================================================================ */
 @media (min-width:750px){ .iq-insider__inner{ padding-bottom:72px !important; } }
 @media (max-width:749px){ .iq-insider__inner{ padding-bottom:56px !important; } }
+body:not(.product-template) .product-card:not(.product-card--list) .product-card__info {
+  padding-top: 8px !important;
+  gap: 4px !important;
+  text-align: center !important;
+  align-items: stretch !important;
+}
+body:not(.product-template) .product-card:not(.product-card--list) .iq-vest-card-benefit {
+  display: none !important;
+}
+body:not(.product-template) .product-card:not(.product-card--list) .product-card__title {
+  margin: 0 !important;
+  display: block;
+  -webkit-line-clamp: unset;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  hyphens: auto;
+  font-family: Archivo, sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 1.35;
+  letter-spacing: 0;
+  text-transform: none;
+  text-align: center !important;
+}
+body:not(.product-template) .product-card:not(.product-card--list) .jdgm-preview-badge {
+  margin: 2px 0 0 !important;
+  font-family: Archivo, sans-serif;
+  font-size: 12px;
+  line-height: 1.4;
+  text-align: center !important;
+}
+body:not(.product-template) .product-card:not(.product-card--list) .jdgm-prev-badge {
+  line-height: 1.4;
+  text-align: center !important;
+}
+body:not(.product-template) .product-card:not(.product-card--list) .jdgm-star {
+  font-size: 12px;
+  color: #FFB400;
+}
+body:not(.product-template) .product-card:not(.product-card--list) .jdgm-prev-badge[data-number-of-reviews] .jdgm-prev-badge__text {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+body:not(.product-template) .product-card:not(.product-card--list) .jdgm-prev-badge[data-number-of-reviews]::after {
+  content: " (" attr(data-number-of-reviews) ")";
+  display: inline-block;
+  margin-left: 5px;
+  font: 400 12px/1.4 Archivo, sans-serif;
+  color: #171717;
+}
+body:not(.product-template) .product-card:not(.product-card--list) .f-price {
+  margin-top: 2px !important;
+  line-height: 1.4;
+  justify-content: center !important;
+  text-align: center !important;
+}
+body:not(.product-template) .product-card:not(.product-card--list) .f-price-item {
+  font-family: Archivo, sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+}
+@media (max-width: 749px) {
+  body:not(.product-template) .product-card:not(.product-card--list) .product-card__info {
+    padding-top: 6px !important;
+    gap: 3px !important;
+  }
+  body:not(.product-template) .product-card:not(.product-card--list) .product-card__title,
+  body:not(.product-template) .product-card:not(.product-card--list) .f-price-item {
+    font-size: 14px;
+  }
+}
+
+
+body:not(.product-template) .product-card--list .product-card__title { font: 700 14px/1.35 Archivo, sans-serif; text-transform: none; letter-spacing: 0; }
+
+/* [Hamza 2026-10-19] Judge.me "Mehr anzeigen" button styled like the add-to-cart button */
+.jm-load-more-pagination .jm-button.jm-button--primary {
+  position: relative !important;
+  overflow: hidden !important;
+  isolation: isolate;
+  z-index: 0;
+  background: #151515 !important;
+  color: #ffffff !important;
+  border: none !important; /* [Hamza 2026-10-19] no border, like the theme button */
+  border-radius: var(--buttons-radius, 2px) !important;
+  min-height: 52px;
+  min-width: 280px;
+  padding: 14px 40px !important;
+  font-family: inherit !important;
+  font-weight: 700 !important;
+  font-size: 15px !important;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  box-shadow: none !important;
+  cursor: pointer;
+}
+.jm-load-more-pagination .jm-button.jm-button--primary .jm-text {
+  position: relative;
+  z-index: 1;
+  color: inherit !important;
+  font: inherit !important;
+  letter-spacing: inherit;
+}
+
+/* [Hamza 2026-10-19] slide hover like the theme button (::before + ::after slide in from the left) */
+.jm-load-more-pagination .jm-button.jm-button--primary::before,
+.jm-load-more-pagination .jm-button.jm-button--primary::after {
+  content: "" !important;
+  position: absolute;
+  top: -5px;
+  bottom: -5px;
+  left: -5px;
+  right: -5px;
+  z-index: -1;
+  font-size: 0;
+  transform: translate(-100%);
+  transition: transform 0.3s cubic-bezier(0.75, 0, 0.125, 1);
+  pointer-events: none;
+}
+.jm-load-more-pagination .jm-button.jm-button--primary::before {
+  background-color: var(--color-button-before, #a6230f);
+}
+.jm-load-more-pagination .jm-button.jm-button--primary::after {
+  background-color: rgb(var(--color-button-hover-background, 51, 51, 51));
+}
+.jm-load-more-pagination .jm-button.jm-button--primary:hover::before,
+.jm-load-more-pagination .jm-button.jm-button--primary:hover::after,
+.jm-load-more-pagination .jm-button.jm-button--primary:focus-visible::before,
+.jm-load-more-pagination .jm-button.jm-button--primary:focus-visible::after {
+  transform: translate(0);
+}
+.jm-load-more-pagination .jm-button.jm-button--primary:hover::after,
+.jm-load-more-pagination .jm-button.jm-button--primary:focus-visible::after {
+  transition-delay: 0.175s;
+}
+.jm-load-more-pagination .jm-button.jm-button--primary:hover,
+.jm-load-more-pagination .jm-button.jm-button--primary:focus-visible {
+  background: #151515 !important;
+  color: rgb(var(--color-button-hover-text, 255, 255, 255)) !important;
+}
+
+@media (max-width: 749px) {
+  .jm-load-more-pagination .jm-button.jm-button--primary { width: 100%; min-width: 0; }
+}
+/* [Hamza 2026-10-19] Product page only: unit price small, grey and in one line after the price (like the 2nd screenshot) */
+[id^="price-template--"][id$="__main"] .f-price {
+  display: flex !important;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: .5em;
+}
+[id^="price-template--"][id$="__main"] .f-price .f-price__unit-wrapper {
+  flex: 0 0 auto !important;
+  width: auto !important;
+  margin: 0 !important;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+  color: #6b6b6b !important;
+}
+[id^="price-template--"][id$="__main"] .f-price .f-price__unit,
+[id^="price-template--"][id$="__main"] .f-price .f-price__unit span {
+  font-size: inherit !important;
+  font-weight: inherit !important;
+  text-transform: none !important;
+  color: inherit !important;
+}
+/* [Hamza 2026-10-19] Collection grid only: unit price small, grey and in one line after the price */
+body.collection-template.iq-collection-standard #ProductsList .product-card .f-price {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  align-items: baseline !important;
+  justify-content: center !important;
+  column-gap: .4em;
+  row-gap: 0;
+}
+body.collection-template.iq-collection-standard #ProductsList .product-card .f-price .f-price__unit-wrapper {
+  flex: 0 0 auto !important;
+  width: auto !important;
+  margin: 0 !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+  color: #6b6b6b !important;
+}
+body.collection-template.iq-collection-standard #ProductsList .product-card .f-price .f-price__unit,
+body.collection-template.iq-collection-standard #ProductsList .product-card .f-price .f-price__unit span {
+  font-size: inherit !important;
+  font-weight: inherit !important;
+  text-transform: none !important;
+  color: inherit !important;
+}

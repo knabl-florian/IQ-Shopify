@@ -9,32 +9,30 @@
  */
 {
   "sections": {
-    "iq_westen_banner_gKLVKG": {
+    "iq_collection_hero_be8dcM": {
       "type": "iq-collection-hero",
-      "custom_css": [
-        "@media (min-width: 750px) {.iqcb {max-height: 550px; } .iqcb .iqcb__image {object-position: center top; }}"
-      ],
-      "name": "IQ Westen Bildbanner",
+      "name": "IQ Collection Banner",
       "settings": {
-        "only_collection": "",
-        "desktop_image": "shopify://shop_images/Codex-Bild_25._Sept._2026_22_42_57.webp",
+        "only_collection": "hundesport-westen",
+        "require_collection": true,
+        "desktop_image": "shopify://shop_images/ChatGPT-Bild_14._Okt._2026_20_59_24.png",
         "mobile_image": "shopify://shop_images/download_1.webp",
         "text_tone": "dark",
         "desktop_position": "center",
         "show_mobile_label": true,
         "focus_y": 75,
         "title_de": "Dein Training.",
-        "accent_de": "Deine Weste.",
-        "description_de": "Belohne direkt aus der Körpermitte. Mit der patentierten Brusttasche und Platz für das, was Ihr im Training braucht.",
-        "mobile_description_de": "Patentierte Brusttasche, verdecktes Belohnen und modulares Taschensystem.",
-        "label_de": "Hundesportwesten für Damen & Herren",
-        "alt_de": "Marko und Kate in IQ Sommerwesten mit springendem Hund",
-        "title_en": "Your training.",
-        "accent_en": "Your vest.",
-        "description_en": "Reward directly from the centre of your body. With the patented chest pocket and space for what you need in training.",
-        "mobile_description_en": "Patented chest pocket, discreet rewards and a modular pocket system.",
-        "label_en": "Dog training vests for women & men",
-        "alt_en": "Marko and Kate wearing IQ summer vests with a jumping dog",
+        "accent_de": "Deine Belohnung auf den Punkt.",
+        "description_de": "Robuste Materialien, sorgfältige Verarbeitung und Trainingsfunktionen, die den Unterschied machen: patentierte Brusttasche und optionale IQ Balltasche – für verdeckte Belohnung in der Fußarbeit.",
+        "mobile_description_de": "Robust verarbeitet. Patentierte Brusttasche für gezielte Belohnung aus der Körpermitte.  Kompatibel mit der IQ Balltasche.",
+        "label_de": "IQ hundesportwesten",
+        "alt_de": "Zwei Hundeführer mit IQ Hundesportwesten und einem Hund beim Training auf einer Wiese.",
+        "title_en": "BUILT TO LAST.",
+        "accent_en": "DESIGNED TO TRAIN.",
+        "description_en": "Built for demanding use. Features that make a difference in training: Patented chest pocket for a perfect front sit. Optional IQ ball pouch for concealed rewards during heelwork.",
+        "mobile_description_en": "Built for demanding use. Patented chest pocket for rewards from the centre of your body. Compatible with the optional IQ ball pouch.",
+        "label_en": "IQ TRAINING VESTS",
+        "alt_en": "Two handlers wearing IQ dog training vests with a dog during training on a grass field.",
         "mobile_position": "bottom",
         "mobile_alignment": "center",
         "mobile_tone": "light",
@@ -151,33 +149,71 @@
       "type": "main-collection-product-grid-magazine",
       "blocks": {
         "inline_custom_liquid_iADfJP": {
-          "type": "inline_custom_liquid",
+          "type": "iq_release_17",
           "name": "brusttasche",
           "settings": {
             "position": 2,
             "position_mobile": 2,
             "width": "full",
-            "custom_liquid": "{%- liquid\n  assign iq_mobile = images['iq-westen-brusttasche-mobil.webp']\n  assign iq_desktop = images['iq-westen-brusttasche-desktop.webp']\n  assign iq_english = false\n  if request.locale.iso_code == 'en'\n    assign iq_english = true\n  endif\n-%}\n{% if collection.handle == 'hundesport-westen' %}\n  {% if iq_mobile != blank and iq_desktop != blank %}\n    <div class=\"iq-reward-banner\">\n      <picture>\n        <source media=\"(max-width: 749px)\" width=\"1080\" height=\"1080\" sizes=\"100vw\" srcset=\"{{ iq_mobile | image_url: width: 375 }} 375w, {{ iq_mobile | image_url: width: 750 }} 750w, {{ iq_mobile | image_url: width: 1080 }} 1080w\">\n        {%- capture iq_alt -%}{% if iq_english %}Dog catches a toy released in front of the handler's vest{% else %}Hund fängt das vor der Weste freigegebene Spielzeug{% endif %}{%- endcapture -%}\n        {{ iq_desktop | image_url: width: 1800 | image_tag: widths: '900,1350,1800', sizes: '100vw', loading: 'lazy', alt: iq_alt }}\n      </picture>\n      <div class=\"iq-reward-banner__copy\">\n        <h2>{% if iq_english %}Reward where you<br>want your dog to be.{% else %}Belohne dort, wo<br>Dein Hund sein soll.{% endif %}</h2>\n        <p>{% if iq_english %}With the patented chest pocket, reward directly in front of your body.{% else %}Mit der patentierten Brusttasche bestätigst Du direkt vor Deinem Körper.{% endif %}</p>\n        <a href=\"#iq-westen-funktionen\">{% if iq_english %}Explore the features{% else %}Funktionen entdecken{% endif %}<svg width=\"17\" height=\"17\" viewBox=\"0 0 20 20\" aria-hidden=\"true\" focusable=\"false\"><path d=\"M4 16 16 4M4 4h12v12\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\"/></svg></a>\n      </div>\n    </div>\n  {% elsif request.design_mode %}\n    <p>Bitte beide Dateien hochladen: iq-westen-brusttasche-mobil.webp und iq-westen-brusttasche-desktop.webp.</p>\n  {% endif %}\n{% endif %}\n<style>\n.iq-reward-banner,.iq-reward-banner *{box-sizing:border-box}\n.iq-reward-banner{position:relative;isolation:isolate;display:block;width:100%;max-width:none;margin:16px auto;background:#fff;color:#171717;aspect-ratio:30/11;border:0;border-radius:0;overflow:hidden}\n.iq-reward-banner picture,.iq-reward-banner img{display:block;width:100%;height:100%;margin:0;border:0;border-radius:0}\n.iq-reward-banner img{object-fit:contain}\n.iq-reward-banner__copy{position:absolute;z-index:1;left:47%;right:4%;top:50%;transform:translateY(-50%);min-width:0;text-align:left}\n.iq-reward-banner h2{margin:0;font:italic 800 clamp(24px,2.4vw,32px)/1.06 Montserrat,sans-serif;letter-spacing:-.035em;text-transform:uppercase;color:#171717;overflow-wrap:normal}\n.iq-reward-banner__copy>p{margin:14px 0 4px;max-width:360px;font:400 15px/1.55 Archivo,sans-serif;color:#171717}\n.iq-reward-banner__copy>a{display:inline-flex;align-items:center;gap:9px;min-height:44px;margin:5px 0 0;padding:0;color:#A51D1B;font:700 14px/1.4 Archivo,sans-serif;text-decoration:none}\n.iq-reward-banner__copy>a:hover{text-decoration:underline;text-underline-offset:4px}\n.iq-reward-banner__copy>a:focus-visible{outline:2px solid currentColor;outline-offset:3px}\n.iq-reward-banner svg{flex:none}\n#iq-westen-funktionen{scroll-margin-top:120px}\n@media(max-width:749px){\n  .iq-reward-banner{aspect-ratio:1;max-width:none;margin:12px auto}\n  .iq-reward-banner::after{content:\"\";position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(0deg,rgba(23,23,23,.78),rgba(23,23,23,.25) 28%,transparent 56%)}\n  .iq-reward-banner__copy{left:6%;right:6%;top:auto;bottom:2%;transform:none;text-shadow:0 2px 8px #17171788}\n  .iq-reward-banner h2{font-size:clamp(23px,6.3vw,35px);line-height:1.03;color:#fff}\n  .iq-reward-banner__copy>p{display:none}\n  .iq-reward-banner__copy>a{margin-top:1px;font-size:13px;color:#fff}\n}\n</style>"
+            "bild_1": "shopify://shop_images/iq-westen-brusttasche-mobil.webp",
+            "bild_2": "shopify://shop_images/iq-westen-brusttasche-desktop.webp",
+            "link_3": "#iq-westen-funktionen",
+            "text_4": "Dog catches a toy released in front of the handler's vest",
+            "text_5": "Hund fängt das vor der Weste freigegebene Spielzeug",
+            "text_6": "Reward where you",
+            "text_7": "want your dog to be.",
+            "text_8": "Belohne dort, wo",
+            "text_9": "Dein Hund sein soll.",
+            "text_10": "With the patented chest pocket, reward directly in front of your body.",
+            "text_11": "Mit der patentierten Brusttasche bestätigst Du direkt vor Deinem Körper.",
+            "text_12": "Explore the features",
+            "text_13": "Funktionen entdecken"
           }
         },
         "inline_custom_liquid_Dnz3Df": {
-          "type": "inline_custom_liquid",
+          "type": "iq_release_18",
           "name": "Balltasche",
           "settings": {
             "position": 4,
             "position_mobile": 4,
             "width": "full",
-            "custom_liquid": "{%- assign iq_ball_en = false -%}\n{%- if request.locale.iso_code == 'en' -%}{%- assign iq_ball_en = true -%}{%- endif -%}\n{%- assign iq_ball_image = images['frano-weste.jpg'] -%}\n<div class=\"iq-ball-feature\">\n  <div class=\"iq-ball-feature__photo\">\n    {%- if iq_ball_image != blank -%}\n    <img src=\"{{ iq_ball_image | image_url: width: 1000 }}\" srcset=\"{{ iq_ball_image | image_url: width: 480 }} 480w, {{ iq_ball_image | image_url: width: 750 }} 750w, {{ iq_ball_image | image_url: width: 1000 }} 1000w\" sizes=\"(min-width: 750px) 53vw, 100vw\" width=\"{{ iq_ball_image.width }}\" height=\"{{ iq_ball_image.height }}\" loading=\"lazy\" alt=\"{% if iq_ball_en %}Handler releases a ball beside the vest while the dog watches{% else %}Hundeführer gibt einen Ball seitlich an der Weste frei, während der Hund aufmerksam hochschaut{% endif %}\">\n    {%- elsif request.design_mode -%}\n    <p>Bitte frano-weste.jpg unter Inhalte → Dateien hochladen.</p>\n    {%- endif -%}\n  </div>\n  <div class=\"iq-ball-feature__copy\">\n    <p class=\"iq-ball-feature__kicker\">{% if iq_ball_en %}THE OPTIONAL IQ BALL POCKET{% else %}DIE OPTIONALE IQ BALLTASCHE{% endif %}</p>\n    <h2>{% if iq_ball_en %}YOUR TIMING.<br>YOUR REWARD.{% else %}DEIN TIMING.<br>DEINE BELOHNUNG.{% endif %}</h2>\n    <p>{% if iq_ball_en %}With the optional IQ Ball Pocket, you can reward your dog right at heel. Release the ball using the pull cord – without reaching for the pocket first.{% else %}Mit der optionalen IQ Balltasche belohnst Du Deinen Hund direkt in der Fußposition. Über das Zugsystem gibst Du den Ball frei – ohne vorher mit der Hand zur Tasche zu greifen.{% endif %}</p>\n    <a class=\"iq-ball-feature__button\" href=\"{% if iq_ball_en %}/en/products/iq-magnettasche{% else %}/products/iq-magnettasche{% endif %}\">{% if iq_ball_en %}Discover the Ball Pocket{% else %}Balltasche entdecken{% endif %}<span aria-hidden=\"true\">→</span></a>\n  </div>\n</div>\n<style>\n.iq-ball-feature,.iq-ball-feature *{box-sizing:border-box}\n.iq-ball-feature{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);align-items:center;background:#FFFFFF;border-radius:0;width:100%;color:#171717}\n.iq-ball-feature__photo{min-width:0}\n.iq-ball-feature__photo img{display:block;width:100%;height:auto;border-radius:0}\n.iq-ball-feature__copy{min-width:0;padding:36px clamp(24px,4vw,64px);font:400 15px/1.6 Archivo,sans-serif}\n.iq-ball-feature .iq-ball-feature__kicker{margin:0 0 14px;font:700 11px/1.5 Archivo,sans-serif;letter-spacing:.12em;color:#A51D1B}\n.iq-ball-feature h2{margin:0 0 22px;font-family:Montserrat,sans-serif;font-weight:800;font-style:italic;font-size:clamp(28px,3vw,46px);line-height:1.1;letter-spacing:-.035em;text-transform:uppercase;color:#171717;overflow-wrap:break-word}\n.iq-ball-feature__copy>p{margin:0 0 16px}\n.iq-ball-feature .iq-ball-feature__models{margin:0;border-top:1px solid #DCDBD7;padding-top:14px;font-size:12px;color:#171717}\n@media(max-width:749px){\n.iq-ball-feature{grid-template-columns:minmax(0,1fr)}\n.iq-ball-feature__copy{padding:25px 20px 28px;font-size:14px}\n.iq-ball-feature h2{font-size:clamp(26px,7vw,32px)}\n}\n.iq-ball-feature .iq-ball-feature__button{display:inline-flex;align-items:center;gap:12px;min-height:44px;color:#A51D1B;font:700 14px/1.5 Archivo,sans-serif;text-decoration:underline;text-underline-offset:5px;background:transparent;border:0;border-radius:0;padding:0;margin-top:8px}\n.iq-ball-feature__button:focus-visible{outline:2px solid #171717;outline-offset:4px}\n</style>"
+            "bild_1": "shopify://shop_images/frano-weste.jpg",
+            "link_2": "/products/iq-magnettasche",
+            "link_3": "/en/products/iq-magnettasche",
+            "text_4": "THE OPTIONAL IQ BALL POCKET",
+            "text_5": "DIE OPTIONALE IQ BALLTASCHE",
+            "text_6": "YOUR TIMING.",
+            "text_7": "YOUR REWARD.",
+            "text_8": "DEIN TIMING.",
+            "text_9": "DEINE BELOHNUNG.",
+            "text_10": "With the optional IQ Ball Pocket, you can reward your dog right at heel. Release the ball using the pull cord – without reaching for the pocket first.",
+            "text_11": "Mit der optionalen IQ Balltasche belohnst Du Deinen Hund direkt in der Fußposition. Über das Zugsystem gibst Du den Ball frei – ohne vorher mit der Hand zur Tasche zu greifen.",
+            "text_12": "Discover the Ball Pocket",
+            "text_13": "Balltasche entdecken"
           }
         },
         "inline_custom_liquid_maU4K3": {
-          "type": "inline_custom_liquid",
+          "type": "iq_release_19",
           "name": "Sommerweste",
           "settings": {
             "position": 4,
             "position_mobile": 4,
             "width": "full",
-            "custom_liquid": "{% liquid\n  assign base = routes.root_url\n  assign last_char = base | slice: -1\n  unless last_char == '/'\n    assign base = base | append: '/'\n  endunless\n%}\n{% assign mesh_image = images['iq-westen-innenleben.webp'] %}\n{% assign mesh_image = images['weste_innenleben.webp'] %}\n<div class=\"iq-mesh-feature\">\n  <div class=\"iq-mesh-feature__photo\">\n    {% capture mesh_alt %}{% if request.locale.iso_code == 'en' %}Inside view of the IQ Summer Vest showing its mesh material{% else %}Innenansicht der IQ Sommerweste mit sichtbarem Mesh{% endif %}{% endcapture %}\n    {% if mesh_image != blank %}\n      {{ mesh_image | image_url: width: 1000 | image_tag: widths: '400,600,800,1000', sizes: '(min-width:750px) 53vw, 100vw', loading: 'lazy', alt: mesh_alt }}\n    {% elsif request.design_mode %}\n      <p>Bitte iq-westen-innenleben.webp unter Inhalte → Dateien hochladen.</p>\n      <p>Bitte weste_innenleben.webp unter Inhalte → Dateien hochladen.</p>\n    {% endif %}\n  </div>\n  <div class=\"iq-mesh-feature__copy\">\n    {% if request.locale.iso_code == 'en' %}\n      <p class=\"iq-mesh-feature__kicker\">THE SUMMER VEST · A LOOK INSIDE</p>\n      <h2>AIRY<br>MESH.</h2>\n      <p>For warm training days: the Summer Vest’s mesh lets air reach your body. Take a closer look at the material and construction.</p>\n      <a class=\"iq-mesh-feature__button\" href=\"{{ base }}products/iq-sommerweste-3-0-unisex\">View the Summer Vest <span aria-hidden=\"true\">→</span></a>\n    {% else %}\n      <p class=\"iq-mesh-feature__kicker\">DIE SOMMERWESTE · EIN BLICK NACH INNEN</p>\n      <h2>LUFTIG<br>DURCH MESH.</h2>\n      <p>Für warme Trainingstage: Das Mesh der Sommerweste lässt Luft an Deinen Körper. Hier siehst Du das Material und die Verarbeitung aus der Nähe.</p>\n      <a class=\"iq-mesh-feature__button\" href=\"{{ base }}products/iq-sommerweste-3-0-unisex\">Sommerweste ansehen <span aria-hidden=\"true\">→</span></a>\n    {% endif %}\n  </div>\n</div>\n<style>\n.iq-mesh-feature,.iq-mesh-feature *{box-sizing:border-box}\n.iq-mesh-feature{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);align-items:center;background:#FFFFFF;border-radius:0;width:100%;color:#171717}\n.iq-mesh-feature__photo{min-width:0}\n.iq-mesh-feature__photo img{display:block;width:100%;height:auto;border-radius:0}\n.iq-mesh-feature__copy{min-width:0;padding:36px clamp(24px,4vw,64px);font:400 15px/1.6 Archivo,sans-serif}\n.iq-mesh-feature .iq-mesh-feature__kicker{margin:0 0 14px;font:700 11px/1.5 Archivo,sans-serif;letter-spacing:.12em;color:#A51D1B}\n.iq-mesh-feature h2{margin:0 0 22px;font-family:Montserrat,sans-serif;font-weight:800;font-style:italic;font-size:clamp(28px,3vw,46px);line-height:1.1;letter-spacing:-.035em;text-transform:uppercase;color:#171717;overflow-wrap:break-word}\n.iq-mesh-feature__copy>p{margin:0 0 16px}\n.iq-mesh-feature .iq-mesh-feature__models{margin:0;border-top:1px solid #DCDBD7;padding-top:14px;font-size:12px;color:#171717}\n@media(max-width:749px){\n.iq-mesh-feature{grid-template-columns:minmax(0,1fr)}\n.iq-mesh-feature__copy{padding:25px 20px 28px;font-size:14px}\n.iq-mesh-feature h2{font-size:clamp(26px,7vw,32px)}\n}\n.iq-mesh-feature .iq-mesh-feature__button{display:inline-flex;align-items:center;gap:12px;min-height:44px;color:#A51D1B;font:700 14px/1.5 Archivo,sans-serif;text-decoration:underline;text-underline-offset:5px;background:transparent;border:0;border-radius:0;padding:0;margin-top:8px}\n.iq-mesh-feature__button:focus-visible{outline:2px solid #171717;outline-offset:4px}\n</style>"
+            "bild_2": "shopify://shop_images/weste_innenleben.webp",
+            "link_3": "/products/iq-sommerweste-3-0-unisex",
+            "link_4": "/en/products/iq-sommerweste-3-0-unisex",
+            "text_5": "Inside view of the IQ Summer Vest showing its mesh material",
+            "text_6": "Innenansicht der IQ Sommerweste mit sichtbarem Mesh",
+            "text_7": "THE SUMMER VEST · A LOOK INSIDE",
+            "text_8": "AIRY",
+            "text_9": "MESH.",
+            "text_10": "For warm training days: the Summer Vest’s mesh lets air reach your body. Take a closer look at the material and construction.",
+            "text_11": "View the Summer Vest",
+            "text_12": "DIE SOMMERWESTE · EIN BLICK NACH INNEN",
+            "text_13": "LUFTIG",
+            "text_14": "DURCH MESH.",
+            "text_15": "Für warme Trainingstage: Das Mesh der Sommerweste lässt Luft an Deinen Körper. Hier siehst Du das Material und die Verarbeitung aus der Nähe.",
+            "text_16": "Sommerweste ansehen"
           }
         },
         "inline_custom_liquid_cYJQ7W": {
@@ -211,22 +247,22 @@
       ],
       "custom_css": [],
       "settings": {
-        "collection_card_titles": false,
+        "collection_card_titles": true,
         "iq_jv_enabled": false,
         "iq_jv_products": [],
         "color_scheme": "scheme-9",
-        "products_per_page": 21,
+        "products_per_page": 24,
         "app_blocks_position": 24,
-        "columns_desktop": 2,
+        "columns_desktop": 4,
         "grid_layout": "standard",
-        "pagination": "infinite",
+        "pagination": "load_more",
         "enable_color_swatch": false,
         "enable_filtering": false,
-        "filter_type": "vertical",
+        "filter_type": "drawer",
         "enable_sorting": false,
         "expand_filter_groups": "Verfügbarkeit, Preis, Farbe, Größe, Produkttyp",
         "columns_mobile": "2",
-        "padding_top": 8,
+        "padding_top": 0,
         "padding_bottom": 40,
         "show_section_divider": true,
         "divider_width": "fixed"
@@ -313,19 +349,95 @@
       }
     },
     "custom_liquid_ezLGxq": {
-      "type": "custom-liquid",
+      "type": "iq-release-section-20",
+      "blocks": {
+        "part1": {
+          "type": "part1",
+          "settings": {
+            "link_1": "/en/products/iq-hundesportweste-3-0-unisex",
+            "link_2": "/collections/hundesport-jacken",
+            "link_3": "/en/collections/hundesport-jacken",
+            "link_4": "/collections/hundesport-hosen",
+            "link_5": "/en/collections/hundesport-hosen",
+            "link_6": "/collections/hundesport-zubehoer-damen",
+            "link_7": "/en/collections/hundesport-zubehoer-damen",
+            "link_8": "/en/pages/igp-hundesport",
+            "link_9": "/products/iq-hundesportweste-3-0-unisex",
+            "link_10": "/pages/igp-hundesport",
+            "text_11": "KNOWLEDGE & FEATURES",
+            "text_12": "MORE ABOUT",
+            "text_13": "IQ VESTS.",
+            "text_14": "WISSEN & AUSSTATTUNG",
+            "text_15": "MEHR ÜBER",
+            "text_16": "IQ WESTEN.",
+            "text_17": "Dog sport vests, training vests and handler vests",
+            "text_18": "A dog sport vest is more than clothing. It is a training tool for the training field, everyday use and competition. IQ Dogsport dog sport vests and handler vests are developed for active dog sport handlers, trainers, dog handlers and K9 teams.",
+            "text_19": "The focus is on freedom of movement, robust materials and a smart pocket system for efficient dog training. Developed by a multiple IGP World Champion and tested under real training conditions.",
+            "text_20": "Dog sport vests with large back pocket"
+          }
+        },
+        "part2": {
+          "type": "part2",
+          "settings": {
+            "text_21": "The large, full-width back pocket is one of the key features of IQ dog sport vests. It offers space for toys, leashes and training accessories and allows quick access during training.",
+            "text_22": "For women and men, a vest with a back pocket is especially practical when equipment needs to be stored securely but remain quickly accessible. In obedience, protection work and daily dog training, the back pocket supports clear routines on the training field.",
+            "text_23": "Patented training solutions for precise timing",
+            "text_24": "The",
+            "text_25": "IQ Dog Sport Vest 3.0",
+            "text_26": "features patented chest pockets for centered reinforcement without visible body help. The system is complemented by the IQ magnetic pocket for hidden reinforcement in heelwork and modular food pockets for flexible training.",
+            "text_27": "This creates more than a classic training vest: the IQ dog sport vest is a modular training system for handlers, trainers and ambitious dog sport athletes.",
+            "text_28": "Training vests for IGP, protection work and dog training",
+            "text_29": "Whether IGP, working dog sport, protection work or professional dog training – a good training vest has to organize equipment, allow freedom of movement and make fast reinforcement possible. IQ dog sport vests are developed to make training more efficient, precise and repeatable.",
+            "text_30": "Robust materials, bartack-reinforced stress points and durable zippers ensure that the vests perform reliably during regular use on the training field, at seminars and in competition.",
+            "text_31": "Matching categories:",
+            "text_32": "dog sport jackets",
+            "text_33": "training pants",
+            "text_34": "and",
+            "text_35": "accessories for dog sport",
+            "text_36": "Want to know what IGP is?",
+            "text_37": "What is IGP",
+            "text_38": "Hundesportwesten, Trainingswesten und Hundeführerwesten",
+            "text_39": "Eine Hundesportweste ist mehr als Bekleidung. Sie ist ein Trainingswerkzeug für Hundeplatz, Alltag und Wettkampf. Die Hundesportwesten und Hundeführerwesten von IQ Dogsport wurden für aktive Hundesportler, Hundetrainer, Hundeführer und K9-Teams entwickelt.",
+            "text_40": "Im Mittelpunkt stehen Bewegungsfreiheit, robuste Materialien und ein durchdachtes Taschensystem für effizientes Hundetraining. Entwickelt von einem mehrfachen IGP-Weltmeister und unter realen Trainingsbedingungen getestet."
+          }
+        },
+        "part3": {
+          "type": "part3",
+          "settings": {
+            "text_41": "Hundesportwesten mit großer Rückentasche",
+            "text_42": "Die große, durchgängige Rückentasche gehört zu den wichtigsten Merkmalen der IQ Hundesportwesten. Sie bietet Platz für Spielzeug, Leinen und Trainingszubehör und ermöglicht schnellen Zugriff während des Trainings.",
+            "text_43": "Für Damen und Herren ist eine Weste mit Rückentasche besonders praktisch, wenn Ausrüstung sicher verstaut, aber trotzdem schnell erreichbar sein muss. In Unterordnung, Schutzdienst und täglichem Hundetraining sorgt die Rückentasche für klare Abläufe auf dem Hundeplatz.",
+            "text_44": "Patentierte Trainingslösungen für präzises Timing",
+            "text_45": "Die",
+            "text_46": "IQ Hundesportweste 3.0",
+            "text_47": "verfügt über patentierte Brusttaschen für eine mittige Bestätigung ohne sichtbare Körperhilfen. Ergänzt wird das System durch die IQ Magnettasche für verdeckte Bestätigung beim Fußlaufen sowie modulare Futtertaschen für flexibles Training.",
+            "text_48": "Dadurch entsteht mehr als eine klassische Trainingsweste: Die IQ Hundesportweste ist ein modulares Trainingssystem für Hundeführer, Hundetrainer und ambitionierte Hundesportler.",
+            "text_49": "Trainingswesten für IGP, Schutzdienst und Hundeausbildung",
+            "text_50": "Ob IGP, Gebrauchshundesport, Schutzdienst oder professionelle Hundeausbildung – eine gute Trainingsweste muss Ausrüstung organisieren, Bewegungsfreiheit bieten und schnelle Bestätigung ermöglichen. Die IQ Hundesportwesten wurden entwickelt, um Training effizienter, präziser und reproduzierbarer zu machen.",
+            "text_51": "Robuste Materialien, bartack-verstärkte Belastungspunkte und langlebige Reißverschlüsse sorgen dafür, dass die Westen auch bei regelmäßigem Einsatz auf dem Hundeplatz, bei Seminaren und im Wettkampf zuverlässig funktionieren.",
+            "text_52": "Passend dazu:",
+            "text_53": "Hundesportjacken",
+            "text_54": "und",
+            "text_55": "Trainingshosen",
+            "text_56": "Ergänzend findest du",
+            "text_57": "passendes Bekleidungszubehör",
+            "text_58": "wie Futtertaschen, Magnettaschen und Loops für dein Training.",
+            "text_59": "Wer wissen will, was IGP ist:",
+            "text_60": "Was ist IGP"
+          }
+        }
+      },
+      "block_order": [
+        "part1",
+        "part2",
+        "part3"
+      ],
       "name": "SEO akkordeon",
-      "settings": {
-        "custom_liquid": "<section id=\"iq-westen-funktionen\" class=\"iq-collection-knowledge\"><div class=\"iq-collection-knowledge__inner\"><div>\n{% if request.locale.iso_code == 'en' %}<p class=\"iq-collection-knowledge__label\">KNOWLEDGE & FEATURES</p><h2>MORE ABOUT<br>IQ VESTS.</h2>{% else %}<p class=\"iq-collection-knowledge__label\">WISSEN & AUSSTATTUNG</p><h2>MEHR ÜBER<br>IQ WESTEN.</h2>{% endif %}\n</div><div class=\"iq-collection-knowledge__text\">\n{% if request.locale.iso_code == 'en' %}<details class=\"iq-collection-accordion\"><summary>Dog sport vests, training vests and handler vests<span aria-hidden=\"true\" class=\"iq-collection-accordion__icon\"></span></summary><div class=\"iq-collection-accordion__body\"><p>A dog sport vest is more than clothing. It is a training tool for the training field, everyday use and competition. IQ Dogsport dog sport vests and handler vests are developed for active dog sport handlers, trainers, dog handlers and K9 teams.</p><p>The focus is on freedom of movement, robust materials and a smart pocket system for efficient dog training. Developed by a multiple IGP World Champion and tested under real training conditions.</p></div></details>\n<details class=\"iq-collection-accordion\"><summary>Dog sport vests with large back pocket<span aria-hidden=\"true\" class=\"iq-collection-accordion__icon\"></span></summary><div class=\"iq-collection-accordion__body\"><p>The large, full-width back pocket is one of the key features of IQ dog sport vests. It offers space for toys, leashes and training accessories and allows quick access during training.</p><p>For women and men, a vest with a back pocket is especially practical when equipment needs to be stored securely but remain quickly accessible. In obedience, protection work and daily dog training, the back pocket supports clear routines on the training field.</p></div></details>\n<details class=\"iq-collection-accordion\"><summary>Patented training solutions for precise timing<span aria-hidden=\"true\" class=\"iq-collection-accordion__icon\"></span></summary><div class=\"iq-collection-accordion__body\"><p>The <a href=\"/en/products/iq-hundesportweste-3-0-unisex\">IQ Dog Sport Vest 3.0</a> features patented chest pockets for centered reinforcement without visible body help. The system is complemented by the IQ magnetic pocket for hidden reinforcement in heelwork and modular food pockets for flexible training.</p><p>This creates more than a classic training vest: the IQ dog sport vest is a modular training system for handlers, trainers and ambitious dog sport athletes.</p></div></details>\n<details class=\"iq-collection-accordion\"><summary>Training vests for IGP, protection work and dog training<span aria-hidden=\"true\" class=\"iq-collection-accordion__icon\"></span></summary><div class=\"iq-collection-accordion__body\"><p>Whether IGP, working dog sport, protection work or professional dog training – a good training vest has to organize equipment, allow freedom of movement and make fast reinforcement possible. IQ dog sport vests are developed to make training more efficient, precise and repeatable.</p><p>Robust materials, bartack-reinforced stress points and durable zippers ensure that the vests perform reliably during regular use on the training field, at seminars and in competition.</p><p>Matching categories: <a href=\"{{ routes.collections_url }}/hundesport-jacken\">dog sport jackets</a>, <a href=\"{{ routes.collections_url }}/hundesport-hosen\">training pants</a> and <a href=\"{{ routes.collections_url }}/hundesport-zubehoer-damen\">accessories for dog sport</a>.</p><p>Want to know what IGP is? <a href=\"/en/pages/igp-hundesport\">What is IGP</a>.</p></div></details>\n{% else %}<details class=\"iq-collection-accordion\"><summary>Hundesportwesten, Trainingswesten und Hundeführerwesten<span aria-hidden=\"true\" class=\"iq-collection-accordion__icon\"></span></summary><div class=\"iq-collection-accordion__body\"><p>Eine Hundesportweste ist mehr als Bekleidung. Sie ist ein Trainingswerkzeug für Hundeplatz, Alltag und Wettkampf. Die Hundesportwesten und Hundeführerwesten von IQ Dogsport wurden für aktive Hundesportler, Hundetrainer, Hundeführer und K9-Teams entwickelt.</p><p>Im Mittelpunkt stehen Bewegungsfreiheit, robuste Materialien und ein durchdachtes Taschensystem für effizientes Hundetraining. Entwickelt von einem mehrfachen IGP-Weltmeister und unter realen Trainingsbedingungen getestet.</p></div></details>\n<details class=\"iq-collection-accordion\"><summary>Hundesportwesten mit großer Rückentasche<span aria-hidden=\"true\" class=\"iq-collection-accordion__icon\"></span></summary><div class=\"iq-collection-accordion__body\"><p>Die große, durchgängige Rückentasche gehört zu den wichtigsten Merkmalen der IQ Hundesportwesten. Sie bietet Platz für Spielzeug, Leinen und Trainingszubehör und ermöglicht schnellen Zugriff während des Trainings.</p><p>Für Damen und Herren ist eine Weste mit Rückentasche besonders praktisch, wenn Ausrüstung sicher verstaut, aber trotzdem schnell erreichbar sein muss. In Unterordnung, Schutzdienst und täglichem Hundetraining sorgt die Rückentasche für klare Abläufe auf dem Hundeplatz.</p></div></details>\n<details class=\"iq-collection-accordion\"><summary>Patentierte Trainingslösungen für präzises Timing<span aria-hidden=\"true\" class=\"iq-collection-accordion__icon\"></span></summary><div class=\"iq-collection-accordion__body\"><p>Die <a href=\"/products/iq-hundesportweste-3-0-unisex\">IQ Hundesportweste 3.0</a> verfügt über patentierte Brusttaschen für eine mittige Bestätigung ohne sichtbare Körperhilfen. Ergänzt wird das System durch die IQ Magnettasche für verdeckte Bestätigung beim Fußlaufen sowie modulare Futtertaschen für flexibles Training.</p><p>Dadurch entsteht mehr als eine klassische Trainingsweste: Die IQ Hundesportweste ist ein modulares Trainingssystem für Hundeführer, Hundetrainer und ambitionierte Hundesportler.</p></div></details>\n<details class=\"iq-collection-accordion\"><summary>Trainingswesten für IGP, Schutzdienst und Hundeausbildung<span aria-hidden=\"true\" class=\"iq-collection-accordion__icon\"></span></summary><div class=\"iq-collection-accordion__body\"><p>Ob IGP, Gebrauchshundesport, Schutzdienst oder professionelle Hundeausbildung – eine gute Trainingsweste muss Ausrüstung organisieren, Bewegungsfreiheit bieten und schnelle Bestätigung ermöglichen. Die IQ Hundesportwesten wurden entwickelt, um Training effizienter, präziser und reproduzierbarer zu machen.</p><p>Robuste Materialien, bartack-verstärkte Belastungspunkte und langlebige Reißverschlüsse sorgen dafür, dass die Westen auch bei regelmäßigem Einsatz auf dem Hundeplatz, bei Seminaren und im Wettkampf zuverlässig funktionieren.</p><p>Passend dazu: <a href=\"{{ routes.collections_url }}/hundesport-jacken\">Hundesportjacken </a>und   <a href=\"{{ routes.collections_url }}/hundesport-hosen\">Trainingshosen</a>.</p><p>Ergänzend findest du <a href=\"{{ routes.collections_url }}/hundesport-zubehoer-damen\">passendes Bekleidungszubehör</a> wie Futtertaschen, Magnettaschen und Loops für dein Training.</p><p>Wer wissen will, was IGP ist: <a href=\"/pages/igp-hundesport\">Was ist IGP</a>.<br>\n</p>\n</div></details>\n{% endif %}</div></div></section>",
-        "color_scheme": "",
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "custom_class": ""
-      }
+      "settings": {}
     }
   },
   "order": [
-    "iq_westen_banner_gKLVKG",
+    "iq_collection_hero_be8dcM",
     "custom_liquid_WWAgXi",
     "banner",
     "custom_liquid_FpycJH",

@@ -108,7 +108,7 @@
     </div>
     <div class="pcard__overlay-card flex items-center gap-3 color-{{ section.settings.color_scheme }}">
       <a href="{{ product_url }}" class="pcard__link full-width-link focus-inset blocks-radius">
-        <span class="visually-hidden">{{- product.title -}}</span>
+        <span class="visually-hidden">{%- capture iq_display_title -%}{%- render 'iq-card-short-title', product: product -%}{%- endcapture -%}{{- iq_display_title | strip | escape -}}</span>
       </a>
       <div
         class="pcard__thumbnail media-wrapper blocks-radius-sm"
@@ -133,7 +133,7 @@
       <div class="pcard__info flex items-center justify-between gap-2 flex-grow">
         <div class="pcard__info-main">
           <h3 class="pcard__title text-pcard-title">
-            <span class="text-limit-1-line">{{- product.title -}}</span>
+            <span class="text-limit-1-line">{%- capture iq_display_title -%}{%- render 'iq-card-short-title', product: product -%}{%- endcapture -%}{{- iq_display_title | strip | escape -}}</span>
           </h3>
           {% render 'price', product: product %}
         </div>

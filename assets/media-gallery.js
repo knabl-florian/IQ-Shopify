@@ -1,3 +1,4 @@
+// [Hamza 2026-10-15] Colour filter: gallery shows only the media of the selected colour (Variant Galerie)
 if (!customElements.get('media-gallery')) {
   customElements.define(
     'media-gallery',
@@ -29,6 +30,7 @@ if (!customElements.get('media-gallery')) {
         this.enableMobileThumbnails = this.dataset.enableMobileThumbnails === 'true';
         this.enableImageZoom = this.dataset.enableImageZoom === 'true';
         this.setSliderOptions();
+        this.initColorFilter(); // [Hamza 2026-10-15] added: start colour filter
 
         const mql = window.matchMedia(FoxTheme.config.mediaQueryMobile);
         mql.onchange = this.updateMediaLayout.bind(this);
@@ -37,6 +39,118 @@ if (!customElements.get('media-gallery')) {
         if (this.enableImageZoom) {
           this.initImageZoom();
         }
+
+        // [Hamza 2026-10-15] added: apply variant change that happened before init
+        if (this.pendingVariant) {
+          const variant = this.pendingVariant;
+          this.pendingVariant = null;
+          this.setActiveMedia(variant);
+        }
+      }
+
+      // [Hamza 2026-10-15] added: read colour data and collect all slides/thumbs
+      initColorFilter() {
+        if (this.colorData) return; // [Hamza 2026-10-15] added: run once - theme calls init() on every variant change
+        const dataEl = this.querySelector('script[data-gallery-colors]');
+        if (!dataEl) return;
+
+        let data;
+        try {
+          data = JSON.parse(dataEl.textContent);
+        } catch (e) {
+          return;
+        }
+        if (!data || !Array.isArray(data.media) || !data.media.length) return;
+
+        this.colorData = data;
+        this.currentColor = data.selected || '';
+        this.slidePool = new Map();
+        this.thumbPool = new Map();
+
+        this.collectGalleryNodes(this);
+        this.querySelectorAll('template[data-gallery-hidden]').forEach((tpl) => {
+          this.collectGalleryNodes(document.importNode(tpl.content, true));
+        });
+
+        // [Hamza 2026-10-15] added: put the start colour in Variant Galerie order right away
+        const startColor = this.currentColor;
+        this.currentColor = null;
+        this.filterByColor(startColor);
+      }
+
+      // [Hamza 2026-10-15] added: store slides/thumbs by media id
+      collectGalleryNodes(root) {
+        root.querySelectorAll('.product__media-item').forEach((el) => {
+          if (el.dataset.mediaId) this.slidePool.set(String(el.dataset.mediaId), el);
+        });
+        root.querySelectorAll('.product__thumbs-item').forEach((el) => {
+          if (el.dataset.target) this.thumbPool.set(String(el.dataset.target), el);
+        });
+      }
+
+      // [Hamza 2026-10-15] added: media ids to show for a colour
+      getMediaIdsForColor(color) {
+        const media = this.colorData.media;
+        const colorsOf = (m) => (Array.isArray(m.colors) ? m.colors : []);
+        // [Hamza 2026-10-15] added: position in the selected colour's Variant Galerie (fallback: Media order)
+        const orderOf = (m) => (m.orders && m.orders[color] !== undefined ? m.orders[color] : m.order || 0);
+        const hasTaggedMedia = !!color && media.some((m) => colorsOf(m).includes(color));
+
+        if (!hasTaggedMedia) return media.map((m) => String(m.id));
+
+        const own = media
+          .filter((m) => colorsOf(m).includes(color))
+          .sort((a, b) => orderOf(a) - orderOf(b)); // [Hamza 2026-10-15] added: follow this colour's Variant Galerie order
+        const shared = this.colorData.strict ? [] : media.filter((m) => colorsOf(m).length === 0);
+        return own.concat(shared).map((m) => String(m.id));
+      }
+
+      // [Hamza 2026-10-15] added: swap gallery to the selected colour
+      filterByColor(color) {
+        if (!this.colorData || typeof color !== 'string' || color === this.currentColor) return;
+        this.currentColor = color;
+
+        if (typeof window.pauseAllMedia === 'function') window.pauseAllMedia(this);
+
+        const ids = this.getMediaIdsForColor(color);
+
+        const mediaList = this.elements.mediaList;
+        const nextSlides = ids.map((id) => this.slidePool.get(id)).filter(Boolean);
+        const slidesUnchanged =
+          nextSlides.length === mediaList.children.length &&
+          nextSlides.every((slide, index) => slide === mediaList.children[index]);
+
+        const thumbList = this.querySelector('[id^="Slider-Thumbnails"]');
+        const nextThumbs = thumbList ? ids.map((id) => this.thumbPool.get(id)).filter(Boolean) : [];
+        const thumbsUnchanged =
+          !thumbList ||
+          (nextThumbs.length === thumbList.children.length &&
+            nextThumbs.every((thumb, index) => thumb === thumbList.children[index]));
+
+        if (!slidesUnchanged || !thumbsUnchanged) {
+          this.destroySlider();
+          this.destroyThumbsSlider();
+          if (!slidesUnchanged) mediaList.replaceChildren(...nextSlides);
+          if (!thumbsUnchanged) thumbList.replaceChildren(...nextThumbs);
+        }
+
+        this.elements.mediaItems = [...mediaList.querySelectorAll('.product__media-item')];
+        this.elements.mediaItems.forEach((el, index) => {
+          el.dataset.mediaIndex = index;
+        });
+
+        if (this.lightbox) this.buildLightboxData();
+
+        this.updateMediaLayout();
+      }
+
+      // [Hamza 2026-10-15] added: destroy thumbnail slider before rebuilding
+      destroyThumbsSlider() {
+        if (typeof this.thumbsInstance === 'object' && this.thumbsInstance.slider) {
+          this.thumbsInstance.slider.destroy();
+        }
+        this.thumbsInstance = false;
+        if (this.sliderOptions) delete this.sliderOptions.thumbs;
       }
 
       setSliderOptions() {
@@ -145,8 +259,12 @@ if (!customElements.get('media-gallery')) {
         }
       }
 
-      initImageZoom() {
-        let dataSource = [];
+      // [Hamza 2026-10-15] added: lightbox data in own method so it can be rebuilt after colour change
+      buildLightboxData() {
+        if (!this.lightboxData) this.lightboxData = [];
+        const dataSource = this.lightboxData;
+        dataSource.length = 0;
+
         const allMedia = [...this.querySelectorAll('.product__media-item:not(.swiper-slide-duplicate)')];
         if (allMedia) {
           allMedia.forEach((media) => {
@@ -183,8 +301,14 @@ if (!customElements.get('media-gallery')) {
           });
         }
 
+        return dataSource;
+      }
+
+      initImageZoom() {
+        this.buildLightboxData(); // [Hamza 2026-10-15] changed: was inline dataSource array
+
         this.lightbox = new window.FoxTheme.PhotoSwipeLightbox({
-          dataSource: dataSource,
+          dataSource: this.lightboxData, // [Hamza 2026-10-15] changed: was dataSource
           pswpModule: window.FoxTheme.PhotoSwipe,
           bgOpacity: 1,
           arrowPrev: false,
@@ -330,11 +454,26 @@ if (!customElements.get('media-gallery')) {
       }
 
       setActiveMedia(variant) {
+        // [Hamza 2026-10-15] added: remember variant if gallery not initialised yet
+        if (!this.elements) {
+          this.pendingVariant = variant;
+          return;
+        }
+
+        // [Hamza 2026-10-15] added: filter gallery by selected colour
+        if (variant && this.colorData && this.colorData.variants) {
+          this.filterByColor(this.colorData.variants[String(variant.id)]);
+        }
+
         if (!variant || !variant.hasOwnProperty('featured_media') || !variant.featured_media) return;
 
-        if (this.sliderInstance.slider) {
-          const slideIndex = variant.featured_media.position || 0;
-          this.sliderInstance.slider.slideToLoop(slideIndex - 1, 0, false);
+        // [Hamza 2026-10-15] changed: find variant image in filtered list (was featured_media.position)
+        if (this.sliderInstance && this.sliderInstance.slider) {
+          const slides = [...this.elements.mediaList.querySelectorAll('.product__media-item')];
+          const slideIndex = slides.findIndex(
+            (el) => String(el.dataset.mediaId) === String(variant.featured_media.id)
+          );
+          this.sliderInstance.slider.slideToLoop(slideIndex >= 0 ? slideIndex : 0, 0, false);
         } else {
           this.sortMediaItems(variant);
         }
@@ -356,10 +495,11 @@ if (!customElements.get('media-gallery')) {
           }
         });
 
-        this.elements.mediaList.innerHTML = '';
-        newMedias.forEach((media) => {
-          this.elements.mediaList.appendChild(media);
-        });
+        const mediaList = this.elements.mediaList;
+        const orderUnchanged =
+          newMedias.length === mediaList.children.length &&
+          newMedias.every((media, index) => media === mediaList.children[index]);
+        if (!orderUnchanged) mediaList.replaceChildren(...newMedias);
 
         if (!FoxTheme.config.mqlMobile) {
           const selectedMedia = this.querySelector(`[data-media-id="${variant.featured_media.id}"]`);

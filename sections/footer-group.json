@@ -74,7 +74,8 @@
             "heading_size": "h6",
             "menu": "footer",
             "open_default": false,
-            "show_divider": false
+            "show_divider": false,
+            "show_iq_outlet": true
           }
         },
         "menu_qxNnp8": {

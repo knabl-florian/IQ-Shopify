@@ -104,7 +104,8 @@
             "button_style_5": "btn--primary",
             "content_position_5": "below",
             "content_alignment_5": "left",
-            "promotion_link_5": "shopify://collections/hundesport-zubehoer-damen"
+            "promotion_link_5": "shopify://collections/hundesport-zubehoer-damen",
+            "show_iq_outlet": true
           }
         },
         "custom_card_xkqadF": {

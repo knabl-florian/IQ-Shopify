@@ -54,6 +54,12 @@
     --logo-width-mobile: {{ settings.logo_width_mobile }}px;
     --color-transparent: {{ section.settings.transparent_header_color.red }},{{ section.settings.transparent_header_color.green }},{{ section.settings.transparent_header_color.blue }};
   }
+
+  #shopify-section-{{ section.id }}:not(.header-transparent) .header[data-enable-transparent="true"] {
+    position: absolute;
+    inset-block-start: auto;
+    width: 100%;
+  }
 {% endstyle %}
 
 <header
@@ -215,6 +221,7 @@
 
   <div class="header__icons header__icons--right flex justify-end z-1">
     <div class="header__buttons flex items-center justify-center">
+      <div class="rps-csb-target-element rps-csb-target-element-mobile hidden lg:block"></div>
       <a
         href="{{ routes.search_url }}"
         class="search-drawer-button flex items-center justify-center{% if header_layout == 'center-split' %} lg:hidden{% endif %}"
@@ -537,6 +544,12 @@
           "type": "text",
           "label": "t:sections.header.blocks.all.menu_title.label",
           "id": "menu_title"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_iq_outlet",
+          "label": "Show IQ Outlet link below menu",
+          "default": false
         },
         {
           "type": "range",
@@ -1707,7 +1720,9 @@
     }
   ],
   "enabled_on": {
-    "groups": ["header"]
+    "groups": [
+      "header"
+    ]
   }
 }
 {% endschema %}

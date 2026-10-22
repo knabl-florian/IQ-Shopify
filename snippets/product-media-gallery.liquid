@@ -7,6 +7,9 @@
 
   Usage:
   {% render 'product-media-gallery' %}
+
+
+  [Hamza 2026-10-15] Colour filter: shows only media picked in the selected colour's Variant Galerie
 {% endcomment %}
 
 {%- liquid
@@ -17,30 +20,239 @@
     assign use_language_filter = true
   endif
 
-  assign media_count = 0
+  # [Hamza 2026-10-15] added: find colour option and selected colour
+  assign color_option_names = 'farbe,color,colour,couleur,colore' | split: ','
+  assign color_option_index = -1
+  for option in product.options_with_values
+    assign opt_name = option.name | downcase | strip
+    if color_option_names contains opt_name
+      assign color_option_index = forloop.index0
+      break
+    endif
+  endfor
+  # [Hamza 2026-10-16] added: no colour option (e.g. Keychain style) - use the first option if a Variant Galerie is filled
+  if color_option_index == -1 and product.has_only_default_variant == false
+    for variant in product.variants
+      if variant.metafields.custom.variant_galerie.value != blank
+        assign color_option_index = 0
+        break
+      endif
+    endfor
+  endif
 
-  for media in product.media
-    assign should_hide = false
-    assign media_lang = media.alt | default: '' | downcase | split: '|' | first | strip
+  assign selected_color = ''
+  if color_option_index >= 0
+    assign current_variant = product.selected_or_first_available_variant
+    assign selected_color = current_variant.options[color_option_index] | handleize
+  endif
 
-    if use_language_filter
-      if media.media_type == 'video' or media.media_type == 'external_video'
-        if media_lang == 'lang-de' and current_language != 'de'
-          assign should_hide = true
-        elsif media_lang == 'lang-en' and current_language != 'en'
-          assign should_hide = true
+  # [Hamza 2026-10-15] added: variants that have a Variant Galerie (custom.variant_galerie)
+  assign mf_seen_colors = ','
+  assign mf_variant_ids = ','
+  if color_option_index >= 0
+    for variant in product.variants
+      assign vg = variant.metafields.custom.variant_galerie.value
+      if vg != blank
+        assign v_color = variant.options[color_option_index] | handleize
+        assign mf_variant_ids = mf_variant_ids | append: variant.id | append: ','
+      endif
+    endfor
+  endif
+  assign use_metafield_mode = false
+  if mf_variant_ids != ','
+    assign use_metafield_mode = true
+  endif
+
+  # [Hamza 2026-10-15] added: sources = product Media + Variant Galerie of each variant
+  assign source_max = 0
+  if use_metafield_mode
+    assign source_max = product.variants.size
+  endif
+
+  # [Hamza 2026-10-15] added: fallback without metafield - variant image starts a colour group
+  assign group_starts = ','
+  if color_option_index >= 0 and use_metafield_mode == false
+    for variant in product.variants
+      if variant.featured_media
+        assign start_key = ',' | append: variant.featured_media.id | append: ':'
+        unless group_starts contains start_key
+          assign v_color = variant.options[color_option_index] | handleize
+          assign group_starts = group_starts | append: variant.featured_media.id | append: ':' | append: v_color | append: ','
+        endunless
+      endif
+    endfor
+  endif
+
+  # [Hamza 2026-10-15] changed: language + colour check per media (was simple media_count loop)
+  for pass in (1..2)
+    assign visible_ids = ','
+    assign selected_ids = ','
+    assign shared_ids = ','
+    assign visible_count = 0
+    assign selected_count = 0
+    assign selected_color_tagged = 0
+    assign media_json = ''
+    assign json_sep = ''
+    assign current_group = ''
+    assign seen_media = ','
+
+    for media_source in (0..source_max)
+      if media_source == 0
+        assign source_list = product.media
+      else
+        assign source_variant_index = media_source | minus: 1
+        assign source_variant = product.variants[source_variant_index]
+        assign source_key = ',' | append: source_variant.id | append: ','
+        unless mf_variant_ids contains source_key
+          continue
+        endunless
+        assign source_list = source_variant.metafields.custom.variant_galerie.value
+      endif
+      for media in source_list
+      # [Hamza 2026-10-15] added: skip duplicates
+      assign media_file = media.preview_image.src | split: '/' | last | split: '?' | first
+      assign seen_id_key = ',id' | append: media.id | append: ','
+      assign seen_file_key = ',f' | append: media_file | append: ','
+      if seen_media contains seen_id_key
+        continue
+      endif
+      if media_file != '' and seen_media contains seen_file_key
+        continue
+      endif
+      assign seen_media = seen_media | append: 'id' | append: media.id | append: ','
+      if media_file != ''
+        assign seen_media = seen_media | append: 'f' | append: media_file | append: ','
+      endif
+
+      assign should_hide = false
+
+      assign media_colors = ''
+      # [Hamza 2026-10-15] added: default order = position in Media; orders per colour from Variant Galerie
+      assign media_order = 900000 | plus: visible_count
+      assign media_orders = ''
+      assign order_sep = ''
+
+      if use_metafield_mode
+        assign media_file = media.preview_image.src | split: '/' | last | split: '?' | first
+        for variant in product.variants
+          assign vk = ',' | append: variant.id | append: ','
+          unless mf_variant_ids contains vk
+            continue
+          endunless
+          assign variant_pos = forloop.index0
+          for picked in variant.metafields.custom.variant_galerie.value
+            assign picked_src = picked.preview_image.src | default: picked.src
+            assign picked_file = picked_src | split: '/' | last | split: '?' | first
+            if picked.id == media.id or picked_file == media_file
+              # [Hamza 2026-10-15] added: order from Variant Galerie
+              assign pick_order = variant_pos | times: 1000 | plus: forloop.index0
+              if pick_order < media_order
+                assign media_order = pick_order
+              endif
+              assign v_color = variant.options[color_option_index] | handleize
+              assign mc_check = '|' | append: media_colors | append: '|'
+              assign vc_check = '|' | append: v_color | append: '|'
+              assign colour_is_new = true
+              if media_colors == ''
+                assign media_colors = v_color
+              elsif mc_check contains vc_check
+                # [Hamza 2026-10-15] colour already noted
+                assign colour_is_new = false
+              else
+                assign media_colors = media_colors | append: '|' | append: v_color
+              endif
+              # [Hamza 2026-10-15] added: remember position in THIS colour's Variant Galerie
+              if colour_is_new
+                assign media_orders = media_orders | append: order_sep | append: '"' | append: v_color | append: '":' | append: pick_order
+                assign order_sep = ','
+              endif
+              break
+            endif
+          endfor
+        endfor
+      else
+        assign start_key = ',' | append: media.id | append: ':'
+        if group_starts contains start_key
+          assign group_rest = group_starts | split: start_key | last
+          assign current_group = group_rest | split: ',' | first
+        endif
+        assign media_colors = current_group
+      endif
+
+      assign alt_parts = media.alt | default: '' | downcase | split: '|'
+      assign media_lang = alt_parts.first | strip
+
+      # [Hamza 2026-10-15] added: optional alt text override color-<value>
+      for alt_part in alt_parts
+        assign alt_tag = alt_part | strip
+        assign alt_prefix = alt_tag | slice: 0, 6
+        if alt_prefix == 'color-' or alt_prefix == 'farbe-'
+          assign media_colors = alt_tag | slice: 6, 200 | handleize
+        endif
+      endfor
+      assign media_color_list = media_colors | split: '|'
+
+      if use_language_filter
+        if media.media_type == 'video' or media.media_type == 'external_video'
+          if media_lang == 'lang-de' and current_language != 'de'
+            assign should_hide = true
+          elsif media_lang == 'lang-en' and current_language != 'en'
+            assign should_hide = true
+          endif
         endif
       endif
-    endif
 
-    unless should_hide
-      assign media_count = media_count | plus: 1
-    endunless
+      if should_hide
+        continue
+      endif
+
+      assign id_token = media.id | append: ','
+      assign visible_ids = visible_ids | append: id_token
+      assign visible_count = visible_count | plus: 1
+
+      assign belongs_to_selected = false
+      if selected_color != '' and media_color_list contains selected_color
+        assign belongs_to_selected = true
+      endif
+
+      # [Hamza 2026-10-15] added: strict mode - with metafield, unpicked media is hidden
+      assign is_shared = false
+      if media_colors == '' and use_metafield_mode == false
+        assign is_shared = true
+      endif
+
+      if is_shared or belongs_to_selected
+        assign selected_ids = selected_ids | append: id_token
+        assign selected_count = selected_count | plus: 1
+      endif
+      if is_shared
+        assign shared_ids = shared_ids | append: id_token
+      endif
+      if belongs_to_selected
+        assign selected_color_tagged = selected_color_tagged | plus: 1
+      endif
+
+      assign media_colors_json = media_color_list | json
+      assign media_json = media_json | append: json_sep | append: '{"id":' | append: media.id | append: ',"colors":' | append: media_colors_json | append: ',"order":' | append: media_order | append: ',"orders":{' | append: media_orders | append: '}}'
+      assign json_sep = ','
+    endfor
+    endfor
+
+    if visible_count > 0
+      break
+    endif
+    assign use_language_filter = false
   endfor
 
-  if media_count == 0
-    assign use_language_filter = false
-    assign media_count = product.media.size
+  # [Hamza 2026-10-15] added: filter only if selected colour has media, else show all
+  assign color_filter_active = false
+  if color_option_index >= 0 and selected_color_tagged > 0
+    assign color_filter_active = true
+    assign shown_ids = selected_ids
+    assign media_count = selected_count
+  else
+    assign shown_ids = visible_ids
+    assign media_count = visible_count
   endif
 
   assign has_only_once_media = false
@@ -79,6 +291,71 @@
       endif
     endif
   endif
+
+  # [Hamza 2026-10-15] changed: render slides here - shown ones in gallery, others in <template>
+  assign slides_shown_html = ''
+  assign slides_shared_html = ''
+  assign slides_hidden_html = ''
+  assign shown_position = 0
+  if color_filter_active
+    assign shared_position = selected_color_tagged
+  endif
+  assign hidden_position = media_count
+
+  assign rendered_ids = ','
+  for media_source in (0..source_max)
+    if media_source == 0
+      assign source_list = product.media
+    else
+      assign source_variant_index = media_source | minus: 1
+      assign source_variant = product.variants[source_variant_index]
+      assign source_key = ',' | append: source_variant.id | append: ','
+      unless mf_variant_ids contains source_key
+        continue
+      endunless
+      assign source_list = source_variant.metafields.custom.variant_galerie.value
+    endif
+    for media in source_list
+    assign id_token = ',' | append: media.id | append: ','
+    unless visible_ids contains id_token
+      continue
+    endunless
+    if rendered_ids contains id_token
+      continue
+    endif
+    assign rendered_ids = rendered_ids | append: media.id | append: ','
+
+    assign is_shared_slot = false
+    if color_filter_active and shared_ids contains id_token
+      assign is_shared_slot = true
+    endif
+
+    if is_shared_slot
+      assign slide_position = shared_position
+      assign shared_position = shared_position | plus: 1
+    elsif shown_ids contains id_token
+      assign slide_position = shown_position
+      assign shown_position = shown_position | plus: 1
+    else
+      assign slide_position = hidden_position
+      assign hidden_position = hidden_position | plus: 1
+    endif
+
+    capture slide_html
+      render 'product-thumbnail', media: media, media_count: media_count, position: slide_position, desktop_layout: media_layout, mobile_layout: mobile_thumbnails, enable_image_zoom: enable_image_zoom, loop: section.settings.enable_video_looping, modal_id: section.id, xr_button: true, media_width: media_width
+    endcapture
+
+    if is_shared_slot
+      assign slides_shared_html = slides_shared_html | append: slide_html
+    elsif shown_ids contains id_token
+      assign slides_shown_html = slides_shown_html | append: slide_html
+    else
+      assign slides_hidden_html = slides_hidden_html | append: slide_html
+    endif
+  endfor
+  endfor
+
+  assign slides_shown_html = slides_shown_html | append: slides_shared_html
 -%}
 
 <media-gallery
@@ -95,6 +372,22 @@
   style="--media-item-gap: {{ media_item_gap }}px"
 >
   <div id="GalleryStatus-{{ section.id }}" class="visually-hidden" role="status"></div>
+
+  {%- # [Hamza 2026-10-15] added: colour data for media-gallery.js -%}
+  {%- if color_option_index >= 0 -%}
+    <script type="application/json" data-gallery-colors>
+      {
+        "selected": {{ selected_color | json }},
+        "strict": {{ use_metafield_mode | json }},
+        "media": [{{ media_json }}],
+        "variants": {
+          {%- for variant in product.variants -%}
+            "{{ variant.id }}": {{ variant.options[color_option_index] | handleize | json }}{% unless forloop.last %},{% endunless %}
+          {%- endfor -%}
+        }
+      }
+    </script>
+  {%- endif -%}
 
   <div class="product__media-gallery-viewer-wrap relative{{ slider_css_class }}">
     <div
@@ -113,43 +406,18 @@
         class="product__media-list flex swiper-wrapper"
         role="list"
       >
-        {%- assign visible_position = 0 -%}
-
-        {%- for media in product.media -%}
-          {%- assign should_hide = false -%}
-          {%- assign media_lang = media.alt | default: '' | downcase | split: '|' | first | strip -%}
-
-          {%- if use_language_filter -%}
-            {%- if media.media_type == 'video' or media.media_type == 'external_video' -%}
-              {%- if media_lang == 'lang-de' and current_language != 'de' -%}
-                {%- assign should_hide = true -%}
-              {%- elsif media_lang == 'lang-en' and current_language != 'en' -%}
-                {%- assign should_hide = true -%}
-              {%- endif -%}
-            {%- endif -%}
-          {%- endif -%}
-
-          {%- unless should_hide -%}
-            {% render 'product-thumbnail',
-              media: media,
-              media_count: media_count,
-              position: visible_position,
-              desktop_layout: media_layout,
-              mobile_layout: mobile_thumbnails,
-              enable_image_zoom: enable_image_zoom,
-              loop: section.settings.enable_video_looping,
-              modal_id: section.id,
-              xr_button: true,
-              media_width: media_width
-            %}
-
-            {%- assign visible_position = visible_position | plus: 1 -%}
-          {%- endunless -%}
-        {%- endfor -%}
+        {%- # [Hamza 2026-10-15] changed: only media of selected colour -%}
+        {{ slides_shown_html }}
       </div>
     </div>
 
-    {%- if media_count > 1 -%}
+    {%- # [Hamza 2026-10-15] added: other colours' slides (hidden) -%}
+    {%- if slides_hidden_html != '' -%}
+      <template data-gallery-hidden="slides">{{ slides_hidden_html }}</template>
+    {%- endif -%}
+
+    {%- # [Hamza 2026-10-15] changed: was media_count > 1 -%}
+    {%- if visible_count > 1 -%}
       <div class="slider-controls--group{% if enable_desktop_slider == false %} md:hidden{% endif %}">
         <div class="slider-controls">
           <button
@@ -178,7 +446,8 @@
     {%- endif -%}
   </div>
 
-  {%- if media_count > 1 and media_layout contains 'carousel' or mobile_thumbnails == 'show' -%}
+  {%- # [Hamza 2026-10-15] changed: was media_count > 1 -%}
+  {%- if visible_count > 1 and media_layout contains 'carousel' or mobile_thumbnails == 'show' -%}
     {%- liquid
       assign thumbnail_class = ''
 
@@ -187,7 +456,94 @@
       elsif enable_desktop_slider == false and mobile_thumbnails == 'show'
         assign thumbnail_class = ' block md:hidden'
       endif
+
+      assign thumbs_shown_html = ''
+      assign thumbs_shared_html = ''
+      assign thumbs_hidden_html = ''
     -%}
+
+    {%- assign thumb_rendered_ids = ',' -%}
+    {%- # [Hamza 2026-10-15] changed: loop over product Media + Variant Galerie (was product.media) -%}
+    {%- for media_source in (0..source_max) -%}
+      {%- if media_source == 0 -%}
+        {%- assign source_list = product.media -%}
+      {%- else -%}
+        {%- assign source_variant_index = media_source | minus: 1 -%}
+        {%- assign source_variant = product.variants[source_variant_index] -%}
+        {%- assign source_key = ',' | append: source_variant.id | append: ',' -%}
+        {%- unless mf_variant_ids contains source_key -%}{%- continue -%}{%- endunless -%}
+        {%- assign source_list = source_variant.metafields.custom.variant_galerie.value -%}
+      {%- endif -%}
+    {%- for media in source_list -%}
+      {%- assign id_token = ',' | append: media.id | append: ',' -%}
+      {%- unless visible_ids contains id_token -%}
+        {%- continue -%}
+      {%- endunless -%}
+      {%- if thumb_rendered_ids contains id_token -%}
+        {%- continue -%}
+      {%- endif -%}
+      {%- assign thumb_rendered_ids = thumb_rendered_ids | append: media.id | append: ',' -%}
+
+      {%- liquid
+        capture media_index
+          if media.media_type == 'model'
+            increment model_index
+          elsif media.media_type == 'video' or media.media_type == 'external_video'
+            increment video_index
+          elsif media.media_type == 'image'
+            increment image_index
+          endif
+        endcapture
+
+        assign media_index = media_index | plus: 1
+      -%}
+
+      {%- capture thumb_html -%}
+        <div
+          class="product__thumbs-item swiper-slide"
+          data-target="{{ media.id }}"
+          data-media-position="{{ media_index }}"
+        >
+          <div class="product__thumbs-container medium-blocks-radius media-wrapper">
+            <div class="product__thumbs-inner" style="--aspect-ratio: 1">
+              {{
+                media.preview_image
+                | image_url: width: media.preview_image.width
+                | image_tag:
+                  loading: 'lazy',
+                  widths: '70, 100, 140, 150, 200, 300, 400',
+                  sizes: '(max-width: 767px) calc((100vw - 30px) / 4), (max-width: 1023px) 70px, 150px',
+                  id: thumbnail_id,
+                  is: 'image-lazy',
+                  alt: media.alt
+                | escape
+              }}
+            </div>
+
+            {%- if media.media_type == 'model' -%}
+              <span class="product__thumbs-badge" aria-hidden="true">
+                {%- render 'icon-3d-model', size: 'small' -%}
+              </span>
+
+            {%- elsif media.media_type == 'video' or media.media_type == 'external_video' -%}
+              <span class="product__thumbs-badge" aria-hidden="true">
+                {%- render 'icon-video', size: 'small' -%}
+              </span>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endcapture -%}
+
+      {%- if color_filter_active and shared_ids contains id_token -%}
+        {%- assign thumbs_shared_html = thumbs_shared_html | append: thumb_html -%}
+      {%- elsif shown_ids contains id_token -%}
+        {%- assign thumbs_shown_html = thumbs_shown_html | append: thumb_html -%}
+      {%- else -%}
+        {%- assign thumbs_hidden_html = thumbs_hidden_html | append: thumb_html -%}
+      {%- endif -%}
+    {%- endfor -%}
+    {%- endfor -%}
+    {%- assign thumbs_shown_html = thumbs_shown_html | append: thumbs_shared_html -%}
 
     <div
       id="GalleryThumbnails-{{ section.id }}"
@@ -197,71 +553,14 @@
         id="Slider-Thumbnails-{{ section.id }}"
         class="thumbnail-list swiper-wrapper"
       >
-        {%- for media in product.media -%}
-          {%- assign should_hide = false -%}
-          {%- assign media_lang = media.alt | default: '' | downcase | split: '|' | first | strip -%}
-
-          {%- if use_language_filter -%}
-            {%- if media.media_type == 'video' or media.media_type == 'external_video' -%}
-              {%- if media_lang == 'lang-de' and current_language != 'de' -%}
-                {%- assign should_hide = true -%}
-              {%- elsif media_lang == 'lang-en' and current_language != 'en' -%}
-                {%- assign should_hide = true -%}
-              {%- endif -%}
-            {%- endif -%}
-          {%- endif -%}
-
-          {%- unless should_hide -%}
-            {%- liquid
-              capture media_index
-                if media.media_type == 'model'
-                  increment model_index
-                elsif media.media_type == 'video' or media.media_type == 'external_video'
-                  increment video_index
-                elsif media.media_type == 'image'
-                  increment image_index
-                endif
-              endcapture
-
-              assign media_index = media_index | plus: 1
-            -%}
-
-            <div
-              class="product__thumbs-item swiper-slide"
-              data-target="{{ media.id }}"
-              data-media-position="{{ media_index }}"
-            >
-              <div class="product__thumbs-container medium-blocks-radius media-wrapper">
-                <div class="product__thumbs-inner" style="--aspect-ratio: 1">
-                  {{
-                    media.preview_image
-                    | image_url: width: media.preview_image.width
-                    | image_tag:
-                      loading: 'lazy',
-                      widths: '70, 100, 140, 150, 200, 300, 400',
-                      sizes: '(max-width: 767px) calc((100vw - 30px) / 4), (max-width: 1023px) 70px, 150px',
-                      id: thumbnail_id,
-                      is: 'image-lazy',
-                      alt: media.alt
-                    | escape
-                  }}
-                </div>
-
-                {%- if media.media_type == 'model' -%}
-                  <span class="product__thumbs-badge" aria-hidden="true">
-                    {%- render 'icon-3d-model', size: 'small' -%}
-                  </span>
-
-                {%- elsif media.media_type == 'video' or media.media_type == 'external_video' -%}
-                  <span class="product__thumbs-badge" aria-hidden="true">
-                    {%- render 'icon-video', size: 'small' -%}
-                  </span>
-                {%- endif -%}
-              </div>
-            </div>
-          {%- endunless -%}
-        {%- endfor -%}
+        {%- # [Hamza 2026-10-15] changed: only thumbnails of selected colour -%}
+        {{ thumbs_shown_html }}
       </div>
     </div>
+
+    {%- # [Hamza 2026-10-15] added: other colours' thumbnails (hidden) -%}
+    {%- if thumbs_hidden_html != '' -%}
+      <template data-gallery-hidden="thumbs">{{ thumbs_hidden_html }}</template>
+    {%- endif -%}
   {%- endif -%}
 </media-gallery>

@@ -1,0 +1,92 @@
+{% doc %}
+  Merchant-selected additions shared by the cart drawer and cart page.
+  @param {string} section_id - Parent section identifier.
+{% enddoc %}
+{%- if settings.iq_cart_addons_enabled and cart.item_count > 0 -%}
+  {%- assign cart_product_ids = cart.items | map: 'product_id' -%}
+  {%- capture addon_items -%}
+    {%- for addon in settings.iq_cart_addon_products -%}
+      {%- unless cart_product_ids contains addon.id -%}
+        {%- if addon.available and addon.requires_selling_plan == false -%}
+          {%- liquid
+            assign variant = addon.selected_or_first_available_variant
+            assign form_id = 'IQCartAddon-' | append: section_id | append: '-' | append: addon.id
+            assign select_id = form_id | append: '-variant'
+          -%}
+          <li class="iq-cart-addons__item">
+            <a href="{{ addon.url }}" class="iq-cart-addons__image" tabindex="-1" aria-hidden="true">
+              {%- if addon.featured_image -%}
+                {{ addon.featured_image | image_url: width: 160 | image_tag: loading: 'lazy', widths: '80,160', sizes: '60px', alt: '' }}
+              {%- endif -%}
+            </a>
+            <div class="iq-cart-addons__content">
+              <a class="iq-cart-addons__title" href="{{ addon.url }}">
+                {%- capture addon_title -%}{%- render 'iq-card-short-title', product: addon -%}{%- endcapture -%}
+                {{- addon_title | strip | escape -}}
+              </a>
+              {%- form 'product', addon, id: form_id, is: 'product-form', class: 'iq-cart-addons__form' -%}
+                <input type="hidden" name="quantity" value="1">
+                {%- if addon.variants.size > 1 -%}
+                  <label class="visually-hidden" for="{{ select_id }}">{{ 'iq_cart_addons.variant' | t }}: {{ addon.title | escape }}</label>
+                  <select id="{{ select_id }}" name="id" class="iq-cart-addons__select">
+                    {%- for option in addon.variants -%}
+                      {%- if option.available -%}
+                        <option value="{{ option.id }}"{% if option.id == variant.id %} selected{% endif %}>{{ option.title | escape }} · {{ option.price | money | escape }}</option>
+                      {%- endif -%}
+                    {%- endfor -%}
+                  </select>
+                {%- else -%}
+                  <input type="hidden" name="id" value="{{ variant.id }}">
+                  <span class="iq-cart-addons__price">{{ variant.price | money }}</span>
+                {%- endif -%}
+                <button type="submit" name="add" class="btn btn--secondary iq-cart-addons__add" aria-label="{{ 'products.product.add_to_cart' | t }}: {{ addon.title | escape }}">
+                  <span class="iq-cart-addons__add-label">{{ 'iq_cart_addons.add' | t }}</span>
+                  <span class="iq-cart-addons__add-symbol" aria-hidden="true">+</span>
+                  {% render 'loading-spinner' %}
+                </button>
+                <p class="product-form__error-message" role="alert" hidden></p>
+              {%- endform -%}
+            </div>
+          </li>
+        {%- endif -%}
+      {%- endunless -%}
+    {%- endfor -%}
+  {%- endcapture -%}
+  {%- if addon_items != blank -%}
+    <section class="iq-cart-addons" aria-labelledby="IQCartAddonsTitle-{{ section_id }}">
+      <h2 id="IQCartAddonsTitle-{{ section_id }}" class="iq-cart-addons__heading">
+        {%- if request.locale.iso_code == 'de' -%}{{ settings.iq_cart_addons_heading_de | escape }}{%- else -%}{{ settings.iq_cart_addons_heading_en | escape }}{%- endif -%}
+      </h2>
+      <ul class="iq-cart-addons__list" role="list">{{ addon_items }}</ul>
+    </section>
+  {%- endif -%}
+{%- endif -%}
+{% stylesheet %}
+.iq-cart-addons{margin:20px 0;padding:16px 0 0;border-top:1px solid #DCDBD7;color:#171717}
+.iq-cart-addons__heading{margin:0 0 12px;font-family:Archivo,sans-serif;font-size:18px;line-height:1.3;font-weight:700;font-style:normal;text-transform:none}
+.iq-cart-addons__list{display:grid;grid-template-columns:minmax(0,1fr);gap:0;margin:0;padding:0;list-style:none}
+.iq-cart-addons__item{display:grid;grid-template-columns:60px minmax(0,1fr);align-items:center;gap:12px;min-width:0;padding:12px 0;border-bottom:1px solid #e8e8e8}
+.iq-cart-addons__item:last-child{border-bottom:0}
+.iq-cart-addons__image{display:block;width:60px;height:60px;background:#fff}
+.iq-cart-addons__image img{display:block;width:100%;height:100%;object-fit:contain}
+.iq-cart-addons__content{min-width:0;display:flex;flex-direction:column;gap:8px}
+.iq-cart-addons__title{display:block;min-width:0;font-family:Archivo,sans-serif;font-size:14px;line-height:1.35;font-weight:700;text-decoration:none;overflow-wrap:anywhere}
+.iq-cart-addons__form{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:8px;min-width:0;margin:0}
+.iq-cart-addons__select{display:block;width:100%;min-width:0;max-width:100%;min-height:44px;padding:8px 10px;border:1px solid #DCDBD7;border-radius:6px;background:#fff;color:#171717;font-family:Archivo,sans-serif;font-size:16px;text-overflow:ellipsis}
+.iq-cart-addons__price{font-size:14px;font-weight:600;white-space:nowrap}
+.iq-cart-addons__add{display:inline-flex;align-items:center;justify-content:center;min-height:44px;min-width:44px;padding:8px 13px;font-family:Archivo,sans-serif;font-size:13px;font-weight:700;font-style:normal;text-transform:none;white-space:nowrap}
+.iq-cart-addons__add-symbol{display:none}
+.iq-cart-addons .product-form__error-message{grid-column:1/-1;width:100%;font-size:13px;color:#A51D1B}
+.iq-cart-addons__select:focus-visible,.iq-cart-addons__add:focus-visible{outline:2px solid #a6230f;outline-offset:2px}
+#CartDrawer .iq-cart-addons{margin-top:14px;padding-top:12px}
+#CartDrawer .iq-cart-addons__heading{font-size:17px;margin-bottom:8px}
+#CartDrawer .iq-cart-addons__item{grid-template-columns:52px minmax(0,1fr);gap:10px;padding:10px 0}
+#CartDrawer .iq-cart-addons__image{width:52px;height:52px}
+#CartDrawer .iq-cart-addons__title{font-size:13px}
+#CartDrawer .iq-cart-addons__form{grid-template-columns:minmax(0,1fr) 44px}
+#CartDrawer .iq-cart-addons__add{width:44px;height:44px;min-width:44px;min-height:44px;padding:0;border-radius:50%}
+#CartDrawer .iq-cart-addons__add-label{display:none}
+#CartDrawer .iq-cart-addons__add-symbol{display:inline;font-size:22px;line-height:1}
+@media(min-width:750px){main-cart .iq-cart-addons__list{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}main-cart .iq-cart-addons__item{grid-template-columns:56px minmax(0,1fr);align-items:center;gap:12px;padding:14px;border:1px solid #e8e8e8;border-radius:10px}main-cart .iq-cart-addons__image{width:56px;height:56px}}
+@media(max-width:749px){main-cart .iq-cart-addons__form{grid-template-columns:minmax(0,1fr) 44px}main-cart .iq-cart-addons__add{width:44px;height:44px;padding:0;border-radius:50%}main-cart .iq-cart-addons__add-label{display:none}main-cart .iq-cart-addons__add-symbol{display:inline;font-size:22px;line-height:1}}
+{% endstylesheet %}

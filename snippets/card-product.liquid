@@ -1,3 +1,8 @@
+{% doc %}
+  Renders a product card with optional restock information.
+  @param {product} product - The product to display.
+  @param {boolean} [defer_primary_image] - Keep the primary image lazy when a banner precedes the grid.
+{% enddoc %}
 {%- liquid
   assign iq_card_title = product.title
   if collection_card_titles
@@ -55,6 +60,13 @@
     endcase
   endif
 
+  if request.page_type != 'product'
+    capture iq_card_title
+      render 'iq-card-short-title', product: product, fallback_title: iq_card_title
+    endcapture
+    assign iq_card_title = iq_card_title | strip
+  endif
+
   assign variant = product.selected_or_first_available_variant
   assign compare_at_price = variant.compare_at_price
   assign price = variant.price
@@ -109,6 +121,40 @@
     assign second_image = product.images[1]
   endif
 
+  # [Hamza 2026-10-16] added: find one image per colour so the card can show all colours (was only Media image 1 + 2)
+  assign iq_color_index = -1
+  assign iq_color_names = 'farbe,color,colour,couleur,colore' | split: ','
+  for option in product.options_with_values
+    assign iq_opt_name = option.name | downcase | strip
+    if iq_color_names contains iq_opt_name
+      assign iq_color_index = forloop.index0
+      break
+    endif
+  endfor
+  assign iq_color_img_count = 0
+  if iq_color_index >= 0
+    for iq_value in product.options_with_values[iq_color_index].values
+      assign iq_value_name = iq_value.name | default: iq_value
+      for v in product.variants
+        if v.options[iq_color_index] == iq_value_name
+          assign iq_gal_first = v.metafields.custom.variant_galerie.value.first
+          assign iq_img = iq_gal_first.preview_image | default: iq_gal_first | default: v.featured_image
+          if iq_img != blank
+            assign iq_color_img_count = iq_color_img_count | plus: 1
+            if iq_color_img_count == 2
+              assign second_image = iq_img
+            endif
+          endif
+          break
+        endif
+      endfor
+    endfor
+  endif
+  assign iq_color_mode = false
+  if iq_color_img_count > 1
+    assign iq_color_mode = true
+  endif
+
   if enable_quick_add == null
     assign enable_quick_add = settings.pcard_show_cart_button
   endif
@@ -145,7 +191,7 @@
 
   assign loading = 'lazy'
   assign fetchpriority = 'low'
-  if section_index < 3 and index == 1
+  if section_index < 3 and index == 1 and defer_primary_image != true
     assign loading = 'eager'
     assign fetchpriority = 'high'
   endif
@@ -159,8 +205,50 @@
   <div class="product-card__wrapper h-full">
     <div class="product-card__image-wrapper{% if second_image == blank %} product-card__image-wrapper--main-only{% endif %} {% if list_on_mobile %}desktop-{% endif %}color-{{ settings.pcard_overlay_color_scheme }} bg-none">
       <a href="{{ product.url }}" aria-label="{{ product.title | escape }}" tabindex="-1">
-        <motion-element data-motion="zoom-out-sm" class="block">
-          {%- if featured_media -%}
+        {%- comment -%} [Hamza 2026-10-16] changed: output one image per colour (onscroll keeps the dots in sync); other products use the old code below (elsif) {%- endcomment -%}
+        <motion-element data-motion="zoom-out-sm" class="block{% if iq_color_mode %} iq-card-colors{% endif %}"{% if iq_color_mode %} onscroll="var i=Math.round(this.scrollLeft/this.clientWidth);this.closest('.product-card__image-wrapper').querySelectorAll('.iq-card-dots span').forEach(function(d,n){d.classList.toggle('is-active',n===i)})"{% endif %}>
+          {%- if iq_color_mode -%}
+            {%- assign iq_img_pos = 0 -%}
+            {%- for iq_value in product.options_with_values[iq_color_index].values -%}
+              {%- assign iq_value_name = iq_value.name | default: iq_value -%}
+              {%- for v in product.variants -%}
+                {%- if v.options[iq_color_index] == iq_value_name -%}
+                  {%- assign iq_gal_first = v.metafields.custom.variant_galerie.value.first -%}
+                  {%- assign iq_img = iq_gal_first.preview_image | default: iq_gal_first | default: v.featured_image -%}
+                  {%- if iq_img != blank -%}
+                    {%- assign iq_img_pos = iq_img_pos | plus: 1 -%}
+                    {%- assign iq_loading = 'lazy' -%}
+                    {%- assign iq_priority = 'low' -%}
+                    {%- if iq_img_pos == 1 -%}
+                      {%- assign iq_loading = loading -%}
+                      {%- assign iq_priority = fetchpriority -%}
+                    {%- endif -%}
+                    <div
+                      class="media-wrapper product-card__image iq-card-color-img{% if iq_img_pos == 1 %} product-card__image--main{% elsif iq_img_pos == 2 %} product-card__image--second inset-full{% else %} iq-card-color-img--extra{% endif %}"
+                      style="--aspect-ratio: {{ image_ratio }}"
+                      data-color="{{ iq_value_name | handleize }}"
+                    >
+                      {%- assign iq_img_widths = image_widths | append: ', ' | append: iq_img.width -%}
+                      {%- capture iq_color_alt -%}{%- render 'iq-color-label', value: iq_value_name -%}{%- endcapture -%}
+                      {{
+                        iq_img
+                        | image_url: width: iq_img.width
+                        | image_tag:
+                          loading: iq_loading,
+                          fetchpriority: iq_priority,
+                          class: 'motion-reduce',
+                          widths: iq_img_widths,
+                          sizes: image_sizes,
+                          alt: iq_color_alt,
+                          is: 'image-lazy'
+                      }}
+                    </div>
+                  {%- endif -%}
+                  {%- break -%}
+                {%- endif -%}
+              {%- endfor -%}
+            {%- endfor -%}
+          {%- elsif featured_media -%}
             {%- unless first_media_type == 'video' or first_media_type == 'external_video' -%}
               <div
                 class="media-wrapper product-card__image product-card__image--main"
@@ -216,6 +304,26 @@
           {%- endif -%}
         </motion-element>
       </a>
+      {%- comment -%} [Hamza 2026-10-16] added: one dot per colour image + card CSS inline (the stylesheet tag in this snippet is not loaded) {%- endcomment -%}
+      {%- if iq_color_mode -%}
+        <div class="iq-card-dots" aria-hidden="true">
+          {%- for i in (1..iq_color_img_count) -%}<span{% if forloop.first %} class="is-active"{% endif %} onclick="var s=this.closest('.product-card__image-wrapper').querySelector('.iq-card-colors');s.scrollTo({left:{{ forloop.index0 }}*s.clientWidth,behavior:'smooth'})"></span>{%- endfor -%}
+        </div>
+        <style>
+          .iq-card-color-img--extra { display: none; }
+          .iq-card-dots { display: none; }
+          @media (max-width: 767px) {
+            .product-card__image-wrapper motion-element.iq-card-colors { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+            .product-card__image-wrapper motion-element.iq-card-colors::-webkit-scrollbar { display: none; }
+            .iq-card-colors > .iq-card-color-img { display: block !important; position: relative !important; inset: auto !important; opacity: 1 !important; visibility: visible !important; transform: none !important; flex: 0 0 100%; width: 100%; scroll-snap-align: start; }
+            .iq-card-dots { display: flex; justify-content: center; gap: 6px; position: absolute; left: 0; right: 0; bottom: 8px; z-index: 3; }
+            .iq-card-dots span { width: 7px; height: 7px; border-radius: 50%; background: rgba(0, 0, 0, 0.25); cursor: pointer; }
+            .iq-card-dots span.is-active { background: rgb(0, 0, 0); }
+            .product-card__image-wrapper:has(.iq-card-colors)::before,
+            .product-card__image-wrapper:has(.iq-card-colors)::after { display: none !important; }
+          }
+        </style>
+      {%- endif -%}
       {%- if product.available == false or on_sale or custom_tags.size > 0 -%}
         <div class="product-card__badge">
           {%- if product.available == false and show_soldout -%}
@@ -382,6 +490,15 @@
   </div>
 <!-- End of Judge.me code -->
       {% render 'price', product: product, alignment: settings.pcard_content_alignment %}
+      {%- liquid
+        assign iq_restock_note = product.metafields.custom.iq_restock_note_de.value
+        if request.locale.iso_code == 'en'
+          assign iq_restock_note = product.metafields.custom.iq_restock_note_en.value
+        endif
+      -%}
+      {%- if product.available == false and iq_restock_note != blank -%}
+        <p class="product-card__restock-note text-sm m-0">{{ iq_restock_note | escape }}</p>
+      {%- endif -%}
       
     </div>
   </div>
@@ -410,6 +527,3 @@
   }
 }
 {% endstylesheet %}
-
-
-

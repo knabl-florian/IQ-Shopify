@@ -1,0 +1,154 @@
+{% assign iq_part_1 = section.blocks | where: 'type', 'part1' | first %}
+{% if collection.handle == 'hundesport-hosen' or collection.handle == 'zzz-hundesport-hosen-damen' or collection.handle == 'zz-hosen-herren' %}
+{% assign pants = all_products['iq-dogsport-hose-unisex'] %}
+{% assign en = false %}{% if request.locale.iso_code == 'en' %}{% assign en = true %}{% endif %}
+{% if pants != blank %}
+{% assign pants_original_video = pants.media | where: 'media_type', 'video' | first %}
+{% assign pants_video = section.settings.video %}
+{% if pants_video == blank %}{% assign pants_video = pants.media | where: 'media_type', 'video' | first %}{% endif %}
+{% if pants_video != blank %}
+<div class="page-width iq-collection-container iq-pants-video-section"><div class="iq-pants-video-wrap"{% if section.settings.video == blank %} data-original-portrait{% endif %}>
+<p class="iq-pants-kicker">{% if en %}{{ iq_part_1.settings.text_1 | escape }}{% else %}{{ iq_part_1.settings.text_2 | escape }}{% endif %}</p>
+<h2>{% if en %}{{ iq_part_1.settings.text_3 | escape }}{% else %}{{ iq_part_1.settings.text_4 | escape }}{% endif %}</h2>
+{% if section.settings.video != blank and pants_original_video != blank %}
+{% assign iq_desktop_source = pants_video.sources | where: 'format', 'mp4' | sort: 'height' | last %}
+{% assign iq_mobile_source = pants_original_video.sources | where: 'format', 'mp4' | sort: 'height' | last %}
+{% assign iq_play_label = section.settings.play_de %}{% if en %}{% assign iq_play_label = section.settings.play_en %}{% endif %}
+<iq-responsive-pants-video style="--iq-video-desktop-ratio:{{ pants_video.preview_image.width }}/{{ pants_video.preview_image.height }};--iq-video-mobile-ratio:{{ pants_original_video.preview_image.width }}/{{ pants_original_video.preview_image.height }};">
+  <video id="IQPantsVideo-{{ section.id }}" class="iq-pants-video" controls playsinline preload="none" width="{{ pants_video.preview_image.width }}" height="{{ pants_video.preview_image.height }}" tabindex="0">
+    <source media="(max-width:749px)" src="{{ iq_mobile_source.url | escape }}" type="{{ iq_mobile_source.mime_type | escape }}">
+    <source media="(min-width:750px)" src="{{ iq_desktop_source.url | escape }}" type="{{ iq_desktop_source.mime_type | escape }}">
+  </video>
+  <div class="iq-pants-video-cover" hidden>
+    <picture>
+      <source media="(max-width:749px)" srcset="{{ pants_original_video.preview_image | image_url: width: 400 }} 400w, {{ pants_original_video.preview_image | image_url: width: 750 }} 750w" sizes="calc(100vw - 30px)">
+      {{ pants_video.preview_image | image_url: width: 1280 | image_tag: widths: '640,960,1280', sizes: '(min-width:1440px) 1340px, (min-width:1200px) calc(100vw - 100px), (min-width:750px) calc(100vw - 48px), calc(100vw - 30px)', loading: 'lazy', decoding: 'async', alt: pants.title }}
+    </picture>
+    <button class="iq-pants-video-play" type="button" aria-controls="IQPantsVideo-{{ section.id }}" aria-label="{{ iq_play_label | escape }}"><svg width="28" height="28" viewBox="0 0 28 28" fill="currentColor" aria-hidden="true"><path d="M9 5L24 14L9 23Z"/></svg></button>
+  </div>
+</iq-responsive-pants-video>
+{% else %}
+{{ pants_video | video_tag: image_size: '1000x', controls: true, autoplay: false, loop: false, preload: 'none', class: 'iq-pants-video' }}
+{% endif %}
+</div></div>
+{% elsif request.design_mode %}<p>{{ iq_part_1.settings.text_5 | escape }}</p>{% endif %}
+
+{% endif %}
+{% endif %}
+{% stylesheet %}
+.iq-pants-video-section{padding-top:40px;padding-bottom:40px;color:#171717;font:400 16px/1.55 Archivo,sans-serif}
+.iq-pants-video-section *{box-sizing:border-box}
+.iq-pants-video-section .iq-pants-video-wrap{width:100%;max-width:none;margin:0}
+.iq-pants-video-section h2{font:italic 800 clamp(26px,3vw,36px)/1.12 Montserrat,sans-serif;text-transform:uppercase;margin:0 0 20px}
+.iq-pants-video-section .iq-pants-kicker{font:700 12px/1.4 Archivo,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#A51D1B;margin:0 0 12px}
+.iq-pants-video-section .iq-pants-video{display:block;width:100%;height:auto;background:#171717}
+.iq-pants-video-section [data-original-portrait] .iq-pants-video{max-height:640px;object-fit:contain}
+@media(max-width:749px){.iq-pants-video-section{padding-top:28px;padding-bottom:28px}.iq-pants-video-section [data-original-portrait] .iq-pants-video{max-height:70vh}}
+iq-responsive-pants-video{display:block;position:relative;width:100%;background:#171717}
+.iq-pants-video-section iq-responsive-pants-video .iq-pants-video{aspect-ratio:var(--iq-video-desktop-ratio);max-height:none;object-fit:contain}
+.iq-pants-video-cover{position:absolute;inset:0}
+.iq-pants-video-cover picture,.iq-pants-video-cover img{display:block;width:100%;height:100%;object-fit:contain}
+.iq-pants-video-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;width:64px;height:64px;border:1px solid #FFFFFF;border-radius:50%;background:#171717;color:#FFFFFF;cursor:pointer}
+.iq-pants-video-play:focus-visible{outline:3px solid #A51D1B;outline-offset:4px}
+@media(max-width:749px){.iq-pants-video-section iq-responsive-pants-video .iq-pants-video{aspect-ratio:var(--iq-video-mobile-ratio);max-height:70vh}}
+{% endstylesheet %}
+{% javascript %}
+if (!customElements.get('iq-responsive-pants-video')) {
+  customElements.define('iq-responsive-pants-video', class extends HTMLElement {
+    connectedCallback() {
+      if (this.initialized) return;
+      this.initialized = true;
+      this.video = this.querySelector('video');
+      this.cover = this.querySelector('.iq-pants-video-cover');
+      this.button = this.querySelector('button');
+      this.media = matchMedia('(max-width:749px)');
+      this.cover.hidden = false;
+      this.onBreakpoint = () => {
+        this.video.pause();
+        this.video.load();
+        this.cover.hidden = false;
+      };
+      this.button.addEventListener('click', () => {
+        this.cover.hidden = true;
+        this.video.play().then(() => this.video.focus()).catch(() => { this.cover.hidden = false; });
+      });
+      this.video.addEventListener('playing', () => { this.cover.hidden = true; });
+      this.video.addEventListener('ended', () => { this.cover.hidden = false; });
+      this.media.addEventListener('change', this.onBreakpoint);
+    }
+    disconnectedCallback() {
+      this.media?.removeEventListener('change', this.onBreakpoint);
+      this.initialized = false;
+    }
+  });
+}
+{% endjavascript %}
+{% schema %}
+{
+  "name": "IQ Collection Inhalt",
+  "settings": [
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Produktvideo Desktop (Querformat)",
+      "info": "Mobil bleibt das ursprüngliche Hochformat-Produktvideo erhalten. Ohne Auswahl wird überall das ursprüngliche Video angezeigt."
+    },
+    {
+      "type": "text",
+      "id": "play_de",
+      "label": "Abspielen: Deutsch",
+      "default": "Video abspielen"
+    },
+    {
+      "type": "text",
+      "id": "play_en",
+      "label": "Abspielen: Englisch",
+      "default": "Play video"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "part1",
+      "name": "Inhalt 1: See it in actio",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "text_1",
+          "label": "Text: See it in action"
+        },
+        {
+          "type": "textarea",
+          "id": "text_2",
+          "label": "Text: Im Einsatz"
+        },
+        {
+          "type": "textarea",
+          "id": "text_3",
+          "label": "Überschrift: Your trousers in training."
+        },
+        {
+          "type": "textarea",
+          "id": "text_4",
+          "label": "Überschrift: Deine Hose im Training."
+        },
+        {
+          "type": "textarea",
+          "id": "text_5",
+          "label": "Text: Für diese Hose ist noch kein Shopify-Produktvideo hinte"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "IQ Collection Inhalt",
+      "blocks": [
+        {
+          "type": "part1"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

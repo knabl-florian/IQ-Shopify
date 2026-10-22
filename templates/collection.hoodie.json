@@ -49,15 +49,37 @@
         "padding_bottom": 0
       }
     },
-    "custom_liquid_zAeKAp": {
-      "type": "custom-liquid",
-      "name": "Hoodie TShirt Banner",
+    "iq_collection_hero_F8kUnz": {
+      "type": "iq-collection-hero",
+      "name": "IQ Collection Banner",
       "settings": {
-        "custom_liquid": "{% liquid\n  assign mobile = images['hoodie-tara.webp']\n  assign desktop = images['hoodie-frano.webp']\n  assign english = false\n  if request.locale.iso_code == 'en'\n    assign english = true\n  endif\n%}\n{% if collection.handle == 'hundesport-t-shirts-hoodies' %}\n{% if mobile != blank and desktop != blank %}\n<section class=\"iq-hoodie-hero\" aria-labelledby=\"iq-hoodie-title\">\n  <picture>\n    <source media=\"(max-width:749px)\" srcset=\"{{ mobile | image_url: width: 600 }} 600w, {{ mobile | image_url: width: 900 }} 900w, {{ mobile | image_url: width: 1200 }} 1200w, {{ mobile | image_url: width: 1600 }} 1600w\" sizes=\"100vw\" width=\"{{ mobile.width }}\" height=\"{{ mobile.height }}\">\n    {{ desktop | image_url: width: 2160 | image_tag: widths: '960,1280,1600,1920,2160', sizes: '100vw', loading: 'eager', fetchpriority: 'high', alt: '' }}\n  </picture>\n  <div class=\"iq-hoodie-copy\">\n    <span class=\"iq-hoodie-label\">HOODIES &amp; T-SHIRTS</span>\n    <h1 id=\"iq-hoodie-title\">{% if english %}Your everyday.<span>With your dog.</span>{% else %}Dein Alltag.<span>Mit Hund.</span>{% endif %}</h1>\n    <p>{% if english %}Hoodies &amp; T-shirts with room for more.<br>For everything you want to bring along with your dog.{% else %}Hoodies &amp; T-Shirts mit Platz für mehr.<br>Für alles, was Du mit Deinem Hund dabeihaben willst.{% endif %}</p>\n  </div>\n</section>\n{% elsif request.design_mode %}\n<p>Bannerbilder fehlen: Bitte hoodie-tara.webp und hoodie-frano.webp unter Inhalte → Dateien prüfen.</p>\n{% endif %}\n<style>\n.iq-hoodie-hero,.iq-hoodie-hero *{box-sizing:border-box}\n.iq-hoodie-hero{position:relative;isolation:isolate;overflow:hidden}.iq-hoodie-hero picture,.iq-hoodie-hero img{display:block;width:100%}.iq-hoodie-hero img{height:auto}.iq-hoodie-copy{position:absolute;left:5%;top:33%;width:30%;z-index:2}.iq-hoodie-copy h1{font:italic 800 clamp(28px,3.3vw,64px)/1.04 Montserrat,sans-serif;text-transform:uppercase;letter-spacing:-.035em;margin:0 0 18px;color:white;text-shadow:0 2px 8px #17171766}.iq-hoodie-copy h1 span{display:block;color:#A51D1B;text-shadow:0 1px 1px #ffffff33}.iq-hoodie-copy p{font:400 16px/1.5 Archivo,sans-serif;color:white;text-shadow:0 1px 4px #171717;margin:0;max-width:320px}.iq-hoodie-label{font:400 12px/1.4 Archivo,sans-serif;color:white;display:block;margin-bottom:12px;letter-spacing:.06em}.iq-hoodie-hero:after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,#17171750,transparent 42%);z-index:1}@media(max-width:749px){.iq-hoodie-hero{aspect-ratio:4/5}.iq-hoodie-hero picture,.iq-hoodie-hero img{height:100%;width:100%}.iq-hoodie-hero img{object-fit:cover;object-position:49% center}.iq-hoodie-copy{left:6%;right:6%;width:auto;top:auto;bottom:5%}.iq-hoodie-copy h1{font-size:clamp(29px,8vw,48px);text-align:center;margin-bottom:14px}.iq-hoodie-label{text-align:center;font-size:11px;margin-bottom:9px}.iq-hoodie-copy p{font-size:14px;line-height:1.45;max-width:none}.iq-hoodie-hero:after{background:linear-gradient(0deg,#171717b3 0%,#17171765 25%,transparent 52%)}}@media(max-width:749px){.iq-hoodie-copy h1 span{color:#A51D1B;text-shadow:0 1px 1px #ffffff33}}\n\n.iq-hoodie-copy .mobile-copy{display:none}@media(max-width:749px){.iq-hoodie-copy .desktop-copy{display:none}.iq-hoodie-copy .mobile-copy{display:block}.iq-hoodie-copy .mobile-copy span{display:block}}\n\n</style>\n{% endif %}",
-        "color_scheme": "",
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "custom_class": ""
+        "only_collection": "hundesport-t-shirts-hoodies",
+        "require_collection": true,
+        "desktop_image": "shopify://shop_images/frano-hoodie-1920-600-final.jpg",
+        "mobile_image": "shopify://shop_images/hoodie-tara.webp",
+        "text_tone": "light",
+        "desktop_position": "bottom",
+        "show_mobile_label": true,
+        "focus_y": 55,
+        "title_de": "ALLTAGSLOOK.",
+        "accent_de": "TRAININGSFUNKTION.",
+        "description_de": "Rückentasche, versteckte Futtertaschen und Platz für die optionale IQ Modulare Futtertasche: Hoodies & T-Shirts mit Trainingsfunktionen.",
+        "mobile_description_de": "Mehr drin: Rückentasche, versteckte Futtertaschen und optionale IQ Modulare Futtertasche.",
+        "label_de": "IQ HOODIES & T-SHIRTS",
+        "alt_de": "Frano sitzt mit einem Malinois am See und trägt den schwarzen IQ Hoodie „In Dog We Trust“.",
+        "title_en": "CASUAL LOOK.",
+        "accent_en": "TRAINING FEATURES.",
+        "description_en": "XL- back pocket, hidden treat pockets and attachment options for your IQ Modular Treat Bag.",
+        "mobile_description_en": "XL- back pocket, hidden treat pockets and attachment options for your IQ Modular Treat Bag.",
+        "label_en": "DOG TRAINING HOODIES & T-SHIRTS",
+        "alt_en": "Man sitting by the sea with Malinois wearing Training Hoodie for dog sport.",
+        "mobile_position": "bottom",
+        "mobile_alignment": "center",
+        "mobile_tone": "light",
+        "heading_tag": "h1",
+        "button_de": "",
+        "button_en": "",
+        "button_url": ""
       }
     },
     "iq_banner_hoodie_UkqkP8": {
@@ -272,43 +294,83 @@
       "type": "main-collection-product-grid-magazine",
       "blocks": {
         "inline_custom_liquid_gQpDTQ": {
-          "type": "inline_custom_liquid",
+          "type": "iq_release_2",
           "name": "performance tshirt",
           "settings": {
             "position": 12,
             "position_mobile": 12,
             "width": "full",
-            "custom_liquid": "{%- liquid\n  assign iq_en = false\n  if request.locale.iso_code == 'en'\n    assign iq_en = true\n  endif\n  assign iq_photo = images['iq-04-performance-tshirt.webp']\n  if iq_en\n    assign iq_alt = 'Man taking a blue toy from the back pocket of his IQ Performance T-Shirt'\n  else\n    assign iq_alt = 'Mann zieht ein blaues Spielzeug aus der Rückentasche seines IQ Performance T-Shirts'\n  endif\n-%}\n<section class=\"iq-hs-4\">\n<div class=\"copy\">{% if iq_en %}<p class=\"kicker\">IQ Performance T-Shirt · Women & Unisex</p><h2 class=\"title\">Thoughtful fabric.<br><span>Rewards within reach.</span></h2><p>Two-layer double-face fabric: cotton jersey outside, polyester mesh inside. Plus a zipped back pocket for toys – on the IQ Performance T-Shirt in women’s and unisex fits.</p>{% else %}<p class=\"kicker\">IQ Performance T-Shirt · Damen & Unisex</p><h2 class=\"title\">Durchdachter Stoff.<br><span>Belohnung griffbereit.</span></h2><p>Zweilagiger Double-Face-Stoff: Baumwolljersey außen, Polyester-Mesh innen. Dazu eine Rückentasche mit Reißverschluss fürs Spielzeug – beim IQ Performance T-Shirt für Damen und Unisex.</p>{% endif %}</div>\n<div class=\"photo\">\n{% if iq_photo != blank %}\n{{ iq_photo | image_url: width: 1000 | image_tag: widths: '360, 480, 640, 800, 1000', sizes: '(min-width: 1200px) 600px, (min-width: 750px) 50vw, 100vw', loading: 'lazy', decoding: 'async', alt: iq_alt }}\n{% endif %}\n</div></section>\n<style>.iq-hs-4{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;width:100%;max-width:1600px;min-width:0;gap:0;margin:24px auto;padding:0;box-sizing:border-box;background:transparent;color:#18191b}\n.iq-hs-4 .copy{min-width:0;box-sizing:border-box;padding:28px clamp(20px,4vw,64px);overflow-wrap:anywhere}\n.iq-hs-4 .kicker{font:700 11px/1.5 Archivo,Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#a51d1b;margin:0 0 12px}\n.iq-hs-4 .title{font-family:Montserrat,Arial,sans-serif;font-size:clamp(28px,3vw,42px);font-weight:800;font-style:italic;text-transform:uppercase;line-height:1.1;letter-spacing:-.03em;margin:0 0 16px}\n.iq-hs-4 .title span{color:#a51d1b}\n.iq-hs-4 .copy p:not(.kicker){font:400 15px/1.5 Archivo,Arial,sans-serif;margin:0;max-width:510px}\n.iq-hs-4 .photo{min-width:0;width:100%;max-width:600px;justify-self:center}\n.iq-hs-4 img{display:block;width:100%;height:auto;max-width:100%;border-radius:0}\n.collection__content:has(.iq-hs-4)>.flex,#ProductGridContainer:has(.iq-hs-4),#ProductsList:has(.iq-hs-4),.collection-inline-block:has(.iq-hs-4){min-width:0;max-width:100%;box-sizing:border-box}\n.collection-inline-block--full:has(.iq-hs-4){grid-column:1/-1;width:100%}\n@media(max-width:749px){.iq-hs-4{display:flex;flex-direction:column;margin:20px 0;gap:0}.iq-hs-4 .photo{order:-1;max-width:none}.iq-hs-4 .copy{padding:18px 16px 22px;width:100%}.iq-hs-4 .title{font-size:26px;margin-bottom:12px}.iq-hs-4 .kicker{font-size:10px}.iq-hs-4 .copy p:not(.kicker){font-size:14px;line-height:1.5}}</style>"
+            "bild_1": "shopify://shop_images/iq-04-performance-tshirt.webp",
+            "text_2": "Man taking a blue toy from the back pocket of his IQ Performance T-Shirt",
+            "text_3": "Mann zieht ein blaues Spielzeug aus der Rückentasche seines IQ Performance T-Shirts",
+            "text_4": "IQ Performance T-Shirt · Women & Unisex",
+            "text_5": "Thoughtful fabric.",
+            "text_6": "Rewards within reach.",
+            "text_7": "Two-layer double-face fabric: cotton jersey outside, polyester mesh inside. Plus a zipped back pocket for toys – on the IQ Performance T-Shirt in women’s and unisex fits.",
+            "text_8": "IQ Performance T-Shirt · Damen & Unisex",
+            "text_9": "Durchdachter Stoff.",
+            "text_10": "Belohnung griffbereit.",
+            "text_11": "Zweilagiger Double-Face-Stoff: Baumwolljersey außen, Polyester-Mesh innen. Dazu eine Rückentasche mit Reißverschluss fürs Spielzeug – beim IQ Performance T-Shirt für Damen und Unisex."
           }
         },
         "inline_custom_liquid_c6YAtn": {
-          "type": "inline_custom_liquid",
+          "type": "iq_release_3",
           "name": "Modulare Futtertasche",
           "settings": {
             "position": 3,
             "position_mobile": 2,
             "width": "full",
-            "custom_liquid": "{%- liquid\n  assign iq_en = false\n  if request.locale.iso_code == 'en'\n    assign iq_en = true\n  endif\n  assign iq_photo = images['iq-05-modulare-futtertasche.webp']\n  if iq_en\n    assign iq_alt = 'Woman in an olive IQ hoodie with the optional modular treat pocket and a dachshund'\n  else\n    assign iq_alt = 'Olivfarbener Hoodie mit seitlich befestigter IQ modularer Futtertasche; Frau hält einen Dackel'\n  endif\n-%}\n<section class=\"iq-hs-5\">\n<div class=\"copy\">{% if iq_en %}<p class=\"kicker\">Optional accessory · IQ modular treat pocket</p><h2 class=\"title\">Your hoodie.<br><span>Room for more.</span></h2><p>Extra reward storage, right on your hoodie. The IQ modular treat pocket fits all IQ hoodies and is sold separately.</p>{% else %}<p class=\"kicker\">Optionales Zubehör · IQ modulare Futtertasche</p><h2 class=\"title\">Dein Hoodie.<br><span>Noch mehr dabei.</span></h2><p>Mehr Platz für Belohnungen, direkt am Hoodie. Die IQ modulare Futtertasche passt an alle IQ Hoodies und ist separat erhältlich.</p>{% endif %}</div>\n<div class=\"photo\">\n{% if iq_photo != blank %}\n{{ iq_photo | image_url: width: 1000 | image_tag: widths: '360, 480, 640, 800, 1000', sizes: '(min-width: 1200px) 600px, (min-width: 750px) 50vw, 100vw', loading: 'lazy', decoding: 'async', alt: iq_alt }}\n{% endif %}\n</div></section>\n<style>.iq-hs-5{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;width:100%;max-width:1600px;min-width:0;gap:0;margin:24px auto;padding:0;box-sizing:border-box;background:transparent;color:#18191b}\n.iq-hs-5 .copy{min-width:0;box-sizing:border-box;padding:28px clamp(20px,4vw,64px);overflow-wrap:anywhere}\n.iq-hs-5 .kicker{font:700 11px/1.5 Archivo,Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#a51d1b;margin:0 0 12px}\n.iq-hs-5 .title{font-family:Montserrat,Arial,sans-serif;font-size:clamp(28px,3vw,42px);font-weight:800;font-style:italic;text-transform:uppercase;line-height:1.1;letter-spacing:-.03em;margin:0 0 16px}\n.iq-hs-5 .title span{color:#a51d1b}\n.iq-hs-5 .copy p:not(.kicker){font:400 15px/1.5 Archivo,Arial,sans-serif;margin:0;max-width:510px}\n.iq-hs-5 .photo{min-width:0;width:100%;max-width:600px;justify-self:center}\n.iq-hs-5 img{display:block;width:100%;height:auto;max-width:100%;border-radius:0}\n.collection__content:has(.iq-hs-5)>.flex,#ProductGridContainer:has(.iq-hs-5),#ProductsList:has(.iq-hs-5),.collection-inline-block:has(.iq-hs-5){min-width:0;max-width:100%;box-sizing:border-box}\n.collection-inline-block--full:has(.iq-hs-5){grid-column:1/-1;width:100%}\n.iq-hs-5 .photo{grid-column:1;grid-row:1}.iq-hs-5 .copy{grid-column:2;grid-row:1}\n@media(max-width:749px){.iq-hs-5{display:flex;flex-direction:column;margin:20px 0;gap:0}.iq-hs-5 .photo{order:-1;max-width:none}.iq-hs-5 .copy{padding:18px 16px 22px;width:100%}.iq-hs-5 .title{font-size:26px;margin-bottom:12px}.iq-hs-5 .kicker{font-size:10px}.iq-hs-5 .copy p:not(.kicker){font-size:14px;line-height:1.5}}</style>"
+            "bild_1": "shopify://shop_images/iq-05-modulare-futtertasche.webp",
+            "text_2": "Woman in an olive IQ hoodie with the optional modular treat pocket and a dachshund",
+            "text_3": "Olivfarbener Hoodie mit seitlich befestigter IQ modularer Futtertasche; Frau hält einen Dackel",
+            "text_4": "Optional accessory · IQ modular treat pocket",
+            "text_5": "Your hoodie.",
+            "text_6": "Room for more.",
+            "text_7": "Extra reward storage, right on your hoodie. The IQ modular treat pocket fits all IQ hoodies and is sold separately.",
+            "text_8": "Optionales Zubehör · IQ modulare Futtertasche",
+            "text_9": "Dein Hoodie.",
+            "text_10": "Noch mehr dabei.",
+            "text_11": "Mehr Platz für Belohnungen, direkt am Hoodie. Die IQ modulare Futtertasche passt an alle IQ Hoodies und ist separat erhältlich."
           }
         },
         "inline_custom_liquid_ajJc4p": {
-          "type": "inline_custom_liquid",
+          "type": "iq_release_4",
           "name": "zip hoodie damen",
           "settings": {
             "position": 8,
             "position_mobile": 8,
             "width": "full",
-            "custom_liquid": "{%- liquid\n  assign iq_en = false\n  if request.locale.iso_code == 'en'\n    assign iq_en = true\n  endif\n  assign iq_photo = images['iq-03-damen-zip-hoodie.webp']\n  if iq_en\n    assign iq_alt = 'Woman in a grey and black IQ zip hoodie with an Aussie in the snow'\n  else\n    assign iq_alt = 'Frau im grau-schwarzen IQ Damen-Zip-Hoodie mit einem Aussie im Schnee'\n  endif\n-%}\n<section class=\"iq-hs-3\">\n<div class=\"copy\">{% if iq_en %}<p class=\"kicker\">IQ women’s zip hoodie</p><h2 class=\"title\">Flattering fit.<br><span>Clever details.</span></h2><p>A flattering fit with comfortable stretch and soft fleece inside. With an XL zipped back pocket, hidden treat pockets and compatibility with the optional IQ modular treat pocket.</p>{% else %}<p class=\"kicker\">IQ Zip-Hoodie Damen</p><h2 class=\"title\">Schöner Schnitt.<br><span>Viel dahinter.</span></h2><p>Figurbetont und bequem: Stretch außen, flauschiges Fleece innen. Mit XL-Reißverschluss-Rückentasche, versteckten Futtertaschen und Aufnahme für die optionale IQ modulare Futtertasche.</p>{% endif %}</div>\n<div class=\"photo\">\n{% if iq_photo != blank %}\n{{ iq_photo | image_url: width: 1000 | image_tag: widths: '360, 480, 640, 800, 1000', sizes: '(min-width: 1200px) 600px, (min-width: 750px) 50vw, 100vw', loading: 'lazy', decoding: 'async', alt: iq_alt }}\n{% endif %}\n</div></section>\n<style>.iq-hs-3{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;width:100%;max-width:1600px;min-width:0;gap:0;margin:24px auto;padding:0;box-sizing:border-box;background:transparent;color:#18191b}\n.iq-hs-3 .copy{min-width:0;box-sizing:border-box;padding:28px clamp(20px,4vw,64px);overflow-wrap:anywhere}\n.iq-hs-3 .kicker{font:700 11px/1.5 Archivo,Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#a51d1b;margin:0 0 12px}\n.iq-hs-3 .title{font-family:Montserrat,Arial,sans-serif;font-size:clamp(28px,3vw,42px);font-weight:800;font-style:italic;text-transform:uppercase;line-height:1.1;letter-spacing:-.03em;margin:0 0 16px}\n.iq-hs-3 .title span{color:#a51d1b}\n.iq-hs-3 .copy p:not(.kicker){font:400 15px/1.5 Archivo,Arial,sans-serif;margin:0;max-width:510px}\n.iq-hs-3 .photo{min-width:0;width:100%;max-width:600px;justify-self:center}\n.iq-hs-3 img{display:block;width:100%;height:auto;max-width:100%;border-radius:0}\n.collection__content:has(.iq-hs-3)>.flex,#ProductGridContainer:has(.iq-hs-3),#ProductsList:has(.iq-hs-3),.collection-inline-block:has(.iq-hs-3){min-width:0;max-width:100%;box-sizing:border-box}\n.collection-inline-block--full:has(.iq-hs-3){grid-column:1/-1;width:100%}\n@media(max-width:749px){.iq-hs-3{display:flex;flex-direction:column;margin:20px 0;gap:0}.iq-hs-3 .photo{order:-1;max-width:none}.iq-hs-3 .copy{padding:18px 16px 22px;width:100%}.iq-hs-3 .title{font-size:26px;margin-bottom:12px}.iq-hs-3 .kicker{font-size:10px}.iq-hs-3 .copy p:not(.kicker){font-size:14px;line-height:1.5}}</style>"
+            "bild_1": "shopify://shop_images/iq-03-damen-zip-hoodie.webp",
+            "text_2": "Woman in a grey and black IQ zip hoodie with an Aussie in the snow",
+            "text_3": "Frau im grau-schwarzen IQ Damen-Zip-Hoodie mit einem Aussie im Schnee",
+            "text_4": "IQ women’s zip hoodie",
+            "text_5": "Flattering fit.",
+            "text_6": "Clever details.",
+            "text_7": "A flattering fit with comfortable stretch and soft fleece inside. With an XL zipped back pocket, hidden treat pockets and compatibility with the optional IQ modular treat pocket.",
+            "text_8": "IQ Zip-Hoodie Damen",
+            "text_9": "Schöner Schnitt.",
+            "text_10": "Viel dahinter.",
+            "text_11": "Figurbetont und bequem: Stretch außen, flauschiges Fleece innen. Mit XL-Reißverschluss-Rückentasche, versteckten Futtertaschen und Aufnahme für die optionale IQ modulare Futtertasche."
           }
         },
         "inline_custom_liquid_ajAaJW": {
-          "type": "inline_custom_liquid",
+          "type": "iq_release_5",
           "name": "robert Cabral in train hard hoodie",
           "settings": {
             "position": 6,
             "position_mobile": 6,
             "width": "full",
-            "custom_liquid": "{%- liquid\n  assign iq_en = false\n  if request.locale.iso_code == 'en'\n    assign iq_en = true\n  endif\n  assign iq_photo = images['iq-02-hoodie.webp']\n  if iq_en\n    assign iq_alt = 'Man in a black IQ hoodie playing tug with his dog'\n  else\n    assign iq_alt = 'Mann im schwarzen IQ Hoodie spielt mit seinem Hund an einem Zerrspielzeug'\n  endif\n-%}\n<section class=\"iq-hs-2\">\n<div class=\"copy\">{% if iq_en %}<p class=\"kicker\">IQ hoodies</p><h2 class=\"title\">Everyday style.<br><span>Ready for your dog.</span></h2><p>An XL back pocket and hidden, wipe-clean treat pockets. Everyday style, ready for your dog – compatible with the optional IQ modular treat pocket.</p>{% else %}<p class=\"kicker\">IQ Hoodies</p><h2 class=\"title\">Alltagslook.<br><span>Alles parat.</span></h2><p>XL-Rückentasche, versteckte und auswischbare Futtertaschen. Im Alltagslook alles parat – und kompatibel mit der optionalen IQ modularen Futtertasche.</p>{% endif %}</div>\n<div class=\"photo\">\n{% if iq_photo != blank %}\n{{ iq_photo | image_url: width: 1200 | image_tag: widths: '360, 480, 640, 800, 1000, 1200', sizes: '(min-width: 1200px) 600px, (min-width: 750px) 50vw, 100vw', loading: 'lazy', decoding: 'async', alt: iq_alt }}\n{% endif %}\n</div></section>\n<style>.iq-hs-2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;width:100%;max-width:1600px;min-width:0;gap:0;margin:24px auto;padding:0;box-sizing:border-box;background:transparent;color:#18191b}\n.iq-hs-2 .copy{min-width:0;box-sizing:border-box;padding:28px clamp(20px,4vw,64px);overflow-wrap:anywhere}\n.iq-hs-2 .kicker{font:700 11px/1.5 Archivo,Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#a51d1b;margin:0 0 12px}\n.iq-hs-2 .title{font-family:Montserrat,Arial,sans-serif;font-size:clamp(28px,3vw,42px);font-weight:800;font-style:italic;text-transform:uppercase;line-height:1.1;letter-spacing:-.03em;margin:0 0 16px}\n.iq-hs-2 .title span{color:#a51d1b}\n.iq-hs-2 .copy p:not(.kicker){font:400 15px/1.5 Archivo,Arial,sans-serif;margin:0;max-width:510px}\n.iq-hs-2 .photo{min-width:0;width:100%;max-width:600px;justify-self:center}\n.iq-hs-2 img{display:block;width:100%;height:auto;max-width:100%;border-radius:0}\n.collection__content:has(.iq-hs-2)>.flex,#ProductGridContainer:has(.iq-hs-2),#ProductsList:has(.iq-hs-2),.collection-inline-block:has(.iq-hs-2){min-width:0;max-width:100%;box-sizing:border-box}\n.collection-inline-block--full:has(.iq-hs-2){grid-column:1/-1;width:100%}\n.iq-hs-2 .photo{grid-column:1;grid-row:1}.iq-hs-2 .copy{grid-column:2;grid-row:1}\n@media(max-width:749px){.iq-hs-2{display:flex;flex-direction:column;margin:20px 0;gap:0}.iq-hs-2 .photo{order:-1;max-width:none}.iq-hs-2 .copy{padding:18px 16px 22px;width:100%}.iq-hs-2 .title{font-size:26px;margin-bottom:12px}.iq-hs-2 .kicker{font-size:10px}.iq-hs-2 .copy p:not(.kicker){font-size:14px;line-height:1.5}}</style>"
+            "bild_1": "shopify://shop_images/iq-02-hoodie.webp",
+            "text_2": "Man in a black IQ hoodie playing tug with his dog",
+            "text_3": "Mann im schwarzen IQ Hoodie spielt mit seinem Hund an einem Zerrspielzeug",
+            "text_4": "IQ hoodies",
+            "text_5": "Everyday style.",
+            "text_6": "Ready for your dog.",
+            "text_7": "An XL back pocket and hidden, wipe-clean treat pockets. Everyday style, ready for your dog – compatible with the optional IQ modular treat pocket.",
+            "text_8": "IQ Hoodies",
+            "text_9": "Alltagslook.",
+            "text_10": "Alles parat.",
+            "text_11": "XL-Rückentasche, versteckte und auswischbare Futtertaschen. Im Alltagslook alles parat – und kompatibel mit der optionalen IQ modularen Futtertasche."
           }
         },
         "inline_custom_liquid_V9rLVc": {
@@ -385,21 +447,22 @@
       ],
       "custom_css": [],
       "settings": {
+        "collection_card_titles": true,
         "iq_jv_enabled": false,
         "iq_jv_products": [],
         "color_scheme": "scheme-9",
-        "products_per_page": 21,
+        "products_per_page": 24,
         "app_blocks_position": 24,
-        "columns_desktop": 3,
+        "columns_desktop": 4,
         "grid_layout": "standard",
-        "pagination": "infinite",
+        "pagination": "load_more",
         "enable_color_swatch": true,
         "enable_filtering": true,
         "filter_type": "drawer",
         "enable_sorting": true,
         "expand_filter_groups": "Verfügbarkeit, Preis, Farbe, Größe, Produkttyp",
         "columns_mobile": "2",
-        "padding_top": 40,
+        "padding_top": 0,
         "padding_bottom": 70,
         "show_section_divider": true,
         "divider_width": "fixed"
@@ -463,56 +526,17 @@
         "custom_class": ""
       }
     },
-    "collapsible_tabs_NGxnDR": {
-      "type": "collapsible-tabs",
-      "blocks": {
-        "collapsible_item_eXYJJd": {
-          "type": "collapsible_item",
-          "settings": {
-            "icon": "none",
-            "heading": "➔ Was hinter IQ Dogsport steht:  {{ collection.title }}",
-            "content": "{{ collection.metafields.custom.text_kategorie_unten | metafield_tag }}",
-            "custom_liquid": "",
-            "page": "",
-            "open": false
-          }
-        }
-      },
-      "block_order": [
-        "collapsible_item_eXYJJd"
-      ],
-      "name": "t:sections.collapsible-tabs.presets.name",
+    "iq_knowledge": {
+      "type": "iq-collection-knowledge",
       "settings": {
-        "container": "fixed",
-        "color_scheme": "",
-        "header_layout": "vertical",
-        "heading": "",
-        "heading_size": "h1",
-        "heading_highlight_style": "none",
-        "subheading": "",
-        "description": "",
-        "text_size": "text-base",
-        "button_label": "",
-        "button_link": "",
-        "button_style": "btn--primary",
-        "column_gap": "large",
-        "row_gap": "inherit",
-        "item_style": "standard",
-        "item_color_scheme": "",
-        "item_heading_font": "heading",
-        "item_heading_size": "h4",
-        "item_icon_size": "extra-large",
-        "padding_top": 0,
-        "padding_bottom": 70,
-        "show_section_divider": false,
-        "divider_width": "fixed",
-        "custom_class": ""
+        "heading_de": "",
+        "heading_en": ""
       }
     }
   },
   "order": [
     "banner",
-    "custom_liquid_zAeKAp",
+    "iq_collection_hero_F8kUnz",
     "iq_banner_hoodie_UkqkP8",
     "custom_liquid_FpycJH",
     "breadcrumbs_Gxg9wp",
@@ -521,6 +545,6 @@
     "product-grid",
     "rich_text_ARFW3U",
     "177730905751d89578",
-    "collapsible_tabs_NGxnDR"
+    "iq_knowledge"
   ]
 }

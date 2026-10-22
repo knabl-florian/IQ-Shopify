@@ -108,7 +108,7 @@
           <div class="flex flex-wrap gap-2">
             <span class="font-body-bold">{{ option.name }}:</span>
             <span data-selected-swatch-value="{{ option.name }}">
-              {{- option.selected_value -}}
+              {%- render 'iq-color-label', value: option.selected_value -%}
             </span>
           </div>
           {%- if size_chart_content != blank and attach_size_chart -%}

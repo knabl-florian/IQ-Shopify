@@ -1,10 +1,3 @@
-{%- comment -%}
-==================================================================
-SECTION: sections/iq-new-drops.liquid  (v4.1 – Mobile-Kacheln randlos)
-IQ DOGSPORT – NEW DROPS · Funktions-T-Shirt (Lead), Snacks, Softball
-==================================================================
-{%- endcomment -%}
-
 {%- assign en = false -%}
 {%- if request.locale.iso_code == 'en' -%}{%- assign en = true -%}{%- endif -%}
 
@@ -25,13 +18,13 @@ IQ DOGSPORT – NEW DROPS · Funktions-T-Shirt (Lead), Snacks, Softball
   #shopify-section-{{ section.id }} .iq-drop__scrim{ position:absolute; inset:0; pointer-events:none; background:linear-gradient(to top, rgba(0,0,0,.74) 0%, rgba(0,0,0,.32) 40%, rgba(0,0,0,0) 68%); }
   #shopify-section-{{ section.id }} .iq-drop__body{ position:absolute; left:20px; right:20px; bottom:18px; display:flex; flex-direction:column; align-items:flex-start; gap:7px; }
   #shopify-section-{{ section.id }} .iq-drop__kicker{ display:inline-block; background:#A51D1B; color:#fff; padding:3px 8px; font-family:var(--font-body-family, Archivo, Arial, sans-serif); font-size:10px; line-height:1.2; font-weight:700; letter-spacing:1.6px; text-transform:uppercase; }
-  #shopify-section-{{ section.id }} .iq-drop__title{ margin:0; font-family:var(--font-heading-family, Montserrat, Arial, sans-serif); font-style:italic; font-weight:800; text-transform:uppercase; font-size:22px; line-height:1.03; letter-spacing:-.3px; color:#fff; }
+  #shopify-section-{{ section.id }} .iq-drop__title{ margin:0; font-family:var(--font-heading-family, Montserrat, Arial, sans-serif); font-style:italic; font-weight:800; text-transform:uppercase; font-size:22px; overflow-wrap:anywhere; line-height:1.03; letter-spacing:-.3px; color:#fff; }
   #shopify-section-{{ section.id }} .iq-drop__copy{ margin:0; font-family:var(--font-body-family, Archivo, Arial, sans-serif); font-size:14px; line-height:1.45; color:rgba(255,255,255,.9); max-width:36ch; }
   #shopify-section-{{ section.id }} .iq-drop__cta{ margin-top:2px; display:inline-flex; align-items:center; gap:6px; font-family:var(--font-body-family, Archivo, Arial, sans-serif); font-size:12.5px; line-height:1.2; font-weight:700; letter-spacing:.5px; text-transform:uppercase; color:#fff; }
   #shopify-section-{{ section.id }} .iq-drop__arrow{ display:inline-block; transition:transform .2s ease; }
   #shopify-section-{{ section.id }} .iq-drop__item:hover .iq-drop__arrow{ transform:translateX(3px); }
 
-  /* Mobile */
+  
   #shopify-section-{{ section.id }} .iq-drop__grid{ display:block; }
   #shopify-section-{{ section.id }} .iq-drop__lead .iq-drop__media{ aspect-ratio:4/5; }
   #shopify-section-{{ section.id }} .iq-drop__pair{ display:grid; grid-template-columns:1fr 1fr; gap:12px; padding-inline:0; margin-top:12px; }
@@ -40,7 +33,7 @@ IQ DOGSPORT – NEW DROPS · Funktions-T-Shirt (Lead), Snacks, Softball
   #shopify-section-{{ section.id }} .iq-drop__pair .iq-drop__copy{ display:none; }
   #shopify-section-{{ section.id }} .iq-drop__pair .iq-drop__body{ left:14px; right:14px; bottom:13px; gap:5px; }
 
-  /* Desktop: großes Bild über 2 Zeilen, Kanten bündig */
+  
   @media (min-width:990px){
     #shopify-section-{{ section.id }} .iq-drop__inner{ padding:84px 32px 92px; }
     #shopify-section-{{ section.id }} .iq-drop__head{ padding-inline:0; margin-bottom:26px; }
@@ -73,62 +66,62 @@ IQ DOGSPORT – NEW DROPS · Funktions-T-Shirt (Lead), Snacks, Softball
 
     <header class="iq-drop__head">
       <div>
-        <p class="iq-drop__eyebrow">{% if en %}New at IQ{% else %}Neu bei IQ{% endif %}</p>
-        <h2 class="iq-drop__heading">New Drops</h2>
+        <p class="iq-drop__eyebrow">{% if en %}{{ section.settings.eyebrow_en | escape }}{% else %}{{ section.settings.eyebrow | escape }}{% endif %}</p>
+        <h2 class="iq-drop__heading">{% if en %}{{ section.settings.heading_en | escape }}{% else %}{{ section.settings.heading | escape }}{% endif %}</h2>
       </div>
       {%- if section.settings.all_link != blank -%}
-        <a class="iq-drop__all" href="{{ section.settings.all_link }}">{% if en %}All new{% else %}Alle Neuheiten{% endif %} &rarr;</a>
+        <a class="iq-drop__all" href="{{ section.settings.all_link }}">{% if en %}{{ section.settings.all_label_en | escape }}{% else %}{{ section.settings.all_label | escape }}{% endif %} &rarr;</a>
       {%- endif -%}
     </header>
 
     <div class="iq-drop__grid">
 
-      <a class="iq-drop__item iq-drop__lead" href="{{ section.settings.shirt_link }}">
+      {% if section.settings.shirt_link != blank %}<a class="iq-drop__item iq-drop__lead" href="{{ section.settings.shirt_link }}">{% else %}<div class="iq-drop__item iq-drop__lead">{% endif %}
         <div class="iq-drop__media">
           {%- if section.settings.shirt_image != blank -%}
             {{ section.settings.shirt_image | image_url: width: 1800 | image_tag: loading: 'lazy', widths: '500, 750, 1000, 1400, 1800', sizes: '(min-width: 990px) 58vw, 100vw', alt: section.settings.shirt_image.alt }}
           {%- else -%}{{ 'image' | placeholder_svg_tag }}{%- endif -%}
           <span class="iq-drop__scrim" aria-hidden="true"></span>
           <span class="iq-drop__body">
-            <span class="iq-drop__kicker">{% if en %}New{% else %}Neu{% endif %}</span>
-            <span class="iq-drop__title">{% if en %}Training Shirt{% else %}Funktions-T-Shirt{% endif %}</span>
-            <span class="iq-drop__copy">{% if en %}Double-face functional fabric meets a large rear pocket.{% else %}Double-Face-Funktionsgewebe trifft große Rückentasche.{% endif %}</span>
-            <span class="iq-drop__cta">{% if en %}Discover{% else %}Entdecken{% endif %} <span class="iq-drop__arrow" aria-hidden="true">&rarr;</span></span>
+            {% assign field_value = section.settings.shirt_label %}{% if en %}{% assign field_value = section.settings.shirt_label_en %}{% endif %}{% if field_value != blank %}<span class="iq-drop__kicker">{{ field_value | escape }}</span>{% endif %}
+            {% assign field_value = section.settings.shirt_title %}{% if en %}{% assign field_value = section.settings.shirt_title_en %}{% endif %}{% if field_value != blank %}<span class="iq-drop__title">{{ field_value | escape }}</span>{% endif %}
+            {% assign field_value = section.settings.shirt_description %}{% if en %}{% assign field_value = section.settings.shirt_description_en %}{% endif %}{% if field_value != blank %}<span class="iq-drop__copy">{{ field_value | escape }}</span>{% endif %}
+            <span class="iq-drop__cta">{% if en %}{{ section.settings.shirt_cta_en | escape }}{% else %}{{ section.settings.shirt_cta | escape }}{% endif %} <span class="iq-drop__arrow" aria-hidden="true">&rarr;</span></span>
           </span>
         </div>
-      </a>
+      {% if section.settings.shirt_link != blank %}</a>{% else %}</div>{% endif %}
 
       <div class="iq-drop__pair">
 
-        <a class="iq-drop__item iq-drop__snack" href="{{ section.settings.snack_link }}">
+        {% if section.settings.snack_link != blank %}<a class="iq-drop__item iq-drop__snack" href="{{ section.settings.snack_link }}">{% else %}<div class="iq-drop__item iq-drop__snack">{% endif %}
           <div class="iq-drop__media">
             {%- if section.settings.snack_image != blank -%}
               {{ section.settings.snack_image | image_url: width: 1200 | image_tag: loading: 'lazy', widths: '400, 600, 800, 1200', sizes: '(min-width: 990px) 35vw, 45vw', alt: section.settings.snack_image.alt }}
             {%- else -%}{{ 'image' | placeholder_svg_tag }}{%- endif -%}
             <span class="iq-drop__scrim" aria-hidden="true"></span>
             <span class="iq-drop__body">
-              <span class="iq-drop__kicker">{% if en %}New{% else %}Neu{% endif %}</span>
-              <span class="iq-drop__title">Snacks</span>
-              <span class="iq-drop__copy">{% if en %}Natural reward. Top quality.{% else %}Natürliche Belohnung. Höchste Qualität.{% endif %}</span>
-              <span class="iq-drop__cta">{% if en %}Discover{% else %}Entdecken{% endif %} <span class="iq-drop__arrow" aria-hidden="true">&rarr;</span></span>
+              {% assign field_value = section.settings.snack_label %}{% if en %}{% assign field_value = section.settings.snack_label_en %}{% endif %}{% if field_value != blank %}<span class="iq-drop__kicker">{{ field_value | escape }}</span>{% endif %}
+              {% assign field_value = section.settings.snack_title %}{% if en %}{% assign field_value = section.settings.snack_title_en %}{% endif %}{% if field_value != blank %}<span class="iq-drop__title">{{ field_value | escape }}</span>{% endif %}
+              {% assign field_value = section.settings.snack_description %}{% if en %}{% assign field_value = section.settings.snack_description_en %}{% endif %}{% if field_value != blank %}<span class="iq-drop__copy">{{ field_value | escape }}</span>{% endif %}
+              <span class="iq-drop__cta">{% if en %}{{ section.settings.snack_cta_en | escape }}{% else %}{{ section.settings.snack_cta | escape }}{% endif %} <span class="iq-drop__arrow" aria-hidden="true">&rarr;</span></span>
             </span>
           </div>
-        </a>
+        {% if section.settings.snack_link != blank %}</a>{% else %}</div>{% endif %}
 
-        <a class="iq-drop__item iq-drop__ball" href="{{ section.settings.ball_link }}">
+        {% if section.settings.ball_link != blank %}<a class="iq-drop__item iq-drop__ball" href="{{ section.settings.ball_link }}">{% else %}<div class="iq-drop__item iq-drop__ball">{% endif %}
           <div class="iq-drop__media">
             {%- if section.settings.ball_image != blank -%}
               {{ section.settings.ball_image | image_url: width: 1200 | image_tag: loading: 'lazy', widths: '400, 600, 800, 1200', sizes: '(min-width: 990px) 35vw, 45vw', alt: section.settings.ball_image.alt }}
             {%- else -%}{{ 'image' | placeholder_svg_tag }}{%- endif -%}
             <span class="iq-drop__scrim" aria-hidden="true"></span>
             <span class="iq-drop__body">
-              <span class="iq-drop__kicker">{% if en %}New{% else %}Neu{% endif %}</span>
-              <span class="iq-drop__title">Softball</span>
-              <span class="iq-drop__copy">{% if en %}Soft reward for retrieving and gathering. Available in three sizes.{% else %}Weiche Bestätigung fürs Apportieren und Sammeln. In drei Größen.{% endif %}</span>
-              <span class="iq-drop__cta">{% if en %}Discover{% else %}Entdecken{% endif %} <span class="iq-drop__arrow" aria-hidden="true">&rarr;</span></span>
+              {% assign field_value = section.settings.ball_label %}{% if en %}{% assign field_value = section.settings.ball_label_en %}{% endif %}{% if field_value != blank %}<span class="iq-drop__kicker">{{ field_value | escape }}</span>{% endif %}
+              {% assign field_value = section.settings.ball_title %}{% if en %}{% assign field_value = section.settings.ball_title_en %}{% endif %}{% if field_value != blank %}<span class="iq-drop__title">{{ field_value | escape }}</span>{% endif %}
+              {% assign field_value = section.settings.ball_description %}{% if en %}{% assign field_value = section.settings.ball_description_en %}{% endif %}{% if field_value != blank %}<span class="iq-drop__copy">{{ field_value | escape }}</span>{% endif %}
+              <span class="iq-drop__cta">{% if en %}{{ section.settings.ball_cta_en | escape }}{% else %}{{ section.settings.ball_cta | escape }}{% endif %} <span class="iq-drop__arrow" aria-hidden="true">&rarr;</span></span>
             </span>
           </div>
-        </a>
+        {% if section.settings.ball_link != blank %}</a>{% else %}</div>{% endif %}
 
       </div>
 
@@ -142,19 +135,238 @@ IQ DOGSPORT – NEW DROPS · Funktions-T-Shirt (Lead), Snacks, Softball
   "tag": "section",
   "class": "iq-new-drops",
   "settings": [
-    { "type": "url", "id": "all_link", "label": "Link Alle Neuheiten (oben rechts, optional)", "info": "z. B. /collections/neuheiten – leer lassen blendet den Link aus" },
-    { "type": "header", "content": "1 – Funktions-T-Shirt (groß)" },
-    { "type": "image_picker", "id": "shirt_image", "label": "Bild – Rückentasche" },
-    { "type": "url", "id": "shirt_link", "label": "Link Funktions-T-Shirt", "info": "z. B. /products/iq-trainingsshirt-unisex" },
-    { "type": "header", "content": "2 – Snacks" },
-    { "type": "image_picker", "id": "snack_image", "label": "Bild – Hund mit Snacktüte" },
-    { "type": "url", "id": "snack_link", "label": "Link Snacks", "info": "z. B. /collections/trainingsfutter-supplemente" },
-    { "type": "header", "content": "3 – Softball" },
-    { "type": "image_picker", "id": "ball_image", "label": "Bild – Hund mit rotem Softball" },
-    { "type": "url", "id": "ball_link", "label": "Link Softball", "info": "z. B. /products/softball-neopren-apport" }
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Dachzeile · DE",
+      "default": "Neu bei IQ"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow_en",
+      "label": "Dachzeile · EN",
+      "default": "New at IQ"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Abschnittstitel · DE",
+      "default": "New Drops"
+    },
+    {
+      "type": "text",
+      "id": "heading_en",
+      "label": "Abschnittstitel · EN",
+      "default": "New Drops"
+    },
+    {
+      "type": "text",
+      "id": "all_label",
+      "label": "Linktext alle Neuheiten · DE",
+      "default": "Alle Neuheiten"
+    },
+    {
+      "type": "text",
+      "id": "all_label_en",
+      "label": "Linktext alle Neuheiten · EN",
+      "default": "All new"
+    },
+    {
+      "type": "url",
+      "id": "all_link",
+      "label": "Link alle Neuheiten (optional)"
+    },
+    {
+      "type": "header",
+      "content": "Kachel 1 – großes Bild"
+    },
+    {
+      "type": "image_picker",
+      "id": "shirt_image",
+      "label": "Bild"
+    },
+    {
+      "type": "url",
+      "id": "shirt_link",
+      "label": "Ziel-Link"
+    },
+    {
+      "type": "text",
+      "id": "shirt_label",
+      "label": "Label (optional) · DE",
+      "default": "Neu"
+    },
+    {
+      "type": "text",
+      "id": "shirt_label_en",
+      "label": "Label (optional) · EN",
+      "default": "New"
+    },
+    {
+      "type": "text",
+      "id": "shirt_title",
+      "label": "Titel · DE",
+      "default": "Zip-off-Wintermantel"
+    },
+    {
+      "type": "text",
+      "id": "shirt_title_en",
+      "label": "Titel · EN",
+      "default": "Zip-off winter coat"
+    },
+    {
+      "type": "textarea",
+      "id": "shirt_description",
+      "label": "Beschreibung (optional) · DE",
+      "default": "Extra warm. Mit einem Zip vom langen Mantel zum Parka."
+    },
+    {
+      "type": "textarea",
+      "id": "shirt_description_en",
+      "label": "Beschreibung (optional) · EN",
+      "default": "Extra warm. From long coat to parka with one zip."
+    },
+    {
+      "type": "text",
+      "id": "shirt_cta",
+      "label": "Linktext · DE",
+      "default": "Jetzt entdecken"
+    },
+    {
+      "type": "text",
+      "id": "shirt_cta_en",
+      "label": "Linktext · EN",
+      "default": "Discover"
+    },
+    {
+      "type": "header",
+      "content": "Kachel 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "snack_image",
+      "label": "Bild"
+    },
+    {
+      "type": "url",
+      "id": "snack_link",
+      "label": "Ziel-Link"
+    },
+    {
+      "type": "text",
+      "id": "snack_label",
+      "label": "Label (optional) · DE",
+      "default": "Neu"
+    },
+    {
+      "type": "text",
+      "id": "snack_label_en",
+      "label": "Label (optional) · EN",
+      "default": "New"
+    },
+    {
+      "type": "text",
+      "id": "snack_title",
+      "label": "Titel · DE",
+      "default": "Snacks"
+    },
+    {
+      "type": "text",
+      "id": "snack_title_en",
+      "label": "Titel · EN",
+      "default": "Snacks"
+    },
+    {
+      "type": "textarea",
+      "id": "snack_description",
+      "label": "Beschreibung (optional) · DE",
+      "default": "Natürliche Belohnung. Höchste Qualität."
+    },
+    {
+      "type": "textarea",
+      "id": "snack_description_en",
+      "label": "Beschreibung (optional) · EN",
+      "default": "Natural reward. Top quality."
+    },
+    {
+      "type": "text",
+      "id": "snack_cta",
+      "label": "Linktext · DE",
+      "default": "Entdecken"
+    },
+    {
+      "type": "text",
+      "id": "snack_cta_en",
+      "label": "Linktext · EN",
+      "default": "Discover"
+    },
+    {
+      "type": "header",
+      "content": "Kachel 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "ball_image",
+      "label": "Bild"
+    },
+    {
+      "type": "url",
+      "id": "ball_link",
+      "label": "Ziel-Link"
+    },
+    {
+      "type": "text",
+      "id": "ball_label",
+      "label": "Label (optional) · DE",
+      "default": "Neu"
+    },
+    {
+      "type": "text",
+      "id": "ball_label_en",
+      "label": "Label (optional) · EN",
+      "default": "New"
+    },
+    {
+      "type": "text",
+      "id": "ball_title",
+      "label": "Titel · DE",
+      "default": "Softball"
+    },
+    {
+      "type": "text",
+      "id": "ball_title_en",
+      "label": "Titel · EN",
+      "default": "Softball"
+    },
+    {
+      "type": "textarea",
+      "id": "ball_description",
+      "label": "Beschreibung (optional) · DE",
+      "default": "Weiche Bestätigung fürs Apportieren und Sammeln. In drei Größen."
+    },
+    {
+      "type": "textarea",
+      "id": "ball_description_en",
+      "label": "Beschreibung (optional) · EN",
+      "default": "Soft reward for retrieving and gathering. Available in three sizes."
+    },
+    {
+      "type": "text",
+      "id": "ball_cta",
+      "label": "Linktext · DE",
+      "default": "Entdecken"
+    },
+    {
+      "type": "text",
+      "id": "ball_cta_en",
+      "label": "Linktext · EN",
+      "default": "Discover"
+    }
   ],
   "presets": [
-    { "name": "IQ New Drops" }
+    {
+      "name": "IQ New Drops"
+    }
   ]
 }
 {% endschema %}

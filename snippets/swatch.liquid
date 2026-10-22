@@ -1,3 +1,11 @@
+{%- capture iq_value_label -%}{%- render 'iq-color-label', value: value -%}{%- endcapture -%}
+{%- capture iq_tooltip_label -%}{%- render 'iq-color-label', value: tooltip -%}{%- endcapture -%}
+{%- assign iq_swatch_title = title -%}
+{%- if request.locale.iso_code == 'en' and value != blank -%}
+  {%- assign iq_title_suffix = ' - ' | append: value -%}
+  {%- assign iq_label_suffix = ' - ' | append: iq_value_label -%}
+  {%- assign iq_swatch_title = title | replace: iq_title_suffix, iq_label_suffix -%}
+{%- endif -%}
 {%- liquid
   if swatch == blank
     assign file_extension = file_extension | default: 'png'
@@ -47,17 +55,17 @@
   <a
     href="{{ href }}"
     class="swatch-color block relative"
-    title="{{ title | escape }}"
-    aria-label="{{ title | escape }}"
+    title="{{ iq_swatch_title | escape }}"
+    aria-label="{{ iq_swatch_title | escape }}"
     {% if class != blank %}
       {{ class -}}
     {% endif %}
     style="--swatch-background: {{ swatch_fallback }};{% if swatch_fallback_override == false and swatch_image != blank %} background-image: url({{ swatch_image }});{% endif %}{% if swatch_focal_point %} --swatch-focal-point: {{ swatch_focal_point }}{% endif %}"
   >
     {%- if tooltip != blank -%}
-      <span class="tooltip pointer-events-none">{{ tooltip | escape }}</span>
+      <span class="tooltip pointer-events-none">{{ iq_tooltip_label | escape }}</span>
     {%- else -%}
-      <span class="visually-hidden">{{ value | escape }}</span>
+      <span class="visually-hidden">{{ iq_value_label | escape }}</span>
     {%- endif -%}
   </a>
 {%- else -%}
@@ -84,9 +92,9 @@
     data-tooltip
   >
     {%- if tooltip != blank -%}
-      <span class="tooltip pointer-events-none">{{ tooltip | escape }}</span>
+      <span class="tooltip pointer-events-none">{{ iq_tooltip_label | escape }}</span>
     {%- else -%}
-      <span class="visually-hidden">{{ value | escape }}</span>
+      <span class="visually-hidden">{{ iq_value_label | escape }}</span>
     {%- endif -%}
   </label>
 {%- endif -%}

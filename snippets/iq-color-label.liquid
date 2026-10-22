@@ -1,0 +1,17 @@
+{% doc %}
+@param {string} value - Original option label; form values are preserved.
+{% enddoc %}
+{%- liquid
+  assign label = value.name | default: value
+  if request.locale.iso_code == 'en'
+    case label
+      when 'Schwarz'
+        assign label = 'iq_translation.colors.black' | t
+      when 'Anthrazit'
+        assign label = 'iq_translation.colors.anthracite' | t
+      when 'Graugrün'
+        assign label = 'iq_translation.colors.grey_green' | t
+    endcase
+  endif
+  echo label
+-%}

@@ -1,0 +1,362 @@
+{% assign iq_part_1 = section.blocks | where: 'type', 'part1' | first %}
+{% assign iq_part_2 = section.blocks | where: 'type', 'part2' | first %}
+{% assign iq_part_3 = section.blocks | where: 'type', 'part3' | first %}
+<section id="iq-westen-funktionen" class="iq-collection-knowledge"><div class="iq-collection-knowledge__inner"><div>
+{% if request.locale.iso_code == 'en' %}<p class="iq-collection-knowledge__label">{{ iq_part_1.settings.text_11 | escape }}</p><h2>{{ iq_part_1.settings.text_12 | escape }}<br>{{ iq_part_1.settings.text_13 | escape }}</h2>{% else %}<p class="iq-collection-knowledge__label">{{ iq_part_1.settings.text_14 | escape }}</p><h2>{{ iq_part_1.settings.text_15 | escape }}<br>{{ iq_part_1.settings.text_16 | escape }}</h2>{% endif %}
+</div><div class="iq-collection-knowledge__text">
+{% if request.locale.iso_code == 'en' %}<details class="iq-collection-accordion"><summary>{{ iq_part_1.settings.text_17 | escape }}<span aria-hidden="true" class="iq-collection-accordion__icon"></span></summary><div class="iq-collection-accordion__body"><p>{{ iq_part_1.settings.text_18 | escape }}</p><p>{{ iq_part_1.settings.text_19 | escape }}</p></div></details>
+<details class="iq-collection-accordion"><summary>{{ iq_part_1.settings.text_20 | escape }}<span aria-hidden="true" class="iq-collection-accordion__icon"></span></summary><div class="iq-collection-accordion__body"><p>{{ iq_part_2.settings.text_21 | escape }}</p><p>{{ iq_part_2.settings.text_22 | escape }}</p></div></details>
+<details class="iq-collection-accordion"><summary>{{ iq_part_2.settings.text_23 | escape }}<span aria-hidden="true" class="iq-collection-accordion__icon"></span></summary><div class="iq-collection-accordion__body"><p>{{ iq_part_2.settings.text_24 | escape }} <a href="{% if request.locale.iso_code == 'en' %}{{ iq_part_1.settings.link_1 }}{% else %}{{ iq_part_1.settings.link_1 }}{% endif %}">{{ iq_part_2.settings.text_25 | escape }}</a> {{ iq_part_2.settings.text_26 | escape }}</p><p>{{ iq_part_2.settings.text_27 | escape }}</p></div></details>
+<details class="iq-collection-accordion"><summary>{{ iq_part_2.settings.text_28 | escape }}<span aria-hidden="true" class="iq-collection-accordion__icon"></span></summary><div class="iq-collection-accordion__body"><p>{{ iq_part_2.settings.text_29 | escape }}</p><p>{{ iq_part_2.settings.text_30 | escape }}</p><p>{{ iq_part_2.settings.text_31 | escape }} <a href="{% if request.locale.iso_code == 'en' %}{{ iq_part_1.settings.link_3 }}{% else %}{{ iq_part_1.settings.link_2 }}{% endif %}">{{ iq_part_2.settings.text_32 | escape }}</a>, <a href="{% if request.locale.iso_code == 'en' %}{{ iq_part_1.settings.link_5 }}{% else %}{{ iq_part_1.settings.link_4 }}{% endif %}">{{ iq_part_2.settings.text_33 | escape }}</a> {{ iq_part_2.settings.text_34 | escape }} <a href="{% if request.locale.iso_code == 'en' %}{{ iq_part_1.settings.link_7 }}{% else %}{{ iq_part_1.settings.link_6 }}{% endif %}">{{ iq_part_2.settings.text_35 | escape }}</a>.</p><p>{{ iq_part_2.settings.text_36 | escape }} <a href="{% if request.locale.iso_code == 'en' %}{{ iq_part_1.settings.link_8 }}{% else %}{{ iq_part_1.settings.link_8 }}{% endif %}">{{ iq_part_2.settings.text_37 | escape }}</a>.</p></div></details>
+{% else %}<details class="iq-collection-accordion"><summary>{{ iq_part_2.settings.text_38 | escape }}<span aria-hidden="true" class="iq-collection-accordion__icon"></span></summary><div class="iq-collection-accordion__body"><p>{{ iq_part_2.settings.text_39 | escape }}</p><p>{{ iq_part_2.settings.text_40 | escape }}</p></div></details>
+<details class="iq-collection-accordion"><summary>{{ iq_part_3.settings.text_41 | escape }}<span aria-hidden="true" class="iq-collection-accordion__icon"></span></summary><div class="iq-collection-accordion__body"><p>{{ iq_part_3.settings.text_42 | escape }}</p><p>{{ iq_part_3.settings.text_43 | escape }}</p></div></details>
+<details class="iq-collection-accordion"><summary>{{ iq_part_3.settings.text_44 | escape }}<span aria-hidden="true" class="iq-collection-accordion__icon"></span></summary><div class="iq-collection-accordion__body"><p>{{ iq_part_3.settings.text_45 | escape }} <a href="{% if request.locale.iso_code == 'en' %}{{ iq_part_1.settings.link_9 }}{% else %}{{ iq_part_1.settings.link_9 }}{% endif %}">{{ iq_part_3.settings.text_46 | escape }}</a> {{ iq_part_3.settings.text_47 | escape }}</p><p>{{ iq_part_3.settings.text_48 | escape }}</p></div></details>
+<details class="iq-collection-accordion"><summary>{{ iq_part_3.settings.text_49 | escape }}<span aria-hidden="true" class="iq-collection-accordion__icon"></span></summary><div class="iq-collection-accordion__body"><p>{{ iq_part_3.settings.text_50 | escape }}</p><p>{{ iq_part_3.settings.text_51 | escape }}</p><p>{{ iq_part_3.settings.text_52 | escape }} <a href="{% if request.locale.iso_code == 'en' %}{{ iq_part_1.settings.link_3 }}{% else %}{{ iq_part_1.settings.link_2 }}{% endif %}">{{ iq_part_3.settings.text_53 | escape }} </a>{{ iq_part_3.settings.text_54 | escape }}   <a href="{% if request.locale.iso_code == 'en' %}{{ iq_part_1.settings.link_5 }}{% else %}{{ iq_part_1.settings.link_4 }}{% endif %}">{{ iq_part_3.settings.text_55 | escape }}</a>.</p><p>{{ iq_part_3.settings.text_56 | escape }} <a href="{% if request.locale.iso_code == 'en' %}{{ iq_part_1.settings.link_7 }}{% else %}{{ iq_part_1.settings.link_6 }}{% endif %}">{{ iq_part_3.settings.text_57 | escape }}</a> {{ iq_part_3.settings.text_58 | escape }}</p><p>{{ iq_part_3.settings.text_59 | escape }} <a href="{% if request.locale.iso_code == 'en' %}{{ iq_part_1.settings.link_10 }}{% else %}{{ iq_part_1.settings.link_10 }}{% endif %}">{{ iq_part_3.settings.text_60 | escape }}</a>.<br>
+</p>
+</div></details>
+{% endif %}</div></div></section>
+{% schema %}
+{
+  "name": "IQ Westen Wissen",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "part1",
+      "name": "Inhalt 1: /en/products/iq",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "url",
+          "id": "link_1",
+          "label": "Linkziel DE: /en/products/iq-hundesportweste-3-0-unisex"
+        },
+        {
+          "type": "url",
+          "id": "link_2",
+          "label": "Linkziel DE: /collections/hundesport-jacken"
+        },
+        {
+          "type": "url",
+          "id": "link_3",
+          "label": "Linkziel EN: /en/collections/hundesport-jacken"
+        },
+        {
+          "type": "url",
+          "id": "link_4",
+          "label": "Linkziel DE: /collections/hundesport-hosen"
+        },
+        {
+          "type": "url",
+          "id": "link_5",
+          "label": "Linkziel EN: /en/collections/hundesport-hosen"
+        },
+        {
+          "type": "url",
+          "id": "link_6",
+          "label": "Linkziel DE: /collections/hundesport-zubehoer-damen"
+        },
+        {
+          "type": "url",
+          "id": "link_7",
+          "label": "Linkziel EN: /en/collections/hundesport-zubehoer-damen"
+        },
+        {
+          "type": "url",
+          "id": "link_8",
+          "label": "Linkziel DE: /en/pages/igp-hundesport"
+        },
+        {
+          "type": "url",
+          "id": "link_9",
+          "label": "Linkziel DE: /products/iq-hundesportweste-3-0-unisex"
+        },
+        {
+          "type": "url",
+          "id": "link_10",
+          "label": "Linkziel DE: /pages/igp-hundesport"
+        },
+        {
+          "type": "textarea",
+          "id": "text_11",
+          "label": "Text: KNOWLEDGE & FEATURES"
+        },
+        {
+          "type": "textarea",
+          "id": "text_12",
+          "label": "Überschrift: MORE ABOUT"
+        },
+        {
+          "type": "textarea",
+          "id": "text_13",
+          "label": "Überschrift: IQ VESTS."
+        },
+        {
+          "type": "textarea",
+          "id": "text_14",
+          "label": "Text: WISSEN & AUSSTATTUNG"
+        },
+        {
+          "type": "textarea",
+          "id": "text_15",
+          "label": "Überschrift: MEHR ÜBER"
+        },
+        {
+          "type": "textarea",
+          "id": "text_16",
+          "label": "Überschrift: IQ WESTEN."
+        },
+        {
+          "type": "textarea",
+          "id": "text_17",
+          "label": "Frage: Dog sport vests, training vests and handler vests"
+        },
+        {
+          "type": "textarea",
+          "id": "text_18",
+          "label": "Text: A dog sport vest is more than clothing. It is a trainin"
+        },
+        {
+          "type": "textarea",
+          "id": "text_19",
+          "label": "Text: The focus is on freedom of movement, robust materials a"
+        },
+        {
+          "type": "textarea",
+          "id": "text_20",
+          "label": "Frage: Dog sport vests with large back pocket"
+        }
+      ]
+    },
+    {
+      "type": "part2",
+      "name": "Inhalt 2: The large, full",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "text_21",
+          "label": "Text: The large, full-width back pocket is one of the key fea"
+        },
+        {
+          "type": "textarea",
+          "id": "text_22",
+          "label": "Text: For women and men, a vest with a back pocket is especia"
+        },
+        {
+          "type": "textarea",
+          "id": "text_23",
+          "label": "Frage: Patented training solutions for precise timing"
+        },
+        {
+          "type": "textarea",
+          "id": "text_24",
+          "label": "Text: The"
+        },
+        {
+          "type": "textarea",
+          "id": "text_25",
+          "label": "Linktext: IQ Dog Sport Vest 3.0"
+        },
+        {
+          "type": "textarea",
+          "id": "text_26",
+          "label": "Linktext: features patented chest pockets for centered reinforcem"
+        },
+        {
+          "type": "textarea",
+          "id": "text_27",
+          "label": "Text: This creates more than a classic training vest: the IQ "
+        },
+        {
+          "type": "textarea",
+          "id": "text_28",
+          "label": "Frage: Training vests for IGP, protection work and dog trainin"
+        },
+        {
+          "type": "textarea",
+          "id": "text_29",
+          "label": "Text: Whether IGP, working dog sport, protection work or prof"
+        },
+        {
+          "type": "textarea",
+          "id": "text_30",
+          "label": "Text: Robust materials, bartack-reinforced stress points and "
+        },
+        {
+          "type": "textarea",
+          "id": "text_31",
+          "label": "Text: Matching categories:"
+        },
+        {
+          "type": "textarea",
+          "id": "text_32",
+          "label": "Linktext: dog sport jackets"
+        },
+        {
+          "type": "textarea",
+          "id": "text_33",
+          "label": "Linktext: training pants"
+        },
+        {
+          "type": "textarea",
+          "id": "text_34",
+          "label": "Linktext: and"
+        },
+        {
+          "type": "textarea",
+          "id": "text_35",
+          "label": "Linktext: accessories for dog sport"
+        },
+        {
+          "type": "textarea",
+          "id": "text_36",
+          "label": "Text: Want to know what IGP is?"
+        },
+        {
+          "type": "textarea",
+          "id": "text_37",
+          "label": "Linktext: What is IGP"
+        },
+        {
+          "type": "textarea",
+          "id": "text_38",
+          "label": "Frage: Hundesportwesten, Trainingswesten und Hundeführerwesten"
+        },
+        {
+          "type": "textarea",
+          "id": "text_39",
+          "label": "Text: Eine Hundesportweste ist mehr als Bekleidung. Sie ist e"
+        },
+        {
+          "type": "textarea",
+          "id": "text_40",
+          "label": "Text: Im Mittelpunkt stehen Bewegungsfreiheit, robuste Materi"
+        }
+      ]
+    },
+    {
+      "type": "part3",
+      "name": "Inhalt 3: Hundesportweste",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "text_41",
+          "label": "Frage: Hundesportwesten mit großer Rückentasche"
+        },
+        {
+          "type": "textarea",
+          "id": "text_42",
+          "label": "Text: Die große, durchgängige Rückentasche gehört zu den wich"
+        },
+        {
+          "type": "textarea",
+          "id": "text_43",
+          "label": "Text: Für Damen und Herren ist eine Weste mit Rückentasche be"
+        },
+        {
+          "type": "textarea",
+          "id": "text_44",
+          "label": "Frage: Patentierte Trainingslösungen für präzises Timing"
+        },
+        {
+          "type": "textarea",
+          "id": "text_45",
+          "label": "Text: Die"
+        },
+        {
+          "type": "textarea",
+          "id": "text_46",
+          "label": "Linktext: IQ Hundesportweste 3.0"
+        },
+        {
+          "type": "textarea",
+          "id": "text_47",
+          "label": "Linktext: verfügt über patentierte Brusttaschen für eine mittige "
+        },
+        {
+          "type": "textarea",
+          "id": "text_48",
+          "label": "Text: Dadurch entsteht mehr als eine klassische Trainingswest"
+        },
+        {
+          "type": "textarea",
+          "id": "text_49",
+          "label": "Frage: Trainingswesten für IGP, Schutzdienst und Hundeausbildu"
+        },
+        {
+          "type": "textarea",
+          "id": "text_50",
+          "label": "Text: Ob IGP, Gebrauchshundesport, Schutzdienst oder professi"
+        },
+        {
+          "type": "textarea",
+          "id": "text_51",
+          "label": "Text: Robuste Materialien, bartack-verstärkte Belastungspunkt"
+        },
+        {
+          "type": "textarea",
+          "id": "text_52",
+          "label": "Text: Passend dazu:"
+        },
+        {
+          "type": "textarea",
+          "id": "text_53",
+          "label": "Linktext: Hundesportjacken"
+        },
+        {
+          "type": "textarea",
+          "id": "text_54",
+          "label": "Linktext: und"
+        },
+        {
+          "type": "textarea",
+          "id": "text_55",
+          "label": "Linktext: Trainingshosen"
+        },
+        {
+          "type": "textarea",
+          "id": "text_56",
+          "label": "Text: Ergänzend findest du"
+        },
+        {
+          "type": "textarea",
+          "id": "text_57",
+          "label": "Linktext: passendes Bekleidungszubehör"
+        },
+        {
+          "type": "textarea",
+          "id": "text_58",
+          "label": "Linktext: wie Futtertaschen, Magnettaschen und Loops für dein Tra"
+        },
+        {
+          "type": "textarea",
+          "id": "text_59",
+          "label": "Text: Wer wissen will, was IGP ist:"
+        },
+        {
+          "type": "textarea",
+          "id": "text_60",
+          "label": "Linktext: Was ist IGP"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "IQ Westen Wissen",
+      "blocks": [
+        {
+          "type": "part1"
+        },
+        {
+          "type": "part2"
+        },
+        {
+          "type": "part3"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -115,18 +115,32 @@
           show_play_button: true
         -%}
       {%- else -%}
-        <motion-element data-motion="zoom-out-sm" class="product__media media-wrapper">
+        {%- liquid
+          assign iq_image_element = 'image-lazy'
+          if position == 0
+            assign iq_image_element = nil
+          endif
+        -%}
+        {%- if position == 0 -%}
+          <div class="product__media media-wrapper">
+        {%- else -%}
+          <motion-element data-motion="zoom-out-sm" class="product__media media-wrapper">
+        {%- endif -%}
           {{
             media.preview_image
             | image_url: width: 1946
             | image_tag:
-              is: 'image-lazy',
+              is: iq_image_element,
               loading: loading,
               fetchpriority: fetchpriority,
               sizes: sizes,
               widths: '400, 620, 690, 810, 980, 1240, 1380, 1620, 1960'
           }}
-        </motion-element>
+        {%- if position == 0 -%}
+          </div>
+        {%- else -%}
+          </motion-element>
+        {%- endif -%}
         {%- if enable_image_zoom -%}
           <span
             class="product__media-icon"

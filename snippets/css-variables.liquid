@@ -29,7 +29,7 @@
 
   case settings.buttons_corner_radius
     when 'slightly'
-      assign buttons_radius = 5
+      assign buttons_radius = 2
     when 'soft-pill'
       assign buttons_radius = 10
     when 'round'
@@ -425,6 +425,7 @@
     --color-keyboard-focus: {{ settings.color_key_board_focus.rgb }};
 
     --buttons-radius: {{ buttons_radius | divided_by: 10.0 }}rem;
+    --variant-pills-radius: {{ buttons_height | divided_by: 20.0 }}rem;
     --inputs-radius: {{ inputs_radius | divided_by: 10.0 }}rem;
     --textareas-radius: {{ textareas_radius | divided_by: 10.0 }}rem;
     --blocks-radius: {{ blocks_radius | divided_by: 10.0 }}rem;
@@ -479,11 +480,11 @@
 
 {%- unless settings.type_body_font.system? -%}
   {% comment %}theme-check-disable AssetPreload{% endcomment %}
-  <link rel="preload" as="font" href="{{ settings.type_body_font | font_url }}" type="font/woff2" crossorigin>
+  <link rel="preload" as="font" href="{{ settings.type_body_font | font_url }}" type="font/woff2" crossorigin{% if request.page_type == 'product' %} media="(min-width: 768px)"{% endif %}>
   {% comment %}theme-check-enable AssetPreload{% endcomment %}
 {%- endunless -%}
 {%- unless settings.type_header_font.system? -%}
   {% comment %}theme-check-disable AssetPreload{% endcomment %}
-  <link rel="preload" as="font" href="{{ settings.type_header_font | font_url }}" type="font/woff2" crossorigin>
+  <link rel="preload" as="font" href="{{ settings.type_header_font | font_url }}" type="font/woff2" crossorigin{% if request.page_type == 'product' %} media="(min-width: 768px)"{% endif %}>
   {% comment %}theme-check-enable AssetPreload{% endcomment %}
 {%- endunless -%}

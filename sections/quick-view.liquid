@@ -25,11 +25,7 @@
     shopify-design-mode
     hidden
   >
-    {{ 'section-main-product.css' | asset_url | stylesheet_tag }}
-    {{ 'component-deferred-media.css' | asset_url | stylesheet_tag }}
-    {% unless product.has_only_default_variant %}
-      {{ 'component-product-variant-picker.css' | asset_url | stylesheet_tag }}
-    {% endunless %}
+
     <div class="fixed-overlay" aria-controls="MainProductQuickView-{{ section.id }}-{{ product.id }}"></div>
     <div class="drawer__inner">
       <button
@@ -41,6 +37,11 @@
       </button>
       <div class="drawer__body v-scrollable h-full quick-view__content">
         <template id="MainProduct-quick-view__content">
+          <style>{{ 'section-main-product.css' | inline_asset_content }}</style>
+          <style>{{ 'component-deferred-media.css' | inline_asset_content }}</style>
+          {% unless product.has_only_default_variant %}
+            <style>{{ 'component-product-variant-picker.css' | inline_asset_content }}</style>
+          {% endunless %}
           {%- assign has_models = product.media | where: 'media_type', 'model' | first -%}
           {%- if has_models -%}
             <link

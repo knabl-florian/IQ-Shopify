@@ -54,13 +54,16 @@
 
     {%- liquid
       render 'meta-tags'
+      if request.page_type == 'product'
+        render 'iq-product-image-preload'
+      endif
       render 'css-variables'
 
       echo 'vendor.css' | asset_url | stylesheet_tag: preload: true
       echo 'theme.css' | asset_url | stylesheet_tag: preload: true
       echo 'custom.css' | asset_url | stylesheet_tag: preload: true
       assign iq_collection_standard = false
-      if request.page_type == 'collection' and content_for_layout contains 'iq-collection-hero'
+      if request.page_type == 'collection'
         assign iq_collection_standard = true
         echo 'iq-collection-system.css' | asset_url | stylesheet_tag
       endif
@@ -69,6 +72,12 @@
         echo 'rtl.css' | asset_url | stylesheet_tag: preload: true
       endif
     -%}
+
+    <style>
+      [data-initializing] #MainContent .shopify-section + .shopify-section ~ .shopify-section {
+        content-visibility: visible;
+      }
+    </style>
 
     {{ content_for_header }}
 
@@ -113,7 +122,7 @@
     </a>
 
     {%- liquid
-      if settings.enable_page_transition
+      if settings.enable_page_transition and request.page_type != 'product'
         render 'page-transition'
       endif
     -%}
@@ -298,6 +307,8 @@ document.addEventListener('click', function (e) {
             return miniUploadDone && bundleDone;
           }
 
+          document.addEventListener('iq:upload-fields-ready', applyTranslations);
+
           function initTranslations() {
             if (applyTranslations()) return;
 
@@ -357,7 +368,21 @@ document.addEventListener('click', function (e) {
           document.addEventListener('click', openAndScrollToJudgeMeReviews, true);
         })();
       </script>
+      <script>
+        document.addEventListener("variant:changed", function (event) {
+          const selectedVariant = event.detail && event.detail.variant;
+          if (selectedVariant && selectedVariant.id) {
+            document.dispatchEvent(
+              new CustomEvent("xboost-upsell-variant-native-change", {
+                bubbles: true,
+                detail: selectedVariant.id,
+              }),
+            );
+          }
+        });
+      </script>
     </body>
 </html>
+
 
 

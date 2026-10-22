@@ -5,11 +5,22 @@ if (!customElements.get('recently-viewed-products')) {
       constructor() {
         super();
 
-        if ('requestIdleCallback' in window) {
+        if (document.body.classList.contains('product-template') && 'IntersectionObserver' in window) {
+          this.visibilityObserver = new IntersectionObserver((entries) => {
+            if (!entries.some((entry) => entry.isIntersecting)) return;
+            this.visibilityObserver.disconnect();
+            this.init();
+          }, { rootMargin: '600px 0px' });
+          this.visibilityObserver.observe(this);
+        } else if ('requestIdleCallback' in window) {
           requestIdleCallback(this.init.bind(this), { timeout: 1500 });
         } else {
           FoxTheme.Motion.inView(this, this.init.bind(this), { margin: '0px 0px 400px 0px' });
         }
+      }
+
+      disconnectedCallback() {
+        if (this.visibilityObserver) this.visibilityObserver.disconnect();
       }
 
       init() {

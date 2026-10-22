@@ -118,7 +118,7 @@
         font-size: 15px !important;
         font-weight: 500 !important;
         letter-spacing: 0.45px !important;
-        border-radius: 24px !important;
+        border-radius: var(--buttons-radius, 2px) !important;
         position: relative !important;
         overflow: hidden;
       }
@@ -142,7 +142,7 @@
         transform: translateX(-100%);
         transition: transform 0.2s ease;
         z-index: 0;
-        border-radius: 24px;
+        border-radius: var(--buttons-radius, 2px);
       }
 
       .sc-giftr-card__add button::after {
@@ -154,7 +154,7 @@
         transition: transform 0.2s ease;
         transition-delay: 0.3s;
         z-index: 0;
-        border-radius: 24px;
+        border-radius: var(--buttons-radius, 2px);
       }
 
       .sc-giftr-card__add button:hover::before {
@@ -374,7 +374,22 @@
     })();
   </script>
 {% endif %}
-
+{%- liquid
+  # [Hamza 2026-10-15] added: count product Media, or Variant Galerie images if the product has no Media
+  assign gallery_media_size = product.media.size
+  if gallery_media_size == 0
+    for v in product.variants
+      assign v_gallery = v.metafields.custom.variant_galerie.value
+      if v_gallery != blank
+        assign gallery_media_size = gallery_media_size | plus: v_gallery.size
+      endif
+    endfor
+  endif
+  assign has_gallery_media = false
+  if gallery_media_size > 0
+    assign has_gallery_media = true
+  endif
+-%}
 {%- liquid
   assign media_layout = section.settings.gallery_layout | default: 'carousel'
   assign mobile_thumbnails = section.settings.mobile_thumbnails | default: 'hide'
@@ -383,14 +398,15 @@
 
   assign product_class = 'product--' | append: section.settings.media_size
   assign product_class = product_class | append: ' product--' | append: media_layout
-  assign product_class = product_class | append: ' product--media-has-' | append: product.media.size
-  if product.media.size > 1
+  # [Hamza 2026-10-15] changed: product.media.size -> gallery_media_size (counts Variant Galerie images too)
+  assign product_class = product_class | append: ' product--media-has-' | append: gallery_media_size
+  if gallery_media_size > 1
     assign product_class = product_class | append: ' product--media-has-many'
   endif
 
   case media_layout
     when 'grid-mix'
-      assign media_modulo = product.media.size | modulo: 3
+      assign media_modulo = gallery_media_size | modulo: 3
       if media_modulo == 2
         assign product_class = product_class | append: ' product--odd-media'
       endif
@@ -405,10 +421,10 @@
   class="section block section-{{ section.id }} section--padding page-width color-{{ section.settings.color_scheme }}"
   style="--section-padding-top: {{ section.settings.padding_top }}px;--section-padding-bottom: {{ section.settings.padding_bottom }}px;"
 >
-  {{ 'section-main-product.css' | asset_url | stylesheet_tag }}
-  {{ 'component-deferred-media.css' | asset_url | stylesheet_tag }}
+  <style>{{ 'section-main-product.css' | inline_asset_content }}</style>
+  <style>{{ 'component-deferred-media.css' | inline_asset_content }}</style>
   {% unless product.has_only_default_variant %}
-    {{ 'component-product-variant-picker.css' | asset_url | stylesheet_tag }}
+    <style>{{ 'component-product-variant-picker.css' | inline_asset_content }}</style>
   {% endunless %}
   {%- assign has_models = product.media | where: 'media_type', 'model' | first -%}
   {%- if has_models -%}
@@ -447,8 +463,8 @@
 
   {% assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' %}
   <div class="product flex flex-wrap {{ product_class }}">
-    {%- if product.media.size > 0 -%}
-      <motion-element data-motion="fade-up" data-motion-delay="50" class="product__media-wrapper w-full relative">
+    {%- if has_gallery_media -%} {%- # [Hamza 2026-10-15] changed: was product.media.size > 0 -%}
+    <div class="product__media-wrapper w-full relative">
         {% render 'product-media-gallery',
           enable_sticky_info: enable_sticky_info,
           media_layout: media_layout,
@@ -456,22 +472,22 @@
           variant_images: variant_images,
           enable_image_zoom: enable_image_zoom
         %}
-      </motion-element>
+      </div>
     {%- endif -%}
-    <motion-element data-motion="fade-up" data-motion-delay="100" class="block product__info-wrapper w-full">
+    <div class="block product__info-wrapper w-full">
       {% render 'product-information-blocks',
         enable_sticky_info: enable_sticky_info,
         update_browser_history: true,
         context: 'main-product'
       %}
-    </motion-element>
+    </div>
   </div>
   <product-recently-viewed data-product-id="{{ product.id }}" class="hidden"></product-recently-viewed>
   {%- if enable_image_zoom -%}
     <script src="{{ 'photoswipe.js' | asset_url }}" defer="defer"></script>
   {%- endif -%}
 
-  {%- if product.media.size > 0 -%}
+  {%- if has_gallery_media -%} {%- # [Hamza 2026-10-15] changed: was product.media.size > 0 -%}
     <script src="{{ 'media-gallery.js' | asset_url }}" defer="defer"></script>
   {%- endif -%}
 

@@ -648,5 +648,45 @@
       "send_on": "JJJJ-MM-TT",
       "send_on_label": "Senden an (optional)"
     }
+  },
+  "iq_cart_addons": {
+    "variant": "Ausführung wählen",
+    "add": "Hinzufügen"
+  },
+  "iq_translation": {
+    "home": {
+      "categories": "Westen|Jacken|Shirts & Hoodies|Training|Futter|Spielzeug",
+      "category_alts": "Hundeführerin in IQ Hundesportweste, Ball fällt aus der patentierten Brusttasche|Hundeführerin in IQ Multifunktionsjacke mit Schäferhund im Herbst|Rückenansicht IQ Trainingshoodie mit Print, Hund im Fuß im Schnee|Trainingszubehör Hundesport IGP Fährtentafel Versteck Hundeführerweste|Junger Schäferhund trägt eine Packung IQ Pure Bites Trainingshappen|Malinois betrachtet haltbaren Hundeball an Schnur zum Zergen",
+      "heading_main": "Was brauchst Du fürs",
+      "heading_accent": "Training?",
+      "discover": "Entdecken",
+      "classics_eyebrow": "Seit Jahren im Training",
+      "classics_heading": "Die IQ Klassiker",
+      "all_bestsellers": "Alle Bestseller entdecken",
+      "knowledge_training_alt": "Dr. Florian Knabl im Schutzdienst-Training mit schwarzem Schäferhund am Schutzarm",
+      "knowledge_book_alt": "Malinois schaut über Schulter eines Mannes mit Buch zu Obedience Unterordnung"
+    },
+    "pants": {
+      "stretch": "Bewegungsfreiheit durch 4-Wege-Stretch.",
+      "pockets": "Herausnehmbare, abwaschbare Futtertaschen.",
+      "storage": "Große Beintaschen und geschützte Gesäßtasche für Dein Trainingsequipment.",
+      "fabric": "Robustes, reißfestes Material aus dem Jagdbereich."
+    },
+    "jumps": {
+      "clothing": "Bekleidung",
+      "training": "Trainingszubehör",
+      "tracking": "Fährtenzubehör"
+    },
+    "colors": {
+      "black": "Schwarz",
+      "anthracite": "Anthrazit",
+      "grey_green": "Graugrün"
+    }
+  },
+  "iq_outlet": {
+    "link": "IQ Outlet",
+    "navigation": "Weitere Shopbereiche",
+    "title": "IQ Outlet",
+    "description": "Ausgewählte Artikel zu reduzierten Preisen."
   }
 }

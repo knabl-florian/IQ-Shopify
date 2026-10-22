@@ -31,6 +31,18 @@
     --promotions-width: {{ promotions_width }}%;
     --promotion-columns: {{ promotion_columns }};
   }
+  #Mega-menu-item-{{ block.id }} .iq-mega-outlet {
+    grid-column: 1 / -1;
+    width: 100%;
+    margin-top: 20px;
+    padding-top: 12px;
+    border-top: 1px solid #DCDBD7;
+  }
+  #Mega-menu-item-{{ block.id }} .iq-mega-outlet a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
 {% endstyle %}
 <details
   id="Mega-menu-item-{{ block.id }}"
@@ -241,6 +253,11 @@
               </div>
             {%- endif -%}
         {%- endcase -%}
+        {%- if block.settings.show_iq_outlet -%}
+          <div class="iq-mega-outlet">
+            <a href="{{ collections['sale'].url }}" class="reversed-link font-body-bolder">{{ 'iq_outlet.link' | t }}</a>
+          </div>
+        {%- endif -%}
       </div>
     </div>
   </div>

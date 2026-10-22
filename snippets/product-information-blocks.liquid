@@ -18,7 +18,18 @@
       {%- case block.type -%}
         {%- when '@app' -%}
           <div class="product__block product__block--{{ block.type }}">
-            {% render block %}
+            {%- capture iq_app_content -%}{% render block %}{%- endcapture -%}
+            {%- if iq_app_content contains 'id="minimate-image-upload-block"' and context == 'main-product' and request.design_mode == false -%}
+              <iq-upload-loader class="block">
+                <script type="application/json" data-iq-upload-context>
+                  {"selectedItemIds":["gid://shopify/Product/{{ product.id }}"{% for iq_collection in product.collections %},"gid://shopify/Collection/{{ iq_collection.id }}"{% endfor %}]}
+                </script>
+                <template>{{ iq_app_content }}</template>
+              </iq-upload-loader>
+              <script src="{{ 'iq-upload-loader.js' | asset_url }}" defer></script>
+            {%- else -%}
+              {{ iq_app_content }}
+            {%- endif -%}
           </div>
         {%- when 'text' -%}
           <div
@@ -158,6 +169,14 @@
             {{ block.settings.custom_liquid }}
           </div>
         {%- when 'collapsible_tab' -%}
+          {%- comment -%} [Hamza 2026-10-19] hide the tab if it has no content (e.g. Fit & Sizing without custom.grosentabelle) {%- endcomment -%}
+          {%- capture iq_tab_body -%}{{ block.settings.content }}{{ block.settings.custom_liquid }}{{ block.settings.page.content }}{%- endcapture -%}
+          {%- assign iq_tab_text = iq_tab_body | strip_html | strip -%}
+          {%- if iq_tab_text == blank -%}
+            {%- unless iq_tab_body contains '<img' or iq_tab_body contains '<iframe' or iq_tab_body contains '<video' or iq_tab_body contains 'jdgm' -%}
+              {%- continue -%}
+            {%- endunless -%}
+          {%- endif -%}
           <div
             class="product__block product__block--{{ block.type }}"
             {{ block.shopify_attributes }}
