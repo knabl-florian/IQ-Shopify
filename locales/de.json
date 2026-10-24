@@ -757,5 +757,10 @@
     "play": "Video abspielen",
     "film_label": "IQ Performance Pro im Einsatz",
     "error": "Die Wiedergabe konnte nicht automatisch starten. Bitte nutze die Videosteuerung."
+  },
+  "iq_igp": {
+    "terms_heading": "Schutzhundesport, IPO, VPG und IGP: Was ist der Unterschied?",
+    "terms_sentence": "Wer heute von Schutzhundesport, Schutzhundsport oder IPO-Hundesport spricht, meint häufig den heutigen IGP-Sport mit Fährtenarbeit, Unterordnung und Schutzdienst.",
+    "related_html": "Du möchtest den Sport genauer kennenlernen? Unser Ratgeber <a href=\"/pages/igp-hundesport\">IGP und Schutzhundesport: Fährte, Unterordnung und Schutzdienst</a> erklärt die drei Disziplinen. Den praktischen Trainingsaufbau vertieft der Beitrag <a href=\"/blogs/news/schutzdienst-im-igp-warum-guter-schutzdienst-nicht-beim-anbiss-beginnt\">Schutzdienst im IGP</a>."
   }
 }

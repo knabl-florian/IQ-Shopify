@@ -89,7 +89,11 @@
               {% endif %}
             </header>
           {%- when 'content' -%}
-            <div class="article__block article__content rte" {{ block.shopify_attributes }}>{{ article.content }}</div>
+            <div class="article__block article__content rte" {{ block.shopify_attributes }}>{%- if article.id == 626671681800 or article.id == 626671714568 -%}
+                {%- render 'iq-igp-related', content: article.content -%}
+              {%- else -%}
+                {{ article.content }}
+              {%- endif -%}</div>
           {%- when 'share' -%}
             <div
               class="article__block article__footer flex flex-col md:flex-row md:items-center justify-between gap-4"

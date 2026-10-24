@@ -133,8 +133,9 @@
             "text_size": "text-base",
             "button_label": "aufrufen",
             "button_style": "btn--underline",
-            "button_link": "http://www.prok9supplies.com/",
-            "mobile_layout": "inherit"
+            "button_link": "https://www.thekill.it",
+            "mobile_layout": "inherit",
+            "dealer_contact": "<p><strong>The Kill</strong></p><p>Via Rosselli 17<br>21018 Sesto Calende (VA)<br><a href=\"mailto:customer@thekill.it\">customer@thekill.it</a></p>"
           }
         },
         "column_mXFtPC": {
@@ -182,7 +183,8 @@
             "button_label": "aufrufen",
             "button_style": "btn--underline",
             "button_link": "https://edogkalypsoland.ro/",
-            "mobile_layout": "inherit"
+            "mobile_layout": "inherit",
+            "dealer_contact": "<p><strong>Edog Kalypsoland SRL</strong></p><p>Str. 338 nr. 4<br>Pecica, jud. Arad, Romania<br><a href=\"mailto:contact@kalypsoland.ro\">contact@kalypsoland.ro</a></p>"
           }
         },
         "column_GpRVbJ": {
@@ -283,7 +285,8 @@
             "button_label": "aufrufen",
             "button_style": "btn--underline",
             "button_link": "https://www.fairmoors.dk",
-            "mobile_layout": "inherit"
+            "mobile_layout": "inherit",
+            "dealer_contact": "<p><strong>Fairmoors</strong></p><p>Allingskovgårdsvej 19<br>8600 Silkeborg<br><a href=\"mailto:info@fairmoors.dk\">info@fairmoors.dk</a></p>"
           }
         },
         "column_jcJiUc": {
@@ -395,7 +398,8 @@
             "button_label": "aufrufen",
             "button_style": "btn--underline",
             "button_link": "https://www.galasturhunde.es/",
-            "mobile_layout": "inherit"
+            "mobile_layout": "inherit",
+            "dealer_contact": "<p><strong>Galasturhunde Asociados 2008 S.L.</strong></p><p>Carretera de Lourdes, 1A<br>08358 Arenys de Munt (Barcelona)<br><a href=\"mailto:info@galasturhunde.es\">info@galasturhunde.es</a></p>"
           }
         },
         "column_KDTbCN": {
@@ -411,7 +415,8 @@
             "button_label": "aufrufen",
             "button_style": "btn--underline",
             "button_link": "https://zoo-ajka.si/",
-            "mobile_layout": "inherit"
+            "mobile_layout": "inherit",
+            "dealer_contact": "<p><strong>Zoo Ajka</strong></p><p>2310 Slovenska Bistrica<br><a href=\"mailto:info@zoo-ajka.si\">info@zoo-ajka.si</a></p>"
           }
         },
         "column_QJNThM": {

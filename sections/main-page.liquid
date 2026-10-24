@@ -6,13 +6,21 @@
 </style>
 
 <div class="page-width page-width--narrow section--padding">
+  {% unless page.id == 165915459848 %}
   <h1 class="main-page-title page-title h1 text-center">
     <motion-element class="inline-flex" data-motion="fade-up">
       {{ page.title | escape }}
     </motion-element>
   </h1>
+  {% endunless %}
   <div class="page__content rte">
-    {{ page.content }}
+    {% if page.id == 165915459848 and request.locale.iso_code == 'de' %}
+      {% assign iq_terms_heading = 'iq_igp.terms_heading' | t %}
+      {% assign iq_terms_sentence = 'iq_igp.terms_sentence' | t %}
+      {{ page.content | replace_first: 'IPO, VPG, Schutzhund oder IGP – was ist der Unterschied?', iq_terms_heading | replace_first: 'Wer heute auf Begriffe wie „IPO-Hundesport“ oder „Schutzhundsport“ stößt, meint in der Regel den heutigen IGP-Sport.', iq_terms_sentence }}
+    {% else %}
+      {{ page.content }}
+    {% endif %}
   </div>
 </div>
 

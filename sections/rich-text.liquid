@@ -1,3 +1,6 @@
+{%- if page.id == 157349806344 and section.id contains 'rich_text_iwrgM3' -%}
+  {{ 'iq-dealers.css' | asset_url | stylesheet_tag }}
+{%- endif -%}
 {% render 'divider',
   show_divider: section.settings.show_section_divider,
   divider_width: section.settings.divider_width
@@ -22,17 +25,19 @@
             </motion-element>
             {%- assign motion_delay = motion_delay | plus: 50 -%}
           {% when 'heading' %}
-            <h2
+            {% assign iq_dealer_heading = false %}
+            {% if page.id == 157349806344 and section.id contains 'rich_text_iwrgM3' %}{% assign iq_dealer_heading = true %}{% endif %}
+            <{% if iq_dealer_heading %}h1{% else %}h2{% endif %}
               class="rich-text__heading {{ block.settings.heading_size }}"
               {{ block.shopify_attributes }}
             >
               <motion-element class="block" data-motion="fade-up" data-motion-delay="{{ motion_delay }}">
-                {% render 'highlight-text',
+                {% if iq_dealer_heading %}{% if request.locale.iso_code == 'en' %}Dealers worldwide{% else %}Händler weltweit{% endif %}{% else %}{% render 'highlight-text',
                   text: block.settings.heading,
                   style: block.settings.heading_highlight_style
-                %}
+                %}{% endif %}
               </motion-element>
-            </h2>
+            </{% if iq_dealer_heading %}h1{% else %}h2{% endif %}>
             {%- assign motion_delay = motion_delay | plus: 50 -%}
           {% when 'text' %}
             <motion-element

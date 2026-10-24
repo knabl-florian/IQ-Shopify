@@ -81,14 +81,18 @@
                   </motion-element>
                   {%- assign motion_delay = motion_delay | plus: 50 -%}
                 {% when 'heading' %}
-                  <h2 class="rich-text__heading {{ block.settings.heading_size }}" {{ block.shopify_attributes }}>
+                  {%- assign iq_heading_tag = 'h2' -%}
+                  {%- if page.id == 165915459848 -%}
+                    {%- assign iq_heading_tag = 'h1' -%}
+                  {%- endif -%}
+                  <{{ iq_heading_tag }} class="rich-text__heading {{ block.settings.heading_size }}" {{ block.shopify_attributes }}>
                     <motion-element data-motion="fade-up" data-motion-delay="{{ motion_delay }}" class="block">
                       {% render 'highlight-text',
                         text: block.settings.heading,
                         style: block.settings.heading_highlight_style
                       %}
                     </motion-element>
-                  </h2>
+                  </{{ iq_heading_tag }}>
                   {%- assign motion_delay = motion_delay | plus: 50 -%}
                 {% when 'text' %}
                   <motion-element

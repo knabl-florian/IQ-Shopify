@@ -2,7 +2,7 @@
   Editor-managed content preserving the existing collection layout.
   @param {block} block - Content block.
 {% enddoc %}
-{% if collection.handle == 'hundesport-jacken' %}
+{% if collection.handle == 'hundesport-jacken' or block.settings.only_collection.handle == collection.handle %}
 {% assign iq_rugged_mobile = block.settings.bild_1 %}
 {% assign iq_rugged_desktop = block.settings.bild_2 %}
 {% if iq_rugged_mobile != blank and iq_rugged_desktop != blank %}

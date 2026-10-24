@@ -1,0 +1,64 @@
+{% comment %}Page-specific primary button colours. No assignment preserves the existing design.{% endcomment %}
+{% liquid
+  assign button_palette = blank
+  for block in section.blocks
+    assign matches_page = false
+    if request.page_type == 'collection' and block.settings.collection != blank and block.settings.collection.id == collection.id
+      assign matches_page = true
+    elsif request.page_type == 'product' and block.settings.product != blank and block.settings.product.id == product.id
+      assign matches_page = true
+    elsif request.page_type == 'page' and block.settings.page != blank and block.settings.page.id == page.id
+      assign matches_page = true
+    elsif request.page_type == 'index' and block.settings.homepage
+      assign matches_page = true
+    endif
+    if matches_page
+      assign button_palette = block.settings.color
+    endif
+  endfor
+  case button_palette
+    when 'red'
+      assign button_color = '#A51D1B'
+    when 'olive'
+      assign button_color = '#6A804D'
+    when 'black'
+      assign button_color = '#171717'
+  endcase
+%}
+{% if button_palette != blank %}
+<style data-iq-button-palette="{{ button_palette }}">
+#MainContent :is(.btn--primary,.product-form__submit,.iq-jacket-finder__cta,.iqcb__button,.iqfounder__pill,.iqk__pill,.iq-nl__b,.site-card__actions>.button:not(.button--secondary),.jm-button--primary,[class*="upsell-button-"]),#shopify-section-sticky-atc-bar .product-form__submit{
+  --color-button:{{ button_color | color_extract: 'red' }} {{ button_color | color_extract: 'green' }} {{ button_color | color_extract: 'blue' }};
+  --color-button-text:255 255 255;
+  --color-button-hover-background:23 23 23;
+  --color-button-hover-text:255 255 255;
+  --color-button-before:#171717;
+  background-color:{{ button_color }}!important;color:#FFFFFF!important;border-color:{{ button_color }}!important;
+  border-radius:var(--buttons-radius,9999px)!important;
+  {% if button_palette == 'olive' %}font-size:19px!important;font-weight:700!important;{% endif %}
+}
+#MainContent :is(.btn--primary,.product-form__submit,.iq-jacket-finder__cta,.iqcb__button,.iqfounder__pill,.iqk__pill,.iq-nl__b,.site-card__actions>.button:not(.button--secondary),.jm-button--primary,[class*="upsell-button-"]):hover,#shopify-section-sticky-atc-bar .product-form__submit:hover{background-color:#171717!important;border-color:#171717!important;color:#FFFFFF!important}
+</style>
+{% endif %}
+{% if request.design_mode %}
+<div style="padding:12px 20px;background:#F3F3F1;color:#171717;font:400 14px/1.5 Archivo,sans-serif">
+  <strong>IQ Button-Farben</strong> · Nur im Editor sichtbar. „Seitenfarbe“ hinzufügen, Ziel und Farbe wählen. Ohne Zuordnung bleibt alles wie bisher. Gilt für Haupt-Aktionsbuttons im Seiteninhalt; Header, Footer, Varianten und externe Checkout-Buttons bleiben eigenständig.
+</div>
+{% endif %}
+{% schema %}
+{
+  "name":"IQ Button-Farben",
+  "max_blocks":30,
+  "settings":[{"type":"paragraph","content":"Pro Block eine Seite auswählen. Rot, IQ-Oliv oder Schwarz ändern nur Haupt-Aktionsbuttons, keine Hintergrund- oder Fließtextfarben. Bei mehreren passenden Regeln gilt die letzte. Oliv verwendet 19 px Fettschrift für ausreichenden Kontrast mit Weiß."}],
+  "blocks":[{
+    "type":"rule","name":"Seitenfarbe",
+    "settings":[
+      {"type":"select","id":"color","label":"Buttonfarbe","default":"red","options":[{"value":"red","label":"IQ Rot"},{"value":"olive","label":"IQ Oliv"},{"value":"black","label":"IQ Schwarz"}]},
+      {"type":"collection","id":"collection","label":"Collection"},
+      {"type":"product","id":"product","label":"Produktseite"},
+      {"type":"page","id":"page","label":"Inhaltsseite"},
+      {"type":"checkbox","id":"homepage","label":"Startseite","default":false}
+    ]
+  }]
+}
+{% endschema %}

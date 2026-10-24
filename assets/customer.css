@@ -33,7 +33,7 @@ display: none !important;
 [data-form-root] shopify-forms-embed,
 shopify-forms-embed {
 --form-field-border-radius: 22px !important;
---button-border-radius: 22px !important;
+--button-border-radius: var(--buttons-radius, 9999px) !important;
 --container-border-radius: 40px !important;
 --forms-heading-font-size: 32px !important;
 --forms-heading-font: italic 800 32px Montserrat, sans-serif !important;

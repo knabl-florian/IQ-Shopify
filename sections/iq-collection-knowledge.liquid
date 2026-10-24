@@ -89,7 +89,16 @@
   {% capture description_html %}{% if english %}<p>Browse IQ Dogsport equipment for training and everyday life with your dog. Start with <a href="{{ routes.collections_url }}/hundesportbekleidung">clothing</a>, <a href="{{ routes.collections_url }}/hundesport-trainingszubehoer">training equipment</a> or <a href="{{ routes.collections_url }}/trainingsfutter-supplemente">food and rewards</a>. Find the details, available variants and current prices on each product page.</p>{% else %}<p>Entdecke das IQ Dogsport Sortiment für Training und Alltag mit Deinem Hund. Steige direkt bei <a href="{{ routes.collections_url }}/hundesportbekleidung">Hundesportbekleidung</a>, <a href="{{ routes.collections_url }}/hundesport-trainingszubehoer">Trainingszubehör</a> oder <a href="{{ routes.collections_url }}/trainingsfutter-supplemente">Futter und Belohnung</a> ein. Details, verfügbare Varianten und aktuelle Preise findest Du auf den jeweiligen Produktseiten.</p>{% endif %}{% endcapture %}
   {% assign description_text = description_html | strip_html %}
 {% endif %}
-{% if description_text != blank or seo_text != blank or section.blocks.size > 0 %}
+{% liquid
+  assign has_collection_topic = false
+  for block in section.blocks
+    if block.settings.only_collection.handle == collection.handle and block.settings.heading_de != blank and block.settings.text_de != blank
+      assign has_collection_topic = true
+      break
+    endif
+  endfor
+%}
+{% if description_text != blank or seo_text != blank or has_collection_topic %}
 <section class="iq-collection-knowledge" id="iq-knowledge-{{ section.id }}">
   <div class="iq-collection-knowledge__inner">
     <div>

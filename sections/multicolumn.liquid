@@ -30,7 +30,7 @@
   divider_width: section.settings.divider_width
 %}
 <div
-  class="section section--padding multicolumn color-{{ section.settings.color_scheme }}{% if section.settings.custom_class != blank %} {{ section.settings.custom_class }}{% endif %}"
+  class="section section--padding multicolumn{% if page.id == 157349806344 %} iq-dealers{% endif %} color-{{ section.settings.color_scheme }}{% if section.settings.custom_class != blank %} {{ section.settings.custom_class }}{% endif %}"
   style="--section-padding-top: {{ section.settings.padding_top }}px;--section-padding-bottom: {{ section.settings.padding_bottom }}px;"
 >
   <div class="page-width">
@@ -99,11 +99,11 @@
               {%- endif -%}
               <div class="multicolumn-card__info">
                 {%- if block.settings.title != blank -%}
-                  <h3 class="multicolumn-card__title {{ block.settings.heading_size }}">{{ block.settings.title }}</h3>
+                  <h3 class="multicolumn-card__title {{ block.settings.heading_size }}">{% if page.id == 157349806344 %}{% assign dealer_country = block.settings.title | strip_html %}{% if request.locale.iso_code == 'en' %}{% case dealer_country %}{% when 'Polen' %}Poland{% when 'Griechenland' %}Greece{% else %}{{ dealer_country }}{% endcase %}{% else %}{% case dealer_country %}{% when 'Australia' %}Australien{% when 'Finland' %}Finnland{% when 'Iceland' %}Island{% else %}{{ dealer_country }}{% endcase %}{% endif %}{% else %}{{ block.settings.title }}{% endif %}</h3>
                 {%- endif -%}
                 {%- if block.settings.text != blank -%}
                   <div class="multicolumn-card__text rich-text__text rte {{ block.settings.text_size }}">
-                    {{ block.settings.text }}
+                    {%- if page.id == 157349806344 -%}{%- if block.settings.dealer_contact != blank -%}{{ block.settings.dealer_contact }}{%- else -%}{{ block.settings.text | remove: '<em>' | remove: '</em>' }}{%- endif -%}{%- else -%}{{ block.settings.text }}{%- endif -%}
                   </div>
                 {%- endif -%}
                 {%- if block.settings.button_label != blank -%}
@@ -115,7 +115,7 @@
                     {% endif %}
                     class="btn {{ block.settings.button_style }}"
                   >
-                    {{- block.settings.button_label -}}
+                    {%- if page.id == 157349806344 -%}{%- if request.locale.iso_code == 'en' -%}Visit website{%- else -%}Aufrufen{%- endif -%}{%- else -%}{{- block.settings.button_label -}}{%- endif -%}
                   </a>
                 {%- endif -%}
               </div>
@@ -132,7 +132,11 @@
   "class": "section",
   "tag": "section",
   "disabled_on": {
-    "groups": ["footer", "header", "custom.overlay"]
+    "groups": [
+      "footer",
+      "header",
+      "custom.overlay"
+    ]
   },
   "settings": [
     {
@@ -584,6 +588,11 @@
             }
           ],
           "default": "inherit"
+        },
+        {
+          "type": "richtext",
+          "id": "dealer_contact",
+          "label": "Geprüfte Kontaktdaten (Händlerseite)"
         }
       ]
     }

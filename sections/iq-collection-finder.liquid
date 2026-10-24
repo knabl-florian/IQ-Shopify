@@ -1,0 +1,240 @@
+{% if section.settings.only_collection == blank or section.settings.only_collection.handle == collection.handle %}
+{{ 'iq-collection-finder.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'iq-collection-finder.js' | asset_url }}" defer="defer"></script>
+{% liquid
+  assign lang = 'de'
+  if request.locale.iso_code == 'en'
+    assign lang = 'en'
+  endif
+  assign eyebrow_key = 'eyebrow_' | append: lang
+  assign heading_key = 'heading_' | append: lang
+  assign intro_key = 'intro_' | append: lang
+  assign extra_key = 'extra_' | append: lang
+%}
+<section class="iq-jacket-finder iq-collection-container" id="iq-jacken-vergleich" data-iq-finder aria-labelledby="finder-heading-{{ section.id }}">
+  <header class="iq-jacket-finder__header">
+    <p class="iq-jacket-finder__eyebrow">{{ section.settings[eyebrow_key] | escape }}</p>
+    <h2 id="finder-heading-{{ section.id }}">{{ section.settings[heading_key] | escape | newline_to_br }}</h2>
+    <p class="iq-jacket-finder__intro">{{ section.settings[intro_key] | escape }}</p>
+  </header>
+  <div class="iq-jacket-finder__choices" role="group" aria-label="{{ section.settings[eyebrow_key] | escape }}">
+    {% for block in section.blocks %}
+      {% assign tab_key = 'tab_' | append: lang %}
+      <button type="button" data-finder-button aria-controls="finder-{{ section.id }}-{{ block.id }}" aria-pressed="{% if forloop.first %}true{% else %}false{% endif %}">{{ block.settings[tab_key] | escape }}</button>
+    {% endfor %}
+  </div>
+  {% for block in section.blocks %}
+    {% liquid
+      assign name_key = 'name_' | append: lang
+      assign title_key = 'title_' | append: lang
+      assign text_key = 'intro_' | append: lang
+      assign alt_key = 'alt_' | append: lang
+      assign benefits_key = 'benefits_' | append: lang
+      assign cta_key = 'cta_' | append: lang
+      assign primary = block.settings.primary_product
+      assign secondary = block.settings.secondary_product
+      assign loading = 'lazy'
+    %}
+    <article class="iq-jacket-finder__panel" id="finder-{{ section.id }}-{{ block.id }}" data-finder-panel {{ block.shopify_attributes }}>
+      <div class="iq-jacket-finder__photo">
+        {% if block.settings.photo != blank %}
+          {{ block.settings.photo | image_url: width: 1200 | image_tag: loading: loading, sizes: '(min-width: 750px) 600px, 100vw', widths: '400,600,800,1000,1200', alt: block.settings[alt_key] }}
+        {% else %}
+          <img src="{{ block.settings.photo_url | escape }}" alt="{{ block.settings[alt_key] | escape }}" width="{{ block.settings.photo_width }}" height="{{ block.settings.photo_height }}" loading="lazy" decoding="async">
+        {% endif %}
+      </div>
+      <div class="iq-jacket-finder__copy">
+        <p class="iq-jacket-finder__model">{{ block.settings[name_key] | escape }}</p>
+        <h3>{{ block.settings[title_key] | escape }}</h3>
+        <p>{{ block.settings[text_key] | escape }}</p>
+        {% if secondary != blank %}<p class="iq-jacket-finder__note">{% if lang == 'de' %}Als Damen- und Unisexmodell erhältlich{% else %}Available in women’s and unisex fits{% endif %}</p>{% endif %}
+        <div class="iq-jacket-finder__benefits">{{ block.settings[benefits_key] }}</div>
+        <div class="iq-jacket-finder__actions">
+          {% if primary != blank %}<a href="{{ primary.url }}" class="iq-jacket-finder__cta">{% if secondary != blank %}{% if lang == 'de' %}Damenmodell{% else %}Women’s model{% endif %}{% else %}{{ block.settings[cta_key] | escape }}{% endif %} →</a>{% endif %}
+          {% if secondary != blank %}<a href="{{ secondary.url }}" class="iq-jacket-finder__cta">{% if lang == 'de' %}Unisexmodell{% else %}Unisex model{% endif %} →</a>{% endif %}
+        </div>
+        {% if block.settings.show_zip_in %}
+  <details class="iq-jacket-finder__extra"><summary>{{ section.settings[extra_key] | escape }}</summary>
+    {% if lang == 'de' %}<p>Die Zip-in-Shell ergänzt die Trainingsjacke 2.0 um eine Wärmeschicht. Auch einzeln tragbar; nicht als Regenschutz gedacht.</p>{% else %}<p>The Zip-in Shell adds warmth to the Training Jacket 2.0. It can also be worn on its own; it is not designed as rain protection.</p>{% endif %}
+    <a href="{{ routes.root_url }}products/iq-zip-in-shell-damen">{% if lang == 'de' %}Damenmodell{% else %}Women’s model{% endif %} →</a> · <a href="{{ routes.root_url }}products/iq-zip-in-shell-unisex">{% if lang == 'de' %}Unisexmodell{% else %}Unisex model{% endif %} →</a>
+  </details>
+        {% endif %}
+      </div>
+    </article>
+  {% endfor %}
+
+</section>
+{% endif %}
+{% schema %}
+{
+  "name": "IQ Modellauswahl",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "only_collection",
+      "label": "Nur für diese Collection",
+      "info": "Leer lassen: auf der gesamten Vorlage anzeigen."
+    },
+    {
+      "type": "textarea",
+      "id": "eyebrow_de",
+      "label": "eyebrow DE"
+    },
+    {
+      "type": "textarea",
+      "id": "heading_de",
+      "label": "heading DE"
+    },
+    {
+      "type": "textarea",
+      "id": "intro_de",
+      "label": "intro DE"
+    },
+    {
+      "type": "textarea",
+      "id": "extra_de",
+      "label": "extra DE"
+    },
+    {
+      "type": "textarea",
+      "id": "eyebrow_en",
+      "label": "eyebrow EN"
+    },
+    {
+      "type": "textarea",
+      "id": "heading_en",
+      "label": "heading EN"
+    },
+    {
+      "type": "textarea",
+      "id": "intro_en",
+      "label": "intro EN"
+    },
+    {
+      "type": "textarea",
+      "id": "extra_en",
+      "label": "extra EN"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "model",
+      "name": "Modell",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "name_de",
+          "label": "name DE"
+        },
+        {
+          "type": "textarea",
+          "id": "tab_de",
+          "label": "tab DE"
+        },
+        {
+          "type": "textarea",
+          "id": "title_de",
+          "label": "title DE"
+        },
+        {
+          "type": "textarea",
+          "id": "intro_de",
+          "label": "intro DE"
+        },
+        {
+          "type": "textarea",
+          "id": "alt_de",
+          "label": "alt DE"
+        },
+        {
+          "type": "textarea",
+          "id": "cta_de",
+          "label": "cta DE"
+        },
+        {
+          "type": "richtext",
+          "id": "benefits_de",
+          "label": "Vorteile DE"
+        },
+        {
+          "type": "textarea",
+          "id": "name_en",
+          "label": "name EN"
+        },
+        {
+          "type": "textarea",
+          "id": "tab_en",
+          "label": "tab EN"
+        },
+        {
+          "type": "textarea",
+          "id": "title_en",
+          "label": "title EN"
+        },
+        {
+          "type": "textarea",
+          "id": "intro_en",
+          "label": "intro EN"
+        },
+        {
+          "type": "textarea",
+          "id": "alt_en",
+          "label": "alt EN"
+        },
+        {
+          "type": "textarea",
+          "id": "cta_en",
+          "label": "cta EN"
+        },
+        {
+          "type": "richtext",
+          "id": "benefits_en",
+          "label": "Vorteile EN"
+        },
+        {
+          "type": "image_picker",
+          "id": "photo",
+          "label": "Bild (optional)"
+        },
+        {
+          "type": "text",
+          "id": "photo_url",
+          "label": "Bild-URL als Alternative"
+        },
+        {
+          "type": "number",
+          "id": "photo_width",
+          "label": "Bildbreite"
+        },
+        {
+          "type": "number",
+          "id": "photo_height",
+          "label": "Bildhöhe"
+        },
+        {
+          "type": "product",
+          "id": "primary_product",
+          "label": "Produkt / Damenmodell"
+        },
+        {
+          "type": "product",
+          "id": "secondary_product",
+          "label": "Unisexmodell (optional)"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_zip_in",
+          "label": "Zip-in-Shell Hinweis (nur Trainingsjacke 2.0)",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "IQ Modellauswahl"
+    }
+  ]
+}
+{% endschema %}

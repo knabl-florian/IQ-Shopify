@@ -1,0 +1,27 @@
+{% doc %}
+  Renders the existing article content with contextual links to the IGP guides.
+  @param {string} content - Localized article body HTML.
+{% enddoc %}
+{%- if request.locale.iso_code == 'de' or request.locale.iso_code == 'en' -%}
+  {%- capture iq_related -%}
+    <div class="iq-igp-related">
+      <p>{{ 'iq_igp.related_html' | t }}</p>
+    </div>
+  {%- endcapture -%}
+  {%- assign iq_manufacturer_de = '<h2>Über den Hersteller</h2>' -%}
+  {%- assign iq_manufacturer_en = '<h2>About the manufacturer</h2>' -%}
+  {%- if content contains 'class="iq-igp-related"' -%}
+    {{- content -}}
+  {%- elsif content contains iq_manufacturer_de -%}
+    {%- assign iq_related_with_heading = iq_related | append: iq_manufacturer_de -%}
+    {{- content | replace_first: iq_manufacturer_de, iq_related_with_heading -}}
+  {%- elsif content contains iq_manufacturer_en -%}
+    {%- assign iq_related_with_heading = iq_related | append: iq_manufacturer_en -%}
+    {{- content | replace_first: iq_manufacturer_en, iq_related_with_heading -}}
+  {%- else -%}
+    {{- content -}}
+    {{- iq_related -}}
+  {%- endif -%}
+{%- else -%}
+  {{- content -}}
+{%- endif -%}

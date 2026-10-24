@@ -812,7 +812,9 @@
   {%- assign current_app_position = 24 -%}
 
   {%- for block in section.blocks -%}
-{%- if block.type == 'iq_editorial' and block.settings.only_collection.handle != collection.handle -%}{%- continue -%}{%- endif -%}
+{%- if block.type == 'iq_editorial' or block.settings.only_collection != blank -%}
+  {%- if block.settings.only_collection.handle != collection.handle -%}{%- continue -%}{%- endif -%}
+{%- endif -%}
 
     {%- if block.type == 'app_position' -%}
       {%- assign current_app_position = block.settings.position -%}
@@ -2391,6 +2393,7 @@ document.addEventListener('webkitfullscreenchange', function () {
       "type": "iq_release_9",
       "name": "IQ Inhalt 9",
       "settings": [
+        {"type":"collection","id":"only_collection","label":"Nur diese Collection (optional)"},
         {
           "type": "range",
           "id": "position",
@@ -2584,6 +2587,7 @@ document.addEventListener('webkitfullscreenchange', function () {
       "type": "iq_release_11",
       "name": "IQ Inhalt 11",
       "settings": [
+        {"type":"collection","id":"only_collection","label":"Nur diese Collection (optional)"},
         {
           "type": "range",
           "id": "position",
@@ -2703,6 +2707,7 @@ document.addEventListener('webkitfullscreenchange', function () {
       "type": "iq_release_12",
       "name": "IQ Inhalt 12",
       "settings": [
+        {"type":"collection","id":"only_collection","label":"Nur diese Collection (optional)"},
         {
           "type": "range",
           "id": "position",

@@ -104,7 +104,7 @@
       "custom_css": [
         ".collection-hero .page-width {max-width: none !important; width: 100% !important; padding-left: 0 !important; padding-right: 0 !important;}",
         ".collection-hero .collection-hero__text {justify-content: flex-end !important; text-align: center !important;}",
-        " /* Added by Hamza: improve responsive collection banner layout */.collection-hero .media,.collection-hero img {object-position: center center !important;}",
+        " .collection-hero .media,.collection-hero img {object-position: center center !important;}",
         ".collection-hero .collection-hero__inner {border-radius: 0 !important;}"
       ],
       "settings": {
@@ -433,7 +433,10 @@
         "part3"
       ],
       "name": "SEO akkordeon",
-      "settings": {}
+      "settings": {
+        "fit_advice_de": "<p><strong>Welche Hundesportweste passt Damen?</strong></p><p>Unsere Hundesportweste 3.0 und Sommerweste 3.0 sind Unisex-Modelle für Damen und Herren. Die Sommerweste fällt etwas kleiner aus als die reguläre Hundesportweste 3.0. Vergleiche deshalb die Größentabelle Deines Wunschmodells mit einer Weste, die Dir gut passt. Angegeben sind die Außenmaße der Weste, nicht Deine Körpermaße. Plane auch Platz für Kleidung darunter ein.</p><p><a href=\"/products/iq-hundesportweste-3-0-unisex\">Hundesportweste 3.0 – Modell und Größentabelle</a><br><a href=\"/products/iq-sommerweste-3-0-unisex\">Sommerweste 3.0 – Modell und Größentabelle</a></p>",
+        "fit_advice_en": "<p><strong>Which dog training vest fits women?</strong></p><p>Our Dog Sport Vest 3.0 and Summer Vest 3.0 are unisex styles for women and men. The Summer Vest has a slightly smaller fit than the regular Dog Sport Vest 3.0. Compare your chosen model’s size chart with a vest that fits you well. The chart shows the garment’s outer measurements, not your body measurements. Allow room for the layers you plan to wear underneath.</p><p><a href=\"/en/products/dog-sport-vest-3-0-patented-pocket-system\">Dog Sport Vest 3.0 – model and size chart</a><br><a href=\"/en/products/dog-sport-summer-vest-3-0-patented-pockets\">Summer Vest 3.0 – model and size chart</a></p>"
+      }
     }
   },
   "order": [

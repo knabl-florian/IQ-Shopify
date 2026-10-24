@@ -782,5 +782,10 @@
     "play": "Play video",
     "film_label": "IQ Performance Pro in action",
     "error": "Playback could not start automatically. Please use the video controls."
+  },
+  "iq_igp": {
+    "terms_heading": "Schutzhund, IPO, VPG and IGP: What is the difference?",
+    "terms_sentence": "Schutzhund and IPO commonly refer to the sport now known as IGP, which includes tracking, obedience and protection.",
+    "related_html": "Want to understand the sport in more detail? Our guide <a href=\"/en/pages/what-is-igp\">IGP and Schutzhund: tracking, obedience and protection</a> explains the three disciplines. For a closer look at the training, read <a href=\"/en/blogs/news/igp-protection-training\">IGP protection training</a>."
   }
 }

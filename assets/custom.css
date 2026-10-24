@@ -33,7 +33,7 @@ display: none !important;
 [data-form-root] shopify-forms-embed,
 shopify-forms-embed {
 --form-field-border-radius: 22px !important;
---button-border-radius: 22px !important;
+--button-border-radius: var(--buttons-radius, 9999px) !important;
 --container-border-radius: 40px !important;
 --forms-heading-font-size: 32px !important;
 --forms-heading-font: italic 800 32px Montserrat, sans-serif !important;
@@ -1060,3 +1060,10 @@ body.collection-template.iq-collection-standard #ProductsList .product-card .f-p
   text-transform: none !important;
   color: inherit !important;
 }
+.shopify-section :is(a,button)[class*="upsell-button-"]{border-radius:var(--buttons-radius,9999px)!important;}
+
+/* Shared action buttons in the contact and help cards. */
+.site-card__actions > .button{display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;max-width:100%;min-height:44px;padding:12px 24px;border:1px solid rgb(var(--color-button));border-radius:var(--buttons-radius,9999px);background:rgb(var(--color-button));color:rgb(var(--color-button-text));font:700 14px/1.4 Archivo,sans-serif;text-align:center;text-decoration:none;white-space:normal;overflow-wrap:anywhere}
+.site-card__actions > .button--secondary{background:transparent;color:#171717;border-color:#171717}
+.site-card__actions > .button:hover{background:#A51D1B;border-color:#A51D1B;color:#fff}
+.site-card__actions > .button:focus-visible{outline:2px solid #A51D1B;outline-offset:3px}

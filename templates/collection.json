@@ -472,12 +472,90 @@
             "body_en": "100% beef lung. Small treats for obedience, marker training and frequent rewards.",
             "alt_en": "IQ Pure Bites beef lung mini training treats"
           }
+        },
+        "iq_damen_mfj": {
+          "type": "iq_release_9",
+          "name": "Multi Blau Banner",
+          "settings": {
+            "position": 2,
+            "position_mobile": 2,
+            "width": "full",
+            "bild_1": "shopify://shop_images/mfj-blau-robust-mobil-klein.jpg",
+            "bild_2": "shopify://shop_images/mfj-blau-robust-desktop-klein.jpg",
+            "text_3": "IQ Multifunktionsjacke 3.0 Unisex Blau",
+            "text_4": "THE ORIGINAL SINCE 2011",
+            "text_5": "Built tough.",
+            "text_6": "Made to last.",
+            "text_7": "Our toughest dog training jacket: scratch-resistant Taslon with reinforced, sealed seams. Insulated and waterproof with a 20,000 mm waterproof rating.",
+            "text_8": "Scratch-resistant Taslon. Reinforced seams.",
+            "text_9": "Insulated. 20,000 mm waterproof rating.",
+            "text_10": "DAS ORIGINAL SEIT 2011",
+            "text_11": "Hart im Nehmen.",
+            "text_12": "Gemacht für Jahre.",
+            "text_13": "Unsere robusteste Hundesportjacke: kratzfestes Taslon, mehrfach verriegelte und versiegelte Nähte. Gefüttert und wasserdicht mit 20.000 mm Wassersäule.",
+            "text_14": "Kratzfestes Taslon. Verstärkte Nähte.",
+            "text_15": "Gefüttert. 20.000 mm Wassersäule.",
+            "only_collection": "hundesport-jacken-damen"
+          }
+        },
+        "iq_damen_training": {
+          "type": "iq_release_12",
+          "name": "Banner Trainingsjacke 2.0 Damen",
+          "settings": {
+            "position": 6,
+            "position_mobile": 4,
+            "width": "full",
+            "bild_1": "shopify://shop_images/iq-trainingsjacke-funktion-mobil-unten.jpg",
+            "bild_2": "shopify://shop_images/iq-trainingsjacke-funktion-desktop-quer.jpg",
+            "text_3": "IQ Trainingsjacke 2.0 mit Balltasche im Einsatz",
+            "text_4": "The training jacket 2.0",
+            "text_5": "Your vest’s features.",
+            "text_6": "Now in a jacket.",
+            "text_7": "Patented chest pocket.",
+            "text_8": "Optional: ball pocket, modular treat pocket & Zip-In.",
+            "text_9": "Patented chest pocket, compatible with the optional IQ ball pocket and modular treat pocket. Optional Zip-In for cold training days.",
+            "text_10": "Die Trainingsjacke 2.0",
+            "text_11": "Deine Weste kann das.",
+            "text_12": "Deine Jacke auch.",
+            "text_13": "Patentierte Brusttasche.",
+            "text_14": "Optional: Balltasche, modulare Futtertasche & Zip-In.",
+            "text_15": "Patentierte Brusttasche, kompatibel mit der optionalen IQ Balltasche und modularen Futtertasche. Optionales Zip-In für kalte Trainingstage.",
+            "only_collection": "hundesport-jacken-damen"
+          }
+        },
+        "iq_damen_allround": {
+          "type": "iq_release_11",
+          "name": "Banner Allround Jacke",
+          "settings": {
+            "position": 10,
+            "position_mobile": 10,
+            "width": "full",
+            "bild_1": "shopify://shop_images/iq-allround-funktion-mobil.jpg",
+            "bild_2": "shopify://shop_images/iq-allround-funktion-desktop.jpg",
+            "text_3": "IQ Allround-Jacke beim Training mit Hund",
+            "text_4": "THE ALLROUND JACKET",
+            "text_5": "Travel light.",
+            "text_6": "Bring the essentials.",
+            "text_7": "Lightweight rain jacket with a storm hood",
+            "text_8": "and removable treat pockets.",
+            "text_9": "Lightweight rain jacket with a large storm hood, removable treat pockets, clicker compartment and concealed waste-bag dispenser.",
+            "text_10": "DIE ALLROUND-JACKE",
+            "text_11": "Leicht unterwegs.",
+            "text_12": "Alles dabei.",
+            "text_13": "Leichte Regenjacke mit Sturmkapuze",
+            "text_14": "und herausnehmbaren Futtertaschen.",
+            "text_15": "Leichte Regenjacke mit großer Sturmkapuze, herausnehmbaren Futtertaschen, Clicker-Fach und verstecktem Kotbeutelspender.",
+            "only_collection": "hundesport-jacken-damen"
+          }
         }
       },
       "block_order": [
         "iq_training_harness",
         "iq_training_blind",
-        "iq_food_reward"
+        "iq_food_reward",
+        "iq_damen_mfj",
+        "iq_damen_training",
+        "iq_damen_allround"
       ],
       "custom_css": [
         "#ProductGridWrapper.show-toolbar {margin-block-start: 0 !important; margin-top: 0 !important;}"
@@ -766,7 +844,33 @@
       "settings": {
         "heading_de": "",
         "heading_en": ""
-      }
+      },
+      "blocks": {
+        "damen_fit": {
+          "type": "topic",
+          "settings": {
+            "only_collection": "hundesport-jacken-damen",
+            "heading_de": "Wie finde ich die passende Größe?",
+            "text_de": "<p>Vergleiche Deine Maße mit der Größentabelle des jeweiligen Modells und plane Platz für die Kleidung darunter ein. Du kennst bereits die MFJ Damen? Der Zip-off-Wintermantel fällt etwa eine halbe bis eine Größe großzügiger aus. Seine Ärmel sind bewusst lang und werden umgeschlagen getragen.</p>",
+            "heading_en": "How do I find the right size?",
+            "text_en": "<p>Compare your measurements with the size chart for your chosen model and allow room for layers underneath. Already familiar with the women’s MFJ? The Zip-Off Winter Coat fits around half to one size more generously. Its sleeves are intentionally long and designed to be worn folded back.</p>"
+          }
+        },
+        "damen_choice": {
+          "type": "topic",
+          "settings": {
+            "only_collection": "hundesport-jacken-damen",
+            "heading_de": "Damenjacke oder Unisexmodell?",
+            "text_de": "<p>Entscheidend sind die Maße und der Schnitt, in dem Du Dich gut bewegen kannst. Die MFJ Damen ist tailliert und an der Taille verstellbar. Viele IQ Jacken gibt es zusätzlich als Unisexmodell. Im <a href=\"/collections/hundesport-jacken#iq-jacken-vergleich\">Vergleich aller IQ Jacken</a> findest Du beide Schnitte und den Winterparka.</p>",
+            "heading_en": "Women’s or unisex fit?",
+            "text_en": "<p>Choose by the measurements and the fit that lets you move comfortably. The women’s MFJ has a shaped cut and an adjustable waist. Many IQ jackets also come in a unisex fit. The <a href=\"/en/collections/hundesport-jacken#iq-jacken-vergleich\">comparison of all IQ jackets</a> includes both fits and the Winter Parka.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "damen_fit",
+        "damen_choice"
+      ]
     },
     "iq_collection_hero_JeepWE": {
       "type": "iq-collection-hero",
@@ -823,9 +927,194 @@
         "poster_desktop_de": "shopify://shop_images/iq-performance-pro-desktop-de-titelbild_19918eeb-dac0-49ba-8792-2c7cc4fdff81.jpg",
         "poster_desktop_en": "shopify://shop_images/iq-performance-pro-desktop-en-titelbild.jpg"
       }
+    },
+    "iq_damen_hero": {
+      "type": "iq-collection-hero",
+      "custom_css": [
+        "@media (min-width: 750px) {.iqcb {max-height: 550px; } .iqcb .iqcb__image {object-position: center top; }}"
+      ],
+      "name": "IQ Collection Banner",
+      "settings": {
+        "only_collection": "hundesport-jacken-damen",
+        "require_collection": true,
+        "desktop_image": "shopify://shop_images/iq-jacken-hero-desktop.webp",
+        "mobile_image": "shopify://shop_images/iq-jacken-hero-mobil.webp",
+        "text_tone": "light",
+        "desktop_position": "top",
+        "show_mobile_label": false,
+        "focus_y": 30,
+        "title_de": "Hundesportjacken",
+        "accent_de": "für Damen.",
+        "description_de": "Mit Taschen für Deinen Hundealltag.",
+        "mobile_description_de": "Für Gassi und Training. Mit Taschen für Deinen Hundealltag.",
+        "label_de": "Für Gassi & Hundetraining",
+        "alt_de": "Frau in olivfarbener IQ Hundesportjacke beim Spielen mit ihrem Hund im Freien",
+        "title_en": "Dog training",
+        "accent_en": "jackets for women.",
+        "description_en": "Smart pockets for life with your dog.",
+        "mobile_description_en": "For walks and training. With pockets for life with your dog.",
+        "label_en": "For dog walks & training",
+        "alt_en": "Woman wearing an olive IQ dog training jacket while playing with her dog outdoors",
+        "mobile_position": "bottom",
+        "mobile_alignment": "center",
+        "mobile_tone": "light",
+        "heading_tag": "h1",
+        "button_de": "Jacken vergleichen",
+        "button_en": "Compare jackets",
+        "button_url": "#iq-jacken-vergleich"
+      }
+    },
+    "iq_damen_finder": {
+      "type": "iq-collection-finder",
+      "name": "Damenjacken auswählen",
+      "settings": {
+        "eyebrow_de": "Welche Damenjacke ist die richtige für Dich?",
+        "heading_de": "FÜR GASSI.\nFÜR DEIN TRAINING.",
+        "intro_de": "Warm gefüttert, leicht bei Regen oder mit durchdachten Trainingsfunktionen: Finde die passende Damenjacke für Dich und Deinen Hund.",
+        "extra_de": "Zusätzliche Wärme: Zip-in-Shell",
+        "eyebrow_en": "Which women’s jacket is right for you?",
+        "heading_en": "FOR DOG WALKS.\nFOR YOUR TRAINING.",
+        "intro_en": "Warmly padded, light in the rain or equipped for training: find the women’s jacket that suits life with your dog.",
+        "extra_en": "Extra warmth: Zip-in Shell",
+        "only_collection": "hundesport-jacken-damen"
+      },
+      "blocks": {
+        "coat": {
+          "type": "model",
+          "settings": {
+            "name_de": "Zip-off-Wintermantel Damen",
+            "tab_de": "Zip-off-Wintermantel",
+            "title_de": "Warm durch lange Gassirunden.",
+            "intro_de": "Für kalte Tage, an denen Du mit Deinem Hund lange draußen bist.",
+            "alt_de": "Frau im langen IQ Zip-off-Wintermantel beim Spaziergang mit ihrem Schäferhund",
+            "cta_de": "Wintermantel entdecken",
+            "benefits_de": "<ul><li>Sehr warm gefüttert</li><li>Langer Mantel oder kurzer Parka: Verlängerung abzippen</li><li>Robuster, kratzfester Stoff aus dem Jagdbereich; verstärkte Nähte an Belastungspunkten</li><li>Futtertaschen und separate, fleecegefütterte Handwärmfächer</li><li>XL-Rückentasche mit Reißverschlüssen – von beiden Seiten zugänglich</li><li>Kompatibel mit der <a href=\"https://iq-dogsport.de/products/iq-futtertasche-magdock\">IQ MagDock Futtertasche</a> als zusätzlichem Leckerlibeutel – separat erhältlich ab November</li></ul>",
+            "name_en": "Women’s Zip-Off Winter Coat",
+            "tab_en": "Zip-Off Winter Coat",
+            "title_en": "Stay warm on long dog walks.",
+            "intro_en": "For cold days when you and your dog spend a long time outside.",
+            "alt_en": "Woman wearing the long IQ Zip-Off Winter Coat while walking with her German Shepherd",
+            "cta_en": "Explore the winter coat",
+            "benefits_en": "<ul><li>Warm padding</li><li>Long coat or shorter parka: unzip the lower extension</li><li>Robust, scratch-resistant fabric from hunting apparel; reinforced stitching at stress points</li><li>Treat pockets and separate fleece-lined handwarmer compartments</li><li>XL back pocket with zips – accessible from both sides</li><li>Compatible with the <a href=\"https://iq-dogsport.de/en/products/iq-futtertasche-magdock\">IQ MagDock Treat Pouch</a> for extra treat storage – sold separately from November</li></ul>",
+            "photo_url": "https://cdn.shopify.com/s/files/1/0625/2806/1688/files/iq-jackenvergleich-wintermantel-2026-10-24.webp?v=1792797079",
+            "photo_width": 1080,
+            "photo_height": 1350,
+            "primary_product": "iq-zipp-off-wintermantel-damen",
+            "show_zip_in": false
+          }
+        },
+        "mfj": {
+          "type": "model",
+          "settings": {
+            "name_de": "Multifunktionsjacke 3.0",
+            "tab_de": "Multifunktionsjacke 3.0",
+            "title_de": "Das Original seit 2011.",
+            "intro_de": "Die IQ Kultjacke für Hundehalter: robustes Nylon Taslon, durchdachte Taschen und gefüttert für Deinen Alltag mit Hund.",
+            "alt_de": "Frau in schwarzer IQ Multifunktionsjacke mit Hund im Herbstwald",
+            "cta_de": "Multifunktionsjacke entdecken",
+            "benefits_de": "<ul><li>Robustes Nylon Taslon</li><li>Gefüttert und wasserdicht</li><li>Futtertaschen und große Rückentasche</li><li>Kompatibel mit der <a href=\"https://iq-dogsport.de/products/iq-modulare-futtertasche\">IQ modularen Futtertasche</a> – separat erhältlich</li></ul>",
+            "name_en": "Multifunctional Jacket 3.0",
+            "tab_en": "Multifunctional Jacket 3.0",
+            "title_en": "The original since 2011.",
+            "intro_en": "The signature IQ jacket for dog owners: robust nylon Taslon, practical pockets and a lining for everyday life with your dog.",
+            "alt_en": "Woman wearing a black IQ Multifunctional Jacket with her dog in an autumn woodland",
+            "cta_en": "Explore the multifunctional jacket",
+            "benefits_en": "<ul><li>Robust nylon Taslon</li><li>Lined and waterproof</li><li>Treat pockets and a large back pocket</li><li>Compatible with the <a href=\"https://iq-dogsport.de/en/products/iq-modulare-futtertasche\">IQ Modular Treat Pouch</a> – sold separately</li></ul>",
+            "photo_url": "https://cdn.shopify.com/s/files/1/0625/2806/1688/files/iq-jackenvergleich-mfj-2026-10-24.webp?v=1792797098",
+            "photo_width": 800,
+            "photo_height": 1000,
+            "primary_product": "iq-multifunktionsjacke-3-0-damen",
+            "secondary_product": "iq-multifunktionsjacke-3-0-unisex",
+            "show_zip_in": false
+          }
+        },
+        "training": {
+          "type": "model",
+          "settings": {
+            "name_de": "Trainingsjacke 2.0",
+            "tab_de": "Trainingsjacke 2.0",
+            "title_de": "Robuste Jacke. Smartes Training.",
+            "intro_de": "Belohnung dort, wo Du sie im Training brauchst: mit patentierter Brusttasche und optionaler Balltasche für Dein Spielzeug.",
+            "alt_de": "Mann in IQ Trainingsjacke 2.0 beim Fußlaufen mit Hund",
+            "cta_de": "Trainingsjacke entdecken",
+            "benefits_de": "<ul><li>Brusttasche: aus der Körpermitte belohnen – per Hand oder Zugsystem</li><li>Optionale Balltasche: Spielzeug verdeckt mitführen und per Zug freigeben</li><li>Ungefüttert, 20.000 mm Wassersäule und getapte Nähte; optionale Zip-in-Jacke für zusätzliche Wärme</li><li>Kompatibel mit der <a href=\"https://iq-dogsport.de/products/iq-modulare-futtertasche\">IQ modularen Futtertasche</a> – separat erhältlich</li></ul>",
+            "name_en": "Training Jacket 2.0",
+            "tab_en": "Training Jacket 2.0",
+            "title_en": "Tough jacket. Smart training.",
+            "intro_en": "Keep rewards where you need them in training: with a patented chest pocket and an optional ball pocket for your toy.",
+            "alt_en": "Man wearing an IQ Training Jacket 2.0 while heeling with his dog",
+            "cta_en": "Explore the Training Jacket",
+            "benefits_en": "<ul><li>Chest pocket: reward from the centre of your body, by hand or using the pull system</li><li>Optional ball pocket: keep a toy hidden and release it with a pull</li><li>Unlined, with a 20,000 mm water column and taped seams; add an optional zip-in jacket for warmth</li><li>Compatible with the <a href=\"https://iq-dogsport.de/en/products/iq-modulare-futtertasche\">IQ Modular Treat Pouch</a> – sold separately</li></ul>",
+            "photo_url": "https://cdn.shopify.com/s/files/1/0625/2806/1688/files/iq-jackenvergleich-training-2026-10-24.webp?v=1792797106",
+            "photo_width": 1200,
+            "photo_height": 1500,
+            "primary_product": "iq-trainingsjacke-2-0-damen",
+            "secondary_product": "iq-trainingsjacke-2-0-unisex",
+            "show_zip_in": true
+          }
+        },
+        "allround": {
+          "type": "model",
+          "settings": {
+            "name_de": "Allround-Jacke",
+            "tab_de": "Allround-Jacke",
+            "title_de": "Leicht eingepackt. Auch bei Regen.",
+            "intro_de": "Für Gassirunden und Training, wenn Du Regenschutz ohne Fütterung suchst.",
+            "alt_de": "Blaue IQ Allround-Jacke von hinten im Regen beim Hundetraining",
+            "cta_de": "Allround-Jacke entdecken",
+            "benefits_de": "<ul><li>Leicht und ungefüttert</li><li>Wasser- und winddicht</li><li>Herausnehmbare Futtertaschen und Rückentasche</li><li>Kompatibel mit der <a href=\"https://iq-dogsport.de/products/iq-modulare-futtertasche\">IQ modularen Futtertasche</a> – separat erhältlich</li></ul>",
+            "name_en": "Allround Jacket",
+            "tab_en": "Allround Jacket",
+            "title_en": "Light protection. Even in the rain.",
+            "intro_en": "For dog walks and training when you want rain protection without a lining.",
+            "alt_en": "Blue IQ Allround Jacket seen from behind in the rain during dog training",
+            "cta_en": "Explore the Allround Jacket",
+            "benefits_en": "<ul><li>Lightweight and unlined</li><li>Waterproof and windproof</li><li>Removable treat pockets and a back pocket</li><li>Compatible with the <a href=\"https://iq-dogsport.de/en/products/iq-modulare-futtertasche\">IQ Modular Treat Pouch</a> – sold separately</li></ul>",
+            "photo_url": "https://cdn.shopify.com/s/files/1/0625/2806/1688/files/iq-jackenvergleich-allround-2026-10-24.webp?v=1792797113",
+            "photo_width": 1200,
+            "photo_height": 1500,
+            "primary_product": "iq-allround-jacke-damen",
+            "secondary_product": "iq-allround-jacke-unisex",
+            "show_zip_in": false
+          }
+        },
+        "softshell": {
+          "type": "model",
+          "settings": {
+            "name_de": "Softshelljacke 2.0",
+            "tab_de": "Softshelljacke 2.0",
+            "title_de": "Für Wind und Übergangszeit.",
+            "intro_de": "Für Spaziergänge und Training, wenn Du Windschutz mit weicher Fleece-Innenseite suchst.",
+            "alt_de": "Frau in IQ Softshelljacke beim Training mit Hund",
+            "cta_de": "Softshelljacke entdecken",
+            "benefits_de": "<ul><li>Winddicht und wasserabweisend</li><li>Weiches Innenfleece</li><li>Rückentasche und beschichtete Futtertaschen</li><li>Kompatibel mit der <a href=\"https://iq-dogsport.de/products/iq-modulare-futtertasche\">IQ modularen Futtertasche</a> – separat erhältlich</li></ul>",
+            "name_en": "Softshell Jacket 2.0",
+            "tab_en": "Softshell Jacket 2.0",
+            "title_en": "For wind and changing seasons.",
+            "intro_en": "For walks and training when you want wind protection with a soft fleece inner side.",
+            "alt_en": "Woman wearing an IQ Softshell Jacket during dog training",
+            "cta_en": "Explore the Softshell Jacket",
+            "benefits_en": "<ul><li>Windproof and water-repellent</li><li>Soft fleece inner side</li><li>Back pocket and coated treat pockets</li><li>Compatible with the <a href=\"https://iq-dogsport.de/en/products/iq-modulare-futtertasche\">IQ Modular Treat Pouch</a> – sold separately</li></ul>",
+            "photo_url": "https://cdn.shopify.com/s/files/1/0625/2806/1688/files/iq-jackenvergleich-softshell-2026-10-24.webp?v=1792797122",
+            "photo_width": 1200,
+            "photo_height": 1500,
+            "primary_product": "iq-softshelljacke-2-0-damen",
+            "secondary_product": "iq-softshelljacke-2-0-unisex",
+            "show_zip_in": false
+          }
+        }
+      },
+      "block_order": [
+        "coat",
+        "mfj",
+        "training",
+        "allround",
+        "softshell"
+      ]
     }
   },
   "order": [
+    "iq_damen_hero",
     "iq_collection_hero_JeepWE",
     "iq_collection_hero_pQ6Nc6",
     "iq_collection_hero_Vc6pjz",
@@ -840,6 +1129,7 @@
     "custom_liquid_FpycJH",
     "breadcrumbs_Gxg9wp",
     "product-grid",
+    "iq_damen_finder",
     "iq_performance_video",
     "iq_training_details",
     "iq_food_details",
