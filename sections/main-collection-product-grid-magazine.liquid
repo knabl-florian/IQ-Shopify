@@ -1103,7 +1103,9 @@ grid.addEventListener('scroll', function(event) {
         if (!block) return;
 
         var insertAfter = lastInsertedByIndex[targetIndex] || targetProduct;
-        insertAfter.insertAdjacentElement('afterend', block);
+        if (insertAfter.nextElementSibling !== block) {
+          insertAfter.insertAdjacentElement('afterend', block);
+        }
         lastInsertedByIndex[targetIndex] = block;
 
         if (!existingBlock && block.innerHTML.indexOf('jdgm') !== -1 && window.jdgm && window.jdgm.initializeWidgets) {
@@ -1120,7 +1122,13 @@ grid.addEventListener('scroll', function(event) {
 
     document.addEventListener('DOMContentLoaded', placeCollectionInlineBlocks);
     document.addEventListener('shopify:section:load', placeCollectionInlineBlocks);
-    window.addEventListener('resize', schedulePlacement);
+    // Mobile browser chrome changes height while scrolling. Reposition only at a width change.
+    var lastViewportWidth = window.innerWidth;
+    window.addEventListener('resize', function () {
+      if (window.innerWidth === lastViewportWidth) return;
+      lastViewportWidth = window.innerWidth;
+      schedulePlacement();
+    });
 
     var container = document.getElementById('ProductGridContainer');
 

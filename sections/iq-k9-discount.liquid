@@ -4,9 +4,7 @@
  if request.locale.iso_code == 'en'
   assign suffix = '_en'
  endif
- assign thanks_key = 'thanks' | append: suffix
  assign heading_key = 'heading' | append: suffix
- assign body_key = 'body' | append: suffix
  assign terms_key = 'terms' | append: suffix
  assign button_key = 'button' | append: suffix
  assign note_key = 'note' | append: suffix
@@ -15,15 +13,24 @@
   assign contact = routes.root_url | append: '/pages/contact' | replace: '//', '/'
  endif
 %}
-<div class="iq-k9-offer-wrap"><section class="iq-k9-offer" aria-labelledby="iq-k9-title-{{ section.id }}">
-<div class="iq-k9-offer__amount"><span>{{ section.settings.amount | escape }}</span><small>{% if request.locale.iso_code == 'en' %}Handler discount{% else %}Diensthundeführer-Rabatt{% endif %}</small></div>
-<div class="iq-k9-offer__copy"><p class="iq-k9-offer__thanks">{{ section.settings[thanks_key] | escape }}</p><h2 id="iq-k9-title-{{ section.id }}">{{ section.settings[heading_key] | escape }}</h2><p>{{ section.settings[body_key] | escape }}</p></div>
-<div class="iq-k9-offer__action"><a href="{{ contact }}">{{ section.settings[button_key] | escape }} <span aria-hidden="true">→</span></a><p>{{ section.settings[note_key] | escape }}</p></div>
-<p class="iq-k9-offer__terms">{{ section.settings[terms_key] | escape }}</p>
-</section></div>
+<section class="iq-k9-discount-line" aria-labelledby="iq-k9-title-{{ section.id }}">
+  <div class="iq-k9-discount-line__copy">
+    <p class="iq-k9-discount-line__title" id="iq-k9-title-{{ section.id }}">{{ section.settings.amount | escape }} {{ section.settings[heading_key] | escape }}</p>
+    <p class="iq-k9-discount-line__terms">{{ section.settings[terms_key] | escape }}</p>
+  </div>
+  <details class="iq-k9-discount-line__details">
+    <summary>{{ section.settings[button_key] | escape }} <span aria-hidden="true">→</span></summary>
+    <p>{{ section.settings[note_key] | escape }}</p>
+    <a href="{{ contact }}">{% if request.locale.iso_code == 'en' %}Request discount{% else %}Rabatt anfragen{% endif %} <span aria-hidden="true">→</span></a>
+  </details>
+</section>
 {% endif %}
 {% stylesheet %}
-.iq-k9-offer-wrap{box-sizing:border-box;max-width:1440px;padding:24px 50px;margin:0 auto}.iq-k9-offer,.iq-k9-offer *{box-sizing:border-box}.iq-k9-offer{display:grid;grid-template-columns:160px minmax(0,1fr) 210px;align-items:center;gap:24px 32px;padding:28px 32px;background:#F3F3F1;border-top:2px solid #A51D1B;color:#171717;font:400 16px/1.5 Archivo,sans-serif;text-align:left}.iq-k9-offer__amount>span{font:400 58px/1 Archivo,sans-serif;color:#A51D1B;white-space:nowrap;letter-spacing:-.025em}.iq-k9-offer__amount small{display:block;font:700 12px/1.5 Archivo,sans-serif;margin-top:10px}.iq-k9-offer p{margin:0}.iq-k9-offer .iq-k9-offer__thanks{color:#A51D1B;font:700 14px/1.5 Archivo,sans-serif;margin-bottom:8px}.iq-k9-offer h2{font:700 25px/1.2 Archivo,sans-serif;margin:0 0 10px;letter-spacing:0;text-transform:none;color:#171717}.iq-k9-offer__action a{display:flex;justify-content:center;align-items:center;gap:10px;background:#171717;color:#fff;min-height:48px;padding:12px 18px;font:700 15px/1.4 Archivo,sans-serif;text-decoration:none}.iq-k9-offer__action a:hover{background:#A51D1B}.iq-k9-offer__action a:focus-visible{outline:3px solid #A51D1B;outline-offset:4px}.iq-k9-offer__action p{margin-top:10px;font-size:13px}.iq-k9-offer .iq-k9-offer__terms{grid-column:2/4;font-size:13px;margin-top:-8px}@media(min-width:750px) and (max-width:1050px){.iq-k9-offer{grid-template-columns:130px minmax(0,1fr);gap:24px}.iq-k9-offer__action{grid-column:2}.iq-k9-offer .iq-k9-offer__terms{grid-column:2;margin:0}}@media(max-width:749px){.iq-k9-offer-wrap{padding:20px}.iq-k9-offer{grid-template-columns:minmax(0,1fr);padding:24px;gap:20px}.iq-k9-offer__amount>span{font-size:48px}.iq-k9-offer h2{font-size:23px}.iq-k9-offer__copy>p{font-size:15px}.iq-k9-offer .iq-k9-offer__terms{grid-column:1;margin:0}.iq-k9-offer__action{grid-row:4}}
+.iq-k9-discount-line,.iq-k9-discount-line *{box-sizing:border-box}
+.iq-k9-discount-line{display:flex;align-items:flex-start;justify-content:space-between;gap:12px 28px;max-width:1440px;margin:0 auto;padding:18px 50px;border-bottom:1px solid #DCDBD7;background:#FFFFFF;color:#171717;font:400 14px/1.45 Archivo,sans-serif}
+.iq-k9-discount-line p{margin:0}.iq-k9-discount-line__title{font:700 16px/1.4 Archivo,sans-serif;margin-bottom:4px!important}.iq-k9-discount-line__terms{font-size:13px}
+.iq-k9-discount-line__details{flex:0 0 auto;max-width:340px}.iq-k9-discount-line__details summary{display:flex;align-items:center;gap:8px;min-height:44px;color:#A51D1B;font-weight:700;cursor:pointer;list-style:none}.iq-k9-discount-line__details summary::-webkit-details-marker{display:none}.iq-k9-discount-line__details[open] summary span{transform:rotate(90deg)}.iq-k9-discount-line__details p{margin:4px 0 8px}.iq-k9-discount-line__details a{display:inline-flex;align-items:center;min-height:44px;color:#A51D1B;text-decoration:underline;text-underline-offset:3px;font-weight:700}.iq-k9-discount-line summary:focus-visible,.iq-k9-discount-line a:focus-visible{outline:2px solid #A51D1B;outline-offset:3px}
+@media(max-width:749px){.iq-k9-discount-line{display:block;padding:14px 18px 8px}.iq-k9-discount-line__title{font-size:15px}.iq-k9-discount-line__details{max-width:none}.iq-k9-discount-line__details summary{font-size:14px}}
 {% endstylesheet %}
 {% schema %}
 {
@@ -58,7 +65,7 @@
       "type": "text",
       "id": "heading_de",
       "label": "heading DE",
-      "default": "Für Deinen privaten Kauf."
+      "default": "Diensthundeführer-Rabatt auf IQ Produkte"
     },
     {
       "type": "textarea",
@@ -76,7 +83,7 @@
       "type": "text",
       "id": "button_de",
       "label": "button DE",
-      "default": "Rabatt anfragen"
+      "default": "Voraussetzungen & Anfrage"
     },
     {
       "type": "textarea",
@@ -98,7 +105,7 @@
       "type": "text",
       "id": "heading_en",
       "label": "heading EN",
-      "default": "For your personal purchase."
+      "default": "service dog handler discount on IQ products"
     },
     {
       "type": "textarea",
@@ -116,7 +123,7 @@
       "type": "text",
       "id": "button_en",
       "label": "button EN",
-      "default": "Request your discount"
+      "default": "Eligibility & request"
     },
     {
       "type": "textarea",

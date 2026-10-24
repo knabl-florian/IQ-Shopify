@@ -47,6 +47,7 @@
       "blocks": {
         "link_0": {
           "type": "link",
+          "disabled": true,
           "settings": {
             "label_de": "Training",
             "label_en": "Training",
@@ -57,6 +58,7 @@
         },
         "link_1": {
           "type": "link",
+          "disabled": true,
           "settings": {
             "label_de": "Dienst",
             "label_en": "K9 duty",
@@ -104,7 +106,7 @@
       "custom_css": [
         ".collection-hero .page-width {max-width: none !important; width: 100% !important; padding-left: 0 !important; padding-right: 0 !important;}",
         ".collection-hero .collection-hero__text {justify-content: flex-end !important; text-align: center !important;}",
-        " .collection-hero .media,.collection-hero img {object-position: center center !important;}",
+        ".collection-hero .media,.collection-hero img {object-position: center center !important;}",
         ".collection-hero .collection-hero__inner {border-radius: 0 !important;}"
       ],
       "settings": {
@@ -148,9 +150,20 @@
     "product-grid": {
       "type": "main-collection-product-grid-magazine",
       "blocks": {
+        "iq_feature_video": {
+          "type": "inline_custom_liquid",
+          "name": "Weste – Funktionsvideo",
+          "settings": {
+            "position": 2,
+            "position_mobile": 2,
+            "width": "full",
+            "custom_liquid": "{% if request.locale.iso_code == 'en' %}{% assign heading = 'THE VEST FOR SMART TRAINING.' %}{% assign note = 'IQ ball pouch sold separately.' %}{% assign video_label = 'Watch the IQ vest in training – with music' %}{% capture benefits %}<ul><li><strong>Built tough</strong> for everyday training.</li><li><strong>Optional ball pouch:</strong> concealed rewards during heelwork.</li><li><strong>Patented chest pocket:</strong> reward from the centre of your body for the front sit.</li></ul>{% endcapture %}{% else %}{% assign heading = 'DIE WESTE FÜR SMARTES TRAINING.' %}{% assign note = 'IQ Balltasche separat erhältlich.' %}{% assign video_label = 'IQ Weste im Training ansehen – mit Musik' %}{% capture benefits %}<ul><li><strong>Robust verarbeitet</strong> für Deinen Trainingsalltag.</li><li><strong>Optionale Balltasche:</strong> verdeckt belohnen beim Fußlaufen.</li><li><strong>Patentierte Brusttasche:</strong> aus der Körpermitte bestätigen – für den Vorsitz.</li></ul>{% endcapture %}{% endif %}{% render 'iq-collection-feature-video', anchor: 'iq-westen-video', video_url: 'https://cdn.shopify.com/videos/c/vp/fe590e76de4648bd8054ae33ee18b570/fe590e76de4648bd8054ae33ee18b570.HD-720p-1.6Mbps-98753043.mp4', heading: heading, benefits: benefits, note: note, video_label: video_label, poster: 'https://cdn.shopify.com/s/files/1/0625/2806/1688/files/westen-funktionen-sport-poster.jpg?v=1792851259' %}"
+          }
+        },
         "inline_custom_liquid_iADfJP": {
           "type": "iq_release_17",
           "name": "brusttasche",
+          "disabled": true,
           "settings": {
             "position": 2,
             "position_mobile": 2,
@@ -186,8 +199,8 @@
             "text_7": "YOUR REWARD.",
             "text_8": "DEIN TIMING.",
             "text_9": "DEINE BELOHNUNG.",
-            "text_10": "With the optional IQ Ball Pocket, you can reward your dog right at heel. Release the ball using the pull cord – without reaching for the pocket first.",
-            "text_11": "Mit der optionalen IQ Balltasche belohnst Du Deinen Hund direkt in der Fußposition. Über das Zugsystem gibst Du den Ball frei – ohne vorher mit der Hand zur Tasche zu greifen.",
+            "text_10": "With the IQ Ball Pocket, you can reward your dog right at heel. Release the ball using the pull cord – without reaching for the pocket first.",
+            "text_11": "Mit der IQ Balltasche belohnst Du Deinen Hund direkt in der Fußposition. Über das Zugsystem gibst Du den Ball frei – ohne vorher mit der Hand zur Tasche zu greifen.",
             "text_12": "Discover the Ball Pocket",
             "text_13": "Balltasche entdecken"
           }
@@ -195,6 +208,7 @@
         "inline_custom_liquid_maU4K3": {
           "type": "iq_release_19",
           "name": "Sommerweste",
+          "disabled": true,
           "settings": {
             "position": 4,
             "position_mobile": 4,
@@ -239,6 +253,7 @@
         }
       },
       "block_order": [
+        "iq_feature_video",
         "inline_custom_liquid_iADfJP",
         "inline_custom_liquid_Dnz3Df",
         "inline_custom_liquid_maU4K3",
@@ -247,6 +262,9 @@
       ],
       "custom_css": [],
       "settings": {
+        "priority_products": [],
+        "use_section_column_settings": false,
+        "defer_product_images": false,
         "collection_card_titles": true,
         "iq_jv_enabled": false,
         "iq_jv_products": [],

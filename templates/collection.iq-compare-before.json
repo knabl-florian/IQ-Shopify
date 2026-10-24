@@ -96,7 +96,8 @@
             "target": "",
             "arrow": false,
             "product": "iq-multifunktionsjacke-3-0-unisex"
-          }
+          },
+          "disabled": true
         },
         "training": {
           "type": "link",
@@ -106,7 +107,8 @@
             "target": "",
             "arrow": false,
             "product": "iq-trainingsjacke-2-0-unisex"
-          }
+          },
+          "disabled": true
         },
         "allround": {
           "type": "link",
@@ -116,7 +118,8 @@
             "target": "",
             "arrow": false,
             "product": "iq-allround-jacke-unisex"
-          }
+          },
+          "disabled": true
         },
         "dienst": {
           "type": "link",
@@ -126,7 +129,8 @@
             "target": "",
             "arrow": false,
             "product": "iq-multifunktionsjacke-k9-pro-damen-schwarz"
-          }
+          },
+          "disabled": true
         },
         "vergleich": {
           "type": "link",

@@ -66,6 +66,9 @@
       if request.page_type == 'collection'
         assign iq_collection_standard = true
         echo 'iq-collection-system.css' | asset_url | stylesheet_tag
+        if template.suffix == 'jacken'
+          echo 'iq-collection-finder.css' | asset_url | stylesheet_tag
+        endif
       endif
 
       if enable_rtl
@@ -74,7 +77,7 @@
     -%}
 
     <style>
-      [data-initializing] #MainContent .shopify-section + .shopify-section ~ .shopify-section {
+      body.collection-template[data-initializing] #MainContent .shopify-section {
         content-visibility: visible;
       }
     </style>

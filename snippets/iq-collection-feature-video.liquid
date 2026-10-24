@@ -1,0 +1,16 @@
+{% comment %}Reusable portrait feature video. Text is supplied by the collection block.{% endcomment %}
+<div class="iq-feature-video" id="{{ anchor | escape }}">
+  <video controls playsinline preload="none" width="720" height="1280" poster="{{ poster | escape }}" aria-label="{{ video_label | escape }}">
+    <source src="{{ video_url | escape }}" type="video/mp4">
+  </video>
+  <div class="iq-feature-video__copy"><h2>{{ heading | escape }}</h2>{{ benefits }}<p class="iq-feature-video__note">{{ note | escape }}</p></div>
+</div>
+<style>
+.iq-feature-video{scroll-margin-top:120px;display:grid;grid-template-columns:minmax(0,1fr);align-items:center;gap:22px;padding:24px;background:#F3F3F1;color:#171717;font-family:Archivo,sans-serif}
+.iq-feature-video video{display:block;width:100%;max-width:270px;height:auto;aspect-ratio:9/16;object-fit:contain;justify-self:center}
+.iq-feature-video__copy h2{font-family:Montserrat,sans-serif;font-style:italic;font-weight:800;font-size:clamp(24px,3vw,38px);line-height:1.12;margin:0 0 20px;text-transform:uppercase}
+.iq-feature-video__copy ul{padding-left:20px;margin:0;line-height:1.5;font-size:16px}
+.iq-feature-video__copy li+li{margin-top:12px}
+.iq-feature-video__note{font-size:13px;margin:18px 0 0}
+@media(min-width:750px){.iq-feature-video{grid-template-columns:270px minmax(0,540px);justify-content:center;gap:clamp(28px,5vw,70px);padding:32px}}
+</style>
