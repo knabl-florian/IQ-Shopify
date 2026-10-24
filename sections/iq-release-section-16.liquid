@@ -20,6 +20,7 @@
 .iq-insider .iq-insider__form-area{min-width:0;margin:0;padding:0;background:transparent;color:#171717;border:0;border-radius:0;box-shadow:none}
 .iq-insider .iq-insider__form-area .iq-insider__eyebrow{color:#A51D1B}
 .iq-insider .iq-insider__offer{margin:0 0 20px;color:#171717;font:700 24px/1.2 Archivo,Arial,sans-serif;text-transform:none;letter-spacing:0}
+.iq-insider .iq-insider__note{margin:-12px 0 20px;font-size:14px;line-height:1.5;color:#52524F}
 .iq-insider .iq-insider__form{width:100%;margin:0}
 .iq-insider .iq-insider__form-row{display:grid;gap:12px}
 .iq-insider .iq-insider__label{display:block;margin:0 0 8px;color:#171717;font-size:13.5px;line-height:1.4}
@@ -68,6 +69,14 @@
     <div class="iq-insider__form-area">
       <p class="iq-insider__eyebrow">{% if iq_en %}{{ iq_part_2.settings.text_22 | escape }}{% else %}{{ iq_part_2.settings.text_23 | escape }}{% endif %}</p>
       <h3 class="iq-insider__offer">{% if iq_en %}{{ iq_part_2.settings.text_24 | escape }}{% else %}{{ iq_part_2.settings.text_25 | escape }}{% endif %}</h3>
+      {%- liquid
+        if iq_en
+          assign iq_note = iq_part_2.settings.text_36 | default: 'On your first order. Valid on IQ products, excluding new arrivals.'
+        else
+          assign iq_note = iq_part_2.settings.text_37 | default: 'Auf Deine erste Bestellung. Gültig für IQ Produkte, ausgenommen Neuheiten.'
+        endif
+      -%}
+      <p class="iq-insider__note">{{ iq_note | escape }}</p>
       {% assign iq_form_id = 'IQInsiderForm-' | append: section.id %}
       {% form 'customer', id: iq_form_id, class: 'iq-insider__form' %}
         <input type="hidden" name="contact[tags]" value="newsletter,homepage">
@@ -306,6 +315,16 @@
           "type": "textarea",
           "id": "text_35",
           "label": "Linktext: Datenschutzbestimmungen"
+        },
+        {
+          "type": "textarea",
+          "id": "text_36",
+          "label": "Hinweis EN (unter 10% zum Start)"
+        },
+        {
+          "type": "textarea",
+          "id": "text_37",
+          "label": "Hinweis DE (unter 10 % zum Start)"
         }
       ]
     }
