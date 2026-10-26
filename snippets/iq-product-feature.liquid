@@ -1,0 +1,37 @@
+{% doc %}
+  Renders an editable product explanation with an action photograph.
+  @param {block} block - Product feature block.
+{% enddoc %}
+{% liquid
+  assign s = block.settings
+  assign heading = s.heading_de
+  assign eyebrow = s.eyebrow_de
+  assign body = s.body_de
+  assign alt = s.alt_de
+  assign label = s.link_label_de
+  if request.locale.iso_code == 'en'
+    assign heading = s.heading_en | default: heading
+    assign eyebrow = s.eyebrow_en | default: eyebrow
+    assign body = s.body_en | default: body
+    assign alt = s.alt_en | default: alt
+    assign label = s.link_label_en | default: label
+  endif
+  assign mobile = s.mobile_image | default: s.image
+%}
+<section class="iq-product-feature{% if s.copy_left %} iq-product-feature--copy-left{% endif %}{% if s.detail_image != blank %} iq-product-feature--detail{% endif %}" aria-labelledby="IQFeature-{{ block.id }}">
+  <picture class="iq-product-feature__photo">
+    <source media="(max-width:749px)" srcset="{{ mobile | image_url: width: 800 }}" width="{{ mobile.width }}" height="{{ mobile.height }}">
+    {{ s.image | image_url: width: 1200 | image_tag: widths: '400,600,800,1200', sizes: '(min-width:750px) 50vw, 100vw', loading: 'lazy', alt: alt }}
+  </picture>
+  <div class="iq-product-feature__copy">
+    {% if eyebrow != blank %}<p class="iq-product-feature__eyebrow">{{ eyebrow | escape }}</p>{% endif %}
+    <h2 id="IQFeature-{{ block.id }}">{{ heading | escape }}</h2>
+    {% if s.detail_image != blank %}
+      <div class="iq-product-feature__detail{% if s.detail_crop %} iq-product-feature__detail--crop{% endif %}">
+        {{ s.detail_image | image_url: width: 600 | image_tag: loading: 'lazy', alt: s.detail_image.alt }}
+      </div>
+    {% endif %}
+    <div class="iq-product-feature__body rte">{{ body }}</div>
+    {% if s.product != blank and label != blank %}<a class="iq-product-feature__link" href="{{ s.product.url }}">{{ label | escape }} <span aria-hidden="true">→</span></a>{% endif %}
+  </div>
+</section>

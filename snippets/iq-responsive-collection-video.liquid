@@ -1,0 +1,66 @@
+{%- if settings.only_collection != blank and settings.only_collection.id == collection.id -%}
+{%- liquid
+  assign language = request.locale.iso_code | slice: 0, 2
+  assign button_url = settings.button_url
+  assign first_char = button_url | slice: 0
+  assign locale_prefix = routes.root_url | append: '/'
+  unless routes.root_url == '/' or button_url contains locale_prefix
+    if first_char == '/'
+      assign button_url = routes.root_url | append: button_url
+    endif
+  endunless
+  assign desktop_video = settings.video_desktop_en
+  assign mobile_video = settings.video_mobile_en
+  assign desktop_poster = settings.poster_desktop_en
+  assign mobile_poster = settings.poster_mobile_en
+  assign eyebrow = settings.eyebrow_en
+  assign heading = settings.heading_en
+  assign intro = settings.intro_en
+  assign benefits = settings.benefits_en
+  assign button_label = settings.button_en
+  if language == 'de'
+    assign desktop_video = settings.video_desktop_de
+    assign mobile_video = settings.video_mobile_de
+    assign desktop_poster = settings.poster_desktop_de
+    assign mobile_poster = settings.poster_mobile_de
+    assign eyebrow = settings.eyebrow_de
+    assign heading = settings.heading_de
+    assign intro = settings.intro_de
+    assign benefits = settings.benefits_de
+    assign button_label = settings.button_de
+  endif
+  assign desktop_video = desktop_video | default: settings.video_desktop_de
+  assign mobile_video = mobile_video | default: desktop_video
+  assign desktop_video = desktop_video | default: mobile_video
+  assign desktop_poster = desktop_poster | default: desktop_video.preview_image
+  assign mobile_poster = mobile_poster | default: mobile_video.preview_image | default: desktop_poster
+-%}
+{%- if desktop_video != blank -%}
+{%- capture mobile_sources -%}[{%- for source in mobile_video.sources -%}{"url":{{ source.url | json }},"mime_type":{{ source.mime_type | json }},"width":{{ source.width | json }}}{% unless forloop.last %},{% endunless %}{%- endfor -%}]{%- endcapture -%}
+{%- capture desktop_sources -%}[{%- for source in desktop_video.sources -%}{"url":{{ source.url | json }},"mime_type":{{ source.mime_type | json }},"width":{{ source.width | json }}}{% unless forloop.last %},{% endunless %}{%- endfor -%}]{%- endcapture -%}
+<section class="iq-collection-video iq-collection-container iq-collection-video--{{ settings.mobile_ratio }}" aria-labelledby="IQVideoHeading-{{ video_id }}">
+  <iq-collection-video class="iq-collection-video__player" data-mobile-sources="{{ mobile_sources | escape }}" data-desktop-sources="{{ desktop_sources | escape }}">
+    <div class="iq-collection-video__frame">
+      {%- if desktop_poster != blank -%}
+      <picture class="iq-collection-video__poster">
+        {%- if mobile_poster != blank -%}<source media="(max-width:749px)" srcset="{{ mobile_poster | image_url: width: 750 }}">{%- endif -%}
+        {{ desktop_poster | image_url: width: 1440 | image_tag: widths: '480,750,1000,1440', sizes: '(min-width:750px) 55vw, 100vw', alt: eyebrow, loading: 'lazy' }}
+      </picture>
+      {%- endif -%}
+      <video class="iq-collection-video__film" playsinline controls preload="none" tabindex="-1" aria-label="{{ 'iq_video.film_label' | t | escape }}" hidden></video>
+      <button class="iq-collection-video__play" type="button"><span aria-hidden="true">▶</span> {{ 'iq_video.play' | t }}</button>
+      <noscript><a class="iq-collection-video__direct" href="{{ desktop_video.sources.first.url }}">{{ 'iq_video.play' | t }}</a></noscript>
+    </div>
+    <p class="iq-collection-video__error" role="status" hidden>{{ 'iq_video.error' | t }}</p>
+  </iq-collection-video>
+  <div class="iq-collection-video__copy">
+    {% if eyebrow != blank %}<p class="iq-collection-video__eyebrow">{{ eyebrow | escape }}</p>{% endif %}
+    <h2 id="IQVideoHeading-{{ video_id }}">{{ heading | escape }}</h2>
+    <div class="iq-collection-video__intro rte">{{ intro }}</div>
+    <div class="iq-collection-video__benefits rte">{{ benefits }}</div>
+    {%- if settings.button_url != blank and button_label != blank -%}<a class="iq-collection-video__link" href="{{ button_url }}">{{ button_label | escape }}</a>{%- endif -%}
+  </div>
+</section>
+{%- elsif request.design_mode -%}<p class="iq-collection-container">Bitte Desktop- und Mobilvideos für DE und EN auswählen.</p>{%- endif -%}
+{%- endif -%}
+

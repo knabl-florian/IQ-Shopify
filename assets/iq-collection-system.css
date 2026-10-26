@@ -447,3 +447,52 @@ body.collection-template layout-switcher{display:none!important}
     white-space: nowrap;
   }
 }
+
+/* Collection cards: keep the buying information together, independent of swatches. */
+body.collection-template.iq-collection-standard #ProductsList .product-card .product-card__info {
+  justify-content: flex-start !important;
+}
+body.collection-template.iq-collection-standard #ProductsList .product-card .product-card__title {
+  min-height: 0;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+body.collection-template.iq-collection-standard #ProductsList .product-card .product-card__swatches {
+  order: 10;
+  margin: 4px 0 0;
+  justify-content: center;
+}
+body.collection-template.iq-collection-standard #ProductsList .product-card__swatch-placeholder {
+  display: none !important;
+}
+body.collection-template.iq-collection-standard .iq-group-filters,
+body.collection-template.iq-collection-standard .iq-collection-knowledge,
+body.collection-template.iq-collection-standard .iq-k9-discount-line {
+  border: 0;
+}
+
+@media (max-width: 480px) {
+  body.collection-template.iq-collection-standard #ProductsList .product-card .product-card__title { min-height: 0; }
+}
+
+
+/* Optional shared filter toolbar: fixed filter pill and scrolling native groups. */
+.collection__toolbar.iq-toolbar--groups{display:flex;flex-wrap:wrap;gap:12px;padding-block:16px;min-width:0;max-width:100%}
+.iq-toolbar--groups>.facet-drawer-wrapper{flex:0 0 auto}
+.iq-toolbar--groups .facet-drawer-button{min-height:44px;padding:10px 14px;border:1px solid #DCDBD7;border-radius:999px;background:#FFFFFF;color:#171717;font:700 14px/1.4 Archivo,sans-serif;text-transform:none;box-shadow:none}
+.iq-toolbar--groups #IQCollectionGroupFilters{flex:1 1 0;min-width:0;width:auto;padding-top:0}
+.iq-toolbar--groups #IQCollectionGroupFilters .iq-group-filters{flex-wrap:nowrap;overflow-x:auto;align-items:center;margin:0;padding:3px;border:0;scrollbar-width:thin}
+.iq-toolbar--groups .iq-group-filters__option{flex:0 0 auto;white-space:nowrap;border-radius:999px}
+.iq-toolbar--groups .facet-drawer-button:hover{border-color:#171717}
+@media(max-width:749px){.collection__toolbar.iq-toolbar--groups{flex-wrap:nowrap;gap:8px}.iq-toolbar--groups>layout-switcher{display:none}}
+
+/* Portrait action photos retain the full subject on wide screens. */
+@media(min-width:750px){
+.iq-editorial-banner--action{background:#FFFFFF;color:#171717}
+.iq-editorial-banner--action picture{left:48%}
+.iq-editorial-banner--action img{object-fit:contain}
+.iq-editorial-banner--action::after{display:none}
+.iq-editorial-banner--action .iq-editorial-banner__copy{width:40%;top:50%;bottom:auto;transform:translateY(-50%)}
+}
+
+@media(max-width:749px){.iq-editorial-banner--action{height:auto;aspect-ratio:1;color:#171717}.iq-editorial-banner--action::after{display:none}.iq-editorial-banner--action .iq-editorial-banner__copy{top:5%;bottom:auto;left:5%;right:auto;width:58%}.iq-editorial-banner--action h2{font-size:clamp(20px,5.6vw,28px);line-height:1.08;margin:0}.iq-editorial-banner--action .iq-editorial-banner__label{font-size:10px;margin-bottom:8px}.iq-editorial-banner--action .iq-editorial-banner__copy>p:last-child{display:none}}

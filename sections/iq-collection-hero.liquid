@@ -22,6 +22,14 @@
 -%}
 {%- if section.settings.only_collection.handle == collection.handle or section.settings.only_collection == blank and section.settings.require_collection != true -%}
 {%- if desktop != blank -%}
+<style>
+#shopify-section-{{ section.id }}{content-visibility:visible;min-height:min(31.25vw,550px)}
+.iqcb{position:relative;width:100%;aspect-ratio:16/5;max-height:550px;overflow:hidden}
+.iqcb .iqcb__picture{display:block;position:absolute;inset:0;margin:0}
+.iqcb .iqcb__image{display:block;width:100%;height:100%;object-fit:cover}
+.iqcb .iqcb__copy{position:absolute}
+@media(max-width:749px){#shopify-section-{{ section.id }}{min-height:125vw}.iqcb{aspect-ratio:4/5;max-height:none}}
+</style>
 <div class="iqcb" data-iq-collection-hero data-tone="{{ section.settings.text_tone }}" data-position="{{ section.settings.desktop_position }}" data-mobile-position="{{ section.settings.mobile_position }}" data-mobile-tone="{{ section.settings.mobile_tone }}" data-mobile-align="{{ section.settings.mobile_alignment }}" style="--iqcb-focus:{{ section.settings.focus_y }}%;">
   <picture class="iqcb__picture">
     <source media="(max-width:749px)" srcset="{{ mobile | image_url: width: 400 }} 400w, {{ mobile | image_url: width: 750 }} 750w, {{ mobile | image_url: width: 800 }} 800w, {{ mobile | image_url: width: 1000 }} 1000w, {{ mobile | image_url: width: 1200 }} 1200w" sizes="100vw" width="{{ mobile.width }}" height="{{ mobile.height }}">

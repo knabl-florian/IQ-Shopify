@@ -1,3 +1,9 @@
+{{ 'iq-product-feature.css' | asset_url | stylesheet_tag }}
+{% assign iq_video_blocks = section.blocks | where: 'type', 'iq_responsive_video' %}
+{% if iq_video_blocks.size > 0 %}
+{{ 'iq-responsive-collection-video.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'iq-responsive-collection-video.js' | asset_url }}" defer></script>
+{% endif %}
 {% render 'rapid-search-results-template-v2' %}
 {{ 'collection.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
@@ -622,7 +628,11 @@
     {%- if collection.handle == 'sale' -%}{%- assign iq_products_per_page = 250 -%}{%- endif -%}
     {%- paginate collection.products by iq_products_per_page -%}
       {%- assign iq_display_products = collection.products -%}
-      {%- if section.settings.priority_products != blank -%}
+      {%- assign iq_priority_allowed = false -%}
+{%- if section.settings.priority_collection == blank or section.settings.priority_collection.handle == collection.handle -%}
+{%- if collection.sort_by == blank or collection.sort_by == collection.default_sort_by -%}{%- assign iq_priority_allowed = true -%}{%- endif -%}
+{%- endif -%}
+{%- if section.settings.priority_products != blank and iq_priority_allowed -%}
         {%- assign iq_priority_ids = section.settings.priority_products | map: 'id' -%}
         {%- assign iq_ordered_products = '' | split: ',' -%}
         {%- for iq_priority_product in section.settings.priority_products -%}
@@ -665,13 +675,14 @@
           </div>
         {%- endif -%}
         <div class="flex flex-col flex-grow{% if show_toolbar %} show-toolbar{% endif %}" id="ProductGridWrapper">
-          {% render 'iq-collection-group-filters' %}
+          {% unless section.settings.compact_filter_bar %}{% render 'iq-collection-group-filters' %}{% endunless %}
           <div class="sticky-element grid gap-5 z-10" style="--sticky-offset: 0px;">
             {%- if enable_filtering or enable_sorting -%}
-              <div class="collection__toolbar flex items-center justify-between">
+              <div class="collection__toolbar flex items-center justify-between{% if section.settings.compact_filter_bar %} iq-toolbar--groups{% endif %}">
                 {%- if filter_type == 'drawer' and collection.all_products_count > 0 and enable_filtering -%}
                   {%- render 'facets-drawer', results: collection, enable_sorting: enable_sorting -%}
                 {%- endif -%}
+                {% if section.settings.compact_filter_bar %}{% render 'iq-collection-group-filters' %}{% endif %}
 
                 {%- if filter_type == 'vertical' and collection.all_products_count > 0 and enable_filtering -%}
                   <div class="flex xl:hidden">
@@ -794,6 +805,30 @@
                     -%}
                   {%- endif -%}
                 </div>
+                {% assign iq_product_index = forloop.index %}
+                {% for inline_block in section.blocks %}
+                  {% assign iq_anchor = inline_block.settings.after_product %}
+                  {% assign iq_show_inline = false %}
+                  {% if iq_anchor != blank %}
+                    {% if product.id == iq_anchor.id %}{% assign iq_show_inline = true %}{% endif %}
+                  {% elsif inline_block.type == 'iq_responsive_video' and paginate.current_page == 1 and iq_product_index == inline_block.settings.position %}
+                    {% assign iq_show_inline = true %}
+                  {% endif %}
+                  {% if iq_show_inline and inline_block.settings.only_collection.id == collection.id %}
+                    {% case inline_block.type %}
+                    {% when 'iq_editorial' %}
+                      {% render 'iq-editorial-banner', block: inline_block %}
+                    {% when 'iq_responsive_video', 'iq_product_feature' %}
+                      <div class="f-column collection-inline-block collection-inline-block--full" data-inline-block="{{ inline_block.id }}" {{ inline_block.shopify_attributes }}>
+                        {% if inline_block.type == 'iq_responsive_video' %}
+                          {% render 'iq-responsive-collection-video', settings: inline_block.settings, video_id: inline_block.id %}
+                        {% else %}
+                          {% render 'iq-product-feature', block: inline_block %}
+                        {% endif %}
+                      </div>
+                    {% endcase %}
+                  {% endif %}
+                {% endfor %}
               {%- endfor -%}
             </grid-list>
 
@@ -812,6 +847,7 @@
   {%- assign current_app_position = 24 -%}
 
   {%- for block in section.blocks -%}
+{% if block.type == 'iq_responsive_video' or block.type == 'iq_product_feature' or block.settings.after_product != blank %}{% continue %}{% endif %}
 {%- if block.type == 'iq_editorial' or block.settings.only_collection != blank -%}
   {%- if block.settings.only_collection.handle != collection.handle -%}{%- continue -%}{%- endif -%}
 {%- endif -%}
@@ -1903,6 +1939,12 @@ document.addEventListener('webkitfullscreenchange', function () {
         },
         {
           "type": "product",
+          "id": "after_product",
+          "label": "Nach diesem Produkt anzeigen",
+          "info": "Der Block folgt diesem Produkt. Wird es herausgefiltert, erscheint der Block nicht."
+        },
+        {
+          "type": "product",
           "id": "product",
           "label": "Produkt / Linkziel"
         },
@@ -1929,6 +1971,10 @@ document.addEventListener('webkitfullscreenchange', function () {
             {
               "value": "product",
               "label": "Produktfoto – dunkle Schrift"
+            },
+            {
+              "value": "action",
+              "label": "Actionfoto vollständig, mobil Text auf Bild"
             }
           ],
           "default": "photo"
@@ -2401,7 +2447,11 @@ document.addEventListener('webkitfullscreenchange', function () {
       "type": "iq_release_9",
       "name": "IQ Inhalt 9",
       "settings": [
-        {"type":"collection","id":"only_collection","label":"Nur diese Collection (optional)"},
+        {
+          "type": "collection",
+          "id": "only_collection",
+          "label": "Nur diese Collection (optional)"
+        },
         {
           "type": "range",
           "id": "position",
@@ -2595,7 +2645,11 @@ document.addEventListener('webkitfullscreenchange', function () {
       "type": "iq_release_11",
       "name": "IQ Inhalt 11",
       "settings": [
-        {"type":"collection","id":"only_collection","label":"Nur diese Collection (optional)"},
+        {
+          "type": "collection",
+          "id": "only_collection",
+          "label": "Nur diese Collection (optional)"
+        },
         {
           "type": "range",
           "id": "position",
@@ -2715,7 +2769,11 @@ document.addEventListener('webkitfullscreenchange', function () {
       "type": "iq_release_12",
       "name": "IQ Inhalt 12",
       "settings": [
-        {"type":"collection","id":"only_collection","label":"Nur diese Collection (optional)"},
+        {
+          "type": "collection",
+          "id": "only_collection",
+          "label": "Nur diese Collection (optional)"
+        },
         {
           "type": "range",
           "id": "position",
@@ -3172,9 +3230,283 @@ document.addEventListener('webkitfullscreenchange', function () {
           "label": "Linktext: Sommerweste ansehen"
         }
       ]
+    },
+    {
+      "type": "iq_responsive_video",
+      "name": "IQ Produktvideo DE/EN",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "only_collection",
+          "label": "Nur in dieser Collection anzeigen"
+        },
+        {
+          "type": "header",
+          "content": "Videos Deutsch"
+        },
+        {
+          "type": "video",
+          "id": "video_desktop_de",
+          "label": "Desktop – Deutsch"
+        },
+        {
+          "type": "video",
+          "id": "video_mobile_de",
+          "label": "Mobil – Deutsch"
+        },
+        {
+          "type": "image_picker",
+          "id": "poster_desktop_de",
+          "label": "Titelbild Desktop – Deutsch"
+        },
+        {
+          "type": "image_picker",
+          "id": "poster_mobile_de",
+          "label": "Titelbild Mobil – Deutsch"
+        },
+        {
+          "type": "header",
+          "content": "Videos Englisch"
+        },
+        {
+          "type": "video",
+          "id": "video_desktop_en",
+          "label": "Desktop – Englisch"
+        },
+        {
+          "type": "video",
+          "id": "video_mobile_en",
+          "label": "Mobil – Englisch"
+        },
+        {
+          "type": "image_picker",
+          "id": "poster_desktop_en",
+          "label": "Titelbild Desktop – Englisch"
+        },
+        {
+          "type": "image_picker",
+          "id": "poster_mobile_en",
+          "label": "Titelbild Mobil – Englisch"
+        },
+        {
+          "type": "header",
+          "content": "Text Deutsch"
+        },
+        {
+          "type": "text",
+          "id": "heading_de",
+          "label": "Überschrift Deutsch"
+        },
+        {
+          "type": "richtext",
+          "id": "intro_de",
+          "label": "Einleitung Deutsch"
+        },
+        {
+          "type": "richtext",
+          "id": "benefits_de",
+          "label": "Vorteile Deutsch"
+        },
+        {
+          "type": "text",
+          "id": "button_de",
+          "label": "Button Deutsch"
+        },
+        {
+          "type": "header",
+          "content": "Text Englisch"
+        },
+        {
+          "type": "text",
+          "id": "heading_en",
+          "label": "Überschrift Englisch"
+        },
+        {
+          "type": "richtext",
+          "id": "intro_en",
+          "label": "Einleitung Englisch"
+        },
+        {
+          "type": "richtext",
+          "id": "benefits_en",
+          "label": "Vorteile Englisch"
+        },
+        {
+          "type": "text",
+          "id": "button_en",
+          "label": "Button Englisch"
+        },
+        {
+          "type": "url",
+          "id": "button_url",
+          "label": "Button-Ziel"
+        },
+        {
+          "type": "product",
+          "id": "after_product",
+          "label": "Nach diesem Produkt anzeigen",
+          "info": "Der Block folgt diesem Produkt. Wird es herausgefiltert, erscheint der Block nicht."
+        },
+        {
+          "type": "range",
+          "id": "position",
+          "label": "Alternativ nach Produktnummer",
+          "min": 1,
+          "max": 50,
+          "step": 1,
+          "default": 4
+        },
+        {
+          "type": "text",
+          "id": "eyebrow_de",
+          "label": "Dachzeile · DE",
+          "default": "IQ PERFORMANCE PRO"
+        },
+        {
+          "type": "text",
+          "id": "eyebrow_en",
+          "label": "Dachzeile · EN",
+          "default": "IQ PERFORMANCE PRO"
+        },
+        {
+          "type": "select",
+          "id": "mobile_ratio",
+          "label": "Videoformat Mobil",
+          "options": [
+            {
+              "value": "portrait",
+              "label": "Hochformat 9:16"
+            },
+            {
+              "value": "landscape",
+              "label": "Querformat 16:9"
+            }
+          ],
+          "default": "portrait"
+        }
+      ]
+    },
+    {
+      "type": "iq_product_feature",
+      "name": "IQ Actionbild + Erklärung",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "only_collection",
+          "label": "Nur in dieser Collection"
+        },
+        {
+          "type": "product",
+          "id": "after_product",
+          "label": "Nach diesem Produkt anzeigen",
+          "info": "Der Block folgt diesem Produkt. Wird es herausgefiltert, erscheint der Block nicht."
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Actionbild Desktop"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Actionbild Mobil (optional)"
+        },
+        {
+          "type": "image_picker",
+          "id": "detail_image",
+          "label": "Kleines Erklärbild (optional)"
+        },
+        {
+          "type": "checkbox",
+          "id": "detail_crop",
+          "label": "Nur obere rechte Unterseitenansicht zeigen",
+          "default": false
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Zielprodukt"
+        },
+        {
+          "type": "checkbox",
+          "id": "copy_left",
+          "label": "Text links auf Desktop",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "DE"
+        },
+        {
+          "type": "text",
+          "id": "eyebrow_de",
+          "label": "Dachzeile · DE"
+        },
+        {
+          "type": "text",
+          "id": "heading_de",
+          "label": "Überschrift · DE"
+        },
+        {
+          "type": "richtext",
+          "id": "body_de",
+          "label": "Kurzer Text / Stichpunkte · DE"
+        },
+        {
+          "type": "text",
+          "id": "link_label_de",
+          "label": "Linktext · DE"
+        },
+        {
+          "type": "text",
+          "id": "alt_de",
+          "label": "Bildbeschreibung · DE"
+        },
+        {
+          "type": "header",
+          "content": "EN"
+        },
+        {
+          "type": "text",
+          "id": "eyebrow_en",
+          "label": "Dachzeile · EN"
+        },
+        {
+          "type": "text",
+          "id": "heading_en",
+          "label": "Überschrift · EN"
+        },
+        {
+          "type": "richtext",
+          "id": "body_en",
+          "label": "Kurzer Text / Stichpunkte · EN"
+        },
+        {
+          "type": "text",
+          "id": "link_label_en",
+          "label": "Linktext · EN"
+        },
+        {
+          "type": "text",
+          "id": "alt_en",
+          "label": "Bildbeschreibung · EN"
+        }
+      ]
     }
   ],
   "settings": [
+    {
+      "type": "collection",
+      "id": "priority_collection",
+      "label": "Vorrangige Produkte nur in dieser Collection",
+      "info": "Leer = alle Collections dieses Templates. Explizite Kundensortierung bleibt erhalten."
+    },
+    {
+      "type": "checkbox",
+      "id": "compact_filter_bar",
+      "label": "Filter und Kategorien in einer Zeile",
+      "default": false
+    },
     {
       "type": "product_list",
       "id": "priority_products",

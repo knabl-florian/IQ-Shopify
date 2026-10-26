@@ -98,6 +98,9 @@
     endif
   endfor
 %}
+{% if has_collection_topic and section.settings.replace_seo_collection.handle == collection.handle %}
+  {% assign seo_text = '' %}
+{% endif %}
 {% if description_text != blank or seo_text != blank or has_collection_topic %}
 <section class="iq-collection-knowledge" id="iq-knowledge-{{ section.id }}">
   <div class="iq-collection-knowledge__inner">
@@ -130,20 +133,73 @@
 {% endif %}
 {% schema %}
 {
-  "name":"IQ Wissen & Ausstattung",
-  "enabled_on":{"templates":["collection"]},
-  "settings":[
-    {"type":"paragraph","content":"Zeigt automatisch die Beschreibung und den unteren SEO-Text der gerade geöffneten Collection. Pflege diese Texte unter Produkte > Kollektionen. Bestehende Überschriften werden zu aufklappbaren Themen. So bleiben alle Inhalte und Links erhalten."},
-    {"type":"text","id":"heading_de","label":"Überschrift Deutsch (optional)","info":"Leer = passend zur aktuellen Collection."},
-    {"type":"text","id":"heading_en","label":"Überschrift English (optional)"}
+  "name": "IQ Wissen & Ausstattung",
+  "enabled_on": {
+    "templates": [
+      "collection"
+    ]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Zeigt automatisch die Beschreibung und den unteren SEO-Text der gerade geöffneten Collection. Pflege diese Texte unter Produkte > Kollektionen. Bestehende Überschriften werden zu aufklappbaren Themen. So bleiben alle Inhalte und Links erhalten."
+    },
+    {
+      "type": "text",
+      "id": "heading_de",
+      "label": "Überschrift Deutsch (optional)",
+      "info": "Leer = passend zur aktuellen Collection."
+    },
+    {
+      "type": "text",
+      "id": "heading_en",
+      "label": "Überschrift English (optional)"
+    },
+    {
+      "type": "collection",
+      "id": "replace_seo_collection",
+      "label": "Unterer SEO-Text durch eigene Themen",
+      "info": "Nur für die gewählte Collection und nur wenn passende Zusatzthemen vorhanden sind. Beschreibung und Ratgeberlinks bleiben erhalten. Der ursprüngliche SEO-Text wird nicht gelöscht."
+    }
   ],
-  "blocks":[{"type":"topic","name":"Zusätzliches Thema","settings":[
-    {"type":"collection","id":"only_collection","label":"Nur für diese Collection","info":"Bitte auswählen. So erscheint dieses Zusatzthema nur in der gewünschten Collection."},
-    {"type":"text","id":"heading_de","label":"Titel Deutsch"},
-    {"type":"richtext","id":"text_de","label":"Text Deutsch"},
-    {"type":"text","id":"heading_en","label":"Title English"},
-    {"type":"richtext","id":"text_en","label":"Text English"}
-  ]}],
-  "presets":[{"name":"IQ Wissen & Ausstattung"}]
+  "blocks": [
+    {
+      "type": "topic",
+      "name": "Zusätzliches Thema",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "only_collection",
+          "label": "Nur für diese Collection",
+          "info": "Bitte auswählen. So erscheint dieses Zusatzthema nur in der gewünschten Collection."
+        },
+        {
+          "type": "text",
+          "id": "heading_de",
+          "label": "Titel Deutsch"
+        },
+        {
+          "type": "richtext",
+          "id": "text_de",
+          "label": "Text Deutsch"
+        },
+        {
+          "type": "text",
+          "id": "heading_en",
+          "label": "Title English"
+        },
+        {
+          "type": "richtext",
+          "id": "text_en",
+          "label": "Text English"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "IQ Wissen & Ausstattung"
+    }
+  ]
 }
 {% endschema %}

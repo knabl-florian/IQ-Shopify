@@ -9,6 +9,39 @@
  */
 {
   "sections": {
+    "iq_collection_hero_4jVgT9": {
+      "type": "iq-collection-hero",
+      "name": "IQ Collection Banner",
+      "settings": {
+        "only_collection": "k9-diensthundefuehrer-ausruestung",
+        "require_collection": true,
+        "desktop_image": "shopify://shop_images/rueckenansicht-polizist-2560x800.jpg",
+        "mobile_image": "shopify://shop_images/rueckenansicht-diensthundefuehrer-1500x1200_32881dd8-71e6-421e-bf1e-5ffdc052a15f.jpg",
+        "text_tone": "light",
+        "desktop_position": "center",
+        "show_mobile_label": false,
+        "focus_y": 50,
+        "title_de": "K9-Ausrüstung für Diensthundeführer",
+        "accent_de": "",
+        "description_de": "",
+        "mobile_description_de": "",
+        "label_de": "Für Polizei, Bundeswehr, Zoll & Sicherheitsdienste",
+        "alt_de": "Diensthundeführer mit Hund in Rückenansicht, trägt eine IQ K9-Jacke mit Polizei-Kennzeichnung.",
+        "title_en": "K9 equipment for professional dog handlers",
+        "accent_en": "",
+        "description_en": "",
+        "mobile_description_en": "",
+        "label_en": "For police, military, customs & security services",
+        "alt_en": "Rear view of a K9 handler with a dog, wearing an IQ K9 jacket with police identification.",
+        "mobile_position": "bottom",
+        "mobile_alignment": "center",
+        "mobile_tone": "light",
+        "heading_tag": "h1",
+        "button_de": "",
+        "button_en": "",
+        "button_url": ""
+      }
+    },
     "banner": {
       "type": "main-collection-banner",
       "blocks": {
@@ -26,10 +59,11 @@
       "block_order": [
         "collection_info_zUNyKV"
       ],
+      "disabled": true,
       "custom_css": [
         ".collection-hero .page-width {max-width: none !important; width: 100% !important; padding-left: 0 !important; padding-right: 0 !important;}",
         ".collection-hero .collection-hero__text {justify-content: flex-end !important; text-align: center !important;}",
-        " .collection-hero .media,.collection-hero img {object-position: center center !important;}",
+        ".collection-hero .media,.collection-hero img {object-position: center center !important;}",
         ".collection-hero .collection-hero__inner {border-radius: 0 !important;}"
       ],
       "settings": {
@@ -50,6 +84,7 @@
     },
     "custom_liquid_FpycJH": {
       "type": "custom-liquid",
+      "disabled": true,
       "custom_css": [
         ".collection-info-custom {padding-top: 20px !important;}",
         ".collection-info-custom p {margin: 0 !important;}",
@@ -62,19 +97,32 @@
         "padding_top": 0,
         "padding_bottom": 0,
         "custom_class": ""
-      },
-      "disabled": true
+      }
     },
     "breadcrumbs_Gxg9wp": {
       "type": "breadcrumbs",
+      "disabled": true,
       "settings": {
         "text_alignment": "center"
-      },
-      "disabled": true
+      }
     },
     "rich_text_wkqeJz": {
       "type": "iq-k9-discount",
-      "settings": {}
+      "settings": {
+        "amount": "10 %",
+        "thanks_de": "Als Dank für Deinen Dienst.",
+        "heading_de": "für aktive Diensthundeführer",
+        "body_de": "Als aktiver Diensthundeführer erhältst Du 10 % Rabatt auf IQ Dogsport Produkte.",
+        "terms_de": "Für aktive Diensthundeführer bei privatem Kauf. Die 10 % Rabatt gelten ausschließlich für IQ Dogsport Produkte. Produkte anderer Marken sind ausgeschlossen.",
+        "button_de": "Voraussetzungen & Anfrage",
+        "note_de": "Wir prüfen Deine Berechtigung persönlich.",
+        "thanks_en": "Thank you for your service.",
+        "heading_en": "for active service dog handlers",
+        "body_en": "Active service dog handlers receive 10% off IQ Dogsport products.",
+        "terms_en": "For active service dog handlers making a personal purchase. The 10% discount applies exclusively to IQ Dogsport products. Products from other brands are excluded.",
+        "button_en": "Eligibility & request",
+        "note_en": "We review your eligibility personally."
+      }
     },
     "custom_content_F47NJV": {
       "type": "custom-content",
@@ -290,30 +338,18 @@
             "button_link": "",
             "button_style": "primary"
           }
-        },
-        "inline_video_i9KmD6": {
-          "type": "inline_video",
-          "settings": {
-            "video_ratio": "adapt",
-            "video_fit": "contain",
-            "position": 9,
-            "position_mobile": 12,
-            "width": "full",
-            "video": "shopify://files/videos/iq-allround-jacke-damen_1.mp4",
-            "cover_image": "shopify://shop_images/IMG_4592.jpg",
-            "autoplay": false,
-            "loop": true,
-            "muted": true
-          }
         }
       },
       "block_order": [
         "inline_promo_image_NUyAek",
-        "inline_image_text_xHnYaK",
-        "inline_video_i9KmD6"
+        "inline_image_text_xHnYaK"
       ],
       "custom_css": [],
       "settings": {
+        "priority_products": [],
+        "use_section_column_settings": false,
+        "defer_product_images": false,
+        "collection_card_titles": true,
         "iq_jv_enabled": false,
         "iq_jv_products": [],
         "color_scheme": "scheme-9",
@@ -332,7 +368,7 @@
         "padding_bottom": 70,
         "show_section_divider": true,
         "divider_width": "fixed",
-        "collection_card_titles": true
+        "compact_filter_bar": true
       }
     },
     "rich_text_ARFW3U": {
@@ -395,10 +431,15 @@
     },
     "iq_knowledge": {
       "type": "iq-collection-knowledge",
-      "settings": {}
+      "settings": {
+        "heading_de": "",
+        "heading_en": "",
+        "replace_seo_collection": ""
+      }
     }
   },
   "order": [
+    "iq_collection_hero_4jVgT9",
     "banner",
     "custom_liquid_FpycJH",
     "breadcrumbs_Gxg9wp",
