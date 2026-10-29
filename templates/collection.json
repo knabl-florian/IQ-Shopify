@@ -115,7 +115,8 @@
       "type": "iq-collection-hero",
       "custom_css": [
         ".iqcb__label,.iqcb__description {color: #ffffff; text-shadow: 0 2px 6px rgba(23, 23, 23, 0.55);}",
-        ".iqcb__title {text-shadow: 0 2px 6px rgba(23, 23, 23, 0.55);}"
+        ".iqcb__title,.iqcb__title * {color: #ffffff !important; text-shadow: 0 2px 6px rgba(23, 23, 23, 0.55);}",
+        "@media (min-width: 750px) {.iqcb__title {font-size: clamp(21px, 2.88cqw, 51px) !important; }}"
       ],
       "name": "IQ Collection Banner",
       "settings": {
@@ -124,13 +125,13 @@
         "desktop_image": "shopify://shop_images/iq-training-und-hund-hero-desktop-2560x1200.webp",
         "mobile_image": "shopify://shop_images/iq-training-und-hund-hero-mobile-1200x1500.webp",
         "text_tone": "light",
-        "desktop_position": "top",
-        "show_mobile_label": true,
-        "focus_y": 75,
-        "title_de": "Dein Training.",
-        "accent_de": "Deine Ausrüstung.",
-        "description_de": "Für Belohnung, Fußarbeit, Fährte und Schutzdienst.",
-        "mobile_description_de": "Für Belohnung, Fußarbeit, Fährte und Schutzdienst.",
+        "desktop_position": "center",
+        "show_mobile_label": false,
+        "focus_y": 50,
+        "title_de": "Dein Trainingsplatz.",
+        "accent_de": "Zum Mitnehmen.",
+        "description_de": "Kompakt verstaut. Über die Schulter. Bereit fürs nächste Training.",
+        "mobile_description_de": "Kompakt verstaut. Bereit fürs nächste Training.",
         "label_de": "Hundesport Trainingszubehör",
         "alt_de": "Malinois beim Training am IQ Wurfversteck",
         "title_en": "Your training.",
@@ -486,30 +487,39 @@
     "product-grid": {
       "type": "main-collection-product-grid-magazine",
       "blocks": {
-        "iq_training_blind": {
-          "type": "iq_editorial",
+        "iq_training_video": {
+          "type": "iq_responsive_video",
           "settings": {
             "only_collection": "hundesport-trainingszubehoer",
-            "product": "wurfversteck",
-            "image": "shopify://shop_images/wurfversteck.jpg",
-            "mode": "action",
-            "position": 15,
-            "position_mobile": 16,
-            "eyebrow_de": "IQ Wurfversteck · Schutzdienst",
-            "heading_de": "Groß im Training. Klein im Gepäck.",
-            "body_de": "2,5 kg. Rund zusammenfaltbar. Mit Schultertasche und vier Heringen.",
-            "alt_de": "Hund beim Umlaufen des IQ Wurfverstecks im Schutzdiensttraining",
-            "eyebrow_en": "IQ training equipment",
-            "heading_en": "Ready for training. Compact for travel.",
-            "body_en": "2.5 kg. Folds into a circle. Includes a shoulder bag and four ground pegs.",
-            "alt_en": "Dog running around the IQ pop-up blind during protection training",
-            "after_product": "wurfversteck"
+            "video_desktop_de": "shopify://files/videos/iq-performance-pro-desktop-de.mp4",
+            "video_mobile_de": "shopify://files/videos/iq-performance-pro-mobile-de_a570da22-28dd-4306-b130-0c2912162f47.mp4",
+            "poster_desktop_de": "shopify://shop_images/iq-performance-pro-desktop-de-titelbild_19918eeb-dac0-49ba-8792-2c7cc4fdff81.jpg",
+            "poster_mobile_de": "shopify://shop_images/iq-performance-pro-mobile-de-titelbild.jpg",
+            "video_desktop_en": "shopify://files/videos/iq-performance-pro-desktop-en.mp4",
+            "video_mobile_en": "shopify://files/videos/iq-performance-pro-mobile-en_f9a9da14-335d-4a70-afb9-d6dd08ec75dc.mp4",
+            "poster_desktop_en": "shopify://shop_images/iq-performance-pro-desktop-en-titelbild.jpg",
+            "poster_mobile_en": "shopify://shop_images/iq-performance-pro-mobile-en-titelbild.jpg",
+            "heading_de": "Voller Einsatz. Durchdachter Halt.",
+            "intro_de": "<p>Mit Tierärzten & Physios entwickelt. Swiss made.</p><p></p>",
+            "benefits_de": "<ul><li><strong>Weniger Überschlagrisiko</strong> durch hinten liegenden Zugpunkt.</li><li><strong>Frei atmen und bellen</strong> – ohne Einschnüren am Hals.</li><li><strong>Druckentlastung am Rücken</strong> durch Wirbelsäulentunnel.</li></ul>",
+            "button_de": "Geschirr entdecken",
+            "heading_en": "Full effort. Thoughtful support.",
+            "intro_en": "<p>Developed with vets & physiotherapists. Swiss made.</p>",
+            "benefits_en": "<ul><li><strong>Reduced risk of flipping</strong> thanks to a rear-positioned leash attachment.</li><li><strong>Breathe and bark freely</strong> – without constricting the neck.</li><li><strong>Pressure relief along the back</strong> through the spinal tunnel.</li></ul>",
+            "button_en": "Discover the harness",
+            "button_url": "/products/iq-performance-pro-click-go",
+            "after_product": "iq-performance-pro-cobra",
+            "position": 4,
+            "eyebrow_de": "Das ultimative Hetz- und Sportgeschirr",
+            "eyebrow_en": "IQ Performance Pro",
+            "mobile_ratio": "portrait"
           }
         },
         "iq_food_reward": {
           "type": "iq_editorial",
           "settings": {
             "only_collection": "trainingsfutter-supplemente",
+            "after_product": "",
             "product": "iq-pure-bites-rinderlunge-trainingshappen-mini",
             "mode": "product",
             "position": 6,
@@ -522,32 +532,6 @@
             "heading_en": "Small bites. Next repetition.",
             "body_en": "100% beef lung. Small treats for obedience, marker training and frequent rewards.",
             "alt_en": "IQ Pure Bites beef lung mini training treats"
-          }
-        },
-        "iq_damen_mfj": {
-          "type": "iq_release_9",
-          "name": "Multi Blau Banner",
-          "disabled": true,
-          "settings": {
-            "only_collection": "hundesport-jacken-damen",
-            "position": 2,
-            "position_mobile": 2,
-            "width": "full",
-            "bild_1": "shopify://shop_images/mfj-blau-robust-mobil-klein.jpg",
-            "bild_2": "shopify://shop_images/mfj-blau-robust-desktop-klein.jpg",
-            "text_3": "IQ Multifunktionsjacke 3.0 Unisex Blau",
-            "text_4": "THE ORIGINAL SINCE 2011",
-            "text_5": "Built tough.",
-            "text_6": "Made to last.",
-            "text_7": "Our toughest dog training jacket: scratch-resistant Taslon with reinforced, sealed seams. Insulated and waterproof with a 20,000 mm waterproof rating.",
-            "text_8": "Scratch-resistant Taslon. Reinforced seams.",
-            "text_9": "Insulated. 20,000 mm waterproof rating.",
-            "text_10": "DAS ORIGINAL SEIT 2011",
-            "text_11": "Hart im Nehmen.",
-            "text_12": "Gemacht für Jahre.",
-            "text_13": "Unsere robusteste Hundesportjacke: kratzfestes Taslon, mehrfach verriegelte und versiegelte Nähte. Gefüttert und wasserdicht mit 20.000 mm Wassersäule.",
-            "text_14": "Kratzfestes Taslon. Verstärkte Nähte.",
-            "text_15": "Gefüttert. 20.000 mm Wassersäule."
           }
         },
         "iq_damen_training": {
@@ -600,148 +584,176 @@
             "text_15": "Leichte Regenjacke mit großer Sturmkapuze, herausnehmbaren Futtertaschen, Clicker-Fach und verstecktem Kotbeutelspender."
           }
         },
-        "iq_training_video": {
-          "type": "iq_responsive_video",
-          "settings": {
-            "only_collection": "hundesport-trainingszubehoer",
-            "video_desktop_de": "shopify://files/videos/iq-performance-pro-desktop-de.mp4",
-            "video_mobile_de": "shopify://files/videos/iq-performance-pro-mobile-de_a570da22-28dd-4306-b130-0c2912162f47.mp4",
-            "poster_desktop_de": "shopify://shop_images/iq-performance-pro-desktop-de-titelbild_19918eeb-dac0-49ba-8792-2c7cc4fdff81.jpg",
-            "poster_mobile_de": "shopify://shop_images/iq-performance-pro-mobile-de-titelbild.jpg",
-            "video_desktop_en": "shopify://files/videos/iq-performance-pro-desktop-en.mp4",
-            "video_mobile_en": "shopify://files/videos/iq-performance-pro-mobile-en_f9a9da14-335d-4a70-afb9-d6dd08ec75dc.mp4",
-            "poster_desktop_en": "shopify://shop_images/iq-performance-pro-desktop-en-titelbild.jpg",
-            "poster_mobile_en": "shopify://shop_images/iq-performance-pro-mobile-en-titelbild.jpg",
-            "heading_de": "Voller Einsatz. Durchdachter Halt.",
-            "intro_de": "<p>Mit Tierärzten &amp; Physios entwickelt. Swiss made.</p>",
-            "benefits_de": "<ul><li><strong>Weniger Überschlagrisiko</strong> durch hinten liegenden Zugpunkt.</li><li><strong>Frei atmen und bellen</strong> – ohne Einschnüren am Hals.</li><li><strong>Druckentlastung am Rücken</strong> durch Wirbelsäulentunnel.</li></ul>",
-            "button_de": "Geschirr entdecken",
-            "heading_en": "Full effort. Thoughtful support.",
-            "intro_en": "<p>Developed with vets &amp; physiotherapists. Swiss made.</p>",
-            "benefits_en": "<ul><li><strong>Reduced risk of flipping</strong> thanks to a rear-positioned leash attachment.</li><li><strong>Breathe and bark freely</strong> – without constricting the neck.</li><li><strong>Pressure relief along the back</strong> through the spinal tunnel.</li></ul>",
-            "button_en": "Discover the harness",
-            "button_url": "/products/iq-performance-pro-click-go",
-            "after_product": "iq-performance-pro-cobra",
-            "position": 4,
-            "eyebrow_de": "IQ Performance Pro",
-            "eyebrow_en": "IQ Performance Pro",
-            "mobile_ratio": "portrait"
-          }
-        },
         "iq_magnetizer_video": {
           "type": "iq_responsive_video",
           "name": "Magnetizer – Originalvideo",
           "settings": {
             "only_collection": "hundesport-trainingszubehoer",
-            "after_product": "iq-magnetizer",
-            "position": 4,
-            "mobile_ratio": "landscape",
-            "button_url": "/products/iq-magnetizer",
             "video_desktop_de": "shopify://files/videos/iq-magnetizer-original-1080.mp4",
             "video_mobile_de": "shopify://files/videos/iq-magnetizer-original-1080.mp4",
-            "video_desktop_en": "shopify://files/videos/iq-magnetizer-original-1080.mp4",
-            "video_mobile_en": "shopify://files/videos/iq-magnetizer-original-1080.mp4",
-            "eyebrow_de": "IQ Magnetizer",
-            "eyebrow_en": "IQ Magnetizer",
-            "heading_de": "Befestigen. Positionieren. Bestätigen.",
-            "heading_en": "Attach. Position. Reward.",
-            "intro_de": "<p>Verbinde Dein Spielzeug mit dem Adapter und positioniere es am passenden Magnetsystem. Die Belohnung sitzt dort, wo Du sie brauchst.</p>",
-            "intro_en": "<p>Attach the adapter to your toy and position it on a compatible magnetic system. Keep the reward where you need it.</p>",
-            "button_de": "Magnetizer entdecken",
-            "button_en": "Discover Magnetizer",
             "poster_desktop_de": "shopify://shop_images/iq-magnetizer-film-poster.jpg",
             "poster_mobile_de": "shopify://shop_images/iq-magnetizer-film-poster.jpg",
+            "video_desktop_en": "shopify://files/videos/iq-magnetizer-original-1080.mp4",
+            "video_mobile_en": "shopify://files/videos/iq-magnetizer-original-1080.mp4",
             "poster_desktop_en": "shopify://shop_images/iq-magnetizer-film-poster.jpg",
-            "poster_mobile_en": "shopify://shop_images/iq-magnetizer-film-poster.jpg"
-          }
-        },
-        "iq_magnet_bag_video": {
-          "type": "iq_responsive_video",
-          "name": "Balltasche – Originalvideo",
-          "settings": {
-            "only_collection": "hundesport-trainingszubehoer",
-            "after_product": "iq-magnettasche",
+            "poster_mobile_en": "shopify://shop_images/iq-magnetizer-film-poster.jpg",
+            "heading_de": "Befestigen. Positionieren. Bestätigen.",
+            "intro_de": "<p>Verbinde Dein Spielzeug mit dem Adapter und positioniere es am passenden Magnetsystem. Die Belohnung sitzt dort, wo Du sie brauchst.</p>",
+            "benefits_de": "",
+            "button_de": "Magnetizer entdecken",
+            "heading_en": "Attach. Position. Reward.",
+            "intro_en": "<p>Attach the adapter to your toy and position it on a compatible magnetic system. Keep the reward where you need it.</p>",
+            "benefits_en": "",
+            "button_en": "Discover Magnetizer",
+            "button_url": "/products/iq-magnetizer",
+            "after_product": "iq-magnetizer",
             "position": 4,
-            "mobile_ratio": "landscape",
-            "button_url": "/products/iq-magnettasche",
-            "video_desktop_de": "shopify://files/videos/iq-magnet-bag-original-1080.mp4",
-            "video_mobile_de": "shopify://files/videos/iq-magnet-bag-original-1080.mp4",
-            "video_desktop_en": "shopify://files/videos/iq-magnet-bag-original-1080.mp4",
-            "video_mobile_en": "shopify://files/videos/iq-magnet-bag-original-1080.mp4",
-            "eyebrow_de": "IQ Balltasche · Magnet Bag",
-            "eyebrow_en": "IQ Ball Pocket · Magnet Bag",
-            "heading_de": "Versteckt tragen. Gezielt belohnen.",
-            "heading_en": "Keep it hidden. Reward on cue.",
-            "intro_de": "<p>Das Spielzeug bleibt verborgen. Ein Zug an der Kordel gibt die Belohnung frei – direkt auf Höhe Deines Hundes.</p>",
-            "intro_en": "<p>The toy stays hidden. Pull the cord to release the reward right at your dog’s level.</p>",
-            "button_de": "Balltasche entdecken",
-            "button_en": "Discover the ball pocket",
-            "poster_desktop_de": "shopify://shop_images/iq-magnet-bag-film-poster.jpg",
-            "poster_mobile_de": "shopify://shop_images/iq-magnet-bag-film-poster.jpg",
-            "poster_desktop_en": "shopify://shop_images/iq-magnet-bag-film-poster.jpg",
-            "poster_mobile_en": "shopify://shop_images/iq-magnet-bag-film-poster.jpg"
+            "eyebrow_de": "IQ Magnetizer",
+            "eyebrow_en": "IQ Magnetizer",
+            "mobile_ratio": "landscape"
           }
         },
         "iq_training_trainer": {
           "type": "iq_product_feature",
           "name": "Gegenstandstrainer – kompakt",
           "settings": {
+            "only_collection": "hundesport-trainingszubehoer",
+            "after_product": "iq-gegenstandstrainer",
             "image": "shopify://shop_images/iq-faehrte-welpe-mobile-1200x1200.jpg",
+            "detail_image": "shopify://shop_images/Gegenstandstrainer-2.0-Funktion_web.jpg",
+            "detail_crop": true,
+            "product": "iq-gegenstandstrainer",
+            "copy_left": true,
             "eyebrow_de": "Fährte & Nasenarbeit",
             "heading_de": "Anzeigen lernen. Gezielt bestätigen.",
             "body_de": "<p>Futter darunterlegen. Durch Anheben bestätigen. Metallspitzen bei Bedarf einschrauben.</p>",
-            "alt_de": "Schäferhundwelpe beim Anzeigen am IQ Gegenstandstrainer",
             "link_label_de": "Gegenstandstrainer entdecken",
+            "alt_de": "Schäferhundwelpe beim Anzeigen am IQ Gegenstandstrainer",
             "eyebrow_en": "Tracking & scent work",
             "heading_en": "Build indication. Reward with purpose.",
             "body_en": "<p>Place food underneath. Lift to reward. Screw in the ground spikes when needed.</p>",
-            "alt_en": "German Shepherd puppy indicating the IQ Article Trainer",
             "link_label_en": "Discover the article trainer",
-            "product": "iq-gegenstandstrainer",
-            "only_collection": "hundesport-trainingszubehoer",
-            "after_product": "iq-gegenstandstrainer",
-            "detail_image": "shopify://shop_images/Gegenstandstrainer-2.0-Funktion_web.jpg",
-            "detail_crop": true,
-            "copy_left": true
+            "alt_en": "German Shepherd puppy indicating the IQ Article Trainer"
           }
         },
         "iq_training_belt": {
           "type": "iq_product_feature",
           "name": "Multifunktionsgürtel – Action",
           "settings": {
+            "only_collection": "hundesport-trainingszubehoer",
+            "after_product": "iq-multifunktionsgurtel",
             "image": "shopify://shop_images/iq-dogsport-multifunktionsguertel-border-collie-hundetraining.jpg",
+            "detail_crop": false,
+            "product": "iq-multifunktionsgurtel",
+            "copy_left": false,
             "eyebrow_de": "IQ Multifunktionsgürtel",
             "heading_de": "Unauffällig tragen. Alles dabei.",
             "body_de": "<ul><li>Körpernah und bequem – auch unter Kleidung.</li><li>Kein Flattern beim Welpentraining und in der Prüfungsvorbereitung.</li><li>Futtertaschen abnehmbar und auswaschbar.</li><li>Platz für Belohnung und Zubehör – beim Fährten und Gassi.</li></ul>",
-            "alt_de": "Hundeführerin mit IQ Multifunktionsgürtel und Border Collie",
             "link_label_de": "Multifunktionsgürtel entdecken",
+            "alt_de": "Hundeführerin mit IQ Multifunktionsgürtel und Border Collie",
             "eyebrow_en": "IQ Multifunction Belt",
             "heading_en": "Discreet fit. Essentials within reach.",
             "body_en": "<ul><li>Close-fitting and comfortable, even under clothing.</li><li>No flapping during puppy training and trial preparation.</li><li>Removable, washable treat pockets.</li><li>Room for rewards and accessories on tracks and daily walks.</li></ul>",
-            "alt_en": "Handler wearing the IQ Multifunction Belt with a Border Collie",
             "link_label_en": "Discover the belt",
-            "product": "iq-multifunktionsgurtel",
+            "alt_en": "Handler wearing the IQ Multifunction Belt with a Border Collie"
+          }
+        },
+        "iq_damen_mfj": {
+          "type": "iq_release_9",
+          "name": "Multi Blau Banner",
+          "disabled": true,
+          "settings": {
+            "only_collection": "hundesport-jacken-damen",
+            "position": 2,
+            "position_mobile": 2,
+            "width": "full",
+            "bild_1": "shopify://shop_images/mfj-blau-robust-mobil-klein.jpg",
+            "bild_2": "shopify://shop_images/mfj-blau-robust-desktop-klein.jpg",
+            "text_3": "IQ Multifunktionsjacke 3.0 Unisex Blau",
+            "text_4": "THE ORIGINAL SINCE 2011",
+            "text_5": "Built tough.",
+            "text_6": "Made to last.",
+            "text_7": "Our toughest dog training jacket: scratch-resistant Taslon with reinforced, sealed seams. Insulated and waterproof with a 20,000 mm waterproof rating.",
+            "text_8": "Scratch-resistant Taslon. Reinforced seams.",
+            "text_9": "Insulated. 20,000 mm waterproof rating.",
+            "text_10": "DAS ORIGINAL SEIT 2011",
+            "text_11": "Hart im Nehmen.",
+            "text_12": "Gemacht für Jahre.",
+            "text_13": "Unsere robusteste Hundesportjacke: kratzfestes Taslon, mehrfach verriegelte und versiegelte Nähte. Gefüttert und wasserdicht mit 20.000 mm Wassersäule.",
+            "text_14": "Kratzfestes Taslon. Verstärkte Nähte.",
+            "text_15": "Gefüttert. 20.000 mm Wassersäule."
+          }
+        },
+        "iq_training_blind": {
+          "type": "iq_editorial",
+          "disabled": true,
+          "settings": {
             "only_collection": "hundesport-trainingszubehoer",
-            "after_product": "iq-multifunktionsgurtel"
+            "after_product": "wurfversteck",
+            "product": "wurfversteck",
+            "image": "shopify://shop_images/wurfversteck.jpg",
+            "mode": "action",
+            "position": 15,
+            "position_mobile": 16,
+            "eyebrow_de": "IQ Wurfversteck · Schutzdienst",
+            "heading_de": "Groß im Training. Klein im Gepäck.",
+            "body_de": "2,5 kg. Rund zusammenfaltbar. Mit Schultertasche und vier Heringen.",
+            "alt_de": "Hund beim Umlaufen des IQ Wurfverstecks im Schutzdiensttraining",
+            "eyebrow_en": "IQ training equipment",
+            "heading_en": "Ready for training. Compact for travel.",
+            "body_en": "2.5 kg. Folds into a circle. Includes a shoulder bag and four ground pegs.",
+            "alt_en": "Dog running around the IQ pop-up blind during protection training"
+          }
+        },
+        "iq_magnet_bag_video": {
+          "type": "iq_responsive_video",
+          "name": "Balltasche – Originalvideo",
+          "disabled": true,
+          "settings": {
+            "only_collection": "hundesport-trainingszubehoer",
+            "video_desktop_de": "shopify://files/videos/iq-magnet-bag-original-1080.mp4",
+            "video_mobile_de": "shopify://files/videos/iq-magnet-bag-original-1080.mp4",
+            "poster_desktop_de": "shopify://shop_images/iq-magnet-bag-film-poster.jpg",
+            "poster_mobile_de": "shopify://shop_images/iq-magnet-bag-film-poster.jpg",
+            "video_desktop_en": "shopify://files/videos/iq-magnet-bag-original-1080.mp4",
+            "video_mobile_en": "shopify://files/videos/iq-magnet-bag-original-1080.mp4",
+            "poster_desktop_en": "shopify://shop_images/iq-magnet-bag-film-poster.jpg",
+            "poster_mobile_en": "shopify://shop_images/iq-magnet-bag-film-poster.jpg",
+            "heading_de": "Versteckt tragen. Gezielt belohnen.",
+            "intro_de": "<p>Das Spielzeug bleibt verborgen. Ein Zug an der Kordel gibt die Belohnung frei – direkt auf Höhe Deines Hundes.</p>",
+            "benefits_de": "",
+            "button_de": "Balltasche entdecken",
+            "heading_en": "Keep it hidden. Reward on cue.",
+            "intro_en": "<p>The toy stays hidden. Pull the cord to release the reward right at your dog’s level.</p>",
+            "benefits_en": "",
+            "button_en": "Discover the ball pocket",
+            "button_url": "/products/iq-magnettasche",
+            "after_product": "iq-magnettasche",
+            "position": 4,
+            "eyebrow_de": "IQ Balltasche · Magnet Bag",
+            "eyebrow_en": "IQ Ball Pocket · Magnet Bag",
+            "mobile_ratio": "landscape"
           }
         }
       },
       "block_order": [
         "iq_training_video",
-        "iq_training_blind",
         "iq_food_reward",
-        "iq_damen_mfj",
         "iq_damen_training",
         "iq_damen_allround",
         "iq_magnetizer_video",
-        "iq_magnet_bag_video",
         "iq_training_trainer",
-        "iq_training_belt"
+        "iq_training_belt",
+        "iq_damen_mfj",
+        "iq_training_blind",
+        "iq_magnet_bag_video"
       ],
       "custom_css": [
         "#ProductGridWrapper.show-toolbar {margin-block-start: 0 !important; margin-top: 0 !important;}"
       ],
       "settings": {
+        "priority_collection": "hundesport-trainingszubehoer",
+        "compact_filter_bar": false,
         "priority_products": [],
         "use_section_column_settings": false,
         "defer_product_images": false,
@@ -763,8 +775,7 @@
         "padding_top": 0,
         "padding_bottom": 70,
         "show_section_divider": true,
-        "divider_width": "fixed",
-        "priority_collection": "hundesport-trainingszubehoer"
+        "divider_width": "fixed"
       }
     },
     "iq_damen_finder": {
@@ -928,6 +939,7 @@
     },
     "iq_performance_video": {
       "type": "iq-responsive-collection-video",
+      "disabled": true,
       "settings": {
         "only_collection": "hundesport-trainingszubehoer",
         "video_desktop_de": "shopify://files/videos/iq-performance-pro-desktop-de.mp4",
@@ -946,9 +958,11 @@
         "intro_en": "<p>Developed with veterinarians and physiotherapists.</p>",
         "benefits_en": "<ul><li>Free breathing and shoulder movement, even under tension.</li><li>Spinal tunnel to relieve pressure.</li><li>Load directed towards the sternum for controlled leash work.</li></ul>",
         "button_en": "Discover Performance Pro",
-        "button_url": "/products/iq-performance-pro-click-go"
-      },
-      "disabled": true
+        "button_url": "/products/iq-performance-pro-click-go",
+        "eyebrow_de": "IQ PERFORMANCE PRO",
+        "eyebrow_en": "IQ PERFORMANCE PRO",
+        "mobile_ratio": "portrait"
+      }
     },
     "iq_training_details": {
       "type": "iq-collection-story",
@@ -957,6 +971,7 @@
           "type": "feature",
           "settings": {
             "layout": "split",
+            "compact_banner": false,
             "image": "shopify://shop_images/IQ-Magnetizer-Rueckseite.jpg",
             "position": "left",
             "tone": "light",
@@ -979,10 +994,38 @@
             "video": "shopify://files/videos/How to magnetize any toy - IQ Magnetizer.mp4"
           }
         },
+        "tracking_banner": {
+          "type": "feature",
+          "settings": {
+            "layout": "overlay",
+            "compact_banner": true,
+            "image": "shopify://shop_images/iq-faehrte-welpe-desktop-1920x640.jpg",
+            "mobile_image": "shopify://shop_images/iq-faehrte-welpe-mobile-1200x1200.jpg",
+            "position": "left",
+            "tone": "light",
+            "mobile_position": "top",
+            "reverse": false,
+            "focal_x": 50,
+            "focal_y": 50,
+            "eyebrow_de": "FÄHRTE & NASENARBEIT",
+            "heading_de": "Anzeigen lernen. Gezielt bestätigen.",
+            "body_de": "",
+            "alt_de": "Schäferhundwelpe vor dem IQ Gegenstandstrainer beim Anzeigen eines Fährtengegenstands",
+            "link_label_de": "",
+            "eyebrow_en": "TRACKING & SCENT WORK",
+            "heading_en": "Build indication. Reward with purpose.",
+            "body_en": "",
+            "alt_en": "German Shepherd puppy indicating a tracking article in front of the IQ Article Trainer",
+            "link_label_en": "",
+            "product": "iq-gegenstandstrainer",
+            "url": ""
+          }
+        },
         "trainer": {
           "type": "feature",
           "settings": {
             "layout": "split",
+            "compact_banner": false,
             "image": "shopify://shop_images/Gegenstandstrainer-2.0-Funktion_web.jpg",
             "position": "left",
             "tone": "light",
@@ -1004,34 +1047,11 @@
             "url": ""
           }
         },
-        "tracking_banner": {
-          "type": "feature",
-          "settings": {
-            "layout": "overlay",
-            "compact_banner": true,
-            "image": "shopify://shop_images/iq-faehrte-welpe-desktop-1920x640.jpg",
-            "mobile_image": "shopify://shop_images/iq-faehrte-welpe-mobile-1200x1200.jpg",
-            "position": "left",
-            "tone": "light",
-            "mobile_position": "top",
-            "reverse": false,
-            "focal_x": 50,
-            "focal_y": 50,
-            "eyebrow_de": "FÄHRTE & NASENARBEIT",
-            "heading_de": "Anzeigen lernen. Gezielt bestätigen.",
-            "body_de": "",
-            "alt_de": "Schäferhundwelpe vor dem IQ Gegenstandstrainer beim Anzeigen eines Fährtengegenstands",
-            "eyebrow_en": "TRACKING & SCENT WORK",
-            "heading_en": "Build indication. Reward with purpose.",
-            "body_en": "",
-            "alt_en": "German Shepherd puppy indicating a tracking article in front of the IQ Article Trainer",
-            "product": "iq-gegenstandstrainer"
-          }
-        },
         "belt": {
           "type": "feature",
           "settings": {
             "layout": "split",
+            "compact_banner": false,
             "image": "shopify://shop_images/iq-dogsport-multifunktionsguertel-border-collie-hundetraining.jpg",
             "position": "left",
             "tone": "light",
@@ -1060,10 +1080,10 @@
         "trainer",
         "belt"
       ],
+      "disabled": true,
       "settings": {
         "only_collection": "hundesport-trainingszubehoer"
-      },
-      "disabled": true
+      }
     },
     "iq_food_details": {
       "type": "iq-collection-story",
@@ -1072,6 +1092,7 @@
           "type": "feature",
           "settings": {
             "layout": "split",
+            "compact_banner": false,
             "image": "shopify://shop_images/iq-sticks-pferd-10cm.jpg",
             "position": "left",
             "tone": "light",
@@ -1097,6 +1118,7 @@
           "type": "feature",
           "settings": {
             "layout": "split",
+            "compact_banner": false,
             "image": "shopify://shop_images/Kynovital-Grainfree-Adult.png",
             "position": "left",
             "tone": "light",
