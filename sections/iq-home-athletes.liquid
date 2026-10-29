@@ -1,0 +1,102 @@
+{{ 'iq-home-refresh.css' | asset_url | stylesheet_tag }}
+{%- liquid
+  assign en = false
+  if request.locale.iso_code == 'en'
+    assign en = true
+  endif
+-%}
+<iq-home-cards><section class="iqh iqh-wrap iqh-athletes iq28-athletes"><header class="iqh-head"><p class="iqh-eyebrow">{% if en and section.settings.eyebrow_en != blank %}{{ section.settings.eyebrow_en | escape }}{% else %}{{ section.settings.eyebrow | escape }}{% endif %}</p><h2 class="iqh-heading">{% if en and section.settings.heading_en != blank %}{{ section.settings.heading_en | escape }}{% else %}{{ section.settings.heading | escape }}{% endif %}</h2></header><p class="iqh-intro">{% if en and section.settings.intro_en != blank %}{{ section.settings.intro_en | escape }}{% else %}{{ section.settings.intro | escape }}{% endif %}</p><div class="iq28-controls"><button type="button" data-iq-step="-1" aria-label="{% if en %}Previous card{% else %}Vorherige Karte{% endif %}">←</button><button type="button" data-iq-step="1" aria-label="{% if en %}Next card{% else %}Nächste Karte{% endif %}">→</button></div><div data-iq-track tabindex="0" aria-label="IQ Athletes" class="iqh-athlete-grid">{% for block in section.blocks %}<div class="iqh-athlete" {{ block.shopify_attributes }}>{% if block.settings.image != blank %}{{ block.settings.image | image_url: width: 1000 | image_tag: widths: '360,540,750,1000', sizes: '(min-width:750px) 42vw, 85vw', loading: 'lazy', alt: block.settings.name }}{% endif %}<div class="iqh-athlete-caption"><h3>{{ block.settings.name | escape }}</h3><p>{% if en and block.settings.role_en != blank %}{{ block.settings.role_en | escape }}{% else %}{{ block.settings.role | escape }}{% endif %}</p>{% if block.settings.quote != blank or block.settings.quote_en != blank %}<blockquote>{% if en and block.settings.quote_en != blank %}{{ block.settings.quote_en | escape }}{% else %}{{ block.settings.quote | escape }}{% endif %}</blockquote>{% endif %}</div></div>{% endfor %}</div>{% if section.settings.team_link != blank %}<a class="iqh-pill iqh-team-link" href="{% if en and section.settings.team_link_en != blank %}{{ section.settings.team_link_en }}{% else %}{{ section.settings.team_link }}{% endif %}">{% if en %}Meet the IQ team{% else %}Das IQ Team kennenlernen{% endif %} →</a>{% endif %}</section></iq-home-cards>
+{% schema %}
+{
+  "name": "IQ Start · Athletes",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Dachzeile · DE"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow_en",
+      "label": "Dachzeile · EN"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Überschrift · DE"
+    },
+    {
+      "type": "text",
+      "id": "heading_en",
+      "label": "Überschrift · EN"
+    },
+    {
+      "type": "text",
+      "id": "intro",
+      "label": "Kurztext · DE"
+    },
+    {
+      "type": "text",
+      "id": "intro_en",
+      "label": "Kurztext · EN"
+    },
+    {
+      "type": "url",
+      "id": "team_link",
+      "label": "IQ Team Seite · DE"
+    },
+    {
+      "type": "url",
+      "id": "team_link_en",
+      "label": "IQ Team Seite · EN"
+    }
+  ],
+  "max_blocks": 12,
+  "blocks": [
+    {
+      "type": "athlete",
+      "name": "Athlete",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Foto"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name"
+        },
+        {
+          "type": "text",
+          "id": "role",
+          "label": "Kurze Beschreibung · DE"
+        },
+        {
+          "type": "text",
+          "id": "role_en",
+          "label": "Kurze Beschreibung · EN"
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Freigegebenes Originalzitat · DE"
+        },
+        {
+          "type": "textarea",
+          "id": "quote_en",
+          "label": "Approved original quote · EN"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "IQ Start · Athletes"
+    }
+  ]
+}
+{% endschema %}
+{% javascript %}
+if (!customElements.get('iq-home-cards')) {customElements.define('iq-home-cards',class extends HTMLElement{connectedCallback(){if(this.bound)return;this.bound=true;this.addEventListener('click',e=>{const b=e.target.closest('[data-iq-step]');if(!b)return;const t=this.querySelector('[data-iq-track]');const card=t.firstElementChild;if(!card)return;t.scrollBy({left:Number(b.dataset.iqStep)*(card.getBoundingClientRect().width+24),behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});});}});}
+{% endjavascript %}

@@ -1,0 +1,43 @@
+{{ 'iq-home-refresh.css' | asset_url | stylesheet_tag }}
+{%- liquid
+  assign en = false
+  if request.locale.iso_code == 'en'
+    assign en = true
+  endif
+-%}
+<nav class="iqh iqh-nav iqh-wrap" aria-label="{% if en %}Shop by category{% else %}Nach Kategorie einkaufen{% endif %}">{% for block in section.blocks %}<a class="iqh-pill iqh-pill--outline" href="{{ block.settings.collection.url }}" {{ block.shopify_attributes }}>{% if en and block.settings.label_en != blank %}{{ block.settings.label_en | escape }}{% else %}{{ block.settings.label | escape }}{% endif %}</a>{% endfor %}</nav>
+{% schema %}
+{
+  "name": "IQ Start · Kategorien",
+  "settings": [],
+  "max_blocks": 8,
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Kategorie",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Beschriftung · DE"
+        },
+        {
+          "type": "text",
+          "id": "label_en",
+          "label": "Beschriftung · EN"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "IQ Start · Kategorien"
+    }
+  ]
+}
+{% endschema %}

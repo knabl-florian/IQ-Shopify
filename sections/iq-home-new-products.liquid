@@ -1,0 +1,141 @@
+{{ 'iq-home-refresh.css' | asset_url | stylesheet_tag }}
+{%- liquid
+  assign en = false
+  if request.locale.iso_code == 'en'
+    assign en = true
+  endif
+-%}
+<section class="iqh iqh-wrap iqh-products"><header class="iqh-head"><p class="iqh-eyebrow">{% if en and section.settings.eyebrow_en != blank %}{{ section.settings.eyebrow_en | escape }}{% else %}{{ section.settings.eyebrow | escape }}{% endif %}</p><h2 class="iqh-heading">{% if en and section.settings.heading_en != blank %}{{ section.settings.heading_en | escape }}{% else %}{{ section.settings.heading | escape }}{% endif %}</h2></header><p class="iqh-intro">{% if en and section.settings.intro_en != blank %}{{ section.settings.intro_en | escape }}{% else %}{{ section.settings.intro | escape }}{% endif %}</p><div class="iqh-product-grid">{% for block in section.blocks %}{% assign item = block.settings.product %}{% if item != blank %}<article class="iqh-product" {{ block.shopify_attributes }}><a class="iqh-product-image" href="{{ item.url }}">{% assign product_image = block.settings.image | default: item.featured_image %}{{ product_image | image_url: width: 900 | image_tag: widths: '240,360,540,720,900', sizes: '(min-width: 990px) 390px, (min-width: 750px) 30vw, 78vw', loading: 'lazy', alt: item.title }}{% if block.settings.badge != blank %}<span class="iqh-badge">{% if en and block.settings.badge_en != blank %}{{ block.settings.badge_en | escape }}{% else %}{{ block.settings.badge | escape }}{% endif %}</span>{% endif %}</a><div class="iqh-product-copy"><h3><a href="{{ item.url }}">{% if block.settings.title != blank %}{% if en and block.settings.title_en != blank %}{{ block.settings.title_en | escape }}{% else %}{{ block.settings.title | escape }}{% endif %}{% else %}{{ item.title | escape }}{% endif %}</a></h3><p>{% if en and block.settings.description_en != blank %}{{ block.settings.description_en | escape }}{% else %}{{ block.settings.description | escape }}{% endif %}</p><div class="iqh-product-bottom"><span class="iqh-price">{% if item.price_varies %}{% if en %}From {% else %}Ab {% endif %}{% endif %}{{ item.price | money }}</span><a class="iqh-text-link" href="{{ item.url }}">{% if en %}Discover{% else %}Entdecken{% endif %} <span aria-hidden="true">→</span></a></div>{% unless item.available %}<p class="iqh-availability">{% if en %}Currently sold out{% else %}Aktuell ausverkauft{% endif %}</p>{% endunless %}{% if block.settings.extra_link != blank %}<a class="iqh-text-link iqh-product-extra" href="{% if en and block.settings.extra_link_en != blank %}{{ block.settings.extra_link_en }}{% else %}{{ block.settings.extra_link }}{% endif %}">{% if en %}{{ block.settings.extra_cta_en | escape }}{% else %}{{ block.settings.extra_cta | escape }}{% endif %} →</a>{% endif %}</div></article>{% endif %}{% endfor %}</div>{% if section.settings.link != blank %}<a class="iqh-text-link iqh-products-link" href="{% if en and section.settings.link_en != blank %}{{ section.settings.link_en }}{% else %}{{ section.settings.link }}{% endif %}">{% if en and section.settings.cta_en != blank %}{{ section.settings.cta_en | escape }}{% else %}{{ section.settings.cta | escape }}{% endif %} <span aria-hidden="true">→</span></a>{% endif %}</section>
+{% schema %}
+{
+  "name": "IQ Start · Neuheiten",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Dachzeile · DE"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow_en",
+      "label": "Dachzeile · EN"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Überschrift · DE"
+    },
+    {
+      "type": "text",
+      "id": "heading_en",
+      "label": "Überschrift · EN"
+    },
+    {
+      "type": "text",
+      "id": "intro",
+      "label": "Einleitung · DE"
+    },
+    {
+      "type": "text",
+      "id": "intro_en",
+      "label": "Einleitung · EN"
+    },
+    {
+      "type": "text",
+      "id": "cta",
+      "label": "Link unter Produkten · DE"
+    },
+    {
+      "type": "text",
+      "id": "cta_en",
+      "label": "Link unter Produkten · EN"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link · DE"
+    },
+    {
+      "type": "url",
+      "id": "link_en",
+      "label": "Link · EN"
+    }
+  ],
+  "max_blocks": 6,
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Produkt",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Produkt"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Bild (optional)",
+          "info": "Leer = aktuelles Produktbild. Preis und Verfügbarkeit kommen automatisch aus dem Produkt."
+        },
+        {
+          "type": "text",
+          "id": "badge",
+          "label": "Label · DE"
+        },
+        {
+          "type": "text",
+          "id": "badge_en",
+          "label": "Label · EN"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Kurzer Kartentitel · DE"
+        },
+        {
+          "type": "text",
+          "id": "title_en",
+          "label": "Kurzer Kartentitel · EN"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Ein kurzer Vorteil · DE"
+        },
+        {
+          "type": "text",
+          "id": "description_en",
+          "label": "Ein kurzer Vorteil · EN"
+        },
+        {
+          "type": "text",
+          "id": "extra_cta",
+          "label": "Zusatzlink Text · DE"
+        },
+        {
+          "type": "text",
+          "id": "extra_cta_en",
+          "label": "Zusatzlink Text · EN"
+        },
+        {
+          "type": "url",
+          "id": "extra_link",
+          "label": "Zusatzlink · DE"
+        },
+        {
+          "type": "url",
+          "id": "extra_link_en",
+          "label": "Zusatzlink · EN"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "IQ Start · Neuheiten"
+    }
+  ]
+}
+{% endschema %}
+

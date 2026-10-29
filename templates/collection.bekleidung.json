@@ -311,7 +311,8 @@
         "padding_bottom": 70,
         "show_section_divider": true,
         "divider_width": "fixed",
-        "collection_card_titles": true
+        "collection_card_titles": true,
+        "compact_filter_bar": true
       }
     },
     "rich_text_ARFW3U": {

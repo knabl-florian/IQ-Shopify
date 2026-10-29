@@ -13,6 +13,7 @@
   assign contact = routes.root_url | append: '/pages/contact' | replace: '//', '/'
  endif
 %}
+<div class="iq-k9-discount-band">
 <section class="iq-k9-discount-line" aria-labelledby="iq-k9-title-{{ section.id }}">
   <div class="iq-k9-discount-line__copy">
     <p class="iq-k9-discount-line__title" id="iq-k9-title-{{ section.id }}"><span class="iq-k9-discount-line__amount">{{ section.settings.amount | escape }}</span> {{ section.settings[heading_key] | escape }}</p>
@@ -24,8 +25,10 @@
     <a href="{{ contact }}">{% if request.locale.iso_code == 'en' %}Request discount{% else %}Rabatt anfragen{% endif %} <span aria-hidden="true">→</span></a>
   </details>
 </section>
+</div>
 {% endif %}
 {% stylesheet %}
+.iq-k9-discount-band{width:100%;background:#171717}
 .iq-k9-discount-line,.iq-k9-discount-line *{box-sizing:border-box}
 .iq-k9-discount-line{display:flex;align-items:flex-start;justify-content:space-between;gap:12px 28px;max-width:1440px;margin:0 auto;padding:18px 50px;border-bottom:1px solid #DCDBD7;background:#171717;color:#FFFFFF;font:400 14px/1.45 Archivo,sans-serif}
 .iq-k9-discount-line p{margin:0}.iq-k9-discount-line__title{font:700 16px/1.4 Archivo,sans-serif;margin-bottom:4px!important}.iq-k9-discount-line__terms{font-size:13px}

@@ -1,0 +1,62 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "iq-home-athletes",
+      "blocks": {
+        "person0": {
+          "type": "athlete",
+          "settings": {
+            "image": "shopify://shop_images/jan-boehm.jpg",
+            "name": "Jany Böhm",
+            "role": "Hundeführer · Schutzdiensthelfer",
+            "role_en": "Handler · Protection helper"
+          }
+        },
+        "person1": {
+          "type": "athlete",
+          "settings": {
+            "image": "shopify://shop_images/kate-morozov-bearbeitet.jpg",
+            "name": "Kate Morozova",
+            "role": "IGP-Sportlerin",
+            "role_en": "IGP competitor"
+          }
+        },
+        "person2": {
+          "type": "athlete",
+          "settings": {
+            "image": "shopify://shop_images/marko-koskensalo.jpg",
+            "name": "Marko Koskensalo",
+            "role": "Trainer · Schutzdiensthelfer",
+            "role_en": "Trainer · Protection helper"
+          }
+        }
+      },
+      "block_order": [
+        "person0",
+        "person1",
+        "person2"
+      ],
+      "name": "IQ Athletes – Bildkarten",
+      "settings": {
+        "eyebrow": "IQ Athletes",
+        "eyebrow_en": "IQ Athletes",
+        "heading": "Das IQ Team",
+        "heading_en": "Meet the IQ team",
+        "intro": "Menschen, die IQ im Training und Wettkampf begleiten.",
+        "intro_en": "People who train and compete with IQ."
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

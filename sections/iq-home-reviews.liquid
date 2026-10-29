@@ -1,0 +1,150 @@
+{{ 'iq-home-refresh.css' | asset_url | stylesheet_tag }}
+{% liquid
+ assign en = false
+ if request.locale.iso_code == 'en'
+ assign en = true
+ endif
+%}
+<iq-home-cards><section class="iqh iqh-wrap iq27-reviews" aria-labelledby="reviews-{{ section.id }}">
+<header class="iq27-reviews-head"><div><p class="iqh-eyebrow">{% if en and section.settings.eyebrow_en != blank %}{{ section.settings.eyebrow_en | escape }}{% else %}{{ section.settings.eyebrow | escape }}{% endif %}</p><h2 class="iqh-heading" id="reviews-{{ section.id }}">{% if en and section.settings.heading_en != blank %}{{ section.settings.heading_en | escape }}{% else %}{{ section.settings.heading | escape }}{% endif %}</h2></div>
+{% if section.settings.show_summary %}<div class="iq27-score"><strong>{% if en and section.settings.rating_en != blank %}{{ section.settings.rating_en | escape }}{% else %}{{ section.settings.rating | escape }}{% endif %}</strong><span class="iq27-stars" aria-hidden="true">★★★★★</span><span>{% if en and section.settings.review_count_en != blank %}{{ section.settings.review_count_en | escape }}{% else %}{{ section.settings.review_count | escape }}{% endif %}</span></div>{% endif %}</header>
+<div class="iq28-controls"><button type="button" data-iq-step="-1" aria-label="{% if en %}Previous card{% else %}Vorherige Karte{% endif %}">←</button><button type="button" data-iq-step="1" aria-label="{% if en %}Next card{% else %}Nächste Karte{% endif %}">→</button></div><div data-iq-track class="iq27-review-track" tabindex="0" aria-labelledby="reviews-{{ section.id }}">{% for block in section.blocks %}<figure class="iq27-review" {{ block.shopify_attributes }}><div class="iq27-stars" aria-label="{{ block.settings.stars }} / 5">{% for i in (1..5) %}{% if i <= block.settings.stars %}★{% else %}☆{% endif %}{% endfor %}</div>{% liquid
+ assign quote_text = block.settings.quote | escape
+ assign quote_highlight = block.settings.highlight | escape
+ if en and block.settings.quote_en != blank
+   assign quote_text = block.settings.quote_en | escape
+   assign quote_highlight = block.settings.highlight_en | escape
+ endif
+%}<blockquote>{% if quote_highlight != blank and quote_text contains quote_highlight %}{% capture emphasis %}<strong>{{ quote_highlight }}</strong>{% endcapture %}{{ quote_text | replace: quote_highlight, emphasis }}{% else %}{{ quote_text }}{% endif %}</blockquote><figcaption><strong>{{ block.settings.name | escape }}</strong>{% assign product_link = block.settings.product_link %}{% if en and block.settings.product_link_en != blank %}{% assign product_link = block.settings.product_link_en %}{% endif %}{% if product_link != blank %}<a href="{{ product_link }}">{% else %}<span>{% endif %}{% if en and block.settings.context_en != blank %}{{ block.settings.context_en | escape }}{% else %}{{ block.settings.context | escape }}{% endif %}{% if product_link != blank %}</a>{% else %}</span>{% endif %}</figcaption></figure>{% endfor %}</div></section></iq-home-cards>{% javascript %}
+if (!customElements.get('iq-home-cards')) {customElements.define('iq-home-cards',class extends HTMLElement{connectedCallback(){if(this.bound)return;this.bound=true;this.addEventListener('click',e=>{const b=e.target.closest('[data-iq-step]');if(!b)return;const t=this.querySelector('[data-iq-track]');const card=t.firstElementChild;if(!card)return;t.scrollBy({left:Number(b.dataset.iqStep)*(card.getBoundingClientRect().width+24),behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});});}});}
+{% endjavascript %}
+{% stylesheet %}
+.iq27-reviews{padding-block:24px 48px;background:#fff}.iq27-reviews-head{display:flex;justify-content:space-between;align-items:center;gap:28px}.iq27-score{display:grid;text-align:right;flex-shrink:0;font:700 13px/1.5 Archivo,sans-serif}.iq27-score strong{font:700 34px/1.2 Archivo,sans-serif}.iq27-stars{color:#FFB400;letter-spacing:2px;font-size:21px;line-height:1.4}.iq27-review-track{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 64px)/3);gap:32px;overflow-x:auto;scroll-snap-type:x mandatory;margin-top:32px;padding-bottom:12px}.iq27-review{min-width:0;scroll-snap-align:start;display:flex;flex-direction:column}.iqh.iq27-reviews .iq27-review blockquote{border:0;padding:0;font:400 21px/1.5 Archivo,sans-serif;margin:16px 0 24px}.iq27-review figcaption{display:grid;gap:5px;font:400 13px/1.4 Archivo,sans-serif;margin-top:auto}.iq27-review figcaption strong{font-weight:700}.iq27-review figcaption a{text-decoration:underline;text-underline-offset:3px}.iq27-review-track:focus-visible{outline:2px solid #A51D1B;outline-offset:4px}@media(max-width:749px){.iq27-reviews-head{display:block}.iq27-score{margin-top:18px;grid-template-columns:auto 1fr;column-gap:16px;text-align:left;align-items:center;width:fit-content}.iq27-score strong{grid-row:1/3;font-size:30px}.iq27-review-track{grid-auto-columns:87%;gap:24px;margin-right:-20px;padding-right:20px;margin-top:26px}.iqh.iq27-reviews .iq27-review blockquote{border:0;padding:0;font-size:19px}.iq27-reviews{padding-block:16px 36px}}
+{% endstylesheet %}
+{% schema %}
+{
+  "name": "IQ Start · Stimmen",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Dachzeile · DE"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow_en",
+      "label": "Dachzeile · EN"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Überschrift · DE"
+    },
+    {
+      "type": "text",
+      "id": "heading_en",
+      "label": "Überschrift · EN"
+    },
+    {
+      "type": "paragraph",
+      "content": "Texte und Kennzahlen sind manuell gepflegt. Nur echte Bewertungen übernehmen und Gesamtzahlen vor Veröffentlichung prüfen."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_summary",
+      "label": "Gesamtbewertung anzeigen",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "rating",
+      "label": "Bewertung · DE"
+    },
+    {
+      "type": "text",
+      "id": "rating_en",
+      "label": "Bewertung · EN"
+    },
+    {
+      "type": "text",
+      "id": "review_count",
+      "label": "Anzahl Bewertungen · DE"
+    },
+    {
+      "type": "text",
+      "id": "review_count_en",
+      "label": "Anzahl Bewertungen · EN"
+    }
+  ],
+  "max_blocks": 8,
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Kundenstimme",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Bewertungstext · DE"
+        },
+        {
+          "type": "textarea",
+          "id": "quote_en",
+          "label": "Bewertungstext · EN"
+        },
+        {
+          "type": "text",
+          "id": "highlight",
+          "label": "Fett hervorheben · DE",
+          "info": "Den gewünschten Ausschnitt exakt aus dem Bewertungstext übernehmen. Leer lassen für normalen Text."
+        },
+        {
+          "type": "text",
+          "id": "highlight_en",
+          "label": "Fett hervorheben · EN",
+          "info": "Exact excerpt from the English review. Leave empty for normal text."
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name"
+        },
+        {
+          "type": "text",
+          "id": "context",
+          "label": "Produkt / Kontext · DE"
+        },
+        {
+          "type": "text",
+          "id": "context_en",
+          "label": "Produkt / Kontext · EN"
+        },
+        {
+          "type": "range",
+          "id": "stars",
+          "label": "Sterne",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        },
+        {
+          "type": "url",
+          "id": "product_link",
+          "label": "Optionaler Produktlink · DE"
+        },
+        {
+          "type": "url",
+          "id": "product_link_en",
+          "label": "Optionaler Produktlink · EN"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "IQ Start · Stimmen"
+    }
+  ]
+}
+{% endschema %}

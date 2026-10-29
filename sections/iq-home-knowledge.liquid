@@ -1,0 +1,139 @@
+{{ 'iq-home-refresh.css' | asset_url | stylesheet_tag }}
+{% liquid
+ assign en = false
+ if request.locale.iso_code == 'en'
+ assign en = true
+ endif
+%}
+<section class="iqh iqh-wrap iq27-knowledge"><div class="iq27-knowledge-banner" style="--iq27-shade:{{ section.settings.overlay | divided_by: 100.0 }}">
+{% assign banner_image = section.settings.image | default: section.blocks.first.settings.image %}{% assign banner_alt = section.settings.alt %}{% if en and section.settings.alt_en != blank %}{% assign banner_alt = section.settings.alt_en %}{% endif %}{% if banner_image != blank %}<picture>{% if section.settings.mobile_image != blank %}<source media="(max-width:749px)" srcset="{{ section.settings.mobile_image | image_url: width: 800 }}">{% endif %}{{ banner_image | image_url: width: 1800 | image_tag: widths: '480,750,1000,1400,1800', sizes: '(min-width:1280px) 1232px, 100vw', loading: 'lazy', alt: banner_alt }}</picture>{% endif %}
+<div class="iq27-knowledge-copy"><p class="iqh-eyebrow">{% if en and section.settings.eyebrow_en != blank %}{{ section.settings.eyebrow_en | escape }}{% else %}{{ section.settings.eyebrow | escape }}{% endif %}</p><h2 class="iqh-heading">{% if en and section.settings.heading_en != blank %}{{ section.settings.heading_en | escape }}{% else %}{{ section.settings.heading | escape }}{% endif %}</h2><div class="iq27-knowledge-links">{% for block in section.blocks %}<a class="iqh-pill" href="{% if en and block.settings.link_en != blank %}{{ block.settings.link_en }}{% else %}{{ block.settings.link }}{% endif %}" {{ block.shopify_attributes }}>{% if en and block.settings.cta_en != blank %}{{ block.settings.cta_en | escape }}{% else %}{{ block.settings.cta | escape }}{% endif %} <span aria-hidden="true">→</span></a>{% endfor %}</div></div></div></section>
+{% stylesheet %}
+.iq27-knowledge{padding-block:12px 48px}.iq27-knowledge-banner{position:relative;min-height:410px;isolation:isolate;display:flex;align-items:center;overflow:hidden;background:#171717}.iq27-knowledge-banner picture{position:absolute;inset:0;z-index:0}.iq27-knowledge-banner picture img{width:100%;height:100%;object-fit:cover;object-position:65% 45%}.iq27-knowledge-banner:after{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(23,23,23,var(--iq27-shade)),transparent 90%)}.iq27-knowledge-copy{position:relative;z-index:2;padding:44px 5%;max-width:650px;color:#fff;text-shadow:0 1px 5px rgba(23,23,23,.4)}.iqh.iq27-knowledge .iqh-eyebrow{color:#fff}.iq27-knowledge-links{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}.iqh.iq27-knowledge .iq27-knowledge-links .iqh-pill{background:rgba(23,23,23,.15);color:#fff;border-color:#fff;padding:10px 18px;min-height:44px}.iqh.iq27-knowledge .iq27-knowledge-links .iqh-pill:hover{background:#fff;color:#171717}.iq27-knowledge-copy .iqh-heading{max-width:20ch;font-size:clamp(28px,3vw,40px)}@media(max-width:749px){.iq27-knowledge-banner{min-height:460px;align-items:flex-end}.iq27-knowledge-copy{position:relative;z-index:2;padding:28px 24px}.iq27-knowledge-banner:after{background:linear-gradient(0deg,rgba(23,23,23,var(--iq27-shade)),transparent 85%)}.iq27-knowledge-banner picture img{object-position:65% center}.iq27-knowledge-copy .iqh-heading{font-size:28px}.iq27-knowledge{padding-bottom:36px}}
+{% endstylesheet %}
+{% schema %}
+{
+  "name": "IQ Start · Wissen",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Dachzeile · DE"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow_en",
+      "label": "Dachzeile · EN"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Überschrift · DE"
+    },
+    {
+      "type": "text",
+      "id": "heading_en",
+      "label": "Überschrift · EN"
+    },
+    {
+      "type": "text",
+      "id": "cta",
+      "label": "Zusätzlicher Wissenslink · DE"
+    },
+    {
+      "type": "text",
+      "id": "cta_en",
+      "label": "Zusätzlicher Wissenslink · EN"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link · DE"
+    },
+    {
+      "type": "url",
+      "id": "link_en",
+      "label": "Link · EN"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Bannerbild Desktop"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Bannerbild Mobile (optional)"
+    },
+    {
+      "type": "text",
+      "id": "alt",
+      "label": "Bildbeschreibung · DE"
+    },
+    {
+      "type": "text",
+      "id": "alt_en",
+      "label": "Bildbeschreibung · EN"
+    },
+    {
+      "type": "range",
+      "id": "overlay",
+      "label": "Abdunklung hinter dem Text",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "unit": "%",
+      "default": 45
+    }
+  ],
+  "max_blocks": 2,
+  "blocks": [
+    {
+      "type": "teaser",
+      "name": "Wissensbeitrag",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Bild"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Titel · DE"
+        },
+        {
+          "type": "text",
+          "id": "title_en",
+          "label": "Titel · EN"
+        },
+        {
+          "type": "text",
+          "id": "cta",
+          "label": "Linktext · DE"
+        },
+        {
+          "type": "text",
+          "id": "cta_en",
+          "label": "Linktext · EN"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link · DE"
+        },
+        {
+          "type": "url",
+          "id": "link_en",
+          "label": "Link · EN"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "IQ Start · Wissen"
+    }
+  ]
+}
+{% endschema %}
