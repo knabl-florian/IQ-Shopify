@@ -79,7 +79,10 @@
         "heading_tag": "h1",
         "button_de": "",
         "button_en": "",
-        "button_url": ""
+        "button_url": "",
+        "accent_style": "text",
+        "overlay_desktop": 35,
+        "overlay_mobile": 45
       }
     },
     "iq_banner_hoodie_UkqkP8": {
@@ -306,11 +309,11 @@
             "text_4": "IQ Performance T-Shirt · Women & Unisex",
             "text_5": "Thoughtful fabric.",
             "text_6": "Rewards within reach.",
-            "text_7": "Two-layer double-face fabric: cotton jersey outside, polyester mesh inside. Plus a zipped back pocket for toys – on the IQ Performance T-Shirt in women’s and unisex fits.",
+            "text_7": "Cotton jersey outside, polyester mesh inside. With a zipped back pocket for your reward toy.",
             "text_8": "IQ Performance T-Shirt · Damen & Unisex",
             "text_9": "Durchdachter Stoff.",
             "text_10": "Belohnung griffbereit.",
-            "text_11": "Zweilagiger Double-Face-Stoff: Baumwolljersey außen, Polyester-Mesh innen. Dazu eine Rückentasche mit Reißverschluss fürs Spielzeug – beim IQ Performance T-Shirt für Damen und Unisex."
+            "text_11": "Baumwolljersey außen, Polyester-Mesh innen. Mit Reißverschluss-Rückentasche fürs Belohnungsspielzeug."
           }
         },
         "inline_custom_liquid_c6YAtn": {
@@ -331,7 +334,8 @@
             "text_9": "Dein Hoodie.",
             "text_10": "Noch mehr dabei.",
             "text_11": "Mehr Platz für Belohnungen, direkt am Hoodie. Die IQ modulare Futtertasche passt an alle IQ Hoodies und ist separat erhältlich."
-          }
+          },
+          "disabled": true
         },
         "inline_custom_liquid_ajJc4p": {
           "type": "iq_release_4",
@@ -346,11 +350,11 @@
             "text_4": "IQ women’s zip hoodie",
             "text_5": "Flattering fit.",
             "text_6": "Clever details.",
-            "text_7": "A flattering fit with comfortable stretch and soft fleece inside. With an XL zipped back pocket, hidden treat pockets and compatibility with the optional IQ modular treat pocket.",
+            "text_7": "Soft fleece inside. Stretch for comfort. Zipped back pocket and wipe-clean treat pockets.",
             "text_8": "IQ Zip-Hoodie Damen",
             "text_9": "Schöner Schnitt.",
             "text_10": "Viel dahinter.",
-            "text_11": "Figurbetont und bequem: Stretch außen, flauschiges Fleece innen. Mit XL-Reißverschluss-Rückentasche, versteckten Futtertaschen und Aufnahme für die optionale IQ modulare Futtertasche."
+            "text_11": "Fleece innen. Bequemer Stretch. Rückentasche mit Reißverschluss und auswischbare Futtertaschen."
           }
         },
         "inline_custom_liquid_ajAaJW": {
@@ -360,17 +364,17 @@
             "position": 6,
             "position_mobile": 6,
             "width": "full",
-            "bild_1": "shopify://shop_images/iq-02-hoodie.webp",
-            "text_2": "Man in a black IQ hoodie playing tug with his dog",
-            "text_3": "Mann im schwarzen IQ Hoodie spielt mit seinem Hund an einem Zerrspielzeug",
-            "text_4": "IQ hoodies",
-            "text_5": "Everyday style.",
-            "text_6": "Ready for your dog.",
-            "text_7": "An XL back pocket and hidden, wipe-clean treat pockets. Everyday style, ready for your dog – compatible with the optional IQ modular treat pocket.",
-            "text_8": "IQ Hoodies",
-            "text_9": "Alltagslook.",
-            "text_10": "Alles parat.",
-            "text_11": "XL-Rückentasche, versteckte und auswischbare Futtertaschen. Im Alltagslook alles parat – und kompatibel mit der optionalen IQ modularen Futtertasche."
+            "bild_1": "shopify://shop_images/iq-in-dog-we-trust-hoodie-mit-hund.jpg",
+            "text_2": "Black IQ In Dog We Trust hoodie seen from behind, with a Malinois at sunset",
+            "text_3": "Schwarzer IQ In Dog We Trust Hoodie von hinten mit Malinois im Abendlicht",
+            "text_4": "IQ TRAINING HOODIE",
+            "text_5": "IN DOG WE TRUST.",
+            "text_6": "",
+            "text_7": "We train together. Grow together. Learn to rely on each other. But our bond goes far beyond any task.",
+            "text_8": "IQ TRAININGSHOODIE",
+            "text_9": "IN DOG WE TRUST.",
+            "text_10": "",
+            "text_11": "Wir trainieren gemeinsam. Wachsen aneinander. Lernen, uns aufeinander zu verlassen. Doch was uns verbindet, geht weit über jede Aufgabe hinaus."
           }
         },
         "inline_custom_liquid_V9rLVc": {
@@ -447,6 +451,7 @@
       ],
       "custom_css": [],
       "settings": {
+        "compact_filter_bar": true,
         "collection_card_titles": true,
         "iq_jv_enabled": false,
         "iq_jv_products": [],
@@ -531,7 +536,22 @@
       "settings": {
         "heading_de": "",
         "heading_en": ""
-      }
+      },
+      "blocks": {
+        "hoodie_layers": {
+          "type": "topic",
+          "settings": {
+            "only_collection": "hundesport-t-shirts-hoodies",
+            "heading_de": "Dein Hoodie als Teil Deiner Ausrüstung",
+            "heading_en": "Your hoodie as part of your kit",
+            "text_de": "<p>Vergleiche Schnitt, Material und Taschen beim jeweiligen Modell. Für zusätzliche Schichten findest Du <a href=\"/collections/hundesport-westen\">Trainingswesten</a> sowie <a href=\"/collections/hundesport-jacken\">Jacken für draußen</a>. Die Größentabelle des Produkts hilft Dir bei der Auswahl.</p>",
+            "text_en": "<p>Compare each model’s cut, fabric and pockets. For extra layers, explore <a href=\"/en/collections/hundesport-westen\">training vests</a> and <a href=\"/en/collections/hundesport-jacken\">outdoor jackets</a>. Use the product’s size chart to choose your fit.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "hoodie_layers"
+      ]
     }
   },
   "order": [

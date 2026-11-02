@@ -43,7 +43,8 @@
         "button_de": "",
         "button_en": "",
         "button_url": ""
-      }
+      },
+      "disabled": true
     },
     "featured_product_rJcWVK": {
       "type": "featured-product",
@@ -292,12 +293,45 @@
             "body_en": "100% beef lung. Small treats for obedience, marker training and frequent rewards.",
             "alt_en": "IQ Pure Bites beef lung mini training treats"
           }
+        },
+        "iq_heading_1": {
+          "type": "iq_collection_heading",
+          "settings": {
+            "collection_handle": "hundesport-hosen",
+            "title_de": "Hundesporthosen",
+            "title_en": "Dog training trousers",
+            "intro_de": "Bewegungsfreiheit und praktische Taschen fürs Training mit Hund.",
+            "intro_en": "Freedom to move and practical pockets for training with your dog."
+          }
+        },
+        "iq_heading_2": {
+          "type": "iq_collection_heading",
+          "settings": {
+            "collection_handle": "zzz-hundesport-hosen-damen",
+            "title_de": "Hundesporthosen für Damen",
+            "title_en": "Women’s dog training trousers",
+            "intro_de": "Bewegungsfreiheit und praktische Taschen fürs Training mit Hund.",
+            "intro_en": "Freedom to move and practical pockets for training with your dog."
+          }
+        },
+        "iq_heading_3": {
+          "type": "iq_collection_heading",
+          "settings": {
+            "collection_handle": "zz-hosen-herren",
+            "title_de": "Hundesporthosen für Herren",
+            "title_en": "Men’s dog training trousers",
+            "intro_de": "Bewegungsfreiheit und praktische Taschen fürs Training mit Hund.",
+            "intro_en": "Freedom to move and practical pockets for training with your dog."
+          }
         }
       },
       "block_order": [
         "iq_training_harness",
         "iq_training_blind",
-        "iq_food_reward"
+        "iq_food_reward",
+        "iq_heading_1",
+        "iq_heading_2",
+        "iq_heading_3"
       ],
       "custom_css": [],
       "settings": {
@@ -359,14 +393,14 @@
             "text_2": "Durchdachte Details",
             "text_3": "Ready to reward.",
             "text_4": "Bereit zum Belohnen.",
-            "text_5": "Remove. Rinse. Keep training.",
-            "text_6": "Rausnehmen. Abwaschen. Weitertrainieren.",
-            "text_7": "The integrated treat pouches are coated and removable, making them easy to clean after training.",
-            "text_8": "Die integrierten Futtertaschen sind beschichtet und herausnehmbar. So lassen sie sich nach dem Training einfach reinigen.",
-            "text_9": "Room for your reward toy",
-            "text_10": "Platz für Dein Belohnungsspielzeug",
-            "text_11": "The concealed rear pocket holds your toy or bite pillow.",
-            "text_12": "In der versteckten Rückentasche finden Spielzeug oder Beißkissen Platz.",
+            "text_5": "Easy to clean",
+            "text_6": "Einfach sauber",
+            "text_7": "Remove the coated treat pouches and rinse them after training.",
+            "text_8": "Beschichtete Futtertaschen herausnehmen und nach dem Training abwaschen.",
+            "text_9": "Toy within reach",
+            "text_10": "Spielzeug griffbereit",
+            "text_11": "Concealed back pocket for toys or a bite pillow.",
+            "text_12": "Versteckte Rückentasche für Spielzeug oder Beißkissen.",
             "text_13": "Need more space?",
             "text_14": "Du brauchst mehr Platz?",
             "text_15": "Add the optional",

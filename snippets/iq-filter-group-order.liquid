@@ -3,6 +3,8 @@ Ordered product-group values for the current collection.
 {% enddoc %}
 {% liquid
  case collection.handle
+ when 'bestseller'
+  echo 'bestseller--bekleidung|bestseller--training|bestseller--bucher'
  when 'hundesportbekleidung'
  echo 'hundesportbekleidung--jacken|hundesportbekleidung--mantel|hundesportbekleidung--westen|hundesportbekleidung--hosen|hundesportbekleidung--shirts-hoodies|hundesportbekleidung--accessoires'
  when 'hundesport-jacken'

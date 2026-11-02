@@ -496,3 +496,23 @@ body.collection-template.iq-collection-standard .iq-k9-discount-line {
 }
 
 @media(max-width:749px){.iq-editorial-banner--action{height:auto;aspect-ratio:1;color:#171717}.iq-editorial-banner--action::after{display:none}.iq-editorial-banner--action .iq-editorial-banner__copy{top:5%;bottom:auto;left:5%;right:auto;width:58%}.iq-editorial-banner--action h2{font-size:clamp(20px,5.6vw,28px);line-height:1.08;margin:0}.iq-editorial-banner--action .iq-editorial-banner__label{font-size:10px;margin-bottom:8px}.iq-editorial-banner--action .iq-editorial-banner__copy>p:last-child{display:none}}
+
+/* Shared compact collection entry and editorial rhythm. */
+body.collection-template .iq-collection-heading{max-width:1100px;margin:0 0 24px;padding:24px 0 0;color:#171717}
+body.collection-template .iq-collection-heading h1{font:800 italic clamp(26px,3vw,42px)/1.15 Montserrat,sans-serif;text-transform:uppercase;margin:0;overflow-wrap:break-word}
+body.collection-template .iq-collection-heading p{font:400 16px/1.5 Archivo,sans-serif;margin:12px 0 0;max-width:650px}
+body.collection-template .product-card__info .jdgm-prev-badge[data-number-of-reviews="0"]{display:none!important}
+body.collection-template .product-card__info .jdgm-preview-badge:has([data-number-of-reviews="0"]){display:block!important;min-height:18px;visibility:hidden}
+body.collection-template :is(.iq-hs-2,.iq-hs-3,.iq-hs-4,.iq-hs-5,.iq-hs-6) .copy{padding:24px clamp(20px,3vw,48px)}
+body.collection-template .iq-pants-detail{padding-top:24px;padding-bottom:24px}
+body.collection-template .iq-pants-detail article+article{margin-top:14px;padding-top:14px}
+body.collection-template .iq-pants-detail h3{font-size:18px;margin-bottom:6px}
+body.collection-template .iq-pants-detail p{margin-bottom:10px}
+@media(max-width:749px){
+body.collection-template .iq-collection-heading{margin-bottom:20px;padding-top:24px}
+body.collection-template .iq-collection-heading p{font-size:15px}
+body.collection-template :is(.iq-hs-2,.iq-hs-3,.iq-hs-4,.iq-hs-5,.iq-hs-6) .copy{padding:18px 16px}
+}
+
+body.collection-template.iq-collection-standard #ProductsList .product-card .product-card__title{min-height:2.7em!important}
+body.collection-template.iq-collection-standard #ProductsList .product-card .jdgm-preview-badge{min-height:18px}

@@ -486,7 +486,7 @@ class LoadMoreButton extends HTMLButtonElement {
     const source = parsedHTML.querySelector('.products-list');
 
     if (source && productList) {
-      source.querySelectorAll('.card').forEach((item) => {
+      Array.from(source.children).filter((item) => item.matches('.card, [data-inline-block]')).forEach((item) => {
         productList.appendChild(item);
       });
 

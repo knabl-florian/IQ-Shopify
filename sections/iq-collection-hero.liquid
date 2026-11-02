@@ -30,7 +30,7 @@
 .iqcb .iqcb__copy{position:absolute}
 @media(max-width:749px){#shopify-section-{{ section.id }}{min-height:125vw}.iqcb{aspect-ratio:4/5;max-height:none}}
 </style>
-<div class="iqcb" data-iq-collection-hero data-tone="{{ section.settings.text_tone }}" data-position="{{ section.settings.desktop_position }}" data-mobile-position="{{ section.settings.mobile_position }}" data-mobile-tone="{{ section.settings.mobile_tone }}" data-mobile-align="{{ section.settings.mobile_alignment }}" style="--iqcb-focus:{{ section.settings.focus_y }}%;">
+<div class="iqcb" data-iq-collection-hero data-accent="{{ section.settings.accent_style | default: 'brand' }}" data-tone="{{ section.settings.text_tone }}" data-position="{{ section.settings.desktop_position }}" data-mobile-position="{{ section.settings.mobile_position }}" data-mobile-tone="{{ section.settings.mobile_tone }}" data-mobile-align="{{ section.settings.mobile_alignment }}" style="--iqcb-focus:{{ section.settings.focus_y }}%;--iqcb-shade:{{ section.settings.overlay_desktop | default: 0 | divided_by: 100.0 }};--iqcb-shade-mobile:{{ section.settings.overlay_mobile | default: 0 | divided_by: 100.0 }};">
   <picture class="iqcb__picture">
     <source media="(max-width:749px)" srcset="{{ mobile | image_url: width: 400 }} 400w, {{ mobile | image_url: width: 750 }} 750w, {{ mobile | image_url: width: 800 }} 800w, {{ mobile | image_url: width: 1000 }} 1000w, {{ mobile | image_url: width: 1200 }} 1200w" sizes="100vw" width="{{ mobile.width }}" height="{{ mobile.height }}">
     {{ desktop | image_url: width: 2560 | image_tag: widths: '800,1200,1600,1920,2560', sizes: '100vw', loading: 'eager', fetchpriority: 'high', alt: image_alt, class: 'iqcb__image' }}
@@ -82,6 +82,13 @@
 .iqcb .iqcb__label{font-size:10px;margin-bottom:8px}
 .iqcb[data-mobile-tone="dark"] .iqcb__description,.iqcb[data-mobile-tone="dark"] .iqcb__label{color:#171717;text-shadow:none}
 .iqcb .iqcb__button{margin-top:12px}
+}
+
+.iqcb::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,rgba(23,23,23,var(--iqcb-shade,0)) 0%,rgba(23,23,23,0) 70%)}
+.iqcb[data-accent="text"] .iqcb__title span{color:inherit;text-shadow:inherit}
+@media(max-width:749px){
+.iqcb::before{background:linear-gradient(0deg,rgba(23,23,23,var(--iqcb-shade-mobile,0)) 0%,rgba(23,23,23,0) 55%)}
+.iqcb[data-mobile-position="top"]::before{background:linear-gradient(180deg,rgba(23,23,23,var(--iqcb-shade-mobile,0)) 0%,rgba(23,23,23,0) 55%)}
 }
 {% endstylesheet %}
 
@@ -136,6 +143,44 @@
         }
       ],
       "default": "dark"
+    },
+    {
+      "type": "select",
+      "id": "accent_style",
+      "label": "Farbe der zweiten Titelzeile",
+      "options": [
+        {
+          "value": "brand",
+          "label": "Markenrot"
+        },
+        {
+          "value": "text",
+          "label": "Wie übrige Überschrift"
+        }
+      ],
+      "default": "brand"
+    },
+    {
+      "type": "range",
+      "id": "overlay_desktop",
+      "label": "Dunkler Verlauf hinter Text – Desktop",
+      "min": 0,
+      "max": 70,
+      "step": 5,
+      "unit": "%",
+      "default": 0,
+      "info": "Nur links hinter dem Text. 0 = aus."
+    },
+    {
+      "type": "range",
+      "id": "overlay_mobile",
+      "label": "Dunkler Verlauf hinter Text – mobil",
+      "min": 0,
+      "max": 70,
+      "step": 5,
+      "unit": "%",
+      "default": 0,
+      "info": "Folgt der Textposition oben oder unten. 0 = aus."
     },
     {
       "type": "select",

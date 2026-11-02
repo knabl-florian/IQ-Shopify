@@ -30,6 +30,7 @@
     </div>
     {%- for filter in results.filters -%}
       {%- if filter.param_name == 'filter.p.m.custom.iq_product_groups' -%}
+        {%- if collection.handle == 'bestseller' -%}{%- continue -%}{%- endif -%}
         {%- unless request.page_type == 'collection' -%}{%- continue -%}{%- endunless -%}
         {%- capture iq_drawer_group_order -%}{%- render 'iq-filter-group-order' -%}{%- endcapture -%}
         {%- assign iq_drawer_group_order = iq_drawer_group_order | strip -%}
@@ -344,4 +345,3 @@
     {%- endfor -%}
   </form>
 {%- endif -%}
-

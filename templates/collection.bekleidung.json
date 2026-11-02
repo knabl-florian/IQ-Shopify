@@ -57,7 +57,7 @@
         "require_collection": true,
         "desktop_image": "shopify://shop_images/hundesport.jacke.unisex_2be918a8-b521-4241-81a5-a4081c1f9546.jpg",
         "mobile_image": "shopify://shop_images/mann-mit-hundefuehrerjacke-mit-malinois-auf-hundeplatz_58b19bbe-8c3f-4aee-943f-d08e0df73213.jpg",
-        "text_tone": "dark",
+        "text_tone": "light",
         "desktop_position": "bottom",
         "show_mobile_label": false,
         "focus_y": 75,
@@ -65,21 +65,24 @@
         "accent_de": "Smart Im Training.",
         "description_de": "Robuste Materialien. Durchdachte Trainingsfunktionen. Hochwertige Verarbeitung. Entwickelt von Hundesportlern, die wissen, worauf es ankommt.",
         "mobile_description_de": "Robust. Hochwertig verarbeitet. Mit Trainingsfunktionen von echten Hundesportlern.",
-        "label_de": "",
-        "alt_de": "Hundeführer mit malinois im Schnee in Grundstellung",
+        "label_de": "HUNDESPORTBEKLEIDUNG",
+        "alt_de": "Hundeführer mit Malinois im Schnee, bekleidet mit einer IQ Hundesportjacke.",
         "title_en": "BUILT TOUGH.",
         "accent_en": "DESIGNED TO TRAIN.",
         "description_en": "Durable materials. Clever training features. Quality craftsmanship. Developed by dog sport athletes who know what matters.",
         "mobile_description_en": "Durable. Expertly crafted. Training features designed by dog sport athletes.",
-        "label_en": "",
-        "alt_en": "Dogsport handler with Malinois in basic position in snow",
+        "label_en": "DOG TRAINING CLOTHING",
+        "alt_en": "Handler wearing an IQ dog training jacket with a Malinois in the snow.",
         "mobile_position": "bottom",
         "mobile_alignment": "center",
-        "mobile_tone": "dark",
+        "mobile_tone": "light",
         "heading_tag": "h1",
         "button_de": "",
         "button_en": "",
-        "button_url": ""
+        "button_url": "",
+        "accent_style": "text",
+        "overlay_desktop": 55,
+        "overlay_mobile": 65
       }
     },
     "custom_liquid_FpycJH": {
@@ -308,20 +311,23 @@
           }
         },
         "inline_image_text_xdgEPM": {
-          "type": "inline_image_text",
+          "type": "iq_product_feature",
           "settings": {
-            "position": 28,
-            "position_mobile": 28,
-            "width": "full",
+            "only_collection": "hundesportbekleidung",
+            "after_product": "iq-damen-t-shirt-dogsport-more-than-a-passion",
             "image": "shopify://shop_images/thermo-muetze-1200x900.jpg",
-            "layout": "image-left",
-            "heading": "KLEINE DETAILS. IMMER DABEI.",
-            "heading_size": "h2",
-            "text": "Mützen, Caps und praktische Taschen für Training und Alltag mit Hund.",
-            "text_alignment": "center",
-            "button_label": "ACCESSOIRES ENTDECKEN",
-            "button_link": "shopify://collections/hundesport-zubehoer-damen",
-            "button_style": "primary"
+            "detail_crop": false,
+            "copy_left": false,
+            "eyebrow_de": "IQ ACCESSOIRES",
+            "heading_de": "KLEINE DETAILS. IMMER DABEI.",
+            "body_de": "<p>Mützen, Caps und praktische Taschen für Training und Alltag mit Hund.</p>",
+            "link_label_de": "",
+            "alt_de": "Hundeführerin mit IQ Thermo Beanie zwischen zwei Schäferhunden.",
+            "eyebrow_en": "IQ ACCESSORIES",
+            "heading_en": "SMALL DETAILS. ALWAYS WITH YOU.",
+            "body_en": "<p>Beanies, caps and practical bags for training and everyday life with your dog.</p>",
+            "link_label_en": "",
+            "alt_en": "Handler wearing an IQ Thermo Beanie between two German Shepherd dogs."
           }
         },
         "inline_promo_image_6rTYJX": {
@@ -340,12 +346,33 @@
             "button_style": "primary",
             "text_position": "bottom-left"
           }
+        },
+        "iq_duty_practice": {
+          "type": "iq_product_feature",
+          "settings": {
+            "only_collection": "hundesportbekleidung",
+            "after_product": "iq-multifunktionsjacke-k9-pro-damen-schwarz",
+            "image": "shopify://shop_images/mfj-k9-dame-ruecken-1200x900.jpg",
+            "detail_crop": false,
+            "copy_left": false,
+            "eyebrow_de": "IQ MULTIFUNKTIONSJACKE K9 PRO",
+            "heading_de": "FÜR DIE ARBEIT MIT DEINEM DIENSTHUND.",
+            "body_de": "<p>Mit Polizei-Diensthundeführern entwickelt: seitlicher Zugriff auf Holster und Einsatzgürtel, Loops für Funkgerät und Bodycam. Wind- und wasserdicht, warm gefüttert – mit großer Rückentasche und herausnehmbaren Futtertaschen.</p>",
+            "link_label_de": "",
+            "alt_de": "Diensthundeführerin in einer IQ K9 Jacke mit ihrem Hund",
+            "eyebrow_en": "IQ K9 PRO MULTIFUNCTIONAL JACKET",
+            "heading_en": "FOR WORK WITH YOUR DUTY DOG.",
+            "body_en": "<p>Developed with police dog handlers: side access to your holster and duty belt, plus radio and bodycam loops. Windproof, waterproof and warmly lined, with a large back pocket and removable treat pockets.</p>",
+            "link_label_en": "",
+            "alt_en": "Working dog handler wearing an IQ K9 jacket with her dog"
+          }
         }
       },
       "block_order": [
         "iq_product_feature_wrrEVU",
         "inline_image_text_xdgEPM",
-        "inline_promo_image_6rTYJX"
+        "inline_promo_image_6rTYJX",
+        "iq_duty_practice"
       ],
       "custom_css": [],
       "settings": {
@@ -439,7 +466,41 @@
         "heading_de": "",
         "heading_en": "",
         "replace_seo_collection": ""
-      }
+      },
+      "blocks": {
+        "choice_layers": {
+          "type": "topic",
+          "settings": {
+            "only_collection": "hundesportbekleidung",
+            "heading_de": "Welche Bekleidung passt zu Deinem Einsatz?",
+            "heading_en": "Which clothing suits your day?",
+            "text_de": "<p>Für lange Aufenthalte draußen findest Du hier <a href=\"/collections/hundesport-jacken\">Jacken und Winterbekleidung</a>. Für die Arbeit mit Deinem Hund ergänzen <a href=\"/collections/hundesport-westen\">Trainingswesten</a> und <a href=\"/collections/hundesport-t-shirts-hoodies\">Shirts und Hoodies</a> Deine Ausrüstung. Wähle Wärme, Wetterschutz und Taschenfunktionen passend zum jeweiligen Modell und zu Deinem Alltag.</p>",
+            "text_en": "<p>For long days outdoors, explore <a href=\"/en/collections/hundesport-jacken\">jackets and winter clothing</a>. For working with your dog, add <a href=\"/en/collections/hundesport-westen\">training vests</a> or <a href=\"/en/collections/hundesport-t-shirts-hoodies\">shirts and hoodies</a>. Choose insulation, weather protection and pocket features according to the individual model and your daily routine.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "choice_layers"
+      ]
+    },
+    "iq_pants_link": {
+      "type": "iq-collection-links",
+      "blocks": {
+        "pants": {
+          "type": "link",
+          "settings": {
+            "label_de": "Auch Deine Hose kann Hundesport – Hosen entdecken",
+            "label_en": "Complete your training outfit – discover our pants",
+            "target": "/collections/hundesport-hosen",
+            "arrow": true,
+            "product": ""
+          }
+        }
+      },
+      "block_order": [
+        "pants"
+      ],
+      "settings": {}
     }
   },
   "order": [
@@ -450,6 +511,7 @@
     "custom_content_F47NJV",
     "custom_liquid_DmjTnb",
     "product-grid",
+    "iq_pants_link",
     "rich_text_ARFW3U",
     "177730905751d89578",
     "iq_knowledge"

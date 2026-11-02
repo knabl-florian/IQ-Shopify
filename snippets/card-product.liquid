@@ -484,12 +484,22 @@
         </p>
       {%- endif -%}
 
-<!-- Start of Judge.me code -->
-  <div class='jdgm-widget jdgm-preview-badge'>
-    {{ product.metafields.judgeme.badge }}
-  </div>
-<!-- End of Judge.me code -->
-      {% render 'price', product: product, alignment: settings.pcard_content_alignment %}
+{%- liquid
+        assign iq_badge = product.metafields.judgeme.badge
+        if request.page_type == 'collection'
+          if request.locale.iso_code == 'de'
+            assign iq_badge = iq_badge | replace: ' Reviews', ' Bewertungen' | replace: ' reviews', ' Bewertungen' | replace: ' stars', ' Sterne'
+          elsif request.locale.iso_code == 'en'
+            assign iq_badge = iq_badge | replace: ' Bewertungen', ' reviews' | replace: ' Sterne', ' stars'
+          endif
+        endif
+        assign iq_price_variant = false
+        if request.page_type == 'collection' and product.price_varies == false and product.compare_at_price_varies
+          assign iq_price_variant = true
+        endif
+      -%}
+      <div class="jdgm-widget jdgm-preview-badge">{{ iq_badge }}</div>
+      {% render 'price', product: product, use_variant: iq_price_variant, alignment: settings.pcard_content_alignment %}
       {%- liquid
         assign iq_restock_note = product.metafields.custom.iq_restock_note_de.value
         if request.locale.iso_code == 'en'

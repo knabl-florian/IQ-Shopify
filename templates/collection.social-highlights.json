@@ -22,30 +22,33 @@
       "settings": {
         "only_collection": "social-highlights",
         "require_collection": true,
-        "desktop_image": "shopify://shop_images/patrica-cafka-banner_978d5872-0606-4550-8907-94b8a3352ac5.jpg",
-        "mobile_image": "shopify://shop_images/funktionsshirt-rueckentasche_32245a8f-5d75-42f8-9174-3e7643a934ec.jpg",
+        "desktop_image": "shopify://shop_images/hundesport.jacke.unisex_d48faf4a-338b-43f3-962c-9192c027be83.jpg",
+        "mobile_image": "shopify://shop_images/iq-in-dog-we-trust-hoodie-mit-hund.jpg",
         "text_tone": "light",
+        "accent_style": "text",
+        "overlay_desktop": 20,
+        "overlay_mobile": 25,
         "desktop_position": "bottom",
         "show_mobile_label": true,
         "focus_y": 45,
-        "title_de": "Auf Social Media?",
-        "accent_de": "Hier findest Du es.",
-        "description_de": "Entdecke die Produkte aus unseren Posts und Videos – für Deinen Alltag und Dein Training mit Hund.",
-        "mobile_description_de": "Die Produkte aus unseren Posts und Videos",
-        "label_de": "",
-        "alt_de": "",
-        "title_en": "Seen it on social media?",
-        "accent_en": "Find it here.",
-        "description_en": "Discover the products from our posts and videos – for everyday life and training with your dog.",
-        "mobile_description_en": "The products from our posts and videos.",
-        "label_en": "Social",
-        "alt_en": "Dame mit Schäferhund und Funktionsshirt",
+        "title_de": "GESEHEN. GEFUNDEN.",
+        "accent_de": "FÜR DICH UND DEINEN HUND.",
+        "description_de": "Deine Favoriten aus unseren Posts und Videos. Entwickelt für Menschen, die mit ihren Hunden draußen unterwegs sind.",
+        "mobile_description_de": "Deine Favoriten aus unseren Posts und Videos.",
+        "label_de": "IQ SOCIAL HIGHLIGHTS",
+        "alt_de": "IQ Funktionsshirt im Alltag mit Hund",
+        "title_en": "SEEN IT. FOUND IT.",
+        "accent_en": "FOR YOU AND YOUR DOG.",
+        "description_en": "Your favourites from our posts and videos. Designed for people who spend time outdoors with their dogs.",
+        "mobile_description_en": "Your favourites from our posts and videos.",
+        "label_en": "IQ SOCIAL HIGHLIGHTS",
+        "alt_en": "IQ functional shirt in everyday life with a dog",
         "mobile_position": "bottom",
         "mobile_alignment": "center",
         "mobile_tone": "light",
         "heading_tag": "h1",
-        "button_de": "",
-        "button_en": "",
+        "button_de": "PRODUKTE ENTDECKEN",
+        "button_en": "SHOP THE PRODUCTS",
         "button_url": ""
       }
     },
@@ -66,6 +69,7 @@
       "block_order": [
         "collection_info_zUNyKV"
       ],
+      "disabled": true,
       "custom_css": [],
       "settings": {
         "color_scheme": "scheme-1",
@@ -259,10 +263,74 @@
         "custom_class": ""
       }
     },
+    "iq_social_shortcuts": {
+      "type": "iq-collection-navigation",
+      "blocks": {
+        "coat": {
+          "type": "link",
+          "settings": {
+            "label_de": "Wintermantel",
+            "label_en": "Winter coat",
+            "collection": "",
+            "url_de": "",
+            "url_en": "",
+            "anchor_id": "iq-product-10709846753544"
+          }
+        },
+        "hoodie": {
+          "type": "link",
+          "settings": {
+            "label_de": "In Dog We Trust",
+            "label_en": "In Dog We Trust",
+            "collection": "",
+            "url_de": "",
+            "url_en": "",
+            "anchor_id": "iq-product-10709846229256"
+          }
+        },
+        "shirt": {
+          "type": "link",
+          "settings": {
+            "label_de": "Funktionsshirt",
+            "label_en": "Training shirt",
+            "collection": "",
+            "url_de": "",
+            "url_en": "",
+            "anchor_id": "iq-product-12109893730568"
+          }
+        },
+        "beanie": {
+          "type": "link",
+          "settings": {
+            "label_de": "Thermo Beanie",
+            "label_en": "Thermal beanie",
+            "collection": "",
+            "url_de": "",
+            "url_en": "",
+            "anchor_id": "iq-product-12167343341832"
+          }
+        }
+      },
+      "block_order": [
+        "coat",
+        "hoodie",
+        "shirt",
+        "beanie"
+      ],
+      "settings": {
+        "only_collection": "social-highlights",
+        "require_collection": true
+      }
+    },
     "product-grid": {
       "type": "main-collection-product-grid-magazine",
       "custom_css": [],
       "settings": {
+        "priority_collection": "",
+        "compact_filter_bar": false,
+        "priority_products": [],
+        "use_section_column_settings": false,
+        "defer_product_images": false,
         "collection_card_titles": true,
         "iq_jv_enabled": false,
         "iq_jv_products": [],
@@ -387,7 +455,9 @@
             "text_32": "By signing up you accept our",
             "text_33": "privacy policy",
             "text_34": "Mit Deiner Anmeldung akzeptierst Du unsere",
-            "text_35": "Datenschutzbestimmungen"
+            "text_35": "Datenschutzbestimmungen",
+            "text_36": "",
+            "text_37": ""
           }
         }
       },
@@ -395,6 +465,7 @@
         "part1",
         "part2"
       ],
+      "disabled": true,
       "name": "t:sections.custom-liquid.presets.name",
       "settings": {}
     },
@@ -402,7 +473,8 @@
       "type": "iq-collection-knowledge",
       "settings": {
         "heading_de": "",
-        "heading_en": ""
+        "heading_en": "",
+        "replace_seo_collection": ""
       }
     }
   },
@@ -412,6 +484,7 @@
     "banner",
     "custom_content_F47NJV",
     "custom_liquid_DmjTnb",
+    "iq_social_shortcuts",
     "product-grid",
     "rich_text_ARFW3U",
     "177730905751d89578",

@@ -325,24 +325,46 @@
         "inline_image_text_xHnYaK": {
           "type": "inline_image_text",
           "settings": {
-            "position": 6,
-            "position_mobile": 6,
+            "position": 4,
+            "position_mobile": 4,
             "width": "full",
-            "image": "shopify://shop_images/mfj-k9-dame-ruecken-1500x1200.jpg",
-            "layout": "image-right",
-            "heading": "K9-AUSRÜSTUNG FÜR POLIZEI, ZOLL & DIENST",
+            "image": "shopify://shop_images/mfj-k9-dame-ruecken-1200x900.jpg",
+            "layout": "image-left",
+            "heading": "K9-BEKLEIDUNG. FÜR DEN EINSATZ.",
             "heading_size": "h2",
-            "text": "Diensthundeführerwesten und -jacken mit patentierter Brusttasche, \nBodycam-Loops und Zugriff auf den Waffengürtel. Robust genug für \nEinsatz, Streife und tägliches Training.",
-            "text_alignment": "left",
+            "text": "Mit Diensthundeführern entwickelt: robuste Jacken und Westen mit seitlichem Holsterzugriff, Befestigungen für Funkgerät und Bodycam sowie Klettflächen für Behörden-Patches. Die K9-Jacken halten zusätzlich Wind, Regen und Kälte draußen.",
+            "text_alignment": "right",
             "button_label": "",
             "button_link": "",
             "button_style": "primary"
+          },
+          "disabled": true
+        },
+        "iq_duty_practice": {
+          "type": "iq_product_feature",
+          "settings": {
+            "only_collection": "k9-diensthundefuehrer-ausruestung",
+            "after_product": "iq-multifunktionsjacke-k9-pro-damen-schwarz",
+            "image": "shopify://shop_images/iq-k9-diensthundefuehrer-jacke-weste-original.jpg",
+            "detail_crop": false,
+            "copy_left": false,
+            "eyebrow_de": "IQ K9 · JACKEN & WESTEN",
+            "heading_de": "FÜR DIE ARBEIT MIT DEINEM DIENSTHUND.",
+            "body_de": "<p>Robuste Dienstbekleidung mit durchdachten Trainingsfunktionen. Entwickelt im Austausch mit Diensthundeführern – für Training und täglichen Einsatz.</p>",
+            "link_label_de": "",
+            "alt_de": "Zwei Diensthundeführer mit IQ K9 Jacke und Weste und ihrem Diensthund",
+            "eyebrow_en": "IQ K9 · JACKETS & VESTS",
+            "heading_en": "FOR WORK WITH YOUR DUTY DOG.",
+            "body_en": "<p>Durable duty clothing with practical training features. Developed in collaboration with working dog handlers – for training and everyday duty.</p>",
+            "link_label_en": "",
+            "alt_en": "Two working dog handlers wearing an IQ K9 jacket and vest with their dog"
           }
         }
       },
       "block_order": [
         "inline_promo_image_NUyAek",
-        "inline_image_text_xHnYaK"
+        "inline_image_text_xHnYaK",
+        "iq_duty_practice"
       ],
       "custom_css": [],
       "settings": {
@@ -436,6 +458,45 @@
         "heading_de": "",
         "heading_en": "",
         "replace_seo_collection": ""
+      },
+      "blocks": {
+        "k9_choice": {
+          "type": "topic",
+          "settings": {
+            "only_collection": "k9-diensthundefuehrer-ausruestung",
+            "heading_de": "Ausrüstung für Dienst und Training auswählen",
+            "heading_en": "Choosing equipment for duty and training",
+            "text_de": "<p>Stimme Jacke oder Weste auf Deine dienstliche Ausrüstung und die Kleidung darunter ab. Details zu Befestigungen, Taschen und Schnitt findest Du beim jeweiligen Modell. Für die Ausbildung ergänzen <a href=\"/collections/hundesport-trainingszubehoer\">Trainingszubehör</a> und <a href=\"/collections/hundesport-spielzeug\">Belohnungsspielzeug</a> die Bekleidung. Behörden und Diensthundeführer können sich mit Fragen zu Ausstattung und Mengen an <a href=\"mailto:mail@iq-dogsport.de\">unseren Kundenservice</a> wenden.</p>",
+            "text_en": "<p>Choose a jacket or vest to fit your duty equipment and the layers worn underneath. See each product for attachment points, pockets and fit. Add <a href=\"/en/collections/hundesport-trainingszubehoer\">training equipment</a> and <a href=\"/en/collections/hundesport-spielzeug\">reward toys</a> for training. Authorities and handlers can contact <a href=\"mailto:mail@iq-dogsport.de\">our customer service team</a> about equipment and quantities.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "k9_choice"
+      ]
+    },
+    "iq_munich_video": {
+      "type": "iq-responsive-collection-video",
+      "custom_css": [
+        ".iq-collection-video {grid-template-columns: minmax(0, 340px) minmax(0, 1fr); max-width: 960px;}",
+        ".iq-collection-video__frame {aspect-ratio: 9/16;}",
+        "@media(max-width:749px) {.iq-collection-video {grid-template-columns: minmax(0, 1fr);} .iq-collection-video__player {width: 100%; max-width: 320px; margin-inline: auto;}}"
+      ],
+      "settings": {
+        "only_collection": "k9-diensthundefuehrer-ausruestung",
+        "video_desktop_de": "shopify://files/videos/WhatsApp Video 2026-10-29 at 08.52.08.mp4",
+        "heading_de": "Gemeinsam mit der Diensthundestaffel München",
+        "intro_de": "<p>Einblicke in Hundesport und Diensthundearbeit: K9andSports und die Polizei München auf der Dogs World 2026 – mit den Gründern von IQ Dogsport.</p>",
+        "benefits_de": "",
+        "button_de": "Zum Veranstaltungsbericht",
+        "heading_en": "Together with Munich’s police dog unit",
+        "intro_en": "<p>A glimpse into dog sports and police dog work: K9andSports and Munich Police at Dogs World 2026, joined by the founders of IQ Dogsport.</p>",
+        "benefits_en": "",
+        "button_en": "Read the event report (German)",
+        "button_url": "https://iq-dogsport.de/blogs/news/iq-dogsport-dogworld-2026-polizeihunde",
+        "eyebrow_de": "DOGS WORLD 2026",
+        "eyebrow_en": "DOGS WORLD 2026",
+        "mobile_ratio": "portrait"
       }
     }
   },
@@ -448,6 +509,7 @@
     "custom_content_F47NJV",
     "custom_liquid_DmjTnb",
     "product-grid",
+    "iq_munich_video",
     "rich_text_ARFW3U",
     "177730905751d89578",
     "iq_knowledge"

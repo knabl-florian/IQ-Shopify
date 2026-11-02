@@ -35,6 +35,27 @@
   <!-- Desktop favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="https:{{ settings.favicon | image_url: width: 32, height: 32 }}">
 {%- endif -%}
+    {% assign iq_collection_seo = false %}
+    {% if request.page_type == 'collection' and collection.handle == 'trainingsfutter-supplemente' %}
+      {% assign iq_collection_seo = true %}
+      {% if request.locale.iso_code == 'de' %}
+        {% assign page_title = 'Hundefutter für Sporthunde & Trainingssnacks | IQ Dogsport' %}
+        {% assign page_description = 'Hundefutter für aktive Hunde und Sporthunde: Kynovital-Alleinfutter, Trainingssnacks aus Rinder- und Pferdelunge, portionierbare Sticks und Kauartikel.' %}
+      {% else %}
+        {% assign page_title = 'Food for Sport Dogs & Training Treats | IQ Dogsport' %}
+        {% assign page_description = 'Food for active dogs and sport dogs: Kynovital complete food, beef and horse lung training treats, portionable sticks and chews.' %}
+      {% endif %}
+    {% endif %}
+    {% if request.page_type == 'collection' and collection.handle == 'all' %}
+      {% assign iq_collection_seo = true %}
+      {% if request.locale.iso_code == 'en' %}
+        {% assign page_title = 'All Products | Dog Training Clothing & Gear | IQ Dogsport' %}
+        {% assign page_description = 'Clothing for dog training, training equipment, toys and food: explore the IQ Dogsport range for training and everyday life with your dog.' %}
+      {% else %}
+        {% assign page_title = 'Alle Produkte | Bekleidung & Hundetraining | IQ Dogsport' %}
+        {% assign page_description = 'Bekleidung für Hundetraining, Trainingszubehör, Spielzeug und Futter: Entdecke das Sortiment von IQ Dogsport für Dein Training und den Alltag mit Hund.' %}
+      {% endif %}
+    {% endif %}
     <title>
       {{- page_title -}}
       {%- if current_tags -%}
@@ -44,7 +65,7 @@
       {%- if template == 'password' -%}
         {{- shop.name -}}
       {%- else -%}
-        {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+        {%- unless page_title contains shop.name or iq_collection_seo %} &ndash; {{ shop.name }}{% endunless -%}
       {%- endif -%}
     </title>
 
@@ -78,7 +99,8 @@
 
     <style>
       body.index-template[data-initializing] #MainContent .shopify-section + .shopify-section ~ .shopify-section,
-      body.collection-template[data-initializing] #MainContent .shopify-section {
+      body.collection-template[data-initializing] #MainContent .shopify-section + .shopify-section ~ .shopify-section,
+      body.product-template[data-initializing] #MainContent .shopify-section + .shopify-section ~ .shopify-section {
         content-visibility: visible;
       }
     </style>

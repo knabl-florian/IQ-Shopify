@@ -80,12 +80,23 @@
             "arrow": true,
             "product": ""
           }
+        },
+        "fit": {
+          "type": "link",
+          "settings": {
+            "label_de": "Passform & Größenwahl",
+            "label_en": "Fit & sizing",
+            "target": "#iq-westen-passform",
+            "arrow": false,
+            "product": ""
+          }
         }
       },
       "block_order": [
         "link_0",
         "link_1",
-        "link_2"
+        "link_2",
+        "fit"
       ],
       "settings": {}
     },
@@ -267,7 +278,7 @@
       "custom_css": [],
       "settings": {
         "priority_collection": "",
-        "compact_filter_bar": false,
+        "compact_filter_bar": true,
         "priority_products": [],
         "use_section_column_settings": false,
         "defer_product_images": false,
@@ -458,9 +469,28 @@
       ],
       "name": "SEO akkordeon",
       "settings": {
-        "fit_advice_de": "<p><strong>Welche Hundesportweste passt Damen?</strong></p><p>Unsere Hundesportweste 3.0 und Sommerweste 3.0 sind Unisex-Modelle für Damen und Herren. Die Sommerweste fällt etwas kleiner aus als die reguläre Hundesportweste 3.0. Vergleiche deshalb die Größentabelle Deines Wunschmodells mit einer Weste, die Dir gut passt. Angegeben sind die Außenmaße der Weste, nicht Deine Körpermaße. Plane auch Platz für Kleidung darunter ein.</p><p><a href=\"/products/iq-hundesportweste-3-0-unisex\">Hundesportweste 3.0 – Modell und Größentabelle</a><br><a href=\"/products/iq-sommerweste-3-0-unisex\">Sommerweste 3.0 – Modell und Größentabelle</a></p>",
-        "fit_advice_en": "<p><strong>Which dog training vest fits women?</strong></p><p>Our Dog Sport Vest 3.0 and Summer Vest 3.0 are unisex styles for women and men. The Summer Vest has a slightly smaller fit than the regular Dog Sport Vest 3.0. Compare your chosen model’s size chart with a vest that fits you well. The chart shows the garment’s outer measurements, not your body measurements. Allow room for the layers you plan to wear underneath.</p><p><a href=\"/en/products/dog-sport-vest-3-0-patented-pocket-system\">Dog Sport Vest 3.0 – model and size chart</a><br><a href=\"/en/products/dog-sport-summer-vest-3-0-patented-pockets\">Summer Vest 3.0 – model and size chart</a></p>"
+        "fit_advice_de": "<p><strong>Welche Hundesportweste passt Damen?</strong></p><p>Schlicht und funktional – für einen klaren, eleganten Look. Die Hundesportweste 3.0 und Sommerweste 3.0 kannst Du mit innenliegenden Zugbändern nach Wunsch taillieren.</p><p>Unsere Hundesportweste 3.0 und Sommerweste 3.0 sind Unisex-Modelle für Damen und Herren. Die Sommerweste fällt etwas kleiner aus als die reguläre Hundesportweste 3.0. Vergleiche deshalb die Größentabelle Deines Wunschmodells mit einer Weste, die Dir gut passt. Angegeben sind die Außenmaße der Weste, nicht Deine Körpermaße. Plane auch Platz für Kleidung darunter ein.</p><p><a href=\"/products/iq-hundesportweste-3-0-unisex\">Hundesportweste 3.0 – Modell und Größentabelle</a><br><a href=\"/products/iq-sommerweste-3-0-unisex\">Sommerweste 3.0 – Modell und Größentabelle</a></p>",
+        "fit_advice_en": "<p><strong>Which dog training vest fits women?</strong></p><p>Simple and functional, with a clean, elegant look. Internal drawcords let you adjust the waist of both the Dog Sport Vest 3.0 and Summer Vest 3.0 to suit your preferred fit.</p><p>Our Dog Sport Vest 3.0 and Summer Vest 3.0 are unisex styles for women and men. The Summer Vest has a slightly smaller fit than the regular Dog Sport Vest 3.0. Compare your chosen model’s size chart with a vest that fits you well. The chart shows the garment’s outer measurements, not your body measurements. Allow room for the layers you plan to wear underneath.</p><p><a href=\"/en/products/dog-sport-vest-3-0-patented-pocket-system\">Dog Sport Vest 3.0 – model and size chart</a><br><a href=\"/en/products/dog-sport-summer-vest-3-0-patented-pockets\">Summer Vest 3.0 – model and size chart</a></p>"
       }
+    },
+    "iq_pants_link": {
+      "type": "iq-collection-links",
+      "blocks": {
+        "pants": {
+          "type": "link",
+          "settings": {
+            "label_de": "Auch Deine Hose kann Hundesport – Hosen entdecken",
+            "label_en": "Complete your training outfit – discover our pants",
+            "target": "/collections/hundesport-hosen",
+            "arrow": true,
+            "product": ""
+          }
+        }
+      },
+      "block_order": [
+        "pants"
+      ],
+      "settings": {}
     }
   },
   "order": [
@@ -470,6 +500,7 @@
     "custom_liquid_FpycJH",
     "breadcrumbs_Gxg9wp",
     "product-grid",
+    "iq_pants_link",
     "177730905751d89578",
     "collapsible_tabs_NGxnDR",
     "custom_liquid_ezLGxq"

@@ -7,6 +7,10 @@ Native product groups, filtered on Shopify across all result pages.
   render 'iq-filter-group-order'
  endcapture
  assign group_order = group_order | strip | split: '|'
+ assign single_select = false
+ if collection.handle == 'bestseller'
+  assign single_select = true
+ endif
 -%}
 <div id="IQCollectionGroupFilters">
 {%- if group_filter != blank and group_order.first != blank -%}
@@ -16,9 +20,15 @@ Native product groups, filtered on Shopify across all result pages.
    {%- assign option = group_filter.values | where: 'value', group_key | first -%}
    {%- if option != blank -%}
     {%- assign href = option.url_to_add -%}
+    {%- if single_select -%}
+     {%- assign separator = '?' -%}
+     {%- if group_filter.url_to_remove contains '?' -%}{%- assign separator = '&' -%}{%- endif -%}
+     {%- assign encoded_value = option.value | url_encode -%}
+     {%- assign href = group_filter.url_to_remove | append: separator | append: group_filter.param_name | append: '=' | append: encoded_value -%}
+    {%- endif -%}
     {%- if option.active -%}{%- assign href = option.url_to_remove -%}{%- endif -%}
-    {%- if option.count > 0 or option.active -%}
-     <a class="iq-group-filters__option{% if option.active %} is-active{% endif %}" href="{{ href | escape }}#IQCollectionGroupFilters"{% if option.active %} aria-current="true"{% endif %}>{% render 'iq-filter-label', param: group_filter.param_name, value: option.value, fallback: option.label %}<span class="iq-group-filters__count">({{ option.count }})</span></a>
+    {%- if option.count > 0 or option.active or single_select -%}
+     <a class="iq-group-filters__option{% if option.active %} is-active{% endif %}" href="{{ href | escape }}#IQCollectionGroupFilters"{% if option.active %} aria-current="true"{% endif %}>{% render 'iq-filter-label', param: group_filter.param_name, value: option.value, fallback: option.label %}{% unless single_select and group_filter.active_values.size > 0 and option.active == false %}<span class="iq-group-filters__count">({{ option.count }})</span>{% endunless %}</a>
     {%- else -%}
      <span class="iq-group-filters__option is-disabled" aria-disabled="true">{% render 'iq-filter-label', param: group_filter.param_name, value: option.value, fallback: option.label %}<span class="iq-group-filters__count">(0)</span></span>
     {%- endif -%}

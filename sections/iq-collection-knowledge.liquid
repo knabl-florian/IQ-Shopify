@@ -101,6 +101,14 @@
 {% if has_collection_topic and section.settings.replace_seo_collection.handle == collection.handle %}
   {% assign seo_text = '' %}
 {% endif %}
+{% for block in section.blocks %}
+  {% if block.settings.only_collection.handle == collection.handle and block.settings.replace_seo and block.settings.text_de != blank %}
+    {% if english == false or block.settings.text_en != blank %}{% assign seo_text = '' %}{% endif %}
+  {% endif %}
+  {% if block.settings.only_collection.handle == collection.handle and block.settings.replace_description and block.settings.text_de != blank %}
+    {% if english == false or block.settings.text_en != blank %}{% assign description_text = '' %}{% endif %}
+  {% endif %}
+{% endfor %}
 {% if description_text != blank or seo_text != blank or has_collection_topic %}
 <section class="iq-collection-knowledge" id="iq-knowledge-{{ section.id }}">
   <div class="iq-collection-knowledge__inner">
@@ -192,6 +200,20 @@
           "type": "richtext",
           "id": "text_en",
           "label": "Text English"
+        },
+        {
+          "type": "checkbox",
+          "id": "replace_description",
+          "label": "Dieses Thema ersetzt die Collection-Beschreibung",
+          "info": "Nur in dieser Theme-Kopie. Die Beschreibung im Admin bleibt erhalten. Englisch wird nur ersetzt, wenn englischer Text ausgefüllt ist.",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "replace_seo",
+          "label": "Ersetzt den unteren Collection-SEO-Text",
+          "info": "Nur für diese Collection und bei vorhandenem Text. Originaldaten bleiben erhalten.",
+          "default": false
         }
       ]
     }

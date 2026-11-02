@@ -2,3 +2,7 @@
 @media(max-width:749px){.iq-product-feature{grid-template-columns:minmax(0,1fr);margin:20px 0}.iq-product-feature__photo,.iq-product-feature--copy-left .iq-product-feature__photo{order:0;aspect-ratio:4/3}.iq-product-feature__copy{padding:20px 16px;font-size:15px}.iq-product-feature h2{font-size:clamp(23px,6vw,28px)}.iq-product-feature__detail{float:right;width:145px;margin:0 0 8px 12px}.iq-product-feature__link{clear:both}.iq-product-feature__body{overflow-wrap:break-word}}
 
 .iq-product-feature:not(.iq-product-feature--detail) .iq-product-feature__photo img{object-position:center top}
+
+
+.iq-product-feature--square .iq-product-feature__photo{aspect-ratio:1}
+.iq-product-feature--square .iq-product-feature__photo img{object-fit:contain}

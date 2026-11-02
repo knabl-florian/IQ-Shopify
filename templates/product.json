@@ -152,7 +152,7 @@
             "heading": "Highlights",
             "icon": "confetti",
             "content": "{{ product.description }}",
-            "custom_liquid": "",
+            "custom_liquid": "{% if product.id == 10709846753544 %}<p>{% if request.locale.iso_code == 'de' %}<strong>Ärmel mit Extra-Länge:</strong> Die Ärmel werden umgeschlagen getragen. Bei Bedarf kannst Du sie herunterklappen, um Deine Hände zu wärmen.{% else %}<strong>Extra-long sleeves:</strong> The sleeves are designed to be worn turned back. Unfold them whenever you want extra warmth for your hands.{% endif %}</p>{% endif %}",
             "page": "",
             "default_open": true
           }
@@ -235,19 +235,34 @@
         },
         "iq_xs_restock": {
           "type": "custom_liquid",
-          "name": "XS – Nachschub KW 46",
+          "name": "Mantel – Nachschub November",
           "settings": {
-            "custom_liquid": "{% if product.id == 10709846753544 %}\n<iq-xs-restock data-variant=\"59078832685320\" {% if product.selected_or_first_available_variant.id != 59078832685320 or product.selected_or_first_available_variant.available %}hidden{% endif %}>\n<p style=\"margin:0;padding:12px 16px;background:#F3F3F1;color:#171717;font-size:14px;line-height:1.5;\">\n{% if request.locale.iso_code == 'de' %}<strong>XS ist aktuell ausverkauft.</strong> Nachschub erwarten wir in KW 46 (9.–15. November).{% else %}<strong>XS is currently sold out.</strong> We expect new stock in calendar week 46 (9–15 November).{% endif %}\n</p></iq-xs-restock>\n<script>\nif (!customElements.get('iq-xs-restock')) {\n  customElements.define('iq-xs-restock', class extends HTMLElement {\n    connectedCallback() {\n      this.onVariant = (event) => { this.hidden = String(event.detail?.variant?.id) !== this.dataset.variant || event.detail?.variant?.available === true; };\n      document.addEventListener('variant:changed', this.onVariant);\n    }\n    disconnectedCallback() { document.removeEventListener('variant:changed', this.onVariant); }\n  });\n}\n</script>\n{% endif %}"
+            "custom_liquid": "{% if product.id == 10709846753544 %}\n<p class=\"iq-coat-restock\" style=\"margin:0;padding:12px 16px;border-left:3px solid #A51D1B;background:#F3F3F1;color:#171717;font-size:14px;line-height:1.5;\">\n{% if request.locale.iso_code == 'de' %}<strong>Deine Größe ist ausverkauft?</strong><br>Nachschub kommt in den ersten beiden Novemberwochen.{% else %}<strong>Is your size sold out?</strong><br>Restock arriving in the first two weeks of November.{% endif %}\n</p>\n{% endif %}"
+          }
+        },
+        "iq_coat_fit": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% if product.id == 10709846753544 %}\n<div class=\"iq-coat-fit\" style=\"padding:12px 16px;border-left:3px solid #A51D1B;background:#F3F3F1;color:#171717;line-height:1.5;\">\n{% if request.locale.iso_code == 'de' %}<strong>Hinweis zur Größe</strong><br>Der Wintermantel fällt gut eine halbe Größe größer aus als die IQ Multifunktionsjacke.{% else %}<strong>Sizing note</strong><br>The winter coat runs a generous half size larger than the IQ multifunctional jacket.{% endif %}\n</div>\n{% endif %}"
+          }
+        },
+        "iq_vest_restock": {
+          "type": "custom_liquid",
+          "name": "Westen – Nachschub November",
+          "settings": {
+            "custom_liquid": "{% if product.id == 10709813788936 or product.id == 10709814739208 %}\n{% assign sold_out_sizes = product.variants | where: 'available', false %}\n{% if sold_out_sizes.size > 0 %}\n<p class=\"iq-vest-restock\" style=\"margin:0;padding:12px 16px;border-left:3px solid #A51D1B;background:#F3F3F1;color:#171717;font-size:14px;line-height:1.5;\">\n{% if request.locale.iso_code == 'de' %}<strong>Deine Größe ist ausverkauft?</strong><br>Die ausverkauften Größen kommen im Laufe des Novembers wieder.{% else %}<strong>Is your size sold out?</strong><br>Sold-out sizes will be back in stock during November.{% endif %}\n</p>\n{% endif %}\n{% endif %}"
           }
         }
       },
       "block_order": [
         "title_4AQrFC",
+        "iq_coat_fit",
         "judge_me_reviews_preview_badge_f9Nc6i",
         "badges",
         "price",
         "inventory",
         "variant_picker",
+        "iq_vest_restock",
         "iq_xs_restock",
         "xboost_bundle_checkbox_upsell_fXe6aY",
         "mini_image_upload_app_block_ztmB3F",

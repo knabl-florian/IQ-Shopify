@@ -618,6 +618,17 @@
   style="--section-padding-top: {{ section.settings.padding_top }}px;--section-padding-bottom: {{ section.settings.padding_bottom }}px;"
 >
   <div class="collection page-width">
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'iq_collection_heading' and block.settings.collection_handle == collection.handle -%}
+        <header class="iq-collection-heading" {{ block.shopify_attributes }}>
+          <h1>{% if request.locale.iso_code == 'en' %}{{ block.settings.title_en | default: collection.title | escape }}{% else %}{{ block.settings.title_de | default: collection.title | escape }}{% endif %}</h1>
+          {% assign iq_intro = block.settings.intro_de %}{% if request.locale.iso_code == 'en' %}{% assign iq_intro = block.settings.intro_en %}{% endif %}
+          {% if iq_intro != blank %}<p>{{ iq_intro | escape }}</p>{% endif %}
+        </header>
+        {%- break -%}
+      {%- endif -%}
+    {%- endfor -%}
+
     {%- if collection.handle == 'sale' -%}
       <div class="section-header mb-8 iq-outlet-intro">
         <h1 class="h2">{{ 'iq_outlet.title' | t }}</h1>
@@ -847,7 +858,7 @@
   {%- assign current_app_position = 24 -%}
 
   {%- for block in section.blocks -%}
-{% if block.type == 'iq_responsive_video' or block.type == 'iq_product_feature' or block.settings.after_product != blank %}{% continue %}{% endif %}
+{% if block.type == 'iq_collection_heading' or block.type == 'iq_responsive_video' or block.type == 'iq_product_feature' or block.settings.after_product != blank %}{% continue %}{% endif %}
 {%- if block.type == 'iq_editorial' or block.settings.only_collection != blank -%}
   {%- if block.settings.only_collection.handle != collection.handle -%}{%- continue -%}{%- endif -%}
 {%- endif -%}
@@ -1351,6 +1362,38 @@ document.addEventListener('webkitfullscreenchange', function () {
   "name": "t:sections.main-collection-product-grid.name",
   "class": "collection-section",
   "blocks": [
+    {
+      "type": "iq_collection_heading",
+      "name": "IQ Hauptüberschrift DE/EN",
+      "settings": [
+        {
+          "type": "text",
+          "id": "collection_handle",
+          "label": "Collection-Handle",
+          "info": "Letzter Teil der Collection-URL, z. B. neuheiten oder all. Nur dort sichtbar."
+        },
+        {
+          "type": "text",
+          "id": "title_de",
+          "label": "Hauptüberschrift Deutsch"
+        },
+        {
+          "type": "text",
+          "id": "title_en",
+          "label": "Hauptüberschrift Englisch"
+        },
+        {
+          "type": "textarea",
+          "id": "intro_de",
+          "label": "Kurztext Deutsch (optional)"
+        },
+        {
+          "type": "textarea",
+          "id": "intro_en",
+          "label": "Kurztext Englisch (optional)"
+        }
+      ]
+    },
     {
       "type": "inline_rich_text",
       "name": "Inline rich text",
@@ -3490,6 +3533,12 @@ document.addEventListener('webkitfullscreenchange', function () {
           "type": "text",
           "id": "alt_en",
           "label": "Bildbeschreibung · EN"
+        },
+        {
+          "type": "checkbox",
+          "id": "photo_square",
+          "label": "Actionbild vollständig im Quadrat zeigen",
+          "default": false
         }
       ]
     }
@@ -3745,3 +3794,4 @@ document.addEventListener('webkitfullscreenchange', function () {
   ]
 }
 {% endschema %}
+

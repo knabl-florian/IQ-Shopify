@@ -82,7 +82,10 @@
         "heading_tag": "h1",
         "button_de": "",
         "button_en": "",
-        "button_url": ""
+        "button_url": "",
+        "accent_style": "text",
+        "overlay_desktop": 25,
+        "overlay_mobile": 35
       }
     },
     "custom_liquid_AxfPWP": {
@@ -292,7 +295,8 @@
             "text_13": "Leichte Regenjacke mit Sturmkapuze",
             "text_14": "und herausnehmbaren Futtertaschen.",
             "text_15": "Leichte Regenjacke mit großer Sturmkapuze, herausnehmbaren Futtertaschen, Clicker-Fach und verstecktem Kotbeutelspender."
-          }
+          },
+          "disabled": true
         },
         "inline_custom_liquid_PbakU8": {
           "type": "iq_release_12",
@@ -306,17 +310,17 @@
             "bild_2": "shopify://shop_images/iq-trainingsjacke-funktion-desktop-quer.jpg",
             "text_3": "IQ Trainingsjacke 2.0 mit Balltasche im Einsatz",
             "text_4": "The training jacket 2.0",
-            "text_5": "Your vest’s features.",
-            "text_6": "Now in a jacket.",
-            "text_7": "Patented chest pocket.",
-            "text_8": "Optional: ball pocket, modular treat pocket & Zip-In.",
-            "text_9": "Patented chest pocket, compatible with the optional IQ ball pocket and modular treat pocket. Optional Zip-In for cold training days.",
+            "text_5": "Too wet for your vest?",
+            "text_6": "Keep training.",
+            "text_7": "20,000 mm waterproof rating. Patented chest pocket.",
+            "text_8": "Optional: IQ Magnetic Pouch & Zip-In Shell.",
+            "text_9": "Training Jacket 2.0: 20,000 mm waterproof rating and patented chest pocket for rewards from the centre of your body. Add the optional IQ Magnetic Pouch for concealed toy rewards, or the Zip-In Shell for warmth.",
             "text_10": "Die Trainingsjacke 2.0",
-            "text_11": "Deine Weste kann das.",
-            "text_12": "Deine Jacke auch.",
-            "text_13": "Patentierte Brusttasche.",
-            "text_14": "Optional: Balltasche, modulare Futtertasche & Zip-In.",
-            "text_15": "Patentierte Brusttasche, kompatibel mit der optionalen IQ Balltasche und modularen Futtertasche. Optionales Zip-In für kalte Trainingstage."
+            "text_11": "Zu nass für Deine Weste?",
+            "text_12": "Trainiere weiter.",
+            "text_13": "20.000 mm Wassersäule. Patentierte Brusttasche.",
+            "text_14": "Optional: IQ Magnettasche & Zip-In Shell.",
+            "text_15": "Trainingsjacke 2.0: 20.000 mm Wassersäule und patentierte Brusttasche für Belohnung aus Deiner Körpermitte. Optional: IQ Magnettasche für verdeckte Spielzeugbelohnung und Zip-In Shell für zusätzliche Wärme."
           }
         },
         "inline_custom_liquid_3pckAR": {
@@ -361,7 +365,8 @@
         "padding_top": 0,
         "padding_bottom": 0,
         "show_section_divider": true,
-        "divider_width": "fixed"
+        "divider_width": "fixed",
+        "compact_filter_bar": true
       }
     },
     "rich_text_ARFW3U": {
@@ -478,25 +483,25 @@
             "name_de": "Zip-off-Wintermantel Damen",
             "tab_de": "Zip-off-Wintermantel",
             "title_de": "Warm durch lange Gassirunden.",
-            "intro_de": "Für lange, kalte Tage mit Deinem Hund.",
+            "intro_de": "Für richtig kalte Tage und lange Wartezeiten draußen.",
             "alt_de": "Frau im langen IQ Zip-off-Wintermantel beim Spaziergang mit ihrem Schäferhund",
             "cta_de": "Wintermantel entdecken",
-            "benefits_de": "<ul><li>Sehr warm – mit abzipbarer Verlängerung</li><li>Kratzfester Stoff aus dem Jagdbereich</li><li>Futtertaschen, Handwärmfächer & XL-Rückentasche</li></ul>",
+            "benefits_de": "<ul><li>Kuschelig und dick gefüttert, mit robustem Oberstoff</li><li>Verlängerung abzippen für mehr Bewegungsfreiheit beim Training</li><li>Große Rückentasche, Futtertaschen und Fleece-Handwärmfächer</li></ul>",
             "name_en": "Women’s Zip-Off Winter Coat",
             "tab_en": "Zip-Off Winter Coat",
             "title_en": "Stay warm on long dog walks.",
-            "intro_en": "For long, cold days with your dog.",
+            "intro_en": "For very cold days and long waits outdoors.",
             "alt_en": "Woman wearing the long IQ Zip-Off Winter Coat while walking with her German Shepherd",
             "cta_en": "Explore the winter coat",
-            "benefits_en": "<ul><li>Warm padding; zip-off lower extension</li><li>Scratch-resistant fabric from hunting apparel</li><li>Treat pockets, handwarmers & XL back pocket</li></ul>",
+            "benefits_en": "<ul><li>Cosy, thick insulation and tough outer fabric</li><li>Zip off the extension for more freedom of movement during training</li><li>Large rear pocket, treat pockets and fleece-lined hand warmers</li></ul>",
             "photo_url": "https://cdn.shopify.com/s/files/1/0625/2806/1688/files/iq-jackenvergleich-wintermantel-2026-10-24.webp?v=1792797079",
             "photo_width": 1080,
             "photo_height": 1350,
             "primary_product": "iq-zipp-off-wintermantel-damen",
             "secondary_product": "",
             "show_zip_in": false,
-            "details_de": "<ul><li>Sehr warm gefüttert</li><li>Langer Mantel oder kurzer Parka: Verlängerung abzippen</li><li>Robuster, kratzfester Stoff aus dem Jagdbereich; verstärkte Nähte an Belastungspunkten</li><li>Futtertaschen und separate, fleecegefütterte Handwärmfächer</li><li>XL-Rückentasche mit Reißverschlüssen – von beiden Seiten zugänglich</li><li>Kompatibel mit der <a href=\"https://iq-dogsport.de/products/iq-futtertasche-magdock\">IQ MagDock Futtertasche</a> als zusätzlichem Leckerlibeutel – separat erhältlich ab November</li></ul>",
-            "details_en": "<ul><li>Warm padding</li><li>Long coat or shorter parka: unzip the lower extension</li><li>Robust, scratch-resistant fabric from hunting apparel; reinforced stitching at stress points</li><li>Treat pockets and separate fleece-lined handwarmer compartments</li><li>XL back pocket with zips – accessible from both sides</li><li>Compatible with the <a href=\"https://iq-dogsport.de/en/products/iq-futtertasche-magdock\">IQ MagDock Treat Pouch</a> for extra treat storage – sold separately from November</li></ul>"
+            "details_de": "<ul><li>Sehr warm gefüttert</li><li>Langer Mantel oder kurzer Parka: Verlängerung abzippen</li><li>Robuster, kratzfester Stoff aus dem Jagdbereich; verstärkte Nähte an Belastungspunkten</li><li>Herausnehmbare Futtertaschen und separate, fleecegefütterte Handwärmfächer</li><li>XL-Rückentasche mit Reißverschlüssen – von beiden Seiten zugänglich</li><li>MOLLE-Anbindung: kompatibel mit der <a href=\"https://iq-dogsport.de/products/iq-futtertasche-magdock\">IQ MagDock Futtertasche</a> als zusätzlichem Leckerlibeutel – separat erhältlich ab November</li></ul>",
+            "details_en": "<ul><li>Warm padding</li><li>Long coat or shorter parka: unzip the lower extension</li><li>Robust, scratch-resistant fabric from hunting apparel; reinforced stitching at stress points</li><li>Removable treat pockets and separate fleece-lined handwarmer compartments</li><li>XL back pocket with zips – accessible from both sides</li><li>MOLLE attachment: compatible with the <a href=\"https://iq-dogsport.de/en/products/iq-futtertasche-magdock\">IQ MagDock Treat Pouch</a> for extra treat storage – sold separately from November</li></ul>"
           }
         },
         "parka": {
@@ -505,17 +510,17 @@
             "name_de": "Winterparka Unisex",
             "tab_de": "Winterparka Unisex",
             "title_de": "Warm durch lange Wintertage.",
-            "intro_de": "Warm gefüttert für lange Wintertage draußen.",
+            "intro_de": "Warm eingepackt für lange Tage draußen.",
             "alt_de": "Tino mit IQ Winterparka und Hund beim Training",
             "cta_de": "Winterparka entdecken",
-            "benefits_de": "<ul><li>Warme Feathertouch-Wattierung</li><li>Kratzfester Stoff aus dem Jagdbereich</li><li>Futtertaschen, Handwärmfächer & XL-Rückentasche</li></ul>",
+            "benefits_de": "<ul><li>Sehr warme Feathertouch-Wattierung und robuster, kratzfester Stoff</li><li>Abwischbare Futterfächer, Fleece-Handwärmfächer und XL-Rückentasche</li><li>Kompatibel mit der optionalen IQ MagDock Futtertasche</li></ul>",
             "name_en": "Unisex Winter Parka",
             "tab_en": "Unisex Winter Parka",
             "title_en": "Warmth for long winter days.",
-            "intro_en": "Warm padding for long winter days outdoors.",
+            "intro_en": "Wrap up warm for long days outdoors.",
             "alt_en": "Tino wearing the IQ Winter Parka while training with his dog",
             "cta_en": "Explore the winter parka",
-            "benefits_en": "<ul><li>Warm Feathertouch padding</li><li>Scratch-resistant fabric from hunting apparel</li><li>Treat pockets, handwarmers & XL back pocket</li></ul>",
+            "benefits_en": "<ul><li>Very warm Feathertouch insulation and tough, scratch-resistant fabric</li><li>Wipe-clean treat compartments, fleece-lined hand warmers and an XL rear pocket</li><li>Compatible with the optional IQ MagDock Treat Pouch</li></ul>",
             "photo": "shopify://shop_images/tino-winterparka-kuehler-look.png",
             "photo_url": "https://iq-dogsport.de/cdn/shop/files/herren-front-shop_cc6f89b7-596c-4cef-b6bb-232f24a04ffa.jpg?v=1791555845&width=1000",
             "photo_width": 1000,
@@ -523,8 +528,8 @@
             "primary_product": "iq-winter-parka-unisex",
             "secondary_product": "",
             "show_zip_in": false,
-            "details_de": "<ul><li>Sehr warme Feathertouch-Wattierung</li><li>Robuster, kratzfester Stoff aus dem Jagdbereich; verstärkte Nähte an Belastungspunkten</li><li>Futtertaschen und separate, fleecegefütterte Handwärmfächer</li><li>XL-Rückentasche mit Reißverschlüssen – von beiden Seiten zugänglich</li><li>Kompatibel mit der <a href=\"https://iq-dogsport.de/products/iq-futtertasche-magdock\">IQ MagDock Futtertasche</a> als zusätzlichem Leckerlibeutel – separat erhältlich ab November</li></ul>",
-            "details_en": "<ul><li>Warm Feathertouch padding</li><li>Robust, scratch-resistant fabric from hunting apparel; reinforced stitching at stress points</li><li>Treat pockets and separate fleece-lined handwarmer compartments</li><li>XL back pocket with zips – accessible from both sides</li><li>Compatible with the <a href=\"https://iq-dogsport.de/en/products/iq-futtertasche-magdock\">IQ MagDock Treat Pouch</a> for extra treat storage – sold separately from November</li></ul>"
+            "details_de": "<ul><li>Sehr warme Feathertouch-Wattierung</li><li>Robuster, kratzfester Stoff aus dem Jagdbereich; verstärkte Nähte an Belastungspunkten</li><li>Abwischbare Futterfächer und separate, fleecegefütterte Handwärmfächer</li><li>XL-Rückentasche mit Reißverschlüssen – von beiden Seiten zugänglich</li><li>MOLLE-Anbindung: kompatibel mit der <a href=\"https://iq-dogsport.de/products/iq-futtertasche-magdock\">IQ MagDock Futtertasche</a> als zusätzlichem Leckerlibeutel – separat erhältlich ab November</li></ul>",
+            "details_en": "<ul><li>Warm Feathertouch padding</li><li>Robust, scratch-resistant fabric from hunting apparel; reinforced stitching at stress points</li><li>Wipe-clean treat compartments and separate fleece-lined handwarmer compartments</li><li>XL back pocket with zips – accessible from both sides</li><li>MOLLE attachment: compatible with the <a href=\"https://iq-dogsport.de/en/products/iq-futtertasche-magdock\">IQ MagDock Treat Pouch</a> for extra treat storage – sold separately from November</li></ul>"
           }
         },
         "mfj": {
@@ -533,25 +538,25 @@
             "name_de": "Multifunktionsjacke 3.0",
             "tab_de": "Multifunktionsjacke 3.0",
             "title_de": "Das Original seit 2011.",
-            "intro_de": "Die IQ Kultjacke. Das Original seit 2011.",
+            "intro_de": "Die Kultjacke für kalte Tage in Bewegung.",
             "alt_de": "Frau in schwarzer IQ Multifunktionsjacke mit Hund im Herbstwald",
             "cta_de": "Multifunktionsjacke entdecken",
-            "benefits_de": "<ul><li>Robustes Nylon Taslon</li><li>Gefüttert und wasserdicht</li><li>Futtertaschen & große Rückentasche</li></ul>",
+            "benefits_de": "<ul><li>Gefüttert, mit besonders robustem Stoff und stabilen Nähten</li><li>Magnetfächer, herausnehmbare Futtertaschen und große Rückentasche</li><li>Kompatibel mit der optionalen IQ Modularen Futtertasche</li></ul>",
             "name_en": "Multifunctional Jacket 3.0",
             "tab_en": "Multifunctional Jacket 3.0",
             "title_en": "The original since 2011.",
-            "intro_en": "The signature IQ jacket. The original since 2011.",
+            "intro_en": "The original favourite for staying active on cold days.",
             "alt_en": "Woman wearing a black IQ Multifunctional Jacket with her dog in an autumn woodland",
             "cta_en": "Explore the multifunctional jacket",
-            "benefits_en": "<ul><li>Robust nylon Taslon</li><li>Lined and waterproof</li><li>Treat pockets & large back pocket</li></ul>",
+            "benefits_en": "<ul><li>Insulated, with exceptionally tough fabric and strong seams</li><li>Magnet compartments, removable treat pockets and a large rear pocket</li><li>Compatible with the optional IQ Modular Treat Pouch</li></ul>",
             "photo_url": "https://cdn.shopify.com/s/files/1/0625/2806/1688/files/iq-jackenvergleich-mfj-2026-10-24.webp?v=1792797098",
             "photo_width": 800,
             "photo_height": 1000,
             "primary_product": "iq-multifunktionsjacke-3-0-damen",
             "secondary_product": "iq-multifunktionsjacke-3-0-unisex",
             "show_zip_in": false,
-            "details_de": "<ul><li>Robustes Nylon Taslon</li><li>Gefüttert und wasserdicht</li><li>Futtertaschen und große Rückentasche</li><li>Kompatibel mit der <a href=\"https://iq-dogsport.de/products/iq-modulare-futtertasche\">IQ modularen Futtertasche</a> – separat erhältlich</li></ul>",
-            "details_en": "<ul><li>Robust nylon Taslon</li><li>Lined and waterproof</li><li>Treat pockets and a large back pocket</li><li>Compatible with the <a href=\"https://iq-dogsport.de/en/products/iq-modulare-futtertasche\">IQ Modular Treat Pouch</a> – sold separately</li></ul>"
+            "details_de": "<ul><li>Robustes Nylon Taslon</li><li>Gefüttert und wasserdicht</li><li>Herausnehmbare Futtertaschen, fleecegefütterte Handwärmfächer und große Rückentasche</li><li>Kompatibel mit der <a href=\"https://iq-dogsport.de/products/iq-modulare-futtertasche\">IQ modularen Futtertasche</a> – separat erhältlich</li></ul>",
+            "details_en": "<ul><li>Robust nylon Taslon</li><li>Lined and waterproof</li><li>Removable treat pockets, fleece-lined handwarmer compartments and a large back pocket</li><li>Compatible with the <a href=\"https://iq-dogsport.de/en/products/iq-modulare-futtertasche\">IQ Modular Treat Pouch</a> – sold separately</li></ul>"
           }
         },
         "training": {
@@ -560,25 +565,25 @@
             "name_de": "Trainingsjacke 2.0",
             "tab_de": "Trainingsjacke 2.0",
             "title_de": "Robuste Jacke. Smartes Training.",
-            "intro_de": "Robuste Jacke. Smartes Training.",
+            "intro_de": "Wenn das Wetter zu schlecht für Deine Hundesportweste ist.",
             "alt_de": "Mann in IQ Trainingsjacke 2.0 beim Fußlaufen mit Hund",
             "cta_de": "Trainingsjacke entdecken",
-            "benefits_de": "<ul><li>Patentierte Brusttasche für den Vorsitz</li><li>Optionale Balltasche fürs Fußlaufen</li><li>Ungefüttert, 20.000 mm Wassersäule</li></ul>",
+            "benefits_de": "<ul><li>Robuster Wetterschutz mit 20.000 mm Wassersäule</li><li>Brusttasche für Belohnung aus Deiner Körpermitte beim Vorsitz</li><li>Verdeckte Belohnung beim Fußlaufen mit der optionalen IQ Magnettasche</li></ul>",
             "name_en": "Training Jacket 2.0",
             "tab_en": "Training Jacket 2.0",
             "title_en": "Tough jacket. Smart training.",
-            "intro_en": "Tough jacket. Smart training.",
+            "intro_en": "When the weather is too bad for your dog training vest.",
             "alt_en": "Man wearing an IQ Training Jacket 2.0 while heeling with his dog",
             "cta_en": "Explore the Training Jacket",
-            "benefits_en": "<ul><li>Patented chest pocket for front positions</li><li>Optional ball pocket for heelwork</li><li>Unlined; 20,000 mm water column</li></ul>",
+            "benefits_en": "<ul><li>Tough weather protection with a 20,000 mm waterproof rating</li><li>Chest pocket for rewards from the centre of your body during the front sit</li><li>Concealed rewards during heelwork with the optional IQ Magnetic Pouch</li></ul>",
             "photo_url": "https://cdn.shopify.com/s/files/1/0625/2806/1688/files/iq-jackenvergleich-training-2026-10-24.webp?v=1792797106",
             "photo_width": 1200,
             "photo_height": 1500,
             "primary_product": "iq-trainingsjacke-2-0-damen",
             "secondary_product": "iq-trainingsjacke-2-0-unisex",
             "show_zip_in": true,
-            "details_de": "<ul><li>Brusttasche: aus der Körpermitte belohnen – per Hand oder Zugsystem</li><li>Optionale Balltasche: Spielzeug verdeckt mitführen und per Zug freigeben</li><li>Ungefüttert, 20.000 mm Wassersäule und getapte Nähte; optionale Zip-in-Jacke für zusätzliche Wärme</li><li>Kompatibel mit der <a href=\"https://iq-dogsport.de/products/iq-modulare-futtertasche\">IQ modularen Futtertasche</a> – separat erhältlich</li></ul>",
-            "details_en": "<ul><li>Chest pocket: reward from the centre of your body, by hand or using the pull system</li><li>Optional ball pocket: keep a toy hidden and release it with a pull</li><li>Unlined, with a 20,000 mm water column and taped seams; add an optional zip-in jacket for warmth</li><li>Compatible with the <a href=\"https://iq-dogsport.de/en/products/iq-modulare-futtertasche\">IQ Modular Treat Pouch</a> – sold separately</li></ul>"
+            "details_de": "<ul><li>Patentierte Brusttasche: Spielzeug per Zugkordeln auslösen oder von Hand entnehmen</li><li>Kompatibel mit der optionalen IQ Magnettasche für verdeckte Belohnung beim Fußlaufen – auch beim schrittweisen Abbau sichtbaren Spielzeugs in der Prüfungsvorbereitung</li><li>Herausnehmbare Futtertaschen und große Rückentasche</li><li>Ungefüttert, mit 20.000 mm Wassersäule und versiegelten Nähten</li><li>Mehr Wärme mit der optionalen Zip-In Shell</li><li>Kompatibel mit der optionalen IQ Modularen Futtertasche</li></ul>",
+            "details_en": "<ul><li>Patented chest pocket: release the toy using the drawcords or take it out by hand</li><li>Compatible with the optional IQ Magnetic Pouch for concealed rewards during heelwork – including gradually phasing out visible toys when preparing for trials</li><li>Removable treat pockets and a large rear pocket</li><li>Unlined, with a 20,000 mm waterproof rating and sealed seams</li><li>Add warmth with the optional Zip-In Shell</li><li>Compatible with the optional IQ Modular Treat Pouch</li></ul>"
           }
         },
         "allround": {
@@ -587,25 +592,25 @@
             "name_de": "Allround-Jacke",
             "tab_de": "Allround-Jacke",
             "title_de": "Leicht eingepackt. Auch bei Regen.",
-            "intro_de": "Leichter Regenschutz für Gassi und Training.",
+            "intro_de": "Für Deine tägliche Gassirunde. Leicht und schnell verstaut.",
             "alt_de": "Blaue IQ Allround-Jacke von hinten im Regen beim Hundetraining",
             "cta_de": "Allround-Jacke entdecken",
-            "benefits_de": "<ul><li>Wasser- und winddicht</li><li>Leicht und ungefüttert</li><li>Herausnehmbare Futtertaschen & Rückentasche</li></ul>",
+            "benefits_de": "<ul><li>Leichte Regenjacke für unterwegs mit Hund</li><li>Herausnehmbare Futtertasche und große Rückentasche</li><li>Fächer für Clicker-Roll-out und Hundetüten</li></ul>",
             "name_en": "Allround Jacket",
             "tab_en": "Allround Jacket",
             "title_en": "Light protection. Even in the rain.",
-            "intro_en": "Light rain protection for walks and training.",
+            "intro_en": "For your daily dog walk. Lightweight and easy to pack away.",
             "alt_en": "Blue IQ Allround Jacket seen from behind in the rain during dog training",
             "cta_en": "Explore the Allround Jacket",
-            "benefits_en": "<ul><li>Waterproof and windproof</li><li>Lightweight and unlined</li><li>Removable treat pockets & back pocket</li></ul>",
+            "benefits_en": "<ul><li>Lightweight rain jacket for outings with your dog</li><li>Removable treat pocket and a large rear pocket</li><li>Compartments for a retractable clicker holder and dog waste bags</li></ul>",
             "photo_url": "https://cdn.shopify.com/s/files/1/0625/2806/1688/files/iq-jackenvergleich-allround-2026-10-24.webp?v=1792797113",
             "photo_width": 1200,
             "photo_height": 1500,
             "primary_product": "iq-allround-jacke-damen",
             "secondary_product": "iq-allround-jacke-unisex",
             "show_zip_in": false,
-            "details_de": "<ul><li>Leicht und ungefüttert</li><li>Wasser- und winddicht</li><li>Herausnehmbare Futtertaschen und Rückentasche</li><li>Kompatibel mit der <a href=\"https://iq-dogsport.de/products/iq-modulare-futtertasche\">IQ modularen Futtertasche</a> – separat erhältlich</li></ul>",
-            "details_en": "<ul><li>Lightweight and unlined</li><li>Waterproof and windproof</li><li>Removable treat pockets and a back pocket</li><li>Compatible with the <a href=\"https://iq-dogsport.de/en/products/iq-modulare-futtertasche\">IQ Modular Treat Pouch</a> – sold separately</li></ul>"
+            "details_de": "<ul><li>Leicht und ungefüttert</li><li>Wasser- und winddicht</li><li>Herausnehmbare Futtertaschen und große Rückentasche</li><li>Kompatibel mit der <a href=\"https://iq-dogsport.de/products/iq-modulare-futtertasche\">IQ modularen Futtertasche</a> – separat erhältlich</li></ul>",
+            "details_en": "<ul><li>Lightweight and unlined</li><li>Waterproof and windproof</li><li>Removable treat pockets and a large back pocket</li><li>Compatible with the <a href=\"https://iq-dogsport.de/en/products/iq-modulare-futtertasche\">IQ Modular Treat Pouch</a> – sold separately</li></ul>"
           }
         },
         "softshell": {
@@ -617,28 +622,56 @@
             "intro_de": "Windschutz mit weicher Fleece-Innenseite.",
             "alt_de": "Frau in IQ Softshelljacke beim Training mit Hund",
             "cta_de": "Softshelljacke entdecken",
-            "benefits_de": "<ul><li>Winddicht und wasserabweisend</li><li>Weiches Innenfleece</li><li>Beschichtete Futtertaschen & Rückentasche</li></ul>",
+            "benefits_de": "<ul><li>Winddicht, wasserabweisend, innen Fleece</li><li>Herausnehmbare Futtertaschen</li><li>Große Rückentasche für Deine Ausrüstung</li></ul>",
             "name_en": "Softshell Jacket 2.0",
             "tab_en": "Softshell Jacket 2.0",
             "title_en": "For wind and changing seasons.",
             "intro_en": "Wind protection with a soft fleece inner side.",
             "alt_en": "Woman wearing an IQ Softshell Jacket during dog training",
             "cta_en": "Explore the Softshell Jacket",
-            "benefits_en": "<ul><li>Windproof and water-repellent</li><li>Soft fleece inner side</li><li>Coated treat pockets & back pocket</li></ul>",
+            "benefits_en": "<ul><li>Windproof, water-repellent, fleece-lined</li><li>Removable treat pockets</li><li>Large back pocket for your gear</li></ul>",
             "photo_url": "https://cdn.shopify.com/s/files/1/0625/2806/1688/files/iq-jackenvergleich-softshell-2026-10-24.webp?v=1792797122",
             "photo_width": 1200,
             "photo_height": 1500,
             "primary_product": "iq-softshelljacke-2-0-damen",
             "secondary_product": "iq-softshelljacke-2-0-unisex",
             "show_zip_in": false,
-            "details_de": "<ul><li>Winddicht und wasserabweisend</li><li>Weiches Innenfleece</li><li>Rückentasche und beschichtete Futtertaschen</li><li>Kompatibel mit der <a href=\"https://iq-dogsport.de/products/iq-modulare-futtertasche\">IQ modularen Futtertasche</a> – separat erhältlich</li></ul>",
-            "details_en": "<ul><li>Windproof and water-repellent</li><li>Soft fleece inner side</li><li>Back pocket and coated treat pockets</li><li>Compatible with the <a href=\"https://iq-dogsport.de/en/products/iq-modulare-futtertasche\">IQ Modular Treat Pouch</a> – sold separately</li></ul>"
+            "details_de": "<ul><li>Winddicht und wasserabweisend</li><li>Weiches Innenfleece</li><li>Große Rückentasche und herausnehmbare Futtertaschen</li><li>Kompatibel mit der <a href=\"https://iq-dogsport.de/products/iq-modulare-futtertasche\">IQ modularen Futtertasche</a> – separat erhältlich</li></ul>",
+            "details_en": "<ul><li>Windproof and water-repellent</li><li>Soft fleece inner side</li><li>Large back pocket and removable treat pockets</li><li>Compatible with the <a href=\"https://iq-dogsport.de/en/products/iq-modulare-futtertasche\">IQ Modular Treat Pouch</a> – sold separately</li></ul>"
+          }
+        },
+        "mfj4": {
+          "type": "model",
+          "settings": {
+            "name_de": "Multifunktionsjacke 4.0 Damen",
+            "tab_de": "Multifunktionsjacke 4.0",
+            "title_de": "Das Original seit 2011.",
+            "intro_de": "Die Kultjacke – jetzt wärmer und vielseitiger.",
+            "alt_de": "IQ Multifunktionsjacke 4.0 Damen in Grau – Produktansicht",
+            "cta_de": "Multifunktionsjacke entdecken",
+            "benefits_de": "<ul><li>Wärmer gefüttert als die 3.0, robust verarbeitet und wasserdicht</li><li>Magnetfächer, waschbare Futtertaschen und XL-Rückentasche</li><li>Kompatibel mit IQ MagDock und IQ Modularer Futtertasche – beide optional</li></ul>",
+            "name_en": "Women’s Multifunctional Jacket 4.0",
+            "tab_en": "Multifunctional Jacket 4.0",
+            "title_en": "The original since 2011.",
+            "intro_en": "The original favourite – now warmer and more versatile.",
+            "alt_en": "IQ Multifunctional Jacket 4.0 for women in grey – product view",
+            "cta_en": "Explore the multifunctional jacket",
+            "benefits_en": "<ul><li>Warmer insulation than the 3.0, tough construction and waterproof protection</li><li>Magnet compartments, washable treat pockets and an XL rear pocket</li><li>Compatible with IQ MagDock and the IQ Modular Treat Pouch – both optional</li></ul>",
+            "photo_url": "https://cdn.shopify.com/s/files/1/0625/2806/1688/files/iq-mfj-4-0-damen-grau-vorderansicht.jpg?v=1793465035",
+            "photo_width": 800,
+            "photo_height": 1000,
+            "primary_product": "mfj-4-0-damen-wasserdichte-winterjacke-hundesport",
+            "secondary_product": "",
+            "show_zip_in": false,
+            "details_de": "<ul><li>Besonders robustes, kratzfestes Nylon-Taslon; verstärkte Belastungspunkte</li><li>Wasserdicht mit 20.000 mm Wassersäule; wärmer gefüttert als die 3.0</li><li>Herausnehmbare, separat waschbare Futtertaschen – zusätzlich unten mit Druckknopf gesichert</li><li>Drei Magnetfächer innen im Rückenteil, XL-Rückentasche und Fleece-Handwärmfächer</li><li>MOLLE-Loops für die optionale IQ MagDock; Schlaufen für die optionale IQ Modulare Futtertasche</li><li>Wechselbares IQ-Patch am linken Ärmel</li></ul>",
+            "details_en": "<ul><li>Exceptionally tough, scratch-resistant nylon Taslon with reinforced stress points</li><li>Waterproof to 20,000 mm; warmer insulation than the 3.0</li><li>Removable, separately washable treat pockets with an additional press stud at the bottom</li><li>Three internal magnet compartments at the back, an XL rear pocket and fleece-lined hand warmers</li><li>MOLLE loops for the optional IQ MagDock; loops for the optional IQ Modular Treat Pouch</li><li>Interchangeable IQ patch on the left sleeve</li></ul>"
           }
         }
       },
       "block_order": [
         "coat",
         "parka",
+        "mfj4",
         "mfj",
         "training",
         "allround",
@@ -648,11 +681,11 @@
       "settings": {
         "only_collection": "",
         "eyebrow_de": "Welche Jacke ist die richtige für Dich?",
-        "heading_de": "JACKEN FÜR GASSI\n& HUNDETRAINING.",
+        "heading_de": "JACKEN FÜR HUNDETRAINING\n& ALLTAG MIT HUND.",
         "intro_de": "",
         "extra_de": "Zusätzliche Wärme: Zip-in-Shell",
         "eyebrow_en": "Which jacket is right for you?",
-        "heading_en": "JACKETS FOR DOG WALKS\n& TRAINING.",
+        "heading_en": "JACKETS FOR DOG TRAINING\n& EVERYDAY LIFE.",
         "intro_en": "",
         "extra_en": "Extra warmth: Zip-in Shell"
       }
@@ -662,7 +695,56 @@
       "settings": {
         "heading_de": "",
         "heading_en": ""
-      }
+      },
+      "blocks": {
+        "jacket_weather": {
+          "type": "topic",
+          "settings": {
+            "only_collection": "hundesport-jacken",
+            "heading_de": "Wärme oder Wetterschutz: welche Hundesportjacke passt?",
+            "text_de": "<p>Für richtig kalte Tage und lange Wartezeiten draußen sind der <strong>Zip-off-Wintermantel</strong> und der <strong>Winterparka</strong> warm gefütterte Begleiter. Beim Mantel zippst Du die Verlängerung für mehr Bewegungsfreiheit beim Training ab.</p><p>Für kalte Tage in Bewegung: die gefütterte <strong>Multifunktionsjacke 3.0</strong> aus robustem Nylon-Taslon. Die <strong>4.0</strong> ist wärmer gefüttert und ergänzt die Anbindung für IQ MagDock. Die IQ Multifunktionsjacke – das Original seit 2011, weiterentwickelt aus der Praxis.</p><p>Wenn das Wetter zu schlecht für Deine Hundesportweste ist: die <strong>Trainingsjacke 2.0</strong> mit 20.000 mm Wassersäule. Mit der optionalen Zip-In Shell ergänzt Du Wärme. Die leichte <strong>Allround-Regenjacke</strong> ist für Deine Gassirunde schnell verstaut; die <strong>Softshelljacke</strong> bietet winddichten, wasserabweisenden Schutz für die Übergangszeit.</p>",
+            "heading_en": "Warmth or weather protection: which dog training jacket fits?",
+            "text_en": "<p>For very cold days and long waits outdoors, choose the warmly insulated <strong>Zip-Off Winter Coat</strong> or <strong>Winter Parka</strong>. Unzip the coat’s extension for more freedom of movement during training.</p><p>For staying active on cold days: the insulated <strong>Multifunctional Jacket 3.0</strong> in tough nylon Taslon. The <strong>4.0</strong> has warmer insulation and adds IQ MagDock compatibility. The IQ Multifunctional Jacket – the original since 2011, developed through practical experience.</p><p>When the weather is too bad for your dog training vest: the <strong>Training Jacket 2.0</strong> with a 20,000 mm waterproof rating. Add the optional Zip-In Shell for warmth. The lightweight <strong>Allround rain jacket</strong> packs away for daily dog walks; the <strong>Softshell Jacket</strong> provides windproof, water-repellent protection for changing seasons.</p>",
+            "replace_description": false,
+            "replace_seo": true
+          }
+        },
+        "jacket_features": {
+          "type": "topic",
+          "settings": {
+            "only_collection": "hundesport-jacken",
+            "heading_de": "Rückentasche, Futtertaschen und Belohnungssysteme",
+            "text_de": "<p>Welche Taschen und Trainingsfunktionen Du bekommst, hängt vom Modell ab. Die patentierte Brusttasche der <strong>Trainingsjacke 2.0</strong> ermöglicht die Belohnung aus Deiner Körpermitte beim Vorsitz. Die optionale IQ Magnettasche hält Spielzeug für die verdeckte Belohnung in der Fußarbeit bereit.</p><p>Die <strong>MFJ 3.0 und 4.0</strong> bieten Magnetfächer und sind mit der modularen Futtertasche kompatibel. <strong>Wintermantel, Winterparka und MFJ 4.0</strong> lassen sich mit der IQ MagDock Futtertasche ergänzen. Zubehör ist separat erhältlich. Ausstattung und passende Varianten findest Du beim jeweiligen Modell.</p><p><a href=\"/collections/hundesport-zubehoer-damen\">Funktionales Zubehör für Training und Alltag</a> · <a href=\"/pages/igp-hundesport\">Mehr über IGP-Hundesport</a></p>",
+            "heading_en": "Back pockets, treat pockets and reward systems",
+            "text_en": "<p>Pockets and training features vary by model. The patented chest pocket on the <strong>Training Jacket 2.0</strong> lets you reward from the centre of your body during the front sit. The optional IQ Magnetic Pouch keeps toys hidden for rewards during heelwork.</p><p>The <strong>MFJ 3.0 and 4.0</strong> have magnet compartments and are compatible with the modular treat pouch. The <strong>Winter Coat, Winter Parka and MFJ 4.0</strong> support the IQ MagDock treat pouch. Accessories are sold separately. Check each model for equipment and compatible variants.</p><p><a href=\"/en/collections/hundesport-zubehoer-damen\">Practical accessories for training and everyday use</a> · <a href=\"/en/pages/igp-hundesport\">More about IGP dog sport</a></p>",
+            "replace_description": false,
+            "replace_seo": false
+          }
+        }
+      },
+      "block_order": [
+        "jacket_weather",
+        "jacket_features"
+      ]
+    },
+    "iq_pants_link": {
+      "type": "iq-collection-links",
+      "blocks": {
+        "pants": {
+          "type": "link",
+          "settings": {
+            "label_de": "Auch Deine Hose kann Hundesport – Hosen entdecken",
+            "label_en": "Complete your training outfit – discover our pants",
+            "target": "/collections/hundesport-hosen",
+            "arrow": true,
+            "product": ""
+          }
+        }
+      },
+      "block_order": [
+        "pants"
+      ],
+      "settings": {}
     }
   },
   "order": [
@@ -674,6 +756,7 @@
     "custom_liquid_DmjTnb",
     "custom_liquid_r7a8TE",
     "product-grid",
+    "iq_pants_link",
     "rich_text_ARFW3U",
     "177730905751d89578",
     "video_with_text_9BEkp8",

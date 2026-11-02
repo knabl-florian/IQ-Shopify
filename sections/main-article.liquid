@@ -33,8 +33,9 @@
       {% liquid
         assign image_alt = article.image.alt | escape
         assign image_ratio = article.image.aspect_ratio
+        assign mobile_image = article.metafields.custom.article_image_mobile.value
       %}
-      <div class="hero hero--{{ section.settings.image_height }} overflow-hidden">
+      <div class="hero hero--{{ section.settings.image_height }} overflow-hidden{% if mobile_image != blank %} iq-article-mobile-image{% endif %}"{% if mobile_image != blank %} style="--iq-mobile-ratio: {{ mobile_image.aspect_ratio }};"{% endif %}>
         <motion-element
           data-motion="zoom-out"
           class="hero__media block"
@@ -43,6 +44,12 @@
           {% endif %}
         >
           {%- capture sizes -%}min({{ settings.page_width }}, 100vw){%- endcapture -%}
+          {% if mobile_image != blank %}
+            <picture>
+              <source media="(max-width: 767.98px)" sizes="100vw"
+                srcset="{{ mobile_image | image_url: width: 400 }} 400w, {{ mobile_image | image_url: width: 600 }} 600w, {{ mobile_image | image_url: width: 800 }} 800w, {{ mobile_image | image_url: width: 1200 }} 1200w"
+                width="{{ mobile_image.width }}" height="{{ mobile_image.height }}">
+          {% endif %}
           {{-
             article.image
             | image_url: width: article.image.width
@@ -55,6 +62,7 @@
               widths: '300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200',
               alt: image_alt
           -}}
+          {% if mobile_image != blank %}</picture>{% endif %}
         </motion-element>
       </div>
     {%- endif -%}
@@ -723,3 +731,4 @@
   ]
 }
 {% endschema %}
+

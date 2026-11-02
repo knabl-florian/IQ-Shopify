@@ -7,7 +7,7 @@
 {% assign pants_video = section.settings.video %}
 {% if pants_video == blank %}{% assign pants_video = pants.media | where: 'media_type', 'video' | first %}{% endif %}
 {% if pants_video != blank %}
-<div class="page-width iq-collection-container iq-pants-video-section"><div class="iq-pants-video-wrap"{% if section.settings.video == blank %} data-original-portrait{% endif %}>
+<div class="page-width iq-collection-container iq-pants-video-section"><div class="iq-pants-video-wrap" style="--iq-pants-video-ratio:{{ pants_video.preview_image.width }}/{{ pants_video.preview_image.height }};"{% if section.settings.video == blank %} data-original-portrait{% endif %}>
 <p class="iq-pants-kicker">{% if en %}{{ iq_part_1.settings.text_1 | escape }}{% else %}{{ iq_part_1.settings.text_2 | escape }}{% endif %}</p>
 <h2>{% if en %}{{ iq_part_1.settings.text_3 | escape }}{% else %}{{ iq_part_1.settings.text_4 | escape }}{% endif %}</h2>
 {% if section.settings.video != blank and pants_original_video != blank %}
@@ -28,7 +28,7 @@
   </div>
 </iq-responsive-pants-video>
 {% else %}
-{{ pants_video | video_tag: image_size: '1000x', controls: true, autoplay: false, loop: false, preload: 'none', class: 'iq-pants-video' }}
+{{ pants_video | video_tag: image_size: '1000x', controls: true, autoplay: false, loop: false, preload: 'none', class: 'iq-pants-video', width: pants_video.preview_image.width, height: pants_video.preview_image.height }}
 {% endif %}
 </div></div>
 {% elsif request.design_mode %}<p>{{ iq_part_1.settings.text_5 | escape }}</p>{% endif %}
@@ -41,7 +41,7 @@
 .iq-pants-video-section .iq-pants-video-wrap{width:100%;max-width:none;margin:0}
 .iq-pants-video-section h2{font:italic 800 clamp(26px,3vw,36px)/1.12 Montserrat,sans-serif;text-transform:uppercase;margin:0 0 20px}
 .iq-pants-video-section .iq-pants-kicker{font:700 12px/1.4 Archivo,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#A51D1B;margin:0 0 12px}
-.iq-pants-video-section .iq-pants-video{display:block;width:100%;height:auto;background:#171717}
+.iq-pants-video-section .iq-pants-video{display:block;width:100%;height:auto;aspect-ratio:var(--iq-pants-video-ratio);background:#171717}
 .iq-pants-video-section [data-original-portrait] .iq-pants-video{max-height:640px;object-fit:contain}
 @media(max-width:749px){.iq-pants-video-section{padding-top:28px;padding-bottom:28px}.iq-pants-video-section [data-original-portrait] .iq-pants-video{max-height:70vh}}
 iq-responsive-pants-video{display:block;position:relative;width:100%;background:#171717}

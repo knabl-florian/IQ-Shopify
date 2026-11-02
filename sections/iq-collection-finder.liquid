@@ -1,4 +1,4 @@
-{% if section.settings.only_collection == blank or section.settings.only_collection.handle == collection.handle %}
+{% if section.settings.only_collection == blank or section.settings.only_collection.handle == collection.handle or section.settings.additional_collection.handle == collection.handle %}
 {% unless template.suffix == 'jacken' %}{{ 'iq-collection-finder.css' | asset_url | stylesheet_tag }}{% endunless %}
 <script src="{{ 'iq-collection-finder.js' | asset_url }}" defer="defer"></script>
 {% liquid
@@ -18,12 +18,17 @@
     {% if section.settings[intro_key] != blank %}<p class="iq-jacket-finder__intro">{{ section.settings[intro_key] | escape }}</p>{% endif %}
   </header>
   <div class="iq-jacket-finder__choices" role="group" aria-label="{{ section.settings[eyebrow_key] | escape }}">
+    {% assign first_choice = true %}
     {% for block in section.blocks %}
+      {% if block.settings.only_collection != blank and block.settings.only_collection.handle != collection.handle %}{% continue %}{% endif %}
       {% assign tab_key = 'tab_' | append: lang %}
-      <button type="button" data-finder-button aria-controls="finder-{{ section.id }}-{{ block.id }}" aria-pressed="{% if forloop.first %}true{% else %}false{% endif %}">{{ block.settings[tab_key] | escape }}</button>
+      <button type="button" data-finder-button aria-controls="finder-{{ section.id }}-{{ block.id }}" aria-pressed="{% if first_choice %}true{% else %}false{% endif %}">{{ block.settings[tab_key] | escape }}</button>
+      {% assign first_choice = false %}
     {% endfor %}
   </div>
+  {% assign first_panel = true %}
   {% for block in section.blocks %}
+    {% if block.settings.only_collection != blank and block.settings.only_collection.handle != collection.handle %}{% continue %}{% endif %}
     {% liquid
       assign name_key = 'name_' | append: lang
       assign title_key = 'title_' | append: lang
@@ -36,7 +41,7 @@
       assign secondary = block.settings.secondary_product
       assign loading = 'lazy'
     %}
-    <article class="iq-jacket-finder__panel" id="finder-{{ section.id }}-{{ block.id }}" data-finder-panel{% unless forloop.first %} hidden{% endunless %} {{ block.shopify_attributes }}>
+    <article class="iq-jacket-finder__panel" id="finder-{{ section.id }}-{{ block.id }}" data-finder-panel{% unless first_panel %} hidden{% endunless %} {{ block.shopify_attributes }}>
       <div class="iq-jacket-finder__photo">
         {% if block.settings.photo != blank %}
           {{ block.settings.photo | image_url: width: 1200 | image_tag: loading: loading, sizes: '(min-width: 750px) 600px, 100vw', widths: '400,600,800,1000,1200', alt: block.settings[alt_key] }}
@@ -58,12 +63,13 @@
         {% if block.settings.show_zip_in %}
     <p><strong>{{ section.settings[extra_key] | escape }}</strong></p>
     {% if lang == 'de' %}<p>Die Zip-in-Shell ergänzt die Trainingsjacke 2.0 um eine Wärmeschicht. Auch einzeln tragbar; nicht als Regenschutz gedacht.</p>{% else %}<p>The Zip-in Shell adds warmth to the Training Jacket 2.0. It can also be worn on its own; it is not designed as rain protection.</p>{% endif %}
-    <a href="{{ routes.root_url }}products/iq-zip-in-shell-damen">{% if lang == 'de' %}Damenmodell{% else %}Women’s model{% endif %} →</a> · <a href="{{ routes.root_url }}products/iq-zip-in-shell-unisex">{% if lang == 'de' %}Unisexmodell{% else %}Unisex model{% endif %} →</a>
+    <a href="{{ routes.root_url | append: '/' | replace: '//', '/' }}products/iq-zip-in-shell-damen">{% if lang == 'de' %}Damenmodell{% else %}Women’s model{% endif %} →</a> · <a href="{{ routes.root_url | append: '/' | replace: '//', '/' }}products/iq-zip-in-shell-unisex">{% if lang == 'de' %}Unisexmodell{% else %}Unisex model{% endif %} →</a>
         {% endif %}
         </details>
         {% endif %}
       </div>
     </article>
+    {% assign first_panel = false %}
   {% endfor %}
 
 </section>
@@ -78,6 +84,12 @@
       "id": "only_collection",
       "label": "Nur für diese Collection",
       "info": "Leer lassen: auf der gesamten Vorlage anzeigen."
+    },
+    {
+      "type": "collection",
+      "id": "additional_collection",
+      "label": "Zusätzliche Collection",
+      "info": "Modelle über die Collection-Auswahl im jeweiligen Modellblock zuordnen."
     },
     {
       "type": "textarea",
@@ -125,6 +137,12 @@
       "type": "model",
       "name": "Modell",
       "settings": [
+        {
+          "type": "collection",
+          "id": "only_collection",
+          "label": "Modell nur in dieser Collection",
+          "info": "Leer: Modell überall in diesem Vergleich zeigen."
+        },
         {
           "type": "textarea",
           "id": "name_de",
