@@ -26,6 +26,7 @@
       "block_order": [
         "collection_info_zUNyKV"
       ],
+      "disabled": true,
       "custom_css": [
         ".collection-hero .page-width {max-width: none !important; width: 100% !important; padding-left: 0 !important; padding-right: 0 !important;}",
         ".collection-hero .collection-hero__text {justify-content: flex-end !important; text-align: center !important;}",
@@ -48,8 +49,42 @@
         "padding_bottom": 0
       }
     },
+    "iq_collection_hero_Ep4NNj": {
+      "type": "iq-collection-hero",
+      "name": "IQ Collection Banner",
+      "settings": {
+        "only_collection": "hundesportbekleidung",
+        "require_collection": true,
+        "desktop_image": "shopify://shop_images/hundesport.jacke.unisex_2be918a8-b521-4241-81a5-a4081c1f9546.jpg",
+        "mobile_image": "shopify://shop_images/mann-mit-hundefuehrerjacke-mit-malinois-auf-hundeplatz_58b19bbe-8c3f-4aee-943f-d08e0df73213.jpg",
+        "text_tone": "dark",
+        "desktop_position": "bottom",
+        "show_mobile_label": false,
+        "focus_y": 75,
+        "title_de": "Hart im Nehmen.",
+        "accent_de": "Smart Im Training.",
+        "description_de": "Robuste Materialien. Durchdachte Trainingsfunktionen. Hochwertige Verarbeitung. Entwickelt von Hundesportlern, die wissen, worauf es ankommt.",
+        "mobile_description_de": "Robust. Hochwertig verarbeitet. Mit Trainingsfunktionen von echten Hundesportlern.",
+        "label_de": "",
+        "alt_de": "Hundeführer mit malinois im Schnee in Grundstellung",
+        "title_en": "BUILT TOUGH.",
+        "accent_en": "DESIGNED TO TRAIN.",
+        "description_en": "Durable materials. Clever training features. Quality craftsmanship. Developed by dog sport athletes who know what matters.",
+        "mobile_description_en": "Durable. Expertly crafted. Training features designed by dog sport athletes.",
+        "label_en": "",
+        "alt_en": "Dogsport handler with Malinois in basic position in snow",
+        "mobile_position": "bottom",
+        "mobile_alignment": "center",
+        "mobile_tone": "dark",
+        "heading_tag": "h1",
+        "button_de": "",
+        "button_en": "",
+        "button_url": ""
+      }
+    },
     "custom_liquid_FpycJH": {
       "type": "custom-liquid",
+      "disabled": true,
       "custom_css": [
         ".collection-info-custom {padding-top: 20px !important;}",
         ".collection-info-custom p {margin: 0 !important;}",
@@ -62,15 +97,14 @@
         "padding_top": 0,
         "padding_bottom": 0,
         "custom_class": ""
-      },
-      "disabled": true
+      }
     },
     "breadcrumbs_Gxg9wp": {
       "type": "breadcrumbs",
+      "disabled": true,
       "settings": {
         "text_alignment": "center"
-      },
-      "disabled": true
+      }
     },
     "custom_content_F47NJV": {
       "type": "custom-content",
@@ -253,25 +287,46 @@
     "product-grid": {
       "type": "main-collection-product-grid-magazine",
       "blocks": {
+        "iq_product_feature_wrrEVU": {
+          "type": "iq_product_feature",
+          "settings": {
+            "only_collection": "",
+            "after_product": "",
+            "detail_crop": false,
+            "product": "",
+            "copy_left": false,
+            "eyebrow_de": "",
+            "heading_de": "",
+            "body_de": "",
+            "link_label_de": "",
+            "alt_de": "",
+            "eyebrow_en": "",
+            "heading_en": "",
+            "body_en": "",
+            "link_label_en": "",
+            "alt_en": ""
+          }
+        },
         "inline_image_text_xdgEPM": {
           "type": "inline_image_text",
           "settings": {
-            "position": 12,
-            "position_mobile": 8,
+            "position": 28,
+            "position_mobile": 28,
             "width": "full",
-            "image": "shopify://shop_images/Hundefuehrerin-Trainingshoodie-Ice-blau.jpg",
+            "image": "shopify://shop_images/thermo-muetze-1200x900.jpg",
             "layout": "image-left",
-            "heading": "Entwickelt für Training, Prüfung & Alltag",
+            "heading": "KLEINE DETAILS. IMMER DABEI.",
             "heading_size": "h2",
-            "text": "Durchdachte Taschen, robuste Materialien und maximale Bewegungsfreiheit für jede Trainingseinheit.",
-            "text_alignment": "left",
-            "button_label": "",
-            "button_link": "",
+            "text": "Mützen, Caps und praktische Taschen für Training und Alltag mit Hund.",
+            "text_alignment": "center",
+            "button_label": "ACCESSOIRES ENTDECKEN",
+            "button_link": "shopify://collections/hundesport-zubehoer-damen",
             "button_style": "primary"
           }
         },
         "inline_promo_image_6rTYJX": {
           "type": "inline_promo_image",
+          "disabled": true,
           "settings": {
             "position": 6,
             "position_mobile": 4,
@@ -288,11 +343,18 @@
         }
       },
       "block_order": [
+        "iq_product_feature_wrrEVU",
         "inline_image_text_xdgEPM",
         "inline_promo_image_6rTYJX"
       ],
       "custom_css": [],
       "settings": {
+        "priority_collection": "",
+        "compact_filter_bar": true,
+        "priority_products": [],
+        "use_section_column_settings": false,
+        "defer_product_images": false,
+        "collection_card_titles": true,
         "iq_jv_enabled": false,
         "iq_jv_products": [],
         "color_scheme": "scheme-9",
@@ -310,9 +372,7 @@
         "padding_top": 0,
         "padding_bottom": 70,
         "show_section_divider": true,
-        "divider_width": "fixed",
-        "collection_card_titles": true,
-        "compact_filter_bar": true
+        "divider_width": "fixed"
       }
     },
     "rich_text_ARFW3U": {
@@ -375,11 +435,16 @@
     },
     "iq_knowledge": {
       "type": "iq-collection-knowledge",
-      "settings": {}
+      "settings": {
+        "heading_de": "",
+        "heading_en": "",
+        "replace_seo_collection": ""
+      }
     }
   },
   "order": [
     "banner",
+    "iq_collection_hero_Ep4NNj",
     "custom_liquid_FpycJH",
     "breadcrumbs_Gxg9wp",
     "custom_content_F47NJV",

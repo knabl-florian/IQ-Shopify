@@ -328,7 +328,7 @@
             "position": 6,
             "position_mobile": 6,
             "width": "full",
-            "image": "shopify://shop_images/IMG_4637.jpg",
+            "image": "shopify://shop_images/mfj-k9-dame-ruecken-1500x1200.jpg",
             "layout": "image-right",
             "heading": "K9-AUSRÜSTUNG FÜR POLIZEI, ZOLL & DIENST",
             "heading_size": "h2",
@@ -346,6 +346,8 @@
       ],
       "custom_css": [],
       "settings": {
+        "priority_collection": "",
+        "compact_filter_bar": true,
         "priority_products": [],
         "use_section_column_settings": false,
         "defer_product_images": false,
@@ -367,8 +369,7 @@
         "padding_top": 0,
         "padding_bottom": 70,
         "show_section_divider": true,
-        "divider_width": "fixed",
-        "compact_filter_bar": true
+        "divider_width": "fixed"
       }
     },
     "rich_text_ARFW3U": {
