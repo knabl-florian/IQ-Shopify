@@ -1,0 +1,34 @@
+{%- liquid
+  assign target_collection = section.settings.collection
+  assign link_label = section.settings.label
+  if request.locale.iso_code == 'en'
+    assign link_label = section.settings.label_en
+  endif
+-%}
+{%- if target_collection != blank and link_label != blank -%}
+  <div class="iq-all-products-link">
+    <a href="{{ target_collection.url }}" class="iq-all-products-link__anchor">
+      {{- link_label | escape -}} <span aria-hidden="true">→</span>
+    </a>
+  </div>
+{%- endif -%}
+{% stylesheet %}
+  .iq-all-products-link { max-width: 1360px; margin-inline: auto; padding: 0 20px 24px; box-sizing: border-box; }
+  .iq-all-products-link__anchor { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: #171717; font-family: Archivo, sans-serif; font-weight: 700; font-size: 15px; line-height: 1.5; text-decoration: underline; text-underline-offset: 4px; }
+  .iq-all-products-link__anchor:hover { color: #A51D1B; }
+  .iq-all-products-link__anchor:focus-visible { outline: 2px solid #A51D1B; outline-offset: 4px; }
+  @media (min-width: 750px) { .iq-all-products-link { padding-inline: 24px; } }
+  @media (min-width: 990px) { .iq-all-products-link { padding-inline: 32px; } }
+{% endstylesheet %}
+{% schema %}
+{
+  "name": "Alle Produkte – Link",
+  "settings": [
+    { "type": "collection", "id": "collection", "label": "Ziel-Collection" },
+    { "type": "text", "id": "label", "label": "Linktext Deutsch", "default": "Alle Produkte ansehen" },
+    { "type": "text", "id": "label_en", "label": "Linktext Englisch", "default": "View all products" }
+  ],
+  "presets": [{ "name": "Alle Produkte – Link" }],
+  "enabled_on": { "templates": ["index"] }
+}
+{% endschema %}

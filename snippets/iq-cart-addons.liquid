@@ -1,7 +1,12 @@
 {% doc %}
   Merchant-selected additions shared by the cart drawer and cart page.
   @param {string} section_id - Parent section identifier.
+  @param {number} [image_width] - Requested image width.
+  @param {string} [image_sizes] - Responsive image display size.
+  @param {boolean} [price_first] - Display the price before the option title.
 {% enddoc %}
+{%- assign addon_image_width = image_width | default: 160 -%}
+{%- assign addon_image_sizes = image_sizes | default: '60px' -%}
 {%- if settings.iq_cart_addons_enabled and cart.item_count > 0 -%}
   {%- assign cart_product_ids = cart.items | map: 'product_id' -%}
   {%- capture addon_items -%}
@@ -16,7 +21,7 @@
           <li class="iq-cart-addons__item">
             <a href="{{ addon.url }}" class="iq-cart-addons__image" tabindex="-1" aria-hidden="true">
               {%- if addon.featured_image -%}
-                {{ addon.featured_image | image_url: width: 160 | image_tag: loading: 'lazy', widths: '80,160', sizes: '60px', alt: '' }}
+                {{ addon.featured_image | image_url: width: addon_image_width | image_tag: loading: 'lazy', widths: '80,160,320', sizes: addon_image_sizes, alt: '' }}
               {%- endif -%}
             </a>
             <div class="iq-cart-addons__content">
@@ -31,7 +36,7 @@
                   <select id="{{ select_id }}" name="id" class="iq-cart-addons__select">
                     {%- for option in addon.variants -%}
                       {%- if option.available -%}
-                        <option value="{{ option.id }}"{% if option.id == variant.id %} selected{% endif %}>{{ option.title | escape }} · {{ option.price | money | escape }}</option>
+                        <option value="{{ option.id }}"{% if option.id == variant.id %} selected{% endif %}>{%- if price_first -%}{{ option.price | money | escape }} · {% if addon.handle == 'iq-gebrauchshunde-schlusselanhanger-miniatur' %}{{ option.title | replace: 'Belgischer Schäferhund - Malinois', 'Malinois' | replace: 'Belgian Shepherd - Malinois', 'Malinois' | escape }}{% else %}{{ option.title | escape }}{% endif %}{%- else -%}{{ option.title | escape }} · {{ option.price | money | escape }}{%- endif -%}</option>
                       {%- endif -%}
                     {%- endfor -%}
                   </select>

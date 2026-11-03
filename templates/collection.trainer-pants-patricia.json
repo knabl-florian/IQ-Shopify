@@ -300,8 +300,8 @@
             "collection_handle": "hundesport-hosen",
             "title_de": "Hundesporthosen",
             "title_en": "Dog training trousers",
-            "intro_de": "Bewegungsfreiheit und praktische Taschen fürs Training mit Hund.",
-            "intro_en": "Freedom to move and practical pockets for training with your dog."
+            "intro_de": "IQ Trainer Pants für Damen und Herren: Unisex-Schnitt, Stretch und herausnehmbare Futtertaschen.",
+            "intro_en": "IQ Trainer Pants for women and men: a unisex cut, stretch and removable treat pouches."
           }
         },
         "iq_heading_2": {
@@ -501,7 +501,24 @@
       "settings": {
         "heading_de": "",
         "heading_en": ""
-      }
+      },
+      "blocks": {
+        "pants_choice": {
+          "type": "topic",
+          "settings": {
+            "only_collection": "hundesport-hosen",
+            "heading_de": "Welche Hundesporthose passt für Damen?",
+            "text_de": "<p>Die <a href=\"/products/iq-dogsport-hose-unisex\">IQ Trainer Pants</a> haben einen Unisex-Schnitt mit 4-Wege-Stretch. Ihre Bundweite lässt sich mit Klettverschlüssen und Gummiband verstellen. Vergleiche für die Größenwahl die Maße einer gut sitzenden Hose mit der <a href=\"/products/iq-dogsport-hose-unisex\">Größentabelle auf der Produktseite</a>: Die angegebenen Maße sind Kleidungsmaße, keine Körpermaße.</p><p>Du bevorzugst einen körpernahen Schnitt mit hohem Bund? Dann sieh Dir die <a href=\"/products/iq-performance-leggings\">IQ Performance Leggings</a> an. Die aktuelle Verfügbarkeit Deiner Größe findest Du auf der jeweiligen Produktseite.</p>",
+            "heading_en": "Which dog training trousers suit women?",
+            "text_en": "<p>The <a href=\"/en/products/dog-sport-trainer-pants-treat-pockets-back-pocket\">IQ Trainer Pants</a> have a unisex cut with four-way stretch. The waistband adjusts with hook-and-loop fasteners and elastic. To choose your size, compare a well-fitting pair of trousers with the <a href=\"/en/products/dog-sport-trainer-pants-treat-pockets-back-pocket\">size chart on the product page</a>: the measurements refer to the garment, not your body.</p><p>Prefer a close fit with a high waistband? Take a look at the <a href=\"/en/products/dog-sport-leggings-back-treat-pockets\">IQ Performance Leggings</a>. Check the relevant product page for current availability in your size.</p>",
+            "replace_description": true,
+            "replace_seo": false
+          }
+        }
+      },
+      "block_order": [
+        "pants_choice"
+      ]
     }
   },
   "order": [

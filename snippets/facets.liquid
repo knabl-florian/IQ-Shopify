@@ -1,3 +1,6 @@
+{%- capture collection_key -%}{%- render 'iq-collection-key' -%}{%- endcapture -%}
+{%- assign collection_key = collection_key | strip -%}
+{%- capture iq_group_order -%}{%- render 'iq-filter-group-order' -%}{%- endcapture -%}
 {%- liquid
   unless enable_color_swatch
     assign enable_color_swatch = section.settings.enable_color_swatch
@@ -28,20 +31,82 @@
         <input type="hidden" name="sort_by" value="{{ results.sort_by }}">
       {%- endif -%}
     </div>
-    {%- for filter in results.filters -%}
-      {%- if filter.param_name == 'filter.p.m.custom.iq_product_groups' -%}
-        {%- if collection.handle == 'bestseller' -%}{%- continue -%}{%- endif -%}
-        {%- unless request.page_type == 'collection' -%}{%- continue -%}{%- endunless -%}
-        {%- capture iq_drawer_group_order -%}{%- render 'iq-filter-group-order' -%}{%- endcapture -%}
-        {%- assign iq_drawer_group_order = iq_drawer_group_order | strip -%}
-        {%- if iq_drawer_group_order == blank -%}{%- continue -%}{%- endif -%}
+    {%- liquid
+      assign iq_is_broad = false
+      if collection_key == 'all' or collection_key == 'iq-produkte' or collection_key == 'bestseller' or collection_key == 'neuheiten' or collection_key == 'social-highlights'
+        assign iq_is_broad = true
+      endif
+      assign iq_group_filter = results.filters | where: 'param_name', 'filter.p.m.custom.iq_product_groups' | first
+      assign iq_clothing_selected = false
+      assign iq_size_context = false
+      assign iq_books_selected = false
+      for active_group in iq_group_filter.active_values
+        case active_group.value
+          when 'all--bekleidung', 'bestseller--bekleidung', 'all--jacken', 'all--westen', 'all--hoodies', 'all--hosen', 'all--shirts-accessoires'
+            assign iq_clothing_selected = true
+            assign iq_size_context = true
+          when 'all--training', 'all--spielzeug', 'bestseller--training'
+            assign iq_size_context = true
+          when 'all--bucher', 'bestseller--bucher'
+            assign iq_books_selected = true
+        endcase
+      endfor
+      assign iq_filter_order = 'filter.v.option.größe|filter.v.option.size|filter.v.option.gürtellänge|filter.v.t.shopify.target-gender|filter.p.m.custom.iq_book_languages|filter.v.availability|filter.v.price|filter.v.option.farbe|filter.v.option.color' | split: '|'
+      assign iq_ordered_filters = '' | split: ','
+      for iq_filter_param in iq_filter_order
+        assign iq_filter_matches = results.filters | where: 'param_name', iq_filter_param
+        assign iq_ordered_filters = iq_ordered_filters | concat: iq_filter_matches
+      endfor
+      for iq_other_filter in results.filters
+        unless iq_filter_order contains iq_other_filter.param_name
+          assign iq_filter_matches = results.filters | where: 'param_name', iq_other_filter.param_name
+          assign iq_ordered_filters = iq_ordered_filters | concat: iq_filter_matches
+        endunless
+      endfor
+    -%}
+    {%- if iq_group_order != blank -%}
+      <div data-filter data-index="{{ context }}-iq-active-groups" hidden>
+        {%- for active_group in iq_group_filter.active_values -%}
+          <input type="hidden" name="{{ iq_group_filter.param_name }}" value="{{ active_group.value | escape }}">
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+    {%- for filter in iq_ordered_filters -%}
+      {%- if filter.param_name == 'filter.p.m.custom.iq_product_groups' -%}{%- continue -%}{%- endif -%}
+      {%- liquid
+        assign iq_meaningful_values = 0
+        for iq_filter_value in filter.values
+          if iq_filter_value.count > 0 or iq_filter_value.active
+            assign iq_meaningful_values = iq_meaningful_values | plus: 1
+          endif
+        endfor
+        assign iq_is_size = false
+        if filter.param_name == 'filter.v.option.größe' or filter.param_name == 'filter.v.option.size' or filter.param_name == 'filter.v.option.gürtellänge'
+          assign iq_is_size = true
+        endif
+      -%}
+      {%- if collection_key == 'hundesport-trainingszubehoer' and iq_is_size and filter.active_values.size == 0 -%}
+        {%- assign iq_training_size_context = false -%}
+        {%- for active_group in iq_group_filter.active_values -%}
+          {%- if filter.param_name == 'filter.v.option.gürtellänge' and active_group.value == 'hundesport-trainingszubehoer--taschen-gurtel' -%}
+            {%- assign iq_training_size_context = true -%}
+          {%- elsif filter.param_name != 'filter.v.option.gürtellänge' and active_group.value == 'hundesport-trainingszubehoer--geschirre-schutzdienst' -%}
+            {%- assign iq_training_size_context = true -%}
+          {%- endif -%}
+        {%- endfor -%}
+        {%- unless iq_training_size_context -%}{%- continue -%}{%- endunless -%}
       {%- endif -%}
-      {%- if request.page_type == 'collection' and filter.param_name == 'filter.p.m.custom.iq_book_languages' -%}
-        {%- unless collection.handle == 'bucher-deutsch' or filter.active_values.size > 0 -%}{%- continue -%}{%- endunless -%}
+      {%- if iq_is_size and iq_is_broad and iq_size_context == false and filter.active_values.size == 0 -%}{%- continue -%}{%- endif -%}
+      {%- if filter.param_name == 'filter.p.m.custom.iq_book_languages' -%}
+        {%- unless collection_key == 'bucher-deutsch' or iq_books_selected or filter.active_values.size > 0 -%}{%- continue -%}{%- endunless -%}
       {%- endif -%}
-      {%- if request.page_type == 'collection' and filter.param_name == 'filter.v.t.shopify.target-gender' -%}
- {%- unless collection.handle == 'hundesportbekleidung' or collection.handle == 'hundesport-jacken' or collection.handle == 'hundesport-t-shirts-hoodies' or collection.handle == 'hundesport-hosen' or collection.handle == 'sale' or collection.handle == 'k9-diensthundefuehrer-ausruestung' or filter.active_values.size > 0 -%}{%- continue -%}{%- endunless -%}
-{%- endif -%}
+      {%- if filter.param_name == 'filter.v.t.shopify.target-gender' -%}
+        {%- if iq_is_broad and iq_clothing_selected == false and filter.active_values.size == 0 -%}{%- continue -%}{%- endif -%}
+      {%- endif -%}
+      {%- if collection_key == 'hundesport-hosen' or collection_key == 'zzz-hundesport-hosen-damen' -%}
+        {%- unless iq_is_size or filter.param_name == 'filter.v.availability' or filter.active_values.size > 0 -%}{%- continue -%}{%- endunless -%}
+      {%- endif -%}
+      {%- if filter.type != 'price_range' and iq_meaningful_values < 2 and filter.active_values.size == 0 -%}{%- continue -%}{%- endif -%}
 {%- assign filter_id = context | append: '-' | append: filter.param_name -%}
       {% liquid
         if filter.presentation == 'image'
@@ -107,7 +172,7 @@
                 <ul class="swatches flex flex-wrap items-center">
                   {%- for filter_value in sorted_values -%}
 {%- if filter.param_name == 'filter.p.m.custom.iq_product_groups' -%}
- {%- assign iq_group_prefix = collection.handle | append: '--' -%}
+ {%- assign iq_group_prefix = collection_key | append: '--' -%}
  {%- assign iq_value_prefix = filter_value.value | split: '--' | first | append: '--' -%}
  {%- unless iq_value_prefix == iq_group_prefix -%}{%- continue -%}{%- endunless -%}
 {%- endif -%}
@@ -137,7 +202,7 @@
                 <ul class="swatches flex items-center">
                   {%- for filter_value in sorted_values -%}
 {%- if filter.param_name == 'filter.p.m.custom.iq_product_groups' -%}
- {%- assign iq_group_prefix = collection.handle | append: '--' -%}
+ {%- assign iq_group_prefix = collection_key | append: '--' -%}
  {%- assign iq_value_prefix = filter_value.value | split: '--' | first | append: '--' -%}
  {%- unless iq_value_prefix == iq_group_prefix -%}{%- continue -%}{%- endunless -%}
 {%- endif -%}
@@ -187,7 +252,7 @@
                 <ul class="grid gap-3">
                   {%- for filter_value in sorted_values -%}
 {%- if filter.param_name == 'filter.p.m.custom.iq_product_groups' -%}
- {%- assign iq_group_prefix = collection.handle | append: '--' -%}
+ {%- assign iq_group_prefix = collection_key | append: '--' -%}
  {%- assign iq_value_prefix = filter_value.value | split: '--' | first | append: '--' -%}
  {%- unless iq_value_prefix == iq_group_prefix -%}{%- continue -%}{%- endunless -%}
 {%- endif -%}

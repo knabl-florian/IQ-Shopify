@@ -5,6 +5,7 @@
   }
 {%- endstyle -%}
 {{ 'cart.css' | asset_url | stylesheet_tag }}
+{{ 'iq-cart-refresh.css' | asset_url | stylesheet_tag }}
 {{ 'component-custom-card.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
 
@@ -12,7 +13,7 @@
   <script src="{{ 'gift-wrapping.js' | asset_url }}" defer="defer"></script>
 {%- endif -%}
 
-<div class="cart section--padding{% if cart == empty %} is-empty{% endif %}">
+<div class="cart iq-cart-page section--padding{% if cart == empty %} is-empty{% endif %}">
   <div class="page-width">
     <div class="cart__header text-center">
       <h1 class="cart__title hd2">
@@ -958,7 +959,7 @@
             {%- endfor -%}
           </div>
         </div>
-        {% render 'iq-cart-addons', section_id: section.id %}
+        {% render 'iq-cart-addons', section_id: section.id, image_width: 320, image_sizes: '150px', price_first: true %}
       </main-cart>
     {%- endif -%}
   </div>

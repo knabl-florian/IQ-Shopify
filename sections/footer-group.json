@@ -75,7 +75,11 @@
             "menu": "footer",
             "open_default": false,
             "show_divider": false,
-            "show_iq_outlet": true
+            "show_iq_outlet": true,
+            "show_all_products": true,
+            "all_products_collection": "all",
+            "all_products_label": "Alle Produkte",
+            "all_products_label_en": "All products"
           }
         },
         "menu_qxNnp8": {

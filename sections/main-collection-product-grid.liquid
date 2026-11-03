@@ -1,3 +1,5 @@
+{%- capture iq_collection_key -%}{%- render 'iq-collection-key' -%}{%- endcapture -%}
+{%- assign iq_collection_key = iq_collection_key | strip -%}
 {% render 'rapid-search-results-template-v2' %}
 {{ 'collection.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
@@ -15,6 +17,9 @@
 
   assign enable_sorting = section.settings.enable_sorting
   assign enable_filtering = section.settings.enable_filtering
+  if iq_collection_key == 'zz-hosen-herren'
+    assign enable_filtering = false
+  endif
   assign filter_type = section.settings.filter_type
   assign show_toolbar = false
   if enable_filtering or enable_sorting

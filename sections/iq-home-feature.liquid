@@ -16,18 +16,22 @@
   endif
 %}
 <section class="iqh iqh-wrap iqh-feature-wrap">
-<div class="iqh-feature iqh-feature--{{ section.settings.style }}">
+{% if section.settings.style == 'coat' and section.settings.second_image != blank %}<div class="iqh-zip-compare" style="--iqh-coat-scale:{{ section.settings.first_scale | default: 100 | divided_by: 100.0 }}"><header class="iqh-zip-head"><p class="iqh-eyebrow">{% if en and section.settings.eyebrow_en != blank %}{{ section.settings.eyebrow_en | escape }}{% else %}{{ section.settings.eyebrow | escape }}{% endif %}</p><h2 class="iqh-heading">{% if en and section.settings.heading_en != blank %}{{ section.settings.heading_en | escape }}{% else %}{{ section.settings.heading | escape }}{% endif %}{% if section.settings.heading_accent != blank %} <span class="iqh-zip-accent">{% if en and section.settings.heading_accent_en != blank %}{{ section.settings.heading_accent_en | escape }}{% else %}{{ section.settings.heading_accent | escape }}{% endif %}</span>{% endif %}</h2><div class="iqh-zip-body">{% if en and section.settings.body_en != blank %}{{ section.settings.body_en }}{% else %}{{ section.settings.body }}{% endif %}</div>{% if section.settings.link != blank %}<a class="iqh-pill" href="{% if en and section.settings.link_en != blank %}{{ section.settings.link_en }}{% else %}{{ section.settings.link }}{% endif %}">{% if en and section.settings.cta_en != blank %}{{ section.settings.cta_en | escape }}{% else %}{{ section.settings.cta | escape }}{% endif %} →</a>{% endif %}</header><div class="iqh-zip-pair"><figure><picture>{% if section.settings.mobile_image != blank %}<source media="(max-width:749px)" srcset="{{ section.settings.mobile_image | image_url: width: 750 }}">{% endif %}{{ section.settings.image | image_url: width: 1200 | image_tag: widths: '360,540,750,1000,1200', sizes: '(min-width:1360px) 430px, (min-width:750px) 32vw, 44vw', loading: 'lazy', alt: image_alt }}</picture></figure><figure><picture>{% if section.settings.second_mobile_image != blank %}<source media="(max-width:749px)" srcset="{{ section.settings.second_mobile_image | image_url: width: 750 }}">{% endif %}{% assign second_alt = section.settings.second_alt %}{% if en and section.settings.second_alt_en != blank %}{% assign second_alt = section.settings.second_alt_en %}{% endif %}{{ section.settings.second_image | image_url: width: 1200 | image_tag: widths: '360,540,750,1000,1200', sizes: '(min-width:1360px) 430px, (min-width:750px) 32vw, 44vw', loading: 'lazy', alt: second_alt }}</picture></figure></div></div>{% else %}<div class="iqh-feature iqh-feature--{{ section.settings.style }}">
 {% if section.settings.style == 'founders' and section.settings.background_image != blank %}<div class="iqh-founder-background" aria-hidden="true">{{ section.settings.background_image | image_url: width: 1600 | image_tag: loading: 'lazy', alt: '' }}</div>{% endif %}<div class="iqh-feature-media">
 {% if section.settings.video != blank %}
 {% assign poster_url = media_image | image_url: width: 1000 %}
 {{ section.settings.video | video_tag: image_size: '1000x', controls: true, autoplay: false, loop: false, preload: 'none', poster: poster_url, class: 'iqh-feature-video' }}
 {% elsif media_image != blank %}
-{{ media_image | image_url: width: 2000 | image_tag: widths: '360,400,540,600,720,750,800,1000,1200,1400,1600,2000', sizes: '(min-width: 1280px) 641px, (min-width: 750px) 50vw, calc(100vw - 40px)', loading: 'lazy', alt: image_alt }}
+<picture>{% if section.settings.mobile_image != blank %}<source media="(max-width:749px)" srcset="{{ section.settings.mobile_image | image_url: width: 400 }} 400w, {{ section.settings.mobile_image | image_url: width: 600 }} 600w, {{ section.settings.mobile_image | image_url: width: 800 }} 800w" sizes="calc(100vw - 40px)" width="{{ section.settings.mobile_image.width }}" height="{{ section.settings.mobile_image.height }}">{% endif %}{{ media_image | image_url: width: 2000 | image_tag: widths: '360,400,540,600,720,750,800,1000,1200,1400,1600,2000', sizes: '(min-width: 1280px) 641px, (min-width: 750px) 50vw, calc(100vw - 40px)', loading: 'lazy', alt: image_alt }}</picture>
 {% endif %}
-</div><div class="iqh-feature-copy"><p class="iqh-eyebrow">{% if en and section.settings.eyebrow_en != blank %}{{ section.settings.eyebrow_en | escape }}{% else %}{{ section.settings.eyebrow | escape }}{% endif %}</p><h2 class="iqh-heading">{% if en and section.settings.heading_en != blank %}{{ section.settings.heading_en | escape }}{% else %}{{ section.settings.heading | escape }}{% endif %}</h2><div class="iqh-body">{% if en and section.settings.body_en != blank %}{{ section.settings.body_en }}{% else %}{{ section.settings.body }}{% endif %}</div><p class="iqh-detail">{% if en and section.settings.detail_en != blank %}{{ section.settings.detail_en | escape }}{% else %}{{ section.settings.detail | escape }}{% endif %}</p>{% if section.settings.link != blank %}<a class="iqh-pill" href="{% if en and section.settings.link_en != blank %}{{ section.settings.link_en }}{% else %}{{ section.settings.link }}{% endif %}">{% if en and section.settings.cta_en != blank %}{{ section.settings.cta_en | escape }}{% else %}{{ section.settings.cta | escape }}{% endif %} <span aria-hidden="true">→</span></a>{% endif %}</div></div></section>
+</div><div class="iqh-feature-copy"><p class="iqh-eyebrow">{% if en and section.settings.eyebrow_en != blank %}{{ section.settings.eyebrow_en | escape }}{% else %}{{ section.settings.eyebrow | escape }}{% endif %}</p><h2 class="iqh-heading">{% if en and section.settings.heading_en != blank %}{{ section.settings.heading_en | escape }}{% else %}{{ section.settings.heading | escape }}{% endif %}</h2><div class="iqh-body">{% if en and section.settings.body_en != blank %}{{ section.settings.body_en }}{% else %}{{ section.settings.body }}{% endif %}</div><p class="iqh-detail">{% if en and section.settings.detail_en != blank %}{{ section.settings.detail_en | escape }}{% else %}{{ section.settings.detail | escape }}{% endif %}</p>{% if section.settings.link != blank and section.settings.style != 'gifts' %}<a class="iqh-pill" href="{% if en and section.settings.link_en != blank %}{{ section.settings.link_en }}{% else %}{{ section.settings.link }}{% endif %}">{% if en and section.settings.cta_en != blank %}{{ section.settings.cta_en | escape }}{% else %}{{ section.settings.cta | escape }}{% endif %} <span aria-hidden="true">→</span></a>{% endif %}{% if section.settings.style == 'gifts' %}{% assign breeds = section.blocks | where: 'type', 'breed' %}{% if breeds.size > 0 %}<div class="iqh-gift-breeds">{% for block in breeds %}{% assign breed_label = block.settings.label %}{% assign breed_url = block.settings.link %}{% if en %}{% assign breed_label = block.settings.label_en | default: breed_label %}{% assign breed_url = block.settings.link_en | default: breed_url %}{% endif %}<a class="iqh-gift-breed" href="{{ breed_url }}" {{ block.shopify_attributes }}>{% if block.settings.image != blank %}{{ block.settings.image | image_url: width: 320 | image_tag: widths: '120,180,240,320', sizes: '(min-width:750px) 100px, 16vw', loading: 'lazy', alt: breed_label }}{% endif %}<span>{{ breed_label | escape }}</span></a>{% endfor %}</div>{% endif %}{% endif %}{% assign product_blocks = section.blocks | where: "type", "product" %}{% if product_blocks.size > 0 %}<div class="iqh-focus-products">{% for block in product_blocks %}{% assign item = block.settings.product %}{% if item != blank %}<article class="iqh-focus-product" {{ block.shopify_attributes }}><a href="{{ item.url }}" class="iqh-focus-product-image">{% assign product_image = block.settings.image | default: item.featured_image %}{{ product_image | image_url: width: 400 | image_tag: widths: '160,240,320,400', sizes: '(min-width:750px) 160px, 40vw', loading: 'lazy', alt: item.title }}</a><div><h3><a href="{{ item.url }}">{% if block.settings.title != blank %}{% if en and block.settings.title_en != blank %}{{ block.settings.title_en | escape }}{% else %}{{ block.settings.title | escape }}{% endif %}{% else %}{{ item.title | escape }}{% endif %}{% if block.settings.title_line2 != blank %}<span class="iqh-product-subtitle">{% if en and block.settings.title_line2_en != blank %}{{ block.settings.title_line2_en | escape }}{% else %}{{ block.settings.title_line2 | escape }}{% endif %}</span>{% endif %}</a></h3><p class="iqh-focus-price">{% if item.price_varies %}{% if en %}From{% else %}Ab{% endif %} {% endif %}{{ item.price | money }}</p>{% unless item.available %}<p class="iqh-availability">{% if en %}Currently sold out{% else %}Aktuell ausverkauft{% endif %}</p>{% endunless %}</div></article>{% endif %}{% endfor %}</div>{% endif %}</div>{% if section.settings.style == 'gifts' and section.settings.link != blank %}<a class="iqh-pill iqh-gift-cta" href="{% if en and section.settings.link_en != blank %}{{ section.settings.link_en }}{% else %}{{ section.settings.link }}{% endif %}">{% if en and section.settings.cta_en != blank %}{{ section.settings.cta_en | escape }}{% else %}{{ section.settings.cta | escape }}{% endif %} <span aria-hidden="true">→</span></a>{% endif %}</div>{% endif %}</section>
 {% stylesheet %}
 .iqh .iqh-feature--coat{grid-template-columns:minmax(0,48%) minmax(0,52%)}.iqh .iqh-feature--coat .iqh-feature-media{grid-column:2;grid-row:1;height:auto;aspect-ratio:1}.iqh .iqh-feature--coat .iqh-feature-copy{grid-column:1;grid-row:1}.iqh .iqh-feature--coat .iqh-feature-media>img{height:100%;object-fit:contain}.iqh .iqh-feature--coat .iqh-pill{padding:10px 18px;min-height:44px}@media(max-width:749px){.iqh .iqh-feature--coat{display:flex;flex-direction:column}.iqh .iqh-feature--coat .iqh-feature-media{width:100%;max-height:none;aspect-ratio:1}.iqh .iqh-feature--coat .iqh-feature-copy{width:100%}}
 {% endstylesheet %}
+
+
+
+
 {% schema %}
 {
   "name": "IQ Start · Fokus",
@@ -44,6 +48,18 @@
         {
           "value": "founders",
           "label": "Gründer – Text auf Foto"
+        },
+        {
+          "value": "snacks",
+          "label": "Snack-Fokus mit Produkten"
+        },
+        {
+          "value": "gifts",
+          "label": "Geschenke – kompakter Banner"
+        },
+        {
+          "value": "founders_compact",
+          "label": "Gründer – kompakt"
         }
       ],
       "default": "coat"
@@ -52,6 +68,11 @@
       "type": "image_picker",
       "id": "image",
       "label": "Foto"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobilfoto (optional)"
     },
     {
       "type": "image_picker",
@@ -134,13 +155,202 @@
       "type": "url",
       "id": "link_en",
       "label": "Link · EN"
+    },
+    {
+      "type": "header",
+      "content": "Zip-off: zweites Foto"
+    },
+    {
+      "type": "image_picker",
+      "id": "second_image",
+      "label": "Zweites Foto (Parka)"
+    },
+    {
+      "type": "image_picker",
+      "id": "second_mobile_image",
+      "label": "Zweites Mobilfoto (optional)"
+    },
+    {
+      "type": "text",
+      "id": "second_alt",
+      "label": "Zweites Bild: Beschreibung · DE"
+    },
+    {
+      "type": "text",
+      "id": "second_alt_en",
+      "label": "Zweites Bild: Beschreibung · EN"
+    },
+    {
+      "type": "text",
+      "id": "first_label",
+      "label": "Beschriftung erstes Bild · DE"
+    },
+    {
+      "type": "text",
+      "id": "first_label_en",
+      "label": "Beschriftung erstes Bild · EN"
+    },
+    {
+      "type": "text",
+      "id": "second_label",
+      "label": "Beschriftung zweites Bild · DE"
+    },
+    {
+      "type": "text",
+      "id": "second_label_en",
+      "label": "Beschriftung zweites Bild · EN"
+    },
+    {
+      "type": "text",
+      "id": "transition_text",
+      "label": "Zip-Erklärung · DE"
+    },
+    {
+      "type": "text",
+      "id": "transition_text_en",
+      "label": "Zip-Erklärung · EN"
+    },
+    {
+      "type": "header",
+      "content": "Mantelvergleich"
+    },
+    {
+      "type": "text",
+      "id": "heading_accent",
+      "label": "Farbige Überschriftszeile · DE"
+    },
+    {
+      "type": "text",
+      "id": "heading_accent_en",
+      "label": "Farbige Überschriftszeile · EN"
+    },
+    {
+      "type": "range",
+      "id": "first_scale",
+      "label": "Linkes Mantelfoto vergrößern",
+      "min": 100,
+      "max": 120,
+      "step": 1,
+      "unit": "%",
+      "default": 100,
+      "info": "Am unteren Bildrand ausgerichtet. Damit lassen sich die Kopfhöhen angleichen."
     }
   ],
   "presets": [
     {
       "name": "IQ Start · Fokus"
     }
-  ]
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Produkt",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Produkt"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Bild (optional)",
+          "info": "Leer = aktuelles Produktbild. Preis und Verfügbarkeit kommen automatisch aus dem Produkt."
+        },
+        {
+          "type": "text",
+          "id": "badge",
+          "label": "Label · DE"
+        },
+        {
+          "type": "text",
+          "id": "badge_en",
+          "label": "Label · EN"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Kurzer Kartentitel · DE"
+        },
+        {
+          "type": "text",
+          "id": "title_en",
+          "label": "Kurzer Kartentitel · EN"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Ein kurzer Vorteil · DE"
+        },
+        {
+          "type": "text",
+          "id": "description_en",
+          "label": "Ein kurzer Vorteil · EN"
+        },
+        {
+          "type": "text",
+          "id": "extra_cta",
+          "label": "Zusatzlink Text · DE"
+        },
+        {
+          "type": "text",
+          "id": "extra_cta_en",
+          "label": "Zusatzlink Text · EN"
+        },
+        {
+          "type": "url",
+          "id": "extra_link",
+          "label": "Zusatzlink · DE"
+        },
+        {
+          "type": "url",
+          "id": "extra_link_en",
+          "label": "Zusatzlink · EN"
+        },
+        {
+          "type": "text",
+          "id": "title_line2",
+          "label": "Zweite Titelzeile · DE"
+        },
+        {
+          "type": "text",
+          "id": "title_line2_en",
+          "label": "Zweite Titelzeile · EN"
+        }
+      ]
+    },
+    {
+      "type": "breed",
+      "name": "Geschenk: Hunderasse",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Rassenfoto"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Rasse / Variante · DE"
+        },
+        {
+          "type": "text",
+          "id": "label_en",
+          "label": "Rasse / Variante · EN"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Ziel · DE"
+        },
+        {
+          "type": "url",
+          "id": "link_en",
+          "label": "Ziel · EN"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 8
 }
 {% endschema %}
-

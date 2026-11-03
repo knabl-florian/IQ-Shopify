@@ -21,6 +21,12 @@
   else
    echo fallback | escape
   endif
+ elsif param == 'filter.v.option.gürtellänge'
+  if value == blank
+   echo 'iq_filters.belt_length' | t
+  else
+   echo fallback | escape
+  endif
  elsif param == 'filter.v.option.größe' or param == 'filter.v.option.size'
   if value == blank
    echo 'iq_filters.size' | t

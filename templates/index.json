@@ -25,7 +25,7 @@
             "content_position_mobile": "bottom-center",
             "text_alignment": "left",
             "title": "WINTER DRAUSSEN. WÄRME DRIN.",
-            "heading_size": "h2",
+            "heading_size": "h1",
             "subheading": "",
             "description": "",
             "description_size": "text-sm",
@@ -108,9 +108,7 @@
         "slide_nNjJr8"
       ],
       "custom_css": [
-        ".section--slideshow {padding-top: var(--header-height, 88px); background: #171717;}",
-        "@media (min-width: 750px) {.slideshow__text {max-width: 34%; }}",
-        "@media (max-width: 749px) {.section--slideshow {padding-top: var(--header-height, 70px); } .slideshow__overlay {background: linear-gradient(0deg, rgba(23, 23, 23, 0.75), transparent 46%); opacity: 1; } .slideshow__title {font-size: 27px; } .slideshow__text {text-align: center; } .slideshow__buttons {display: flex; justify-content: center; }}"
+        ".section--slideshow {padding-top: var(--header-height, 88px); background: #FFFFFF;}"
       ],
       "name": "Hero",
       "settings": {
@@ -121,10 +119,10 @@
         "autoplay": false,
         "autoplay_delay": 7,
         "controls_position": "below",
-        "show_text_below": false,
+        "show_text_below": true,
         "text_alignment_mobile": "center",
         "accessibility_info": "Slideshow about our brand",
-        "custom_class": "",
+        "custom_class": "iqh-hero-editorial",
         "show_trust": true,
         "trust_reviews": "4,9/5 · 2.800+ Bewertungen",
         "trust_reviews_en": "4.9/5 · 2,800+ reviews",
@@ -141,10 +139,10 @@
             "text_1": "============================================================\nVERTRAUENSZEILE – hell, kompakt, ohne Rahmen (Fassung 8)\nStand 2026-09-21\n\nFarben jetzt FEST im Code (bewusste Vereinfachung):\n  - Hintergrund #F3F3F1 (Section + Bar) -> fließt in die Seite\n  - Text #171717, Icons #171717 zurückhaltend (55%)\n  - Trenner #DCDBD7\n  - keine Rahmenlinien oben/unten\n  - kompakt ~52px, Mobile horizontal wischbar\nFarbschema des Abschnitts ist damit egal.\nWillst du es später wieder über das Theme-Farbschema steuern,\nsag Bescheid – dann liefere ich die schema-basierte Fassung.\n\nEINFÜGEN: Startseite > dieser Custom-Liquid-Abschnitt > Inhalt ersetzen.\n============================================================",
             "text_2": "Developed by World Champions",
             "text_3": "Worldwide delivery",
-            "text_4": "30-day returns",
+            "text_4": "Returns & exchanges",
             "text_5": "Von Weltmeistern entwickelt",
-            "text_6": "Versandfrei ab 150 €",
-            "text_7": "30 Tage Rückgabe"
+            "text_6": "Versandfrei ab 150 € in DE",
+            "text_7": "Rückgabe & Umtausch"
           }
         }
       },
@@ -223,42 +221,38 @@
       "name": "Zip-off-Mantel – Fokus",
       "settings": {
         "style": "coat",
-        "image": "shopify://shop_images/wintermantel-quadrat-kuehler-hintergrund-neu.jpg",
-        "alt": "Frau im IQ Zip-off-Wintermantel beim Spaziergang mit ihrem Hund",
-        "alt_en": "Woman wearing the IQ zip-off winter coat walking with her dog",
+        "image": "shopify://shop_images/iq-mantel-ruecken-ruhiger-wald-v2.jpg",
+        "alt": "IQ Zip-off-Wintermantel in voller Länge von hinten, mit sichtbarer Rückentasche.",
+        "alt_en": "Full-length rear view of the IQ zip-off winter coat, showing the back pocket.",
         "eyebrow": "NEU · IQ Zip-off-Wintermantel",
         "eyebrow_en": "NEW · IQ zip-off winter coat",
-        "heading": "Lange draußen. Warm eingepackt.",
-        "heading_en": "Stay out longer. Stay warm.",
+        "heading": "Ein Mantel.",
+        "heading_en": "One coat.",
         "body": "<p>Vom Wintermantel zum Parka – mit einem Zip.</p>",
         "body_en": "<p>From winter coat to parka with one zip.</p>",
-        "detail": "",
-        "detail_en": "",
+        "detail": "Lange draußen. Warm eingepackt.",
+        "detail_en": "Stay out longer. Stay warm.",
         "cta": "Mantel entdecken",
         "cta_en": "Discover the coat",
         "link": "shopify://products/iq-zipp-off-wintermantel-damen",
-        "link_en": "/en/products/iq-zipp-off-wintermantel-damen"
+        "link_en": "/en/products/iq-zipp-off-wintermantel-damen",
+        "second_image": "shopify://shop_images/wintermantel-parka-vorne-1000x1000_01693ac7-5b6a-4b6f-9705-0dc480cb11f0.jpg",
+        "second_alt": "Derselbe IQ Zip-off-Wintermantel ohne Verlängerung als kurzer Parka.",
+        "second_alt_en": "The same IQ zip-off winter coat worn as a short parka without the extension.",
+        "first_label": "Als Mantel",
+        "first_label_en": "As a long coat",
+        "second_label": "Als Parka",
+        "second_label_en": "As a parka",
+        "transition_text": "Verlängerung einfach abzippen.",
+        "transition_text_en": "Simply unzip the extension.",
+        "first_scale": 107,
+        "heading_accent": "Zwei Längen.",
+        "heading_accent_en": "Two lengths."
       }
     },
     "iq_home_new": {
       "type": "iq-home-new-products",
       "blocks": {
-        "product0": {
-          "type": "product",
-          "settings": {
-            "product": "iq-pure-bites-rinderlunge-trainingshappen-mini",
-            "badge": "Neu",
-            "badge_en": "New",
-            "title": "Pure Bites · Rinderlunge Mini",
-            "title_en": "Pure Bites · Mini beef lung",
-            "description": "",
-            "description_en": "",
-            "extra_cta": "Alle Snacks entdecken",
-            "extra_cta_en": "Explore all treats",
-            "extra_link": "shopify://collections/trainingsfutter-supplemente",
-            "extra_link_en": "/en/collections/trainingsfutter-supplemente"
-          }
-        },
         "product1": {
           "type": "product",
           "settings": {
@@ -274,29 +268,39 @@
         "product2": {
           "type": "product",
           "settings": {
-            "product": "iq-trainingsshirt-unisex",
+            "product": "mfj-4-0-damen-wasserdichte-winterjacke-hundesport",
             "badge": "Neu",
             "badge_en": "New",
-            "title": "Funktions-T-Shirt",
-            "title_en": "Performance T-shirt",
+            "title": "Multifunktionsjacke Damen 4.0",
+            "title_en": "Women’s multifunctional jacket 4.0",
             "description": "",
             "description_en": ""
+          }
+        },
+        "parka": {
+          "type": "product",
+          "settings": {
+            "product": "iq-winter-parka-unisex",
+            "badge": "Neu",
+            "badge_en": "New",
+            "title": "IQ Winterparka Unisex",
+            "title_en": "IQ Winter Parka Unisex"
           }
         }
       },
       "block_order": [
-        "product0",
         "product1",
-        "product2"
+        "product2",
+        "parka"
       ],
-      "name": "Neuheiten – Snacks, Softball, Shirt",
+      "name": "Neuheiten · Softball, MFJ 4.0, Parka",
       "settings": {
         "eyebrow": "Neu bei IQ",
         "eyebrow_en": "New at IQ",
         "heading": "Neu fürs nächste Training.",
         "heading_en": "New for your next session.",
-        "intro": "Neue Trainingssnacks, weiche Bestätigung und praktische Bekleidung.",
-        "intro_en": "New training treats, soft rewards and practical clothing.",
+        "intro": "Weiche Bestätigung und warme Bekleidung – neu fürs nächste Training.",
+        "intro_en": "Soft rewards and warm clothing – new for your next session.",
         "cta": "",
         "cta_en": "",
         "link": "",
@@ -305,20 +309,19 @@
     },
     "iq_home_founders": {
       "type": "iq-home-feature",
-      "disabled": true,
-      "name": "Gründer – kompakt",
+      "name": "Gründer · kompakt",
       "settings": {
-        "style": "founders",
+        "style": "founders_compact",
         "image": "shopify://shop_images/About-us-Patricia-und-Florian-Knabl-FMBB.jpg",
         "background_image": "shopify://shop_images/iq-gruender-hintergrund-breit.jpg",
         "alt": "Patricia und Florian Knabl mit ihrem Hund",
         "alt_en": "Patricia and Florian Knabl with their dog",
-        "eyebrow": "Entwickelt aus eigener Praxis",
-        "eyebrow_en": "Developed from experience",
+        "eyebrow": "Die Gründer",
+        "eyebrow_en": "The founders",
         "heading": "„Wir entwickeln nur, was wir selbst im Training vermissen.“",
         "heading_en": "“We only develop what we miss in our own training.”",
-        "body": "",
-        "body_en": "",
+        "body": "<p>Jedes Produkt entsteht aus eigener Praxis: im Training, im Wettkampf, im Dienst.</p>",
+        "body_en": "<p>Every product comes from our own practice: in training, in competition, on duty.</p>",
         "detail": "Patricia & Florian Knabl · IQ Dogsport",
         "detail_en": "Patricia & Florian Knabl · IQ Dogsport",
         "cta": "Unsere Geschichte",
@@ -368,9 +371,23 @@
             "product_link": "",
             "product_link_en": ""
           }
+        },
+        "coat_review": {
+          "type": "review",
+          "settings": {
+            "quote": "„Der Parka ist sehr warm und gut gefüttert, ist dafür aber ein Leichtgewicht.“",
+            "quote_en": "“The parka is very warm and well padded, yet feels lightweight.”",
+            "name": "Lotte.Lilo",
+            "context": "Zip-off-Wintermantel · Kundenbewertung",
+            "context_en": "Zip-off winter coat · Customer review",
+            "stars": 5,
+            "product_link": "/products/iq-zipp-off-wintermantel-damen",
+            "product_link_en": "/en/products/iq-zipp-off-wintermantel-damen"
+          }
         }
       },
       "block_order": [
+        "coat_review",
         "review0",
         "review1",
         "review2"
@@ -391,50 +408,68 @@
     "iq_home_knowledge": {
       "type": "iq-home-knowledge",
       "blocks": {
-        "blog": {
-          "type": "teaser",
+        "story0": {
+          "type": "article",
           "settings": {
-            "image": "shopify://shop_images/startseite-bilder.jpg",
-            "title": "Training aus der Praxis",
-            "title_en": "Training from experience",
-            "cta": "Zum Blog",
-            "cta_en": "Read the blog",
-            "link": "shopify://blogs/news",
-            "link_en": "/en/blogs/news"
+            "article": "news/iq-dogsport-dogworld-2026-polizeihunde",
+            "title": "Gebrauchshunde hautnah erleben",
+            "title_en": "Working dogs up close"
           }
         },
-        "books": {
-          "type": "teaser",
+        "story1": {
+          "type": "article",
           "settings": {
-            "image": "shopify://shop_images/B_cher_IQ_dogsport.jpg",
-            "title": "Wissen fürs Training",
-            "title_en": "Knowledge for your training",
-            "cta": "Bücher entdecken",
-            "cta_en": "Discover the books",
-            "link": "shopify://collections/bucher-deutsch",
-            "link_en": "/en/collections/bucher-deutsch"
+            "article": "news/agility-fachbegriffe-deutsch-englisch",
+            "title": "Agility-Begriffe: Deutsch ↔ Englisch",
+            "title_en": "Agility terms: German ↔ English",
+            "title_in_image": true
+          }
+        },
+        "story2": {
+          "type": "article",
+          "settings": {
+            "article": "news/igp-hundesportbegriffe-deutsch-englisch",
+            "title": "IGP-Begriffe: Deutsch ↔ Englisch",
+            "title_en": "IGP terms: German ↔ English",
+            "title_in_image": true
           }
         }
       },
       "block_order": [
-        "blog",
-        "books"
+        "story0",
+        "story1",
+        "story2"
       ],
-      "disabled": true,
-      "name": "IQ Wissen – kompakt",
+      "name": "Magazin · Artikel & Bücher",
       "settings": {
-        "eyebrow": "IQ Wissen",
-        "eyebrow_en": "IQ Knowledge",
+        "blog": "news",
+        "latest": true,
+        "show_descriptions": false,
+        "eyebrow": "IQ Blog",
+        "eyebrow_en": "IQ Blog",
         "heading": "Wissen für Dein Leben mit Hund.",
         "heading_en": "Knowledge for life with your dog.",
-        "cta": "Was ist IGP?",
-        "cta_en": "What is IGP?",
-        "link": "shopify://pages/igp-hundesport",
-        "link_en": "/en/pages/igp-hundesport",
-        "image": "shopify://shop_images/startseite-bilder.jpg",
-        "alt": "Hund und Hundeführer im Training",
-        "alt_en": "Dog and handler during training",
-        "overlay": 45
+        "intro": "Wissen, Erfahrungen und praktische Tipps rund um Deinen Hund.",
+        "intro_en": "Knowledge, experience and practical tips for life with your dog.",
+        "cta": "Zum Blog",
+        "cta_en": "Explore the blog",
+        "link": "shopify://blogs/news",
+        "link_en": "/en/blogs/news",
+        "books_image": "shopify://shop_images/B_cher_IQ_dogsport.jpg",
+        "books_title": "Unterordnung, Schutzdienst, BH",
+        "books_title_en": "Obedience, protection, BH",
+        "books_body": "Drei Bücher aus jahrzehntelanger Wettkampfpraxis.",
+        "books_body_en": "Three books from decades of competition practice.",
+        "books_cta": "Bücher entdecken",
+        "books_cta_en": "Discover books",
+        "books_link": "shopify://collections/bucher-deutsch",
+        "books_link_en": "/en/collections/bucher-deutsch",
+        "igp_cta": "Neu im Hundesport? Was ist IGP?",
+        "igp_cta_en": "New to dog sport? What is IGP?",
+        "igp_link": "shopify://pages/igp-hundesport",
+        "igp_link_en": "/en/pages/igp-hundesport",
+        "books_heading": "Bücher",
+        "books_heading_en": "Books"
       }
     },
     "iq_home_athletes": {
@@ -446,7 +481,8 @@
             "image": "shopify://shop_images/jan-boehm.jpg",
             "name": "Jany Böhm",
             "role": "Hundeführer · Schutzdiensthelfer",
-            "role_en": "Handler · Protection helper"
+            "role_en": "Handler · Protection helper",
+            "image_scale": 108
           }
         },
         "person1": {
@@ -455,16 +491,18 @@
             "image": "shopify://shop_images/kate-morozov-bearbeitet.jpg",
             "name": "Kate Morozova",
             "role": "IGP-Sportlerin",
-            "role_en": "IGP competitor"
+            "role_en": "IGP competitor",
+            "image_scale": 119
           }
         },
         "person2": {
           "type": "athlete",
           "settings": {
-            "image": "shopify://shop_images/marko-koskensalo.jpg",
+            "image": "shopify://shop_images/marko-harmonisiert-v1.jpg",
             "name": "Marko Koskensalo",
             "role": "Trainer · Schutzdiensthelfer",
-            "role_en": "Trainer · Protection helper"
+            "role_en": "Trainer · Protection helper",
+            "image_scale": 100
           }
         }
       },
@@ -480,7 +518,10 @@
         "heading": "Im Training. Im Wettkampf. Mit IQ.",
         "heading_en": "In training. In competition. With IQ.",
         "intro": "Menschen aus unserer Community.",
-        "intro_en": "People from our community."
+        "intro_en": "People from our community.",
+        "image_height": 280,
+        "image_height_mobile": 260,
+        "full_portraits": true
       }
     },
     "iq_home_newsletter": {
@@ -528,6 +569,7 @@
     },
     "custom_liquid_9jBVn8": {
       "type": "custom-liquid",
+      "disabled": true,
       "name": "Kategorien Final",
       "settings": {
         "custom_liquid": "{%- comment -%}\n  IQ Kategorien - fertiger Block fuer \"Benutzerdefiniertes Liquid\"\n  Alles fest eingebaut: Bilder (aus Shopify Files), Links, Labels, Alt-Texte.\n\n  AENDERUNG:\n  - Heading visuell deutlich gewichtiger\n  - Schwarz/Rot-Akzent: nur \"Training?\" in IQ Rot\n  - H2 bleibt H2\n  - Wortlaut bleibt identisch\n  - Restlicher Kategorienblock unverändert\n{%- endcomment -%}\n\n{%- assign labels = 'iq_translation.home.categories' | t | replace: '&amp;', '&' | split: '|' -%}\n{%- assign handles = 'hundesport-westen|hundesport-jacken|hundesport-t-shirts-hoodies|hundesport-trainingszubehoer|trainingsfutter-supplemente|hundesport-spielzeug' | split: '|' -%}\n{%- assign files = 'iq-weste-regulaer-startseite.jpg|kategorie-jacken-iq-dogsport.jpg|kategorie-shirts-hoodies-iq-dogsport.jpg|kategorie-training-iq-dogsport.jpg|kategorie-futter-iq-dogsport_jpg.jpg|kategorie-spielzeug-iq-dogsport_jpg.jpg' | split: '|' -%}\n{%- assign alts = 'iq_translation.home.category_alts' | t | split: '|' -%}\n\n<style>\n  #shopify-section-{{ section.id }} .iq-catcar {\n    box-sizing: border-box;\n  }\n\n  /* =========================================================\n     HEADING\n     ========================================================= */\n\n  #shopify-section-{{ section.id }} .iq-catcar__heading {\n    box-sizing: border-box;\n\n    margin: 0 20px 22px;\n\n    font-family: var(--font-heading-family, 'Montserrat'), sans-serif;\n    font-style: italic;\n    font-weight: 800;\n    text-transform: uppercase;\n\n    font-size: 32px;\n    line-height: 1.02;\n    letter-spacing: -0.35px;\n\n    color: rgb(var(--color-foreground, 23,23,23));\n  }\n\n  #shopify-section-{{ section.id }} .iq-catcar__heading-main {\n    color: rgb(var(--color-foreground, 23,23,23));\n  }\n\n  #shopify-section-{{ section.id }} .iq-catcar__heading-accent {\n    color: #A51D1B;\n  }\n\n  /* =========================================================\n     MOBILE: horizontaler Swipe\n     ========================================================= */\n\n  #shopify-section-{{ section.id }} .iq-catcar__scroll {\n    box-sizing: border-box;\n\n    display: grid;\n    grid-auto-flow: column;\n    grid-auto-columns: 82vw;\n\n    gap: 12px;\n\n    overflow-x: auto;\n\n    scroll-snap-type: x mandatory;\n    scroll-padding-inline: 20px;\n\n    padding-inline: 20px;\n\n    -webkit-overflow-scrolling: touch;\n    overscroll-behavior-inline: contain;\n\n    scrollbar-width: none;\n  }\n\n  #shopify-section-{{ section.id }} .iq-catcar__scroll::-webkit-scrollbar {\n    display: none;\n  }\n\n  #shopify-section-{{ section.id }} .iq-catcar__card {\n    box-sizing: border-box;\n\n    position: relative;\n    display: block;\n\n    aspect-ratio: 4 / 5;\n\n    overflow: hidden;\n\n    border-radius: 0;\n\n    scroll-snap-align: start;\n    scroll-snap-stop: normal;\n\n    text-decoration: none;\n    color: #fff;\n\n    background: #111;\n  }\n\n  #shopify-section-{{ section.id }} .iq-catcar__img {\n    position: absolute;\n    inset: 0;\n\n    width: 100%;\n    height: 100%;\n\n    object-fit: cover;\n    display: block;\n  }\n\n  #shopify-section-{{ section.id }} .iq-catcar__scrim {\n    position: absolute;\n    inset: 0;\n\n    pointer-events: none;\n\n    background:\n      linear-gradient(\n        to top,\n        rgba(0,0,0,0.62) 0%,\n        rgba(0,0,0,0.28) 35%,\n        rgba(0,0,0,0.00) 60%\n      );\n  }\n\n  #shopify-section-{{ section.id }} .iq-catcar__text {\n    position: absolute;\n\n    left: 18px;\n    right: 18px;\n    bottom: 18px;\n\n    display: flex;\n    flex-direction: column;\n\n    gap: 2px;\n  }\n\n  #shopify-section-{{ section.id }} .iq-catcar__label {\n    font-family: var(--font-heading-family, 'Montserrat'), sans-serif;\n\n    font-style: italic;\n    font-weight: 800;\n    text-transform: uppercase;\n\n    font-size: clamp(23px, 5.5vw, 26px);\n    line-height: 1.05;\n  }\n\n  #shopify-section-{{ section.id }} .iq-catcar__cta {\n    font-family: var(--font-body-family, 'Archivo'), sans-serif;\n\n    font-weight: 500;\n    font-size: 15px;\n  }\n\n  #shopify-section-{{ section.id }} .iq-catcar__arrow {\n    display: inline-block;\n\n    transition: transform .25s ease;\n  }\n\n  #shopify-section-{{ section.id }} .iq-catcar__card:focus-visible {\n    outline: 3px solid #fff;\n    outline-offset: -3px;\n  }\n\n  /* =========================================================\n     TABLET: 2 Spalten\n     ========================================================= */\n\n  @media (min-width: 750px) {\n\n    #shopify-section-{{ section.id }} .iq-catcar__heading {\n      margin-inline: 24px;\n\n      font-size: 38px;\n      margin-bottom: 24px;\n    }\n\n    #shopify-section-{{ section.id }} .iq-catcar__scroll {\n      grid-auto-flow: row;\n\n      grid-template-columns:\n        repeat(2, minmax(0, 1fr));\n\n      grid-auto-columns: auto;\n\n      gap: 18px;\n\n      overflow: visible;\n\n      scroll-snap-type: none;\n\n      padding-inline: 24px;\n    }\n\n    #shopify-section-{{ section.id }} .iq-catcar__cta {\n      font-size: 16px;\n    }\n  }\n\n  /* =========================================================\n     DESKTOP: 3 x 2\n     ========================================================= */\n\n  @media (min-width: 990px) {\n\n    #shopify-section-{{ section.id }} .iq-catcar__heading {\n      max-width: 1360px;\n\n      margin:\n        0\n        auto\n        28px;\n\n      padding-inline: 32px;\n\n      font-size: clamp(44px, 3.7vw, 50px);\n      line-height: 1.0;\n      letter-spacing: -0.6px;\n    }\n\n    #shopify-section-{{ section.id }} .iq-catcar__scroll {\n      grid-template-columns:\n        repeat(3, minmax(0, 1fr));\n\n      column-gap: 24px;\n      row-gap: 30px;\n\n      max-width: 1360px;\n\n      margin-inline: auto;\n\n      padding-inline: 32px;\n    }\n\n    #shopify-section-{{ section.id }} .iq-catcar__label {\n      font-size: clamp(26px, 2vw, 30px);\n    }\n\n    #shopify-section-{{ section.id }} .iq-catcar__img {\n      transition: transform .25s ease;\n    }\n\n    #shopify-section-{{ section.id }} .iq-catcar__card:hover .iq-catcar__img {\n      transform: scale(1.015);\n    }\n\n    #shopify-section-{{ section.id }} .iq-catcar__card:hover .iq-catcar__arrow {\n      transform: translateX(3px);\n    }\n  }\n\n  @media (prefers-reduced-motion: reduce) {\n\n    #shopify-section-{{ section.id }} .iq-catcar__img,\n    #shopify-section-{{ section.id }} .iq-catcar__arrow {\n      transition: none !important;\n    }\n\n    #shopify-section-{{ section.id }} .iq-catcar__card:hover .iq-catcar__img {\n      transform: none !important;\n    }\n  }\n</style>\n\n\n<div class=\"iq-catcar\">\n\n  <h2 class=\"iq-catcar__heading\">\n    <span class=\"iq-catcar__heading-main\">\n      {{ 'iq_translation.home.heading_main' | t }}\n    </span>\n    <span class=\"iq-catcar__heading-accent\">\n      {{ 'iq_translation.home.heading_accent' | t }}\n    </span>\n  </h2>\n\n\n  <div class=\"iq-catcar__scroll\">\n\n    {%- assign category_order = '1|0|2|3|4|5' | split: '|' -%}\n    {%- for category_index in category_order -%}\n      {%- assign i = category_index | plus: 0 -%}\n\n      {%- assign imgbase = files[i] | file_url -%}\n      {%- assign category_handle = handles[i] -%}\n      {%- assign category_collection = collections[category_handle] -%}\n\n      <a\n        class=\"iq-catcar__card\"\n        href=\"{{ category_collection.url }}\"\n      >\n\n        <img\n          class=\"iq-catcar__img\"\n\n          src=\"{{ imgbase }}&width=1000\"\n\n          srcset=\"\n            {{ imgbase }}&width=400 400w,\n            {{ imgbase }}&width=600 600w,\n            {{ imgbase }}&width=800 800w,\n            {{ imgbase }}&width=1000 1000w,\n            {{ imgbase }}&width=1200 1200w\n          \"\n\n          sizes=\"\n            (min-width: 990px) 30vw,\n            (min-width: 750px) 45vw,\n            82vw\n          \"\n\n          width=\"2000\"\n          height=\"2500\"\n\n          loading=\"lazy\"\n\n          alt=\"{% if i == 0 %}{% if request.locale.iso_code == 'en' %}Dog handler wearing the regular IQ training vest with a German Shepherd{% else %}Hundeführerin mit regulärer IQ Hundesportweste und Schäferhund{% endif %}{% else %}{{ alts[i] | escape }}{% endif %}\"\n        >\n\n        <span\n          class=\"iq-catcar__scrim\"\n          aria-hidden=\"true\"\n        ></span>\n\n        <span class=\"iq-catcar__text\">\n\n          <span class=\"iq-catcar__label\">\n            {{ labels[i] | escape }}\n          </span>\n\n          <span class=\"iq-catcar__cta\">\n            {{ 'iq_translation.home.discover' | t }}\n            <span\n              class=\"iq-catcar__arrow\"\n              aria-hidden=\"true\"\n            >\n              &rarr;\n            </span>\n          </span>\n\n        </span>\n\n      </a>\n\n    {%- endfor -%}\n\n  </div>\n\n</div>",
@@ -640,6 +682,7 @@
     },
     "custom_liquid_9xdJJe": {
       "type": "custom-liquid",
+      "disabled": true,
       "name": "Gründer",
       "settings": {
         "custom_liquid": "{%- assign en = false -%}\n{%- if request.locale.iso_code == 'en' -%}\n  {%- assign en = true -%}\n{%- endif -%}\n\n{%- assign gruenderfoto = 'About-us-Patricia-und-Florian-Knabl-FMBB.jpg' -%}\n\n<style>\n  .iqfounder {\n    background: rgb(var(--color-background));\n    color: rgb(var(--color-foreground));\n    font-family: Archivo, Arial, sans-serif;\n    border: 0;\n    border-radius: 0 !important;\n    box-shadow: none !important;\n  }\n\n  .iqfounder__inner { width: 100%; }\n\n  /* IMAGE – MOBILE */\n  .iqfounder__media {\n    position: relative;\n    width: 100%;\n    aspect-ratio: 4 / 5;\n    overflow: hidden;\n    background: #111;\n    border: 0;\n    border-radius: 0 !important;\n    box-shadow: none !important;\n  }\n  .iqfounder__media img {\n    position: absolute;\n    inset: 0;\n    display: block;\n    width: 100%;\n    height: 100%;\n    object-fit: cover;\n    object-position: 50% 50%;\n    border-radius: 0 !important;\n  }\n\n  /* CONTENT – MOBILE */\n  .iqfounder__content { padding: 28px 20px 64px; box-sizing: border-box; }\n  .iqfounder__eyebrow {\n    margin: 0;\n    font-family: Archivo, Arial, sans-serif;\n    font-size: 11px; line-height: 1.2; font-weight: 700;\n    letter-spacing: 2.8px; text-transform: uppercase;\n    color: rgba(var(--color-foreground), .58);\n  }\n  .iqfounder__quote {\n    margin: 10px 0 0; max-width: 720px;\n    font-family: Montserrat, Arial, sans-serif; font-style: italic; font-weight: 800;\n    font-size: clamp(29px, 8vw, 38px); line-height: 1.04; letter-spacing: -.35px;\n    text-transform: uppercase; color: rgb(var(--color-foreground));\n  }\n  .iqfounder__body {\n    margin: 20px 0 0; max-width: 620px;\n    font-family: Archivo, Arial, sans-serif;\n    font-size: 15.5px; line-height: 1.55; font-weight: 400;\n    color: rgba(var(--color-foreground), .76);\n  }\n  .iqfounder__cta { margin-top: 24px; }\n  .iqfounder__pill {\n    min-height: 46px; padding: 0 24px;\n    display: inline-flex; align-items: center; justify-content: center; gap: 8px;\n    border: 1.5px solid rgb(var(--color-foreground)); border-radius:var(--buttons-radius,2px);\n    background: transparent; color: rgb(var(--color-foreground));\n    font-family: Archivo, Arial, sans-serif; font-size: 13px; line-height: 1; font-weight: 700;\n    letter-spacing: .4px; text-transform: uppercase; text-decoration: none;\n    transition: background-color .2s ease, border-color .2s ease, color .2s ease;\n  }\n  .iqfounder__arrow { display: inline-block; transition: transform .2s ease; }\n  .iqfounder__pill:hover { background: #A51D1B; border-color: #A51D1B; color: #F5F4F2; }\n  .iqfounder__pill:hover .iqfounder__arrow { transform: translateX(3px); }\n  .iqfounder__pill:focus-visible { outline: 3px solid #A51D1B; outline-offset: 3px; }\n\n  /* TABLET */\n  @media (min-width: 750px) and (max-width: 989px) {\n    .iqfounder__inner { padding: 0 24px; box-sizing: border-box; }\n    .iqfounder__media { aspect-ratio: 16 / 11; }\n    .iqfounder__content { padding: 34px 0 72px; }\n    .iqfounder__quote { max-width: 720px; font-size: 42px; }\n    .iqfounder__body { max-width: 680px; font-size: 16px; }\n  }\n\n  /* DESKTOP – editorial split ~60/40 */\n  @media (min-width: 990px) {\n    .iqfounder { padding: 72px 0; }\n    .iqfounder__inner {\n      max-width: 1360px; margin-inline: auto; padding-inline: 32px; box-sizing: border-box;\n      display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(360px, 1fr);\n      gap: clamp(52px, 5vw, 80px); align-items: center;\n    }\n    .iqfounder__media { aspect-ratio: 4 / 5; min-height: 650px; }\n    .iqfounder__media img { object-position: 50% 50%; }\n    .iqfounder__content { padding: 0; }\n    .iqfounder__eyebrow { font-size: 12px; }\n    .iqfounder__quote { margin-top: 14px; font-size: clamp(36px, 3.4vw, 52px); line-height: 1.03; letter-spacing: -.6px; }\n    .iqfounder__body { margin-top: 26px; max-width: 500px; font-size: 16px; line-height: 1.6; }\n    .iqfounder__cta { margin-top: 28px; }\n  }\n\n  @media (prefers-reduced-motion: reduce) {\n    .iqfounder__pill, .iqfounder__arrow { transition: none; }\n    .iqfounder__pill:hover .iqfounder__arrow { transform: none; }\n  }\n</style>\n\n<section class=\"iqfounder color-scheme-2\">\n  <div class=\"iqfounder__inner\">\n\n    <div class=\"iqfounder__media\">\n      <img\n        src=\"{{ gruenderfoto | file_url }}&width=1600\"\n        width=\"1600\" height=\"2000\" loading=\"lazy\"\n        alt=\"{% if en %}IQ Dogsport founders Patricia and Florian Knabl with their dog{% else %}IQ Dogsport Gründer Patricia und Florian Knabl mit ihrem Hund{% endif %}\"\n      >\n    </div>\n\n    <div class=\"iqfounder__content\">\n      <p class=\"iqfounder__eyebrow\">{% if en %}The founders{% else %}Die Gründer{% endif %}</p>\n\n      <blockquote class=\"iqfounder__quote\">\n        {% if en %}We only develop what we miss in our own training.\n        {% else %}\"Wir entwickeln nur, was wir selbst im Training vermissen.\"{% endif %}\n      </blockquote>\n\n      <div class=\"iqfounder__body\">\n        {% if en %}\"Every product comes from our own practice: in training, in competition, on duty.\"\n        {% else %}Jedes Produkt entsteht aus eigener Praxis: im Training, im Wettkampf, im Dienst.{% endif %}\n      </div>\n\n      <div class=\"iqfounder__cta\">\n        {%- if en -%}\n          <a class=\"iqfounder__pill\" href=\"/en/pages/uber-iq-dogsport\">\n            Our story <span class=\"iqfounder__arrow\" aria-hidden=\"true\">&rarr;</span>\n          </a>\n        {%- else -%}\n          <a class=\"iqfounder__pill\" href=\"/pages/uber-iq-dogsport\">\n            Unsere Geschichte <span class=\"iqfounder__arrow\" aria-hidden=\"true\">&rarr;</span>\n          </a>\n        {%- endif -%}\n      </div>\n    </div>\n\n  </div>\n</section>",
@@ -663,6 +706,7 @@
     },
     "custom_liquid_zNkD6Y": {
       "type": "custom-liquid",
+      "disabled": true,
       "custom_css": [],
       "name": "wissen",
       "settings": {
@@ -766,23 +810,266 @@
         "padding_bottom": 0,
         "custom_class": ""
       }
+    },
+    "iq_all_products_link": {
+      "type": "iq-all-products-link",
+      "name": "Alle Produkte – Link",
+      "settings": {
+        "collection": "all",
+        "label": "Alle Produkte ansehen",
+        "label_en": "View all products"
+      }
+    },
+    "iq_home_categories": {
+      "type": "iq-home-categories",
+      "blocks": {
+        "category0": {
+          "type": "category",
+          "settings": {
+            "collection": "hundesport-jacken",
+            "image": "shopify://shop_images/kategorie-jacken-iq-dogsport.jpg",
+            "title": "Jacken",
+            "title_en": "Jackets",
+            "alt": "Hundeführerin in IQ Multifunktionsjacke mit Schäferhund",
+            "alt_en": "Handler in an IQ jacket with a German Shepherd",
+            "position_y": 0,
+            "mobile_position_y": 0
+          }
+        },
+        "category1": {
+          "type": "category",
+          "settings": {
+            "collection": "hundesport-westen",
+            "image": "shopify://shop_images/iq-weste-regulaer-startseite.jpg",
+            "title": "Westen",
+            "title_en": "Vests",
+            "alt": "Hundeführerin mit IQ Hundesportweste und Schäferhund",
+            "alt_en": "Handler in an IQ dog sport vest with a German Shepherd",
+            "position_y": 0,
+            "mobile_position_y": 0
+          }
+        },
+        "category2": {
+          "type": "category",
+          "settings": {
+            "collection": "hundesport-t-shirts-hoodies",
+            "image": "shopify://shop_images/kategorie-shirts-hoodies-iq-dogsport.jpg",
+            "title": "Shirts & Hoodies",
+            "title_en": "Shirts & hoodies",
+            "alt": "IQ Hoodie im Einsatz mit Hund",
+            "alt_en": "IQ hoodie in use with a dog",
+            "position_y": 0,
+            "mobile_position_y": 0
+          }
+        },
+        "category3": {
+          "type": "category",
+          "settings": {
+            "collection": "hundesport-trainingszubehoer",
+            "image": "shopify://shop_images/kategorie-training-iq-dogsport.jpg",
+            "title": "Training",
+            "title_en": "Training",
+            "alt": "IQ Trainingsausrüstung",
+            "alt_en": "IQ training equipment",
+            "position_y": 0,
+            "mobile_position_y": 0
+          }
+        },
+        "category4": {
+          "type": "category",
+          "settings": {
+            "collection": "trainingsfutter-supplemente",
+            "image": "shopify://shop_images/kategorie-futter-iq-dogsport_jpg.jpg",
+            "title": "Snacks & Futter",
+            "title_en": "Treats & food",
+            "alt": "Hund mit IQ Trainingssnacks",
+            "alt_en": "Dog with IQ training treats",
+            "position_y": 0,
+            "mobile_position_y": 0
+          }
+        },
+        "category5": {
+          "type": "category",
+          "settings": {
+            "collection": "hundesport-spielzeug",
+            "image": "shopify://shop_images/kategorie-spielzeug-iq-dogsport_jpg.jpg",
+            "title": "Spielzeug",
+            "title_en": "Toys",
+            "alt": "Hund mit IQ Hundeball",
+            "alt_en": "Dog with an IQ dog toy",
+            "position_y": 0,
+            "mobile_position_y": 0
+          }
+        }
+      },
+      "block_order": [
+        "category0",
+        "category1",
+        "category2",
+        "category3",
+        "category4",
+        "category5"
+      ],
+      "name": "Kategorien · Bilder & Ziele",
+      "settings": {
+        "heading": "Was brauchst Du fürs Training?",
+        "heading_en": "What do you need for training?"
+      }
+    },
+    "iq_home_snacks": {
+      "type": "iq-home-feature",
+      "blocks": {
+        "beef": {
+          "type": "product",
+          "settings": {
+            "product": "iq-pure-bites-rinderlunge-trainingshappen-mini",
+            "badge": "Neu",
+            "badge_en": "New",
+            "title": "Pure Bites",
+            "title_en": "Pure Bites",
+            "description": "",
+            "description_en": "",
+            "extra_cta": "Alle Snacks entdecken",
+            "extra_cta_en": "Explore all treats",
+            "extra_link": "shopify://collections/trainingsfutter-supplemente",
+            "extra_link_en": "/en/collections/trainingsfutter-supplemente",
+            "title_line2": "Rinderlunge Mini",
+            "title_line2_en": "Mini beef lung"
+          }
+        },
+        "horse": {
+          "type": "product",
+          "settings": {
+            "product": "iq-pure-bites-pferdelunge-mini",
+            "title": "Pure Bites",
+            "title_en": "Pure Bites",
+            "title_line2": "Pferdelunge Mini",
+            "title_line2_en": "Mini horse lung"
+          }
+        }
+      },
+      "block_order": [
+        "beef",
+        "horse"
+      ],
+      "name": "Snack-Fokus · Pure Bites",
+      "settings": {
+        "style": "snacks",
+        "image": "shopify://shop_images/iq-belohnungsmoment-ohne-signatur.jpg",
+        "alt": "Schwarzer Schäferhund fängt eine Belohnung.",
+        "alt_en": "Black German Shepherd catching a reward.",
+        "eyebrow": "Neu · IQ Pure Bites",
+        "eyebrow_en": "New · IQ Pure Bites",
+        "heading": "Für die Momente, die Du belohnst.",
+        "heading_en": "For the moments you reward.",
+        "body": "<p>Minis und Sticks für Training und Alltag mit Deinem Hund. Entdecke unser Snackangebot.</p>",
+        "body_en": "<p>Minis and sticks for training and everyday life with your dog. Discover our range of treats.</p>",
+        "cta": "Alle Snacks entdecken",
+        "cta_en": "Explore all treats",
+        "link": "shopify://collections/trainingsfutter-supplemente",
+        "link_en": "/en/collections/trainingsfutter-supplemente",
+        "mobile_image": "shopify://shop_images/iq-belohnungsmoment-mobil-kopf-1200x1120.jpg"
+      }
+    },
+    "iq_home_gifts": {
+      "type": "iq-home-feature",
+      "name": "Geschenke · Gutschein & Extras",
+      "settings": {
+        "style": "gifts",
+        "image": "shopify://shop_images/gutschein_banner_desktop_1920x600_ebf73779-891b-47bf-a270-19faf4c62f6e.jpg",
+        "alt": "IQ Metall-Gutscheinbox mit Geschenkkarte und Malinois-Schlüsselanhänger.",
+        "alt_en": "IQ metal gift voucher box with gift card and Malinois keyring.",
+        "eyebrow": "IQ Gutscheine & Geschenke",
+        "eyebrow_en": "IQ gift vouchers & gifts",
+        "heading": "Für Menschen mit Hund.",
+        "heading_en": "For dog people.",
+        "body": "<p>Ein IQ Gutschein und eine Kleinigkeit dazu: Entdecke unsere Metall-Geschenkbox und Schlüsselanhänger – Gebrauchshunderassen, Hetzarm und Apportierholz.</p>",
+        "body_en": "<p>An IQ gift voucher and a little extra: discover our metal gift box and keyrings – working dog breeds, a bite sleeve and a dumbbell.</p>",
+        "cta": "Geschenkideen entdecken",
+        "cta_en": "Discover gift ideas",
+        "link": "shopify://collections/gutschein-fun-stuff",
+        "link_en": "/en/collections/gutschein-fun-stuff"
+      },
+      "blocks": {
+        "breed0": {
+          "type": "breed",
+          "settings": {
+            "image": "shopify://shop_images/Schaeferhund-vorne-web.jpg",
+            "label": "Schäferhund braun",
+            "label_en": "Brown German Shepherd",
+            "link": "/products/iq-gebrauchshunde-schlusselanhanger-miniatur?variant=58646583705864",
+            "link_en": "/en/products/iq-gebrauchshunde-schlusselanhanger-miniatur?variant=58646583705864"
+          }
+        },
+        "breed1": {
+          "type": "breed",
+          "settings": {
+            "image": "shopify://shop_images/Malinois-vorne-web.jpg",
+            "label": "Malinois",
+            "label_en": "Malinois",
+            "link": "/products/iq-gebrauchshunde-schlusselanhanger-miniatur?variant=58646600450312",
+            "link_en": "/en/products/iq-gebrauchshunde-schlusselanhanger-miniatur?variant=58646600450312"
+          }
+        },
+        "breed2": {
+          "type": "breed",
+          "settings": {
+            "image": "shopify://shop_images/Schaeferhundschwarz-vorne-web.jpg",
+            "label": "Schäferhund schwarz",
+            "label_en": "Black German Shepherd",
+            "link": "/products/iq-gebrauchshunde-schlusselanhanger-miniatur?variant=58646617915656",
+            "link_en": "/en/products/iq-gebrauchshunde-schlusselanhanger-miniatur?variant=58646617915656"
+          }
+        },
+        "breed3": {
+          "type": "breed",
+          "settings": {
+            "image": "shopify://shop_images/Rottweiler-vorneweb.jpg",
+            "label": "Rottweiler",
+            "label_en": "Rottweiler",
+            "link": "/products/iq-gebrauchshunde-schlusselanhanger-miniatur?variant=58646630138120",
+            "link_en": "/en/products/iq-gebrauchshunde-schlusselanhanger-miniatur?variant=58646630138120"
+          }
+        },
+        "breed4": {
+          "type": "breed",
+          "settings": {
+            "image": "shopify://shop_images/Dobermann-vorne-web.jpg",
+            "label": "Dobermann",
+            "label_en": "Dobermann",
+            "link": "/products/iq-gebrauchshunde-schlusselanhanger-miniatur?variant=58646638887176",
+            "link_en": "/en/products/iq-gebrauchshunde-schlusselanhanger-miniatur?variant=58646638887176"
+          }
+        }
+      },
+      "block_order": [
+        "breed0",
+        "breed1",
+        "breed3",
+        "breed4",
+        "breed2"
+      ]
     }
   },
   "order": [
     "slideshow_MjtkGQ",
     "custom_liquid_wgBwNj",
-    "custom_liquid_9jBVn8",
-    "iq_home_nav",
+    "iq_home_categories",
+    "iq_all_products_link",
     "iq_home_coat",
+    "iq_home_snacks",
     "iq_home_new",
-    "custom_liquid_9xdJJe",
+    "iq_home_knowledge",
+    "iq_home_gifts",
     "iq_home_founders",
     "iq_home_reviews",
-    "custom_liquid_zNkD6Y",
-    "iq_home_knowledge",
     "iq_home_athletes",
     "iq_home_newsletter",
     "1778687204c092d06f",
+    "custom_liquid_9xdJJe",
+    "custom_liquid_9jBVn8",
+    "iq_home_nav",
+    "custom_liquid_zNkD6Y",
     "custom_liquid_XLrBYx",
     "iq_new_drops_hxqdeK",
     "video_with_text_wXUEBJ",

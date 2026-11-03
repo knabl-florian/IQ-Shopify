@@ -196,13 +196,36 @@
                 <div class="flex items-center gap-2">
                   {% render 'icons', icon: block.settings.icon %}
                   <h2 class="h4 inline-richtext">
-                    {{ block.settings.heading | default: block.settings.page.title | escape }}
+                    {%- if request.locale.iso_code == 'de' and block.settings.heading == 'Fit & Sizing' -%}
+                      {%- if product.handle == 'iq-hundesportweste-3-0-unisex' or product.handle == 'iq-sommerweste-3-0-unisex' or product.handle == 'iq-dogsport-hose-unisex' -%}
+                        Passform &amp; Größe
+                      {%- else -%}
+                        {{ block.settings.heading | default: block.settings.page.title | escape }}
+                      {%- endif -%}
+                    {%- else -%}
+                      {{ block.settings.heading | default: block.settings.page.title | escape }}
+                    {%- endif -%}
                   </h2>
                 </div>
                 {%- render 'icon-plus-toggle' -%}
               </summary>
               <div class="accordion-details__content rte">
-                {{ block.settings.content }}
+                {%- if product.id == 10709813788936 and block.settings.heading == 'Highlights' -%}
+                  {%- assign iq_vest_description = block.settings.content
+                    | remove: '<p>★★★★★ <strong>4,94★ aus 235 Bewertungen</strong> (Stand Mai 2026)</p>'
+                    | remove: '<p>&#9733;&#9733;&#9733;&#9733;&#9733; <strong>4.94 from 235 reviews</strong> (as of May 2026)</p>'
+                    | replace: 'Alle 235 Bewertungen lesen', 'Alle Bewertungen lesen'
+                    | replace: 'Read all 235 reviews', 'Read all reviews'
+                  -%}
+                  {{ iq_vest_description }}
+                {%- elsif product.id == 12082391908616 and block.settings.heading == 'Highlights' -%}
+                  {{ block.settings.content
+                    | remove: '<p><strong>Erhältlich ab Ende Oktober 2026.</strong></p>'
+                    | remove: '<p><strong>Available from the end of October 2026.</strong></p>'
+                  }}
+                {%- else -%}
+                  {{ block.settings.content }}
+                {%- endif -%}
                 {{ block.settings.custom_liquid }}
                 {{ block.settings.page.content }}
               </div>

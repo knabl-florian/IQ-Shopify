@@ -1,3 +1,5 @@
+{%- capture iq_collection_key -%}{%- render 'iq-collection-key' -%}{%- endcapture -%}
+{%- assign iq_collection_key = iq_collection_key | strip -%}
 {{ 'iq-product-feature.css' | asset_url | stylesheet_tag }}
 {% assign iq_video_blocks = section.blocks | where: 'type', 'iq_responsive_video' %}
 {% if iq_video_blocks.size > 0 %}
@@ -6,6 +8,7 @@
 {% endif %}
 {% render 'rapid-search-results-template-v2' %}
 {{ 'collection.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'iq-card-image-loading.js' | asset_url }}" defer></script>
 <script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'show-more.js' | asset_url }}" defer="defer"></script>
 {%- liquid
@@ -26,6 +29,9 @@
 
   assign enable_sorting = section.settings.enable_sorting
   assign enable_filtering = section.settings.enable_filtering
+  if iq_collection_key == 'zz-hosen-herren'
+    assign enable_filtering = false
+  endif
   if collection.handle == 'sale'
     assign enable_filtering = false
   endif
@@ -808,6 +814,7 @@
                       collection_card_titles: section.settings.collection_card_titles,
                       collection_color_swatches: section.settings.enable_color_swatch,
                       defer_primary_image: section.settings.defer_product_images,
+                      defer_secondary_images: true,
                       product: product,
                       image_sizes: image_sizes,
                       section_id: section.id,

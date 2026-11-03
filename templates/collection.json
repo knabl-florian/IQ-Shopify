@@ -177,14 +177,14 @@
         "focus_y": 50,
         "title_de": "EUER ZIEL IM BLICK.",
         "accent_de": "DAS RICHTIGE EQUIPMENT DABEI.",
-        "description_de": "Durchdachte Ausrüstung für Fährte, Unterordnung und Schutzdienst. Von Hundesportlern entwickelt.",
-        "mobile_description_de": "Kompakt verstaut. Bereit fürs nächste Training.",
+        "description_de": "Zubehör fürs Hundetraining: für Fährte, Unterordnung und Schutzdienst. Von Hundesportlern entwickelt.",
+        "mobile_description_de": "Zubehör fürs Hundetraining. Bereit für Eure nächste Übung.",
         "label_de": "Hundesport Trainingszubehör",
         "alt_de": "Malinois beim Training am IQ Wurfversteck",
         "title_en": "YOUR GOAL IN SIGHT.",
         "accent_en": "THE RIGHT GEAR BY YOUR SIDE.",
-        "description_en": "Purpose-built equipment for tracking, obedience and protection work. Developed by dog sport athletes.",
-        "mobile_description_en": "For rewards, heelwork, tracking and protection work.",
+        "description_en": "Dog training accessories for tracking, obedience and protection work. Developed by dog sport athletes.",
+        "mobile_description_en": "Dog training accessories for your next session.",
         "label_en": "Dog training equipment",
         "alt_en": "Malinois training at the IQ portable blind",
         "mobile_position": "bottom",
@@ -1644,10 +1644,10 @@
           "type": "topic",
           "settings": {
             "only_collection": "hundesport-trainingszubehoer",
-            "heading_de": "Trainingszubehör für Fährte, Unterordnung und Schutzdienst",
-            "text_de": "<p>Für Fährten- und Nasenarbeit, Unterordnung und Schutzdienst: Hier findest Du Ausrüstung für den Trainingsaufbau und die Belohnung. Gegenstandstrainer unterstützen das Anzeigen, Apportierhilfen und Positionsstäbe den Übungsaufbau. Magnetsysteme, Clicker und Taschen helfen Dir, Belohnungen bereitzuhalten. Geschirre und mobile Verstecke ergänzen das Training auf dem Hundeplatz.</p><p><a href=\"/blogs/news/schutzdienstverstecke-im-vergleich-pop-up-klappbar-oder-klassisch\"><strong>Schutzdienstverstecke im Vergleich</strong></a></p><p><a href=\"/blogs/news/trainingsgurtel-fur-hundesport-im-vergleich-welche-losung-passt-zu-deinem-training\"><strong>Trainingsgürtel im Vergleich</strong></a></p>",
-            "heading_en": "Equipment for tracking, obedience and protection work",
-            "text_en": "<p>Equipment for tracking, scent work, obedience and protection work: find tools for building exercises and rewarding your dog. Article trainers support indication training, while retrieve aids and positioning sticks help structure exercises. Magnetic systems, clickers and pouches keep rewards within reach. Harnesses and portable blinds complete your training equipment.</p><p><a href=\"/en/blogs/news/schutzdienstverstecke-im-vergleich-pop-up-klappbar-oder-klassisch\">Compare protection blinds</a></p><p><a href=\"/en/blogs/news/trainingsgurtel-fur-hundesport-im-vergleich-welche-losung-passt-zu-deinem-training\">Compare training belts</a></p>",
+            "heading_de": "Zubehör fürs Hundetraining: Was brauchst Du wofür?",
+            "text_de": "<p>Wähle Dein Zubehör fürs Hundetraining nach der Übung und der Art der Belohnung. Ein Clicker markiert den richtigen Moment, ein Positionsstab gibt eine visuelle Orientierung. Für Fährtenarbeit oder Schutzdienst brauchst Du andere Trainingshilfen als für den Aufbau der Fußposition.</p><ul><li><strong>Belohnung und Timing:</strong> Der <a href=\"/products/iq-premium-ringclicker\">IQ Ringclicker</a> markiert das gewünschte Verhalten. Taschen und Magnetsysteme helfen Dir, Futter oder Spielzeug für die Belohnung bereitzuhalten.</li><li><strong>Fußarbeit und Obedience:</strong> Der <a href=\"/products/iq-positionsstab\">IQ Positionsstab</a> unterstützt die Orientierung an der Fußposition.</li><li><strong>Fährtenarbeit:</strong> Mit dem <a href=\"/products/iq-gegenstandstrainer\">IQ Gegenstandstrainer 2.0</a> baust Du das Anzeigen von Fährtengegenständen auf.</li></ul><p>In den folgenden Abschnitten findest Du die passende Ausrüstung für Unterordnung, Fährte, Apportieren und Schutzdienst.</p><p><a href=\"/blogs/news/schutzdienstverstecke-im-vergleich-pop-up-klappbar-oder-klassisch\"><strong>Schutzdienstverstecke im Vergleich</strong></a></p><p><a href=\"/blogs/news/trainingsgurtel-fur-hundesport-im-vergleich-welche-losung-passt-zu-deinem-training\"><strong>Trainingsgürtel im Vergleich</strong></a></p>",
+            "heading_en": "Dog training accessories: what do you need for each exercise?",
+            "text_en": "<p>Choose dog training accessories to suit the exercise and the reward. A clicker marks the right moment, while a position stick provides a visual guide. Tracking and protection work call for different training aids from those used to build heel position.</p><ul><li><strong>Rewards and timing:</strong> The <a href=\"/en/products/ring-clicker-finger-mounted-igp-training\">IQ Ring Clicker</a> marks the behaviour you want. Pouches and magnetic systems help keep food or toys ready for rewards.</li><li><strong>Heelwork and obedience:</strong> The <a href=\"/en/products/metal-position-stick-igp-heel-training\">IQ Position Stick</a> provides a visual guide for heel position.</li><li><strong>Tracking:</strong> The <a href=\"/en/products/article-trainer-tracking-scent-work\">IQ Article Trainer 2.0</a> helps you build tracking article indication.</li></ul><p>The sections below help you choose equipment for obedience, tracking, retrieving and protection work.</p><p><a href=\"/en/blogs/news/best-igp-protection-blind\">Compare protection blinds</a></p><p><a href=\"/en/blogs/news/best-dog-training-belt\">Compare training belts</a></p>",
             "replace_description": true,
             "replace_seo": false
           }
@@ -1681,9 +1681,9 @@
           "settings": {
             "only_collection": "hundesport-trainingszubehoer",
             "heading_de": "Fußarbeit und Belohnung: welches Zubehör passt?",
-            "text_de": "<p>Für den Aufbau der Fußposition in IGP und Obedience dient der <a href=\"/products/iq-positionsstab\">IQ Positionsstab</a> als visuelle Orientierung. Für die Belohnung mit Spielzeug kommen der <a href=\"/products/iq-magnetizer\">IQ Magnetizer</a> mit passendem Magnetsystem oder die <a href=\"/products/iq-magnettasche\">IQ Balltasche</a> infrage. Der <a href=\"/products/iq-premium-ringclicker\">Ringclicker</a> sitzt am Finger und markiert den richtigen Moment.</p>",
+            "text_de": "<p>Für den Aufbau der Fußposition in IGP und Obedience dient der <a href=\"/products/iq-positionsstab\">IQ Positionsstab</a> als visuelle Orientierung. Für die Belohnung mit Spielzeug kommen der <a href=\"/products/iq-magnetizer\">IQ Magnetizer</a> mit passendem Magnetsystem oder die <a href=\"/products/iq-magnettasche\">IQ Balltasche</a> infrage. Der <a href=\"/products/iq-premium-ringclicker\">IQ Ringclicker</a> sitzt am Finger und markiert den richtigen Moment.</p>",
             "heading_en": "Heelwork and rewards: which equipment fits?",
-            "text_en": "<p>For building heel position in IGP and obedience, the <a href=\"/en/products/iq-positionsstab\">IQ Positioning Stick</a> provides a visual guide. For toy rewards, choose the <a href=\"/en/products/iq-magnetizer\">IQ Magnetizer</a> with a suitable magnetic system or the <a href=\"/en/products/iq-magnettasche\">IQ Ball Pouch</a>. The <a href=\"/en/products/iq-premium-ringclicker\">Ring Clicker</a> stays on your finger to mark the right moment.</p>",
+            "text_en": "<p>For building heel position in IGP and obedience, the <a href=\"/en/products/metal-position-stick-igp-heel-training\">IQ Position Stick</a> provides a visual guide. For toy rewards, choose the <a href=\"/en/products/iq-magnetizer-magnetic-reward-adapter\">IQ Magnetizer</a> with a suitable magnetic system or the <a href=\"/en/products/magnet-pouch-hidden-reward-igp-heel-work\">IQ Ball Pouch</a>. The <a href=\"/en/products/ring-clicker-finger-mounted-igp-training\">IQ Ring Clicker</a> stays on your finger to mark the right moment.</p>",
             "replace_description": false,
             "replace_seo": false
           }
@@ -1693,9 +1693,9 @@
           "settings": {
             "only_collection": "hundesport-trainingszubehoer",
             "heading_de": "Fährtenarbeit: wofür ist der Gegenstandstrainer?",
-            "text_de": "<p>Der <a href=\"/products/iq-gegenstandstrainer\">IQ Gegenstandstrainer 2.0</a> hilft Dir, das Anzeigen von Fährtengegenständen aufzubauen: Gegenstand befestigen, Futter darunterlegen und zum Bestätigen den Trainer anheben. So gibst Du die Belohnung gezielt frei. Die <a href=\"/products/iq-dogsport-fahrtentafel\">IQ Fährtentafel</a> ergänzt Deine Ausrüstung für die Fährtenarbeit.</p><p>Für Belohnungen mit Futter: <a href=\"/collections/trainingsfutter-supplemente\">Trainingssnacks entdecken</a>.</p>",
+            "text_de": "<p>Der <a href=\"/products/iq-gegenstandstrainer\">IQ Gegenstandstrainer 2.0</a> hilft Dir, das Anzeigen von Fährtengegenständen aufzubauen: Gegenstand befestigen, Futter darunterlegen und zum Bestätigen den Trainer anheben. So gibst Du die Belohnung gezielt frei. Die <a href=\"/products/iq-dogsport-fahrtentafel\">IQ Dogsport Fährtentafel</a> ergänzt Deine Ausrüstung für die Fährtenarbeit.</p><p>Für Belohnungen mit Futter: <a href=\"/collections/trainingsfutter-supplemente\">Trainingssnacks entdecken</a>.</p>",
             "heading_en": "Tracking: what is the Article Trainer for?",
-            "text_en": "<p>The <a href=\"/en/products/iq-gegenstandstrainer\">IQ Article Trainer 2.0</a> helps you build tracking article indication: attach the article, place food underneath and lift the trainer to reward your dog. You control when the reward becomes accessible. The <a href=\"/en/products/iq-dogsport-fahrtentafel\">IQ Tracking Sign</a> complements your tracking equipment.</p><p>For food rewards: <a href=\"/en/collections/trainingsfutter-supplemente\">explore training treats</a>.</p>",
+            "text_en": "<p>The <a href=\"/en/products/article-trainer-tracking-scent-work\">IQ Article Trainer 2.0</a> helps you build tracking article indication: attach the article, place food underneath and lift the trainer to reward your dog. You control when the reward becomes accessible. The <a href=\"/en/products/igp-tracking-flag-red-metal-article\">IQ Tracking Flag</a> complements your tracking equipment.</p><p>For food rewards: <a href=\"/en/collections/trainingsfutter-supplemente\">explore training treats</a>.</p>",
             "replace_description": false,
             "replace_seo": false
           }
@@ -1707,7 +1707,7 @@
             "heading_de": "Apportieren und Schutzdienst: was brauche ich?",
             "text_de": "<p>Für Halteübungen und den Apport-Aufbau ist das <a href=\"/products/iq-apportierholz\">IQ Apportierholz</a> ein Trainingshilfsmittel. Für mobiles Reviertraining gibt es das faltbare <a href=\"/products/wurfversteck\">IQ Wurfversteck</a>; das <a href=\"/products/revierstab-set\">Revierstab-Set</a> gibt eine visuelle Gasse am Versteck vor. Wie Fährte, Unterordnung und Schutzdienst zusammengehören, erklärt unser <a href=\"/pages/igp-hundesport\">IGP-Ratgeber</a>.</p>",
             "heading_en": "Retrieving and protection work: what do I need?",
-            "text_en": "<p>The <a href=\"/en/products/iq-apportierholz\">IQ Training Dumbbell</a> is a training aid for holding exercises and building the retrieve. For portable blind-search training, use the folding <a href=\"/en/products/wurfversteck\">IQ Portable Blind</a>; the <a href=\"/en/products/revierstab-set\">Blind Search Pole Set</a> creates a visual channel beside the blind. Our <a href=\"/en/pages/igp-hundesport\">IGP guide</a> explains tracking, obedience and protection work.</p>",
+            "text_en": "<p>The <a href=\"/en/products/igp-training-dumbbell-foundation-retrieve\">IQ Training Dumbbell</a> is a training aid for holding exercises and building the retrieve. For portable blind-search training, use the folding <a href=\"/en/products/igp-pop-up-blind-foldable-protection-sport\">IQ Pop-Up Blind</a>; the <a href=\"/en/products/revierstab-set\">Blind Search Pole Set</a> creates a visual channel beside the blind. Our <a href=\"/en/pages/what-is-igp\">IGP guide</a> explains tracking, obedience and protection work.</p>",
             "replace_description": false,
             "replace_seo": false
           }

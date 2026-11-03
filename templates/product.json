@@ -235,9 +235,9 @@
         },
         "iq_xs_restock": {
           "type": "custom_liquid",
-          "name": "Mantel – Nachschub November",
+          "name": "Winter & MagDock – Nachschub",
           "settings": {
-            "custom_liquid": "{% if product.id == 10709846753544 %}\n<p class=\"iq-coat-restock\" style=\"margin:0;padding:12px 16px;border-left:3px solid #A51D1B;background:#F3F3F1;color:#171717;font-size:14px;line-height:1.5;\">\n{% if request.locale.iso_code == 'de' %}<strong>Deine Größe ist ausverkauft?</strong><br>Nachschub kommt in den ersten beiden Novemberwochen.{% else %}<strong>Is your size sold out?</strong><br>Restock arriving in the first two weeks of November.{% endif %}\n</p>\n{% endif %}"
+            "custom_liquid": "{% if product.id == 10709846753544 %}\n<p class=\"iq-coat-restock\" style=\"margin:0;padding:12px 16px;border-left:3px solid #A51D1B;background:#F3F3F1;color:#171717;font-size:14px;line-height:1.5;\">\n{% if request.locale.iso_code == 'de' %}<strong>Deine Größe ist ausverkauft?</strong><br>Nachschub kommt in den ersten beiden Novemberwochen.{% else %}<strong>Is your size sold out?</strong><br>Restock arriving in the first two weeks of November.{% endif %}\n</p>\n{% endif %}\n{% assign iq_restock_now = 'now' | date: '%s' | plus: 0 %}\n{% assign iq_restock_sold_out = product.variants | where: 'available', false %}\n{% if iq_restock_now < 1794178800 and iq_restock_sold_out.size > 0 %}\n{% if product.id == 10709846688008 or product.id == 12082391908616 %}\n<p class=\"iq-week-restock\" style=\"margin:0;padding:12px 16px;border-left:3px solid #A51D1B;background:#F3F3F1;color:#171717;font-size:14px;line-height:1.5;\">\n{% if request.locale.iso_code == 'de' %}<strong>Nachschub wird diese Woche erwartet.</strong><br>Voraussichtliche Ankunft: 2.–8. November.{% else %}<strong>Restock expected this week.</strong><br>Expected arrival: 2–8 November.{% endif %}\n</p>\n{% endif %}\n{% endif %}"
           }
         },
         "iq_coat_fit": {

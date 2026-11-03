@@ -35,14 +35,14 @@
       },
       "block_order": [
         "free_shipping_goal_W8bXKE",
-        "cart_note_qpALBg",
-        "cart_shipping_rate_bnhQBk",
         "subtotal_LeUiVY",
-        "buttons_drwbch"
+        "buttons_drwbch",
+        "cart_note_qpALBg",
+        "cart_shipping_rate_bnhQBk"
       ],
       "settings": {
-        "padding_top": 0,
-        "padding_bottom": 0
+        "padding_top": 24,
+        "padding_bottom": 40
       }
     },
     "recently_viewed_products_iTgMb7": {

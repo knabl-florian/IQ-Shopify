@@ -5,16 +5,30 @@
  assign en = true
  endif
 %}
-<section class="iqh iqh-wrap iq27-knowledge"><div class="iq27-knowledge-banner" style="--iq27-shade:{{ section.settings.overlay | divided_by: 100.0 }}">
-{% assign banner_image = section.settings.image | default: section.blocks.first.settings.image %}{% assign banner_alt = section.settings.alt %}{% if en and section.settings.alt_en != blank %}{% assign banner_alt = section.settings.alt_en %}{% endif %}{% if banner_image != blank %}<picture>{% if section.settings.mobile_image != blank %}<source media="(max-width:749px)" srcset="{{ section.settings.mobile_image | image_url: width: 800 }}">{% endif %}{{ banner_image | image_url: width: 1800 | image_tag: widths: '480,750,1000,1400,1800', sizes: '(min-width:1280px) 1232px, 100vw', loading: 'lazy', alt: banner_alt }}</picture>{% endif %}
-<div class="iq27-knowledge-copy"><p class="iqh-eyebrow">{% if en and section.settings.eyebrow_en != blank %}{{ section.settings.eyebrow_en | escape }}{% else %}{{ section.settings.eyebrow | escape }}{% endif %}</p><h2 class="iqh-heading">{% if en and section.settings.heading_en != blank %}{{ section.settings.heading_en | escape }}{% else %}{{ section.settings.heading | escape }}{% endif %}</h2><div class="iq27-knowledge-links">{% for block in section.blocks %}<a class="iqh-pill" href="{% if en and block.settings.link_en != blank %}{{ block.settings.link_en }}{% else %}{{ block.settings.link }}{% endif %}" {{ block.shopify_attributes }}>{% if en and block.settings.cta_en != blank %}{{ block.settings.cta_en | escape }}{% else %}{{ block.settings.cta | escape }}{% endif %} <span aria-hidden="true">→</span></a>{% endfor %}</div></div></div></section>
-{% stylesheet %}
-.iq27-knowledge{padding-block:12px 48px}.iq27-knowledge-banner{position:relative;min-height:410px;isolation:isolate;display:flex;align-items:center;overflow:hidden;background:#171717}.iq27-knowledge-banner picture{position:absolute;inset:0;z-index:0}.iq27-knowledge-banner picture img{width:100%;height:100%;object-fit:cover;object-position:65% 45%}.iq27-knowledge-banner:after{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(23,23,23,var(--iq27-shade)),transparent 90%)}.iq27-knowledge-copy{position:relative;z-index:2;padding:44px 5%;max-width:650px;color:#fff;text-shadow:0 1px 5px rgba(23,23,23,.4)}.iqh.iq27-knowledge .iqh-eyebrow{color:#fff}.iq27-knowledge-links{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}.iqh.iq27-knowledge .iq27-knowledge-links .iqh-pill{background:rgba(23,23,23,.15);color:#fff;border-color:#fff;padding:10px 18px;min-height:44px}.iqh.iq27-knowledge .iq27-knowledge-links .iqh-pill:hover{background:#fff;color:#171717}.iq27-knowledge-copy .iqh-heading{max-width:20ch;font-size:clamp(28px,3vw,40px)}@media(max-width:749px){.iq27-knowledge-banner{min-height:460px;align-items:flex-end}.iq27-knowledge-copy{position:relative;z-index:2;padding:28px 24px}.iq27-knowledge-banner:after{background:linear-gradient(0deg,rgba(23,23,23,var(--iq27-shade)),transparent 85%)}.iq27-knowledge-banner picture img{object-position:65% center}.iq27-knowledge-copy .iqh-heading{font-size:28px}.iq27-knowledge{padding-bottom:36px}}
-{% endstylesheet %}
+<section class="iqh iqh-magazine"><div class="iqh-wrap"><header class="iqh-magazine-header"><div><p class="iqh-eyebrow">{% if en and section.settings.eyebrow_en != blank %}{{ section.settings.eyebrow_en | escape }}{% else %}{{ section.settings.eyebrow | escape }}{% endif %}</p><h2 class="iqh-heading">{% if en and section.settings.heading_en != blank %}{{ section.settings.heading_en | escape }}{% else %}{{ section.settings.heading | escape }}{% endif %}</h2>{% if section.settings.show_descriptions %}<p class="iqh-intro">{% if en and section.settings.intro_en != blank %}{{ section.settings.intro_en | escape }}{% else %}{{ section.settings.intro | escape }}{% endif %}</p>{% endif %}</div></header><div class="iqh-magazine-grid">{% assign recent_posts = section.settings.blog.articles | sort: 'published_at' | reverse %}{% for slot in (0..2) %}{% assign block = section.blocks[slot] %}{% if section.settings.latest and section.settings.blog != blank %}{% assign post = recent_posts[slot] %}{% assign block = nil %}{% for candidate in section.blocks %}{% if candidate.settings.article.id == post.id %}{% assign block = candidate %}{% break %}{% endif %}{% endfor %}{% else %}{% assign post = block.settings.article %}{% endif %}{% if post != blank %}{% assign photo = block.settings.image | default: post.image %}{% assign post_title = block.settings.title | default: post.title %}{% assign excerpt = block.settings.excerpt | default: post.excerpt %}{% if en %}{% assign post_title = block.settings.title_en | default: post_title %}{% assign excerpt = block.settings.excerpt_en | default: excerpt %}{% endif %}{% assign story_sizes = '(min-width:1360px) 320px, (min-width:990px) 23vw, 44vw' %}{% if forloop.first %}{% assign story_sizes = '(min-width:1360px) 640px, (min-width:990px) 48vw, 90vw' %}{% endif %}<article class="iqh-story{% if forloop.first %} iqh-story--lead{% endif %}" {{ block.shopify_attributes }}><a class="iqh-story-media{% unless block.settings.title_in_image %} iqh-story-media--title{% endunless %}" href="{{ post.url }}" aria-label="{{ post_title | escape }}">{% if photo != blank %}<picture>{% if block.settings.mobile_image != blank %}<source media="(max-width:749px)" srcset="{{ block.settings.mobile_image | image_url: width: 750 }}">{% endif %}{{ photo | image_url: width: 1200 | image_tag: widths: '360,540,750,1000,1200', sizes: story_sizes, loading: 'lazy', alt: '' }}</picture>{% endif %}<h3 class="{% if block.settings.title_in_image %}iqh-sr-only{% else %}iqh-story-title{% endif %}">{{ post_title | escape }}</h3></a></article>{% endif %}{% endfor %}</div><div class="iqh-books-strip">{% if section.settings.books_image != blank %}<a class="iqh-books-image" href="{% if en and section.settings.books_link_en != blank %}{{ section.settings.books_link_en }}{% else %}{{ section.settings.books_link }}{% endif %}">{{ section.settings.books_image | image_url: width: 1600 | image_tag: widths: '540,750,1000,1200,1600', sizes: '(min-width:1360px) 850px, (min-width:750px) 65vw, 90vw', loading: 'lazy', alt: section.settings.books_image.alt }}</a>{% endif %}<div class="iqh-books-copy"><p class="iqh-books-heading">{% if en and section.settings.books_heading_en != blank %}{{ section.settings.books_heading_en | escape }}{% else %}{{ section.settings.books_heading | escape }}{% endif %}</p><h3>{% if en and section.settings.books_title_en != blank %}{{ section.settings.books_title_en | escape }}{% else %}{{ section.settings.books_title | escape }}{% endif %}</h3><p>{% if en and section.settings.books_body_en != blank %}{{ section.settings.books_body_en | escape }}{% else %}{{ section.settings.books_body | escape }}{% endif %}</p><a class="iqh-pill iqh-books-button" href="{% if en and section.settings.books_link_en != blank %}{{ section.settings.books_link_en }}{% else %}{{ section.settings.books_link }}{% endif %}">{% if en and section.settings.books_cta_en != blank %}{{ section.settings.books_cta_en | escape }}{% else %}{{ section.settings.books_cta | escape }}{% endif %} →</a><a class="iqh-text-link iqh-igp-entry" href="{% if en and section.settings.igp_link_en != blank %}{{ section.settings.igp_link_en }}{% else %}{{ section.settings.igp_link }}{% endif %}">{% if en and section.settings.igp_cta_en != blank %}{{ section.settings.igp_cta_en | escape }}{% else %}{{ section.settings.igp_cta | escape }}{% endif %} →</a></div></div></div></section>
+
 {% schema %}
 {
-  "name": "IQ Start · Wissen",
+  "name": "IQ Start · Magazin",
   "settings": [
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "Blog für aktuelle Beiträge"
+    },
+    {
+      "type": "checkbox",
+      "id": "latest",
+      "label": "Automatisch neueste Beiträge zuerst",
+      "default": true,
+      "info": "Zeigt die drei neuesten veröffentlichten Beiträge. Ausgeschaltet: manuelle Artikelblöcke verwenden."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_descriptions",
+      "label": "Zusätzliche Kurztexte anzeigen",
+      "default": false
+    },
     {
       "type": "text",
       "id": "eyebrow",
@@ -36,103 +50,177 @@
       "label": "Überschrift · EN"
     },
     {
+      "type": "textarea",
+      "id": "intro",
+      "label": "Einleitung · DE"
+    },
+    {
+      "type": "textarea",
+      "id": "intro_en",
+      "label": "Einleitung · EN"
+    },
+    {
       "type": "text",
       "id": "cta",
-      "label": "Zusätzlicher Wissenslink · DE"
+      "label": "Bloglink Text · DE"
     },
     {
       "type": "text",
       "id": "cta_en",
-      "label": "Zusätzlicher Wissenslink · EN"
+      "label": "Bloglink Text · EN"
     },
     {
       "type": "url",
       "id": "link",
-      "label": "Link · DE"
+      "label": "Bloglink · DE"
     },
     {
       "type": "url",
       "id": "link_en",
-      "label": "Link · EN"
+      "label": "Bloglink · EN"
     },
     {
       "type": "image_picker",
-      "id": "image",
-      "label": "Bannerbild Desktop"
-    },
-    {
-      "type": "image_picker",
-      "id": "mobile_image",
-      "label": "Bannerbild Mobile (optional)"
+      "id": "books_image",
+      "label": "Bücherfoto"
     },
     {
       "type": "text",
-      "id": "alt",
-      "label": "Bildbeschreibung · DE"
+      "id": "books_title",
+      "label": "Büchertitel · DE"
     },
     {
       "type": "text",
-      "id": "alt_en",
-      "label": "Bildbeschreibung · EN"
+      "id": "books_title_en",
+      "label": "Büchertitel · EN"
     },
     {
-      "type": "range",
-      "id": "overlay",
-      "label": "Abdunklung hinter dem Text",
-      "min": 0,
-      "max": 80,
-      "step": 5,
-      "unit": "%",
-      "default": 45
+      "type": "textarea",
+      "id": "books_body",
+      "label": "Bücher Kurztext · DE"
+    },
+    {
+      "type": "textarea",
+      "id": "books_body_en",
+      "label": "Bücher Kurztext · EN"
+    },
+    {
+      "type": "text",
+      "id": "books_cta",
+      "label": "Bücher Linktext · DE"
+    },
+    {
+      "type": "text",
+      "id": "books_cta_en",
+      "label": "Bücher Linktext · EN"
+    },
+    {
+      "type": "url",
+      "id": "books_link",
+      "label": "Bücher Link · DE"
+    },
+    {
+      "type": "url",
+      "id": "books_link_en",
+      "label": "Bücher Link · EN"
+    },
+    {
+      "type": "text",
+      "id": "igp_cta",
+      "label": "IGP Einstieg · DE"
+    },
+    {
+      "type": "text",
+      "id": "igp_cta_en",
+      "label": "IGP Einstieg · EN"
+    },
+    {
+      "type": "url",
+      "id": "igp_link",
+      "label": "IGP Link · DE"
+    },
+    {
+      "type": "url",
+      "id": "igp_link_en",
+      "label": "IGP Link · EN"
+    },
+    {
+      "type": "text",
+      "id": "books_heading",
+      "label": "Großes Bücher-Heading · DE",
+      "default": "Bücher"
+    },
+    {
+      "type": "text",
+      "id": "books_heading_en",
+      "label": "Großes Bücher-Heading · EN",
+      "default": "Books"
     }
   ],
-  "max_blocks": 2,
+  "max_blocks": 3,
   "blocks": [
     {
-      "type": "teaser",
-      "name": "Wissensbeitrag",
+      "type": "article",
+      "name": "Artikel",
       "settings": [
+        {
+          "type": "article",
+          "id": "article",
+          "label": "Artikel"
+        },
         {
           "type": "image_picker",
           "id": "image",
-          "label": "Bild"
+          "label": "Alternatives Vorschaubild"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Alternatives Mobilbild"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Rubrik · DE"
+        },
+        {
+          "type": "text",
+          "id": "label_en",
+          "label": "Rubrik · EN"
         },
         {
           "type": "text",
           "id": "title",
-          "label": "Titel · DE"
+          "label": "Kurztitel (optional) · DE"
         },
         {
           "type": "text",
           "id": "title_en",
-          "label": "Titel · EN"
+          "label": "Kurztitel (optional) · EN"
         },
         {
-          "type": "text",
-          "id": "cta",
-          "label": "Linktext · DE"
+          "type": "textarea",
+          "id": "excerpt",
+          "label": "Kurztext (optional) · DE"
         },
         {
-          "type": "text",
-          "id": "cta_en",
-          "label": "Linktext · EN"
+          "type": "textarea",
+          "id": "excerpt_en",
+          "label": "Kurztext (optional) · EN"
         },
         {
-          "type": "url",
-          "id": "link",
-          "label": "Link · DE"
-        },
-        {
-          "type": "url",
-          "id": "link_en",
-          "label": "Link · EN"
+          "type": "checkbox",
+          "id": "title_in_image",
+          "label": "Titel steht bereits auf dem Bild",
+          "default": false,
+          "info": "Aktivieren, wenn das Bild den Titel bereits lesbar enthält. Sonst erscheint der Titel auf dem Bild als Text."
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "IQ Start · Wissen"
+      "name": "IQ Start · Magazin"
     }
   ]
 }

@@ -2,6 +2,7 @@
   Renders a product card with optional restock information.
   @param {product} product - The product to display.
   @param {boolean} [defer_primary_image] - Keep the primary image lazy when a banner precedes the grid.
+  @param {boolean} [defer_secondary_images] - Load additional collection-card images when the card is used.
 {% enddoc %}
 {%- liquid
   assign iq_card_title = product.title
@@ -230,6 +231,7 @@
                     >
                       {%- assign iq_img_widths = image_widths | append: ', ' | append: iq_img.width -%}
                       {%- capture iq_color_alt -%}{%- render 'iq-color-label', value: iq_value_name -%}{%- endcapture -%}
+                      {%- capture iq_deferred_image_markup -%}
                       {{
                         iq_img
                         | image_url: width: iq_img.width
@@ -242,6 +244,13 @@
                           alt: iq_color_alt,
                           is: 'image-lazy'
                       }}
+                      {%- endcapture -%}
+                      {%- if defer_secondary_images and iq_img_pos > 1 -%}
+                      <template data-iq-card-image>{{ iq_deferred_image_markup }}</template>
+                      <noscript>{{ iq_deferred_image_markup }}</noscript>
+                      {%- else -%}
+                      {{ iq_deferred_image_markup }}
+                      {%- endif -%}
                     </div>
                   {%- endif -%}
                   {%- break -%}
@@ -273,6 +282,7 @@
                   style="--aspect-ratio: {{ image_ratio }}"
                 >
                   {%- assign second_image_widths = image_widths | append: ', ' | append: second_image.width -%}
+                  {%- capture iq_deferred_image_markup -%}
                   {{
                     second_image
                     | image_url: width: second_image.width
@@ -283,6 +293,13 @@
                       sizes: image_sizes,
                       is: 'image-lazy'
                   }}
+                  {%- endcapture -%}
+                  {%- if defer_secondary_images -%}
+                  <template data-iq-card-image>{{ iq_deferred_image_markup }}</template>
+                  <noscript>{{ iq_deferred_image_markup }}</noscript>
+                  {%- else -%}
+                  {{ iq_deferred_image_markup }}
+                  {%- endif -%}
                 </div>
               {%- endunless -%}
             {%- else -%}
@@ -357,6 +374,9 @@
               assign tag_content = tag | split: '__' | last
               assign type = tag_content | split: '_' | first
               assign tag_name = tag_content | split: '_' | last
+              if tag_name == 'auch als E-Book'
+                assign tag_name = 'products.product.also_as_ebook' | t
+              endif
             -%}
             <span class="f-badge f-badge--{{ type }}">{{ tag_name }}</span>
           {%- endfor -%}

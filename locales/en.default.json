@@ -66,11 +66,11 @@
         "button": "Apply"
       },
       "free_shipping": {
-        "remaining_html": "Almost there! Only {{ remaining_amount }} left.",
-        "congratulations_html": "You are eligible for free shipping."
+        "remaining_html": "{{ remaining_amount }} to go for free shipping within Germany.",
+        "congratulations_html": "Free-shipping threshold for Germany reached."
       },
       "shipping_calculator": {
-        "title": "Estimate Shipping",
+        "title": "Calculate shipping",
         "tooltip": "Shipping & taxes will be calculated at checkout",
         "button": "Calculate",
         "error": "One or more errors occurred while retrieving the shipping rates:",
@@ -271,7 +271,8 @@
       "xr_button": "View in your space",
       "xr_button_label": "View in your space, loads item in augmented reality window",
       "include_taxes": "Tax included.",
-      "shipping_policy_html": "<a href=\"{{ link }}\">Shipping</a> calculated at checkout."
+      "shipping_policy_html": "<a href=\"{{ link }}\">Shipping</a> calculated at checkout.",
+      "also_as_ebook": "also as e-book"
     },
     "modal": {
       "label": "Media gallery"
@@ -395,7 +396,7 @@
       "estimated_total": "Estimated total",
       "new_estimated_total": "New estimated total",
       "note": "Order special instructions",
-      "checkout": "Check out",
+      "checkout": "Proceed to checkout",
       "empty": "Your cart is currently empty.",
       "cart_error": "There was an error while updating your cart. Please try again.",
       "cart_quantity_error_html": "You can only add {{ quantity }} of this item to your cart.",
@@ -727,7 +728,7 @@
       "hundesportbekleidung--hosen": "Trousers",
       "hundesportbekleidung--shirts-hoodies": "Shirts & hoodies",
       "hundesportbekleidung--accessoires": "Accessories",
-      "hundesport-jacken--winter": "Winter",
+      "hundesport-jacken--winter": "Coats & parkas",
       "hundesport-jacken--multifunktion": "Multifunction",
       "hundesport-jacken--training": "Training",
       "hundesport-jacken--regen-softshell": "Rain & softshell",
@@ -774,12 +775,24 @@
       "gutschein-fun-stuff--aufkleber": "Stickers",
       "bestseller--bekleidung": "Clothing",
       "bestseller--training": "Training",
-      "bestseller--bucher": "Books"
+      "bestseller--bucher": "Books",
+      "all--bekleidung": "Clothing",
+      "all--training": "Training",
+      "all--spielzeug": "Toys",
+      "all--futter": "Food",
+      "all--bucher": "Books",
+      "all--geschenke": "Gifts",
+      "all--jacken": "Jackets",
+      "all--westen": "Vests",
+      "all--hoodies": "Zip hoodies & hoodies",
+      "all--hosen": "Trousers",
+      "all--shirts-accessoires": "Shirts & accessories"
     },
     "german": "German",
     "english": "English",
     "book_language": "Book language",
-    "size": "Size"
+    "size": "Size",
+    "belt_length": "Belt length"
   },
   "iq_video": {
     "play": "Play video",

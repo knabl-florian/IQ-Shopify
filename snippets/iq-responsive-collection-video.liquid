@@ -42,10 +42,14 @@
   <iq-collection-video class="iq-collection-video__player" data-mobile-sources="{{ mobile_sources | escape }}" data-desktop-sources="{{ desktop_sources | escape }}">
     <div class="iq-collection-video__frame">
       {%- if desktop_poster != blank -%}
+      {%- capture poster_markup -%}
       <picture class="iq-collection-video__poster">
         {%- if mobile_poster != blank -%}<source media="(max-width:749px)" srcset="{{ mobile_poster | image_url: width: 750 }}">{%- endif -%}
         {{ desktop_poster | image_url: width: 1440 | image_tag: widths: '480,750,1000,1440', sizes: '(min-width:750px) 55vw, 100vw', alt: eyebrow, loading: 'lazy' }}
       </picture>
+      {%- endcapture -%}
+      <template data-iq-video-poster>{{ poster_markup }}</template>
+      <noscript>{{ poster_markup }}</noscript>
       {%- endif -%}
       <video class="iq-collection-video__film" playsinline controls preload="none" tabindex="-1" aria-label="{{ 'iq_video.film_label' | t | escape }}" hidden></video>
       <button class="iq-collection-video__play" type="button"><span aria-hidden="true">▶</span> {{ 'iq_video.play' | t }}</button>

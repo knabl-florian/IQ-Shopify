@@ -1,17 +1,34 @@
 {% doc %}
 Ordered product-group values for the current collection.
 {% enddoc %}
+{%- capture collection_key -%}{%- render 'iq-collection-key' -%}{%- endcapture -%}
+{%- assign collection_key = collection_key | strip -%}
 {% liquid
- case collection.handle
- when 'bestseller'
-  echo 'bestseller--bekleidung|bestseller--training|bestseller--bucher'
- when 'hundesportbekleidung'
+ case collection_key
+ when 'all'
+  echo 'all--jacken|all--westen|all--hoodies|all--hosen|all--shirts-accessoires|all--training|all--spielzeug|all--futter|all--bucher|all--geschenke'
+ when 'iq-produkte', 'bestseller', 'neuheiten', 'social-highlights'
+  assign generic_groups_available = false
+  assign group_filter = collection.filters | where: 'param_name', 'filter.p.m.custom.iq_product_groups' | first
+  for group_value in group_filter.values
+    assign group_prefix = group_value.value | split: '--' | first
+    if group_prefix == 'all'
+      assign generic_groups_available = true
+      break
+    endif
+  endfor
+  if generic_groups_available
+    echo 'all--bekleidung|all--training|all--spielzeug|all--futter|all--bucher|all--geschenke'
+  elsif collection_key == 'bestseller'
+    echo 'bestseller--bekleidung|bestseller--training|bestseller--bucher'
+  endif
+ when 'hundesportbekleidung', 'hundesportbekleidung-damen', 'hundesportbekleidung-herren'
  echo 'hundesportbekleidung--jacken|hundesportbekleidung--mantel|hundesportbekleidung--westen|hundesportbekleidung--hosen|hundesportbekleidung--shirts-hoodies|hundesportbekleidung--accessoires'
- when 'hundesport-jacken'
+ when 'hundesport-jacken', 'hundesport-jacken-damen', 'hundesport-jacken-herren'
  echo 'hundesport-jacken--winter|hundesport-jacken--multifunktion|hundesport-jacken--training|hundesport-jacken--regen-softshell|hundesport-jacken--k9'
  when 'hundesport-westen'
  echo 'hundesport-westen--hundesport|hundesport-westen--sommer|hundesport-westen--k9-dienst'
- when 'hundesport-t-shirts-hoodies'
+ when 'hundesport-t-shirts-hoodies', 't-shirt-pullover-frauen', 'hundesport-hoodies-herren'
  echo 'hundesport-t-shirts-hoodies--hoodies|hundesport-t-shirts-hoodies--zip-hoodies|hundesport-t-shirts-hoodies--trainingsshirts|hundesport-t-shirts-hoodies--t-shirts|hundesport-t-shirts-hoodies--tanktops'
  when 'hundesport-zubehoer-damen'
  echo 'hundesport-zubehoer-damen--caps-mutzen|hundesport-zubehoer-damen--taschen-gurtel|hundesport-zubehoer-damen--socken|hundesport-zubehoer-damen--clicker|hundesport-zubehoer-damen--pflege-ersatzteile|hundesport-zubehoer-damen--schlusselanhanger'

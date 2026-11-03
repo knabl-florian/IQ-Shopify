@@ -516,3 +516,8 @@ body.collection-template :is(.iq-hs-2,.iq-hs-3,.iq-hs-4,.iq-hs-5,.iq-hs-6) .copy
 
 body.collection-template.iq-collection-standard #ProductsList .product-card .product-card__title{min-height:2.7em!important}
 body.collection-template.iq-collection-standard #ProductsList .product-card .jdgm-preview-badge{min-height:18px}
+
+body.collection-template #ProductGridWrapper.show-toolbar {
+  margin-block-start: 0 !important;
+  margin-top: 0 !important;
+}

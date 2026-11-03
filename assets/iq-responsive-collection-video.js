@@ -7,6 +7,16 @@ if (!customElements.get('iq-collection-video')) {
       this.button = this.querySelector('button');
       this.video = this.querySelector('video');
       this.media = window.matchMedia('(max-width:749px)');
+      if (this.querySelector('template[data-iq-video-poster]')) {
+        if ('IntersectionObserver' in window) {
+          this.posterObserver = new IntersectionObserver(entries => {
+            if (entries.some(entry => entry.isIntersecting)) this.loadPoster();
+          }, { rootMargin: '400px 0px' });
+          this.posterObserver.observe(this);
+        } else {
+          this.loadPoster();
+        }
+      }
       this.button.addEventListener('click', () => this.play());
       this.onResize = () => {
         if (!this.video.currentSrc) return;
@@ -20,7 +30,16 @@ if (!customElements.get('iq-collection-video')) {
       };
       this.media.addEventListener('change', this.onResize);
     }
-    disconnectedCallback() { this.media?.removeEventListener('change', this.onResize); }
+    disconnectedCallback() {
+      this.media?.removeEventListener('change', this.onResize);
+      this.posterObserver?.disconnect();
+    }
+    loadPoster() {
+      const template = this.querySelector('template[data-iq-video-poster]');
+      if (!template) return;
+      template.replaceWith(template.content.cloneNode(true));
+      this.posterObserver?.disconnect();
+    }
     async play() {
       const sources = JSON.parse(this.media.matches ? this.dataset.mobileSources : this.dataset.desktopSources).filter(s => s.mime_type === 'video/mp4').sort((a,b) => a.width - b.width);
       const width = Math.min(this.video.parentElement.clientWidth * Math.min(devicePixelRatio,2),1280);

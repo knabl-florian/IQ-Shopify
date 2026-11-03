@@ -1,6 +1,8 @@
 {% doc %}
 Native product groups, filtered on Shopify across all result pages.
 {% enddoc %}
+{%- capture collection_key -%}{%- render 'iq-collection-key' -%}{%- endcapture -%}
+{%- assign collection_key = collection_key | strip -%}
 {%- liquid
  assign group_filter = collection.filters | where: 'param_name', 'filter.p.m.custom.iq_product_groups' | first
  capture group_order
@@ -8,7 +10,7 @@ Native product groups, filtered on Shopify across all result pages.
  endcapture
  assign group_order = group_order | strip | split: '|'
  assign single_select = false
- if collection.handle == 'bestseller'
+ if collection_key == 'bestseller'
   assign single_select = true
  endif
 -%}

@@ -5,7 +5,7 @@
     assign en = true
   endif
 -%}
-<iq-home-cards><section class="iqh iqh-wrap iqh-athletes iq28-athletes"><header class="iqh-head"><p class="iqh-eyebrow">{% if en and section.settings.eyebrow_en != blank %}{{ section.settings.eyebrow_en | escape }}{% else %}{{ section.settings.eyebrow | escape }}{% endif %}</p><h2 class="iqh-heading">{% if en and section.settings.heading_en != blank %}{{ section.settings.heading_en | escape }}{% else %}{{ section.settings.heading | escape }}{% endif %}</h2></header><p class="iqh-intro">{% if en and section.settings.intro_en != blank %}{{ section.settings.intro_en | escape }}{% else %}{{ section.settings.intro | escape }}{% endif %}</p><div class="iq28-controls"><button type="button" data-iq-step="-1" aria-label="{% if en %}Previous card{% else %}Vorherige Karte{% endif %}">←</button><button type="button" data-iq-step="1" aria-label="{% if en %}Next card{% else %}Nächste Karte{% endif %}">→</button></div><div data-iq-track tabindex="0" aria-label="IQ Athletes" class="iqh-athlete-grid">{% for block in section.blocks %}<div class="iqh-athlete" {{ block.shopify_attributes }}>{% if block.settings.image != blank %}{{ block.settings.image | image_url: width: 1000 | image_tag: widths: '360,540,750,1000', sizes: '(min-width:750px) 42vw, 85vw', loading: 'lazy', alt: block.settings.name }}{% endif %}<div class="iqh-athlete-caption"><h3>{{ block.settings.name | escape }}</h3><p>{% if en and block.settings.role_en != blank %}{{ block.settings.role_en | escape }}{% else %}{{ block.settings.role | escape }}{% endif %}</p>{% if block.settings.quote != blank or block.settings.quote_en != blank %}<blockquote>{% if en and block.settings.quote_en != blank %}{{ block.settings.quote_en | escape }}{% else %}{{ block.settings.quote | escape }}{% endif %}</blockquote>{% endif %}</div></div>{% endfor %}</div>{% if section.settings.team_link != blank %}<a class="iqh-pill iqh-team-link" href="{% if en and section.settings.team_link_en != blank %}{{ section.settings.team_link_en }}{% else %}{{ section.settings.team_link }}{% endif %}">{% if en %}Meet the IQ team{% else %}Das IQ Team kennenlernen{% endif %} →</a>{% endif %}</section></iq-home-cards>
+<iq-home-cards><section class="iqh iqh-wrap iqh-athletes iq28-athletes{% if section.settings.full_portraits %} iqh-athletes--portraits{% endif %}" style="--iqh-athlete-height:{{ section.settings.image_height | default: 280 }}px;--iqh-athlete-height-mobile:{{ section.settings.image_height_mobile | default: 260 }}px"><header class="iqh-head"><p class="iqh-eyebrow">{% if en and section.settings.eyebrow_en != blank %}{{ section.settings.eyebrow_en | escape }}{% else %}{{ section.settings.eyebrow | escape }}{% endif %}</p><h2 class="iqh-heading">{% if en and section.settings.heading_en != blank %}{{ section.settings.heading_en | escape | replace: 'With IQ.', '<span class="iqh-nowrap">With IQ.</span>' }}{% else %}{{ section.settings.heading | escape | replace: 'Mit IQ.', '<span class="iqh-nowrap">Mit IQ.</span>' }}{% endif %}</h2></header><p class="iqh-intro">{% if en and section.settings.intro_en != blank %}{{ section.settings.intro_en | escape }}{% else %}{{ section.settings.intro | escape }}{% endif %}</p><div data-iq-track tabindex="0" aria-label="IQ Athletes" class="iqh-athlete-grid">{% for block in section.blocks %}<div class="iqh-athlete" style="--iqh-person-scale:{{ block.settings.image_scale | default: 100 | divided_by: 100.0 }}" {{ block.shopify_attributes }}>{% if block.settings.image != blank %}{{ block.settings.image | image_url: width: 1000 | image_tag: widths: '360,540,750,1000', sizes: '(min-width:1360px) 416px, (min-width:750px) 30vw, 74vw', loading: 'lazy', alt: block.settings.name }}{% endif %}<div class="iqh-athlete-caption"><h3>{{ block.settings.name | escape }}</h3><p>{% if en and block.settings.role_en != blank %}{{ block.settings.role_en | escape }}{% else %}{{ block.settings.role | escape }}{% endif %}</p>{% if block.settings.quote != blank or block.settings.quote_en != blank %}<blockquote>{% if en and block.settings.quote_en != blank %}{{ block.settings.quote_en | escape }}{% else %}{{ block.settings.quote | escape }}{% endif %}</blockquote>{% endif %}</div></div>{% endfor %}</div><div class="iq28-controls"><button type="button" data-iq-step="-1" aria-label="{% if en %}Previous athlete{% else %}Vorheriger Athlete{% endif %}">←</button><button type="button" data-iq-step="1" aria-label="{% if en %}Next athlete{% else %}Nächster Athlete{% endif %}">→</button></div>{% if section.settings.team_link != blank %}<a class="iqh-pill iqh-team-link" href="{% if en and section.settings.team_link_en != blank %}{{ section.settings.team_link_en }}{% else %}{{ section.settings.team_link }}{% endif %}">{% if en %}Meet the IQ team{% else %}Das IQ Team kennenlernen{% endif %} →</a>{% endif %}</section></iq-home-cards>
 {% schema %}
 {
   "name": "IQ Start · Athletes",
@@ -49,6 +49,34 @@
       "type": "url",
       "id": "team_link_en",
       "label": "IQ Team Seite · EN"
+    },
+    {
+      "type": "range",
+      "id": "image_height",
+      "label": "Bildhöhe Desktop",
+      "min": 220,
+      "max": 400,
+      "step": 10,
+      "unit": "px",
+      "default": 280,
+      "info": "Gilt bei deaktiviertem Hochformat. Im Hochformat ergibt sich die Höhe aus der Kartenbreite."
+    },
+    {
+      "type": "range",
+      "id": "image_height_mobile",
+      "label": "Bildhöhe Mobil",
+      "min": 220,
+      "max": 400,
+      "step": 10,
+      "unit": "px",
+      "default": 260,
+      "info": "Gilt bei deaktiviertem Hochformat. Im Hochformat ergibt sich die Höhe aus der Kartenbreite."
+    },
+    {
+      "type": "checkbox",
+      "id": "full_portraits",
+      "label": "Hochformat mit mehr Bildinhalt",
+      "default": true
     }
   ],
   "max_blocks": 12,
@@ -86,6 +114,17 @@
           "type": "textarea",
           "id": "quote_en",
           "label": "Approved original quote · EN"
+        },
+        {
+          "type": "range",
+          "id": "image_scale",
+          "label": "Bildzoom ab unterem Rand",
+          "min": 100,
+          "max": 125,
+          "step": 1,
+          "unit": "%",
+          "default": 100,
+          "info": "Schneidet vor allem leeren Raum oben weg. Köpfe und Bildunterkante im Vorschaubild kontrollieren."
         }
       ]
     }
@@ -98,5 +137,6 @@
 }
 {% endschema %}
 {% javascript %}
-if (!customElements.get('iq-home-cards')) {customElements.define('iq-home-cards',class extends HTMLElement{connectedCallback(){if(this.bound)return;this.bound=true;this.addEventListener('click',e=>{const b=e.target.closest('[data-iq-step]');if(!b)return;const t=this.querySelector('[data-iq-track]');const card=t.firstElementChild;if(!card)return;t.scrollBy({left:Number(b.dataset.iqStep)*(card.getBoundingClientRect().width+24),behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});});}});}
+if (!customElements.get('iq-home-cards')) {customElements.define('iq-home-cards',class extends HTMLElement{connectedCallback(){if(this.bound)return;this.bound=true;this.addEventListener('click',e=>{const b=e.target.closest('[data-iq-step]');if(!b)return;const t=this.querySelector('[data-iq-track]');const card=t.firstElementChild;if(!card)return;t.scrollBy({left:Number(b.dataset.iqStep)*(card.getBoundingClientRect().width+(parseFloat(getComputedStyle(t).columnGap)||0)),behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});});}});}
 {% endjavascript %}
+

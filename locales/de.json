@@ -54,25 +54,25 @@
       "reset": "Suchbegriff löschen"
     },
     "cart": {
-      "title": "Ihr Warenkorb",
+      "title": "Dein Warenkorb",
       "view": "Warenkorb ansehen ({{ count }})",
       "view_empty_cart": "Warenkorb ansehen",
-      "item_added": "Artikel wurde Ihrem Warenkorb hinzugefügt",
+      "item_added": "Artikel wurde Deinem Warenkorb hinzugefügt",
       "remove": "Entfernen",
-      "continue_shopping": "Mit dem Einkaufen fortfahren",
+      "continue_shopping": "Weiter einkaufen",
       "note": {
         "title": "Bestellhinweis",
-        "caption": "Bestellen Sie spezielle Anweisungen",
+        "caption": "Deine Hinweise zur Bestellung (optional)",
         "button": "Anwenden"
       },
       "free_shipping": {
-        "remaining_html": "Fast geschafft! Nur noch {{ remaining_amount }} fehlen.",
-        "congratulations_html": "Sie haben Anspruch auf kostenlosen Versand."
+        "remaining_html": "Noch {{ remaining_amount }} bis zum kostenlosen Versand in Deutschland.",
+        "congratulations_html": "Versandfreigrenze für Deutschland erreicht."
       },
       "shipping_calculator": {
-        "title": "Kostenvoranschlag für den Versand",
+        "title": "Versandkosten berechnen",
         "tooltip": "Versand und Steuern werden an der Kasse berechnet",
-        "button": "Berechnung",
+        "button": "Berechnen",
         "error": "Beim Abrufen der Versandkosten sind ein oder mehrere Fehler aufgetreten:",
         "not_found": "Leider versenden wir nicht an Ihre Adresse.",
         "one_result": "Für Ihre Adresse gibt es einen Versandtarif:",
@@ -271,7 +271,8 @@
       "xr_button": "Sehen Sie in Ihrem Raum",
       "xr_button_label": "In Ihrem Raum anzeigen, Element im Augmented-Reality-Fenster laden",
       "include_taxes": "",
-      "shipping_policy_html": "<a href=\"{{ link }}\">Versand</a> wird beim Bezahlvorgang berechnet."
+      "shipping_policy_html": "<a href=\"{{ link }}\">Versand</a> wird beim Bezahlvorgang berechnet.",
+      "also_as_ebook": "auch als E-Book"
     },
     "modal": {
       "label": "Medien Gallerie"
@@ -389,16 +390,16 @@
       }
     },
     "cart": {
-      "title": "Ihr Warenkorb",
+      "title": "Dein Warenkorb",
       "caption": "Artikel im Warenkorb",
       "remove_title": "{{ title }} entfernen",
-      "estimated_total": "Geschätzter Gesamtwert",
+      "estimated_total": "Geschätzte Summe",
       "new_estimated_total": "Neue geschätzte Gesamtsumme",
-      "note": "Bestellen Sie spezielle Anweisungen",
-      "checkout": "Kasse",
-      "empty": "Ihr Warenkorb ist derzeit leer.",
-      "cart_error": "Beim Aktualisieren Ihres Warenkorbs ist ein Fehler aufgetreten. Bitte versuche es erneut.",
-      "cart_quantity_error_html": "Sie können nur {{ quantity }} dieses Artikels in Ihren Warenkorb legen.",
+      "note": "Deine Hinweise zur Bestellung",
+      "checkout": "Zur Kasse",
+      "empty": "Dein Warenkorb ist noch leer.",
+      "cart_error": "Beim Aktualisieren Deines Warenkorbs ist ein Fehler aufgetreten. Bitte versuche es erneut.",
+      "cart_quantity_error_html": "Du kannst nur {{ quantity }} Stück dieses Artikels in Deinen Warenkorb legen.",
       "taxes_and_shipping_policy_at_checkout_html": "Steuern und <a href=\"{{ link }}\" class=\"btn--link\">Versand</a> werden beim Bezahlvorgang berechnet",
       "taxes_included_but_shipping_at_checkout": "Die Mehrwertsteuer ist inbegriffen und der Versand wird an der Kasse berechnet",
       "taxes_included_and_shipping_policy_html": "Steuern inklusive. <a href=\"{{ link }}\" class=\"btn--link\">Versand</a> und Rabatte werden an der Kasse berechnet.",
@@ -702,7 +703,7 @@
       "hundesportbekleidung--hosen": "Hosen",
       "hundesportbekleidung--shirts-hoodies": "Shirts & Hoodies",
       "hundesportbekleidung--accessoires": "Accessoires",
-      "hundesport-jacken--winter": "Winter",
+      "hundesport-jacken--winter": "Mäntel & Parkas",
       "hundesport-jacken--multifunktion": "Multifunktion",
       "hundesport-jacken--training": "Training",
       "hundesport-jacken--regen-softshell": "Regen & Softshell",
@@ -749,12 +750,24 @@
       "gutschein-fun-stuff--aufkleber": "Aufkleber",
       "bestseller--bekleidung": "Bekleidung",
       "bestseller--training": "Training",
-      "bestseller--bucher": "Bücher"
+      "bestseller--bucher": "Bücher",
+      "all--bekleidung": "Bekleidung",
+      "all--training": "Training",
+      "all--spielzeug": "Spielzeug",
+      "all--futter": "Futter",
+      "all--bucher": "Bücher",
+      "all--geschenke": "Geschenke",
+      "all--jacken": "Jacken",
+      "all--westen": "Westen",
+      "all--hoodies": "Zip-/Hoodies",
+      "all--hosen": "Hosen",
+      "all--shirts-accessoires": "Shirts & Accessoires"
     },
     "german": "Deutsch",
     "english": "Englisch",
     "book_language": "Buchsprache",
-    "size": "Größe"
+    "size": "Größe",
+    "belt_length": "Gürtellänge"
   },
   "iq_video": {
     "play": "Video abspielen",

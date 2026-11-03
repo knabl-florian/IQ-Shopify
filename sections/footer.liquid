@@ -1,3 +1,9 @@
+{% if request.page_type == 'index' %}
+<style>
+body #shopify-section-{{ section.id }} :is(.footer,.footer__content-top,.footer__content-bottom,.footer__blocks-wrapper,.footer__content-bottom-wrapper,.footer__localization,.footer__column,.footer__column--info){background-color:#171717!important}
+body #shopify-section-{{ section.id }} .footer *{--color-background:23,23,23}
+</style>
+{% endif %}
 {% comment %}theme-check-disable UndefinedObject{% endcomment %}
 <script src="{{ 'footer.js' | asset_url }}" defer="defer"></script>
 {%- liquid
@@ -224,6 +230,17 @@
                                 </a>
                               </li>
                             {%- endfor -%}
+                            {%- if block.settings.show_all_products and block.settings.all_products_collection != blank -%}
+                              {%- liquid
+                                assign all_products_label = block.settings.all_products_label
+                                if request.locale.iso_code == 'en'
+                                  assign all_products_label = block.settings.all_products_label_en
+                                endif
+                              -%}
+                              {%- if all_products_label != blank -%}
+                                <li><a href="{{ block.settings.all_products_collection.url }}" class="reversed-link">{{ all_products_label | escape }}</a></li>
+                              {%- endif -%}
+                            {%- endif -%}
                             {%- if block.settings.show_iq_outlet -%}
                               <li><a href="{{ collections['sale'].url }}" class="reversed-link">{{ 'iq_outlet.link' | t }}</a></li>
                             {%- endif -%}
@@ -499,6 +516,29 @@
           "id": "show_iq_outlet",
           "label": "Show IQ Outlet link",
           "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "show_all_products",
+          "label": "Link zu allen Produkten anzeigen",
+          "default": false
+        },
+        {
+          "type": "collection",
+          "id": "all_products_collection",
+          "label": "Alle Produkte – Ziel-Collection"
+        },
+        {
+          "type": "text",
+          "id": "all_products_label",
+          "label": "Alle Produkte – Linktext Deutsch",
+          "default": "Alle Produkte"
+        },
+        {
+          "type": "text",
+          "id": "all_products_label_en",
+          "label": "Alle Produkte – Linktext Englisch",
+          "default": "All products"
         }
       ]
     },

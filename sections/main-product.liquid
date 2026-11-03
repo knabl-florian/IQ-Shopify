@@ -499,7 +499,19 @@
   {%- endif -%}
 
   <script type="application/ld+json">
-    {{ product | structured_data }}
+    {%- if product.id == 10709813788936 -%}
+      {%- assign iq_vest_structured_data = product | structured_data -%}
+      {{ iq_vest_structured_data
+        | remove: '★★★★★ 4,94★ aus 235 Bewertungen (Stand Mai 2026)'
+        | remove: '★★★★★ 4.94 from 235 reviews (as of May 2026)'
+        | remove: '\u0026#9733;\u0026#9733;\u0026#9733;\u0026#9733;\u0026#9733; 4.94 from 235 reviews (as of May 2026)'
+        | remove: '4.94 from 235 reviews (as of May 2026)'
+        | replace: 'Alle 235 Bewertungen lesen', 'Alle Bewertungen lesen'
+        | replace: 'Read all 235 reviews', 'Read all reviews'
+      }}
+    {%- else -%}
+      {{ product | structured_data }}
+    {%- endif -%}
   </script>
 </product-info>
 

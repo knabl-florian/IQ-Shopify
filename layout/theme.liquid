@@ -74,7 +74,11 @@
     {% endif %}
 
     {%- liquid
-      render 'meta-tags'
+      if request.page_type == 'collection' and collection.handle == 'all'
+        render 'meta-tags', iq_seo_title: page_title, iq_seo_description: page_description
+      else
+        render 'meta-tags'
+      endif
       if request.page_type == 'product'
         render 'iq-product-image-preload'
       endif

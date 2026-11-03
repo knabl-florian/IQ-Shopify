@@ -47,6 +47,12 @@
 -%}
 
 {% style %}
+  #shopify-section-{{ section.id }} .iq-header-search { display:flex; align-items:center; width:130px; height:34px; border:1px solid currentColor; border-radius:99px; overflow:hidden; }
+  #shopify-section-{{ section.id }} .iq-header-search input { width:100%; min-width:0; padding:0 0 0 12px; border:0; background:transparent; color:inherit; font:inherit; font-size:14px; }
+  #shopify-section-{{ section.id }} .iq-header-search input::placeholder { color:inherit; opacity:1; }
+  #shopify-section-{{ section.id }} .iq-header-search button { display:flex; align-items:center; justify-content:center; flex:0 0 32px; height:32px; padding:6px; border:0; background:transparent; color:inherit; }
+  #shopify-section-{{ section.id }} .iq-header-search:focus-within { outline:2px solid currentColor; outline-offset:3px; }
+
   #shopify-section-{{ section.id }} {
     --section-padding-top: {{ section.settings.padding_top }}px;
     --section-padding-bottom: {{ section.settings.padding_bottom }}px;
@@ -221,7 +227,12 @@
 
   <div class="header__icons header__icons--right flex justify-end z-1">
     <div class="header__buttons flex items-center justify-center">
-      <div class="rps-csb-target-element rps-csb-target-element-mobile hidden lg:block"></div>
+      <div class="rps-csb-target-element rps-csb-target-element-mobile hidden lg:block">
+        <form action="{{ routes.search_url }}" method="get" role="search" class="iq-header-search">
+          <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.search' | t }}" aria-label="{{ 'general.search.search' | t }}" autocomplete="off">
+          <button type="submit" aria-label="{{ 'general.search.search' | t }}">{%- render 'icon-search', size: 'small' -%}</button>
+        </form>
+      </div>
       <a
         href="{{ routes.search_url }}"
         class="search-drawer-button flex items-center justify-center{% if header_layout == 'center-split' %} lg:hidden{% endif %}"
