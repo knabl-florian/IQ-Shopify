@@ -8,7 +8,7 @@
 {% if iq_allround_mobile != blank and iq_allround_desktop != blank %}
 <section class="iq-collection-feature iq-collection-feature--right">
 <picture>
-<source media="(max-width:749px)" width="1080" height="1200" sizes="100vw" srcset="{{ iq_allround_mobile | image_url: width: 540 }} 540w, {{ iq_allround_mobile | image_url: width: 1080 }} 1080w">
+<source media="(max-width:749px)" width="1080" height="1200" sizes="calc(100vw - 30px)" srcset="{{ iq_allround_mobile | image_url: width: 360 }} 360w, {{ iq_allround_mobile | image_url: width: 540 }} 540w, {{ iq_allround_mobile | image_url: width: 750 }} 750w, {{ iq_allround_mobile | image_url: width: 900 }} 900w, {{ iq_allround_mobile | image_url: width: 1080 }} 1080w">
 {{ iq_allround_desktop | image_url: width: 1920 | image_tag: widths: '750, 1200, 1600, 1920', sizes: '(min-width:1440px) 1340px, (min-width:1200px) calc(100vw - 100px), (min-width:750px) calc(100vw - 48px), calc(100vw - 30px)', loading: 'lazy', alt: block.settings.text_3 }}
 </picture>
 {% if request.locale.iso_code == 'en' %}

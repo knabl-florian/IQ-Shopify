@@ -22,6 +22,24 @@
 >
   <head>
     <meta charset="utf-8">
+{% if request.page_type == 'product' %}
+<script id="iq-meta-product-auto-config">
+(() => {
+  let configured = false;
+  const apply = () => {
+    if (configured || typeof window.fbq !== 'function' || !window.fbq.callMethod) return;
+    window.fbq('set', 'autoConfig', false, '917035734469701');
+    configured = true;
+    document.removeEventListener('load', onLoad, true);
+  };
+  const onLoad = event => {
+    if (event.target instanceof HTMLScriptElement && /^https:\/\/connect\.facebook\.net\/[^/]+\/fbevents\.js(?:\?|$)/.test(event.target.src)) apply();
+  };
+  document.addEventListener('load', onLoad, true);
+  apply();
+})();
+</script>
+{% endif %}
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
      <meta name="theme-color" content="">

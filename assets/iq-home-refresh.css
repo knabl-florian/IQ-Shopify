@@ -149,3 +149,98 @@ body:has(.iqh-hero-editorial) .footer *{--color-background:23,23,23}
 body:has(.iqh-hero-editorial) header.header{background:#171717!important}
 
 
+
+.iqh.iq27-reviews .iq27-review{box-shadow:none;border:0;border-top:1px solid #DCDBD7}
+.iqh.iq27-reviews .iq27-review:before,.iqh.iq27-reviews .iq27-review:after{display:none}
+.iqh.iq27-reviews .iq27-review-track{grid-auto-columns:calc((100% - 48px)/3)}
+.iqh.iq27-reviews .iq28-controls{margin-top:8px}
+@media(max-width:749px){
+[id$="__iq_home_knowledge"] .iqh-books-strip{margin-inline:-20px;margin-top:24px}
+[id$="__iq_home_knowledge"] .iqh-books-copy{padding-inline:20px}
+[id$="__iq_home_gifts"] .iqh-feature-wrap,[id$="__iq_home_founders"] .iqh-feature-wrap{padding-inline:0;padding-top:0;padding-bottom:24px}
+[id$="__iq_home_gifts"] .iqh-feature-copy,[id$="__iq_home_founders"] .iqh-feature-copy{padding-inline:20px}
+[id$="__iq_home_athletes"] .iqh.iq28-athletes{max-width:none;padding-inline:20px;padding-top:28px;padding-bottom:28px}
+[id$="__iq_home_athletes"] .iqh-athlete-grid{margin-inline:-20px;padding-inline:20px;scroll-padding-inline:20px}
+.iqh.iq27-reviews{padding-top:8px;padding-bottom:24px}
+.iqh.iq27-reviews .iq27-review-track{grid-auto-columns:88%;gap:16px;margin-right:-20px;padding-right:20px}
+.iqh.iq27-reviews .iq27-review{padding:20px 16px;min-height:0}
+.iqh.iq27-reviews .iq27-review blockquote{font-size:17px}
+}
+
+@media(max-width:749px){[id$="__iq_home_athletes"]{max-width:none;padding-inline:0}}
+
+.iqh-blog-edit{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(0,1fr);grid-template-rows:1fr 1fr;gap:0 36px;margin-top:24px;align-items:stretch}
+.iqh-blog-edit-photo{grid-column:1;grid-row:1/3;display:block;min-width:0;overflow:hidden}
+.iqh-blog-edit-photo picture{display:block;height:100%}
+.iqh-blog-edit-photo img{width:100%;height:100%;aspect-ratio:1.9;object-fit:cover;object-position:center}
+.iqh-blog-edit-story{min-width:0;grid-column:2;display:flex;align-items:center;padding-block:24px}
+.iqh-blog-edit-story+.iqh-blog-edit-story{border-top:1px solid #DCDBD7}
+.iqh .iqh-blog-edit-story h3{font:700 21px/1.35 Archivo,sans-serif;text-transform:none;letter-spacing:0;max-width:25ch}
+.iqh .iqh-blog-edit-story--lead h3{font-size:26px}
+.iqh-blog-edit-story a:hover{color:#A51D1B}
+.iqh-blog-edit+.iqh-books-strip{margin-top:48px}
+@media(max-width:749px){
+.iqh-blog-edit{grid-template-columns:minmax(0,1fr);grid-template-rows:auto;gap:0;margin-top:20px}
+.iqh-blog-edit-photo{grid-column:1;grid-row:auto}
+.iqh-blog-edit-photo img{aspect-ratio:1.9;height:auto}
+.iqh-blog-edit-story{grid-column:1;padding:18px 0}
+.iqh .iqh-blog-edit-story h3{font-size:18px;max-width:none}
+.iqh .iqh-blog-edit-story--lead h3{font-size:21px}
+.iqh-blog-edit+.iqh-books-strip{margin-top:32px}
+}
+
+.iqh-blog-edit{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:auto;gap:24px}
+.iqh-blog-card{min-width:0}
+.iqh-blog-card-media{position:relative;aspect-ratio:1;overflow:hidden;background:#F3F3F1}
+.iqh-blog-card-media img{display:block;width:100%;height:100%;object-fit:contain}
+.iqh-blog-card--event .iqh-blog-card-media{background:#171717}.iqh-blog-card--event .iqh-blog-card-media img{position:absolute;top:50%;width:314%;max-width:none;height:auto;margin-left:-115%;transform:translateY(-50%)}
+.iqh .iqh-blog-card h3:not(.iqh-sr-only){position:absolute;inset:auto 0 0;margin:0;padding:44px 24px 20px;background:linear-gradient(transparent,rgba(23,23,23,.88));color:#FFFFFF;font:700 23px/1.25 Archivo,sans-serif;text-transform:none;letter-spacing:0}
+@media(max-width:749px){.iqh-blog-edit{grid-template-columns:1fr;gap:20px}.iqh .iqh-blog-card h3:not(.iqh-sr-only){font-size:21px;padding:40px 20px 18px}}
+
+/* Homepage desktop: full-width imagery and modest reading gutters. */
+@media(min-width:750px){
+[id*="__iq_home_"] .iqh-wrap{max-width:none}
+[id$="__iq_home_gifts"] .iqh-feature-wrap,
+[id$="__iq_home_founders"] .iqh-feature-wrap{padding-inline:0}
+[id$="__iq_home_knowledge"] .iqh-books-strip{margin-inline:-24px}
+[id$="__iq_home_athletes"]{width:100%;max-width:none;padding-inline:0}
+[id$="__iq_home_athletes"] .iqh.iq28-athletes{width:100%;max-width:none;padding-inline:24px}
+.iqh .iqh-feature--founders_compact .iqh-feature-media{height:clamp(340px,28vw,640px)}
+}
+@media(min-width:990px){
+[id$="__iq_home_knowledge"] .iqh-books-strip{margin-inline:-32px}
+[id$="__iq_home_athletes"] .iqh.iq28-athletes{padding-inline:32px}
+}
+
+/* Homepage mobile: full-width feature imagery, inset reading copy. */
+@media(max-width:749px){
+[id$="__iq_home_coat"] .iqh-feature-wrap,
+[id$="__iq_home_snacks"] .iqh-feature-wrap{padding-inline:0}
+[id$="__iq_home_coat"] .iqh-zip-head{padding-inline:20px}
+[id$="__iq_home_snacks"] .iqh-feature-copy{padding-inline:20px}
+[id$="__iq_home_knowledge"] .iqh-blog-edit{margin-inline:-20px}
+}
+
+/* Books precede the blog, with a clear editorial pause. */
+[id$="__iq_home_knowledge"] .iqh-books-strip{margin-top:0;margin-bottom:40px}
+@media(max-width:749px){[id$="__iq_home_knowledge"] .iqh-books-strip{margin-bottom:32px}}
+
+/* Mobile blog preview: two articles in a native horizontal carousel. */
+@media(max-width:749px){
+[id$="__iq_home_knowledge"] .iqh-blog-edit{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:86%;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;padding-bottom:10px;scrollbar-width:thin}
+[id$="__iq_home_knowledge"] .iqh-blog-card{scroll-snap-align:start}
+[id$="__iq_home_knowledge"] .iqh-blog-card>a{display:block}
+}
+
+/* Snack focus: white product surface and compact desktop rhythm. */
+[id$="__iq_home_snacks"] .iqh-feature--snacks,
+[id$="__iq_home_snacks"] .iqh-focus-product,
+[id$="__iq_home_snacks"] .iqh-focus-product-image{background:#FFFFFF}
+@media(min-width:750px){
+[id$="__iq_home_snacks"] .iqh-feature--snacks{grid-template-columns:40% minmax(0,1fr)}
+[id$="__iq_home_snacks"] .iqh-feature-copy{padding:28px 32px}
+[id$="__iq_home_snacks"] .iqh-heading{font-size:clamp(28px,2.4vw,38px)}
+[id$="__iq_home_snacks"] .iqh-body{margin-top:14px}
+[id$="__iq_home_snacks"] .iqh-feature-copy>.iqh-pill{margin-top:18px}
+[id$="__iq_home_snacks"] .iqh-focus-products{max-width:420px;gap:24px;margin-top:20px;padding-top:18px}
+}

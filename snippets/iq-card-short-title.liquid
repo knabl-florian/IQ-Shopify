@@ -115,5 +115,47 @@ Outputs the short product-card title without altering product data.
   elsif custom_card_title != blank
     assign title = custom_card_title
   endif
+  unless request.page_type == 'product'
+    case title
+      when 'Buch: Gemeinsam erfolgreich · Unterordnung'
+        assign title = 'Buch · Unterordnung'
+      when 'Buch: Gemeinsam erfolgreich · Schutzdienst'
+        assign title = 'Buch · Schutzdienst'
+      when 'Buch: Gemeinsam erfolgreich · Begleithundprüfung'
+        assign title = 'Buch · Begleithundprüfung'
+      when 'IQ Diensthundeführerweste Blau'
+        assign title = 'IQ K9 Weste Blau'
+      when 'IQ K9 Diensthundeführerweste Pro Schwarz'
+        assign title = 'IQ K9 Weste Pro Schwarz'
+      when 'IQ Mesh Cap Black/White für Hundesport & Training'
+        assign title = 'IQ Mesh Cap Schwarz/Weiß'
+      when 'IQ Mesh Cap Schwarz/Rot für Hundesport & Training'
+        assign title = 'IQ Mesh Cap Schwarz/Rot'
+      when 'IQ Unisex T-Shirt "Dogsport - More than a Passion"'
+        assign title = 'IQ T-Shirt Unisex »Passion«'
+      when 'IQ Damen T-Shirt "Dogsport - More than a Passion"'
+        assign title = 'IQ T-Shirt Damen »Passion«'
+      when "IQ Training Hoodie 'Train Hard Ice' Blue Limited Edition"
+        assign title = 'IQ Hoodie »Train Hard Ice«'
+      when 'Book – Successful Together (Obedience) in English'
+        assign title = 'Book · Obedience (English)'
+      when 'Book - Successful Together (Protection) in English'
+        assign title = 'Book · Protection (English)'
+      when 'IQ Tactical K9 Out Stick: Stainless Steel Break Stick'
+        assign title = 'IQ Tactical K9 Out Stick'
+      when "IQ Unisex T-Shirt 'Dogsport — More than a Passion'"
+        assign title = 'IQ T-Shirt Unisex »Passion«'
+      when "IQ Women's T-Shirt 'Dogsport — More than a Passion'"
+        assign title = 'IQ T-Shirt Women »Passion«'
+      when 'IQ K9 Handler Vest Pro Black'
+        assign title = 'IQ K9 Vest Pro Black'
+      when 'IQ K9 Handler Vest Blue'
+        assign title = 'IQ K9 Vest Blue'
+      when 'IQ Mesh Cap Black/White for Dog Sports & Training'
+        assign title = 'IQ Mesh Cap Black/White'
+      when 'IQ Mesh Cap Black/Red for Dog Sports & Training'
+        assign title = 'IQ Mesh Cap Black/Red'
+    endcase
+  endunless
   echo title
 -%}

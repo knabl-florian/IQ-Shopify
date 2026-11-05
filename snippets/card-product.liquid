@@ -207,7 +207,7 @@
     <div class="product-card__image-wrapper{% if second_image == blank %} product-card__image-wrapper--main-only{% endif %} {% if list_on_mobile %}desktop-{% endif %}color-{{ settings.pcard_overlay_color_scheme }} bg-none">
       <a href="{{ product.url }}" aria-label="{{ product.title | escape }}" tabindex="-1">
         {%- comment -%} [Hamza 2026-10-16] changed: output one image per colour (onscroll keeps the dots in sync); other products use the old code below (elsif) {%- endcomment -%}
-        <motion-element data-motion="zoom-out-sm" class="block{% if iq_color_mode %} iq-card-colors{% endif %}"{% if iq_color_mode %} onscroll="var i=Math.round(this.scrollLeft/this.clientWidth);this.closest('.product-card__image-wrapper').querySelectorAll('.iq-card-dots span').forEach(function(d,n){d.classList.toggle('is-active',n===i)})"{% endif %}>
+        <motion-element data-motion="zoom-out-sm" class="block{% if iq_color_mode %} iq-card-colors{% endif %}"{% if iq_color_mode %} onscroll="var i=Math.round(this.scrollLeft/this.clientWidth);this.closest('.product-card__image-wrapper').querySelectorAll('.iq-card-dots span,.iq-card-dots button').forEach(function(d,n){d.classList.toggle('is-active',n===i);if(d.tagName==='BUTTON')d.setAttribute('aria-pressed',n===i?'true':'false')})"{% endif %}>
           {%- if iq_color_mode -%}
             {%- assign iq_img_pos = 0 -%}
             {%- for iq_value in product.options_with_values[iq_color_index].values -%}
@@ -323,8 +323,14 @@
       </a>
       {%- comment -%} [Hamza 2026-10-16] added: one dot per colour image + card CSS inline (the stylesheet tag in this snippet is not loaded) {%- endcomment -%}
       {%- if iq_color_mode -%}
-        <div class="iq-card-dots" aria-hidden="true">
-          {%- for i in (1..iq_color_img_count) -%}<span{% if forloop.first %} class="is-active"{% endif %} onclick="var s=this.closest('.product-card__image-wrapper').querySelector('.iq-card-colors');s.scrollTo({left:{{ forloop.index0 }}*s.clientWidth,behavior:'smooth'})"></span>{%- endfor -%}
+        <div class="iq-card-dots"{% if request.page_type == 'product' %} aria-hidden="true"{% else %} role="group" aria-label="{% if request.locale.iso_code == 'de' %}Produktbilder für{% else %}Product images for{% endif %} {{ iq_card_title | escape }}"{% endif %}>
+          {%- for i in (1..iq_color_img_count) -%}
+            {%- if request.page_type == 'product' -%}
+              <span{% if forloop.first %} class="is-active"{% endif %} onclick="var s=this.closest('.product-card__image-wrapper').querySelector('.iq-card-colors');s.scrollTo({left:{{ forloop.index0 }}*s.clientWidth,behavior:'smooth'})"></span>
+            {%- else -%}
+              <button type="button" class="iq-card-image-dot{% if forloop.first %} is-active{% endif %}" aria-label="{% if request.locale.iso_code == 'de' %}Bild {{ i }} von {{ iq_color_img_count }}{% else %}Image {{ i }} of {{ iq_color_img_count }}{% endif %}" aria-pressed="{% if forloop.first %}true{% else %}false{% endif %}" onclick="var s=this.closest('.product-card__image-wrapper').querySelector('.iq-card-colors');s.scrollTo({left:{{ forloop.index0 }}*s.clientWidth,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'})"></button>
+            {%- endif -%}
+          {%- endfor -%}
         </div>
         <style>
           .iq-card-color-img--extra { display: none; }
@@ -495,7 +501,14 @@
         {%- render 'pcard-color-swatch', product: product -%}
       {%- endif -%}
       <h3 class="product-card__title text-pcard-title">
-        <a class="reversed-link" href="{{ product.url }}">{{- iq_card_title | escape -}}</a>
+        <a class="reversed-link" href="{{ product.url }}">
+          {%- if request.page_type != 'product' and iq_card_title contains 'IQ Pure Bites ' -%}
+            <span class="iq-card-title-series">IQ Pure Bites</span>
+            <span class="iq-card-title-variant">{{- iq_card_title | remove_first: 'IQ Pure Bites ' | escape | replace: ' Mini', '&nbsp;Mini' -}}</span>
+          {%- else -%}
+            {{- iq_card_title | escape -}}
+          {%- endif -%}
+        </a>
       </h3>
       {%- if iq_card_benefit != blank -%}
         <p class="iq-vest-card-benefit">
@@ -555,5 +568,24 @@
     font-size: 13px;
     min-height: 5.8em;
   }
+}
+
+.product-card .iq-card-title-series,
+.product-card .iq-card-title-variant { display: block; }
+.product-card .iq-card-title-series { white-space: nowrap; }
+@media (max-width: 767px) {
+  .product-card .iq-card-dots:has(.iq-card-image-dot) { bottom: 0; gap: 0; }
+  .product-card .iq-card-dots .iq-card-image-dot {
+    display: inline-flex; align-items: center; justify-content: center;
+    flex: 0 1 44px; width: 44px; min-width: 24px; height: 44px;
+    padding: 0; margin: 0; border: 0; border-radius: 0;
+    background: transparent; color: inherit; box-shadow: none; cursor: pointer;
+  }
+  .product-card .iq-card-image-dot::before {
+    content: ""; display: block; width: 7px; height: 7px;
+    border-radius: 50%; background: #DCDBD7;
+  }
+  .product-card .iq-card-image-dot.is-active::before { background: #6A804D; }
+  .product-card .iq-card-image-dot:focus-visible { outline: 2px solid #171717; outline-offset: -4px; }
 }
 {% endstylesheet %}

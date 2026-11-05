@@ -28,11 +28,11 @@
 .iqcb .iqcb__picture{display:block;position:absolute;inset:0;margin:0}
 .iqcb .iqcb__image{display:block;width:100%;height:100%;object-fit:cover}
 .iqcb .iqcb__copy{position:absolute}
-@media(max-width:749px){#shopify-section-{{ section.id }}{min-height:125vw}.iqcb{aspect-ratio:4/5;max-height:none}}
+@media(max-width:749px){#shopify-section-{{ section.id }}{min-height:0}.iqcb{aspect-ratio:4/5;max-height:none}.iqcb[data-mobile-layout="below"]{aspect-ratio:auto;background:#FFFFFF}.iqcb[data-mobile-layout="below"] .iqcb__picture{position:relative;inset:auto;aspect-ratio:var(--iqcb-mobile-ratio,4/3)}.iqcb[data-mobile-layout="below"] .iqcb__copy{position:relative}}
 </style>
-<div class="iqcb" data-iq-collection-hero data-accent="{{ section.settings.accent_style | default: 'brand' }}" data-tone="{{ section.settings.text_tone }}" data-position="{{ section.settings.desktop_position }}" data-mobile-position="{{ section.settings.mobile_position }}" data-mobile-tone="{{ section.settings.mobile_tone }}" data-mobile-align="{{ section.settings.mobile_alignment }}" style="--iqcb-focus:{{ section.settings.focus_y }}%;--iqcb-shade:{{ section.settings.overlay_desktop | default: 0 | divided_by: 100.0 }};--iqcb-shade-mobile:{{ section.settings.overlay_mobile | default: 0 | divided_by: 100.0 }};">
+<div class="iqcb" data-iq-collection-hero data-mobile-layout="{{ section.settings.mobile_layout | default: 'below' }}" data-accent="{{ section.settings.accent_style | default: 'brand' }}" data-tone="{{ section.settings.text_tone }}" data-position="{{ section.settings.desktop_position }}" data-mobile-position="{{ section.settings.mobile_position }}" data-mobile-tone="{{ section.settings.mobile_tone }}" data-mobile-align="{{ section.settings.mobile_alignment }}" style="--iqcb-mobile-ratio:{{ mobile.aspect_ratio | default: 1.333333 }};--iqcb-focus:{{ section.settings.focus_y }}%;--iqcb-shade:{{ section.settings.overlay_desktop | default: 0 | divided_by: 100.0 }};--iqcb-shade-mobile:{{ section.settings.overlay_mobile | default: 0 | divided_by: 100.0 }};">
   <picture class="iqcb__picture">
-    <source media="(max-width:749px)" srcset="{{ mobile | image_url: width: 400 }} 400w, {{ mobile | image_url: width: 750 }} 750w, {{ mobile | image_url: width: 800 }} 800w, {{ mobile | image_url: width: 1000 }} 1000w, {{ mobile | image_url: width: 1200 }} 1200w" sizes="100vw" width="{{ mobile.width }}" height="{{ mobile.height }}">
+    <source media="(max-width:749px)" srcset="{{ mobile | image_url: width: 400 }} 400w, {{ mobile | image_url: width: 600 }} 600w, {{ mobile | image_url: width: 750 }} 750w, {{ mobile | image_url: width: 800 }} 800w, {{ mobile | image_url: width: 1000 }} 1000w, {{ mobile | image_url: width: 1200 }} 1200w" sizes="100vw" width="{{ mobile.width }}" height="{{ mobile.height }}">
     {{ desktop | image_url: width: 2560 | image_tag: widths: '800,1200,1600,1920,2560', sizes: '100vw', loading: 'eager', fetchpriority: 'high', alt: image_alt, class: 'iqcb__image' }}
   </picture>
   <div class="iqcb__copy">
@@ -90,6 +90,21 @@
 .iqcb::before{background:linear-gradient(0deg,rgba(23,23,23,var(--iqcb-shade-mobile,0)) 0%,rgba(23,23,23,0) 55%)}
 .iqcb[data-mobile-position="top"]::before{background:linear-gradient(180deg,rgba(23,23,23,var(--iqcb-shade-mobile,0)) 0%,rgba(23,23,23,0) 55%)}
 }
+
+/* Shared mobile standard: preserve the complete image, then editable copy. */
+@media(max-width:749px){
+.iqcb[data-mobile-layout="below"]{aspect-ratio:auto;max-height:none;overflow:visible;background:#FFFFFF;color:#171717}
+.iqcb[data-mobile-layout="below"]::before{display:none}
+.iqcb[data-mobile-layout="below"] .iqcb__picture{position:relative;inset:auto;aspect-ratio:var(--iqcb-mobile-ratio,4/3)}
+.iqcb[data-mobile-layout="below"] .iqcb__image{object-fit:contain;object-position:center}
+.iqcb[data-mobile-layout="below"] .iqcb__copy{position:relative;inset:auto;transform:none;width:auto;max-width:620px;padding:20px 20px 22px;margin:0 auto;text-align:left}
+.iqcb[data-mobile-layout="below"] .iqcb__title{font-size:clamp(25px,6.4cqw,34px);color:#171717;text-shadow:none}
+.iqcb[data-mobile-layout="below"][data-accent="brand"] .iqcb__title span{color:#A51D1B;text-shadow:none}
+.iqcb[data-mobile-layout="below"] .iqcb__description{margin:10px 0 0;max-width:none;color:#171717;text-shadow:none}
+.iqcb[data-mobile-layout="below"] .iqcb__label{color:#A51D1B;text-shadow:none}
+.iqcb[data-mobile-layout="below"] .iqcb__button{margin-top:14px;background:#171717;color:#FFFFFF;border-color:#171717}
+.iqcb[data-mobile-layout="below"] .iqcb__button:hover{background:#A51D1B;border-color:#A51D1B}
+}
 {% endstylesheet %}
 
 {% schema %}
@@ -119,14 +134,31 @@
     {
       "type": "image_picker",
       "id": "desktop_image",
-      "label": "Desktopbild – 1920 × 600",
-      "info": "Einheitliches Querformat 16:5, maximal 550 px hoch. Text im Editor eingeben."
+      "label": "Desktopbild – 1920 × 600 px (16:5)",
+      "info": "JPG, sRGB, ohne eingebrannten Text. Menschen und Hunde vollständig mit etwas Abstand zum Bildrand anlegen. Text im Editor eingeben."
     },
     {
       "type": "image_picker",
       "id": "mobile_image",
-      "label": "Mobilbild – 1200 × 1500",
-      "info": "Seitenverhältnis 4:5. Ohne Auswahl wird das Desktopbild verwendet."
+      "label": "Mobilbild – 1600 × 1200 px (4:3)",
+      "info": "1600 × 1200 px (4:3), JPG, sRGB, ohne Text. Das vollständige Bild wird gezeigt; Text folgt darunter. Abweichende Bildformate behalten ihr Seitenverhältnis."
+    },
+    {
+      "type": "select",
+      "id": "mobile_layout",
+      "label": "Mobilansicht",
+      "options": [
+        {
+          "value": "below",
+          "label": "Bild vollständig, Text darunter"
+        },
+        {
+          "value": "overlay",
+          "label": "Text auf dem Foto (bisherige Ansicht)"
+        }
+      ],
+      "default": "below",
+      "info": "Empfohlen: 4:3-Bild mit kurzem Text darunter. Alle Texte und Bilder bleiben hier bearbeitbar."
     },
     {
       "type": "select",
@@ -180,7 +212,7 @@
       "step": 5,
       "unit": "%",
       "default": 0,
-      "info": "Folgt der Textposition oben oder unten. 0 = aus."
+      "info": "Gilt nur bei der Mobilansicht „Text auf dem Foto“."
     },
     {
       "type": "select",
@@ -300,7 +332,8 @@
           "label": "Oben"
         }
       ],
-      "default": "bottom"
+      "default": "bottom",
+      "info": "Gilt nur bei der Mobilansicht „Text auf dem Foto“."
     },
     {
       "type": "select",
@@ -316,7 +349,8 @@
           "label": "Links"
         }
       ],
-      "default": "center"
+      "default": "center",
+      "info": "Gilt nur bei der Mobilansicht „Text auf dem Foto“."
     },
     {
       "type": "select",
@@ -332,7 +366,8 @@
           "label": "Dunkel"
         }
       ],
-      "default": "light"
+      "default": "light",
+      "info": "Gilt nur bei der Mobilansicht „Text auf dem Foto“."
     },
     {
       "type": "select",

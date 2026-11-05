@@ -381,7 +381,8 @@
       "name": "Produktvideo",
       "settings": {
         "video": "shopify://files/videos/IQ-Trainer-Pants-Querformat-21-10-2026.mp4"
-      }
+      },
+      "disabled": true
     },
     "custom_liquid_T3dHzC": {
       "type": "iq-release-section-15",
@@ -423,7 +424,8 @@
         "part2"
       ],
       "name": "Bild Erklärung",
-      "settings": {}
+      "settings": {},
+      "disabled": true
     },
     "rich_text_ARFW3U": {
       "type": "rich-text",
@@ -519,6 +521,54 @@
       "block_order": [
         "pants_choice"
       ]
+    },
+    "iq_pants_feature": {
+      "type": "iq-pants-feature",
+      "name": "Hose · Video & Details",
+      "settings": {
+        "video": "shopify://files/videos/IQ-Trainer-Pants-Querformat-21-10-2026.mp4",
+        "cta_de": "Hundesporthosen entdecken",
+        "cta_en": "Discover training trousers",
+        "play_de": "Video abspielen",
+        "play_en": "Play video"
+      },
+      "blocks": {
+        "part1": {
+          "type": "part1",
+          "settings": {
+            "text_1": "Details that make a difference",
+            "text_2": "Durchdachte Details",
+            "text_3": "Ready to reward.",
+            "text_4": "Bereit zum Belohnen.",
+            "text_5": "Easy to clean",
+            "text_6": "Einfach sauber",
+            "text_7": "Remove the coated treat pouches and rinse them after training.",
+            "text_8": "Beschichtete Futtertaschen herausnehmen und nach dem Training abwaschen.",
+            "text_9": "Toy within reach",
+            "text_10": "Spielzeug griffbereit",
+            "text_11": "Concealed back pocket for toys or a bite pillow.",
+            "text_12": "Versteckte Rückentasche für Spielzeug oder Beißkissen.",
+            "text_13": "Need more space?",
+            "text_14": "Du brauchst mehr Platz?",
+            "text_15": "Add the optional",
+            "text_16": "IQ modular treat pouch",
+            "text_17": ". Sold separately.",
+            "text_18": "Die optionale",
+            "text_19": "IQ Modulare Futtertasche",
+            "text_20": "lässt sich zusätzlich einhängen. Separat erhältlich."
+          }
+        },
+        "part2": {
+          "type": "part2",
+          "settings": {
+            "image_url_21": "https://cdn.shopify.com/s/files/1/0625/2806/1688/files/hundesport-hose-futtertasche-iq-dogsport.jpg?v=1775315587&width=900"
+          }
+        }
+      },
+      "block_order": [
+        "part1",
+        "part2"
+      ]
     }
   },
   "order": [
@@ -528,6 +578,7 @@
     "banner",
     "custom_liquid_FpycJH",
     "breadcrumbs_Gxg9wp",
+    "iq_pants_feature",
     "custom_liquid_aqAmH6",
     "custom_liquid_T3dHzC",
     "rich_text_ARFW3U",

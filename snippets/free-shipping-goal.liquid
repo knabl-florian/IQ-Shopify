@@ -1,14 +1,24 @@
 {%- liquid
-  assign minimum_amount_in_cents = minimum_amount | plus: 0
+  assign minimum_amount_value = minimum_amount | plus: 0
+  assign minimum_amount_in_cents = minimum_amount_value | times: 100
   assign total_price = cart.total_price | plus: 0
+  assign remaining_amount_in_cents = minimum_amount_in_cents | minus: total_price | at_least: 0
+  assign initial_goal_done = false
+  assign currency_matches_shop = false
+  if cart.currency.iso_code == shop.currency
+    assign currency_matches_shop = true
+    if total_price >= minimum_amount_in_cents
+      assign initial_goal_done = true
+    endif
+  endif
 -%}
 {%- capture left_to_spend -%}
-    <strong data-left-to-spend>{{ limit_currency | minus: cart.total_price | money }}</strong>
+    <strong data-left-to-spend>{{ remaining_amount_in_cents | money }}</strong>
 {%- endcapture -%}
 <free-shipping-goal
   data-cart-total="{{ total_price }}"
-  data-minimum-amount="{{ minimum_amount_in_cents }}"
-  class="free-shipping-goal grid gap-3{% if classes %} {{ classes }}{% endif %}"
+  data-minimum-amount="{{ minimum_amount_value }}"
+  class="free-shipping-goal grid gap-3{% if initial_goal_done %} free-shipping-goal--done{% endif %}{% unless currency_matches_shop %} hidden{% endunless %}{% if classes %} {{ classes }}{% endif %}"
 >
   <span class="free-shipping-goal__label free-shipping-goal__label--success">
     {{- 'general.cart.free_shipping.congratulations_html' | t -}}

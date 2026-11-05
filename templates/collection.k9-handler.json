@@ -16,7 +16,7 @@
         "only_collection": "k9-diensthundefuehrer-ausruestung",
         "require_collection": true,
         "desktop_image": "shopify://shop_images/rueckenansicht-polizist-2560x800.jpg",
-        "mobile_image": "shopify://shop_images/rueckenansicht-diensthundefuehrer-1500x1200_32881dd8-71e6-421e-bf1e-5ffdc052a15f.jpg",
+        "mobile_image": "shopify://shop_images/iq-mobil-k9-1600x1200-20261104.jpg",
         "text_tone": "light",
         "desktop_position": "center",
         "show_mobile_label": false,
@@ -39,7 +39,8 @@
         "heading_tag": "h1",
         "button_de": "",
         "button_en": "",
-        "button_url": ""
+        "button_url": "",
+        "mobile_layout": "below"
       }
     },
     "banner": {

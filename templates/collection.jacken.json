@@ -59,10 +59,10 @@
         "only_collection": "",
         "require_collection": false,
         "desktop_image": "shopify://shop_images/iq-jacken-hero-desktop.webp",
-        "mobile_image": "shopify://shop_images/iq-jacken-hero-mobil.webp",
+        "mobile_image": "shopify://shop_images/iq-mobil-jacken-damen-1600x1200-20261104.jpg",
         "text_tone": "light",
         "desktop_position": "top",
-        "show_mobile_label": false,
+        "show_mobile_label": true,
         "focus_y": 30,
         "title_de": "Starke Hunde.",
         "accent_de": "Starke Jacken.",
@@ -85,7 +85,8 @@
         "button_url": "",
         "accent_style": "text",
         "overlay_desktop": 25,
-        "overlay_mobile": 35
+        "overlay_mobile": 35,
+        "mobile_layout": "below"
       }
     },
     "custom_liquid_AxfPWP": {

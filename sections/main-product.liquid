@@ -412,13 +412,14 @@
       endif
   endcase
 -%}
+{% assign iq_refined = false %}{% if section.settings.iq_refined_enabled and section.settings.iq_refined_product.id == product.id %}{% assign iq_refined = true %}{{ 'iq-product-refinement.css' | asset_url | stylesheet_tag }}{% endif %}
 <product-info
   id="MainProduct-{{ section.id }}"
   data-section="{{ section.id }}"
   data-product-id="{{ product.id }}"
   data-update-url="true"
   data-url="{{ product.url }}"
-  class="section block section-{{ section.id }} section--padding page-width color-{{ section.settings.color_scheme }}"
+  class="{% if iq_refined %}iq-pdp-refined {% endif %}section block section-{{ section.id }} section--padding page-width color-{{ section.settings.color_scheme }}"
   style="--section-padding-top: {{ section.settings.padding_top }}px;--section-padding-bottom: {{ section.settings.padding_bottom }}px;"
 >
   <style>{{ 'section-main-product.css' | inline_asset_content }}</style>
@@ -1908,6 +1909,41 @@
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
       "default": 50
+    },
+    {
+      "type": "header",
+      "content": "IQ Produktseiten-Muster"
+    },
+    {
+      "type": "checkbox",
+      "id": "iq_refined_enabled",
+      "label": "Muster aktivieren",
+      "default": false
+    },
+    {
+      "type": "product",
+      "id": "iq_refined_product",
+      "label": "Nur für dieses Produkt"
+    },
+    {
+      "type": "richtext",
+      "id": "iq_refined_benefits_de",
+      "label": "Kurze Kaufargumente · DE"
+    },
+    {
+      "type": "richtext",
+      "id": "iq_refined_benefits_en",
+      "label": "Kurze Kaufargumente · EN"
+    },
+    {
+      "type": "text",
+      "id": "iq_refined_size_de",
+      "label": "Hinweis bei Größenwahl · DE"
+    },
+    {
+      "type": "text",
+      "id": "iq_refined_size_en",
+      "label": "Hinweis bei Größenwahl · EN"
     }
   ]
 }

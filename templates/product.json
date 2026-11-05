@@ -292,7 +292,13 @@
         "enable_image_zoom": true,
         "enable_video_looping": true,
         "padding_top": 0,
-        "padding_bottom": 100
+        "padding_bottom": 100,
+        "iq_refined_enabled": false,
+        "iq_refined_product": "mfj-4-0-damen-wasserdichte-winterjacke-hundesport",
+        "iq_refined_benefits_de": "",
+        "iq_refined_benefits_en": "",
+        "iq_refined_size_de": "Vergleiche eine gut passende Jacke mit den Kleidungsmaßen in der Größentabelle.",
+        "iq_refined_size_en": "Compare a well-fitting jacket with the garment measurements in the size chart."
       }
     },
     "custom_liquid_XXJQHU": {

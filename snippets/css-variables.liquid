@@ -488,3 +488,14 @@
   <link rel="preload" as="font" href="{{ settings.type_header_font | font_url }}" type="font/woff2" crossorigin{% if request.page_type == 'product' %} media="(min-width: 768px)"{% endif %}>
   {% comment %}theme-check-enable AssetPreload{% endcomment %}
 {%- endunless -%}
+
+{%- if request.page_type == 'collection' -%}
+  {%- unless settings.type_body_font.system? -%}
+    {%- assign iq_collection_bold_font = settings.type_body_font | font_modify: 'weight', '700' -%}
+    {%- if iq_collection_bold_font != blank and iq_collection_bold_font != settings.type_body_font -%}
+      {% comment %}theme-check-disable AssetPreload{% endcomment %}
+      <link rel="preload" as="font" href="{{ iq_collection_bold_font | font_url }}" type="font/woff2" crossorigin>
+      {% comment %}theme-check-enable AssetPreload{% endcomment %}
+    {%- endif -%}
+  {%- endunless -%}
+{%- endif -%}

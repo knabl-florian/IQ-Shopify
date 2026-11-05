@@ -1067,3 +1067,13 @@ body.collection-template.iq-collection-standard #ProductsList .product-card .f-p
 .site-card__actions > .button--secondary{background:transparent;color:#171717;border-color:#171717}
 .site-card__actions > .button:hover{background:#A51D1B;border-color:#A51D1B;color:#fff}
 .site-card__actions > .button:focus-visible{outline:2px solid #A51D1B;outline-offset:3px}
+
+/* IQ: apply the existing mobile product-title typography before late shop CSS. */
+@media (max-width: 767px) {
+  body.product-template .rich-text-section.mobile-only-iq .rich-text__heading.h3 {
+    font-family: Archivo, sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+}

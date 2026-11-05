@@ -341,7 +341,7 @@
       "name": "Snack-Fokus · Pure Bites",
       "settings": {
         "style": "snacks",
-        "image": "shopify://shop_images/iq-belohnungsmoment-ohne-signatur.jpg",
+        "image": "shopify://shop_images/iq-belohnungsmoment-mobil-kopf-1200x1120.jpg",
         "mobile_image": "shopify://shop_images/iq-belohnungsmoment-mobil-kopf-1200x1120.jpg",
         "alt": "Schwarzer Schäferhund fängt eine Belohnung.",
         "alt_en": "Black German Shepherd catching a reward.",
@@ -454,7 +454,8 @@
             "title_en": "Working dogs up close",
             "excerpt": "",
             "excerpt_en": "",
-            "title_in_image": false
+            "title_in_image": false,
+            "crop_middle": true
           }
         },
         "story1": {
@@ -486,20 +487,20 @@
       },
       "block_order": [
         "story0",
-        "story1",
-        "story2"
+        "story2",
+        "story1"
       ],
       "name": "Magazin · Artikel & Bücher",
       "settings": {
         "blog": "news",
-        "latest": true,
-        "show_descriptions": false,
-        "eyebrow": "IQ Blog",
-        "eyebrow_en": "IQ Blog",
-        "heading": "Wissen für Dein Leben mit Hund.",
-        "heading_en": "Knowledge for life with your dog.",
-        "intro": "Wissen, Erfahrungen und praktische Tipps rund um Deinen Hund.",
-        "intro_en": "Knowledge, experience and practical tips for life with your dog.",
+        "latest": false,
+        "show_descriptions": true,
+        "eyebrow": "",
+        "eyebrow_en": "",
+        "heading": "Der IQ Blog.",
+        "heading_en": "The IQ Blog.",
+        "intro": "Training, Ausrüstung und Leben mit Hund.",
+        "intro_en": "Training, equipment and life with dogs.",
         "cta": "Zum Blog",
         "cta_en": "Explore the blog",
         "link": "shopify://blogs/news",

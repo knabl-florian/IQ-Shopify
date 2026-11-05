@@ -20,7 +20,7 @@
 %}
 <section class="iq-product-feature{% if s.photo_square %} iq-product-feature--square{% endif %}{% if s.copy_left %} iq-product-feature--copy-left{% endif %}{% if s.detail_image != blank %} iq-product-feature--detail{% endif %}" aria-labelledby="IQFeature-{{ block.id }}">
   <picture class="iq-product-feature__photo">
-    <source media="(max-width:749px)" srcset="{{ mobile | image_url: width: 800 }}" width="{{ mobile.width }}" height="{{ mobile.height }}">
+    <source media="(max-width:749px)" srcset="{{ mobile | image_url: width: 360 }} 360w, {{ mobile | image_url: width: 540 }} 540w, {{ mobile | image_url: width: 750 }} 750w, {{ mobile | image_url: width: 900 }} 900w, {{ mobile | image_url: width: 1200 }} 1200w" sizes="calc(100vw - 30px)" width="{{ mobile.width }}" height="{{ mobile.height }}">
     {{ s.image | image_url: width: 1200 | image_tag: widths: '400,600,800,1200', sizes: '(min-width:750px) 50vw, 100vw', loading: 'lazy', alt: alt }}
   </picture>
   <div class="iq-product-feature__copy">

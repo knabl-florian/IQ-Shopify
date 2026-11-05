@@ -12,7 +12,7 @@
     "iq_collection_hero_be8dcM": {
       "type": "iq-collection-hero",
       "custom_css": [
-        ".iqcb__label,.iqcb__title,.iqcb__title *,.iqcb__description,.iqcb__description * {color: #fff !important; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8), 0 0 14px rgba(0, 0, 0, 0.5);}",
+        "@media (min-width: 750px) {.iqcb__label,.iqcb__title,.iqcb__title *,.iqcb__description,.iqcb__description * {color: #fff !important; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8), 0 0 14px rgba(0, 0, 0, 0.5);}}",
         "@media (max-width: 749px) {.iqcb__description, .iqcb__description * {color: #171717 !important; text-shadow: none; }}"
       ],
       "name": "IQ Collection Banner",
@@ -20,21 +20,21 @@
         "only_collection": "hundesport-westen",
         "require_collection": true,
         "desktop_image": "shopify://shop_images/HSW-Winter-1920x550.jpg",
-        "mobile_image": "shopify://shop_images/HSW-Winter-1200x1500.jpg",
+        "mobile_image": "shopify://shop_images/iq-mobil-westen-1600x1200-20261104.jpg",
         "text_tone": "dark",
         "desktop_position": "center",
         "show_mobile_label": false,
         "focus_y": 55,
-        "title_de": "Dein Training.",
-        "accent_de": "Belohnung auf den Punkt.",
+        "title_de": "Hundesportwesten.",
+        "accent_de": "Alles griffbereit.",
         "description_de": "Robuste Westen mit durchdachten Trainingsfunktionen. Für gezielte Belohnung und alles, was Du griffbereit brauchst.",
-        "mobile_description_de": "Robust. Durchdacht. Belohnung griffbereit.",
+        "mobile_description_de": "Praktische Trainingsfunktionen für gezieltes Belohnen.",
         "label_de": "IQ Hundesportwesten",
         "alt_de": "Zwei Hundeführer mit IQ Hundesportwesten und Schäferhunden im Wald im Schnee",
-        "title_en": "BUILT TO LAST.",
-        "accent_en": "DESIGNED TO TRAIN.",
+        "title_en": "Dog training vests.",
+        "accent_en": "Keep rewards close.",
         "description_en": "Durable vests with practical training features. For well-timed rewards and everything you need within reach.",
-        "mobile_description_en": "Built to last. Rewards within reach.",
+        "mobile_description_en": "Practical training features for well-timed rewards.",
         "label_en": "IQ TRAINING VESTS",
         "alt_en": "Two handlers wearing IQ dog training vests with their GSDs in the woods covered in snow",
         "mobile_position": "bottom",
@@ -43,7 +43,8 @@
         "heading_tag": "h1",
         "button_de": "",
         "button_en": "",
-        "button_url": ""
+        "button_url": "",
+        "mobile_layout": "below"
       }
     },
     "custom_liquid_WWAgXi": {

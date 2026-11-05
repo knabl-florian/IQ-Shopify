@@ -8,7 +8,7 @@
 {% if iq_rugged_mobile != blank and iq_rugged_desktop != blank %}
 <section class="iq-collection-feature iq-collection-feature--left">
 <picture>
-<source media="(max-width:749px)" width="1080" height="1200" sizes="100vw" srcset="{{ iq_rugged_mobile | image_url: width: 540 }} 540w, {{ iq_rugged_mobile | image_url: width: 1080 }} 1080w">
+<source media="(max-width:749px)" width="1080" height="1200" sizes="calc(100vw - 30px)" srcset="{{ iq_rugged_mobile | image_url: width: 360 }} 360w, {{ iq_rugged_mobile | image_url: width: 540 }} 540w, {{ iq_rugged_mobile | image_url: width: 750 }} 750w, {{ iq_rugged_mobile | image_url: width: 900 }} 900w, {{ iq_rugged_mobile | image_url: width: 1080 }} 1080w">
 {{ iq_rugged_desktop | image_url: width: 1560 | image_tag: widths: '780, 1200, 1560', sizes: '(min-width:1440px) 1340px, (min-width:1200px) calc(100vw - 100px), (min-width:750px) calc(100vw - 48px), calc(100vw - 30px)', loading: 'lazy', alt: block.settings.text_3 }}
 </picture>
 {% if request.locale.iso_code == 'en' %}
