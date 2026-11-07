@@ -294,6 +294,77 @@
         "first_scale": 100
       }
     },
+    "iq_home_new": {
+      "type": "iq-home-new-products",
+      "blocks": {
+        "product2": {
+          "type": "product",
+          "settings": {
+            "product": "mfj-4-0-damen-wasserdichte-winterjacke-hundesport",
+            "badge": "",
+            "badge_en": "",
+            "title": "Multifunktionsjacke Damen 4.0",
+            "title_en": "Women’s multifunctional jacket 4.0",
+            "description": "",
+            "description_en": "",
+            "extra_cta": "",
+            "extra_cta_en": "",
+            "extra_link": "",
+            "extra_link_en": ""
+          }
+        },
+        "product1": {
+          "type": "product",
+          "settings": {
+            "product": "softball-neopren-apport",
+            "badge": "",
+            "badge_en": "",
+            "title": "IQ Softball",
+            "title_en": "IQ Softball",
+            "description": "Ideal fürs Sammeln",
+            "description_en": "Ideal for collecting",
+            "extra_cta": "",
+            "extra_cta_en": "",
+            "extra_link": "",
+            "extra_link_en": ""
+          }
+        },
+        "parka": {
+          "type": "product",
+          "settings": {
+            "product": "iq-winter-parka-unisex",
+            "badge": "",
+            "badge_en": "",
+            "title": "IQ Winterparka Unisex",
+            "title_en": "IQ Winter Parka Unisex",
+            "description": "",
+            "description_en": "",
+            "extra_cta": "",
+            "extra_cta_en": "",
+            "extra_link": "",
+            "extra_link_en": ""
+          }
+        }
+      },
+      "block_order": [
+        "product2",
+        "product1",
+        "parka"
+      ],
+      "name": "Neuheiten · Softball, MFJ 4.0, Parka",
+      "settings": {
+        "eyebrow": "Neu bei IQ",
+        "eyebrow_en": "New at IQ",
+        "heading": "Neu fürs nächste Training.",
+        "heading_en": "New drops for your best training.",
+        "intro": "",
+        "intro_en": "",
+        "cta": "",
+        "cta_en": "",
+        "link": "",
+        "link_en": ""
+      }
+    },
     "iq_home_snacks": {
       "type": "iq-home-feature",
       "blocks": {
@@ -370,87 +441,11 @@
         "first_scale": 100
       }
     },
-    "iq_home_new": {
-      "type": "iq-home-new-products",
-      "blocks": {
-        "product2": {
-          "type": "product",
-          "settings": {
-            "product": "mfj-4-0-damen-wasserdichte-winterjacke-hundesport",
-            "badge": "",
-            "badge_en": "",
-            "title": "Multifunktionsjacke Damen 4.0",
-            "title_en": "Women’s multifunctional jacket 4.0",
-            "description": "",
-            "description_en": "",
-            "extra_cta": "",
-            "extra_cta_en": "",
-            "extra_link": "",
-            "extra_link_en": ""
-          }
-        },
-        "product1": {
-          "type": "product",
-          "settings": {
-            "product": "iq-futtertasche-magdock",
-            "badge": "",
-            "badge_en": "",
-            "title": "IQ MagDock Futtertasche",
-            "title_en": "IQ MagDock Food Pouch",
-            "description": "Magnetisch andocken. Sicher verriegeln.",
-            "description_en": "Magnetic docking. Secure locking.",
-            "extra_cta": "",
-            "extra_cta_en": "",
-            "extra_link": "",
-            "extra_link_en": ""
-          }
-        },
-        "parka": {
-          "type": "product",
-          "settings": {
-            "product": "iq-winter-parka-unisex",
-            "badge": "",
-            "badge_en": "",
-            "title": "IQ Winterparka Unisex",
-            "title_en": "IQ Winter Parka Unisex",
-            "description": "",
-            "description_en": "",
-            "extra_cta": "",
-            "extra_cta_en": "",
-            "extra_link": "",
-            "extra_link_en": ""
-          }
-        }
-      },
-      "block_order": [
-        "product2",
-        "product1",
-        "parka"
-      ],
-      "custom_css": [
-        ".iqh-product-copy {text-align: center; align-items: center;}",
-        ".iqh-product-bottom {align-items: center !important; justify-content: center; width: 100%;}"
-      ],
-      "name": "Neuheiten · Softball, MFJ 4.0, Parka",
-      "settings": {
-        "eyebrow": "Neu bei IQ",
-        "eyebrow_en": "New at IQ",
-        "heading": "Neu fürs nächste Training.",
-        "heading_en": "New for your next training.",
-        "intro": "",
-        "intro_en": "",
-        "cta": "",
-        "cta_en": "",
-        "link": "",
-        "link_en": ""
-      }
-    },
     "iq_home_knowledge": {
       "type": "iq-home-knowledge",
       "blocks": {
         "story0": {
           "type": "article",
-          "disabled": true,
           "settings": {
             "article": "news/iq-dogsport-dogworld-2026-polizeihunde",
             "label": "",
@@ -506,8 +501,8 @@
         "eyebrow_en": "",
         "heading": "Der IQ Blog.",
         "heading_en": "The IQ Blog.",
-        "intro": "Training, Ausrüstung und Leben mit Hund.",
-        "intro_en": "Training, equipment and life with dogs.",
+        "intro": "Wie bleibt Dein Hund gesund? Was macht gutes Training aus? Entdecke Praxistipps zu unserer Ausrüstung, spannende Events und Geschichten aus dem Hundesport.",
+        "intro_en": "What keeps your dog healthy? What makes good training? Discover practical tips for using our equipment, exciting events and stories from the world of dog sport.",
         "cta": "Zum Blog",
         "cta_en": "Explore the blog",
         "link": "shopify://blogs/news",
@@ -526,7 +521,8 @@
         "igp_link": "shopify://pages/igp-hundesport",
         "igp_link_en": "/en/pages/igp-hundesport",
         "books_heading": "Bücher",
-        "books_heading_en": "Books"
+        "books_heading_en": "Books",
+        "show_blog": false
       }
     },
     "iq_home_gifts": {
@@ -593,9 +589,10 @@
       "name": "Geschenke · Gutschein & Extras",
       "settings": {
         "style": "gifts",
-        "image": "shopify://shop_images/gutschein_banner_desktop_1920x600_ebf73779-891b-47bf-a270-19faf4c62f6e.jpg",
-        "alt": "IQ Metall-Gutscheinbox mit Geschenkkarte und Malinois-Schlüsselanhänger.",
-        "alt_en": "IQ metal gift voucher box with gift card and Malinois keyring.",
+        "image": "shopify://shop_images/iq-gutscheine-geschenk-desktop-3x1-20261105.png",
+        "mobile_image": "shopify://shop_images/iq-gutscheine-geschenk-mobile-16x9-20261105.png",
+        "alt": "IQ Gutscheinbox mit roter Schleife, Gutscheinkarte und Malinois-Schlüsselanhänger.",
+        "alt_en": "IQ gift voucher tin with a red ribbon, gift card and Malinois keyring.",
         "eyebrow": "IQ Gutscheine & Geschenke",
         "eyebrow_en": "IQ gift vouchers & gifts",
         "heading": "Für Menschen mit Hund.",
@@ -634,8 +631,8 @@
         "eyebrow_en": "The founders",
         "heading": "„Wir entwickeln nur, was wir selbst im Training vermissen.“",
         "heading_en": "“We only develop what we miss in our own training.”",
-        "body": "<p>Jedes Produkt entsteht aus eigener Praxis: im Training, im Wettkampf, im Dienst.</p>",
-        "body_en": "<p>Every product comes from our own practice: in training, in competition, on duty.</p>",
+        "body": "",
+        "body_en": "",
         "detail": "Patricia & Florian Knabl · IQ Dogsport",
         "detail_en": "Patricia & Florian Knabl · IQ Dogsport",
         "cta": "Unsere Geschichte",
@@ -729,8 +726,8 @@
       "settings": {
         "eyebrow": "Echte Erfahrungen",
         "eyebrow_en": "Real experiences",
-        "heading": "Im Einsatz bewährt.",
-        "heading_en": "Proven in practice.",
+        "heading": "Das sagen unsere Kunden.",
+        "heading_en": "What our customers say.",
         "show_summary": true,
         "rating": "4,9 / 5",
         "rating_en": "4.9 / 5",
@@ -1031,18 +1028,6 @@
         "custom_class": "iq-winter-video"
       }
     },
-    "custom_liquid_6R8jQD": {
-      "type": "custom-liquid",
-      "disabled": true,
-      "name": "IQ klassiker",
-      "settings": {
-        "custom_liquid": "<style>\n  .iqk{\n    width:100vw; margin-left:calc(50% - 50vw);\n    background:#fff; color:#171717;\n    font-family:Archivo,Arial,sans-serif;\n    --iqk-scale:1.12; /* Produkt-Vergroesserung; bei Anschnitt kleiner stellen */\n  }\n  .iqk__head{ max-width:1360px; margin:0 auto; padding:34px 20px 0; box-sizing:border-box; }\n  .iqk__eyebrow{ margin:0; font-size:11px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:rgba(23,23,23,.55); }\n  .iqk__title{ margin:10px 0 0; font-family:Montserrat,Arial,sans-serif; font-style:italic; font-weight:800; text-transform:uppercase; font-size:clamp(32px,8vw,44px); line-height:1.0; letter-spacing:-.5px; }\n\n  /* MOBILE: horizontaler Swipe, grosse Slides */\n  .iqk__track{\n    display:grid; grid-auto-flow:column; grid-auto-columns:88vw; gap:14px;\n    overflow-x:auto; scroll-snap-type:x mandatory; scroll-padding-inline:20px;\n    padding:22px 20px 0; box-sizing:border-box;\n    -webkit-overflow-scrolling:touch; overscroll-behavior-inline:contain; scrollbar-width:none;\n  }\n  .iqk__track::-webkit-scrollbar{ display:none; }\n\n  .iqk__item{ scroll-snap-align:start; display:flex; flex-direction:column; min-width:0; }\n\n  .iqk__media{\n    position:relative; width:100%; aspect-ratio:4/5; overflow:hidden; background:#fff;\n    display:block; text-decoration:none;\n  }\n  .iqk__img, .iqk__img--2{\n    position:absolute; inset:0; width:100%; height:100%;\n    object-fit:contain; transform:scale(var(--iqk-scale)); transition:opacity .3s ease;\n  }\n  .iqk__img--2{ opacity:0; }\n  @media(hover:hover){ .iqk__item:hover .iqk__img--2{ opacity:1; } }\n\n  .iqk__name{\n    display:block; margin:16px 0 0; text-decoration:none; color:#171717;\n    font-family:Montserrat,Arial,sans-serif; font-weight:700; font-size:19px; line-height:1.15;\n  }\n  .iqk__meta{\n    display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:8px;\n  }\n  .iqk__rating{ min-width:0; }\n  .iqk__price{ font-weight:700; font-size:15px; white-space:nowrap; }\n  .iqk__price s{ opacity:.5; font-weight:400; margin-left:6px; }\n  .iqk__price .iqk__sale{ color:#A51D1B; }\n  /* Judge.me-Badge kompakt einbetten */\n  .iqk__rating .jdgm-prev-badge__stars{ vertical-align:middle; }\n  .iqk__rating .jdgm-prev-badge__text{ font-size:12px; }\n\n  .iqk__cta{ max-width:1360px; margin:0 auto; padding:30px 20px 4px; box-sizing:border-box; }\n  .iqk__pill{\n    display:inline-flex; align-items:center; height:46px; padding:0 24px;\n    border:1.5px solid #171717; border-radius:var(--buttons-radius,2px); background:transparent; color:#171717;\n    font-weight:700; font-size:13px; letter-spacing:.5px; text-transform:uppercase; text-decoration:none;\n    transition:background-color .2s ease,border-color .2s ease,color .2s ease;\n  }\n  .iqk__pill:hover{ background:#A51D1B; border-color:#A51D1B; color:#F5F4F2; }\n  .iqk__pill:focus-visible{ outline:3px solid #A51D1B; outline-offset:3px; }\n\n  /* TABLET */\n  @media(min-width:750px){\n    .iqk__head{ padding:40px 32px 0; }\n    .iqk__track{\n      grid-auto-flow:row; grid-template-columns:repeat(2,minmax(0,1fr)); grid-auto-columns:auto;\n      gap:32px; overflow:visible; scroll-snap-type:none;\n      max-width:1360px; margin:0 auto; padding:28px 32px 0;\n    }\n    .iqk__cta{ padding:32px 32px 8px; }\n  }\n  /* DESKTOP: 3 pro Reihe, gross */\n  @media(min-width:990px){\n    .iqk__track{ grid-template-columns:repeat(3,minmax(0,1fr)); gap:40px; }\n    .iqk__name{ font-size:20px; }\n  }\n  @media(prefers-reduced-motion:reduce){\n    .iqk__img,.iqk__img--2{ transition:none; }\n  }\n</style>\n\n<section class=\"iqk\">\n  <div class=\"iqk__head\">\n    <p class=\"iqk__eyebrow\">{{ 'iq_translation.home.classics_eyebrow' | t }}</p>\n    <h2 class=\"iqk__title\">{{ 'iq_translation.home.classics_heading' | t }}</h2>\n  </div>\n\n  <div class=\"iqk__track\">\n    {%- for product in collections['bestseller'].products limit: 6 -%}\n      {%- assign v = product.selected_or_first_available_variant -%}\n      <div class=\"iqk__item\">\n        <a class=\"iqk__media\" href=\"{{ product.url }}\" aria-label=\"{{ product.title | escape }}\">\n          {%- if product.featured_media -%}\n            <img class=\"iqk__img\"\n                 src=\"{{ product.featured_media | image_url: width: 900 }}\"\n                 srcset=\"{{ product.featured_media | image_url: width: 400 }} 400w, {{ product.featured_media | image_url: width: 600 }} 600w, {{ product.featured_media | image_url: width: 900 }} 900w\"\n                 sizes=\"(min-width:990px) 30vw, (min-width:750px) 45vw, 88vw\"\n                 width=\"900\" height=\"1125\" loading=\"lazy\"\n                 alt=\"{{ product.featured_media.alt | escape | default: product.title | escape }}\">\n          {%- endif -%}\n          {%- if product.images[1] != blank -%}\n            <img class=\"iqk__img iqk__img--2\"\n                 src=\"{{ product.images[1] | image_url: width: 900 }}\"\n                 width=\"900\" height=\"1125\" loading=\"lazy\" alt=\"\" aria-hidden=\"true\">\n          {%- endif -%}\n        </a>\n\n        <a class=\"iqk__name\" href=\"{{ product.url }}\">{{ product.title }}</a>\n\n        <div class=\"iqk__meta\">\n          <span class=\"iqk__rating\">\n            <div class=\"jdgm-widget jdgm-preview-badge\">{{ product.metafields.judgeme.badge }}</div>\n          </span>\n          <span class=\"iqk__price\">\n            {%- if v.compare_at_price > v.price -%}\n              <span class=\"iqk__sale\">{{ v.price | money }}</span> <s>{{ v.compare_at_price | money }}</s>\n            {%- else -%}\n              {{ v.price | money }}\n            {%- endif -%}\n          </span>\n        </div>\n      </div>\n    {%- endfor -%}\n  </div>\n\n  <div class=\"iqk__cta\">\n    <a class=\"iqk__pill\" href=\"{{ collections['bestseller'].url }}\">{{ 'iq_translation.home.all_bestsellers' | t }} &rarr;</a>\n  </div>\n</section>",
-        "color_scheme": "scheme-1",
-        "padding_top": 32,
-        "padding_bottom": 50,
-        "custom_class": ""
-      }
-    },
     "custom_liquid_knjKwD": {
       "type": "custom-liquid",
       "disabled": true,
@@ -1137,16 +1122,33 @@
         "custom_class": "iq-athletes"
       }
     },
-    "custom_liquid_EtqqpY": {
-      "type": "custom-liquid",
-      "disabled": true,
-      "name": "Newsletter",
+    "featured_blog_6f7FyW": {
+      "type": "featured-blog",
+      "name": "IQ Blog · Artikel mit Kurztext",
       "settings": {
-        "custom_liquid": "{%- assign iq_en = false -%}\n{%- if request.locale.iso_code == 'en' -%}\n  {%- assign iq_en = true -%}\n{%- endif -%}\n\n<style>\n.iq-insider,.iq-insider *{box-sizing:border-box}\n.iq-insider{background:#FFFFFF;color:#171717;font-family:Archivo,Arial,sans-serif}\n.iq-insider .iq-insider__inner.page-width{width:100%;max-width:1360px;margin:0 auto;padding:40px 20px;display:grid;gap:28px}\n.iq-insider .iq-insider__eyebrow{margin:0 0 12px;color:#A51D1B;font:700 12px/1.4 Archivo,Arial,sans-serif;letter-spacing:.2em;text-transform:uppercase}\n.iq-insider .iq-insider__heading{margin:0;font-family:Montserrat,Arial,sans-serif;font-style:italic;font-weight:800;font-size:clamp(26px,3vw,32px);line-height:1.15;letter-spacing:-.03em;text-transform:uppercase;color:#171717}\n.iq-insider .iq-insider__heading span{color:#A51D1B}\n.iq-insider .iq-insider__intro{max-width:48ch;margin:16px 0 0;font-size:15px;line-height:1.6;color:#52524F}\n.iq-insider .iq-insider__benefits{list-style:none;margin:20px 0 0;padding:0;display:grid;gap:10px}\n.iq-insider .iq-insider__benefits li{position:relative;margin:0;padding-left:26px;font-size:15px;line-height:1.5}\n.iq-insider .iq-insider__benefits li::before{content:\"→\";position:absolute;left:0;top:0;width:18px;color:#A51D1B;font:700 19px/1.18 Archivo,Arial,sans-serif}\n.iq-insider .iq-insider__benefits strong{font-weight:700}\n.iq-insider .iq-insider__form-area{min-width:0;margin:0;padding:0;background:transparent;color:#171717;border:0;border-radius:0;box-shadow:none}\n.iq-insider .iq-insider__form-area .iq-insider__eyebrow{color:#A51D1B}\n.iq-insider .iq-insider__offer{margin:0 0 20px;color:#171717;font:700 24px/1.2 Archivo,Arial,sans-serif;text-transform:none;letter-spacing:0}\n.iq-insider .iq-insider__note{margin:-12px 0 20px;font-size:14px;line-height:1.5;color:#52524F}\n.iq-insider .iq-insider__form{width:100%;margin:0}\n.iq-insider .iq-insider__form-row{display:grid;gap:12px}\n.iq-insider .iq-insider__label{display:block;margin:0 0 8px;color:#171717;font-size:13.5px;line-height:1.4}\n.iq-insider .iq-insider__input{display:block;width:100%;min-width:0;min-height:52px;padding:14px 18px;border:1px solid #DCDBD7;border-radius:40px;background:#FFF;color:#171717;font:400 16px/1.4 Archivo,Arial,sans-serif;appearance:none}\n.iq-insider .iq-insider__input::placeholder{color:#666;opacity:1}\n.iq-insider .iq-insider__submit{display:flex;align-items:center;justify-content:center;gap:12px;width:100%;min-height:52px;padding:14px 18px;border:1px solid #A51D1B;border-radius:var(--buttons-radius,2px);background:#A51D1B;color:#FFF;cursor:pointer;font:700 13px/1.5 Archivo,Arial,sans-serif;letter-spacing:.15em;text-transform:uppercase}\n.iq-insider .iq-insider__submit:hover{background:#851715;border-color:#851715}\n.iq-insider .iq-insider__input:focus-visible,.iq-insider .iq-insider__submit:focus-visible{outline:2px solid #171717;outline-offset:3px}\n.iq-insider .iq-insider__legal{margin-top:14px;font-size:12px;line-height:1.6;color:#62625D}\n.iq-insider .iq-insider__legal p{margin:0}\n.iq-insider .iq-insider__legal a{color:inherit;text-decoration:underline;text-underline-offset:3px}\n.iq-insider .iq-insider__message{margin:14px 0 0;font-size:14px;line-height:1.5;color:#171717}\n.iq-insider .iq-insider__message--error{color:#A51D1B}\n@media(min-width:990px){\n.iq-insider .iq-insider__heading span{display:block;margin-top:4px}\n.iq-insider .iq-insider__inner.page-width{padding:56px 32px;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(32px,4vw,64px);align-items:center}\n.iq-insider .iq-insider__form-area{padding:0}\n}\n</style>\n\n<section class=\"iq-insider\">\n  <div class=\"iq-insider__inner page-width\">\n\n    <div class=\"iq-insider__copy\">\n      <p class=\"iq-insider__eyebrow\">IQ INSIDER</p>\n      <h2 class=\"iq-insider__heading rich-text__heading h2\">\n        {% if iq_en %}More knowledge. <span>One step ahead.</span>{% else %}Mehr Wissen. <span>Früher dran.</span>{% endif %}\n      </h2>\n      <p class=\"iq-insider__intro\">\n        {% if iq_en %}Training insights, an early look at new drops and benefits reserved for IQ Insiders.\n        {% else %}Trainingswissen, neue Drops vorab und Vorteile, die nur IQ Insider bekommen.{% endif %}\n      </p>\n      <ul class=\"iq-insider__benefits\">\n        {% if iq_en %}\n          <li><strong>Training knowledge</strong> from real-world experience</li>\n          <li><strong>New drops</strong> — be among the first to hear</li>\n          <li><strong>Exclusive discounts</strong> for IQ Insiders</li>\n        {% else %}\n          <li><strong>Trainingswissen</strong> aus der Praxis</li>\n          <li><strong>Neue Drops</strong> vorab entdecken</li>\n          <li><strong>Exklusive Rabatte</strong> nur für IQ Insider</li>\n        {% endif %}\n      </ul>\n    </div>\n\n    <div class=\"iq-insider__form-area\">\n      <p class=\"iq-insider__eyebrow\">{% if iq_en %}Your welcome benefit{% else %}Dein Willkommensvorteil{% endif %}</p>\n      <h3 class=\"iq-insider__offer\">{% if iq_en %}10% to get started.{% else %}10 % zum Start.{% endif %}</h3>\n      <p class=\"iq-insider__note\">{% if iq_en %}On your first order. Valid on IQ products, excluding new arrivals.{% else %}Auf Deine erste Bestellung. Gültig für IQ Produkte, ausgenommen Neuheiten.{% endif %}</p>\n      {% assign iq_form_id = 'IQInsiderForm-' | append: section.id %}\n      {% form 'customer', id: iq_form_id, class: 'iq-insider__form' %}\n        <input type=\"hidden\" name=\"contact[tags]\" value=\"newsletter,homepage\">\n\n        <label for=\"IQInsiderEmail-{{ section.id }}\" class=\"iq-insider__label\">\n            {% if iq_en %}Email address{% else %}E-Mail-Adresse{% endif %}\n        </label>\n        <div class=\"iq-insider__form-row\">\n          <input\n            id=\"IQInsiderEmail-{{ section.id }}\"\n            class=\"iq-insider__input\"\n            type=\"email\" name=\"contact[email]\"\n            value=\"{% if customer %}{{ customer.email | escape }}{% endif %}\"\n            autocorrect=\"off\" autocapitalize=\"off\" autocomplete=\"email\" required\n            {% if form.errors %}aria-invalid=\"true\" aria-describedby=\"IQInsiderError-{{ section.id }}\"{% endif %}\n            placeholder=\"{% if iq_en %}Email address{% else %}E-Mail-Adresse{% endif %}\"\n          >\n          <button class=\"iq-insider__submit\" type=\"submit\">\n            {% if iq_en %}Become an IQ Insider <span aria-hidden=\"true\">→</span>{% else %}IQ Insider werden <span aria-hidden=\"true\">→</span>{% endif %}\n          </button>\n        </div>\n\n        {% if form.posted_successfully? %}\n          <p class=\"iq-insider__message iq-insider__message--success\" role=\"status\">\n            {% if iq_en %}Thank you. You're on the list.{% else %}Danke. Du bist dabei.{% endif %}\n          </p>\n        {% endif %}\n\n        {% if form.errors %}\n          <div id=\"IQInsiderError-{{ section.id }}\" class=\"iq-insider__message iq-insider__message--error\" role=\"alert\">\n            {{ form.errors | default_errors }}\n          </div>\n        {% endif %}\n\n        <div class=\"iq-insider__legal\">\n          {% if iq_en %}\n            <p>By signing up you accept our <a href=\"/en/policies/privacy-policy\">privacy policy</a>.</p>\n          {% else %}\n            <p>Mit Deiner Anmeldung akzeptierst Du unsere <a href=\"/policies/privacy-policy\">Datenschutzbestimmungen</a>.</p>\n          {% endif %}\n        </div>\n\n      {% endform %}\n    </div>\n\n  </div>\n</section>",
         "color_scheme": "scheme-1",
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "custom_class": ""
+        "heading": "IQ Blog",
+        "heading_size": "h2",
+        "heading_highlight_style": "none",
+        "subheading": "",
+        "description": "<p>Fitness für Sporthunde, Fachbegriffe auf Englisch, Praxistipps und Infos zu Events.</p>",
+        "blog": "news",
+        "post_limit": 3,
+        "columns_desktop": 3,
+        "column_gap": "medium",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "card_title_size": "h4",
+        "show_date": false,
+        "show_excerpt": true,
+        "show_button": false,
+        "padding_top": 24,
+        "padding_bottom": 36,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "custom_class": "iq-home-blog",
+        "description_en": "<p>Fitness for sport dogs, English terminology, practical tips and event updates.</p>",
+        "excerpt_words": 24
       }
     }
   },
@@ -1156,9 +1158,10 @@
     "iq_home_categories",
     "iq_all_products_link",
     "iq_home_coat",
-    "iq_home_snacks",
     "iq_home_new",
+    "iq_home_snacks",
     "iq_home_knowledge",
+    "featured_blog_6f7FyW",
     "iq_home_gifts",
     "iq_home_founders",
     "iq_home_reviews",
@@ -1172,9 +1175,7 @@
     "custom_liquid_XLrBYx",
     "iq_new_drops_hxqdeK",
     "video_with_text_wXUEBJ",
-    "custom_liquid_6R8jQD",
     "custom_liquid_knjKwD",
-    "multicolumn_biiEM8",
-    "custom_liquid_EtqqpY"
+    "multicolumn_biiEM8"
   ]
 }

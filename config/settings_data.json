@@ -46,12 +46,14 @@
     "buttons_letter_spacing": 3,
     "buttons_transform": "uppercase",
     "page_width": 1040,
-    "section_header_alignment": "left",
+    "section_header_alignment": "center",
+    "section_header_alignment_mobile": "center",
     "buttons_corner_radius": "round",
     "inputs_corner_radius": "soft-pill",
     "blocks_corner_radius": "square",
     "pcard_corner_radius": "slightly",
     "badges_corner_radius": "slightly",
+    "enable_page_transition": false,
     "pcard_style": "standard",
     "pcard_content_alignment": "center",
     "pcard_color_scheme": "scheme-10",
@@ -118,6 +120,10 @@
           "show_dynamic_checkout_buttons": false,
           "show_quantity": true
         }
+      },
+      "iq-button-colors": {
+        "type": "iq-button-colors",
+        "settings": {}
       }
     },
     "content_for_index": [],
@@ -452,8 +458,7 @@
           "product_price_sale": "#a51d1b"
         }
       }
-    },
-    "enable_page_transition": false
+    }
   },
   "presets": {
     "Sleek": {
@@ -1935,11 +1940,11 @@
   "platform_customizations": {
     "custom_css": [
       ".card {border-radius: 30px;}",
-      "/* Lücken im Collection-Raster füllen */#ProductsList {grid-auto-flow: dense;}",
-      "/* Ruhige Inhaltsüberschriften */h3,h4,h5,h6,.h3:not(h1),.h4:not(h1),.h5:not(h1),.h6:not(h1),.rte h2,.accordion-details__content h2 {font-family: Archivo, sans-serif; font-style: normal; font-weight: 700; letter-spacing: 0;}",
+      " /* Lücken im Collection-Raster füllen */#ProductsList {grid-auto-flow: dense;}",
+      " /* Ruhige Inhaltsüberschriften */h3,h4,h5,h6,.h3:not(h1),.h4:not(h1),.h5:not(h1),.h6:not(h1),.rte h2,.accordion-details__content h2 {font-family: Archivo, sans-serif; font-style: normal; font-weight: 700; letter-spacing: 0;}",
       "h4,h5,h6,.h4:not(h1),.h5:not(h1),.h6:not(h1) {text-transform: none;}",
       "@media (min-width: 1024px) {.iq-athletes > .page-width, .footer .footer__top.page-width, .footer .footer__bottom.page-width {box-sizing: border-box; width: 100%; max-width: 1360px; margin-left: auto; margin-right: auto; padding-left: 32px !important; padding-right: 32px !important; }}",
-      "/* Filterbereich nicht in den Collection-Banner ziehen */body.collection-template #ProductGridWrapper.show-toolbar {margin-block-start: 0 !important; margin-top: 0 !important;}"
+      " /* Filterbereich nicht in den Collection-Banner ziehen */body.collection-template #ProductGridWrapper.show-toolbar {margin-block-start: 0 !important; margin-top: 0 !important;}"
     ]
   }
 }

@@ -30,9 +30,9 @@
 .iqcb .iqcb__copy{position:absolute}
 @media(max-width:749px){#shopify-section-{{ section.id }}{min-height:0}.iqcb{aspect-ratio:4/5;max-height:none}.iqcb[data-mobile-layout="below"]{aspect-ratio:auto;background:#FFFFFF}.iqcb[data-mobile-layout="below"] .iqcb__picture{position:relative;inset:auto;aspect-ratio:var(--iqcb-mobile-ratio,4/3)}.iqcb[data-mobile-layout="below"] .iqcb__copy{position:relative}}
 </style>
-<div class="iqcb" data-iq-collection-hero data-mobile-layout="{{ section.settings.mobile_layout | default: 'below' }}" data-accent="{{ section.settings.accent_style | default: 'brand' }}" data-tone="{{ section.settings.text_tone }}" data-position="{{ section.settings.desktop_position }}" data-mobile-position="{{ section.settings.mobile_position }}" data-mobile-tone="{{ section.settings.mobile_tone }}" data-mobile-align="{{ section.settings.mobile_alignment }}" style="--iqcb-mobile-ratio:{{ mobile.aspect_ratio | default: 1.333333 }};--iqcb-focus:{{ section.settings.focus_y }}%;--iqcb-shade:{{ section.settings.overlay_desktop | default: 0 | divided_by: 100.0 }};--iqcb-shade-mobile:{{ section.settings.overlay_mobile | default: 0 | divided_by: 100.0 }};">
+<div class="iqcb" data-iq-collection-hero data-desktop-uncropped="{{ section.settings.desktop_uncropped }}" data-mobile-crop="{{ section.settings.mobile_crop_4_3 }}" data-mobile-layout="{{ section.settings.mobile_layout | default: 'below' }}" data-accent="{{ section.settings.accent_style | default: 'brand' }}" data-tone="{{ section.settings.text_tone }}" data-position="{{ section.settings.desktop_position }}" data-mobile-position="{{ section.settings.mobile_position }}" data-mobile-tone="{{ section.settings.mobile_tone }}" data-mobile-align="{{ section.settings.mobile_alignment }}" style="--iqcb-mobile-ratio:{% if section.settings.mobile_crop_4_3 %}1.333333{% else %}{{ mobile.aspect_ratio | default: 1.333333 }}{% endif %};--iqcb-mobile-x:{{ section.settings.mobile_focus_x | default: 50 }}%;--iqcb-focus:{{ section.settings.focus_y }}%;--iqcb-shade:{{ section.settings.overlay_desktop | default: 0 | divided_by: 100.0 }};--iqcb-shade-mobile:{{ section.settings.overlay_mobile | default: 0 | divided_by: 100.0 }};">
   <picture class="iqcb__picture">
-    <source media="(max-width:749px)" srcset="{{ mobile | image_url: width: 400 }} 400w, {{ mobile | image_url: width: 600 }} 600w, {{ mobile | image_url: width: 750 }} 750w, {{ mobile | image_url: width: 800 }} 800w, {{ mobile | image_url: width: 1000 }} 1000w, {{ mobile | image_url: width: 1200 }} 1200w" sizes="100vw" width="{{ mobile.width }}" height="{{ mobile.height }}">
+    <source media="(max-width:749px)" srcset="{{ mobile | image_url: width: 400 }} 400w, {{ mobile | image_url: width: 600 }} 600w, {{ mobile | image_url: width: 750 }} 750w, {{ mobile | image_url: width: 800 }} 800w, {{ mobile | image_url: width: 1000 }} 1000w, {{ mobile | image_url: width: 1200 }} 1200w{% if section.settings.mobile_crop_4_3 %}, {{ mobile | image_url: width: 1920 }} 1920w{% endif %}" sizes="{% if section.settings.mobile_crop_4_3 %}240vw{% else %}100vw{% endif %}" width="{{ mobile.width }}" height="{{ mobile.height }}">
     {{ desktop | image_url: width: 2560 | image_tag: widths: '800,1200,1600,1920,2560', sizes: '100vw', loading: 'eager', fetchpriority: 'high', alt: image_alt, class: 'iqcb__image' }}
   </picture>
   <div class="iqcb__copy">
@@ -105,6 +105,9 @@
 .iqcb[data-mobile-layout="below"] .iqcb__button{margin-top:14px;background:#171717;color:#FFFFFF;border-color:#171717}
 .iqcb[data-mobile-layout="below"] .iqcb__button:hover{background:#A51D1B;border-color:#A51D1B}
 }
+@media(min-width:750px){.iqcb[data-desktop-uncropped="true"]{max-height:none}}
+@media(max-width:749px){.iqcb[data-mobile-layout="below"][data-mobile-crop="true"] .iqcb__image{object-fit:cover;object-position:var(--iqcb-mobile-x,50%) 50%}}
+@media(max-width:749px){.iqcb[data-mobile-layout="below"] .iqcb__copy .iqcb__title,.iqcb[data-mobile-layout="below"] .iqcb__copy .iqcb__title span,.iqcb[data-mobile-layout="below"] .iqcb__copy .iqcb__description{text-shadow:none!important}}
 {% endstylesheet %}
 
 {% schema %}
@@ -404,6 +407,29 @@
       "id": "button_url",
       "label": "Linkziel",
       "info": "Leer lassen = zum Produktraster dieser Seite."
+    },
+    {
+      "type": "checkbox",
+      "id": "mobile_crop_4_3",
+      "label": "Mobil: 4:3-Ausschnitt aus dem Bild",
+      "default": false,
+      "info": "Nur verwenden, wenn Mensch und Hund im gewählten Ausschnitt vollständig bleiben."
+    },
+    {
+      "type": "range",
+      "id": "mobile_focus_x",
+      "label": "Mobil: Bildfokus horizontal",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 50
+    },
+    {
+      "type": "checkbox",
+      "id": "desktop_uncropped",
+      "label": "Desktop: gesamte Bildhöhe erhalten",
+      "default": false
     }
   ],
   "presets": [

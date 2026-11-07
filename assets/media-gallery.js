@@ -23,6 +23,8 @@ if (!customElements.get('media-gallery')) {
       }
 
       init() {
+        // Variant changes reuse the gallery; do not register zoom handlers again.
+        if (this.initialized) return;
         this.elements = window.FoxTheme.utils.queryDomNodes(this.selectors, this);
         this.mediaLayout = this.dataset.mediaLayout;
         this.onlyImage = this.dataset.onlyImage === 'true';
@@ -39,6 +41,8 @@ if (!customElements.get('media-gallery')) {
         if (this.enableImageZoom) {
           this.initImageZoom();
         }
+
+        this.initialized = true;
 
         // [Hamza 2026-10-15] added: apply variant change that happened before init
         if (this.pendingVariant) {
@@ -407,7 +411,7 @@ if (!customElements.get('media-gallery')) {
           context: this,
           handler: (e, media) => {
             if (media.dataset.mediaType === 'image') {
-              const index = Number(media.dataset.mediaIndex) || 0;
+              const index = Number(media.closest('.product__media-item')?.dataset.mediaIndex ?? media.dataset.mediaIndex) || 0;
               this.lightbox.loadAndOpen(index);
             }
           },

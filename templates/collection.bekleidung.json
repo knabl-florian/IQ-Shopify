@@ -353,20 +353,23 @@
           "settings": {
             "only_collection": "hundesportbekleidung",
             "after_product": "iq-softshelljacke-2-0-unisex",
-            "image": "shopify://shop_images/mfj-k9-dame-ruecken-1200x900.jpg",
+            "image": "",
             "detail_crop": false,
             "copy_left": false,
-            "eyebrow_de": "IQ MULTIFUNKTIONSJACKE K9 PRO",
-            "heading_de": "FÜR DIE ARBEIT MIT DEINEM DIENSTHUND.",
-            "body_de": "<p>Mit Polizei-Diensthundeführern entwickelt: seitlicher Zugriff auf Holster und Einsatzgürtel, Loops für Funkgerät und Bodycam. Wind- und wasserdicht, warm gefüttert – mit großer Rückentasche und herausnehmbaren Futtertaschen.</p>",
+            "eyebrow_de": "",
+            "heading_de": "Ausrüstung für den Dienst?",
+            "body_de": "<p>Die K9-Linie ist auf die Arbeit mit Diensthund ausgelegt. <a href=\"/collections/k9-diensthundefuehrer-ausruestung\">K9-Jacken, Dienstwesten und Ausrüstung ansehen</a>.</p>",
             "link_label_de": "",
-            "alt_de": "Diensthundeführerin in einer IQ K9 Jacke mit ihrem Hund",
-            "eyebrow_en": "IQ K9 PRO MULTIFUNCTIONAL JACKET",
-            "heading_en": "FOR WORK WITH YOUR DUTY DOG.",
-            "body_en": "<p>Developed with police dog handlers: side access to your holster and duty belt, plus radio and bodycam loops. Windproof, waterproof and warmly lined, with a large back pocket and removable treat pockets.</p>",
+            "alt_de": "",
+            "eyebrow_en": "",
+            "heading_en": "Equipment for duty?",
+            "body_en": "<p>The K9 range is designed for work with duty dogs. <a href=\"/en/collections/k9-diensthundefuehrer-ausruestung\">Explore K9 jackets, duty vests and equipment</a>.</p>",
             "link_label_en": "",
-            "alt_en": "Working dog handler wearing an IQ K9 jacket with her dog"
-          }
+            "alt_en": "",
+            "compact_guide": true,
+            "photo_square": false
+          },
+          "disabled": true
         }
       },
       "block_order": [
@@ -400,7 +403,10 @@
         "padding_top": 0,
         "padding_bottom": 70,
         "show_section_divider": true,
-        "divider_width": "fixed"
+        "divider_width": "fixed",
+        "related_collection_label_de": "Ausrüstung für Diensthundeführer",
+        "related_collection_label_en": "Equipment for duty dog handlers",
+        "related_collection_url": "/collections/k9-diensthundefuehrer-ausruestung"
       }
     },
     "rich_text_ARFW3U": {

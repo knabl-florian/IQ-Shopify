@@ -521,3 +521,5 @@ body.collection-template #ProductGridWrapper.show-toolbar {
   margin-block-start: 0 !important;
   margin-top: 0 !important;
 }
+
+.iq-groups-with-link{display:flex;align-items:center;gap:16px}.iq-groups-with-link .iq-group-filters{flex:1;min-width:0}.iq-group-collection-link{display:inline-flex;align-items:center;gap:8px;flex:0 0 auto;min-height:44px;color:#171717;font:700 14px/1.4 Archivo,sans-serif;text-decoration:none}.iq-group-collection-link:hover{text-decoration:underline;text-underline-offset:4px}.iq-group-collection-link:focus-visible{outline:2px solid #A51D1B;outline-offset:3px}@media(max-width:989px){.iq-groups-with-link{flex-direction:column;align-items:flex-start;gap:4px}.iq-groups-with-link .iq-group-filters{width:100%}.iq-toolbar--groups:has(.iq-groups-with-link){align-items:flex-start}.iq-group-collection-link{font-size:13px;min-height:36px;white-space:normal}}

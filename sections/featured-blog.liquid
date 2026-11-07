@@ -24,6 +24,27 @@
     assign section_header_alignment_mobile = section_header_alignment
   endif
 
+  assign iq_home_blog = false
+  if section.settings.custom_class contains 'iq-home-blog'
+    assign iq_home_blog = true
+  endif
+  assign iq_excerpt_limit = nil
+  assign iq_article_sizes = nil
+  assign iq_blog_description = section.settings.description
+  if iq_home_blog
+    assign iq_excerpt_limit = section.settings.excerpt_words
+    if request.locale.iso_code == 'en' and section.settings.description_en != blank
+      assign iq_blog_description = section.settings.description_en
+    endif
+    assign iq_max_card_width = 1340 | divided_by: columns_desktop | ceil
+    capture iq_article_sizes
+      echo '(min-width:1440px) '
+      echo iq_max_card_width
+      echo 'px, (min-width:750px) calc((100vw - 100px) / '
+      echo columns_desktop
+      echo '), calc(100vw - 70px)'
+    endcapture
+  endif
   assign motion_delay = 50
 %}
 
@@ -37,7 +58,11 @@
   style="--section-padding-top: {{ section.settings.padding_top }}px;--section-padding-bottom: {{ section.settings.padding_bottom }}px;"
 >
   <div class="page-width">
-    {% render 'section-heading', section_settings: section.settings %}
+    {% if iq_home_blog %}
+      {% render 'section-heading', section_settings: section.settings, header_alignment: 'left', header_alignment_mobile: 'left', description: iq_blog_description %}
+    {% else %}
+      {% render 'section-heading', section_settings: section.settings %}
+    {% endif %}
     <motion-element
       class="featured-blog__wrapper block f-grid--gap-{{ section.settings.column_gap }}{% if enable_swipe_mobile %} swipe-mobile swipe-mobile--{{ section.settings.columns_mobile }}-cols{% endif %}"
       data-motion-delay="{{ motion_delay }}"
@@ -52,7 +77,9 @@
                 show_excerpt: show_excerpt,
                 show_button: show_button,
                 index: forloop.index,
-                title_size: section.settings.card_title_size
+                title_size: section.settings.card_title_size,
+                image_sizes: iq_article_sizes,
+                excerpt_limit: iq_excerpt_limit
               -%}
             </div>
           {%- endfor -%}
@@ -179,6 +206,12 @@
       "type": "richtext",
       "id": "description",
       "label": "t:sections.all.text.label"
+    },
+    {
+      "type": "richtext",
+      "id": "description_en",
+      "label": "Einleitung · EN (IQ Blog)",
+      "info": "Englische Einleitung für den Startseiten-Blog mit der CSS-Klasse iq-home-blog."
     },
     {
       "type": "header",
@@ -330,6 +363,16 @@
       "label": "t:sections.featured-blog.settings.show_excerpt.label"
     },
     {
+      "type": "range",
+      "id": "excerpt_words",
+      "label": "Länge der Kurztexte (IQ Blog)",
+      "min": 12,
+      "max": 36,
+      "step": 2,
+      "default": 24,
+      "info": "Maximale Wortzahl der Vorschau. Die Artikel selbst bleiben unverändert."
+    },
+    {
       "type": "checkbox",
       "id": "show_button",
       "default": true,
@@ -402,7 +445,11 @@
     }
   ],
   "disabled_on": {
-    "groups": ["footer", "header", "custom.overlay"]
+    "groups": [
+      "footer",
+      "header",
+      "custom.overlay"
+    ]
   }
 }
 {% endschema %}

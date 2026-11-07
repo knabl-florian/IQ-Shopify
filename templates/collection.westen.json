@@ -174,7 +174,8 @@
             "position_mobile": 2,
             "width": "full",
             "custom_liquid": "{% if request.locale.iso_code == 'en' %}{% assign heading = 'THE VEST FOR SMART TRAINING.' %}{% assign note = 'IQ ball pouch sold separately.' %}{% assign video_label = 'Watch the IQ vest in training – with music' %}{% capture benefits %}<ul><li><strong>Built tough</strong> for everyday training.</li><li><strong>Optional ball pouch:</strong> concealed rewards during heelwork.</li><li><strong>Patented chest pocket:</strong> reward from the centre of your body for the front sit.</li></ul>{% endcapture %}{% else %}{% assign heading = 'DIE WESTE FÜR SMARTES TRAINING.' %}{% assign note = 'IQ Balltasche separat erhältlich.' %}{% assign video_label = 'IQ Weste im Training ansehen – mit Musik' %}{% capture benefits %}<ul><li><strong>Robust verarbeitet</strong> für Deinen Trainingsalltag.</li><li><strong>Optionale Balltasche:</strong> verdeckt belohnen beim Fußlaufen.</li><li><strong>Patentierte Brusttasche:</strong> aus der Körpermitte bestätigen – für den Vorsitz.</li></ul>{% endcapture %}{% endif %}{% render 'iq-collection-feature-video', anchor: 'iq-westen-video', video_url: 'https://cdn.shopify.com/videos/c/vp/fe590e76de4648bd8054ae33ee18b570/fe590e76de4648bd8054ae33ee18b570.HD-720p-1.6Mbps-98753043.mp4', heading: heading, benefits: benefits, note: note, video_label: video_label, poster: 'https://cdn.shopify.com/s/files/1/0625/2806/1688/files/westen-funktionen-sport-poster.jpg?v=1792851259' %}"
-          }
+          },
+          "disabled": true
         },
         "inline_custom_liquid_iADfJP": {
           "type": "iq_release_17",
@@ -200,25 +201,25 @@
           }
         },
         "inline_custom_liquid_Dnz3Df": {
-          "type": "iq_release_18",
-          "name": "Balltasche",
+          "type": "iq_product_feature",
           "settings": {
-            "position": 4,
-            "position_mobile": 4,
-            "width": "full",
-            "bild_1": "shopify://shop_images/frano-weste.jpg",
-            "link_2": "/products/iq-magnettasche",
-            "link_3": "/en/products/iq-magnettasche",
-            "text_4": "THE OPTIONAL IQ BALL POCKET",
-            "text_5": "DIE OPTIONALE IQ BALLTASCHE",
-            "text_6": "YOUR TIMING.",
-            "text_7": "YOUR REWARD.",
-            "text_8": "DEIN TIMING.",
-            "text_9": "DEINE BELOHNUNG.",
-            "text_10": "With the IQ Ball Pocket, you can reward your dog right at heel. Release the ball using the pull cord – without reaching for the pocket first.",
-            "text_11": "Mit der IQ Balltasche belohnst Du Deinen Hund direkt in der Fußposition. Über das Zugsystem gibst Du den Ball frei – ohne vorher mit der Hand zur Tasche zu greifen.",
-            "text_12": "Discover the Ball Pocket",
-            "text_13": "Balltasche entdecken"
+            "only_collection": "hundesport-westen",
+            "after_product": "iq-diensthundefuehrerweste",
+            "image": "shopify://shop_images/frano-weste.jpg",
+            "copy_left": false,
+            "detail_crop": false,
+            "compact_guide": true,
+            "photo_square": true,
+            "heading_de": "Welche Weste passt?",
+            "body_de": "<p><strong>Hundesportweste oder Sommerweste:</strong> Beide 3.0-Modelle bieten die patentierte Brusttasche für Belohnung aus der Körpermitte. Die Sommerweste ergänzt Mesh für warme Trainingstage.</p><p><strong>Verdeckt in der Fußposition belohnen:</strong> Die <a href=\"/products/iq-magnettasche\">IQ Balltasche</a> ergänzt beide Modelle und ist separat erhältlich.</p><p><a href=\"/blogs/news/hundesportwesten-vergleich\">Westen vergleichen</a> · <a href=\"/collections/k9-diensthundefuehrer-ausruestung\">K9-Ausrüstung für den Dienst</a></p>",
+            "heading_en": "Which vest suits your training?",
+            "body_en": "<p><strong>Dogsport Vest or Summer Vest:</strong> Both 3.0 models feature the patented chest pocket for rewards from the centre of your body. The Summer Vest adds mesh for warm training days.</p><p><strong>Concealed rewards at heel:</strong> The <a href=\"/en/products/iq-magnettasche\">IQ Ball Pocket</a> complements both models and is sold separately.</p><p><a href=\"/en/blogs/news/hundesportwesten-vergleich\">Compare vests</a> · <a href=\"/en/collections/k9-diensthundefuehrer-ausruestung\">K9 duty equipment</a></p>",
+            "eyebrow_de": "MODELL & FUNKTION",
+            "eyebrow_en": "MODELS & FEATURES",
+            "alt_de": "Hundeführer mit IQ Weste und Hund beim Belohnen aus der Balltasche",
+            "alt_en": "Handler wearing an IQ vest rewarding a dog from the Ball Pocket",
+            "link_label_de": "",
+            "link_label_en": ""
           }
         },
         "inline_custom_liquid_maU4K3": {

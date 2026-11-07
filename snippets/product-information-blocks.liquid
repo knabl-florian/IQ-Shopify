@@ -1,3 +1,16 @@
+{%- assign iq_core_copy_html = blank -%}
+{%- assign iq_core_copy_block = blank -%}
+{%- for iq_copy_block in section.blocks -%}
+  {%- if iq_copy_block.type == 'iq_core_copy' and iq_copy_block.settings.product.id == product.id -%}
+    {%- if request.locale.iso_code == 'de' -%}
+      {%- assign iq_core_copy_html = iq_copy_block.settings.copy_de -%}
+    {%- elsif request.locale.iso_code == 'en' -%}
+      {%- assign iq_core_copy_html = iq_copy_block.settings.copy_en -%}
+    {%- endif -%}
+    {%- assign iq_core_copy_block = iq_copy_block -%}
+    {%- break -%}
+  {%- endif -%}
+{%- endfor -%}
 {%- liquid
   assign product_form_id = 'product-form-' | append: section.id
   assign iq_refined = false
@@ -215,7 +228,9 @@
                 {%- render 'icon-plus-toggle' -%}
               </summary>
               <div class="accordion-details__content rte">
-                {%- if product.id == 10709813788936 and block.settings.heading == 'Highlights' -%}
+                {%- if iq_core_copy_html != blank and block.id == 'collapsible-row-1' -%}
+                  <div class="iq-core-copy" data-iq-core-copy="{{ product.id }}" {{ iq_core_copy_block.shopify_attributes }}>{{ iq_core_copy_html }}</div>
+                {%- elsif product.id == 10709813788936 and block.settings.heading == 'Highlights' -%}
                   {%- assign iq_vest_description = block.settings.content
                     | remove: '<p>★★★★★ <strong>4,94★ aus 235 Bewertungen</strong> (Stand Mai 2026)</p>'
                     | remove: '<p>&#9733;&#9733;&#9733;&#9733;&#9733; <strong>4.94 from 235 reviews</strong> (as of May 2026)</p>'
@@ -231,8 +246,10 @@
                 {%- else -%}
                   {{ block.settings.content }}
                 {%- endif -%}
-                {{ block.settings.custom_liquid }}
-                {{ block.settings.page.content }}
+                {%- unless iq_core_copy_html != blank and block.id == 'collapsible-row-1' -%}
+                  {{ block.settings.custom_liquid }}
+                  {{ block.settings.page.content }}
+                {%- endunless -%}
               </div>
             </details>
           </div>
@@ -769,3 +786,4 @@
     </a>
   {%- endif -%}
 </div>
+

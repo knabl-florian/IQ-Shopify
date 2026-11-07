@@ -692,14 +692,14 @@
           </div>
         {%- endif -%}
         <div class="flex flex-col flex-grow{% if show_toolbar %} show-toolbar{% endif %}" id="ProductGridWrapper">
-          {% unless section.settings.compact_filter_bar %}{% render 'iq-collection-group-filters' %}{% endunless %}
+          {% unless section.settings.compact_filter_bar %}{% render 'iq-collection-group-filters', section: section %}{% endunless %}
           <div class="sticky-element grid gap-5 z-10" style="--sticky-offset: 0px;">
             {%- if enable_filtering or enable_sorting -%}
               <div class="collection__toolbar flex items-center justify-between{% if section.settings.compact_filter_bar %} iq-toolbar--groups{% endif %}">
                 {%- if filter_type == 'drawer' and collection.all_products_count > 0 and enable_filtering -%}
                   {%- render 'facets-drawer', results: collection, enable_sorting: enable_sorting -%}
                 {%- endif -%}
-                {% if section.settings.compact_filter_bar %}{% render 'iq-collection-group-filters' %}{% endif %}
+                {% if section.settings.compact_filter_bar %}{% render 'iq-collection-group-filters', section: section %}{% endif %}
 
                 {%- if filter_type == 'vertical' and collection.all_products_count > 0 and enable_filtering -%}
                   <div class="flex xl:hidden">
@@ -3286,6 +3286,12 @@ document.addEventListener('webkitfullscreenchange', function () {
       "name": "IQ Produktvideo DE/EN",
       "settings": [
         {
+          "type": "checkbox",
+          "id": "show_video_label",
+          "label": "Dachzeile direkt über dem Video",
+          "default": false
+        },
+        {
           "type": "collection",
           "id": "only_collection",
           "label": "Nur in dieser Collection anzeigen"
@@ -3441,6 +3447,28 @@ document.addEventListener('webkitfullscreenchange', function () {
       "name": "IQ Actionbild + Erklärung",
       "settings": [
         {
+          "type": "image_picker",
+          "id": "second_image",
+          "label": "Zweites Actionbild (optional)"
+        },
+        {
+          "type": "text",
+          "id": "second_alt_de",
+          "label": "Zweites Bild · Beschreibung DE"
+        },
+        {
+          "type": "text",
+          "id": "second_alt_en",
+          "label": "Second image · description EN"
+        },
+        {
+          "type": "checkbox",
+          "id": "compact_guide",
+          "label": "Kompakte Auswahlhilfe",
+          "default": false,
+          "info": "Kurzer Erklärblock. Ohne Actionbild wird nur der Text angezeigt."
+        },
+        {
           "type": "collection",
           "id": "only_collection",
           "label": "Nur in dieser Collection"
@@ -3551,6 +3579,21 @@ document.addEventListener('webkitfullscreenchange', function () {
     }
   ],
   "settings": [
+    {
+      "type": "url",
+      "id": "related_collection_url",
+      "label": "Weiterführende Collection neben den Filtern"
+    },
+    {
+      "type": "text",
+      "id": "related_collection_label_de",
+      "label": "Collection-Verweis · Deutsch"
+    },
+    {
+      "type": "text",
+      "id": "related_collection_label_en",
+      "label": "Collection link · English"
+    },
     {
       "type": "collection",
       "id": "priority_collection",

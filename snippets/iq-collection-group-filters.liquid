@@ -1,5 +1,6 @@
 {% doc %}
 Native product groups, filtered on Shopify across all result pages.
+@param {section} section - The parent collection section and its editable settings.
 {% enddoc %}
 {%- capture collection_key -%}{%- render 'iq-collection-key' -%}{%- endcapture -%}
 {%- assign collection_key = collection_key | strip -%}
@@ -14,7 +15,8 @@ Native product groups, filtered on Shopify across all result pages.
   assign single_select = true
  endif
 -%}
-<div id="IQCollectionGroupFilters">
+{% assign related_label = section.settings.related_collection_label_de %}{% if request.locale.iso_code == 'en' %}{% assign related_label = section.settings.related_collection_label_en | default: related_label %}{% endif %}
+<div id="IQCollectionGroupFilters"{% if section.settings.related_collection_url != blank and related_label != blank %} class="iq-groups-with-link"{% endif %}>
 {%- if group_filter != blank and group_order.first != blank -%}
  <nav class="iq-group-filters" aria-label="{{ 'iq_filters.product_group' | t }}">
   <a class="iq-group-filters__option{% if group_filter.active_values.size == 0 %} is-active{% endif %}" href="{{ group_filter.url_to_remove | escape }}#IQCollectionGroupFilters"{% if group_filter.active_values.size == 0 %} aria-current="true"{% endif %}>{{ 'iq_filters.all' | t }}</a>
@@ -38,4 +40,5 @@ Native product groups, filtered on Shopify across all result pages.
   {%- endfor -%}
  </nav>
 {%- endif -%}
+{% if section.settings.related_collection_url != blank and related_label != blank %}{% assign related_target = section.settings.related_collection_url %}{% assign related_prefix = routes.root_url | append: '/' %}{% unless routes.root_url == '/' or related_target contains related_prefix %}{% assign related_target = routes.root_url | append: related_target %}{% endunless %}<a class="iq-group-collection-link" href="{{ related_target }}">{{ related_label | escape }} <span aria-hidden="true">↗</span></a>{% endif %}
 </div>

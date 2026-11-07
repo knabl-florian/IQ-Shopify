@@ -18,33 +18,39 @@
       "settings": {
         "only_collection": "hundesport-hosen",
         "require_collection": true,
-        "desktop_image": "shopify://shop_images/hosedesktop.jpg",
-        "mobile_image": "shopify://shop_images/hosemobil.jpg",
+        "desktop_image": "shopify://shop_images/iq-hosen-herbst-desktop-1920x600-v1.jpg",
+        "mobile_image": "shopify://shop_images/iq-hosen-herbst-mobil-1600x1200-v1.jpg",
+        "mobile_layout": "below",
         "text_tone": "light",
+        "accent_style": "text",
+        "overlay_desktop": 0,
+        "overlay_mobile": 0,
         "desktop_position": "center",
-        "show_mobile_label": true,
+        "show_mobile_label": false,
         "focus_y": 50,
-        "title_de": "HOSEN FÜRS",
-        "accent_de": "TRAINING.",
+        "title_de": "Hosen fürs",
+        "accent_de": "Hundetraining.",
         "description_de": "Trainer Pants und Performance Leggings für Dein Training mit Hund.",
         "mobile_description_de": "Trainer Pants und Performance Leggings für Dein Training mit Hund.",
         "label_de": "HUNDESPORTHOSEN",
-        "alt_de": "IQ Hundesporthosen im Einsatz beim Training mit Hund.",
-        "title_en": "TROUSERS FOR",
-        "accent_en": "TRAINING.",
+        "alt_de": "Zwei Männer in IQ Trainer Pants mit Hund auf dem Trainingsplatz",
+        "title_en": "Trousers for",
+        "accent_en": "dog training.",
         "description_en": "Trainer Pants and Performance Leggings for training with your dog.",
         "mobile_description_en": "Trainer Pants and Performance Leggings for training with your dog.",
         "label_en": "DOG TRAINING TROUSERS",
-        "alt_en": "IQ dog training trousers in use during training with a dog.",
+        "alt_en": "Two men wearing IQ Trainer Pants with a dog on the training field",
         "mobile_position": "bottom",
         "mobile_alignment": "center",
         "mobile_tone": "light",
         "heading_tag": "h1",
         "button_de": "",
         "button_en": "",
-        "button_url": ""
-      },
-      "disabled": true
+        "button_url": "",
+        "mobile_crop_4_3": false,
+        "mobile_focus_x": 85,
+        "desktop_uncropped": true
+      }
     },
     "featured_product_rJcWVK": {
       "type": "featured-product",
@@ -151,6 +157,7 @@
         "icon_with_text_GncY8H",
         "addons_gkJPBP"
       ],
+      "disabled": true,
       "custom_css": [
         ".product__block--text .product__text.text-upper {font-family: \"Archivo\", sans-serif; font-size: clamp(24px, 2.2vw, 32px); font-weight: 700; font-style: normal; line-height: 1.2; text-transform: none;}"
       ],
@@ -168,8 +175,7 @@
         "show_section_divider": false,
         "divider_width": "fixed",
         "custom_class": ""
-      },
-      "disabled": true
+      }
     },
     "banner": {
       "type": "main-collection-banner",
@@ -296,6 +302,7 @@
         },
         "iq_heading_1": {
           "type": "iq_collection_heading",
+          "disabled": true,
           "settings": {
             "collection_handle": "hundesport-hosen",
             "title_de": "Hundesporthosen",
@@ -335,6 +342,9 @@
       ],
       "custom_css": [],
       "settings": {
+        "priority_products": [
+          "iq-dogsport-hose-unisex"
+        ],
         "use_section_column_settings": true,
         "defer_product_images": true,
         "collection_card_titles": true,
@@ -355,10 +365,7 @@
         "padding_top": 30,
         "padding_bottom": 30,
         "show_section_divider": false,
-        "divider_width": "fixed",
-        "priority_products": [
-          "iq-dogsport-hose-unisex"
-        ]
+        "divider_width": "fixed"
       }
     },
     "custom_liquid_aqAmH6": {
@@ -378,11 +385,11 @@
       "block_order": [
         "part1"
       ],
+      "disabled": true,
       "name": "Produktvideo",
       "settings": {
         "video": "shopify://files/videos/IQ-Trainer-Pants-Querformat-21-10-2026.mp4"
-      },
-      "disabled": true
+      }
     },
     "custom_liquid_T3dHzC": {
       "type": "iq-release-section-15",
@@ -423,9 +430,9 @@
         "part1",
         "part2"
       ],
+      "disabled": true,
       "name": "Bild Erklärung",
-      "settings": {},
-      "disabled": true
+      "settings": {}
     },
     "rich_text_ARFW3U": {
       "type": "rich-text",
@@ -500,10 +507,6 @@
     },
     "iq_knowledge": {
       "type": "iq-collection-knowledge",
-      "settings": {
-        "heading_de": "",
-        "heading_en": ""
-      },
       "blocks": {
         "pants_choice": {
           "type": "topic",
@@ -520,18 +523,14 @@
       },
       "block_order": [
         "pants_choice"
-      ]
+      ],
+      "settings": {
+        "heading_de": "",
+        "heading_en": ""
+      }
     },
     "iq_pants_feature": {
       "type": "iq-pants-feature",
-      "name": "Hose · Video & Details",
-      "settings": {
-        "video": "shopify://files/videos/IQ-Trainer-Pants-Querformat-21-10-2026.mp4",
-        "cta_de": "Hundesporthosen entdecken",
-        "cta_en": "Discover training trousers",
-        "play_de": "Video abspielen",
-        "play_en": "Play video"
-      },
       "blocks": {
         "part1": {
           "type": "part1",
@@ -568,7 +567,15 @@
       "block_order": [
         "part1",
         "part2"
-      ]
+      ],
+      "name": "Hose · Video & Details",
+      "settings": {
+        "video": "shopify://files/videos/IQ-Trainer-Pants-Querformat-21-10-2026.mp4",
+        "cta_de": "Hundesporthosen entdecken",
+        "cta_en": "Discover training trousers",
+        "play_de": "Video abspielen",
+        "play_en": "Play video"
+      }
     }
   },
   "order": [

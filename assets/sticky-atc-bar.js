@@ -112,7 +112,10 @@ if (!customElements.get('sticky-atc-bar')) {
       }
 
       updateQuantityInput() {
-        this.currentVariant = this.variantData.find((variant) => variant.id === Number(this.selectedVariantId));
+        // Read the current selection, not the variant captured when the page loaded.
+        const variantId = this.querySelector(this.selectors.variantIdSelect)?.value;
+        this.currentVariant = this.variantData.find((variant) => variant.id === Number(variantId));
+        if (!this.currentVariant) return;
         fetch(`${this.getAttribute('data-url')}?variant=${this.currentVariant.id}&section_id=${this.sectionId}`)
           .then((response) => response.text())
           .then((responseText) => {

@@ -1,16 +1,15 @@
-{% comment %}
-  Renders an article card for a given blog with settings to either show the image or not.
-
-  Accepts:
-  - article: {Object} Article object
-  - show_date: {String} The setting either show the article date or not.
-  - show_author: {String} The setting either show the article author or not.
-  - show_button: {String} The setting either show the learn more button or not.
-  - title_size: {String} Example: h1,h2,h3,h4,h5,h6
-
-  Usage:
-  {% render 'card-article' article: article %}
-{% endcomment %}
+{% doc %}
+  Renders an article preview.
+  @param {article} article - The article.
+  @param {boolean} [show_date] - Show the publication date.
+  @param {boolean} [show_author] - Show the author.
+  @param {boolean} [show_excerpt] - Show the article excerpt.
+  @param {boolean} [show_button] - Show the reading link.
+  @param {string} [title_size] - Heading size class.
+  @param {number} [index] - Card position.
+  @param {string} [image_sizes] - Optional responsive image sizes.
+  @param {number} [excerpt_limit] - Optional maximum excerpt word count.
+{% enddoc %}
 
 {%- if article and article != empty -%}
   <div class="article-card">
@@ -23,7 +22,7 @@
         endif
       %}
       {%- capture sizes -%}
-      (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 }}px, (min-width: 750px) calc(100vw - 10rem), 100vw
+      {% if image_sizes != blank %}{{ image_sizes }}{% else %}(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 }}px, (min-width: 750px) calc(100vw - 10rem), 100vw{% endif %}
       {%- endcapture -%}
       <div class="article-card__media blocks-radius">
         <a
@@ -59,9 +58,9 @@
       {%- if show_excerpt and article.excerpt.size > 0 or article.content.size > 0 -%}
         <p class="article-card__excerpt text-limit-2-lines">
           {%- if article.excerpt.size > 0 -%}
-            {{ article.excerpt | strip_html }}
+            {% if excerpt_limit != blank %}{{ article.excerpt | strip_html | truncatewords: excerpt_limit }}{% else %}{{ article.excerpt | strip_html }}{% endif %}
           {%- else -%}
-            {{ article.content | strip_html }}
+            {% if excerpt_limit != blank %}{{ article.content | strip_html | truncatewords: excerpt_limit }}{% else %}{{ article.content | strip_html }}{% endif %}
           {%- endif -%}
         </p>
       {%- endif -%}

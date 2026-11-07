@@ -1785,6 +1785,28 @@
           "visible_if": "{{ block.settings.property_type == 'checkbox' }}"
         }
       ]
+    },
+    {
+      "type": "iq_core_copy",
+      "name": "IQ Produkttext DE/EN",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Produkt"
+        },
+        {
+          "type": "html",
+          "id": "copy_de",
+          "label": "Produkttext Deutsch (HTML)"
+        },
+        {
+          "type": "html",
+          "id": "copy_en",
+          "label": "Produkttext Englisch (HTML)"
+        }
+      ]
     }
   ],
   "settings": [
@@ -1948,3 +1970,4 @@
   ]
 }
 {% endschema %}
+
