@@ -377,8 +377,8 @@
           "type": "product",
           "settings": {
             "product": "mfj-4-0-damen-wasserdichte-winterjacke-hundesport",
-            "badge": "Neu",
-            "badge_en": "New",
+            "badge": "",
+            "badge_en": "",
             "title": "Multifunktionsjacke Damen 4.0",
             "title_en": "Women’s multifunctional jacket 4.0",
             "description": "",
@@ -392,13 +392,13 @@
         "product1": {
           "type": "product",
           "settings": {
-            "product": "softball-neopren-apport",
-            "badge": "Neu",
-            "badge_en": "New",
-            "title": "IQ Softball",
-            "title_en": "IQ Softball",
-            "description": "",
-            "description_en": "",
+            "product": "iq-futtertasche-magdock",
+            "badge": "",
+            "badge_en": "",
+            "title": "IQ MagDock Futtertasche",
+            "title_en": "IQ MagDock Food Pouch",
+            "description": "Magnetisch andocken. Sicher verriegeln.",
+            "description_en": "Magnetic docking. Secure locking.",
             "extra_cta": "",
             "extra_cta_en": "",
             "extra_link": "",
@@ -409,8 +409,8 @@
           "type": "product",
           "settings": {
             "product": "iq-winter-parka-unisex",
-            "badge": "Neu",
-            "badge_en": "New",
+            "badge": "",
+            "badge_en": "",
             "title": "IQ Winterparka Unisex",
             "title_en": "IQ Winter Parka Unisex",
             "description": "",
@@ -427,14 +427,18 @@
         "product1",
         "parka"
       ],
+      "custom_css": [
+        ".iqh-product-copy {text-align: center; align-items: center;}",
+        ".iqh-product-bottom {align-items: center !important; justify-content: center; width: 100%;}"
+      ],
       "name": "Neuheiten · Softball, MFJ 4.0, Parka",
       "settings": {
         "eyebrow": "Neu bei IQ",
         "eyebrow_en": "New at IQ",
         "heading": "Neu fürs nächste Training.",
-        "heading_en": "New for your next session.",
-        "intro": "Weiche Bestätigung und warme Bekleidung – neu fürs nächste Training.",
-        "intro_en": "Soft rewards and warm clothing – new for your next session.",
+        "heading_en": "New for your next training.",
+        "intro": "",
+        "intro_en": "",
         "cta": "",
         "cta_en": "",
         "link": "",
@@ -446,6 +450,7 @@
       "blocks": {
         "story0": {
           "type": "article",
+          "disabled": true,
           "settings": {
             "article": "news/iq-dogsport-dogworld-2026-polizeihunde",
             "label": "",
@@ -458,19 +463,6 @@
             "crop_middle": true
           }
         },
-        "story1": {
-          "type": "article",
-          "settings": {
-            "article": "news/agility-fachbegriffe-deutsch-englisch",
-            "label": "",
-            "label_en": "",
-            "title": "Agility-Begriffe: Deutsch ↔ Englisch",
-            "title_en": "Agility terms: German ↔ English",
-            "excerpt": "",
-            "excerpt_en": "",
-            "title_in_image": true
-          }
-        },
         "story2": {
           "type": "article",
           "settings": {
@@ -481,7 +473,22 @@
             "title_en": "IGP terms: German ↔ English",
             "excerpt": "",
             "excerpt_en": "",
-            "title_in_image": true
+            "title_in_image": true,
+            "crop_middle": false
+          }
+        },
+        "story1": {
+          "type": "article",
+          "settings": {
+            "article": "news/agility-fachbegriffe-deutsch-englisch",
+            "label": "",
+            "label_en": "",
+            "title": "Agility-Begriffe: Deutsch ↔ Englisch",
+            "title_en": "Agility terms: German ↔ English",
+            "excerpt": "",
+            "excerpt_en": "",
+            "title_in_image": true,
+            "crop_middle": false
           }
         }
       },
