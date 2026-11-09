@@ -316,13 +316,14 @@
         "product1": {
           "type": "product",
           "settings": {
-            "product": "softball-neopren-apport",
+            "product": "iq-futtertasche-magdock",
+            "image": "shopify://shop_images/Futtertasche-MagDock-an-Kleidung.jpg",
             "badge": "",
             "badge_en": "",
-            "title": "IQ Softball",
-            "title_en": "IQ Softball",
-            "description": "Ideal fürs Sammeln",
-            "description_en": "Ideal for collecting",
+            "title": "IQ Futtertasche MagDock",
+            "title_en": "IQ MagDock Treat Pouch",
+            "description": "",
+            "description_en": "",
             "extra_cta": "",
             "extra_cta_en": "",
             "extra_link": "",
@@ -494,6 +495,7 @@
       ],
       "name": "Magazin · Artikel & Bücher",
       "settings": {
+        "show_blog": false,
         "blog": "news",
         "latest": false,
         "show_descriptions": true,
@@ -521,8 +523,36 @@
         "igp_link": "shopify://pages/igp-hundesport",
         "igp_link_en": "/en/pages/igp-hundesport",
         "books_heading": "Bücher",
-        "books_heading_en": "Books",
-        "show_blog": false
+        "books_heading_en": "Books"
+      }
+    },
+    "featured_blog_6f7FyW": {
+      "type": "featured-blog",
+      "name": "IQ Blog · Artikel mit Kurztext",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "heading": "IQ Blog",
+        "heading_size": "h2",
+        "heading_highlight_style": "none",
+        "subheading": "",
+        "description": "<p>Fitness für Sporthunde, Fachbegriffe auf Englisch, Praxistipps und Infos zu Events.</p>",
+        "description_en": "<p>Fitness for sport dogs, English terminology, practical tips and event updates.</p>",
+        "blog": "news",
+        "post_limit": 3,
+        "columns_desktop": 3,
+        "column_gap": "medium",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "card_title_size": "h4",
+        "show_date": false,
+        "show_excerpt": true,
+        "excerpt_words": 24,
+        "show_button": false,
+        "padding_top": 24,
+        "padding_bottom": 36,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "custom_class": "iq-home-blog"
       }
     },
     "iq_home_gifts": {
@@ -1120,35 +1150,6 @@
         "show_section_divider": false,
         "divider_width": "fixed",
         "custom_class": "iq-athletes"
-      }
-    },
-    "featured_blog_6f7FyW": {
-      "type": "featured-blog",
-      "name": "IQ Blog · Artikel mit Kurztext",
-      "settings": {
-        "color_scheme": "scheme-1",
-        "heading": "IQ Blog",
-        "heading_size": "h2",
-        "heading_highlight_style": "none",
-        "subheading": "",
-        "description": "<p>Fitness für Sporthunde, Fachbegriffe auf Englisch, Praxistipps und Infos zu Events.</p>",
-        "blog": "news",
-        "post_limit": 3,
-        "columns_desktop": 3,
-        "column_gap": "medium",
-        "columns_mobile": "1",
-        "swipe_on_mobile": true,
-        "card_title_size": "h4",
-        "show_date": false,
-        "show_excerpt": true,
-        "show_button": false,
-        "padding_top": 24,
-        "padding_bottom": 36,
-        "show_section_divider": false,
-        "divider_width": "fixed",
-        "custom_class": "iq-home-blog",
-        "description_en": "<p>Fitness for sport dogs, English terminology, practical tips and event updates.</p>",
-        "excerpt_words": 24
       }
     }
   },
