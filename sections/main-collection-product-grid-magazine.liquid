@@ -829,16 +829,20 @@
                   {% assign iq_show_inline = false %}
                   {% if iq_anchor != blank %}
                     {% if product.id == iq_anchor.id %}{% assign iq_show_inline = true %}{% endif %}
-                  {% elsif inline_block.type == 'iq_responsive_video' and paginate.current_page == 1 and iq_product_index == inline_block.settings.position %}
-                    {% assign iq_show_inline = true %}
+                  {% elsif paginate.current_page == 1 and iq_product_index == inline_block.settings.position %}
+                    {% if inline_block.type == 'iq_responsive_video' or inline_block.type == 'iq_product_film' %}
+                      {% assign iq_show_inline = true %}
+                    {% endif %}
                   {% endif %}
                   {% if iq_show_inline and inline_block.settings.only_collection.id == collection.id %}
                     {% case inline_block.type %}
                     {% when 'iq_editorial' %}
                       {% render 'iq-editorial-banner', block: inline_block %}
-                    {% when 'iq_responsive_video', 'iq_product_feature' %}
+                    {% when 'iq_responsive_video', 'iq_product_feature', 'iq_product_film' %}
                       <div class="f-column collection-inline-block collection-inline-block--full" data-inline-block="{{ inline_block.id }}" {{ inline_block.shopify_attributes }}>
-                        {% if inline_block.type == 'iq_responsive_video' %}
+                        {% if inline_block.type == 'iq_product_film' %}
+                          {% render 'iq-product-film', film_settings: inline_block.settings, film_id: inline_block.id %}
+                        {% elsif inline_block.type == 'iq_responsive_video' %}
                           {% render 'iq-responsive-collection-video', settings: inline_block.settings, video_id: inline_block.id %}
                         {% else %}
                           {% render 'iq-product-feature', block: inline_block %}
@@ -865,7 +869,7 @@
   {%- assign current_app_position = 24 -%}
 
   {%- for block in section.blocks -%}
-{% if block.type == 'iq_collection_heading' or block.type == 'iq_responsive_video' or block.type == 'iq_product_feature' or block.settings.after_product != blank %}{% continue %}{% endif %}
+{% if block.type == 'iq_collection_heading' or block.type == 'iq_responsive_video' or block.type == 'iq_product_feature' or block.type == 'iq_product_film' or block.settings.after_product != blank %}{% continue %}{% endif %}
 {%- if block.type == 'iq_editorial' or block.settings.only_collection != blank -%}
   {%- if block.settings.only_collection.handle != collection.handle -%}{%- continue -%}{%- endif -%}
 {%- endif -%}
@@ -3574,6 +3578,100 @@ document.addEventListener('webkitfullscreenchange', function () {
           "id": "photo_square",
           "label": "Actionbild vollständig im Quadrat zeigen",
           "default": false
+        }
+      ]
+    },
+    {
+      "type": "iq_product_film",
+      "name": "IQ Produktvideo",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Platzierung im Produktraster"
+        },
+        {
+          "type": "product",
+          "id": "after_product",
+          "label": "Nach diesem Produkt (optional)",
+          "info": "Hat Vorrang vor der Produktnummer. Bleibt bei geändertem Sortieren am gewählten Produkt."
+        },
+        {
+          "type": "range",
+          "id": "position",
+          "label": "Nach Produktnummer",
+          "min": 1,
+          "max": 48,
+          "step": 1,
+          "default": 4,
+          "info": "Gilt auf Seite 1, wenn kein festes Produkt gewählt ist. Filter und Sortierung können die sichtbare Reihenfolge ändern."
+        },
+        {
+          "type": "select",
+          "id": "button_color",
+          "label": "Buttonfarbe",
+          "options": [
+            {
+              "value": "dark",
+              "label": "Dunkel"
+            },
+            {
+              "value": "red",
+              "label": "Markenrot"
+            }
+          ],
+          "default": "dark"
+        },
+        {
+          "type": "collection",
+          "id": "only_collection",
+          "label": "Nur in dieser Collection",
+          "info": "Leer lassen für die Startseite. Auf Collection-Seiten immer die gewünschte Collection auswählen."
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Shopify-Video"
+        },
+        {
+          "type": "image_picker",
+          "id": "poster",
+          "label": "Standbild",
+          "info": "Hochformat wie das Video. Wird vollständig angezeigt. Video startet erst per Klick."
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Verlinktes Produkt"
+        },
+        {
+          "type": "text",
+          "id": "heading_de",
+          "label": "Überschrift · DE"
+        },
+        {
+          "type": "text",
+          "id": "heading_en",
+          "label": "Überschrift · EN"
+        },
+        {
+          "type": "richtext",
+          "id": "body_de",
+          "label": "Kurztext · DE"
+        },
+        {
+          "type": "richtext",
+          "id": "body_en",
+          "label": "Kurztext · EN"
+        },
+        {
+          "type": "text",
+          "id": "button_de",
+          "label": "Button · DE"
+        },
+        {
+          "type": "text",
+          "id": "button_en",
+          "label": "Button · EN"
         }
       ]
     }

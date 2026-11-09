@@ -1,0 +1,81 @@
+{% render 'iq-product-film', film_settings: section.settings, film_id: section.id %}
+{% schema %}
+{
+  "name": "IQ Produktvideo kompakt",
+  "settings": [
+    {
+      "type": "select",
+      "id": "button_color",
+      "label": "Buttonfarbe",
+      "options": [
+        {
+          "value": "dark",
+          "label": "Dunkel"
+        },
+        {
+          "value": "red",
+          "label": "Markenrot"
+        }
+      ],
+      "default": "dark"
+    },
+    {
+      "type": "collection",
+      "id": "only_collection",
+      "label": "Nur in dieser Collection",
+      "info": "Leer lassen für die Startseite. Auf Collection-Seiten immer die gewünschte Collection auswählen."
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Shopify-Video"
+    },
+    {
+      "type": "image_picker",
+      "id": "poster",
+      "label": "Standbild",
+      "info": "Hochformat wie das Video. Wird vollständig angezeigt. Video startet erst per Klick."
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Verlinktes Produkt"
+    },
+    {
+      "type": "text",
+      "id": "heading_de",
+      "label": "Überschrift · DE"
+    },
+    {
+      "type": "text",
+      "id": "heading_en",
+      "label": "Überschrift · EN"
+    },
+    {
+      "type": "richtext",
+      "id": "body_de",
+      "label": "Kurztext · DE"
+    },
+    {
+      "type": "richtext",
+      "id": "body_en",
+      "label": "Kurztext · EN"
+    },
+    {
+      "type": "text",
+      "id": "button_de",
+      "label": "Button · DE"
+    },
+    {
+      "type": "text",
+      "id": "button_en",
+      "label": "Button · EN"
+    }
+  ],
+  "presets": [
+    {
+      "name": "IQ Produktvideo kompakt"
+    }
+  ]
+}
+{% endschema %}

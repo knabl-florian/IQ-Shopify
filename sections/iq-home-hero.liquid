@@ -6,6 +6,12 @@
   assign slider_layout = section.settings.layout
 
   assign first_block = section.blocks.first
+  assign iq_static_hero = false
+  assign iq_hero_tag = 'slideshow-component'
+  if section.blocks.size == 1 and first_block.type == 'slide' and slider_layout != 'centered' and request.design_mode == false
+    assign iq_static_hero = true
+    assign iq_hero_tag = 'div'
+  endif
   if first_block.type == 'video'
     assign aspect_ratio = first_block.settings.video.aspect_ratio | default: '16/9'
     assign aspect_ratio_mobile = aspect_ratio
@@ -20,7 +26,13 @@
   endif
 -%}
 {{ 'section-slideshow.css' | asset_url | stylesheet_tag }}
-<script src="{{ 'slideshow-component.js' | asset_url }}" defer="defer"></script>
+{% unless iq_static_hero %}<script src="{{ 'slideshow-component.js' | asset_url }}" defer="defer"></script>{% endunless %}
+{% if iq_static_hero %}
+  <style>
+    #shopify-section-{{ section.id }} .iq-static-hero > .swiper-wrapper { display: block; transform: none; }
+    #shopify-section-{{ section.id }} .iq-static-hero > .swiper-wrapper > .swiper-slide { width: 100%; }
+  </style>
+{% endif %}
 <div
   class="section section-{{ section.id }} section--slideshow{% if section.settings.container != 'full' %} page-width{% endif %}{% if section.settings.custom_class != blank %} {{ section.settings.custom_class }}{% endif %}"
   data-id="{{ section.id }}"
@@ -28,14 +40,14 @@
   aria-roledescription="{{ 'sections.slideshow.carousel' | t }}"
   aria-label="{{ section.settings.accessibility_info | escape }}"
 >
-  <slideshow-component
-    class="swiper slideshow-wrapper slideshow-layout--{{ slider_layout }} slideshow-height--{{ slide_height }}{% if show_text_below %} slideshow-content-mobile--below{% endif %}{% if show_dots %} slideshow-controls-visible--yes slideshow-controls-position--{{ section.settings.controls_position }}{% endif %}{% if section.settings.container != 'full' and slider_layout != 'centered' %} blocks-radius{% endif %}"
+  <{{ iq_hero_tag }}
+    class="swiper slideshow-wrapper{% if iq_static_hero %} iq-static-hero{% endif %} slideshow-layout--{{ slider_layout }} slideshow-height--{{ slide_height }}{% if show_text_below %} slideshow-content-mobile--below{% endif %}{% if show_dots %} slideshow-controls-visible--yes slideshow-controls-position--{{ section.settings.controls_position }}{% endif %}{% if section.settings.container != 'full' and slider_layout != 'centered' %} blocks-radius{% endif %}"
     aria-live="polite"
     aria-atomic="true"
     {% if autoplay > 0 %}
       data-autoplay="{{ autoplay }}"
     {% endif %}
-    data-media-loading
+    {% unless iq_static_hero %}data-media-loading{% endunless %}
     data-layout="{{ slider_layout }}"
     data-items="{{ section.blocks.size }}"
     data-section-id="{{ section.id }}"
@@ -190,53 +202,53 @@
               <div class="slideshow__text rich-text text-{{ text_alignment_mobile }} md:text-{{ text_alignment }}">
                 {%- unless block.settings.subheading == blank -%}
                   <div class="slideshow__subtitle rich-text__subheading text-subheading">
-                    <motion-element
+                    {% if iq_static_hero %}<div class="block">{% else %}<motion-element
                       data-motion="fade-up"
                       data-motion-delay="{{ animate_delay }}"
                       data-text
                       hold
                       class="block"
-                    >
+                    >{% endif %}
                       {{- block.settings.subheading -}}
-                    </motion-element>
+                    {% if iq_static_hero %}</div>{% else %}</motion-element>{% endif %}
                   </div>
                   {%- assign animate_delay = animate_delay | plus: 100 -%}
                 {%- endunless -%}
                 {%- unless block.settings.title == blank -%}
                   <h1 class="slideshow__title {{ block.settings.heading_size }} rich-text__heading">
-                    <motion-element
+                    {% if iq_static_hero %}<div class="block">{% else %}<motion-element
                       data-motion="fade-up"
                       data-motion-delay="{{ animate_delay }}"
                       data-text
                       hold
                       class="block"
-                    >
+                    >{% endif %}
                       {% if block.settings.split_title %}{{ block.settings.title | replace: '. ', '.<br>' }}{% else %}{{ block.settings.title }}{% endif %}
-                    </motion-element>
+                    {% if iq_static_hero %}</div>{% else %}</motion-element>{% endif %}
                   </h1>
                   {%- assign animate_delay = animate_delay | plus: 100 -%}
                 {%- endunless -%}
                 {%- unless block.settings.description == blank -%}
-                  <motion-element
+                  {% if iq_static_hero %}<div class="block slideshow__description {{ description_size }} rich-text__text rte">{% else %}<motion-element
                     class="block slideshow__description {{ description_size }} rich-text__text rte"
                     data-motion="fade-up"
                     data-motion-delay="{{ animate_delay }}"
                     data-text
                     hold
-                  >
+                  >{% endif %}
                     {{- block.settings.description -}}
-                  </motion-element>
+                  {% if iq_static_hero %}</div>{% else %}</motion-element>{% endif %}
                   {%- assign animate_delay = animate_delay | plus: 100 -%}
                 {%- endunless -%}
                 {%- unless block.settings.button_label == blank -%}
                   <div class="slideshow__buttons rich-text__button">
-                    <motion-element
+                    {% if iq_static_hero %}<div class="block">{% else %}<motion-element
                       data-motion="fade-up"
                       data-motion-delay="{{ animate_delay }}"
                       data-text
                       hold
                       class="block"
-                    >
+                    >{% endif %}
                       <a
                         {% if block.settings.button_link != blank %}
                           href="{{ block.settings.button_link }}"
@@ -248,7 +260,7 @@
                       >
                         {{- block.settings.button_label -}}
                       </a>
-                    </motion-element>
+                    {% if iq_static_hero %}</div>{% else %}</motion-element>{% endif %}
                   </div>
                   {%- assign animate_delay = animate_delay | plus: 100 -%}
                 {%- endunless -%}
@@ -269,7 +281,7 @@
         <div class="swiper-pagination swiper-pagination-bullets-animate"></div>
       </div>
     {%- endif -%}
-  </slideshow-component>
+  </{{ iq_hero_tag }}>
 </div>
 
 {% schema %}

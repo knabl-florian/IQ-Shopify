@@ -247,8 +247,8 @@
       ],
       "name": "Kategorien · Bilder & Ziele",
       "settings": {
-        "heading": "Was brauchst Du fürs Training?",
-        "heading_en": "What do you need for training?"
+        "heading": "Kategorien",
+        "heading_en": "Categories"
       }
     },
     "iq_all_products_link": {
@@ -317,10 +317,9 @@
           "type": "product",
           "settings": {
             "product": "iq-futtertasche-magdock",
-            "image": "shopify://shop_images/Futtertasche-MagDock-an-Kleidung.jpg",
             "badge": "",
             "badge_en": "",
-            "title": "IQ Futtertasche MagDock",
+            "title": "IQ MagDock Futtertasche",
             "title_en": "IQ MagDock Treat Pouch",
             "description": "",
             "description_en": "",
@@ -352,7 +351,7 @@
         "product1",
         "parka"
       ],
-      "name": "Neuheiten · Softball, MFJ 4.0, Parka",
+      "name": "Neuheiten · MFJ 4.0, MagDock, Parka",
       "settings": {
         "eyebrow": "Neu bei IQ",
         "eyebrow_en": "New at IQ",
@@ -526,35 +525,6 @@
         "books_heading_en": "Books"
       }
     },
-    "featured_blog_6f7FyW": {
-      "type": "featured-blog",
-      "name": "IQ Blog · Artikel mit Kurztext",
-      "settings": {
-        "color_scheme": "scheme-1",
-        "heading": "IQ Blog",
-        "heading_size": "h2",
-        "heading_highlight_style": "none",
-        "subheading": "",
-        "description": "<p>Fitness für Sporthunde, Fachbegriffe auf Englisch, Praxistipps und Infos zu Events.</p>",
-        "description_en": "<p>Fitness for sport dogs, English terminology, practical tips and event updates.</p>",
-        "blog": "news",
-        "post_limit": 3,
-        "columns_desktop": 3,
-        "column_gap": "medium",
-        "columns_mobile": "1",
-        "swipe_on_mobile": true,
-        "card_title_size": "h4",
-        "show_date": false,
-        "show_excerpt": true,
-        "excerpt_words": 24,
-        "show_button": false,
-        "padding_top": 24,
-        "padding_bottom": 36,
-        "show_section_divider": false,
-        "divider_width": "fixed",
-        "custom_class": "iq-home-blog"
-      }
-    },
     "iq_home_gifts": {
       "type": "iq-home-feature",
       "blocks": {
@@ -619,16 +589,16 @@
       "name": "Geschenke · Gutschein & Extras",
       "settings": {
         "style": "gifts",
-        "image": "shopify://shop_images/iq-gutscheine-geschenk-desktop-3x1-20261105.png",
-        "mobile_image": "shopify://shop_images/iq-gutscheine-geschenk-mobile-16x9-20261105.png",
-        "alt": "IQ Gutscheinbox mit roter Schleife, Gutscheinkarte und Malinois-Schlüsselanhänger.",
-        "alt_en": "IQ gift voucher tin with a red ribbon, gift card and Malinois keyring.",
+        "image": "shopify://shop_images/iq-gutscheine-weihnachtskugel-desktop-1920x640-v2.jpg",
+        "mobile_image": "shopify://shop_images/iq-gutscheine-weihnachtskugel-mobil-1600x900-v1.jpg",
+        "alt": "IQ Geschenkideen: rote Weihnachtskugel, Metall-Gutscheinbox mit Schleife, Gutscheinkarte und Malinois-Schlüsselanhänger.",
+        "alt_en": "IQ gift ideas: red Christmas bauble, metal gift voucher tin with ribbon, gift card and Malinois keyring.",
         "eyebrow": "IQ Gutscheine & Geschenke",
         "eyebrow_en": "IQ gift vouchers & gifts",
         "heading": "Für Menschen mit Hund.",
         "heading_en": "For dog people.",
-        "body": "<p>Ein IQ Gutschein und eine Kleinigkeit dazu: Entdecke unsere Metall-Geschenkbox und Schlüsselanhänger – Gebrauchshunderassen, Hetzarm und Apportierholz.</p>",
-        "body_en": "<p>An IQ gift voucher and a little extra: discover our metal gift box and keyrings – working dog breeds, a bite sleeve and a dumbbell.</p>",
+        "body": "<p>Ein IQ Gutschein und ein kleines Extra: Metall-Geschenkbox, Schlüsselanhänger oder IQ Weihnachtskugel. Die Kugel lässt sich öffnen und mit einem Gutschein füllen.</p>",
+        "body_en": "<p>An IQ gift voucher with a little extra: a metal gift tin, a keyring or an IQ Christmas bauble. The bauble opens so you can place a gift voucher inside.</p>",
         "detail": "",
         "detail_en": "",
         "cta": "Geschenkideen entdecken",
@@ -1151,6 +1121,52 @@
         "divider_width": "fixed",
         "custom_class": "iq-athletes"
       }
+    },
+    "featured_blog_6f7FyW": {
+      "type": "featured-blog",
+      "name": "IQ Blog · Artikel mit Kurztext",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "heading": "IQ Blog",
+        "heading_size": "h2",
+        "heading_highlight_style": "none",
+        "subheading": "",
+        "description": "<p>Fitness für Sporthunde, Fachbegriffe auf Englisch, Praxistipps und Infos zu Events.</p>",
+        "description_en": "<p>Fitness for sport dogs, English terminology, practical tips and event updates.</p>",
+        "blog": "news",
+        "post_limit": 3,
+        "columns_desktop": 3,
+        "column_gap": "medium",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "card_title_size": "h4",
+        "show_date": false,
+        "show_excerpt": true,
+        "excerpt_words": 24,
+        "show_button": false,
+        "padding_top": 24,
+        "padding_bottom": 36,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "custom_class": "iq-home-blog"
+      }
+    },
+    "iq_home_magdock_video": {
+      "type": "iq-product-film",
+      "name": "MagDock · Video in Aktion",
+      "settings": {
+        "only_collection": "",
+        "video": "shopify://files/videos/iq-magdock-in-aktion-20261108_f9d121f5-4703-4539-8577-908a9f4cd91f.mp4",
+        "poster": "shopify://shop_images/iq-magdock-film-poster-20261108.jpg",
+        "product": "iq-futtertasche-magdock",
+        "heading_de": "Die Futtertasche zum Andocken.",
+        "heading_en": "The treat pouch that docks.",
+        "body_de": "<p>Magnetisch andocken. Mechanisch verriegeln. Per Lasche lösen. Im Video siehst Du, wie Du die Futtertasche befestigst und beim Training nutzt.</p>",
+        "body_en": "<p>Dock magnetically. Lock mechanically. Release with the pull tab. See how to attach the treat pouch and use it during training.</p>",
+        "button_de": "MagDock entdecken",
+        "button_en": "Discover MagDock",
+        "button_color": "red"
+      }
     }
   },
   "order": [
@@ -1160,6 +1176,7 @@
     "iq_all_products_link",
     "iq_home_coat",
     "iq_home_new",
+    "iq_home_magdock_video",
     "iq_home_snacks",
     "iq_home_knowledge",
     "featured_blog_6f7FyW",

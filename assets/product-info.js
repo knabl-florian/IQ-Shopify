@@ -269,23 +269,20 @@ if (!customElements.get('product-info')) {
 
       updateMedia(variant) {
         const productMedia = this.querySelector(`[id^="MediaGallery-${this.dataset.section}"]`);
-        if (!productMedia) return; // Early return if productMedia is not found
+        if (!productMedia) return;
 
+        this.mediaUpdateVersion = (this.mediaUpdateVersion || 0) + 1;
+        const version = this.mediaUpdateVersion;
         const setActiveMedia = () => {
-          if (typeof productMedia.setActiveMedia === 'function') {
-            productMedia.init();
-            productMedia.setActiveMedia(variant);
-            return true; // Indicate success
-          }
-          return false; // Indicate failure
+          if (!this.isConnected || this.mediaUpdateVersion !== version) return;
+          productMedia.init();
+          productMedia.setActiveMedia(variant);
         };
 
-        if (!setActiveMedia()) {
-          this.timer = setInterval(() => {
-            if (setActiveMedia()) {
-              clearInterval(this.timer);
-            }
-          }, 100);
+        if (typeof productMedia.setActiveMedia === 'function') {
+          setActiveMedia();
+        } else {
+          customElements.whenDefined('media-gallery').then(setActiveMedia);
         }
       }
 

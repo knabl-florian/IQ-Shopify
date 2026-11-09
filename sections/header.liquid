@@ -47,6 +47,26 @@
 -%}
 
 {% style %}
+  #shopify-section-{{ section.id }} .iq-header-search-page-link { display: none; width: 40px; height: 40px; flex: 0 0 40px; }
+  @media (min-width: 1024px) {
+    #shopify-section-{{ section.id }} .header--left-center .header__icons--right .search-drawer-button { display: none !important; }
+    #shopify-section-{{ section.id }} .header--left-center {
+      grid-template-columns: minmax(96px, 1fr) minmax(0, auto) minmax(144px, 1fr);
+    }
+    #shopify-section-{{ section.id }} .header--left-center .header__navigation,
+    #shopify-section-{{ section.id }} .header--left-center .header__menu { min-width: 0; }
+  }
+  @media (min-width: 1024px) and (max-width: 1599px) {
+    #shopify-section-{{ section.id }} .header--left-center .header__icons--right .rps-csb-target-element { display: none; }
+    #shopify-section-{{ section.id }} .header--left-center .header__icons--right .iq-header-search-page-link { display: flex; }
+  }
+  @media (min-width: 1600px) {
+    #shopify-section-{{ section.id }} .header--left-center {
+      grid-template-columns: minmax(96px, 1fr) minmax(0, auto) minmax(232px, 1fr);
+    }
+    #shopify-section-{{ section.id }} .header--left-center .header__icons--right .search-drawer-button { display: none; }
+  }
+
   #shopify-section-{{ section.id }} .iq-header-search { display:flex; align-items:center; width:130px; height:34px; border:1px solid currentColor; border-radius:99px; overflow:hidden; }
   #shopify-section-{{ section.id }} .iq-header-search input { width:100%; min-width:0; padding:0 0 0 12px; border:0; background:transparent; color:inherit; font:inherit; font-size:14px; }
   #shopify-section-{{ section.id }} .iq-header-search input::placeholder { color:inherit; opacity:1; }
@@ -239,6 +259,9 @@
         aria-controls="SearchDrawer"
         aria-label="{{ 'general.search.search' | t }}"
       >
+        {%- render 'icon-search', size: 'large' -%}
+      </a>
+      <a href="{{ routes.search_url }}" class="iq-header-search-page-link items-center justify-center" aria-label="{{ 'general.search.search' | t }}">
         {%- render 'icon-search', size: 'large' -%}
       </a>
       {%- if shop.customer_accounts_enabled -%}

@@ -71,12 +71,6 @@
             "heading_size": "h3"
           }
         },
-        "iq_coat_fit": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "{% if product.id == 10709846753544 %}\n<div class=\"iq-coat-fit\" style=\"padding:12px 16px;border-left:3px solid #A51D1B;background:#F3F3F1;color:#171717;line-height:1.5;\">\n{% if request.locale.iso_code == 'de' %}<strong>Hinweis zur Größe</strong><br>Der Wintermantel fällt gut eine halbe Größe größer aus als die IQ Multifunktionsjacke.{% else %}<strong>Sizing note</strong><br>The winter coat runs a generous half size larger than the IQ multifunctional jacket.{% endif %}\n</div>\n{% endif %}"
-          }
-        },
         "judge_me_reviews_preview_badge_f9Nc6i": {
           "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
           "settings": {}
@@ -110,20 +104,6 @@
             "button_size": 36,
             "size_title": "Größentabelle",
             "size_chart_from_page": "{{ product.metafields.custom.grosentabelle.value }}"
-          }
-        },
-        "iq_vest_restock": {
-          "type": "custom_liquid",
-          "name": "Westen – Nachschub November",
-          "settings": {
-            "custom_liquid": "{% if product.id == 10709813788936 or product.id == 10709814739208 %}\n{% assign sold_out_sizes = product.variants | where: 'available', false %}\n{% if sold_out_sizes.size > 0 %}\n<p class=\"iq-vest-restock\" style=\"margin:0;padding:12px 16px;border-left:3px solid #A51D1B;background:#F3F3F1;color:#171717;font-size:14px;line-height:1.5;\">\n{% if request.locale.iso_code == 'de' %}<strong>Deine Größe ist ausverkauft?</strong><br>Die ausverkauften Größen kommen im Laufe des Novembers wieder.{% else %}<strong>Is your size sold out?</strong><br>Sold-out sizes will be back in stock during November.{% endif %}\n</p>\n{% endif %}\n{% endif %}"
-          }
-        },
-        "iq_xs_restock": {
-          "type": "custom_liquid",
-          "name": "Winter & MagDock – Nachschub",
-          "settings": {
-            "custom_liquid": "{% if product.id == 10709846753544 %}\n<p class=\"iq-coat-restock\" style=\"margin:0;padding:12px 16px;border-left:3px solid #A51D1B;background:#F3F3F1;color:#171717;font-size:14px;line-height:1.5;\">\n{% if request.locale.iso_code == 'de' %}<strong>Deine Größe ist ausverkauft?</strong><br>Nachschub kommt in den ersten beiden Novemberwochen.{% else %}<strong>Is your size sold out?</strong><br>Restock arriving in the first two weeks of November.{% endif %}\n</p>\n{% endif %}\n{% assign iq_restock_now = 'now' | date: '%s' | plus: 0 %}\n{% assign iq_restock_sold_out = product.variants | where: 'available', false %}\n{% if iq_restock_now < 1794178800 and iq_restock_sold_out.size > 0 %}\n{% if product.id == 10709846688008 or product.id == 12082391908616 %}\n<p class=\"iq-week-restock\" style=\"margin:0;padding:12px 16px;border-left:3px solid #A51D1B;background:#F3F3F1;color:#171717;font-size:14px;line-height:1.5;\">\n{% if request.locale.iso_code == 'de' %}<strong>Nachschub wird diese Woche erwartet.</strong><br>Voraussichtliche Ankunft: 2.–8. November.{% else %}<strong>Restock expected this week.</strong><br>Expected arrival: 2–8 November.{% endif %}\n</p>\n{% endif %}\n{% endif %}"
           }
         },
         "xboost_bundle_checkbox_upsell_fXe6aY": {
@@ -172,7 +152,7 @@
             "heading": "Highlights",
             "icon": "confetti",
             "content": "{{ product.description }}",
-            "custom_liquid": "{% if product.id == 10709846753544 %}<p>{% if request.locale.iso_code == 'de' %}<strong>Ärmel mit Extra-Länge:</strong> Die Ärmel werden umgeschlagen getragen. Bei Bedarf kannst Du sie herunterklappen, um Deine Hände zu wärmen.{% else %}<strong>Extra-long sleeves:</strong> The sleeves are designed to be worn turned back. Unfold them whenever you want extra warmth for your hands.{% endif %}</p>{% endif %}",
+            "custom_liquid": "",
             "page": "",
             "default_open": true
           }
@@ -247,10 +227,30 @@
           }
         },
         "mini_image_upload_app_block_eLJwBn": {
-          "type": "shopify://apps/mini-image-upload/blocks/app-block/019a499d-2f45-732c-96ee-872049547d70",
           "disabled": true,
+          "type": "shopify://apps/mini-image-upload/blocks/app-block/019a499d-2f45-732c-96ee-872049547d70",
           "settings": {
             "product": "{{product}}"
+          }
+        },
+        "iq_xs_restock": {
+          "type": "custom_liquid",
+          "name": "Winter & MagDock – Nachschub",
+          "settings": {
+            "custom_liquid": "{% if product.id == 10709846753544 %}\n<p class=\"iq-coat-restock\" style=\"margin:0;padding:12px 16px;border-left:3px solid #A51D1B;background:#F3F3F1;color:#171717;font-size:14px;line-height:1.5;\">\n{% if request.locale.iso_code == 'de' %}<strong>Deine Größe ist ausverkauft?</strong><br>Nachschub kommt in den ersten beiden Novemberwochen.{% else %}<strong>Is your size sold out?</strong><br>Restock arriving in the first two weeks of November.{% endif %}\n</p>\n{% endif %}\n{% assign iq_restock_now = 'now' | date: '%s' | plus: 0 %}\n{% assign iq_restock_sold_out = product.variants | where: 'available', false %}\n{% if iq_restock_now < 1794178800 and iq_restock_sold_out.size > 0 %}\n{% if product.id == 10709846688008 or product.id == 12082391908616 %}\n<p class=\"iq-week-restock\" style=\"margin:0;padding:12px 16px;border-left:3px solid #A51D1B;background:#F3F3F1;color:#171717;font-size:14px;line-height:1.5;\">\n{% if request.locale.iso_code == 'de' %}<strong>Nachschub wird diese Woche erwartet.</strong><br>Voraussichtliche Ankunft: 2.–8. November.{% else %}<strong>Restock expected this week.</strong><br>Expected arrival: 2–8 November.{% endif %}\n</p>\n{% endif %}\n{% endif %}"
+          }
+        },
+        "iq_coat_fit": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% if product.id == 10709846753544 %}\n<div class=\"iq-coat-fit\" style=\"padding:12px 16px;border-left:3px solid #A51D1B;background:#F3F3F1;color:#171717;line-height:1.5;\">\n{% if request.locale.iso_code == 'de' %}<strong>Hinweis zur Größe</strong><br>Der Wintermantel fällt gut eine halbe Größe größer aus als die IQ Multifunktionsjacke.{% else %}<strong>Sizing note</strong><br>The winter coat runs a generous half size larger than the IQ multifunctional jacket.{% endif %}\n</div>\n{% endif %}"
+          }
+        },
+        "iq_vest_restock": {
+          "type": "custom_liquid",
+          "name": "Westen – Nachschub November",
+          "settings": {
+            "custom_liquid": "{% if product.id == 10709813788936 or product.id == 10709814739208 %}\n{% assign sold_out_sizes = product.variants | where: 'available', false %}\n{% if sold_out_sizes.size > 0 %}\n<p class=\"iq-vest-restock\" style=\"margin:0;padding:12px 16px;border-left:3px solid #A51D1B;background:#F3F3F1;color:#171717;font-size:14px;line-height:1.5;\">\n{% if request.locale.iso_code == 'de' %}<strong>Deine Größe ist ausverkauft?</strong><br>Die ausverkauften Größen kommen im Laufe des Novembers wieder.{% else %}<strong>Is your size sold out?</strong><br>Sold-out sizes will be back in stock during November.{% endif %}\n</p>\n{% endif %}\n{% endif %}"
           }
         }
       },
@@ -382,7 +382,7 @@
         "feature_item_yyNV9A"
       ],
       "custom_css": [
-        ".rich-text__heading {text-align: center;}"
+        ".rich-text__heading{text-align: center}"
       ],
       "settings": {
         "color_scheme": "scheme-7",

@@ -34,9 +34,9 @@
   #Mega-menu-item-{{ block.id }} .iq-mega-outlet {
     grid-column: 1 / -1;
     width: 100%;
-    margin-top: 20px;
-    padding-top: 12px;
-    border-top: 1px solid #DCDBD7;
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
   }
   #Mega-menu-item-{{ block.id }} .iq-mega-outlet a {
     display: inline-flex;
@@ -255,7 +255,7 @@
         {%- endcase -%}
         {%- if block.settings.show_iq_outlet -%}
           <div class="iq-mega-outlet">
-            <a href="{{ collections['sale'].url }}" class="reversed-link font-body-bolder">{{ 'iq_outlet.link' | t }}</a>
+            <a href="{{ collections['sale'].url }}" class="reversed-link mega-menu__link">Sale</a>
           </div>
         {%- endif -%}
       </div>

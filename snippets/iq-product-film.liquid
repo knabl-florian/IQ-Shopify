@@ -1,0 +1,44 @@
+{% doc %}
+  Compact editable product video used on the homepage and in collection grids.
+  @param {object} film_settings - Video, product and translated text settings.
+  @param {string} film_id - Unique section or block identifier.
+{% enddoc %}
+{{ 'iq-product-film.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'iq-product-film.js' | asset_url }}" defer></script>
+{% liquid
+  assign visible = true
+  if film_settings.only_collection != blank and film_settings.only_collection.handle != collection.handle
+    assign visible = false
+  endif
+  assign heading = film_settings.heading_de
+  assign body = film_settings.body_de
+  assign label = film_settings.button_de
+  assign play_label = 'Video abspielen'
+  if request.locale.iso_code == 'en'
+    assign heading = film_settings.heading_en | default: heading
+    assign body = film_settings.body_en | default: body
+    assign label = film_settings.button_en | default: label
+    assign play_label = 'Play video'
+  endif
+  assign film = film_settings.video
+  assign poster = film_settings.poster | default: film.preview_image
+  assign target = film_settings.product.url
+%}
+{% if visible and film != blank %}
+<section class="iq-product-film iq-product-film--{{ film_settings.button_color | default: 'dark' }}" aria-labelledby="FilmHeading-{{ film_id }}">
+  <div class="iq-product-film__inner">
+    <iq-product-film class="iq-product-film__media" style="--film-ratio:{{ film.aspect_ratio | default: 0.76 }}">
+      {% assign poster_url = poster | image_url: width: 800 %}
+      {{ film | video_tag: controls: true, autoplay: false, loop: false, preload: 'none', poster: poster_url, image_size: '800x', aria-label: heading }}
+      <button class="iq-product-film__play" type="button" aria-label="{{ play_label | escape }}: {{ heading | escape }}" hidden>
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="currentColor" aria-hidden="true"><path d="M9 5L24 14L9 23Z"/></svg>
+      </button>
+    </iq-product-film>
+    <div class="iq-product-film__copy">
+      <h2 id="FilmHeading-{{ film_id }}">{{ heading | escape }}</h2>
+      {% if body != blank %}<div class="iq-product-film__body rte">{{ body }}</div>{% endif %}
+      {% if target != blank and label != blank %}<a class="iq-product-film__link" href="{{ target }}">{{ label | escape }} <span aria-hidden="true">→</span></a>{% endif %}
+    </div>
+  </div>
+</section>
+{% endif %}

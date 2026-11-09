@@ -581,12 +581,12 @@
             "poster_desktop_en": "shopify://shop_images/iq-performance-pro-desktop-en-titelbild.jpg",
             "poster_mobile_en": "shopify://shop_images/iq-performance-pro-desktop-en-titelbild.jpg",
             "heading_de": "Freie Atmung. Auch unter Zug.",
-            "intro_de": "<p>Mit Tierärzten & Physios entwickelt. Swiss made.</p>",
-            "benefits_de": "<ul><li>Zugführung zum Brustbein statt zur Kehle.</li><li>Bewegungsfreiheit im Schulterbereich.</li><li>Wirbelsäulentunnel zur Druckentlastung.</li></ul>",
+            "intro_de": "",
+            "benefits_de": "<ul><li>Mit Tierärzten & Physios entwickelt. Swiss made.</li><li>Zugführung zum Brustbein statt zur Kehle.</li><li>Bewegungsfreiheit im Schulterbereich.</li><li>Wirbelsäulentunnel zur Druckentlastung.</li></ul>",
             "button_de": "Geschirr entdecken",
             "heading_en": "Free breathing. Even under tension.",
-            "intro_en": "<p>Developed with vets & physiotherapists. Swiss made.</p>",
-            "benefits_en": "<ul><li>Load directed towards the sternum, away from the throat.</li><li>Freedom of movement around the shoulders.</li><li>Spinal tunnel to relieve pressure.</li></ul>",
+            "intro_en": "",
+            "benefits_en": "<ul><li>Developed with vets & physiotherapists. Swiss made.</li><li>Load directed towards the sternum, away from the throat.</li><li>Freedom of movement around the shoulders.</li><li>Spinal tunnel to relieve pressure.</li></ul>",
             "button_en": "Discover the harness",
             "button_url": "/products/iq-performance-pro-click-go",
             "after_product": "iq-performance-pro-click-go",
@@ -933,6 +933,23 @@
             "intro_de": "Bewegungsfreiheit und praktische Taschen fürs Training mit Hund.",
             "intro_en": "Freedom to move and practical pockets for training with your dog."
           }
+        },
+        "iq_thermo_beanie_video": {
+          "type": "iq_product_film",
+          "settings": {
+            "only_collection": "hundesport-zubehoer-damen",
+            "video": "shopify://files/videos/iq-thermo-beanie-ohne-capcut-20261108.mp4",
+            "poster": "shopify://shop_images/iq-thermo-beanie-film-poster-20261108.jpg",
+            "product": "iq-thermo-beanie-wintermuetze-hundesport",
+            "heading_de": "IQ Thermo Beanie",
+            "heading_en": "IQ Thermo Beanie",
+            "body_de": "<p>Vollständig mit weichem Fleece gefüttert. Schau Dir die Thermo Beanie getragen an – für kalte Tage auf dem Hundeplatz und unterwegs mit Deinem Hund.</p>",
+            "body_en": "<p>Fully lined with soft fleece. See the Thermo Beanie being worn – for cold days on the training field and out with Your dog.</p>",
+            "button_de": "Thermo Beanie entdecken",
+            "button_en": "Discover the Thermo Beanie",
+            "position": 4,
+            "after_product": ""
+          }
         }
       },
       "block_order": [
@@ -956,7 +973,8 @@
         "iq_heading_9",
         "iq_heading_10",
         "iq_heading_11",
-        "iq_heading_12"
+        "iq_heading_12",
+        "iq_thermo_beanie_video"
       ],
       "custom_css": [
         "#ProductGridWrapper.show-toolbar {margin-block-start: 0 !important; margin-top: 0 !important;}"
@@ -1330,33 +1348,6 @@
         "heading_en": "FOR YOUR TRAINING.\nFOR LIFE WITH YOUR DOG.",
         "intro_en": "",
         "extra_en": "Extra warmth: Zip-in Shell"
-      }
-    },
-    "iq_performance_video": {
-      "type": "iq-responsive-collection-video",
-      "disabled": true,
-      "settings": {
-        "only_collection": "hundesport-trainingszubehoer",
-        "video_desktop_de": "shopify://files/videos/iq-performance-pro-desktop-de.mp4",
-        "video_mobile_de": "shopify://files/videos/iq-performance-pro-mobile-de_a570da22-28dd-4306-b130-0c2912162f47.mp4",
-        "poster_desktop_de": "shopify://shop_images/iq-performance-pro-desktop-de-titelbild_19918eeb-dac0-49ba-8792-2c7cc4fdff81.jpg",
-        "poster_mobile_de": "shopify://shop_images/iq-performance-pro-mobile-de-titelbild.jpg",
-        "video_desktop_en": "shopify://files/videos/iq-performance-pro-desktop-en.mp4",
-        "video_mobile_en": "shopify://files/videos/iq-performance-pro-mobile-en_f9a9da14-335d-4a70-afb9-d6dd08ec75dc.mp4",
-        "poster_desktop_en": "shopify://shop_images/iq-performance-pro-desktop-en-titelbild.jpg",
-        "poster_mobile_en": "shopify://shop_images/iq-performance-pro-mobile-en-titelbild.jpg",
-        "heading_de": "Bewegungsfreiheit. Auch unter Zug.",
-        "intro_de": "<p>Mit Tierärzten und Physiotherapeuten entwickelt.</p>",
-        "benefits_de": "<ul><li>Freie Atmung und Schulterbewegung – auch unter Zug.</li><li>Wirbelsäulentunnel zur Druckentlastung.</li><li>Zugführung zum Brustbein für kontrollierte Leinenarbeit.</li></ul>",
-        "button_de": "Performance Pro entdecken",
-        "heading_en": "Freedom of movement. Even under tension.",
-        "intro_en": "<p>Developed with veterinarians and physiotherapists.</p>",
-        "benefits_en": "<ul><li>Free breathing and shoulder movement, even under tension.</li><li>Spinal tunnel to relieve pressure.</li><li>Load directed towards the sternum for controlled leash work.</li></ul>",
-        "button_en": "Discover Performance Pro",
-        "button_url": "/products/iq-performance-pro-click-go",
-        "eyebrow_de": "IQ PERFORMANCE PRO",
-        "eyebrow_en": "IQ PERFORMANCE PRO",
-        "mobile_ratio": "portrait"
       }
     },
     "iq_training_details": {
@@ -1866,7 +1857,6 @@
     "breadcrumbs_Gxg9wp",
     "product-grid",
     "iq_damen_finder",
-    "iq_performance_video",
     "iq_training_details",
     "iq_food_details",
     "custom_liquid_aqAmH6",

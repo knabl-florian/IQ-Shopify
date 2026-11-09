@@ -26,7 +26,7 @@ Outputs the short product-card title without altering product data.
       when 10709812379912
         assign title = 'Buch: Gemeinsam erfolgreich · Schutzdienst'
       when 10709813461256
-        assign title = 'IQ Hoodie ’Train Hard. Fight Easy.’ Schwarz'
+        assign title = 'IQ Hoodie »Train Hard« Schwarz'
       when 10709815525640
         assign title = 'Ersatzgürtel MFJ 3.0 Damen'
       when 10709815886088
@@ -34,37 +34,77 @@ Outputs the short product-card title without altering product data.
       when 10709816344840
         assign title = 'IQ MFJ 3.0 Damen Olive'
       when 10709818638600
-        assign title = 'IQ Hoodie Schwarz Blanko'
+        assign title = 'IQ Hoodie Blanko Schwarz'
       when 10709820702984
-        assign title = 'IQ Hoodie ’Train Hard. Fight Easy.’ Olive'
+        assign title = 'IQ Hoodie »Train Hard« Olive'
       when 10709824241928
         assign title = 'IQ Performance Pro Cobra Hetzgeschirr'
       when 10709831811336
         assign title = 'IQ Performance Pro Click & Go Geschirr'
       when 10709843837192
-        assign title = 'IQ Multifunktionsjacke K9 Pro Unisex Schwarz'
+        assign title = 'IQ K9 Pro Jacke Unisex Schwarz'
       when 10709844099336
-        assign title = 'IQ Multifunktionsjacke K9 Pro Damen Schwarz'
+        assign title = 'IQ K9 Pro Jacke Damen Schwarz'
       when 10709844721928
         assign title = 'IQ MFJ 3.0 Unisex Blau'
       when 10709844885768
         assign title = 'IQ MFJ 3.0 Damen Blau'
       when 10709845180680
-        assign title = 'IQ Hoodie ’Train Hard Ice’ Blau Limited Edition'
+        assign title = 'IQ Hoodie »Train Hard Ice« Blau'
       when 10709845606664
         assign title = 'Futterbeutel-Set für IQ MFJ Damen'
       when 10709845704968
         assign title = 'Futterbeutel-Set für IQ MFJ Unisex'
       when 10709846229256
-        assign title = 'IQ Hoodie ’In Dog We Trust’ Schwarz'
+        assign title = 'IQ Hoodie »In Dog We Trust« Schwarz'
       when 11358708007176
-        assign title = 'IQ Hoodie "Cross" Unisex'
+        assign title = 'IQ Hoodie »Cross« Unisex'
       when 12109893730568
         assign title = 'IQ Trainingsshirt Damen'
       when 12109897040136
         assign title = 'IQ Trainingsshirt Unisex'
       when 12121130893576
         assign title = 'IQ Softball aus Neopren'
+      when 10709793767688
+        assign title = 'Nikwax TX.Direct Imprägnierung'
+      when 10709793931528
+        assign title = 'Nikwax Tech Wash/TX.Direct Set'
+      when 10709799305480
+        assign title = 'Buch · Unterordnung (Englisch)'
+      when 10709823226120
+        assign title = 'Buch · Schutzdienst (Englisch)'
+      when 10709811560712
+        assign title = 'Jolly Pets Soccer Ball 6 Zoll'
+      when 10709812085000
+        assign title = 'Jolly Pets Soccer Ball 8 Zoll'
+      when 10709813264648
+        assign title = 'IQ T-Shirt Unisex »Train Hard«'
+      when 10709813625096
+        assign title = 'IQ T-Shirt Damen »Train Hard«'
+      when 10709822439688
+        assign title = 'IQ Hoodie »Power« Olive'
+      when 10709844689160
+        assign title = 'IQ Zip-Hoodie Damen Grau'
+      when 10709814837512
+        assign title = 'Futterbeutel-Set IQ Gürtel'
+      when 10709845868808
+        assign title = 'IQ UnbreakaBall am Seil'
+      when 12082391908616
+        assign title = 'IQ Futtertasche MagDock'
+      when 12089092636936
+        assign title = 'Revierstab-Set für IGP'
+      when 12345634160904
+        assign title = 'IQ MagDock Clip'
+      when 12345732235528
+        assign title = 'IQ Tactical K9 Out Stick'
+      when 12410635747592
+        assign title = 'Farrado Sensitive Pferd'
+      when 12410635845896
+        assign title = 'Farrado Sensitive Büffel'
+      when 12411509899528
+        assign title = 'Patches für K9 Jacke/Weste'
+      when 12411547025672
+        assign title = 'Farrado Sportcrock Performance'
     endcase
   elsif request.locale.iso_code == 'en'
     case product.id
@@ -83,15 +123,15 @@ Outputs the short product-card title without altering product data.
       when 10709815361800
         assign title = 'IQ K9 Handler Vest Pro Black'
       when 10709843837192
-        assign title = 'IQ Multifunctional Jacket K9 Pro Unisex Black'
+        assign title = 'IQ K9 Pro Jacket Unisex Black'
       when 10709844099336
-        assign title = 'IQ Multifunctional Jacket K9 Pro Women Black'
+        assign title = 'IQ K9 Pro Jacket Women Black'
       when 10709800354056
         assign title = 'IQ MFJ 3.0 Women - Black'
       when 10709800583432
         assign title = 'IQ MFJ 3.0 - Black'
       when 10709815525640
-        assign title = 'Replacement Belt for IQ MFJ 3.0 Women’s'
+        assign title = 'MFJ 3.0 Belt · Women'
       when 10709815886088
         assign title = 'IQ MFJ 3.0 - Olive'
       when 10709816344840
@@ -104,6 +144,58 @@ Outputs the short product-card title without altering product data.
         assign title = 'IQ MFJ 3.0 - Blue Limited Edition'
       when 10709844885768
         assign title = 'IQ MFJ 3.0 Women - Blue Limited Edition'
+      when 10709793767688
+        assign title = 'Nikwax TX.Direct Wash-In'
+      when 10709793931528
+        assign title = 'Nikwax Tech Wash/TX.Direct Set'
+      when 10709799305480
+        assign title = 'Book · Obedience (English)'
+      when 10709823226120
+        assign title = 'Book · Protection (English)'
+      when 10709811560712
+        assign title = 'Jolly Pets Soccer Ball 6″'
+      when 10709812085000
+        assign title = 'Jolly Pets Soccer Ball 8″'
+      when 10709813264648
+        assign title = 'IQ T-Shirt Unisex »Train Hard«'
+      when 10709813625096
+        assign title = 'IQ T-Shirt Women »Train Hard«'
+      when 10709813461256
+        assign title = 'IQ Hoodie »Train Hard« Black'
+      when 10709818638600
+        assign title = 'IQ Blank Hoodie Black'
+      when 10709820702984
+        assign title = 'IQ Hoodie »Train Hard« Olive'
+      when 10709822439688
+        assign title = 'IQ Hoodie »Power« Olive'
+      when 10709844689160
+        assign title = 'IQ Zip Hoodie Women Grey'
+      when 10709845180680
+        assign title = 'IQ Hoodie »Train Hard Ice« Blue'
+      when 10709846229256
+        assign title = 'IQ Hoodie »In Dog We Trust« Black'
+      when 11358708007176
+        assign title = 'IQ Hoodie »Cross« Unisex'
+      when 10709814837512
+        assign title = 'Treat Pocket Set · IQ Belt'
+      when 10709845868808
+        assign title = 'IQ UnbreakaBall on Cord'
+      when 12082391908616
+        assign title = 'IQ MagDock Treat Pouch'
+      when 12089092636936
+        assign title = 'IGP Blind Pole Set'
+      when 12345634160904
+        assign title = 'IQ MagDock Clip'
+      when 12345732235528
+        assign title = 'IQ Tactical K9 Out Stick'
+      when 12410635747592
+        assign title = 'Farrado Sensitive Horse'
+      when 12410635845896
+        assign title = 'Farrado Sensitive Buffalo'
+      when 12411509899528
+        assign title = 'Patches for K9 Jacket/Vest'
+      when 12411547025672
+        assign title = 'Farrado Sportcrock Performance'
     endcase
   endif
   if title == 'Book' or title == 'Buch' or title == blank
@@ -159,3 +251,4 @@ Outputs the short product-card title without altering product data.
   endunless
   echo title
 -%}
+
