@@ -33,8 +33,14 @@
 
   assign mobile_hide_quick_add = settings.pcard_mobile_hide_quick_add
 
+  assign choose_options_action = settings.pcard_choose_options_actions
+  if quick_add_in_modal
+    assign choose_options_action = 'open_popup'
+    assign mobile_hide_quick_add = false
+  endif
+
   assign atc_button_tag = 'a'
-  unless settings.pcard_choose_options_actions == 'product_page'
+  unless choose_options_action == 'product_page'
     assign atc_button_tag = 'button'
   endunless
 
@@ -134,7 +140,7 @@
         -%}
         {%- if product.variants.size > 1 or qty_rules -%}
           <{{ atc_button_tag }}
-            {% if settings.pcard_choose_options_actions == 'product_page' %}
+            {% if choose_options_action == 'product_page' %}
               href="{{- product_url -}}"
             {% else %}
               aria-controls="{{ quick_view_modal_id }}"
@@ -184,7 +190,7 @@
       {%- endif -%}
     </div>
   </div>
-  {%- if settings.pcard_choose_options_actions == 'open_popup' or enable_quick_view -%}
+  {%- if choose_options_action == 'open_popup' or enable_quick_view -%}
     {% render 'quick-view-modal', modal_id: quick_view_modal_id, product: product %}
   {%- endif -%}
 </div>

@@ -1663,9 +1663,9 @@
           "settings": {
             "only_collection": "hundesport-jacken-damen",
             "heading_de": "Welche Jacke passt zu Deinem Hundealltag?",
-            "text_de": "<p><strong>Für richtig kalte Tage und lange Wartezeiten:</strong> der Zip-off-Wintermantel. Für mehr Bewegungsfreiheit beim Training die Verlängerung abzippen.</p><p><strong>Für kalte Tage in Bewegung:</strong> die gefütterte Multifunktionsjacke 3.0 mit Magnetfächern und Anbindung für die optionale modulare Futtertasche; die 4.0 ist wärmer gefüttert und zusätzlich mit IQ MagDock kompatibel.</p><p><strong>Wenn das Wetter zu schlecht für Deine Weste ist:</strong> die Trainingsjacke 2.0 mit 20.000 mm Wassersäule und patentierter Brusttasche. Die optionale Zip-In Shell ergänzt Wärme.</p><p><strong>Für die Gassirunde:</strong> die leichte Allround-Regenjacke. Für Wind und Übergangszeit: die wasserabweisende Softshelljacke. Vergleiche die Größentabelle des jeweiligen Damenmodells.</p><p><a href=\"/collections/hundesport-jacken-damen#iq-jacken-vergleich\">Modelle dieser Collection vergleichen</a> · <a href=\"/collections/hundesport-jacken-herren\">Herren- & Unisexjacken</a> · <a href=\"/collections/hundesport-jacken#iq-jacken-vergleich\">Alle Jacken vergleichen</a> · <a href=\"/collections/hundesport-westen\">Hundesportwesten</a></p>",
+            "text_de": "<p><strong>Für richtig kalte Tage und lange Wartezeiten:</strong> der Zip-off-Wintermantel. Für mehr Bewegungsfreiheit beim Training die Verlängerung abzippen.</p><p><strong>Für kalte Tage in Bewegung:</strong> die gefütterte Multifunktionsjacke 3.0 mit Magnetfächern und Anbindung für die optionale modulare Futtertasche; die 4.0 ist wärmer gefüttert und zusätzlich mit IQ MagDock kompatibel.</p><p><a href=\"/collections/hundesport-jacken-damen#iq-jacken-vergleich\">Modelle dieser Collection vergleichen</a> · <a href=\"/collections/hundesport-jacken-herren\">Herren- & Unisexjacken</a> · <a href=\"/collections/hundesport-jacken#iq-jacken-vergleich\">Alle Jacken vergleichen</a> · <a href=\"/collections/hundesport-westen\">Hundesportwesten</a></p>",
             "heading_en": "Which jacket suits life with your dog?",
-            "text_en": "<p><strong>For very cold days and long waits:</strong> the Zip-Off Winter Coat. Unzip the extension for more freedom of movement during training.</p><p><strong>For staying active on cold days:</strong> the insulated Multifunctional Jacket 3.0 with magnet compartments and optional modular treat pouch compatibility; the 4.0 has warmer insulation and also supports IQ MagDock.</p><p><strong>When the weather is too bad for your vest:</strong> the Training Jacket 2.0 with a 20,000 mm waterproof rating and patented chest pocket. Add the optional Zip-In Shell for warmth.</p><p><strong>For dog walks:</strong> the lightweight Allround rain jacket. For wind and changing seasons: the water-repellent Softshell Jacket. Check the size chart for your chosen women’s model.</p><p><a href=\"/en/collections/hundesport-jacken-damen#iq-jacken-vergleich\">Compare models in this collection</a> · <a href=\"/en/collections/hundesport-jacken-herren\">Men’s & unisex jackets</a> · <a href=\"/en/collections/hundesport-jacken#iq-jacken-vergleich\">Compare all jackets</a> · <a href=\"/en/collections/hundesport-westen\">Dog training vests</a></p>",
+            "text_en": "<p><strong>For very cold days and long waits:</strong> the Zip-Off Winter Coat. Unzip the extension for more freedom of movement during training.</p><p><strong>For staying active on cold days:</strong> the insulated Multifunctional Jacket 3.0 with magnet compartments and optional modular treat pouch compatibility; the 4.0 has warmer insulation and also supports IQ MagDock.</p><p><a href=\"/en/collections/hundesport-jacken-damen#iq-jacken-vergleich\">Compare models in this collection</a> · <a href=\"/en/collections/hundesport-jacken-herren\">Men’s & unisex jackets</a> · <a href=\"/en/collections/hundesport-jacken#iq-jacken-vergleich\">Compare all jackets</a> · <a href=\"/en/collections/hundesport-westen\">Dog training vests</a></p>",
             "replace_description": true,
             "replace_seo": true
           }
@@ -1813,12 +1813,38 @@
             "replace_description": false,
             "replace_seo": false
           }
+        },
+        "damen_rain": {
+          "type": "topic",
+          "settings": {
+            "only_collection": "hundesport-jacken-damen",
+            "heading_de": "Welche Regenjacke passt zum Hundesport?",
+            "text_de": "<p>Für Regen beim Hundetraining oder auf Deiner Gassirunde findest Du hier wasserdichte Modelle. Die leichte <a href=\"/products/iq-allround-jacke-damen\">Allround-Jacke</a> ist ungefüttert; die <a href=\"/products/iq-trainingsjacke-2-0-damen\">Trainingsjacke 2.0</a> verbindet Wetterschutz mit Trainingsfunktionen. Wenn Du Wärme brauchst, vergleiche die gefütterten Multifunktionsjacken und Wintermodelle. Die <a href=\"/products/iq-softshelljacke-2-0-damen\">Softshelljacke 2.0</a> ist wasserabweisend.</p>",
+            "heading_en": "Which rain jacket suits dog training?",
+            "text_en": "<p>For training or daily walks in the rain, compare the waterproof models in this collection. The lightweight <a href=\"/en/products/dog-sport-rain-wind-jacket-women\">Allround Jacket</a> is unlined; the <a href=\"/en/products/dog-sport-training-jacket-2-0-women-patented-pockets\">Training Jacket 2.0</a> combines weather protection with training features. If you need warmth, compare the insulated multifunctional jackets and winter models. The <a href=\"/en/products/dog-sport-softshell-2-0-women-back-pocket\">Softshell Jacket 2.0</a> is water-repellent.</p>",
+            "replace_description": false,
+            "replace_seo": false
+          }
+        },
+        "damen_navigation": {
+          "type": "topic",
+          "settings": {
+            "only_collection": "hundesportbekleidung-damen",
+            "heading_de": "Welche Hundesportbekleidung passt zu Dir?",
+            "text_de": "<p>Entdecke <a href=\"/collections/hundesport-jacken-damen\">Hundesportjacken für Damen</a>, <a href=\"/collections/hundesport-westen\">Westen für Damen und Herren</a> sowie <a href=\"/collections/hundesport-hosen\">Hundesporthosen und Leggings</a>. Je nach Modell findest Du Damen- oder Unisex-Schnitte. Vergleiche die Kleidungsmaße des gewählten Modells mit einem Kleidungsstück, das Dir gut passt.</p>",
+            "heading_en": "Which dog training clothing suits you?",
+            "text_en": "<p>Explore <a href=\"/en/collections/hundesport-jacken-damen\">women’s dog training jackets</a>, <a href=\"/en/collections/hundesport-westen\">training vests for women and men</a>, and <a href=\"/en/collections/hundesport-hosen\">dog training trousers and leggings</a>. Depending on the model, you will find women’s or unisex cuts. Compare your chosen model’s garment measurements with clothing that fits you well.</p>",
+            "replace_description": true,
+            "replace_seo": false
+          }
         }
       },
       "block_order": [
+        "damen_navigation",
         "training_overview",
         "damen_fit",
         "damen_choice",
+        "damen_rain",
         "training_heelwork",
         "training_tracking",
         "training_protection",

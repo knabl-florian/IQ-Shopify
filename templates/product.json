@@ -252,6 +252,18 @@
           "settings": {
             "custom_liquid": "{% if product.id == 10709813788936 or product.id == 10709814739208 %}\n{% assign sold_out_sizes = product.variants | where: 'available', false %}\n{% if sold_out_sizes.size > 0 %}\n<p class=\"iq-vest-restock\" style=\"margin:0;padding:12px 16px;border-left:3px solid #A51D1B;background:#F3F3F1;color:#171717;font-size:14px;line-height:1.5;\">\n{% if request.locale.iso_code == 'de' %}<strong>Deine Größe ist ausverkauft?</strong><br>Die ausverkauften Größen kommen im Laufe des Novembers wieder.{% else %}<strong>Is your size sold out?</strong><br>Sold-out sizes will be back in stock during November.{% endif %}\n</p>\n{% endif %}\n{% endif %}"
           }
+        },
+        "iq_zipper_accessories": {
+          "type": "complementary",
+          "settings": {
+            "block_heading": "Passendes Zubehör",
+            "make_collapsible_row": false,
+            "icon": "tag",
+            "product_list_limit": 10,
+            "products_per_page": 1,
+            "image_ratio": "1/1",
+            "enable_quick_add": true
+          }
         }
       },
       "block_order": [
@@ -267,6 +279,7 @@
         "xboost_bundle_checkbox_upsell_fXe6aY",
         "mini_image_upload_app_block_ztmB3F",
         "buy_buttons",
+        "iq_zipper_accessories",
         "icon_with_text",
         "pickup_availability",
         "collapsible-row-1",
@@ -280,8 +293,8 @@
         "mini_image_upload_app_block_eLJwBn"
       ],
       "custom_css": [
-        "/* FK - Start */.jdgm-widget.jdgm-preview-badge.jdgm-preview-badge--with-link.jdgm--done-setup {margin-top: -20px;}",
-        " /* FK - end */"
+        ".jdgm-widget.jdgm-preview-badge.jdgm-preview-badge--with-link.jdgm--done-setup {margin-top: -20px;}",
+        " "
       ],
       "settings": {
         "color_scheme": "scheme-1",

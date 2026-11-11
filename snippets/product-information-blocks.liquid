@@ -456,6 +456,8 @@
             </ul>
           </div>
         {%- when 'complementary' -%}
+          {%- assign iq_accessory_modal = false -%}
+          {%- if block.id == 'iq_zipper_accessories' -%}{%- assign iq_accessory_modal = true -%}{%- endif -%}
           <div
             class="product__block product__block--{{ block.type }} product__block--{{ block.type }}-{% if block.settings.make_collapsible_row %}collapsible{% else %}inline{% endif %}{% if block.settings.block_heading != blank %} has-heading{% endif %}"
             {{ block.shopify_attributes }}
@@ -524,7 +526,8 @@
                                         index: forloop.index,
                                         product: product,
                                         image_ratio: block.settings.image_ratio,
-                                        enable_quick_add: block.settings.enable_quick_add
+                                        enable_quick_add: block.settings.enable_quick_add,
+                                        quick_add_in_modal: iq_accessory_modal
                                       %}
                                     </li>
                                   {%- endfor -%}
@@ -539,7 +542,8 @@
                                   index: forloop.index,
                                   product: product,
                                   image_ratio: block.settings.image_ratio,
-                                  enable_quick_add: block.settings.enable_quick_add
+                                  enable_quick_add: block.settings.enable_quick_add,
+                                        quick_add_in_modal: iq_accessory_modal
                                 %}
                               </div>
                             {%- endfor -%}
