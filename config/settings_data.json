@@ -74,7 +74,7 @@
     "collection_card_color_scheme": "scheme-1",
     "collection_card_style": "style-1",
     "color_swatch_trigger": "Color,Farbe,Colour",
-    "swatch_list": "Schwarz:#000000\nBlack:#000000\nGraublau:#6d728c\ngrayblue:#6d728c\nGrün:#008000\nGrau:#9F9F9F\nBlau:#0000BF\nOlive:#6A804D\nDunkelblau:#3e5074\nRot:#cc2024\nRed:#ab281f\nhellblau:#9fb3cf\nlightblue:#9fb3cf\ngrau - rund:#9F9F9F\ngrau - eckig:#9F9F9F\nschwarz - eckig:#000000\nGraugrün:#676760\nAnthrazit:#636363",
+    "swatch_list": "Schwarz:#000000\nBlack:#000000\nGraublau:#6d728c\ngrayblue:#6d728c\nGrün:#008000\nGrau:#9F9F9F\nBlau:#0000BF\nOlive:#6A804D\nDunkelblau:#3e5074\nRot:#cc2024\nRose: :#7f5455\nRed:#ab281f\nhellblau:#9fb3cf\nlightblue:#9fb3cf\ngrau - rund:#9F9F9F\ngrau - eckig:#9F9F9F\nschwarz - eckig:#000000\nGraugrün:#676760\nAnthrazit:#636363",
     "cart_type": "drawer",
     "cart_icon": "shopping-cart",
     "free_shipping_minimum_amount": "150",
