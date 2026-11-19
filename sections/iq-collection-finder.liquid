@@ -1,6 +1,6 @@
 {% if section.settings.only_collection == blank or section.settings.only_collection.handle == collection.handle or section.settings.additional_collection.handle == collection.handle %}
 {% unless template.suffix == 'jacken' %}{{ 'iq-collection-finder.css' | asset_url | stylesheet_tag }}{% endunless %}
-<script src="{{ 'iq-collection-finder.js' | asset_url }}" defer="defer"></script>
+{% unless section.settings.compact_compare %}<script src="{{ 'iq-collection-finder.js' | asset_url }}" defer="defer"></script>{% endunless %}
 {% liquid
   assign lang = 'de'
   if request.locale.iso_code == 'en'
@@ -11,12 +11,67 @@
   assign intro_key = 'intro_' | append: lang
   assign extra_key = 'extra_' | append: lang
 %}
-<section class="iq-jacket-finder iq-collection-container" id="iq-jacken-vergleich" data-iq-finder aria-labelledby="finder-heading-{{ section.id }}">
+<section class="iq-jacket-finder iq-collection-container{% if section.settings.compact_compare %} iq-jacket-finder--compact{% endif %}" id="iq-jacken-vergleich" data-iq-finder aria-labelledby="finder-heading-{{ section.id }}">
   <header class="iq-jacket-finder__header">
     <p class="iq-jacket-finder__eyebrow">{{ section.settings[eyebrow_key] | escape }}</p>
     <h2 id="finder-heading-{{ section.id }}">{{ section.settings[heading_key] | escape | newline_to_br }}</h2>
     {% if section.settings[intro_key] != blank %}<p class="iq-jacket-finder__intro">{{ section.settings[intro_key] | escape }}</p>{% endif %}
   </header>
+
+  {% if section.settings.compact_compare %}
+  <p class="iq-jacket-finder__swipe">{% if lang == 'de' %}Wische für alle fünf Gruppen →{% else %}Swipe to see all five groups →{% endif %}</p>
+  <div class="iq-jacket-finder__compact-grid" tabindex="0" role="region" aria-label="{% if lang == 'de' %}Jackenvergleich{% else %}Jacket comparison{% endif %}">
+    {% assign seen_groups = '|' %}
+    {% for block in section.blocks %}
+      {% if block.settings.only_collection != blank and block.settings.only_collection.handle != collection.handle %}{% continue %}{% endif %}
+      {% assign group = block.settings.compare_group | default: block.id %}
+      {% assign group_token = '|' | append: group | append: '|' %}
+      {% if seen_groups contains group_token %}{% continue %}{% endif %}
+      {% assign seen_groups = seen_groups | append: group | append: '|' %}
+      {% assign title_key = 'title_' | append: lang %}
+      {% assign text_key = 'intro_' | append: lang %}
+      {% assign benefits_key = 'benefits_' | append: lang %}
+      <article class="iq-jacket-finder__compact-card" {{ block.shopify_attributes }}>
+        <h3>{{ block.settings[title_key] | escape }}</h3>
+        <p class="iq-jacket-finder__use">{{ block.settings[text_key] | escape }}</p>
+        <div class="iq-jacket-finder__facts">{{ block.settings[benefits_key] }}</div>
+        <div class="iq-jacket-finder__model-links">
+          {% for model in section.blocks %}
+            {% if model.settings.only_collection != blank and model.settings.only_collection.handle != collection.handle %}{% continue %}{% endif %}
+            {% assign model_group = model.settings.compare_group | default: model.id %}
+            {% unless model_group == group %}{% continue %}{% endunless %}
+            {% assign primary = model.settings.primary_product %}
+            {% assign secondary = model.settings.secondary_product %}
+            {% assign primary_label_key = 'link_primary_' | append: lang %}
+            {% assign secondary_label_key = 'link_secondary_' | append: lang %}
+            {% if primary != blank %}
+              <a href="{{ primary.url }}">{{ model.settings[primary_label_key] | escape }} <span aria-hidden="true">→</span>{% unless primary.available %}<small>{% if lang == 'de' %}Zurzeit ausverkauft{% else %}Currently sold out{% endif %}</small>{% endunless %}</a>
+            {% endif %}
+            {% if secondary != blank %}
+              <a href="{{ secondary.url }}">{{ model.settings[secondary_label_key] | escape }} <span aria-hidden="true">→</span>{% unless secondary.available %}<small>{% if lang == 'de' %}Zurzeit ausverkauft{% else %}Currently sold out{% endif %}</small>{% endunless %}</a>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <details class="iq-jacket-finder__compact-details">
+          <summary>{% if lang == 'de' %}Details & Zubehör{% else %}Details & accessories{% endif %}</summary>
+          {% for model in section.blocks %}
+            {% if model.settings.only_collection != blank and model.settings.only_collection.handle != collection.handle %}{% continue %}{% endif %}
+            {% assign model_group = model.settings.compare_group | default: model.id %}
+            {% unless model_group == group %}{% continue %}{% endunless %}
+            {% assign name_key = 'name_' | append: lang %}
+            {% assign details_key = 'details_' | append: lang %}
+            <h4>{{ model.settings[name_key] | escape }}</h4>
+            {{ model.settings[details_key] }}
+            {% if model.settings.show_zip_in %}
+              <p>{% if lang == 'de' %}Die optionale Zip-In Shell ergänzt die Trainingsjacke 2.0 um eine Wärmeschicht. Auch einzeln tragbar; nicht als Regenschutz gedacht.{% else %}The optional Zip-In Shell adds warmth to the Training Jacket 2.0. Also wearable on its own; not designed as rain protection.{% endif %}</p>
+              <p><a href="{{ routes.root_url | append: '/' | replace: '//', '/' }}products/iq-zip-in-shell-damen">{% if lang == 'de' %}Zip-In Damen{% else %}Women’s Zip-In{% endif %} →</a> · <a href="{{ routes.root_url | append: '/' | replace: '//', '/' }}products/iq-zip-in-shell-unisex">Zip-In Unisex →</a></p>
+            {% endif %}
+          {% endfor %}
+        </details>
+      </article>
+    {% endfor %}
+  </div>
+  {% else %}
   <div class="iq-jacket-finder__choices" role="group" aria-label="{{ section.settings[eyebrow_key] | escape }}">
     {% assign first_choice = true %}
     {% for block in section.blocks %}
@@ -72,6 +127,7 @@
     {% assign first_panel = false %}
   {% endfor %}
 
+  {% endif %}
 </section>
 <noscript><style>.iq-jacket-finder__panel[hidden]{display:grid}</style></noscript>
 {% endif %}
@@ -79,6 +135,13 @@
 {
   "name": "IQ Modellauswahl",
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "compact_compare",
+      "label": "Kompakten Vergleich anzeigen",
+      "default": false,
+      "info": "Modellgruppen nebeneinander, mobil wischbar. Bestehende Modelllinks bleiben erhalten."
+    },
     {
       "type": "collection",
       "id": "only_collection",
@@ -137,6 +200,34 @@
       "type": "model",
       "name": "Modell",
       "settings": [
+        {
+          "type": "select",
+          "id": "compare_group",
+          "label": "Vergleichsgruppe",
+          "options": [
+            {
+              "value": "winter",
+              "label": "Wintermantel / Parka"
+            },
+            {
+              "value": "mfj",
+              "label": "Multifunktion"
+            },
+            {
+              "value": "training",
+              "label": "Training"
+            },
+            {
+              "value": "allround",
+              "label": "Allround"
+            },
+            {
+              "value": "softshell",
+              "label": "Softshell"
+            }
+          ],
+          "default": "mfj"
+        },
         {
           "type": "collection",
           "id": "only_collection",
@@ -258,6 +349,26 @@
           "type": "richtext",
           "id": "details_en",
           "label": "Details & accessories EN"
+        },
+        {
+          "type": "text",
+          "id": "link_primary_de",
+          "label": "Linktext Damen/Einzelmodell DE"
+        },
+        {
+          "type": "text",
+          "id": "link_primary_en",
+          "label": "Linktext Damen/Einzelmodell EN"
+        },
+        {
+          "type": "text",
+          "id": "link_secondary_de",
+          "label": "Linktext Unisex DE"
+        },
+        {
+          "type": "text",
+          "id": "link_secondary_en",
+          "label": "Linktext Unisex EN"
         }
       ]
     }

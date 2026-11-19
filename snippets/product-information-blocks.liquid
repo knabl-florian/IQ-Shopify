@@ -1,5 +1,34 @@
 {%- liquid
   assign product_form_id = 'product-form-' | append: section.id
+  assign iq_purchase_blocks = section.blocks
+  assign iq_jacket_purchase_flow = false
+  if context == 'main-product'
+    if product.tags contains 'Jackets' or product.id == 10709846753544
+      assign iq_jacket_purchase_flow = true
+    endif
+  endif
+  if iq_jacket_purchase_flow
+    assign iq_bundle_position = nil
+    assign iq_buy_position = nil
+    for iq_candidate in section.blocks
+      if iq_candidate.id contains 'xboost_bundle_checkbox_upsell'
+        assign iq_bundle_position = forloop.index0
+      endif
+      if iq_candidate.type == 'buy_buttons'
+        assign iq_buy_position = forloop.index0
+      endif
+    endfor
+    if iq_bundle_position != nil and iq_buy_position != nil and iq_bundle_position < iq_buy_position
+      assign iq_middle_start = iq_bundle_position | plus: 1
+      assign iq_middle_count = iq_buy_position | minus: iq_bundle_position
+      assign iq_after_start = iq_buy_position | plus: 1
+      assign iq_before = section.blocks | slice: 0, iq_bundle_position
+      assign iq_middle = section.blocks | slice: iq_middle_start, iq_middle_count
+      assign iq_bundle = section.blocks | slice: iq_bundle_position, 1
+      assign iq_after = section.blocks | slice: iq_after_start, section.blocks.size
+      assign iq_purchase_blocks = iq_before | concat: iq_middle | concat: iq_bundle | concat: iq_after
+    endif
+  endif
   assign iq_refined = false
   if context == 'main-product' and section.settings.iq_refined_enabled and section.settings.iq_refined_product.id == product.id
     assign iq_refined = true
@@ -18,7 +47,7 @@
   class="product__info-container{% if enable_sticky_info %} sticky-element{% endif %}"
 >
   <div class="product__blocks accordion-parent">
-    {%- for block in section.blocks -%}
+    {%- for block in iq_purchase_blocks -%}
       {%- case block.type -%}
         {%- when '@app' -%}
           <div class="product__block product__block--{{ block.type }}">
@@ -404,6 +433,9 @@
               section_id: section.id,
               product_id: product.id
             -%}
+            {%- if iq_jacket_purchase_flow -%}
+              <div id="xb-product-addon-root" class="xboost-auto-add" data-product-id="{{ product.id }}"></div>
+            {%- endif -%}
             {% if iq_refined %}<div class="iq-pdp-benefits">{% if request.locale.iso_code == 'en' %}{{ section.settings.iq_refined_benefits_en }}{% else %}{{ section.settings.iq_refined_benefits_de }}{% endif %}</div>{% endif %}
           </div>
         {%- when 'pickup_availability' -%}

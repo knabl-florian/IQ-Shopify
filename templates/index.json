@@ -14,20 +14,20 @@
       "blocks": {
         "slide_m7dczF": {
           "type": "slide",
-          "name": "Winterparka ",
+          "name": "Training statt Frieren · Patricia & Lucan",
           "settings": {
             "color_scheme": "scheme-8e763c0b-c7ff-41dc-bd65-e35679d178f1",
-            "background": "shopify://shop_images/tino-winterparka-hero-desktop.jpg",
-            "background_mobile": "shopify://shop_images/tino-winterparka-hero-mobile.jpg",
+            "background": "shopify://shop_images/iq-hero-sischi-desktop-2400x1350-20261118.jpg",
+            "background_mobile": "shopify://shop_images/wintermantel-kurz-patricia-lucan-mobile.jpg",
             "image_overlay_opacity": 0,
             "show_content_in_container": false,
             "content_position": "middle-left",
             "content_position_mobile": "bottom-center",
             "text_alignment": "left",
-            "title": "WINTER DRAUSSEN. WÄRME DRIN.",
+            "title": "TRAINIEREN. STATT FRIEREN.",
             "heading_size": "h1",
             "subheading": "",
-            "description": "",
+            "description": "<p>Finde Deine Winterjacke fürs Hundetraining – vom kurzen Parka bis zum langen Mantel.</p>",
             "description_size": "text-sm",
             "button_label": "Winterjacken entdecken",
             "button_link": "shopify://collections/hundesport-jacken",
@@ -577,6 +577,61 @@
             "link": "/products/iq-gebrauchshunde-schlusselanhanger-miniatur?variant=58646617915656",
             "link_en": "/en/products/iq-gebrauchshunde-schlusselanhanger-miniatur?variant=58646617915656"
           }
+        },
+        "breed_airedale": {
+          "type": "breed",
+          "settings": {
+            "image": "shopify://shop_images/Airedale-Terrier-Schluesselanhaenger.jpg",
+            "label": "Airedale Terrier",
+            "label_en": "Airedale Terrier",
+            "link": "/products/iq-gebrauchshunde-schlusselanhanger-miniatur?variant=59455677628680",
+            "link_en": "/en/products/iq-gebrauchshunde-schlusselanhanger-miniatur?variant=59455677628680",
+            "show_full_image": true
+          }
+        },
+        "breed_boxer": {
+          "type": "breed",
+          "settings": {
+            "image": "shopify://shop_images/Boxer-Schluesselanhaenger.jpg",
+            "label": "Boxer",
+            "label_en": "Boxer",
+            "link": "/products/iq-gebrauchshunde-schlusselanhanger-miniatur?variant=59455677661448",
+            "link_en": "/en/products/iq-gebrauchshunde-schlusselanhanger-miniatur?variant=59455677661448",
+            "show_full_image": true
+          }
+        },
+        "breed_riesenschnauzer": {
+          "type": "breed",
+          "settings": {
+            "image": "shopify://shop_images/Riesenschnauzer-Schluesselanhaenger.jpg",
+            "label": "Riesenschnauzer",
+            "label_en": "Giant Schnauzer",
+            "link": "/products/iq-gebrauchshunde-schlusselanhanger-miniatur?variant=59455677694216",
+            "link_en": "/en/products/iq-gebrauchshunde-schlusselanhanger-miniatur?variant=59455677694216",
+            "show_full_image": true
+          }
+        },
+        "breed_border_collie": {
+          "type": "breed",
+          "settings": {
+            "image": "shopify://shop_images/Border-Collie.jpg",
+            "label": "Border Collie",
+            "label_en": "Border Collie",
+            "link": "/products/iq-gebrauchshunde-schlusselanhanger-miniatur?variant=59455677726984",
+            "link_en": "/en/products/iq-gebrauchshunde-schlusselanhanger-miniatur?variant=59455677726984",
+            "show_full_image": true
+          }
+        },
+        "breed_hovawart": {
+          "type": "breed",
+          "settings": {
+            "image": "shopify://shop_images/Schluesselanhaenger_neu_1.jpg",
+            "label": "Hovawart",
+            "label_en": "Hovawart",
+            "link": "/products/iq-gebrauchshunde-schlusselanhanger-miniatur?variant=59540506804488",
+            "link_en": "/en/products/iq-gebrauchshunde-schlusselanhanger-miniatur?variant=59540506804488",
+            "show_full_image": true
+          }
         }
       },
       "block_order": [
@@ -584,7 +639,12 @@
         "breed1",
         "breed3",
         "breed4",
-        "breed2"
+        "breed2",
+        "breed_airedale",
+        "breed_boxer",
+        "breed_riesenschnauzer",
+        "breed_border_collie",
+        "breed_hovawart"
       ],
       "name": "Geschenke · Gutschein & Extras",
       "settings": {

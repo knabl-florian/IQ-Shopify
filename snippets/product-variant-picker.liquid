@@ -121,6 +121,15 @@
             </button>
           {%- endif -%}
         </{{ tag_legend }}>
+        {%- if product.id == 12214097412360 and attach_size_chart and update_url != false -%}
+          <p class="iq-mfj4-size-help text-sm" style="flex-basis:100%;width:100%;margin:0;line-height:1.5;">
+            {%- if request.locale.iso_code == 'en' -%}
+              Regular to snug fit – if unsure, choose the larger size. Compare the size chart’s garment measurements with a jacket that fits you well.
+            {%- else -%}
+              Fällt normal bis knapp aus – wähle im Zweifel die größere Größe. Vergleiche eine gut passende Jacke mit den Kleidungsmaßen in der Größentabelle.
+            {%- endif -%}
+          </p>
+        {%- endif -%}
         {%- case picker_type -%}
           {%- when 'swatch', 'color', 'button' -%}
             {% render 'product-variant-options',
