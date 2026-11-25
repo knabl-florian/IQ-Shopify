@@ -826,10 +826,17 @@
                 {% assign iq_product_index = forloop.index %}
                 {% for inline_block in section.blocks %}
                   {% assign iq_anchor = inline_block.settings.after_product %}
+                  {% if inline_block.settings.after_products != blank %}
+                    {% assign iq_anchor = nil %}
+                    {% assign iq_anchor_ids = inline_block.settings.after_products | map: 'id' %}
+                    {% for iq_anchor_product in iq_display_products %}
+                      {% if iq_anchor_ids contains iq_anchor_product.id %}{% assign iq_anchor = iq_anchor_product %}{% endif %}
+                    {% endfor %}
+                  {% endif %}
                   {% assign iq_show_inline = false %}
                   {% if iq_anchor != blank %}
                     {% if product.id == iq_anchor.id %}{% assign iq_show_inline = true %}{% endif %}
-                  {% elsif paginate.current_page == 1 and iq_product_index == inline_block.settings.position %}
+                  {% elsif inline_block.settings.after_products == blank and paginate.current_page == 1 and iq_product_index == inline_block.settings.position %}
                     {% if inline_block.type == 'iq_responsive_video' or inline_block.type == 'iq_product_film' %}
                       {% assign iq_show_inline = true %}
                     {% endif %}
@@ -839,7 +846,7 @@
                     {% when 'iq_editorial' %}
                       {% render 'iq-editorial-banner', block: inline_block %}
                     {% when 'iq_responsive_video', 'iq_product_feature', 'iq_product_film' %}
-                      <div class="f-column collection-inline-block collection-inline-block--full" data-inline-block="{{ inline_block.id }}" {{ inline_block.shopify_attributes }}>
+                      <div class="f-column collection-inline-block collection-inline-block--full" data-inline-block="{{ inline_block.id }}"{% if iq_anchor != blank %} data-inline-anchor="{{ iq_anchor.id }}"{% endif %} {{ inline_block.shopify_attributes }}>
                         {% if inline_block.type == 'iq_product_film' %}
                           {% render 'iq-product-film', film_settings: inline_block.settings, film_id: inline_block.id %}
                         {% elsif inline_block.type == 'iq_responsive_video' %}
@@ -1161,6 +1168,9 @@ grid.addEventListener('scroll', function(event) {
         if (!block) return;
 
         var insertAfter = lastInsertedByIndex[targetIndex] || targetProduct;
+        while (insertAfter.nextElementSibling && insertAfter.nextElementSibling.hasAttribute("data-inline-anchor")) {
+          insertAfter = insertAfter.nextElementSibling;
+        }
         if (insertAfter.nextElementSibling !== block) {
           insertAfter.insertAdjacentElement('afterend', block);
         }
@@ -3585,6 +3595,13 @@ document.addEventListener('webkitfullscreenchange', function () {
       "type": "iq_product_film",
       "name": "IQ Produktvideo",
       "settings": [
+        {
+          "type": "product_list",
+          "id": "after_products",
+          "label": "Nach dem letzten dieser Produkte",
+          "limit": 12,
+          "info": "Video folgt dem letzten sichtbaren ausgewählten Produkt. Ohne Treffer wird es nicht angezeigt. Hat Vorrang vor dem Einzelprodukt und der Produktnummer."
+        },
         {
           "type": "header",
           "content": "Platzierung im Produktraster"

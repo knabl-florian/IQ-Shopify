@@ -24,12 +24,12 @@
             "content_position": "middle-left",
             "content_position_mobile": "bottom-center",
             "text_alignment": "left",
-            "title": "TRAINIEREN. STATT FRIEREN.",
+            "title": "Richtig warm. Jacke oder Mantel. Du entscheidest.",
             "heading_size": "h1",
             "subheading": "",
-            "description": "<p>Finde Deine Winterjacke fürs Hundetraining – vom kurzen Parka bis zum langen Mantel.</p>",
-            "description_size": "text-sm",
-            "button_label": "Winterjacken entdecken",
+            "description": "<p>Kuschelig warm und robust fürs Training. Mit Zip-off verwandelst Du die Jacke in einen Mantel.</p>",
+            "description_size": "text-base",
+            "button_label": "Jetzt entdecken",
             "button_link": "shopify://collections/hundesport-jacken",
             "button_style": "btn--primary",
             "split_title": true
@@ -127,8 +127,8 @@
         "accessibility_info": "Slideshow about our brand",
         "custom_class": "iqh-hero-editorial",
         "show_trust": true,
-        "trust_reviews": "4,9/5 · 2.800+ Bewertungen",
-        "trust_reviews_en": "4.9/5 · 2,800+ reviews",
+        "trust_reviews": "4,9/5 · Über 3.000 Bewertungen",
+        "trust_reviews_en": "4.9/5 · Over 3,000 reviews",
         "trust_followers": "1,1 Mio. Follower",
         "trust_followers_en": "1.1 million followers"
       }
@@ -365,6 +365,23 @@
         "link_en": ""
       }
     },
+    "iq_home_magdock_video": {
+      "type": "iq-product-film",
+      "name": "MagDock · Video in Aktion",
+      "settings": {
+        "button_color": "red",
+        "only_collection": "",
+        "video": "shopify://files/videos/iq-magdock-in-aktion-20261108_f9d121f5-4703-4539-8577-908a9f4cd91f.mp4",
+        "poster": "shopify://shop_images/iq-magdock-film-poster-20261108.jpg",
+        "product": "iq-futtertasche-magdock",
+        "heading_de": "Die Futtertasche zum Andocken.",
+        "heading_en": "The treat pouch that docks.",
+        "body_de": "<p>Magnetisch andocken. Mechanisch verriegeln. Per Lasche lösen. Im Video siehst Du, wie Du die Futtertasche befestigst und beim Training nutzt.</p>",
+        "body_en": "<p>Dock magnetically. Lock mechanically. Release with the pull tab. See how to attach the treat pouch and use it during training.</p>",
+        "button_de": "MagDock entdecken",
+        "button_en": "Discover MagDock"
+      }
+    },
     "iq_home_snacks": {
       "type": "iq-home-feature",
       "blocks": {
@@ -525,6 +542,35 @@
         "books_heading_en": "Books"
       }
     },
+    "featured_blog_6f7FyW": {
+      "type": "featured-blog",
+      "name": "IQ Blog · Artikel mit Kurztext",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "heading": "IQ Blog",
+        "heading_size": "h2",
+        "heading_highlight_style": "none",
+        "subheading": "",
+        "description": "<p>Fitness für Sporthunde, Fachbegriffe auf Englisch, Praxistipps und Infos zu Events.</p>",
+        "description_en": "<p>Fitness for sport dogs, English terminology, practical tips and event updates.</p>",
+        "blog": "news",
+        "post_limit": 3,
+        "columns_desktop": 3,
+        "column_gap": "medium",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "card_title_size": "h4",
+        "show_date": false,
+        "show_excerpt": true,
+        "excerpt_words": 24,
+        "show_button": false,
+        "padding_top": 24,
+        "padding_bottom": 36,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "custom_class": "iq-home-blog"
+      }
+    },
     "iq_home_gifts": {
       "type": "iq-home-feature",
       "blocks": {
@@ -535,7 +581,8 @@
             "label": "Schäferhund braun",
             "label_en": "Brown German Shepherd",
             "link": "/products/iq-gebrauchshunde-schlusselanhanger-miniatur?variant=58646583705864",
-            "link_en": "/en/products/iq-gebrauchshunde-schlusselanhanger-miniatur?variant=58646583705864"
+            "link_en": "/en/products/iq-gebrauchshunde-schlusselanhanger-miniatur?variant=58646583705864",
+            "show_full_image": false
           }
         },
         "breed1": {
@@ -545,7 +592,8 @@
             "label": "Malinois",
             "label_en": "Malinois",
             "link": "/products/iq-gebrauchshunde-schlusselanhanger-miniatur?variant=58646600450312",
-            "link_en": "/en/products/iq-gebrauchshunde-schlusselanhanger-miniatur?variant=58646600450312"
+            "link_en": "/en/products/iq-gebrauchshunde-schlusselanhanger-miniatur?variant=58646600450312",
+            "show_full_image": false
           }
         },
         "breed3": {
@@ -555,7 +603,8 @@
             "label": "Rottweiler",
             "label_en": "Rottweiler",
             "link": "/products/iq-gebrauchshunde-schlusselanhanger-miniatur?variant=58646630138120",
-            "link_en": "/en/products/iq-gebrauchshunde-schlusselanhanger-miniatur?variant=58646630138120"
+            "link_en": "/en/products/iq-gebrauchshunde-schlusselanhanger-miniatur?variant=58646630138120",
+            "show_full_image": false
           }
         },
         "breed4": {
@@ -565,7 +614,8 @@
             "label": "Dobermann",
             "label_en": "Dobermann",
             "link": "/products/iq-gebrauchshunde-schlusselanhanger-miniatur?variant=58646638887176",
-            "link_en": "/en/products/iq-gebrauchshunde-schlusselanhanger-miniatur?variant=58646638887176"
+            "link_en": "/en/products/iq-gebrauchshunde-schlusselanhanger-miniatur?variant=58646638887176",
+            "show_full_image": false
           }
         },
         "breed2": {
@@ -575,7 +625,8 @@
             "label": "Schäferhund schwarz",
             "label_en": "Black German Shepherd",
             "link": "/products/iq-gebrauchshunde-schlusselanhanger-miniatur?variant=58646617915656",
-            "link_en": "/en/products/iq-gebrauchshunde-schlusselanhanger-miniatur?variant=58646617915656"
+            "link_en": "/en/products/iq-gebrauchshunde-schlusselanhanger-miniatur?variant=58646617915656",
+            "show_full_image": false
           }
         },
         "breed_airedale": {
@@ -676,7 +727,15 @@
         "heading_accent": "",
         "heading_accent_en": "",
         "first_scale": 100
-      }
+      },
+      "custom_css": [
+        ".iqh-feature--gifts .iqh-gift-breed:nth-child(n+6) img{transform:scale(2.2);transform-origin:95% 60%}",
+        ".iqh-feature--gifts .iqh-gift-breed:nth-child(6) img{transform-origin:95% 42%}",
+        ".iqh-feature--gifts .iqh-gift-breed:nth-child(7) img{transform-origin:90% 65%}",
+        ".iqh-feature--gifts .iqh-gift-breed:nth-child(8) img{transform-origin:95% 68%}",
+        ".iqh-feature--gifts .iqh-gift-breed:nth-child(9) img{transform-origin:0% 75%}",
+        ".iqh-feature--gifts .iqh-gift-breed:nth-child(10) img{transform-origin:95% 80%}"
+      ]
     },
     "iq_home_founders": {
       "type": "iq-home-feature",
@@ -791,8 +850,8 @@
         "show_summary": true,
         "rating": "4,9 / 5",
         "rating_en": "4.9 / 5",
-        "review_count": "Über 2.800 Bewertungen",
-        "review_count_en": "Over 2,800 reviews"
+        "review_count": "Über 3.000 Bewertungen",
+        "review_count_en": "Over 3,000 reviews"
       }
     },
     "iq_home_athletes": {
@@ -1180,52 +1239,6 @@
         "show_section_divider": false,
         "divider_width": "fixed",
         "custom_class": "iq-athletes"
-      }
-    },
-    "featured_blog_6f7FyW": {
-      "type": "featured-blog",
-      "name": "IQ Blog · Artikel mit Kurztext",
-      "settings": {
-        "color_scheme": "scheme-1",
-        "heading": "IQ Blog",
-        "heading_size": "h2",
-        "heading_highlight_style": "none",
-        "subheading": "",
-        "description": "<p>Fitness für Sporthunde, Fachbegriffe auf Englisch, Praxistipps und Infos zu Events.</p>",
-        "description_en": "<p>Fitness for sport dogs, English terminology, practical tips and event updates.</p>",
-        "blog": "news",
-        "post_limit": 3,
-        "columns_desktop": 3,
-        "column_gap": "medium",
-        "columns_mobile": "1",
-        "swipe_on_mobile": true,
-        "card_title_size": "h4",
-        "show_date": false,
-        "show_excerpt": true,
-        "excerpt_words": 24,
-        "show_button": false,
-        "padding_top": 24,
-        "padding_bottom": 36,
-        "show_section_divider": false,
-        "divider_width": "fixed",
-        "custom_class": "iq-home-blog"
-      }
-    },
-    "iq_home_magdock_video": {
-      "type": "iq-product-film",
-      "name": "MagDock · Video in Aktion",
-      "settings": {
-        "only_collection": "",
-        "video": "shopify://files/videos/iq-magdock-in-aktion-20261108_f9d121f5-4703-4539-8577-908a9f4cd91f.mp4",
-        "poster": "shopify://shop_images/iq-magdock-film-poster-20261108.jpg",
-        "product": "iq-futtertasche-magdock",
-        "heading_de": "Die Futtertasche zum Andocken.",
-        "heading_en": "The treat pouch that docks.",
-        "body_de": "<p>Magnetisch andocken. Mechanisch verriegeln. Per Lasche lösen. Im Video siehst Du, wie Du die Futtertasche befestigst und beim Training nutzt.</p>",
-        "body_en": "<p>Dock magnetically. Lock mechanically. Release with the pull tab. See how to attach the treat pouch and use it during training.</p>",
-        "button_de": "MagDock entdecken",
-        "button_en": "Discover MagDock",
-        "button_color": "red"
       }
     }
   },
